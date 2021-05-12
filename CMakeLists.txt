@@ -3,6 +3,6 @@ project(Bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Bomberman
+add_executable(bomberman
 		sources/main.cpp
 )
