@@ -1,1 +1,0 @@
-/usr/bin/g++ -g CMakeFiles/Bomberman.dir/sources/main.cpp.o -o Bomberman 
