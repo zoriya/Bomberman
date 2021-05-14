@@ -12,10 +12,10 @@
 #include <string>
 #include "Vector.hpp"
 #include "Keyboard.hpp"
-#include "Drawable.hpp"
+#include "Surface.hpp"
 
 namespace Ray {
-class Window {
+class Window: public Surface {
     public:
         // Creates window, and opens it if openNow is set to true
         Window(int width, int height, const std::string title, bool openNow = false);
