@@ -11,6 +11,7 @@
 #include <raylib.h>
 #include <string>
 #include "Vector.hpp"
+#include "Keyboard.hpp"
 
 namespace Ray {
 class Window {
@@ -26,6 +27,9 @@ class Window {
 
         // Check if KEY_ESCAPE pressed or Close icon pressed
         bool shouldClose(void) const;
+
+        //Set key used to close window (default: ESC)
+        void setExitKey(Keyboard::Key key);
 
         // Close window and unload OpenGL context
         bool close(void);
@@ -47,6 +51,20 @@ class Window {
 
         // Check if cursor is on the current screen.
         bool cursorIsOnScreen(void) const;
+
+        // Set target FPS (maximum)
+        void setFPS(int fps); 
+
+        // Set background color (framebuffer clear color)
+        void clear(const Color &color);
+
+        // Setup canvas (framebuffer) to start drawing
+        // Must be called before first draw of iteration
+        void beginDrawing(void);
+
+        // End canvas drawing and swap buffers (double buffering)
+        // Must be called after last draw of iteration
+        void endDrawing(void);
 
     private:
         Ray::Vector2 _dimensions;
