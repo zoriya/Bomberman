@@ -26,7 +26,7 @@ namespace Ray {
             int getRadius(void) const;
 
         private:
-            int radius;
+            int _radius;
     };
 };
 
