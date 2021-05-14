@@ -6,8 +6,6 @@
 #include <vector>
 #include "Component/Component.hpp"
 
-//! @brief I'm deeply sorry for this name
-//! @note I am not, he is a liar
 namespace WAL
 {
 	//! @brief An entity of the WAL's ECS.
@@ -27,10 +25,10 @@ namespace WAL
 		unsigned getUid() const;
 		//! @brief Get the name fo the entity
 		std::string getName() const;
-		
+
 		//! @brief Used if the entity is disabled 
 		bool isDisable() const;
-		
+
 		//! @brief Disable this entity.
 		void setDisable(bool disabled);
 
@@ -38,11 +36,11 @@ namespace WAL
 		//! @throw ComponentNotFoundError if the component could not be found
 		template<typename T>
 		T getComponent();
-		
+
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @return This entity is returned
 		template<typename T, ...Types>
-		Entity &addComponent(...params);
+		Entity &addComponent(Types ...params);
 
 		//! @brief Copy a component to this entity.
 		//! @return This entity is returned.
