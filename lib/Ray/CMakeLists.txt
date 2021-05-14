@@ -5,9 +5,12 @@ set(BIN_NAME "libray.a")
 
 project("${BIN_NAME}")
 include_directories("./include")
-set(CMAKE_CXX_STANDARD 11)
-set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow -lray")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+
+if (CMAKE_COMPILER_IS_GNUCXX)
+    set(CMAKE_CXX_STANDARD 11)
+    set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow -lray")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
+endif()
 
 set(HEADERS
     include/Color.hpp
@@ -21,16 +24,11 @@ set(HEADERS
     include/Drawables/Drawable.hpp
     include/Drawables/Basic/Circle.hpp
     include/Drawables/Basic/Line.hpp
-    include/Drawables/Basic/Pixel.hpp
+    include/Drawables/Basic/Point.hpp
 )
 
 set(SRC
 
 )
 
-add_library(${BIN_NAME} LIBRARY ${SRC} ${HEADERS})
-
-set_target_properties(${BIN_NAME} PROPERTIES PREFIX "")
-set_target_properties(${BIN_NAME} PROPERTIES SUFFIX "")
-set_target_properties(${BIN_NAME} PROPERTIES OUTPUT_NAME "${BIN_NAME}")
-set_target_properties(${BIN_NAME} PROPERTIES LIBRARY_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/lib")include:
+add_library(${BIN_NAME} STATIC ${SRC} ${HEADERS})
