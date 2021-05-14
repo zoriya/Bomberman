@@ -1,0 +1,20 @@
+//
+// Created by Zoe Roux on 2021-05-14.
+//
+
+#include "WalError.hpp"
+
+namespace WAL
+{
+	WalError::WalError(const std::string &what)
+		: std::runtime_error(what)
+	{}
+
+	SystemExistError::SystemExistError(const std::string &what)
+		: WalError(what)
+	{}
+
+	NotFoundError::NotFoundError(const std::string &what)
+		: WalError(what)
+	{}
+}

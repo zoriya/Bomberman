@@ -39,7 +39,7 @@ namespace WAL
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @return This entity is returned
-		template<typename T, ...Types>
+		template<typename T, class ...Types>
 		Entity &addComponent(Types ...params);
 
 		//! @brief Copy a component to this entity.

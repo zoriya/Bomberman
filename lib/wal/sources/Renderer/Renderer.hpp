@@ -7,7 +7,7 @@
 
 namespace WAL
 {
-	class WAL
+	class Renderer
 	{
 
 	};
