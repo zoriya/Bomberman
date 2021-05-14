@@ -49,7 +49,8 @@ namespace Ray {
             //! @param Button The keycode of the button
             bool isUp(Button);
 
-            //! @brief Returns a vector containing keycode of currently pressed keys
+            //! @brief Fetch currently pressed buttons
+            //! @return Returns a vector containing keycode of currently pressed buttons
             std::vector<GamePad::Button> getPressedButtons(void);
         
         private:
