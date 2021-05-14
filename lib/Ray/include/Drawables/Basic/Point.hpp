@@ -17,9 +17,9 @@ namespace Ray {
         public:
             Point(Vector2 position, Color);
             Point(int x, int y, Color);
-            Point(const Point &);
+            Point(const Point &) = default;
 
-            Point &operator=(const Point &);
+            Point &operator=(const Point &) = default;
 
             ~Point() = default;
     };

@@ -16,10 +16,12 @@ namespace Ray {
 	{
         public:
             Circle(Vector2 topLeftPos, int radius, Color);
+            
             Circle(int topLeftX, int topLeftY, int radius, Color);
-            Circle(const Circle &);
+            
+            Circle(const Circle &) = default;
 
-            Circle &operator=(const Circle &);
+            Circle &operator=(const Circle &) = default;
 
             ~Circle() = default;
 

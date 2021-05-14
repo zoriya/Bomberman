@@ -19,6 +19,10 @@ namespace Ray {
         public:
             // Creates window, and opens it if openNow is set to true
             Window(int width, int height, const std::string title, bool openNow = false);
+
+            Window(const Window &) = default;
+
+            Window &operator=(const Window &) = default;
             
             //Closes window if still open
             ~Window() = default;

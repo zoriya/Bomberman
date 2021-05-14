@@ -20,15 +20,15 @@ namespace Ray
             Image(const Image &);
             Image();
 
-            Image &operator=(const Image &);
+            Image &operator=(const Image &) = default;
             
+            ~Image();
+
             bool load(const std::string &filename);
             bool exportTo(const std::string &outputPath);
             bool unload();
 
             const ::Image &getImage(void) const;
-
-            ~Image();
 
             void draw(const Rectangle &);
             void draw(const Line &);

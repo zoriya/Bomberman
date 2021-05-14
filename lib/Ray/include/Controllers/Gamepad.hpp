@@ -21,9 +21,9 @@ namespace Ray {
 
             ~GamePad() = default;
 
-            GamePad(const GamePad &);
+            GamePad(const GamePad &) = default;
 
-            GamePad &operator=(const GamePad &);
+            GamePad &operator=(const GamePad &) = default;
 
             bool isPressed(Button);
             bool isDown(Button);

@@ -21,6 +21,8 @@ namespace Ray {
         public:
             Drawable(Vector2 position, Color color);
             Drawable(int x, int y, Color color);
+
+            Drawable(const Drawable &) = default;
             virtual ~Drawable() = 0;
 
             const Vector2 &getPosition(void) const;

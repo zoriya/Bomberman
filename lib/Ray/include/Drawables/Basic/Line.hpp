@@ -17,9 +17,9 @@ namespace Ray {
         public:
             Line(Vector2 position, int length, Color);
             Line(int x, int y, int length, Color);
-            Line(const Line &);
+            Line(const Line &) = default;
 
-            Line &operator=(const Line &);
+            Line &operator=(const Line &) = default;
 
             ~Line() = default;
 

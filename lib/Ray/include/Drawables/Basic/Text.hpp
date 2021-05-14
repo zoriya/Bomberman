@@ -17,9 +17,9 @@ namespace Ray {
         public:
             Text(const std::string &text, int fontSize, Vector2 position, Color);
             Text(const std::string &text, int fontSize, int x, int y, Color);
-            Text(const Text &);
+            Text(const Text &) = default;
 
-            Text &operator=(const Text &);
+            Text &operator=(const Text &) = default;
 
             ~Text() = default;
 

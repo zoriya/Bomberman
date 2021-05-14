@@ -15,13 +15,13 @@ namespace Ray {
         public:
             Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
-            Color(const Color &);
+            Color(const Color &) = default;
 
             Color(int hexValue);
 
             ~Color() = default;
 
-            Color &operator=(const Color &);
+            Color &operator=(const Color &) = default;
             
             Color &setR(unsigned char r);
             Color &setG(unsigned char g);

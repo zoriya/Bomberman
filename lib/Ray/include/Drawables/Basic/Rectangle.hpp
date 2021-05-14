@@ -17,9 +17,9 @@ namespace Ray {
         public:
             Rectangle(Vector2 position, Vector2 dimensions,int length, Color);
             Rectangle(int x, int y, int width, int height, int length, Color);
-            Rectangle(const Rectangle &);
+            Rectangle(const Rectangle &) = default;
 
-            Rectangle &operator=(const Rectangle &);
+            Rectangle &operator=(const Rectangle &) = default;
 
             ~Rectangle() = default;
 
