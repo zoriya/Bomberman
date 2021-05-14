@@ -15,21 +15,44 @@ namespace Ray {
     class Line: public Drawable
 	{
         public:
+
+            //! @brief Line constructor
+            //! @param position position of top-left point (in percentage) 
+            //! @param length length of the line(in percentage)
+            //! @param rotation Color of the line (in degrees)  
             Line(Vector2 position, int length, Color);
+
+            //! @brief Line constructor
+            //! @param x x-position of top-left point (in percentage) 
+            //! @param y y-position of top-left point (in percentage)
+            //! @param length length of the line(in percentage)
+            //! @param rotation Color of the line (in degrees)  
             Line(int x, int y, int length, Color);
+
+            //! @brief A default copy constructor
             Line(const Line &) = default;
 
+            //! @brief A line is assignable
             Line &operator=(const Line &) = default;
 
+            //! @brief A default destructor
             ~Line() = default;
 
+            //! @return the length of the line
             int getLength(void) const;
+
+            //! @return the rotation of the line
             int getRotation(void) const;
 
+            //! @brief set length
             Line &setLength(int);
+
+            //! @brief set rotation
             Line &setRotation(int);
         private:
+            //! @brief Length of the line (in percentage)
             int _length;
+            //! @brief Rotation of the line (from origin, in degree)
             int _rotation;
     };
 };
