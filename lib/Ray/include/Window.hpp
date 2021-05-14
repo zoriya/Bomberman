@@ -17,68 +17,82 @@
 namespace Ray {
     class Window: public Surface {
         public:
-            // Creates window, and opens it if openNow is set to true
+            //! @brief Creates window, and opens it if openNow is set to true
             Window(int width, int height, const std::string title, bool openNow = false);
 
+            //! @brief A default copy constructor
             Window(const Window &) = default;
 
+            //! @brief A window is assignable
             Window &operator=(const Window &) = default;
             
-            //Closes window if still open
+            //! @brief Closes window if still open
             ~Window() = default;
 
-            // Initialize window and OpenGL context
+            //! @brief Initialize window and OpenGL context
             bool open(void);
 
-            // Check if KEY_ESCAPE pressed or Close icon pressed
+            //! @brief Check if KEY_ESCAPE pressed or Close icon pressed
             bool shouldClose(void) const;
 
-            //Set key used to close window (default: ESC)
+            //! @briefSet key used to close window (default: ESC)
             void setExitKey(Keyboard::Key key);
 
-            // Close window and unload OpenGL context
+            //! @brief Close window and unload OpenGL context
             bool close(void);
 
-            // Check if window is currently focused
+            //! @brief Check if window is currently focused
             bool isFocused(void);
 
-            // Set window dimensions
+            //! @brief Set window dimensions
             const Ray::Vector2 &getDimensions(void) const;
 
-            // Shows cursor
+            //! @brief Shows cursor
             void showCursor(void);
 
-            // Hides cursor
+            //! @brief Hides cursor
             void hideCursor(void);
 
-            // Check if cursor is not visible
+            //! @brief Check if cursor is not visible
             bool cursorIsHidden(void) const;
 
-            // Check if cursor is on the current screen.
+            //! @brief Check if cursor is on the current screen.
             bool cursorIsOnScreen(void) const;
 
-            // Set target FPS (maximum)
+            //! @brief Set target FPS (maximum)
             void setFPS(int fps); 
 
-            // Set background color (framebuffer clear color)
+            //! @brief Set background color (framebuffer clear color)
             void clear(const Color &color);
 
-            // Setup canvas (framebuffer) to start drawing
-            // Must be called before first draw of iteration
+            //! @brief Setup canvas (framebuffer) to start drawing
+            //! @brief Must be called before first draw of iteration
             void beginDrawing(void);
 
-            // End canvas drawing and swap buffers (double buffering)
-            // Must be called after last draw of iteration
+            //! @brief End canvas drawing and swap buffers (double buffering)
+            //! @info Must be called after last draw of iteration
             void endDrawing(void);
 
+            //! @brief draw rectangle
             void draw(const Rectangle &);
+
+            //! @brief draw line
             void draw(const Line &);
+
+            //! @brief draw point
             void draw(const Point &);
+
+            //! @brief draw circle
             void draw(const Circle &);
 
         private:
+            //! @brief Dimension of window
             Ray::Vector2 _dimensions;
+
+            //! @brief Title of window
             std::string _title;
+
+            //! @brief has the window been open?
             bool _isOpen;
     };
 }

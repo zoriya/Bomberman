@@ -13,11 +13,19 @@
 namespace Ray {
     class Surface {
         public:
+            //! @brief A default destructor
             virtual ~Surface() = 0;
 
+            //! @brief draw rectangle
             virtual void draw(const Rectangle &) = 0;
+
+            //! @brief draw Line
             virtual void draw(const Line &) = 0;
+
+            //! @brief draw Point
             virtual void draw(const Point &) = 0;
+
+            //! @brief draw Circle
             virtual void draw(const Circle &) = 0;
 
         protected:
