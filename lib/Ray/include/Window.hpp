@@ -12,6 +12,7 @@
 #include <string>
 #include "Vector.hpp"
 #include "Keyboard.hpp"
+#include "Drawable.hpp"
 
 namespace Ray {
 class Window {
@@ -65,6 +66,11 @@ class Window {
         // End canvas drawing and swap buffers (double buffering)
         // Must be called after last draw of iteration
         void endDrawing(void);
+
+        void drawRectangle(const Rectangle &);
+        void drawLine(const Line &);
+        void drawPoint(const Point &);
+        void drawCircle(const Circle &);
 
     private:
         Ray::Vector2 _dimensions;

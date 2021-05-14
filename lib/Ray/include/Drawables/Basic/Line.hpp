@@ -5,16 +5,37 @@
 ** Pixel
 */
 
-#ifndef PIXEL_HPP_
-#define PIXEL_HPP_
+#ifndef LINE_HPP_
+#define LINE_HPP_
 
 #include <raylib.h>
 #include "Drawables/Drawable.hpp"
 
 namespace Ray {
-    struct Line: public Drawable
+    class Line: public Drawable
 	{
-        Vector2 dimensions;
+        public:
+            Line(Vector2 position, int length, Color);
+            Line(int x, int y, int length, Color);
+            Line(const Line &);
+
+            Line &operator=(const Line &);
+
+            ~Line() = default;
+
+            int getLength(void) const;
+            int getRotation(void) const;
+
+            Line &setLength(int);
+            Line &setRotation(int);
+
+            bool collide(const Rectangle &);
+            bool collide(const Line &);
+            bool collide(const Point &);
+            bool collide(const Circle &);
+        private:
+            int _length;
+            int _rotation;
     };
 };
 
