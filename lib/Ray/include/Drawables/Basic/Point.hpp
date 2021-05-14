@@ -15,12 +15,24 @@ namespace Ray {
     class Point: public Drawable
 	{
         public:
+            //! @brief Point constructor
+            //! @param position position of point (in percentage) 
+            //! @param Color Color of the circle
             Point(Vector2 position, Color);
+
+            //! @brief Point constructor
+            //! @param x x-position of point (in percentage) 
+            //! @param y y-position of point (in percentage)
+            //! @param Color Color of the circle  
             Point(int x, int y, Color);
+
+            //! @brief A default copy constructor
             Point(const Point &) = default;
 
+            //! @brief A point is assignable
             Point &operator=(const Point &) = default;
 
+            //! @brief A default destructor
             ~Point() = default;
     };
 };

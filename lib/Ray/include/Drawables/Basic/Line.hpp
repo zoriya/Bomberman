@@ -19,14 +19,14 @@ namespace Ray {
             //! @brief Line constructor
             //! @param position position of top-left point (in percentage) 
             //! @param length length of the line(in percentage)
-            //! @param rotation Color of the line (in degrees)  
+            //! @param Color Color of the circle  
             Line(Vector2 position, int length, Color);
 
             //! @brief Line constructor
             //! @param x x-position of top-left point (in percentage) 
             //! @param y y-position of top-left point (in percentage)
             //! @param length length of the line(in percentage)
-            //! @param rotation Color of the line (in degrees)  
+            //! @param Color Color of the circle  
             Line(int x, int y, int length, Color);
 
             //! @brief A default copy constructor
