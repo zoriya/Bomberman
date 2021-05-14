@@ -13,6 +13,12 @@ add_library(wal
 	sources/Scene/SceneManager.hpp
 	sources/Scene/Scene.cpp
 	sources/Scene/Scene.hpp
-	sources/Renderer/Renderer.cpp sources/Renderer/Renderer.hpp sources/Events/EventManager.cpp sources/Events/EventManager.hpp sources/Exception/WalError.cpp sources/Exception/WalError.hpp)
+	sources/Renderer/Renderer.cpp
+	sources/Renderer/Renderer.hpp
+	sources/Events/EventManager.cpp
+	sources/Events/EventManager.hpp
+	sources/Exception/WalError.cpp
+	sources/Exception/WalError.hpp
+)
 
 target_include_directories(wal PUBLIC sources)
