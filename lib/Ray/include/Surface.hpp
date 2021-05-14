@@ -15,10 +15,10 @@ namespace Ray {
         public:
             virtual ~Surface() = 0;
 
-            virtual void drawRectangle(const Rectangle &) = 0;
-            virtual void drawLine(const Line &) = 0;
-            virtual void drawPoint(const Point &) = 0;
-            virtual void drawCircle(const Circle &) = 0;
+            virtual void draw(const Rectangle &) = 0;
+            virtual void draw(const Line &) = 0;
+            virtual void draw(const Point &) = 0;
+            virtual void draw(const Circle &) = 0;
 
         protected:
         private:

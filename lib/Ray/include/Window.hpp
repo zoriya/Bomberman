@@ -67,10 +67,10 @@ class Window: public Surface {
         // Must be called after last draw of iteration
         void endDrawing(void);
 
-        void drawRectangle(const Rectangle &);
-        void drawLine(const Line &);
-        void drawPoint(const Point &);
-        void drawCircle(const Circle &);
+        void draw(const Rectangle &);
+        void draw(const Line &);
+        void draw(const Point &);
+        void draw(const Circle &);
 
     private:
         Ray::Vector2 _dimensions;

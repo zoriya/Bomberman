@@ -30,10 +30,10 @@ namespace Ray
 
             ~Image();
 
-            void drawRectangle(const Rectangle &);
-            void drawLine(const Line &);
-            void drawPoint(const Point &);
-            void drawCircle(const Circle &);
+            void draw(const Rectangle &);
+            void draw(const Line &);
+            void draw(const Point &);
+            void draw(const Circle &);
 
         protected:
         private:
