@@ -29,11 +29,6 @@ namespace Ray {
             Text &setText(const std::string &text);
             Text &setFontSize(int size);
 
-
-            bool collide(const Text &);
-            bool collide(const Line &);
-            bool collide(const Point &);
-            bool collide(const Circle &);
         private:
             std::string _text;
             int _size;

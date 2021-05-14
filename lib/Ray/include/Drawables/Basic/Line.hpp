@@ -28,11 +28,6 @@ namespace Ray {
 
             Line &setLength(int);
             Line &setRotation(int);
-
-            bool collide(const Rectangle &);
-            bool collide(const Line &);
-            bool collide(const Point &);
-            bool collide(const Circle &);
         private:
             int _length;
             int _rotation;

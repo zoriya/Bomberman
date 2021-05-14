@@ -25,11 +25,6 @@ namespace Ray {
 
             int getRadius(void) const;
 
-            bool collide(const Rectangle &);
-            bool collide(const Line &);
-            bool collide(const Point &);
-            bool collide(const Circle &);
-
         private:
             int radius;
     };

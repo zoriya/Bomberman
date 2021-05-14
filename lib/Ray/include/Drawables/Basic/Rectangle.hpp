@@ -28,10 +28,6 @@ namespace Ray {
             Rectangle &setDimensions(const Vector2 &position);
             Rectangle &setDimensions(int x, int y);
 
-            bool collide(const Rectangle &);
-            bool collide(const Line &);
-            bool collide(const Point &);
-            bool collide(const Circle &);
         private:
             Vector2 _dimensions;
     };

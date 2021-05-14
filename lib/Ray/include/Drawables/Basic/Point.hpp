@@ -22,11 +22,6 @@ namespace Ray {
             Point &operator=(const Point &);
 
             ~Point() = default;
-
-            bool collide(const Rectangle &);
-            bool collide(const Line &);
-            bool collide(const Point &);
-            bool collide(const Circle &);
     };
 };
 

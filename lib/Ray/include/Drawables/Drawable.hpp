@@ -30,11 +30,6 @@ namespace Ray {
             Drawable &setPosition(int x, int y);
             Drawable &setColor(const Color &color) const;
 
-            virtual bool collide(const Rectangle &) = 0;
-            virtual bool collide(const Line &) = 0;
-            virtual bool collide(const Point &) = 0;
-            virtual bool collide(const Circle &) = 0;
-
         private:
             //top-left position
             Vector2 _position;
