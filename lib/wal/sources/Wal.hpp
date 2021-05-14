@@ -29,6 +29,8 @@ namespace WAL
 		std::vector<std::unique_ptr<System>> _systems = {};
 		//! @brief The renderer used to draw entities
 		std::unique_ptr<Renderer> _renderer;
+		//! @brief True if the engine should close after the end of the current tick.
+		bool _shouldClose = false;
 	public:
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.

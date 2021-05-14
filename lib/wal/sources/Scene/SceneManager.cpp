@@ -20,6 +20,8 @@ namespace WAL
 
 	Scene &SceneManager::getCurrent()
 	{
+		if (this->_scenes.empty())
+			throw NotFoundError("No scene exists.");
 		return this->_scenes.front();
 	}
 
