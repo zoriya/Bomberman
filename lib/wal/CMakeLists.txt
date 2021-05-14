@@ -19,6 +19,6 @@ add_library(wal
 	sources/Events/EventManager.hpp
 	sources/Exception/WalError.cpp
 	sources/Exception/WalError.hpp
-)
+	sources/Entity/Entity.cpp sources/Component/Component.cpp)
 
 target_include_directories(wal PUBLIC sources)

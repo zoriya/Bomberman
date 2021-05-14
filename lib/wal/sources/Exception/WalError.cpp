@@ -10,7 +10,7 @@ namespace WAL
 		: std::runtime_error(what)
 	{}
 
-	SystemExistError::SystemExistError(const std::string &what)
+	DuplicateError::DuplicateError(const std::string &what)
 		: WalError(what)
 	{}
 

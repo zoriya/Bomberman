@@ -24,18 +24,18 @@ namespace WAL
 		WalError &operator=(const WalError &) = default;
 	};
 
-	//! @brief An exception informing the user that a system already exists.
-	class SystemExistError : public WalError
+	//! @brief An exception informing the user that something already exists.
+	class DuplicateError : public WalError
 	{
 	public:
 		//! @brief Create a new wal exception
-		explicit SystemExistError(const std::string &what);
+		explicit DuplicateError(const std::string &what);
 		//! @brief A wal exception is copy constructable
-		SystemExistError(const SystemExistError &) = default;
+		DuplicateError(const DuplicateError &) = default;
 		//! @brief A default destructor
-		~SystemExistError() override = default;
+		~DuplicateError() override = default;
 		//! @brief A default assignment operator
-		SystemExistError &operator=(const SystemExistError &) = default;
+		DuplicateError &operator=(const DuplicateError &) = default;
 	};
 
 	//! @brief An exception informing the user that something could not be found

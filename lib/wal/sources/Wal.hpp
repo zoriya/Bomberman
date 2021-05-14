@@ -37,10 +37,10 @@ namespace WAL
 		{
 			const std::type_info &type = typeid(T);
 			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
-				return typeid(sys) == type;
+				return typeid(*sys) == type;
 			});
 			if (existing != this->_systems.end())
-				throw SystemExistError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
+				throw DuplicateError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
 			this->_systems.push_back(std::make_unique(params...));
 			return *this;
 		}
@@ -52,10 +52,10 @@ namespace WAL
 		{
 			const std::type_info &type = typeid(T);
 			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
-				return typeid(sys) == type;
+				return typeid(*sys) == type;
 			});
 			if (existing != this->_systems.end())
-				throw SystemExistError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
+				throw DuplicateError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
 			this->_systems.push_back(std::make_unique(system));
 			return *this;
 		}
@@ -66,10 +66,11 @@ namespace WAL
 		{
 			const std::type_info &type = typeid(T);
 			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
-				return typeid(sys) == type;
+				return typeid(*sys) == type;
 			});
 			if (existing == this->_systems.end())
 				throw NotFoundError("No system could be found with the type \"" + std::string(type.name()) + "\".");
+			this->_systems.erase(existing);
 			return *this;
 		}
 
@@ -85,7 +86,7 @@ namespace WAL
 		WAL(const WAL &) = delete;
 		//! @brief A default destructor
 		~WAL() = default;
-		//! @brief A default assignment operator
-		WAL &operator=(const WAL &) = default;
+		//! @brief A WAL can't be assigned.
+		WAL &operator=(const WAL &) = delete;
 	};
 }
