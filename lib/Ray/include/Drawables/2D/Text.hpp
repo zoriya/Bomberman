@@ -8,11 +8,11 @@
 #ifndef TEXT_HPP_
 #define TEXT_HPP_
 
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable2D.hpp"
 #include <string>
 
-namespace Ray {
-    class Text: public ADrawable
+namespace Ray::Drawable3D {
+    class Text: public ADrawable2D
 	{
         public:
             //! @brief Text constructor
@@ -45,6 +45,9 @@ namespace Ray {
             //! @return the font size
             int getFontSize(void);
 
+            //! @return set font
+            Text &setFont(const Font &font);
+
             //! @brief set text content
             Text &setText(const std::string &text);
 
@@ -54,6 +57,9 @@ namespace Ray {
         private:
             //! @brief Text, just text
             std::string _text;
+
+            //! @brief Font
+            Font _font;
 
             //! @brief font size of the text
             int _size;

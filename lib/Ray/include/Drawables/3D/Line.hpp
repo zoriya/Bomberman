@@ -1,0 +1,57 @@
+/*
+** EPITECH PROJECT, 2021
+** Bomberman
+** File description:
+** Pixel
+*/
+
+#ifndef LINE_HPP_
+#define LINE_HPP_
+
+#include <raylib.h>
+#include "Drawables/ADrawable3D.hpp"
+
+namespace Ray::Drawable3D {
+    class Line: public ADrawable3D
+	{
+        public:
+            //! @brief Line constructor
+            //! @param startPosition position of top-left point (in percentage) 
+            //! @param startPosition position of bottom-rigth point (in percentage) 
+            //! @param Color Color of the line  
+            Line(Vector3 startPosition, Vector3 endPosition, Color color);
+
+            //! @brief A default copy constructor
+            Line(const Line &) = default;
+
+            //! @brief A line is assignable
+            Line &operator=(const Line &) = default;
+
+            //! @brief A default destructor
+            ~Line() = default;
+
+            //! @return the length of the line
+            int getLength(void) const;
+
+            //! @return the start position of the line
+            const Vector3 &getStartPosition(void) const;
+
+            //! @return the end position of the line
+            const Vector3 &getEndPosition(void) const;
+
+            //! @brief Set start position
+            Line &setStartPosition(Vector3 startPosition);
+
+            //! @brief Set end position
+            Line &setEndPosition(Vector3 endPosition);
+
+
+        private:
+            //! @brief start position
+            Vector3 _startPosition;
+            //! @brief end position
+            Vector3 _endPosition;
+    };
+};
+
+#endif /* !PIXEL_HPP_ */

@@ -9,10 +9,10 @@
 #define LINE_HPP_
 
 #include <raylib.h>
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable2D.hpp"
 
-namespace Ray {
-    class Line: public ADrawable
+namespace Ray::Drawable3D {
+    class Line: public ADrawable2D
 	{
         public:
 

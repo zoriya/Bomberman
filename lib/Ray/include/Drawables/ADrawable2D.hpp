@@ -10,30 +10,26 @@
 
 #include <raylib.h>
 #include <Vector.hpp>
-#include "Drawables/Basic/Circle.hpp"
-#include "Drawables/Basic/Line.hpp"
-#include "Drawables/Basic/Rectangle.hpp"
-#include "Drawables/Basic/Point.hpp"
 
-namespace Ray {
-    class ADrawable
+namespace Ray::Drawable3D {
+    class ADrawable2D
 	{
         public:
             //! @brief ADrawable constructor
             //! @param poition position of top-left point (in percentage)
             //! @param Color Color of the color  
-            ADrawable(Vector2 position, Color color);
+            ADrawable2D(Vector2 position, Color color);
             //! @brief ADrawable constructor
             //! @param x x-position of top-left point (in percentage) 
             //! @param y y-position of top-left point (in percentage)
             //! @param Color Color of the color  
-            ADrawable(int x, int y, Color color);
+            ADrawable2D(int x, int y, Color color);
 
             //! @brief A default copy constructor
-            ADrawable(const ADrawable &) = default;
+            ADrawable2D(const ADrawable2D &) = default;
 
             //! @brief A default destructor
-            virtual ~ADrawable() = 0;
+            virtual ~ADrawable2D() = 0;
 
             //! @return the top-left position of the ADrawable
             const Vector2 &getPosition(void) const;
@@ -42,13 +38,13 @@ namespace Ray {
             const Color &getColor(void) const;
 
             //! @brief set Top-left position
-            ADrawable &setPosition(const Vector2 &position);
+            ADrawable2D &setPosition(const Vector2 &position);
             
             //! @brief set Top-left position
-            ADrawable &setPosition(int x, int y);
+            ADrawable2D &setPosition(int x, int y);
             
             //! @brief set color
-            ADrawable &setColor(const Color &color) const;
+            ADrawable2D &setColor(const Color &color) const;
 
         private:
             //! @brief Top-left position (in percentage)

@@ -9,10 +9,10 @@
 #define CIRCLE_HPP_
 
 #include <raylib.h>
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable2D.hpp"
 
-namespace Ray {
-    class Circle: public ADrawable
+namespace Ray::Drawable3D {
+    class Circle: public ADrawable2D
 	{
         public:
             //! @brief Circle constructor

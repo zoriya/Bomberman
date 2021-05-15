@@ -9,10 +9,10 @@
 #define RECTANGLE_HPP_
 
 #include <raylib.h>
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable2D.hpp"
 
-namespace Ray {
-    class Rectangle: public ADrawable
+namespace Ray::Drawable3D {
+    class Rectangle: public ADrawable2D
 	{
         public:
             //! @brief Rectangle constructor

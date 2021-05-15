@@ -22,9 +22,9 @@ set(HEADERS
     include/Controllers/Keyboard.hpp
     include/Controllers/Mouse.hpp
     include/Drawables/ADrawable.hpp
-    include/Drawables/Basic/Circle.hpp
-    include/Drawables/Basic/Line.hpp
-    include/Drawables/Basic/Point.hpp
+    include/Drawables/2D/Circle.hpp
+    include/Drawables/2D/Line.hpp
+    include/Drawables/2D/Point.hpp
 )
 
 set(SRC

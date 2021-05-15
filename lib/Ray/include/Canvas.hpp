@@ -8,7 +8,7 @@
 #ifndef Canvas_HPP_
 #define Canvas_HPP_
 
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable2D.hpp"
 
 namespace Ray {
     class Canvas {

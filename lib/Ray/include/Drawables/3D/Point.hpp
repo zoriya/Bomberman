@@ -9,22 +9,16 @@
 #define PIXEL_HPP_
 
 #include <raylib.h>
-#include "Drawables/ADrawable.hpp"
+#include "Drawables/ADrawable3D.hpp"
 
-namespace Ray {
-    class Point: public ADrawable
+namespace Ray::Drawable3D {
+    class Point: public ADrawable3D
 	{
         public:
             //! @brief Point constructor
-            //! @param position position of point (in percentage) 
+            //! @param position position of point 
             //! @param Color Color of the circle
-            Point(Vector2 position, Color);
-
-            //! @brief Point constructor
-            //! @param x x-position of point (in percentage) 
-            //! @param y y-position of point (in percentage)
-            //! @param Color Color of the circle  
-            Point(int x, int y, Color);
+            Point(Vector3 position, Color);
 
             //! @brief A default copy constructor
             Point(const Point &) = default;
@@ -34,6 +28,15 @@ namespace Ray {
 
             //! @brief A default destructor
             ~Point() = default;
+
+            //! @return the position of the point
+            const Vector3 &getPosition(void) const;
+
+            //! @brief Set position
+            Point &setPosition(Vector3 Position);
+        private:
+            //! @brief point position
+            Vector3 _position;
     };
 };
 

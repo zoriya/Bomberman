@@ -85,6 +85,9 @@ namespace Ray {
             //! @brief draw circle
             void draw(const Circle &);
 
+            //! @brief draw texture at position
+            void draw(const Texture &, Vector2 position, Color tint);
+
         private:
             //! @brief Dimension of window
             Ray::Vector2 _dimensions;
