@@ -9,10 +9,10 @@
 #define PIXEL_HPP_
 
 #include <raylib.h>
-#include "Drawables/Drawable.hpp"
+#include "Drawables/ADrawable.hpp"
 
 namespace Ray {
-    class Point: public Drawable
+    class Point: public ADrawable
 	{
         public:
             //! @brief Point constructor

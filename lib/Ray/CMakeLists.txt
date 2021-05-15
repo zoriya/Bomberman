@@ -21,7 +21,7 @@ set(HEADERS
     include/Controllers/Gamepad.hpp
     include/Controllers/Keyboard.hpp
     include/Controllers/Mouse.hpp
-    include/Drawables/Drawable.hpp
+    include/Drawables/ADrawable.hpp
     include/Drawables/Basic/Circle.hpp
     include/Drawables/Basic/Line.hpp
     include/Drawables/Basic/Point.hpp

@@ -8,11 +8,11 @@
 #ifndef TEXT_HPP_
 #define TEXT_HPP_
 
-#include "Drawables/Drawable.hpp"
+#include "Drawables/ADrawable.hpp"
 #include <string>
 
 namespace Ray {
-    class Text: public Drawable
+    class Text: public ADrawable
 	{
         public:
             //! @brief Text constructor
