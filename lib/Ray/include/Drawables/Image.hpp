@@ -10,11 +10,11 @@
 
 #include <raylib.h>
 #include <string>
-#include "Surface.hpp"
+#include "Canvas.hpp"
 
 namespace Ray
 {
-    class Image: public Surface {
+    class Image: public Canvas {
         public:
             //! @brief Create an image, loading a file
             //! @param filename: path to file to load

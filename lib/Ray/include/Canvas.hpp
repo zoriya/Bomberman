@@ -2,19 +2,19 @@
 ** EPITECH PROJECT, 2021
 ** Bomberman
 ** File description:
-** Surface
+** Canvas
 */
 
-#ifndef SURFACE_HPP_
-#define SURFACE_HPP_
+#ifndef Canvas_HPP_
+#define Canvas_HPP_
 
 #include "Drawables/Drawable.hpp"
 
 namespace Ray {
-    class Surface {
+    class Canvas {
         public:
             //! @brief A default destructor
-            virtual ~Surface() = 0;
+            virtual ~Canvas() = 0;
 
             //! @brief draw rectangle
             virtual void draw(const Rectangle &) = 0;
@@ -33,4 +33,4 @@ namespace Ray {
     };
 }
 
-#endif /* !SURFACE_HPP_ */
+#endif /* !Canvas_HPP_ */
