@@ -5,13 +5,13 @@
 ** Pixel
 */
 
-#ifndef RECTANGLE_HPP_
-#define RECTANGLE_HPP_
+#ifndef RECTANGLE2D_HPP_
+#define RECTANGLE2D_HPP_
 
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace Ray::Drawable3D {
+namespace Ray::Drawable2D {
     class Rectangle: public ADrawable2D
 	{
         public:

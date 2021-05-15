@@ -5,8 +5,8 @@
 ** ADrawable
 */
 
-#ifndef ADrawable_HPP_
-#define ADrawable_HPP_
+#ifndef ADRAWABLE3D_HPP_
+#define ADRAWABLE3D_HPP_
 
 #include <raylib.h>
 #include <Vector.hpp>

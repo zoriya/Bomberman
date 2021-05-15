@@ -6,8 +6,8 @@
 ** Keyboard
 */
 
-#ifndef KEYBOARD_HPP_
-#define KEYBOARD_HPP_
+#ifndef GAMEPAD_HPP_
+#define GAMEPAD_HPP_
 
 #include <raylib.h>
 #include <vector>
@@ -48,6 +48,12 @@ namespace Ray {
             //! @brief Returns true if Button is up on the gamepad
             //! @param Button The keycode of the button
             bool isUp(Button);
+
+            //! @brief Returns true if controller is available
+            bool isAvailable(Button);
+
+            //! @brief Sets gamepad's id
+            GamePad &setID(int id);
 
             //! @brief Fetch currently pressed buttons
             //! @return Returns a vector containing keycode of currently pressed buttons

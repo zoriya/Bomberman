@@ -5,13 +5,13 @@
 ** ADrawable
 */
 
-#ifndef ADrawable_HPP_
-#define ADrawable_HPP_
+#ifndef ADRAWABLE2D_HPP_
+#define ADRAWABLE2D_HPP_
 
 #include <raylib.h>
 #include <Vector.hpp>
 
-namespace Ray::Drawable3D {
+namespace Ray::Drawable2D {
     class ADrawable2D
 	{
         public:

@@ -11,7 +11,7 @@
 #include "Drawables/ADrawable2D.hpp"
 #include <string>
 
-namespace Ray::Drawable3D {
+namespace Ray::Drawable2D {
     class Text: public ADrawable2D
 	{
         public:

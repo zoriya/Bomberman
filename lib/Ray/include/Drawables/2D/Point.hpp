@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace Ray::Drawable3D {
+namespace Ray::Drawable2D {
     class Point: public ADrawable2D
 	{
         public:

@@ -5,8 +5,8 @@
 ** Pixel
 */
 
-#ifndef CIRCLE_HPP_
-#define CIRCLE_HPP_
+#ifndef CIRCLE3D_HPP_
+#define CIRCLE3D_HPP_
 
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
@@ -19,7 +19,7 @@ namespace Ray::Drawable3D {
             //! @param centerPosition position of the center 
             //! @param radius radius of the circle(in percentage)
             //! @param Color Color of the circle  
-            Circle(Vector3 centerPosition, int radius, Color color);
+            Circle(Vector3 centerPosition, int radius, Vector3 rotationAxis, float rotationAngle, Color color);
 
             
             //! @brief A default copy constructor
@@ -49,6 +49,12 @@ namespace Ray::Drawable3D {
 
             //! @brief position of the center
             Vector3 _centerPos;
+
+            //! @brief rotation axis
+            Vector3 rotationAxis;
+            
+            //! @brief rotation angle
+            float rotationAngle;
     };
 };
 

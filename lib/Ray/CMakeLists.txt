@@ -13,18 +13,34 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 set(HEADERS
+    include/Canvas.hpp
     include/Color.hpp
     include/Controllers
     include/Drawables
+    include/Font.hpp
     include/Vector.hpp
     include/Window.hpp
     include/Controllers/Gamepad.hpp
     include/Controllers/Keyboard.hpp
     include/Controllers/Mouse.hpp
-    include/Drawables/ADrawable.hpp
+    include/Drawables/ADrawable2D.hpp
+    include/Drawables/ADrawable3D.hpp
+    include/Drawables/Image.hpp
+    include/Drawables/Texture.hpp
     include/Drawables/2D/Circle.hpp
     include/Drawables/2D/Line.hpp
     include/Drawables/2D/Point.hpp
+    include/Drawables/2D/Rectangle.hpp
+    include/Drawables/2D/Text.hpp
+    include/Drawables/2D/Triangle.hpp
+    include/Drawables/3D/Circle.hpp
+    include/Drawables/3D/Cylinder.hpp
+    include/Drawables/3D/Line.hpp
+    include/Drawables/3D/Plane.hpp
+    include/Drawables/3D/Point.hpp
+    include/Drawables/3D/Ray.hpp
+    include/Drawables/3D/Sphere.hpp
+    include/Drawables/3D/Triangle.hpp
 )
 
 set(SRC

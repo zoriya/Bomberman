@@ -5,13 +5,13 @@
 ** Pixel
 */
 
-#ifndef CIRCLE_HPP_
-#define CIRCLE_HPP_
+#ifndef CIRCLE2D_HPP_
+#define CIRCLE2D_HPP_
 
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace Ray::Drawable3D {
+namespace Ray::Drawable2D {
     class Circle: public ADrawable2D
 	{
         public:

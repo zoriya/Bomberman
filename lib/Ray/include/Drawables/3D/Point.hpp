@@ -5,8 +5,8 @@
 ** Pixel
 */
 
-#ifndef PIXEL_HPP_
-#define PIXEL_HPP_
+#ifndef POINT3D_HPP_
+#define POINT3D_HPP_
 
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
@@ -17,7 +17,7 @@ namespace Ray::Drawable3D {
         public:
             //! @brief Point constructor
             //! @param position position of point 
-            //! @param Color Color of the circle
+            //! @param Color Color of the point
             Point(Vector3 position, Color);
 
             //! @brief A default copy constructor

@@ -5,52 +5,52 @@
 ** Pixel
 */
 
-#ifndef LINE3D_HPP_
-#define LINE3D_HPP_
+#ifndef RAY_HPP_
+#define RAY_HPP_
 
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
 namespace Ray::Drawable3D {
-    class Line: public ADrawable3D
+    class Ray: public ADrawable3D
 	{
         public:
-            //! @brief Line constructor
+            //! @brief Ray constructor
             //! @param startPosition position of top-left point (in percentage) 
-            //! @param startPosition position of bottom-rigth point (in percentage) 
+            //! @param direction direction of the ray
             //! @param Color Color of the line  
-            Line(Vector3 startPosition, Vector3 endPosition, Color color);
+            Ray(Vector3 startPosition, Vector3 direction, Color color);
 
             //! @brief A default copy constructor
-            Line(const Line &) = default;
+            Ray(const Ray &) = default;
 
             //! @brief A line is assignable
-            Line &operator=(const Line &) = default;
+            Ray &operator=(const Ray &) = default;
 
             //! @brief A default destructor
-            ~Line() = default;
+            ~Ray() = default;
 
             //! @return the length of the line
             int getLength(void) const;
 
             //! @return the start position of the line
-            const Vector3 &getStartPosition(void) const;
+            const Vector3 &getPosition(void) const;
 
             //! @return the end position of the line
-            const Vector3 &getEndPosition(void) const;
+            const Vector3 &getDirection(void) const;
 
             //! @brief Set start position
-            Line &setStartPosition(Vector3 startPosition);
+            Ray &setPosition(Vector3 startPosition);
 
             //! @brief Set end position
-            Line &setEndPosition(Vector3 endPosition);
+            Ray &setDirection(Vector3 dimensions);
 
 
         private:
             //! @brief start position
             Vector3 _startPosition;
-            //! @brief end position
-            Vector3 _endPosition;
+            //! @brief direction
+            Vector3 _direction;
     };
 };
 

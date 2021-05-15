@@ -1,0 +1,55 @@
+/*
+** EPITECH PROJECT, 2021
+** Bomberman
+** File description:
+** Pixel
+*/
+
+#ifndef SPHERE_HPP_
+#define SPHERE_HPP_
+
+#include <raylib.h>
+#include "Drawables/ADrawable3D.hpp"
+
+namespace Ray::Drawable3D {
+    class Sphere: public ADrawable3D
+	{
+        public:
+            //! @brief Sphere constructor
+            //! @param centerPosition position of the center 
+            //! @param radius radius of the sphere(in percentage)
+            //! @param Color Color of the sphere  
+            Sphere(Vector3 centerPosition, int radius, Color color);
+
+            
+            //! @brief A default copy constructor
+            Sphere(const Sphere &) = default;
+
+            //! @brief A sphere is assignable
+            Sphere &operator=(const Sphere &) = default;
+
+            //! @brief A default destructor
+            ~Sphere() = default;
+
+            //! @return the radius of the sphere
+            int getRadius(void) const;
+
+            //! @brief set radius
+            Sphere &setRadius(int radius) const;
+
+            //! @return the position of the center
+            const Vector3 &getCenterPos(void) const;
+
+            //! @brief set pos of center 
+            Sphere &setRadius(Vector3 pos) const;
+
+        private:
+            //! @brief Radius of the sphere (in percentage)
+            int _radius;
+
+            //! @brief position of the center
+            Vector3 _centerPos;
+    };
+};
+
+#endif /* !PIXEL_HPP_ */
