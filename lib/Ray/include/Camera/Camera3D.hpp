@@ -32,7 +32,7 @@ namespace Ray::Camera {
             ~Camera3D() = default;
 
             //! @brief A Camera is assignable
-            Camera3D &operator=(const Camera3D &);
+            Camera3D &operator=(const Camera3D &) = default;
 
             //! @brief Set Position
             Camera3D &setPosition(Vector3 Position);

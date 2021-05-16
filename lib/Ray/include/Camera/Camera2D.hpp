@@ -29,7 +29,7 @@ namespace Ray::Camera {
             ~Camera2D() = default;
 
             //! @brief A Camera is assignable
-            Camera2D &operator=(const Camera2D &);
+            Camera2D &operator=(const Camera2D &) = default;
 
             //! @brief Set Offset
             Camera2D &setOffset(Vector2 offset);
