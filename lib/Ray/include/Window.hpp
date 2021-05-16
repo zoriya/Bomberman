@@ -13,6 +13,7 @@
 #include "Vector.hpp"
 #include "Keyboard.hpp"
 #include "Canvas.hpp"
+#include "Camera/Camera2D.hpp"
 
 namespace Ray {
     class Window: public Canvas {
@@ -72,6 +73,20 @@ namespace Ray {
             //! @brief End canvas drawing and swap buffers (double buffering)
             //! @info Must be called after last draw of iteration
             void endDrawing(void);
+
+
+            //! @brief Initialize 2D mode with custom camera (2D)
+            void beginMode2D(Camera2D &camera);
+
+            //! @brief Initialize 3D mode with custom camera (2D)
+            void beginMode3D(Camera3D &camera);
+
+            //! @brief Ends 2D mode with custom camera
+            void endMode2D(void);
+
+            //! @brief Ends 3D mode and returns to default 2D orthographic mode
+            void endMode3D(void);
+
 
             //! @brief draw rectangle
             virtual void draw(const Drawable2D::Rectangle &) = 0;

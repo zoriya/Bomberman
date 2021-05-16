@@ -17,7 +17,7 @@ namespace Ray::Drawable3D {
         public:
             //! @brief Sphere constructor
             //! @param centerPosition position of the center 
-            //! @param radius radius of the sphere(in percentage)
+            //! @param radius radius of the sphere
             //! @param Color Color of the sphere  
             Sphere(Vector3 centerPosition, int radius, Color color);
 
@@ -44,7 +44,7 @@ namespace Ray::Drawable3D {
             Sphere &setRadius(Vector3 pos) const;
 
         private:
-            //! @brief Radius of the sphere (in percentage)
+            //! @brief Radius of the sphere 
             int _radius;
 
             //! @brief position of the center

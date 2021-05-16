@@ -17,9 +17,9 @@ namespace Ray::Drawable3D {
         public:
             //! @brief Cylinder constructor
             //! @param position position of the center 
-            //! @param radiusTop radius at the top  the cylinder(in percentage)
-            //! @param radiusBottom radius at the bottom of the cylinder(in percentage)
-            //! @param radiusBottom heighth of the cylinder(in percentage)
+            //! @param radiusTop radius at the top  the cylinder
+            //! @param radiusBottom radius at the bottom of the cylinder
+            //! @param radiusBottom heighth of the cylinder
             //! @param Color Color of the cylinder
             Cylinder(Vector3 position, float radiusTop, float radiusBottom, float height, Color color);
 
@@ -59,13 +59,13 @@ namespace Ray::Drawable3D {
 
 
         private:
-            //! @brief Radius of the cylinder (in percentage)
+            //! @brief Radius of the cylinder 
             float _topRadius;
 
-            //! @brief Radius of the cylinder (in percentage)
+            //! @brief Radius of the cylinder 
             float _bootomRadius;
 
-            //! @brief heigth of the cylinder (in percentage)
+            //! @brief heigth of the cylinder 
             float _heigth;
 
             //! @brief position of the center

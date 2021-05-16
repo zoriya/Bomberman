@@ -16,12 +16,12 @@ namespace Ray::Drawable2D {
 	{
         public:
             //! @brief ADrawable constructor
-            //! @param poition position of top-left point (in percentage)
+            //! @param poition position of top-left point 
             //! @param Color Color of the color  
             ADrawable2D(Vector2 position, Color color);
             //! @brief ADrawable constructor
-            //! @param x x-position of top-left point (in percentage) 
-            //! @param y y-position of top-left point (in percentage)
+            //! @param x x-position of top-left point  
+            //! @param y y-position of top-left point 
             //! @param Color Color of the color  
             ADrawable2D(int x, int y, Color color);
 
@@ -47,7 +47,7 @@ namespace Ray::Drawable2D {
             ADrawable2D &setColor(const Color &color) const;
 
         private:
-            //! @brief Top-left position (in percentage)
+            //! @brief Top-left position 
             Vector2 _position;
             //! @brief Color of the ADrawable
             Color _color;

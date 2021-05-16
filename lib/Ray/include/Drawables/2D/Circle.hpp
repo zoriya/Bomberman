@@ -16,15 +16,15 @@ namespace Ray::Drawable2D {
 	{
         public:
             //! @brief Circle constructor
-            //! @param topLeftPos position of top-left point (in percentage) 
-            //! @param radius radius of the circle(in percentage)
+            //! @param topLeftPos position of top-left point  
+            //! @param radius radius of the circle
             //! @param Color Color of the circle  
             Circle(Vector2 topLeftPos, int radius, Color color);
             
             //! @brief Circle constructor
-            //! @param topLeftX x-position of top-left point (in percentage) 
-            //! @param topLeftY y-position of top-left point (in percentage)
-            //! @param radius radius of the circle(in percentage)
+            //! @param topLeftX x-position of top-left point  
+            //! @param topLeftY y-position of top-left point 
+            //! @param radius radius of the circle
             //! @param Color Color of the circle  
             Circle(int topLeftX, int topLeftY, int radius, Color color);
             
@@ -44,7 +44,7 @@ namespace Ray::Drawable2D {
             Circle &setRadius(int radius) const;
 
         private:
-            //! @brief Radius of the circle (in percentage)
+            //! @brief Radius of the circle 
             int _radius;
     };
 };

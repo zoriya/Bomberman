@@ -16,13 +16,13 @@ namespace Ray::Drawable2D {
 	{
         public:
             //! @brief Point constructor
-            //! @param position position of point (in percentage) 
+            //! @param position position of point  
             //! @param Color Color of the circle
             Point(Vector2 position, Color);
 
             //! @brief Point constructor
-            //! @param x x-position of point (in percentage) 
-            //! @param y y-position of point (in percentage)
+            //! @param x x-position of point  
+            //! @param y y-position of point 
             //! @param Color Color of the circle  
             Point(int x, int y, Color);
 

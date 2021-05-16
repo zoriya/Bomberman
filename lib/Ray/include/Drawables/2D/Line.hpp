@@ -17,15 +17,15 @@ namespace Ray::Drawable2D {
         public:
 
             //! @brief Line constructor
-            //! @param position position of top-left point (in percentage) 
-            //! @param length length of the line(in percentage)
+            //! @param position position of top-left point  
+            //! @param length length of the line
             //! @param Color Color of the circle  
             Line(Vector2 position, int length, Color);
 
             //! @brief Line constructor
-            //! @param x x-position of top-left point (in percentage) 
-            //! @param y y-position of top-left point (in percentage)
-            //! @param length length of the line(in percentage)
+            //! @param x x-position of top-left point  
+            //! @param y y-position of top-left point 
+            //! @param length length of the line
             //! @param Color Color of the circle  
             Line(int x, int y, int length, Color);
 
@@ -50,7 +50,7 @@ namespace Ray::Drawable2D {
             //! @brief set rotation
             Line &setRotation(int);
         private:
-            //! @brief Length of the line (in percentage)
+            //! @brief Length of the line 
             int _length;
             //! @brief Rotation of the line (from origin, in degree)
             int _rotation;

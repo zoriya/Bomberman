@@ -16,16 +16,16 @@ namespace Ray::Drawable2D {
 	{
         public:
             //! @brief Rectangle constructor
-            //! @param position position of top-left point (in percentage) 
-            //! @param dimensions dimensions of the rectangle (in percentage)
+            //! @param position position of top-left point  
+            //! @param dimensions dimensions of the rectangle 
             //! @param Color Color of the rectangle  
             Rectangle(Vector2 position, Vector2 dimensions, Color);
 
             //! @brief Rectangle constructor
-            //! @param x x-position of top-left point (in percentage) 
-            //! @param y y-position of top-left point (in percentage)
-            //! @param width width of the rectangle (in percentage)
-            //! @param length length of the rectangle (in percentage)
+            //! @param x x-position of top-left point  
+            //! @param y y-position of top-left point 
+            //! @param width width of the rectangle 
+            //! @param length length of the rectangle 
             //! @param Color Color of the rectangle  
             Rectangle(int x, int y, int width, int height, Color);
             
@@ -48,7 +48,7 @@ namespace Ray::Drawable2D {
             Rectangle &setDimensions(int x, int y);
 
         private:
-            //! @brief Diemnsions of the rectangle (in percentage)
+            //! @brief Diemnsions of the rectangle 
             Vector2 _dimensions;
     };
 };

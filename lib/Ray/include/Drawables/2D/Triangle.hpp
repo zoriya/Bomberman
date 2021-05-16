@@ -17,9 +17,9 @@ namespace Ray::Drawable2D {
         public:
 
             //! @brief Triangle constructor
-            //! @param positionA position of A point (in percentage) 
-            //! @param positionB position of B point (in percentage)
-            //! @param positionC position of C point (in percentage) 
+            //! @param positionA position of A point  
+            //! @param positionB position of B point 
+            //! @param positionC position of C point  
             //! @param Color Color of the circle  
             Triangle(Vector2 positionA, Vector2 positionB, Vector2 positionC,int length, Color);
 

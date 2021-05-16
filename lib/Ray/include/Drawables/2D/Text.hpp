@@ -18,15 +18,15 @@ namespace Ray::Drawable2D {
             //! @brief Text constructor
             //! @param content text
             //! @param fontSize size of the text
-            //! @param position position of top-left point (in percentage)
+            //! @param position position of top-left point 
             //! @param Color Color of the text  
             Text(const std::string &content, int fontSize, Vector2 position, Color);
             
             //! @brief Text constructor
             //! @param content text
             //! @param fontSize size of the text
-            //! @param x x-position of top-left point (in percentage) 
-            //! @param y y-position of top-left point (in percentage)
+            //! @param x x-position of top-left point  
+            //! @param y y-position of top-left point 
             //! @param Color Color of the text  
             Text(const std::string &content, int fontSize, int x, int y, Color);
             

@@ -16,8 +16,8 @@ namespace Ray::Drawable3D {
 	{
         public:
             //! @brief Line constructor
-            //! @param startPosition position of top-left point (in percentage) 
-            //! @param startPosition position of bottom-rigth point (in percentage) 
+            //! @param startPosition position of top-left point  
+            //! @param startPosition position of bottom-rigth point  
             //! @param Color Color of the line  
             Line(Vector3 startPosition, Vector3 endPosition, Color color);
 

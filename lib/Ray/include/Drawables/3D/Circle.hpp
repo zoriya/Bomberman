@@ -17,7 +17,7 @@ namespace Ray::Drawable3D {
         public:
             //! @brief Circle constructor
             //! @param centerPosition position of the center 
-            //! @param radius radius of the circle(in percentage)
+            //! @param radius radius of the circle
             //! @param Color Color of the circle  
             Circle(Vector3 centerPosition, int radius, Vector3 rotationAxis, float rotationAngle, Color color);
 
@@ -44,7 +44,7 @@ namespace Ray::Drawable3D {
             Circle &setRadius(Vector3 pos) const;
 
         private:
-            //! @brief Radius of the circle (in percentage)
+            //! @brief Radius of the circle 
             int _radius;
 
             //! @brief position of the center

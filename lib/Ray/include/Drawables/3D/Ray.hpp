@@ -16,7 +16,7 @@ namespace Ray::Drawable3D {
 	{
         public:
             //! @brief Ray constructor
-            //! @param startPosition position of top-left point (in percentage) 
+            //! @param startPosition position of top-left point  
             //! @param direction direction of the ray
             //! @param Color Color of the line  
             Ray(Vector3 startPosition, Vector3 direction, Color color);
