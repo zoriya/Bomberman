@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Plane: public ADrawable3D
 	{
         public:
@@ -41,6 +41,9 @@ namespace RAY::Drawable3D {
 
             //! @brief Set dimensions
             Plane &setDimensions(Vector3 dimensions);
+
+            //! @brief Draw plane on window
+            void drawOn(Window &);
         private:
             //! @brief plane position
             Vector3 _position;

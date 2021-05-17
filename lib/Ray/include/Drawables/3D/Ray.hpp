@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Ray: public ADrawable3D
 	{
         public:
@@ -45,6 +45,8 @@ namespace RAY::Drawable3D {
             //! @brief Set end position
             Ray &setDirection(Vector3 dimensions);
 
+            //! @brief Draw ray on window
+            void drawOn(Window &);
 
         private:
             //! @brief start position

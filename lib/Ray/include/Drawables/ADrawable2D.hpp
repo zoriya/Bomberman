@@ -10,9 +10,10 @@
 
 #include <raylib.h>
 #include <Vector.hpp>
+#include "Drawables/IDrawable.hpp"
 
-namespace RAY::Drawable2D {
-    class ADrawable2D
+namespace RAY::Drawables::Drawables2D {
+    class ADrawable2D: public IDrawable
 	{
         public:
             //! @brief ADrawable constructor
@@ -45,6 +46,9 @@ namespace RAY::Drawable2D {
             
             //! @brief set color
             ADrawable2D &setColor(const Color &color) const;
+
+            //! @brief Draw drawble on window
+            void drawOn(Window &);
 
         private:
             //! @brief Top-left position 

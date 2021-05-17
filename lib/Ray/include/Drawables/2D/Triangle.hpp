@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Triangle: public ADrawable2D
 	{
         public:
@@ -51,6 +51,8 @@ namespace RAY::Drawable2D {
             //! @brief the position of C of the Triangle
             Triangle &setPositionC(Vector2);
 
+            //! @brief Draw triangle on window
+            void drawOn(Window &);
 
         private:
             //! @brief Position of A

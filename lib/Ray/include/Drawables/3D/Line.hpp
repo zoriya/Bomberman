@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Line: public ADrawable3D
 	{
         public:
@@ -45,6 +45,8 @@ namespace RAY::Drawable3D {
             //! @brief Set end position
             Line &setEndPosition(Vector3 endPosition);
 
+            //! @brief Draw line on window
+            void drawOn(Window &);
 
         private:
             //! @brief start position

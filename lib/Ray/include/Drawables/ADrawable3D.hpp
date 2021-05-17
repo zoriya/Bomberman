@@ -10,9 +10,10 @@
 
 #include <raylib.h>
 #include <Vector.hpp>
+#include "Drawbles/IDrawable.hpp"
 
-namespace RAY::Drawable3D {
-    class ADrawable3D
+namespace RAY::Drawables::Drawables3D {
+    class ADrawable3D: public IDrawable
 	{
         public:
             //! @param Color Color of the drawable  
@@ -22,7 +23,10 @@ namespace RAY::Drawable3D {
             ADrawable3D(const ADrawable3D &) = default;
 
             //! @brief A default destructor
-            virtual ~ADrawable3D() = 0;
+            virtual ~ADrawable3D() = default;
+
+            //! @brief Draw drawble on window
+            void drawOn(Window &);
 
 
             //! @return the color of the ADrawable

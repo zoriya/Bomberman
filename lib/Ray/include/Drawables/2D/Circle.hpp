@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Circle: public ADrawable2D
 	{
         public:
@@ -42,6 +42,9 @@ namespace RAY::Drawable2D {
 
             //! @brief set radius
             Circle &setRadius(int radius) const;
+
+            //! @brief Draw Circle on window
+            void drawOn(Window &);
 
         private:
             //! @brief Radius of the circle 

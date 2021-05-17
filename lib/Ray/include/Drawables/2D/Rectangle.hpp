@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Rectangle: public ADrawable2D
 	{
         public:
@@ -46,6 +46,9 @@ namespace RAY::Drawable2D {
 
             //! @brief set dimensions
             Rectangle &setDimensions(int x, int y);
+
+            //! @brief Draw rectangle on window
+            void drawOn(Window &);
 
         private:
             //! @brief Diemnsions of the rectangle 

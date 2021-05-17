@@ -87,46 +87,7 @@ namespace RAY {
 
 
             //! @brief draw rectangle
-            void draw(const Drawable2D::Rectangle &);
-
-            //! @brief draw Line
-            void draw(const Drawable2D::Line &);
-
-            //! @brief draw Point
-            void draw(const Drawable2D::Point &);
-
-            //! @brief draw Circle
-            void draw(const Drawable2D::Circle &);
-
-            //! @brief draw Text
-            void draw(const Drawable2D::Text &);
-    
-            //! @brief draw Triangle
-            void draw(const Drawable2D::Triangle &);
-
-            //! @brief draw Line
-            void draw(const Drawable3D::Line &);
-
-            //! @brief draw Point
-            void draw(const Drawable3D::Point &);
-
-            //! @brief draw Circle
-            void draw(const Drawable3D::Circle &);
-
-            //! @brief draw Cylinder
-            void draw(const Drawable3D::Cylinder &);
-
-            //! @brief draw Plane
-            void draw(const Drawable3D::Plane &);
-
-            //! @brief draw Ray
-            void draw(const Drawable3D::Ray &);
-    
-            //! @brief draw Sphere
-            void draw(const Drawable3D::Sphere &);
-
-            //! @brief draw Triangle
-            void draw(const Drawable3D::Triangle &);
+            void draw(const Drawables::IDrawable &);
 
             //! @brief draw texture at position
             void draw(const Texture &, Vector2 position, Color tint);

@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Point: public ADrawable2D
 	{
         public:
@@ -34,6 +34,9 @@ namespace RAY::Drawable2D {
 
             //! @brief A default destructor
             ~Point() = default;
+
+            //! @brief Draw point on window
+            void drawOn(Window &);
     };
 };
 
