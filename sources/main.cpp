@@ -3,7 +3,7 @@
 
 int main()
 {
-	WAL::WAL wal;
+	WAL::Wal wal;
 
 	try {
 		wal.run();

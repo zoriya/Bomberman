@@ -4,7 +4,7 @@
 
 #include "MovableComponent.hpp"
 
-namespace WAL::Movable
+namespace WAL
 {
 	MovableComponent::MovableComponent(Entity &entity)
 		: Component(entity)

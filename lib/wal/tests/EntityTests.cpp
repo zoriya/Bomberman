@@ -2,7 +2,6 @@
 // Created by Zoe Roux on 5/17/21.
 //
 
-#include "tests.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include <catch2/catch.hpp>
@@ -17,7 +16,7 @@ TEST_CASE("Component", "[Entity]")
 	SECTION("Check value") {
 		auto &pos = entity.getComponent<PositionComponent>();
 		REQUIRE(entity.hasComponent<PositionComponent>());
-		REQUIRE(pos.getPosition() == Vector3f(2, 3, 4));
+		REQUIRE(pos.position == Vector3f(2, 3, 4));
 	}
 	SECTION("Prevent duplicates") {
 		REQUIRE_THROWS_AS(entity.addComponent<PositionComponent>(), DuplicateError);
@@ -41,5 +40,5 @@ TEST_CASE("Add component by reference", "[Entity]")
 	PositionComponent component(entity, 4, 5, 6);
 
 	REQUIRE(&entity.addComponent(component) == &entity);
-	REQUIRE(entity.getComponent<PositionComponent>().getPosition() == Vector3f(4, 5, 6));
+	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f(4, 5, 6));
 }

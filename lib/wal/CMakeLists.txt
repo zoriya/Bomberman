@@ -30,7 +30,7 @@ target_include_directories(wal PUBLIC sources)
 
 add_executable(wal_tests
 	tests/EntityTests.cpp
-	tests/MainTest.cpp tests/tests.hpp)
+	tests/MainTest.cpp tests/tests.hpp tests/EngineTests.cpp)
 
 target_link_libraries(wal_tests PRIVATE wal)
 find_package(Catch2 REQUIRED)

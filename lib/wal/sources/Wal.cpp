@@ -9,14 +9,14 @@ using namespace std::chrono_literals;
 
 namespace WAL
 {
-	std::chrono::nanoseconds WAL::timestep = 8ms;
+	std::chrono::nanoseconds Wal::timestep = 8ms;
 
-	SceneManager &WAL::getSceneManger()
+	SceneManager &Wal::getSceneManger()
 	{
 		return this->_scenes;
 	}
 
-	void WAL::run()
+	void Wal::run()
 	{
 		auto lastTick = std::chrono::steady_clock::now();
 		std::chrono::nanoseconds dtime(0);
@@ -27,15 +27,15 @@ namespace WAL
 			lastTick = now;
 
 			this->_update(dtime);
-			while (dtime > WAL::timestep) {
-				dtime -= WAL::timestep;
+			while (dtime > Wal::timestep) {
+				dtime -= Wal::timestep;
 				this->_fixedUpdate();
 			}
 			this->_renderer->render();
 		}
 	}
 
-	void WAL::_update(std::chrono::nanoseconds dtime)
+	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
 		auto &entities = this->_scenes.getCurrent().getEntities();
 
@@ -50,7 +50,7 @@ namespace WAL
 		}
 	}
 
-	void WAL::_fixedUpdate()
+	void Wal::_fixedUpdate()
 	{
 		auto &entities = this->_scenes.getCurrent().getEntities();
 

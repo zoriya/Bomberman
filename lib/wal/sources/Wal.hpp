@@ -18,7 +18,7 @@
 namespace WAL
 {
 	//! @brief The main WAL class, it is used to setup and run the ECS.
-	class WAL
+	class Wal
 	{
 	private:
 		//! @brief The scene manager that allow multiple scene to work together.
@@ -44,39 +44,54 @@ namespace WAL
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
 		template<typename T, class ...Types>
-		WAL &addSystem(Types ...params)
+		Wal &addSystem(Types ...params)
 		{
 			const std::type_info &type = typeid(T);
-			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
+			auto existing = std::find_if(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
 				return typeid(*sys) == type;
 			});
 			if (existing != this->_systems.end())
 				throw DuplicateError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
-			this->_systems.push_back(std::make_unique(params...));
+			this->_systems.push_back(std::make_unique<T>(params...));
 			return *this;
 		}
 
 		//! @brief Add a system by copy.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
 		template<typename T>
-		WAL &addSystem(const T &system)
+		Wal &addSystem(const T &system)
 		{
 			const std::type_info &type = typeid(T);
-			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
+			auto existing = std::find_if(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
 				return typeid(*sys) == type;
 			});
 			if (existing != this->_systems.end())
 				throw DuplicateError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
-			this->_systems.push_back(std::make_unique(system));
+			this->_systems.push_back(std::make_unique<T>(system));
 			return *this;
+		}
+
+		//! @brief Get a system of a specific type
+		//! @tparam T the type of the system.
+		template<typename T>
+		T &getSystem()
+		{
+			const std::type_info &type = typeid(T);
+			auto existing = std::find_if(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
+				return typeid(*sys) == type;
+			});
+			if (existing == this->_systems.end())
+				throw NotFoundError("A system of the type \"" + std::string(type.name()) + "\" could not be found.");
+			return *static_cast<T *>(existing->get());
+
 		}
 
 		//! @brief Remove a system using it's type.
 		template<typename T>
-		WAL &removeSystem()
+		Wal &removeSystem()
 		{
 			const std::type_info &type = typeid(T);
-			auto &existing =std::find(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
+			auto existing = std::find_if(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
 				return typeid(*sys) == type;
 			});
 			if (existing == this->_systems.end())
@@ -92,12 +107,12 @@ namespace WAL
 		void run();
 
 		//! @brief A default constructor
-		WAL() = default;
+		Wal() = default;
 		//! @brief A WAL can't be copy constructed
-		WAL(const WAL &) = delete;
+		Wal(const Wal &) = delete;
 		//! @brief A default destructor
-		~WAL() = default;
+		~Wal() = default;
 		//! @brief A WAL can't be assigned.
-		WAL &operator=(const WAL &) = delete;
+		Wal &operator=(const Wal &) = delete;
 	};
 }

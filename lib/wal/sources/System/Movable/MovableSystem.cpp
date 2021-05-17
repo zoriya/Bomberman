@@ -19,8 +19,8 @@ namespace WAL
 		auto &movable = entity.getComponent<MovableComponent>();
 		auto &position = entity.getComponent<PositionComponent>();
 
-		position.position += movable._velocity * WAL::timestep.count();
-		movable._velocity = movable._acceleration * WAL::timestep.count();
+		position.position += movable._velocity * Wal::timestep.count();
+		movable._velocity = movable._acceleration * Wal::timestep.count();
 		movable._acceleration = Vector3f();
 	}
 }
