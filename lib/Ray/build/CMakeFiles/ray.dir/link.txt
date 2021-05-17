@@ -1,0 +1,2 @@
+/usr/bin/ar qc libray.a CMakeFiles/ray.dir/src/Color.cpp.o
+/usr/bin/ranlib libray.a
