@@ -22,9 +22,9 @@ namespace RAY::Camera {
             //! @param position Camera position
             //! @param target Camera target it looks-at
             //! @param up Camera up vector (rotation over its axis)
-            //! @param flovy Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
+            //! @param fovy Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
             //! @param projection Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
-            Camera3D(Vector3 position, Vector3 target, Vector3 up, float flovy, float projection);
+            Camera3D(Vector3 position, Vector3 target, Vector3 up, float fovy, float projection);
 
             //! @brief A copy constructor
             Camera3D(const Camera3D &);
@@ -35,15 +35,15 @@ namespace RAY::Camera {
             Camera3D &operator=(const Camera3D &) = default;
 
             //! @brief Set Position
-            Camera3D &setPosition(Vector3 Position);
+            void setPosition(Vector3 Position);
             //! @brief Set target
-            Camera3D &setTarget(Vector3 target);
+            void setTarget(Vector3 target);
             //! @brief Set up
-            Camera3D &setUp(Vector3 up);
+            void setUp(Vector3 up);
             //! @brief Set flovy
-            Camera3D &setFlovy(float flovy);
+            void setFlovy(float flovy);
             //! @brief Set Projection
-            Camera3D &setProjection(Projection projection);
+            void setProjection(Projection projection);
 
             //! @brief Get Position
             const Vector3 &getPosition(void) const;
@@ -52,7 +52,7 @@ namespace RAY::Camera {
             //! @brief Get up
             const Vector3 &getUp(void) const;
             //! @brief Get Flovy
-            float getFlovy(void) const;
+            float getFovy(void) const;
             //! @brief Get projection
             Projection getProjection(void) const;
 
