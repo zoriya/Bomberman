@@ -13,7 +13,7 @@
 namespace RAY {
     class IRessource {
         public:
-            virtual ~IRessource() = 0;
+            virtual ~IRessource() = default;
 
             virtual bool load(const std::string &filePath) = 0;
 

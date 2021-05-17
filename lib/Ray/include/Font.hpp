@@ -20,7 +20,7 @@ namespace RAY
             Font(const std::string &filename);
 
             //! @brief A default copy constructor
-            Font(const Font &);
+            Font(const Font &) = default;
 
             //! @brief A default constructor, no ressources loaded
             Font();

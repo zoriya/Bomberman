@@ -28,7 +28,7 @@ namespace RAY {
             Color(const Color &) = default;
 
             //! @brief Create a color from an hexadecimal value
-            Color(int hexValue);
+            Color(unsigned int hexValue);
 
             //! @brief A default destructor
             ~Color() = default;
