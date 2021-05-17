@@ -56,6 +56,9 @@ namespace RAY {
             //! @brief Check if cursor is not visible
             bool cursorIsVisible(void) const;
 
+            //! @brief Get the cursor position
+            Vector2 getCursorPosition() const;
+
             //! @brief Set target FPS (maximum)
             void setFPS(unsigned int fps);
 
