@@ -81,7 +81,7 @@ namespace WAL
 		template<typename T2>
 		Vector3<T> operator*(T2 d) const
 		{
-			return Vector2<T>(this->x * d, this->y * d, this->z * d);
+			return Vector3<T>(this->x * d, this->y * d, this->z * d);
 		}
 
 		template<typename T2>

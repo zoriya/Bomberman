@@ -7,19 +7,14 @@
 #include "Models/Vector3.hpp"
 #include "Component/Component.hpp"
 
-namespace WAL::Components
+namespace WAL
 {
 	//! @brief A basic position component
 	class PositionComponent : public Component
 	{
-	private:
-		//! @brief The position of the entity as a vector3.
-		Vector3f _position;
 	public:
 		//! @brief Get the editable position of this entity
-		Vector3f &getPosition();
-		//! @brief Get the const position of this entity
-		const Vector3f &getPosition() const;
+		Vector3f position;
 
 		//! @brief Get the X position of this entity.
 		float getX() const;

@@ -32,15 +32,15 @@ namespace WAL
 		//! @brief True if the engine should close after the end of the current tick.
 		bool _shouldClose = false;
 
-		//! @brief The time between each fixed update.
-		static std::chrono::nanoseconds _timestep;
-
 		//! @brief Call the onUpdate of every system with every component
 		void _update(std::chrono::nanoseconds dtime);
 
 		//! @brief Call the onFixedUpdate of every system with every component
 		void _fixedUpdate();
 	public:
+		//! @brief The time between each fixed update.
+		static std::chrono::nanoseconds timestep;
+
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
 		template<typename T, class ...Types>

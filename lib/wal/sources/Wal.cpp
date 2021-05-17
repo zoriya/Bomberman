@@ -9,7 +9,7 @@ using namespace std::chrono_literals;
 
 namespace WAL
 {
-	std::chrono::nanoseconds WAL::_timestep = 8ms;
+	std::chrono::nanoseconds WAL::timestep = 8ms;
 
 	SceneManager &WAL::getSceneManger()
 	{
@@ -27,8 +27,8 @@ namespace WAL
 			lastTick = now;
 
 			this->_update(dtime);
-			while (dtime > WAL::_timestep) {
-				dtime -= WAL::_timestep;
+			while (dtime > WAL::timestep) {
+				dtime -= WAL::timestep;
 				this->_fixedUpdate();
 			}
 			this->_renderer->render();
@@ -41,7 +41,7 @@ namespace WAL
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
-				auto &cmp = system->getComponent();
+				const auto &cmp = system->getComponent();
 				if (!entity.hasComponent(cmp))
 					continue;
 				// TODO handle dependencies.

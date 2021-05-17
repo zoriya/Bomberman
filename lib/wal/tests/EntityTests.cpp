@@ -4,11 +4,10 @@
 
 #include "tests.hpp"
 #include "Entity/Entity.hpp"
-#include "Component/Basics/PositionComponent.hpp"
+#include "Component/Position/PositionComponent.hpp"
 #include <catch2/catch.hpp>
 
 using namespace WAL;
-using namespace WAL::Components;
 
 TEST_CASE("Component", "[Entity]")
 {
