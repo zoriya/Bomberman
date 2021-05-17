@@ -16,8 +16,6 @@ namespace WAL
 	class Component
 	{
 	private:
-		//! @brief The name of this component
-		std::string _name;
 		//! @brief Is this component disabled?
 		bool _disabled = false;
 	protected:
@@ -27,7 +25,7 @@ namespace WAL
 		std::vector<std::type_index> _dependencies;
 
 		//! @brief A component can't be instantiated, it should be derived.
-		explicit Component(std::string name, Entity &entity);
+		explicit Component(Entity &entity);
 		//! @brief A component can't be instantiated, it should be derived.
 		Component(const Component &) = default;
 	public:
@@ -39,9 +37,6 @@ namespace WAL
 		//! @brief Clone a component for another or the same entity.
 		//! @param entity The entity that owns the ne component.
 		virtual Component *clone(Entity &entity) const = 0;
-
-		//! @brief Get the name of this component
-		std::string getName() const;
 
 		//! @brief Used if the component is disabled 
 		bool isDisabled() const;

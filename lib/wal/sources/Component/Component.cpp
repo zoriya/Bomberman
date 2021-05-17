@@ -6,15 +6,9 @@
 
 namespace WAL
 {
-	Component::Component(std::string name, Entity &entity)
-		: _name(std::move(name)),
-		_entity(entity)
+	Component::Component(Entity &entity)
+		: _entity(entity)
 	{ }
-
-	std::string Component::getName() const
-	{
-		return this->_name;
-	}
 
 	bool Component::isDisabled() const
 	{

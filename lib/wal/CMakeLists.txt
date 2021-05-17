@@ -19,6 +19,20 @@ add_library(wal
 	sources/Events/EventManager.hpp
 	sources/Exception/WalError.cpp
 	sources/Exception/WalError.hpp
-	sources/Entity/Entity.cpp sources/Component/Component.cpp)
+	sources/Entity/Entity.cpp
+	sources/Component/Component.cpp
+	sources/Component/Basics/PositionComponent.cpp
+	sources/Component/Basics/PositionComponent.hpp
+	sources/Models/Vector2.hpp
+	sources/Models/Vector3.hpp
+)
 
 target_include_directories(wal PUBLIC sources)
+
+add_executable(wal_tests
+	tests/EntityTests.cpp
+	tests/MainTest.cpp)
+
+target_link_libraries(wal_tests PRIVATE wal)
+find_package(Catch2 REQUIRED)
+target_link_libraries(wal_tests PRIVATE Catch2::Catch2)

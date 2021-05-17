@@ -70,7 +70,7 @@ namespace WAL
 		{
 			if (this->hasComponent<T>())
 				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
-			this->_components.push_back(std::make_unique(params...));
+			this->_components.push_back(std::make_unique<T>(params...));
 			return *this;
 		}
 
