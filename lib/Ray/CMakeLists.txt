@@ -44,6 +44,7 @@ set(HEADERS
     include/Drawables/2D/Triangle.hpp
     include/Drawables/3D/Circle.hpp
     include/Drawables/3D/Cylinder.hpp
+    include/Drawables/3D/Grid.hpp
     include/Drawables/3D/Line.hpp
     include/Drawables/3D/Plane.hpp
     include/Drawables/3D/Point.hpp
