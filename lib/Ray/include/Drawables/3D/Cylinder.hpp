@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Cylinder: public ADrawable3D
 	{
         public:
@@ -57,6 +57,8 @@ namespace RAY::Drawable3D {
             //! @brief the Heigth
             Cylinder &setHeigth(float heigth) const;
 
+            //! @brief Draw cylinder on window
+            void drawOn(Window &);
 
         private:
             //! @brief Radius of the cylinder 

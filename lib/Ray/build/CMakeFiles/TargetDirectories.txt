@@ -1,3 +1,0 @@
-/home/arthur/Desktop/B4/YEP/Bomberman/lib/Ray/build/CMakeFiles/rebuild_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/lib/Ray/build/CMakeFiles/edit_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/lib/Ray/build/CMakeFiles/ray.dir

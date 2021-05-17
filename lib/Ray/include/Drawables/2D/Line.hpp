@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Line: public ADrawable2D
 	{
         public:
@@ -49,6 +49,9 @@ namespace RAY::Drawable2D {
 
             //! @brief set rotation
             Line &setRotation(int);
+
+            //! @brief Draw line on window
+            void drawOn(Window &);
         private:
             //! @brief Length of the line 
             int _length;

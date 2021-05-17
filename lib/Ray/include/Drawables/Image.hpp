@@ -47,48 +47,8 @@ namespace RAY
             //! @brief get image
             const ::Image &getImage(void) const;
 
-
-//! @brief draw rectangle
-            virtual void draw(const Drawable2D::Rectangle &) = 0;
-
-            //! @brief draw Line
-            virtual void draw(const Drawable2D::Line &) = 0;
-
-            //! @brief draw Point
-            virtual void draw(const Drawable2D::Point &) = 0;
-
-            //! @brief draw Circle
-            virtual void draw(const Drawable2D::Circle &) = 0;
-
-            //! @brief draw Text
-            virtual void draw(const Drawable2D::Text &) = 0;
-    
-            //! @brief draw Triangle
-            virtual void draw(const Drawable2D::Triangle &) = 0;
-
-            //! @brief draw Line
-            virtual void draw(const Drawable3D::Line &) = 0;
-
-            //! @brief draw Point
-            virtual void draw(const Drawable3D::Point &) = 0;
-
-            //! @brief draw Circle
-            virtual void draw(const Drawable3D::Circle &) = 0;
-
-            //! @brief draw Cylinder
-            virtual void draw(const Drawable3D::Cylinder &) = 0;
-
-            //! @brief draw Plane
-            virtual void draw(const Drawable3D::Plane &) = 0;
-
-            //! @brief draw Ray
-            virtual void draw(const Drawable3D::Ray &) = 0;
-    
-            //! @brief draw Sphere
-            virtual void draw(const Drawable3D::Sphere &) = 0;
-
-            //! @brief draw Triangle
-            virtual void draw(const Drawable3D::Triangle &) = 0;
+            //! @brief draw drawable
+            void draw(const Drawables::IDrawable &);
 
         protected:
         private:

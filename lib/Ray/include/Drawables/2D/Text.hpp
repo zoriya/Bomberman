@@ -11,7 +11,7 @@
 #include "Drawables/ADrawable2D.hpp"
 #include <string>
 
-namespace RAY::Drawable2D {
+namespace RAY::Drawables::Drawables2D {
     class Text: public ADrawable2D
 	{
         public:
@@ -53,6 +53,9 @@ namespace RAY::Drawable2D {
 
             //! @brief set font size
             Text &setFontSize(int size);
+
+            //! @brief Draw text on window
+            void drawOn(Window &);
 
         private:
             //! @brief Text, just text

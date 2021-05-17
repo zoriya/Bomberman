@@ -10,7 +10,7 @@
 
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     //! @brief a grid (centered at (0, 0, 0))
     class Grid: public ADrawable3D
 	{
@@ -40,6 +40,9 @@ namespace RAY::Drawable3D {
 
             //! @brief Set spacing
             Grid &setSpacing(float spacing);
+
+            //! @brief Draw grid on window
+            void drawOn(Window &);
 
         private:
             //! @brief Grid slices

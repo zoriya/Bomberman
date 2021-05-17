@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Point: public ADrawable3D
 	{
         public:
@@ -34,6 +34,10 @@ namespace RAY::Drawable3D {
 
             //! @brief Set position
             Point &setPosition(Vector3 Position);
+
+            //! @brief Draw point on window
+            void drawOn(Window &);
+
         private:
             //! @brief point position
             Vector3 _position;

@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawable3D {
+namespace RAY::Drawables::Drawables3D {
     class Circle: public ADrawable3D
 	{
         public:
@@ -42,6 +42,9 @@ namespace RAY::Drawable3D {
 
             //! @brief set pos of center 
             Circle &setRadius(Vector3 pos) const;
+
+            //! @brief Draw circle on window
+            void drawOn(Window &);
 
         private:
             //! @brief Radius of the circle 
