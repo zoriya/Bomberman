@@ -65,7 +65,7 @@ namespace WAL
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
 		//! @return This entity is returned
-		template<typename T, class ...Types>
+		template<typename T, typename ...Types>
 		Entity &addComponent(Types ...params)
 		{
 			if (this->hasComponent<T>())
@@ -85,7 +85,7 @@ namespace WAL
 		Entity &removeComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto &existing =std::find(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
+			auto existing =std::find_if(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
 				return typeid(*cmp) == type;
 			});
 			if (existing == this->_components.end())

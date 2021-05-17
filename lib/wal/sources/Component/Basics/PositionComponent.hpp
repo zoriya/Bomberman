@@ -34,6 +34,8 @@ namespace WAL::Components
 		//! @brief Create a new PositionComponent linked to a specific entity
 		explicit PositionComponent(Entity &entity);
 		//! @brief Create a new PositionComponent at a certain position
+		PositionComponent(Entity &entity, Vector3f pos);
+		//! @brief Create a new PositionComponent at a certain position
 		PositionComponent(Entity &entity, float x, float y, float z);
 		//! @brief A position component is copy constructable
 		PositionComponent(const PositionComponent &) = default;

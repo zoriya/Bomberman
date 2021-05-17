@@ -2,9 +2,10 @@
 // Created by Zoe Roux on 5/17/21.
 //
 
-#include <catch2/catch.hpp>
+#include "tests.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Basics/PositionComponent.hpp"
+#include <catch2/catch.hpp>
 
 using namespace WAL;
 using namespace WAL::Components;
@@ -22,10 +23,24 @@ TEST_CASE("Component", "[Entity]")
 	SECTION("Prevent duplicates") {
 		REQUIRE_THROWS_AS(entity.addComponent<PositionComponent>(), DuplicateError);
 	}
+	SECTION("Remove component") {
+		entity.removeComponent<PositionComponent>();
+		REQUIRE_THROWS_AS(entity.getComponent<PositionComponent>(), NotFoundError);
+		REQUIRE_THROWS_AS(entity.removeComponent<PositionComponent>(), NotFoundError);
+	}
 }
 
 TEST_CASE("ComponentNotFound", "[Entity]")
 {
 	Entity entity("Bob");
 	REQUIRE_THROWS_AS(entity.getComponent<PositionComponent>(), NotFoundError);
+}
+
+TEST_CASE("Add component by reference", "[Entity]")
+{
+	Entity entity("Bob");
+	PositionComponent component(entity, 4, 5, 6);
+
+	REQUIRE(&entity.addComponent(component) == &entity);
+	REQUIRE(entity.getComponent<PositionComponent>().getPosition() == Vector3f(4, 5, 6));
 }

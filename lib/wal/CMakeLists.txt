@@ -23,7 +23,6 @@ add_library(wal
 	sources/Component/Component.cpp
 	sources/Component/Basics/PositionComponent.cpp
 	sources/Component/Basics/PositionComponent.hpp
-	sources/Models/Vector2.hpp
 	sources/Models/Vector3.hpp
 )
 
@@ -31,7 +30,7 @@ target_include_directories(wal PUBLIC sources)
 
 add_executable(wal_tests
 	tests/EntityTests.cpp
-	tests/MainTest.cpp)
+	tests/MainTest.cpp tests/tests.hpp)
 
 target_link_libraries(wal_tests PRIVATE wal)
 find_package(Catch2 REQUIRED)

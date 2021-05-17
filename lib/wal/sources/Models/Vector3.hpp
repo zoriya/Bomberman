@@ -162,6 +162,6 @@ namespace WAL
 template<typename T>
 std::ostream &operator<<(std::ostream &s, const WAL::Vector3<T> &v)
 {
-	s << v.x << " " << v.y << " " << v.z;
+	s << "Vector3<" << typeid(T).name() << ">("<< v.x << ", " << v.y << ", " << v.z << ")";
 	return s;
 }
