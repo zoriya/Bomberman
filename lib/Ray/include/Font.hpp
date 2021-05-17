@@ -9,11 +9,11 @@
 #define FONT_HPP_
 
 #include <raylib.h>
-#include <string>
+#include "IRessource.hpp"
 
 namespace RAY
 {
-    class Font {
+    class Font: public IRessource {
         public:
             //! @brief Create an font, loading a file
             //! @param filename: path to file to load

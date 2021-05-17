@@ -34,10 +34,10 @@ namespace RAY::Sound
             Sound &operator=(const Sound &sound) = default;
 
             //! @brief Load Sound stream from file
-            Sound &load(const std::string &path);
+            bool load(const std::string &path);
 
             //! @brief Unload Sound stream
-            Sound &unload(void);
+            bool unload(void);
 
             //! @brief Check if Sound is playing
             bool isPlayin(void);

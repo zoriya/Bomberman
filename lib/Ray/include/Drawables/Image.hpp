@@ -11,10 +11,11 @@
 #include <raylib.h>
 #include <string>
 #include "Canvas.hpp"
+#include "IRessource.hpp"
 
 namespace RAY
 {
-    class Image: public Canvas {
+    class Image: public Canvas, IRessource {
         public:
             //! @brief Create an image, loading a file
             //! @param filename: path to file to load

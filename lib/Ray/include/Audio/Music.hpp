@@ -34,10 +34,10 @@ namespace RAY::Music
             Music &operator=(const Music &Music) = default;
 
             //! @brief Load Music stream from file
-            Music &load(const std::string &path);
+            bool load(const std::string &path);
 
             //! @brief Unload Music stream
-            Music &unload(void);
+            bool unload(void);
 
             //! @brief Check if Music is playing
             bool isPlayin(void);

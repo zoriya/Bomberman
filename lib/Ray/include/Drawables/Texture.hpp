@@ -11,10 +11,11 @@
 #include <raylib.h>
 #include <string>
 #include "Canvas.hpp"
+#include "IRessource.hpp"
 
 namespace RAY
 {
-    class Texture: public Canvas {
+    class Texture: public Canvas, IRessource {
         public:
             //! @brief Create an texture, loading a file
             //! @param filename: path to file to load

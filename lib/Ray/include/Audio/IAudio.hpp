@@ -8,20 +8,20 @@
 #ifndef AUDIO_HPP_
 #define AUDIO_HPP_
 
+#include "IRessource.hpp"
 #include <string>
-
 
 namespace RAY::Audio
 {
-    class IAudio {
+    class IAudio: public IRessource {
         public:
             virtual ~IAudio() = 0;
 
              //! @brief Load Audio stream from file
-            IAudio &load(const std::string &path);
+            bool load(const std::string &path);
 
             //! @brief Unload audio stream
-            IAudio &unload(void);
+            bool unload(void);
 
             //! @brief Check if audio is playing
             bool isPlayin(void);
