@@ -1,18 +1,16 @@
 #Definition of CMake version to use
 CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
 set(CMAKE_CXX_STANDARD 20)
+set(LIB_NAME "ray")
 
-set(BIN_NAME "ray")
-
-project("${BIN_NAME}")
+project("${LIB_NAME}")
 include_directories("./include")
+target_link_libraries(${LIB_NAME} raylib)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-	set(CMAKE_CXX_STANDARD 11)
-	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow -lray")
+	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 endif ()
-
 
 set(HEADERS
 		include/Canvas.hpp
@@ -57,4 +55,4 @@ set(SRC
 		src/Color.cpp
 		)
 
-add_library(${BIN_NAME} STATIC ${SRC} ${HEADERS})
+add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
