@@ -48,23 +48,19 @@ namespace RAY {
             //! @brief Set window dimensions
             const RAY::Vector2 &getDimensions(void) const;
 
-            //! @brief Shows cursor
-            void showCursor(void);
-
-            //! @brief Hides cursor
-            void hideCursor(void);
+            //! @brief Set the cursor visibility
+            //! @param visible True if the cursor is visible
+            void setVisibleCursor(bool visible);
 
             //! @brief Check if cursor is not visible
-            bool cursorIsHidden(void) const;
-
-            //! @brief Check if cursor is on the current screen.
-            bool cursorIsOnScreen(void) const;
+            bool cursorIsVisible(void) const;
 
             //! @brief Set target FPS (maximum)
-            void setFPS(int fps); 
+            void setFPS(unsigned int fps);
 
             //! @brief Set background color (framebuffer clear color)
-            void clear(const Color &color);
+            //! @param color The color to clear the screen (default: black)
+            void clear(const Color &color = Color(0, 0, 0, 0));
 
             //! @brief Setup canvas (framebuffer) to start drawing
             //! @brief Must be called before first draw of iteration
@@ -73,7 +69,6 @@ namespace RAY {
             //! @brief End canvas drawing and swap buffers (double buffering)
             //! @info Must be called after last draw of iteration
             void endDrawing(void);
-
 
             //! @brief Initialize 2D mode with custom camera (2D)
             void beginMode2D(Camera2D &camera);

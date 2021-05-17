@@ -16,8 +16,8 @@ RAY::Color::Color(unsigned char r, unsigned char g, unsigned char b, unsigned ch
 }
 
 RAY::Color::Color(const ::Color &color)
+	: _color(color)
 {
-    _color = color;
 }
 
 RAY::Color::Color(int hexValue)
