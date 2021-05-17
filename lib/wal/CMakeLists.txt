@@ -24,13 +24,20 @@ add_library(wal
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Models/Vector3.hpp
-	sources/Component/Movable/MovableComponent.cpp sources/Component/Movable/MovableComponent.hpp sources/System/Movable/MovableSystem.cpp sources/System/Movable/MovableSystem.hpp sources/System/System.cpp)
+	sources/Component/Movable/MovableComponent.cpp
+	sources/Component/Movable/MovableComponent.hpp
+	sources/System/Movable/MovableSystem.cpp
+	sources/System/Movable/MovableSystem.hpp
+	sources/System/System.cpp
+)
 
 target_include_directories(wal PUBLIC sources)
 
 add_executable(wal_tests
 	tests/EntityTests.cpp
-	tests/MainTest.cpp tests/tests.hpp tests/EngineTests.cpp)
+	tests/MainTest.cpp
+	tests/EngineTests.cpp
+)
 
 target_link_libraries(wal_tests PRIVATE wal)
 find_package(Catch2 REQUIRED)
