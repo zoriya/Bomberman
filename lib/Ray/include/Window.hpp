@@ -89,49 +89,52 @@ namespace RAY {
 
 
             //! @brief draw rectangle
-            virtual void draw(const Drawable2D::Rectangle &) = 0;
+            void draw(const Drawable2D::Rectangle &);
 
             //! @brief draw Line
-            virtual void draw(const Drawable2D::Line &) = 0;
+            void draw(const Drawable2D::Line &);
 
             //! @brief draw Point
-            virtual void draw(const Drawable2D::Point &) = 0;
+            void draw(const Drawable2D::Point &);
 
             //! @brief draw Circle
-            virtual void draw(const Drawable2D::Circle &) = 0;
+            void draw(const Drawable2D::Circle &);
 
             //! @brief draw Text
-            virtual void draw(const Drawable2D::Text &) = 0;
+            void draw(const Drawable2D::Text &);
     
             //! @brief draw Triangle
-            virtual void draw(const Drawable2D::Triangle &) = 0;
+            void draw(const Drawable2D::Triangle &);
 
             //! @brief draw Line
-            virtual void draw(const Drawable3D::Line &) = 0;
+            void draw(const Drawable3D::Line &);
 
             //! @brief draw Point
-            virtual void draw(const Drawable3D::Point &) = 0;
+            void draw(const Drawable3D::Point &);
 
             //! @brief draw Circle
-            virtual void draw(const Drawable3D::Circle &) = 0;
+            void draw(const Drawable3D::Circle &);
 
             //! @brief draw Cylinder
-            virtual void draw(const Drawable3D::Cylinder &) = 0;
+            void draw(const Drawable3D::Cylinder &);
 
             //! @brief draw Plane
-            virtual void draw(const Drawable3D::Plane &) = 0;
+            void draw(const Drawable3D::Plane &);
 
             //! @brief draw Ray
-            virtual void draw(const Drawable3D::Ray &) = 0;
+            void draw(const Drawable3D::Ray &);
     
             //! @brief draw Sphere
-            virtual void draw(const Drawable3D::Sphere &) = 0;
+            void draw(const Drawable3D::Sphere &);
 
             //! @brief draw Triangle
-            virtual void draw(const Drawable3D::Triangle &) = 0;
+            void draw(const Drawable3D::Triangle &);
 
             //! @brief draw texture at position
             void draw(const Texture &, Vector2 position, Color tint);
+
+            //! @brief Draw a 3d mesh with material and transform
+            void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
 
         private:
             //! @brief Dimension of window
