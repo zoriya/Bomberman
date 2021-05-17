@@ -49,6 +49,7 @@ set(HEADERS
     include/Drawables/3D/Ray.hpp
     include/Drawables/3D/Sphere.hpp
     include/Drawables/3D/Triangle.hpp
+    include/Controllers/IController.hpp
     )
 
 set(SRC
