@@ -13,7 +13,7 @@
 namespace RAY::Camera {
     class ICamera {
         public:
-            virtual ~ICamera() = 0;
+            virtual ~ICamera() = default;
 
             virtual Matrix getMatrix() const = 0;
     };
