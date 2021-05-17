@@ -41,22 +41,22 @@ namespace WAL
 		//! @brief Get a component of a specific type
 		//! @throw NotFoundError if the component could not be found
 		template<typename T>
-		T getComponent()
+		T &getComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto &existing = std::find(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
+			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
 				return typeid(*cmp) == type;
 			});
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
-			return *existing;
+			return *reinterpret_cast<T *>(existing->get());
 		}
 
 		template<typename T>
 		bool hasComponent() const
 		{
 			const std::type_info &type = typeid(T);
-			auto existing = std::find(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
+			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
 				return typeid(*cmp) == type;
 			});
 			return existing != this->_components.end();
@@ -70,7 +70,7 @@ namespace WAL
 		{
 			if (this->hasComponent<T>())
 				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
-			this->_components.push_back(std::make_unique<T>(params...));
+			this->_components.push_back(std::make_unique<T>(*this, params...));
 			return *this;
 		}
 

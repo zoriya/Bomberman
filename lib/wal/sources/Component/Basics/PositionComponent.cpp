@@ -11,7 +11,7 @@ namespace WAL::Components
 		_position()
 	{}
 
-	PositionComponent::PositionComponent(float x, float y, float z, Entity &entity)
+	PositionComponent::PositionComponent(Entity &entity, float x, float y, float z)
 		: Component(entity),
 		_position(x, y, z)
 	{}

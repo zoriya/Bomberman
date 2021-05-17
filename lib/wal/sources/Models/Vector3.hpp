@@ -35,6 +35,16 @@ namespace WAL
 		//! @brief A default destructor
 		~Vector3() = default;
 
+		bool operator==(const Vector3<T> &other) const
+		{
+			return this->x == other.x && this->y == other.y && this->z == other.z;
+		}
+
+		bool operator!=(const Vector3<T> &other) const
+		{
+			return !this->operator==(other);
+		}
+
 		template<typename T2>
 		Vector3<T> &operator+=(const Vector3<T2> &vec)
 		{
