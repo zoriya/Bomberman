@@ -49,18 +49,21 @@ namespace WAL
 			});
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
-			return *reinterpret_cast<T *>(existing->get());
+			return *static_cast<T *>(existing->get());
 		}
 
+		//! @brief Check if this entity has a component.
+		//! @tparam T The type of the component
 		template<typename T>
 		bool hasComponent() const
 		{
 			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-				return typeid(*cmp) == type;
-			});
-			return existing != this->_components.end();
+			return this->hasComponent(type);
 		}
+
+		//! @brief Check if this entity has a component.
+		//! @param type The type of the component
+		bool hasComponent(const std::type_info &type) const;
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.

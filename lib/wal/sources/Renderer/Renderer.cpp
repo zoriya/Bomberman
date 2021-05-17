@@ -3,3 +3,11 @@
 //
 
 #include "Renderer.hpp"
+
+namespace WAL
+{
+	void Renderer::render()
+	{
+
+	}
+}

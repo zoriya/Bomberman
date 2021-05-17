@@ -3,3 +3,12 @@
 //
 
 #include "Scene.hpp"
+
+namespace WAL
+{
+	std::vector<Entity> &Scene::getEntities()
+	{
+		return this->_entity;
+	}
+}
+

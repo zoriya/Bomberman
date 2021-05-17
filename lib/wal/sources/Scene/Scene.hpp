@@ -16,5 +16,8 @@ namespace WAL
 	private:
 		//! @brief The list of registered entities
 		std::vector<Entity> _entity;
+	public:
+		//! @brief Get the list of entities.
+		std::vector<Entity> &getEntities();
 	};
 }

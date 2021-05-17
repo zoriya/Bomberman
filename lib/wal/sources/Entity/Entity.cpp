@@ -46,10 +46,17 @@ namespace WAL
 
 	Entity &Entity::addComponent(const Component &component)
 	{
-		// TODO handle duplicates
-//		if (this->hasComponent<T>())
-//			throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
+		if (this->hasComponent(typeid(component)))
+			throw DuplicateError("A component of the type \"" + std::string(typeid(component).name()) + "\" already exists.");
 		this->_components.emplace_back(component.clone(*this));
 		return *this;
+	}
+
+	bool Entity::hasComponent(const std::type_info &type) const
+	{
+		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
+			return typeid(*cmp) == type;
+		});
+		return existing != this->_components.end();
 	}
 }

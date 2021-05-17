@@ -7,8 +7,10 @@
 
 namespace WAL
 {
+	//! @brief The renderer class used to display things.
 	class Renderer
 	{
-
+	public:
+		void render();
 	};
 }

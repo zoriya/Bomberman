@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include <chrono>
 #include "Entity/Entity.hpp"
 
 namespace WAL
@@ -16,12 +17,12 @@ namespace WAL
 		System(System &&) = default;
 
 		//! @brief Get the name of the component corresponding to this system.
-		virtual std::string getComponentName() const = 0;
+		virtual std::type_info &getComponent() const = 0;
 		
 		//! @brief Update the corresponding component of the given entity
 		//! @param entity The entity to update.
 		//! @param dtime The delta time.
-		virtual void onUpdate(Entity &entity, float dtime) = 0;
+		virtual void onUpdate(Entity &entity, std::chrono::nanoseconds dtime) = 0;
 
 		//! @brief An alternative of onUpdate that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up.
 		//! @remark This should be used for Physics, AI and everything that could be imprecise due to float rounding.
