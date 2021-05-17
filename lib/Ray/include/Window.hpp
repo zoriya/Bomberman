@@ -87,6 +87,9 @@ namespace RAY {
             //! @brief Ends 3D mode and returns to default 2D orthographic mode
             void endMode3D(void);
 
+            //! @brief Set the window title
+            void setTitle(const std::string &title);
+
 
             //! @brief draw rectangle
             void draw(const Drawables::IDrawable &);
