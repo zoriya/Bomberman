@@ -32,63 +32,60 @@ namespace RAY
 
 	Color &Color::setR(unsigned char r)
 	{
-		_color.r = r;
+		this->_color.r = r;
 		return *this;
 	}
-
 
 	Color &Color::setG(unsigned char g)
 	{
-		_color.g = g;
+		this->_color.g = g;
 		return *this;
 	}
 
-
 	Color &Color::setB(unsigned char b)
 	{
-		_color.b = b;
+		this->_color.b = b;
 		return *this;
 	}
 
 	Color &Color::setA(unsigned char a)
 	{
-		_color.a = a;
+		this->_color.a = a;
 		return *this;
 	}
 
 	unsigned char Color::getR(void) const
 	{
-		return _color.r;
+		return this->_color.r;
 	}
 
 	unsigned char Color::getG(void) const
 	{
-		return _color.g;
+		return this->_color.g;
 	}
 
 	unsigned char Color::getB(void) const
 	{
-		return _color.b;
+		return this->_color.b;
 	}
 
 	unsigned char Color::getA(void) const
 	{
-		return _color.a;
+		return this->_color.a;
 	}
 
 	const ::Color &Color::getColor(void) const
 	{
-		return _color;
+		return this->_color;
 	}
 
 	int Color::toHex(void) const
 	{
-		int c = 0;
+		int c = this->_color.a;
 
-		c += _color.a;
-		c += _color.b * 0xff;
-		c += _color.g * 0xff * 0xff;
-		c += _color.r * 0xff * 0xff * 0xff;
+		c += this->_color.b << 8;
+		c += this->_color.g << 8 * 2;
+		c += this->_color.r << 8 * 3;
 		return c;
 	}
 }
