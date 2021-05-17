@@ -38,7 +38,6 @@ namespace RAY
             //! @brief unload ressources
             bool unload();
 
-
         protected:
         private:
             //! @brief Font, really, that's just it...

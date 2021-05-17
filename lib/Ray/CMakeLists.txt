@@ -7,22 +7,6 @@ set(BIN_NAME "ray")
 project("${BIN_NAME}")
 include_directories("./include")
 
-FIND_PACKAGE(raylib REQUIRED)
-TARGET_LINK_LIBRARIES(target_name raylib)
-
-if (NOT raylib_FOUND)
-    INCLUDE(FetchContent)
-    FetchContent_Declare(raylib URL https://github.com/raysan5/raylib/archive/master.tar.gz)
-    FetchContent_GetProperties(raylib)
-    if (NOT raylib_POPULATED)
-        SET(FETCHCONTENT_QUIET NO)
-        FetchContent_Populate(raylib)
-        SET(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-        ADD_SUBDIRECTORY(${raylib_SOURCE_DIR} ${raylib_BINARY_DIR})
-        SET(raylib_FOUND TRUE)
-    endif()
-endif()
-
 if (CMAKE_COMPILER_IS_GNUCXX)
     set(CMAKE_CXX_STANDARD 11)
     set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow -lray")
@@ -69,7 +53,7 @@ set(HEADERS
 )
 
 set(SRC
-
+    src/Color.cpp
 )
 
 add_library(${BIN_NAME} STATIC ${SRC} ${HEADERS})
