@@ -10,7 +10,7 @@
 
 #include <raylib.h>
 
-namespace Ray {
+namespace RAY {
     class Color {
         public:
             //! @brief A Color constructor

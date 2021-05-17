@@ -12,7 +12,7 @@
 #include <string>
 #include "Canvas.hpp"
 
-namespace Ray
+namespace RAY
 {
     class Texture: public Canvas {
         public:

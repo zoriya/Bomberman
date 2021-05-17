@@ -10,7 +10,7 @@
 
 #include <raylib.h>
 
-namespace Ray {
+namespace RAY {
     typedef ::Matrix Matrix;
 }
 

@@ -10,7 +10,7 @@
 
 #include <raylib.h>
 
-namespace Ray::Camera {
+namespace RAY::Camera {
     typedef ::CameraMode Mode;
 }
 

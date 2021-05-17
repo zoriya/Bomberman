@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include <Vector.hpp>
 
-namespace Ray::Drawable3D {
+namespace RAY::Drawable3D {
     class ADrawable3D
 	{
         public:

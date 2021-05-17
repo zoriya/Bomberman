@@ -12,7 +12,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace Ray {
+namespace RAY {
 
     //! @brief Entity representing a gamepad controller
     class GamePad {

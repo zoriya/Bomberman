@@ -13,7 +13,7 @@
 #include "Camera/CameraProjection.hpp"
 #include "Camera/CameraMode.hpp"
 
-namespace Ray::Camera {
+namespace RAY::Camera {
 
     //! @brief Entity representing a Camera in 3D space
     class Camera3D: public ICamera {

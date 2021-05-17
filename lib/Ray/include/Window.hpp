@@ -11,11 +11,11 @@
 #include <raylib.h>
 #include <string>
 #include "Vector.hpp"
-#include "Keyboard.hpp"
+#include "Controllers/Keyboard.hpp"
 #include "Canvas.hpp"
 #include "Camera/Camera2D.hpp"
 
-namespace Ray {
+namespace RAY {
     class Window: public Canvas {
         public:
             //! @brief Creates window, and opens it if openNow is set to true
@@ -46,7 +46,7 @@ namespace Ray {
             bool isFocused(void);
 
             //! @brief Set window dimensions
-            const Ray::Vector2 &getDimensions(void) const;
+            const RAY::Vector2 &getDimensions(void) const;
 
             //! @brief Shows cursor
             void showCursor(void);
@@ -135,7 +135,7 @@ namespace Ray {
 
         private:
             //! @brief Dimension of window
-            Ray::Vector2 _dimensions;
+            RAY::Vector2 _dimensions;
 
             //! @brief Title of window
             std::string _title;

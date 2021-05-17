@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Camera/ICamera.hpp"
 
-namespace Ray::Camera {
+namespace RAY::Camera {
 
     //! @brief Entity representing a Camera in 2D space
     class Camera2D: public ICamera {

@@ -25,7 +25,7 @@
 #include "Drawables/3D/Sphere.hpp"
 #include "Drawables/3D/Triangle.hpp"
 
-namespace Ray {
+namespace RAY {
     class Canvas {
         public:
             //! @brief A default destructor

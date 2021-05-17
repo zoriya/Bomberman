@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable2D.hpp"
 
-namespace Ray::Drawable2D {
+namespace RAY::Drawable2D {
     class Rectangle: public ADrawable2D
 	{
         public:

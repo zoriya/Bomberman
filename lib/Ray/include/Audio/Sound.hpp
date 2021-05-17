@@ -13,7 +13,7 @@
 #include <raylib.h>
 
 
-namespace Ray::Sound
+namespace RAY::Sound
 {
     class Sound {
         public:

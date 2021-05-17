@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
 
-namespace Ray::Drawable3D {
+namespace RAY::Drawable3D {
     class Circle: public ADrawable3D
 	{
         public:

@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include <string>
 
-namespace Ray
+namespace RAY
 {
     class Font {
         public:

@@ -12,7 +12,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace Ray {
+namespace RAY {
     class Mouse {
         public:
             typedef ::MouseButton Button;

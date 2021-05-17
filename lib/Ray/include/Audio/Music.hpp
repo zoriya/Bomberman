@@ -13,7 +13,7 @@
 #include <raylib.h>
 
 
-namespace Ray::Music
+namespace RAY::Music
 {
     class Music {
         public:

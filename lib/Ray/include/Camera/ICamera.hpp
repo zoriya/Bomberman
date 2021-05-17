@@ -10,7 +10,7 @@
 
 #include "Matrix.hpp"
 
-namespace Ray::Camera {
+namespace RAY::Camera {
     class ICamera {
         public:
             virtual ~ICamera() = 0;

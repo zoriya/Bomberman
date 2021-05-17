@@ -11,7 +11,7 @@
 #include <string>
 
 
-namespace Ray::Audio
+namespace RAY::Audio
 {
     class IAudio {
         public:
