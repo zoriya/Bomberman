@@ -36,9 +36,6 @@ namespace RAY {
             //! @brief Check if KEY_ESCAPE pressed or Close icon pressed
             bool shouldClose(void) const;
 
-            //! @briefSet key used to close window (default: ESC)
-            void setExitKey(Keyboard::Key key);
-
             //! @brief Close window and unload OpenGL context
             bool close(void);
 
@@ -51,6 +48,10 @@ namespace RAY {
             //! @brief Set the cursor visibility
             //! @param visible True if the cursor is visible
             void setVisibleCursor(bool visible);
+
+            //! @brief Enable/Disable the cursor
+            //! @param enable True for the cursor to be enabled
+            void enableCursor(bool enable);
 
             //! @brief Check if cursor is not visible
             bool cursorIsVisible(void) const;
@@ -87,10 +88,14 @@ namespace RAY {
 
 
             //! @brief draw rectangle
-            void draw(const Drawables::IDrawable &);
+            //! @param drawable The drawable to render on screen
+            void draw(const Drawables::IDrawable &drawable);
 
             //! @brief draw texture at position
-            void draw(const Texture &, Vector2 position, Color tint);
+            //! @param texture The object to render
+            //! @param position The position of the texture relative to the top left window corner
+            //! @param tint
+            void draw(const Texture &texture, Vector2 position, const Color &tint);
 
             //! @brief Draw a 3d mesh with material and transform
             void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
