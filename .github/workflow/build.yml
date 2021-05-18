@@ -1,0 +1,33 @@
+name: Build
+on: [push, pull_request]
+
+jobs:
+  Build:
+    name: "Build on ${{ matrix.name }}"
+    runs-on: ${{ matrix.os }}
+    stategy:
+      include:
+        - os: ubuntu-latest
+          runtime: linux-x64
+          name: Linux
+        - os: windows-latest
+          runtime: win-x64
+          name: Windows
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+          ref: master
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build .
+      - name: CheckBinaryName
+        run: |
+          cd ..
+          if [[ "${{runner.os}}" == "Windows" ]] then
+            test -f bomberman.exe
+          else
+            test -f bomberman
+          fi
