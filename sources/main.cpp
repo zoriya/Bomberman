@@ -1,7 +1,15 @@
 #include <iostream>
+#include <Wal.hpp>
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
-	return 0;
+	WAL::Wal wal;
+
+	try {
+		wal.run();
+		return 0;
+	} catch (const std::exception &ex) {
+		std::cerr << ex.what() << std::endl;
+		return 84;
+	}
 }
