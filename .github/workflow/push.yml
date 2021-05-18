@@ -1,11 +1,6 @@
 name: Update Mirror
 
-on:
-  push:
-    branches:
-      - main
-      - master
-      - workflow
+on: [push]
 
 jobs:
   Push:
