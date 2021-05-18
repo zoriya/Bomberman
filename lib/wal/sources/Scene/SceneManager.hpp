@@ -20,7 +20,7 @@ namespace WAL
 		//! @return The manager instance used to call this function is returned. This allow method chaining.
 		SceneManager &addScene(Scene &&scene);
 
-		//! @brief Add a scene before the current scene to allow
+		//! @brief Add a scene before the current scene. This could be useful for lobbies or scene where the next scene can be constructed.
 		//! @return The manager instance used to call this function is returned. This allow method chaining.
 		SceneManager &addBackScene(Scene &&scene);
 

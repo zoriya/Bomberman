@@ -11,7 +11,7 @@ namespace WAL
 {
 	std::chrono::nanoseconds Wal::timestep = 8ms;
 
-	SceneManager &Wal::getSceneManger()
+	SceneManager &Wal::getSceneManager()
 	{
 		return this->_scenes;
 	}

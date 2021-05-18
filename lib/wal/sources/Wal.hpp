@@ -101,7 +101,7 @@ namespace WAL
 		}
 
 		//! @brief Get the scene manager.
-		SceneManager &getSceneManger();
+		SceneManager &getSceneManager();
 
 		//! @brief Start the game loop
 		void run();

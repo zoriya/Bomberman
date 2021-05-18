@@ -1,4 +1,6 @@
-
+//
+// Created by Zoe Roux on 2021-05-14.
+//
 
 #pragma once
 
@@ -44,7 +46,7 @@ namespace WAL
 		T &getComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
+			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
 				return typeid(*cmp) == type;
 			});
 			if (existing == this->_components.end())
@@ -88,7 +90,7 @@ namespace WAL
 		Entity &removeComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto existing =std::find_if(this->_components.begin(), this->_components.end(), [&type] (auto &cmp) {
+			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
 				return typeid(*cmp) == type;
 			});
 			if (existing == this->_components.end())

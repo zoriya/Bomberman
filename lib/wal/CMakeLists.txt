@@ -33,7 +33,7 @@ add_library(wal
 
 target_include_directories(wal PUBLIC sources)
 
-add_executable(wal_tests
+add_executable(wal_tests EXCLUDE_FROM_ALL
 	tests/EntityTests.cpp
 	tests/MainTest.cpp
 	tests/EngineTests.cpp

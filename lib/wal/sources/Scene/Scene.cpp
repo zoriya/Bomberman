@@ -8,7 +8,7 @@ namespace WAL
 {
 	std::vector<Entity> &Scene::getEntities()
 	{
-		return this->_entity;
+		return this->_entities;
 	}
 }
 
