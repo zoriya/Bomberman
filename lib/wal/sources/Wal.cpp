@@ -13,31 +13,31 @@ namespace WAL
 
 	SceneManager &Wal::getSceneManager()
 	{
-		return this->_scenes;
+		return this->_sceneManager;
 	}
 
 	void Wal::run()
 	{
 		auto lastTick = std::chrono::steady_clock::now();
-		std::chrono::nanoseconds dtime(0);
+		std::chrono::nanoseconds fBehind(0);
 
 		while (!this->_shouldClose) {
 			auto now = std::chrono::steady_clock::now();
-			dtime += now - lastTick;
+			std::chrono::nanoseconds dtime = now - lastTick;
+			fBehind += dtime;
 			lastTick = now;
 
-			this->_update(dtime);
-			while (dtime > Wal::timestep) {
-				dtime -= Wal::timestep;
+			while (fBehind > Wal::timestep) {
+				fBehind -= Wal::timestep;
 				this->_fixedUpdate();
 			}
-			this->_renderer->render();
+			this->_update(dtime);
 		}
 	}
 
 	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
-		auto &entities = this->_scenes.getCurrent().getEntities();
+		auto &entities = this->_sceneManager.getCurrent().getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
@@ -47,12 +47,13 @@ namespace WAL
 				// TODO handle dependencies.
 				system->onUpdate(entity, dtime);
 			}
+			system->onSelfUpdate();
 		}
 	}
 
 	void Wal::_fixedUpdate()
 	{
-		auto &entities = this->_scenes.getCurrent().getEntities();
+		auto &entities = this->_sceneManager.getCurrent().getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {

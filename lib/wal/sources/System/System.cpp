@@ -12,4 +12,7 @@ namespace WAL
 
 	void System::onFixedUpdate(Entity &entity)
 	{}
+
+	void System::onSelfUpdate()
+	{}
 }

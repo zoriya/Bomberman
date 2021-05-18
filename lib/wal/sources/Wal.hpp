@@ -10,7 +10,6 @@
 #include <typeinfo>
 #include <Exception/WalError.hpp>
 #include "Events/EventManager.hpp"
-#include "Renderer/Renderer.hpp"
 #include "Scene/SceneManager.hpp"
 #include "Entity/Entity.hpp"
 #include "System/System.hpp"
@@ -22,13 +21,11 @@ namespace WAL
 	{
 	private:
 		//! @brief The scene manager that allow multiple scene to work together.
-		SceneManager _scenes;
+		SceneManager _sceneManager;
 		//! @brief The event manager
 		EventManager _eventManager;
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
-		//! @brief The renderer used to draw entities
-		std::unique_ptr<Renderer> _renderer;
 		//! @brief True if the engine should close after the end of the current tick.
 		bool _shouldClose = false;
 

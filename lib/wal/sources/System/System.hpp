@@ -30,6 +30,9 @@ namespace WAL
 		//! @remark This should be used for Physics, AI and everything that could be imprecise due to float rounding.
 		//! @param entity The entity to update.
 		virtual void onFixedUpdate(Entity &entity);
+
+		//! @brief A method called after all entities that this system manage has been updated.
+		virtual void onSelfUpdate();
 	protected:
 		//! @brief A system can't be instantiated, it should be derived.
 		System() = default;
