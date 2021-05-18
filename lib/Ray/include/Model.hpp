@@ -24,12 +24,12 @@ namespace RAY {
             Model(const Mesh &mesh);
 
             //! @brief A copy constructor
-            Model(const Model &model);
+            Model(const Model &model) = default;
 
             //! @brief A model is assignable
             Model& operator=(const Model &model) = default;
 
-            ~Model() = default;
+            ~Model();
 
             //! @brief Load model from file (meshes and materials)
             bool load(const std::string &filePath);

@@ -57,6 +57,7 @@ set(HEADERS
 
 set(SRC
     src/Color.cpp
+    src/Font.cpp
     )
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
