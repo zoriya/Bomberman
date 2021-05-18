@@ -16,7 +16,10 @@ set(HEADERS
     include/Canvas.hpp
     include/Color.hpp
     include/Font.hpp
+    include/IRessource.hpp
     include/Matrix.hpp
+    include/Mesh.hpp
+    include/Model.hpp
     include/Vector.hpp
     include/Window.hpp
     include/Audio/IAudio.hpp
@@ -32,6 +35,7 @@ set(HEADERS
     include/Controllers/Mouse.hpp
     include/Drawables/ADrawable2D.hpp
     include/Drawables/ADrawable3D.hpp
+    include/Drawables/IDrawable.hpp
     include/Drawables/Image.hpp
     include/Drawables/Texture.hpp
     include/Drawables/2D/Circle.hpp
