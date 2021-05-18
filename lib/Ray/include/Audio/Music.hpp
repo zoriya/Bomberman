@@ -13,7 +13,7 @@
 #include <raylib.h>
 
 
-namespace RAY::Music
+namespace RAY::Audio
 {
     class Music {
         public:
@@ -25,10 +25,10 @@ namespace RAY::Music
             Music();
 
             //! @brief Default destructor
-            ~Music() = default;
+            ~Music();
 
             //! @brief A copy constructor constructor
-            Music(const Music &Music);
+            Music(const Music &Music) = default;
 
             //! @brief A Music is assignable
             Music &operator=(const Music &Music) = default;
@@ -61,7 +61,7 @@ namespace RAY::Music
             Music &setPitch(float pitch);
 
         private:
-            ::Music _Music;
+            ::Music _music;
     };
 }
 

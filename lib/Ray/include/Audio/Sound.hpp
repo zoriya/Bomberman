@@ -13,7 +13,7 @@
 #include <raylib.h>
 
 
-namespace RAY::Sound
+namespace RAY::Audio
 {
     class Sound {
         public:
@@ -25,10 +25,10 @@ namespace RAY::Sound
             Sound();
 
             //! @brief Default destructor
-            ~Sound() = default;
+            ~Sound();
 
             //! @brief A copy constructor constructor
-            Sound(const Sound &sound);
+            Sound(const Sound &sound) = default;
 
             //! @brief A Sound is assignable
             Sound &operator=(const Sound &sound) = default;
