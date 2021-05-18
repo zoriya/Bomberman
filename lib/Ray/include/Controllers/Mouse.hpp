@@ -6,8 +6,8 @@
 ** Keyboard
 */
 
-#ifndef KEYBOARD_HPP_
-#define KEYBOARD_HPP_
+#ifndef MOUSE_HPP_
+#define MOUSE_HPP_
 
 #include <raylib.h>
 #include <vector>
@@ -32,6 +32,9 @@ namespace RAY {
             //! @return true if Key is up on the keyboard
             //! @param Key The keycode of the key
             static bool isUp(Button);
+
+            //! @return A 2D vector holding the current position of the cursor
+            static Vector2 getCursorPosition(void);
 
             //! @brief Fetch currently pressed buttons
             //! @return a vector containing keycode of currently pressed buttons

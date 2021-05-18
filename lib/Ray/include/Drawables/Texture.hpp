@@ -47,6 +47,9 @@ namespace RAY
             //! @brief get image
             Image toImage(void) const;
 
+            //! @return libray Texture struct
+            const ::Texture &getTexture(void) const;
+
         protected:
         private:
             //! @brief Texture, really, that's just it...

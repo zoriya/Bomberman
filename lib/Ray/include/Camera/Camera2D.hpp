@@ -52,6 +52,9 @@ namespace RAY::Camera {
             //! @brief Returns camera 2d transform matrix
             Matrix getMatrix(void) const;
 
+            //! @brief get camera struct
+            const ::Camera2D &getCamera(void) const;
+
         private:
             ::Camera2D _camera;
     };
