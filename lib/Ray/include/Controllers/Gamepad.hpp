@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2021
 ** Bomberman
@@ -53,7 +52,7 @@ namespace RAY {
             bool isAvailable(Button);
 
             //! @brief Sets gamepad's id
-            GamePad &setID(int id);
+            void setID(int id);
 
             //! @brief Fetch currently pressed buttons
             //! @return Returns a vector containing keycode of currently pressed buttons

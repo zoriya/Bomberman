@@ -14,7 +14,7 @@ namespace RAY {
     class Canvas {
         public:
             //! @brief A default destructor
-            virtual ~Canvas() = 0;
+            virtual ~Canvas() = default;
 
             //! @brief draw drawable
             virtual void draw(const Drawables::IDrawable &) = 0;
