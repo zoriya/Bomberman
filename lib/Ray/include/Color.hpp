@@ -22,7 +22,7 @@ namespace RAY {
 
             //! @brief A constructor using ray's own color struct
             //! @info Useful when want to use pre-defined color
-            Color(const ::Color);
+            Color(const ::Color &);
 
             //! @brief A default copy constructor
             Color(const Color &) = default;

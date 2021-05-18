@@ -24,7 +24,7 @@ namespace RAY::Camera {
             Camera2D(Vector2 offset, Vector2 target, float rotation, float zoom = 1);
 
             //! @brief A copy constructor
-            Camera2D(const Camera2D &);
+            Camera2D(const Camera2D &) = default;
 
             ~Camera2D() = default;
 

@@ -23,11 +23,11 @@ RAY::Font::~Font()
 
 bool RAY::Font::load(const std::string &filename)
 {
-    _font = LoadFont(filename.c_str());
+    this->_font = LoadFont(filename.c_str());
     return true;
 }
 
 bool RAY::Font::unload()
 {
-    UnloadFont(_font);
+    UnloadFont(this->_font);
 }

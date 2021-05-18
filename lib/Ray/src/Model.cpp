@@ -24,13 +24,13 @@ RAY::Model::~Model()
 
 bool RAY::Model::load(const std::string &filename)
 {
-    _model = LoadModel(filename.c_str());
+    this->_model = LoadModel(filename.c_str());
     return true;
 }
 
 bool RAY::Model::load(const Mesh &mesh)
 {
-    _model = LoadModelFromMesh(mesh);
+    this->_model = LoadModelFromMesh(mesh);
     return true;
 }
 
