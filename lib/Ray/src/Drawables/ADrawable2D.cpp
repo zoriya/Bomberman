@@ -7,39 +7,44 @@
 
 #include "Drawables/ADrawable2D.hpp"
 
-RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(const Vector2 &position, RAY::Color color):
+RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(const Vector2 &position, const RAY::Color &color):
     _color(color), _position(position)
 {
 
 }
 
 
-RAY::Drawables::Drawables2D::ADrawable2D(int x, int y, RAY::Color color)
+RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(int x, int y, const RAY::Color &color):
+    _color(color), _position({(float)x, (float)y})
 {
 
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::getPosition(void) const
+const Vector2 &RAY::Drawables::Drawables2D::ADrawable2D::getPosition(void) const
 {
-
+    return this->_position;
 }
 
-const Color &RAY::Drawables::Drawables2D::getColor(void) const
+const RAY::Color &RAY::Drawables::Drawables2D::ADrawable2D::getColor(void) const
 {
-
+    return this->_color;
 }
 
-ADrawable2D &RAY::Drawables::Drawables2D::setPosition(const Vector2 &position)
+RAY::Drawables::Drawables2D::ADrawable2D &RAY::Drawables::Drawables2D::ADrawable2D::setPosition(const Vector2 &position)
 {
-
+    this->_position = position;
+    return *this;
 }
 
-ADrawable2D &RAY::Drawables::Drawables2D::setPosition(int x, int y)
+RAY::Drawables::Drawables2D::ADrawable2D &RAY::Drawables::Drawables2D::ADrawable2D::setPosition(int x, int y)
 {
-
+    this->_position.x = x;
+    this->_position.y = y;
+    return *this;
 }
 
-ADrawable2D &RAY::Drawables::Drawables2D::setColor(const Color &color) const
+RAY::Drawables::Drawables2D::ADrawable2D &RAY::Drawables::Drawables2D::ADrawable2D::setColor(const Color &color)
 {
-
+    this->_color = color;
+    return *this;
 }

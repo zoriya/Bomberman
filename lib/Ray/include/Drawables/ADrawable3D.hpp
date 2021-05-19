@@ -10,14 +10,15 @@
 
 #include <raylib.h>
 #include <Vector.hpp>
-#include "Drawbles/IDrawable.hpp"
+#include "Drawables/IDrawable.hpp"
+#include "Color.hpp"
 
 namespace RAY::Drawables::Drawables3D {
     class ADrawable3D: public IDrawable
 	{
         public:
             //! @param Color Color of the drawable  
-            ADrawable3D(Color color);
+            ADrawable3D(const RAY::Color &color);
 
             //! @brief A default copy constructor
             ADrawable3D(const ADrawable3D &) = default;
@@ -26,14 +27,14 @@ namespace RAY::Drawables::Drawables3D {
             virtual ~ADrawable3D() = default;
 
             //! @brief Draw drawble on window
-            void drawOn(Window &);
+            virtual void drawOn(Window &) = 0;
 
 
             //! @return the color of the ADrawable
             const Color &getColor(void) const;
             
             //! @brief set color
-            ADrawable3D &setColor(const Color &color) const;
+            ADrawable3D &setColor(const RAY::Color &color);
 
         private:
             //! @brief Color of the ADrawable
