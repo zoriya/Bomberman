@@ -35,10 +35,6 @@ namespace RAY::Controller {
 
             //! @return A 2D vector holding the current position of the cursor
             static Vector2 getCursorPosition(void);
-
-            //! @brief Fetch currently pressed buttons
-            //! @return a vector containing keycode of currently pressed buttons
-            static std::vector<Mouse::Button> getPressedButtons(void);
     };
 }
 

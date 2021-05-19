@@ -58,6 +58,15 @@ set(HEADERS
 set(SRC
     src/Color.cpp
     src/Font.cpp
+    src/Model.cpp
+    src/Window.cpp
+    src/Audio/Music.cpp
+    src/Audio/Sound.cpp
+    src/Camera/Camera2D.cpp
+    src/Camera/Camera3D.cpp
+    src/Controllers/Gamepad.cpp
+    src/Controllers/Keyboard.cpp
+    src/Controllers/Mouse.cpp
     )
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
