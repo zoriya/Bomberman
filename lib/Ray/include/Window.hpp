@@ -102,7 +102,7 @@ namespace RAY {
             //! @param texture The object to render
             //! @param position The position of the texture relative to the top left window corner
             //! @param tint
-            void draw(const RAY::Texture &texture, Vector2 position, const Color &tint);
+            void draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint);
 
             //! @brief Draw a 3d mesh with material and transform
             void draw(const Mesh &mesh, const Material &material, const Matrix &transform);

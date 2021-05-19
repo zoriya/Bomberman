@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param position position of top-left point  
             //! @param dimensions dimensions of the rectangle 
             //! @param Color Color of the rectangle  
-            Rectangle(const Vector2 &position, Vector2 dimensions, const Color &color);
+            Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color);
 
             //! @brief Rectangle constructor
             //! @param x x-position of top-left point  

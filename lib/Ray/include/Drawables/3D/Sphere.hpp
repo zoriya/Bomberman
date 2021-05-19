@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param centerPosition position of the center 
             //! @param radius radius of the sphere
             //! @param Color Color of the sphere  
-            Sphere(const Vector3 &centerPosition, int radius, Color color);
+            Sphere(const Vector3 &centerPosition, int radius, const Color &color);
 
             
             //! @brief A default copy constructor
@@ -35,18 +35,16 @@ namespace RAY::Drawables::Drawables3D {
             int getRadius(void) const;
 
             //! @brief set radius
-            Sphere &setRadius(int radius) const;
+            Sphere &setRadius(int radius);
 
             //! @return the position of the center
             const Vector3 &getCenterPos(void) const;
 
             //! @brief set pos of center 
-            Sphere &setRadius(const Vector3 &pos) const;
+            Sphere &setRadius(const Vector3 &pos);
 
             //! @brief Draw point on window
             void drawOn(RAY::Window &window);
-            //! @brief Draw point on image
-            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Radius of the sphere 

@@ -7,13 +7,13 @@
 
 #include "Drawables/2D/Circle.hpp"
 
-RAY::Drawables::Drawables2D::Circle::Circle(const Vector2 &centerPos, int radius, Color color):
+RAY::Drawables::Drawables2D::Circle::Circle(const Vector2 &centerPos, int radius, const Color &color):
     ADrawable2D(centerPos, color), _radius(radius)
 {
 
 }
 
-RAY::Drawables::Drawables2D::Circle::Circle(int centerPosX, int centerPosY, int radius, Color color):
+RAY::Drawables::Drawables2D::Circle::Circle(int centerPosX, int centerPosY, int radius, const Color &color):
     ADrawable2D(centerPosX, centerPosY, color), _radius(radius)
 {
 

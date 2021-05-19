@@ -118,7 +118,7 @@ void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
     drawable.drawOn(*this);
 }
 
-void RAY::Window::draw(const RAY::Texture &texture, Vector2 position, const Color &tint)
+void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint)
 {
     DrawTexture(texture.getTexture(), position.x, position.y, tint.getColor());
 }

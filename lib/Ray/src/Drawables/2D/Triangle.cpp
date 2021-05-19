@@ -8,7 +8,7 @@
 #include "Drawables/2D/Triangle.hpp"
 #include <exception>
 
-RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, Vector2 positionB, Vector2 positionC, const Color &color):
+RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, const Vector2 &positionB, const Vector2 &positionC, const Color &color):
     ADrawable2D(positionA, color), _posB(positionB), _posC(positionC)
 {
 

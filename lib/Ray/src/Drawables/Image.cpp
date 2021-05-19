@@ -44,8 +44,3 @@ bool RAY::Image::unload()
 {
     return _image;
 }
-
-void RAY::Image::draw(Drawables::IDrawable & drawable)
-{
-    drawable.drawOn(*this);
-}

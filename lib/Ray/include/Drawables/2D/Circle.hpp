@@ -19,14 +19,14 @@ namespace RAY::Drawables::Drawables2D {
             //! @param centerPos position of center point  
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(const Vector2 &centerPos, int radius, Color color);
+            Circle(const Vector2 &centerPos, int radius, const Color &color);
             
             //! @brief Circle constructor
             //! @param centerPosX x-position of center point  
             //! @param centerPosY y-position of center point 
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(int centerPosX, int centerPosY, int radius, Color color);
+            Circle(int centerPosX, int centerPosY, int radius, const Color &color);
             
             //! @brief A default copy constructor
             Circle(const Circle &) = default;

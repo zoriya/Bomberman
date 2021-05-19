@@ -22,7 +22,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param fontSize size of the text
             //! @param position position of top-left point 
             //! @param Color Color of the text  
-            Text(const std::string &content, int fontSize, Vector2 position, const Color &color);
+            Text(const std::string &content, int fontSize, const Vector2 &position, const Color &color);
             
             //! @brief Text constructor
             //! @param content text

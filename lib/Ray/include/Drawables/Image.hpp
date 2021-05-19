@@ -12,10 +12,12 @@
 #include <string>
 #include "Canvas.hpp"
 #include "IRessource.hpp"
-#include "Drawables/IDrawable.hpp"
 
 namespace RAY
 {
+    namespace Drawables {
+        class ADrawable2D;
+    }
     class IRessource;
     class Image: public Canvas, public IRessource {
         public:
@@ -50,7 +52,7 @@ namespace RAY
             ::Image &getImage(void);
 
             //! @brief draw drawable
-            void draw(Drawables::IDrawable &);
+            void draw(Drawables::ADrawable2D &);
 
         private:
             //! @brief Image, really, that's just it...

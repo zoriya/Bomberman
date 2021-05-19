@@ -21,9 +21,6 @@ namespace RAY
                 virtual ~IDrawable() = 0;
 
                 virtual void drawOn(RAY::Window &window) = 0;
-
-                virtual void drawOn(RAY::Image &image) = 0;
-
             protected:
             private:
         };

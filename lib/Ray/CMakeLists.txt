@@ -68,6 +68,15 @@ set(SRC
     src/Drawables/2D/Rectangle.cpp
     src/Drawables/2D/Text.cpp
     src/Drawables/2D/Triangle.cpp
+    src/Drawables/3D/Circle.cpp
+    src/Drawables/3D/Cylinder.cpp
+    src/Drawables/3D/Grid.cpp
+    src/Drawables/3D/Line.cpp
+    src/Drawables/3D/Plane.cpp
+    src/Drawables/3D/Point.cpp
+    src/Drawables/3D/Ray.cpp
+    src/Drawables/3D/Sphere.cpp
+    src/Drawables/3D/Triangle.cpp
     src/Drawables/ADrawable2D.cpp
     src/Drawables/ADrawable3D.cpp
     src/Drawables/Image.cpp

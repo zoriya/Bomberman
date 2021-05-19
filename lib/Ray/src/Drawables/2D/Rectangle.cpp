@@ -8,7 +8,7 @@
 #include "Drawables/2D/Rectangle.hpp"
 #include <cmath>
 
-RAY::Drawables::Drawables2D::Rectangle::Rectangle(const Vector2 &position, Vector2 dimensions, const Color &color):
+RAY::Drawables::Drawables2D::Rectangle::Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color):
     ADrawable2D(position, color), _dimensions(dimensions)
 {
 

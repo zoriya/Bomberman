@@ -7,7 +7,7 @@
 
 #include "Drawables/2D/Text.hpp"
 
-RAY::Drawables::Drawables2D::Text::Text(const std::string &content, int fontSize, Vector2 position, const Color &color):
+RAY::Drawables::Drawables2D::Text::Text(const std::string &content, int fontSize, const Vector2 &position, const Color &color):
     ADrawable2D(position, color), _text(content), _size(fontSize), _spacing(DEFAULT_LETTER_SPACING)
 {
     this->_font.recs = nullptr;

@@ -21,7 +21,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param radiusBottom radius at the bottom of the cylinder
             //! @param radiusBottom heighth of the cylinder
             //! @param Color Color of the cylinder
-            Cylinder(const Vector3 &position, float radiusTop, float radiusBottom, float height, Color color);
+            Cylinder(const Vector3 &position, float radiusTop, float radiusBottom, float height, const Color &color);
 
             
             //! @brief A default copy constructor
@@ -37,37 +37,35 @@ namespace RAY::Drawables::Drawables3D {
             int getTopRadius(void) const;
 
             //! @brief set radius
-            Cylinder &setTopRadius(float radius) const;
+            Cylinder &setTopRadius(float radius);
 
             //! @return the radius of the cylinder
             int getBottomRadius(void) const;
 
             //! @brief set radius
-            Cylinder &setBottopRadius(float radius) const;
+            Cylinder &setBottopRadius(float radius);
 
             //! @return the position of the center
             const Vector3 &getPosition(void) const;
 
             //! @brief the position of the center
-            Cylinder &setPosition(const Vector3 &) const;
+            Cylinder &setPosition(const Vector3 &);
 
             //! @return the Heigth
-            const Vector3 &getHeigth(void) const;
+            float getHeigth(void) const;
 
             //! @brief the Heigth
-            Cylinder &setHeigth(float heigth) const;
+            Cylinder &setHeigth(float heigth);
 
             //! @brief Draw point on window
             void drawOn(RAY::Window &window);
-            //! @brief Draw point on image
-            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Radius of the cylinder 
             float _topRadius;
 
             //! @brief Radius of the cylinder 
-            float _bootomRadius;
+            float _bottomRadius;
 
             //! @brief heigth of the cylinder 
             float _heigth;

@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param position position of plane 
             //! @param dimensions dimensions of plane 
             //! @param Color Color of the plane
-            Plane(const Vector3 &position, Vector2 dimensions, const Color &color);
+            Plane(const Vector3 &position, const Vector2 &dimensions, const Color &color);
 
             //! @brief A default copy constructor
             Plane(const Plane &) = default;
@@ -40,12 +40,10 @@ namespace RAY::Drawables::Drawables3D {
             const Vector2 &getDimensions(void) const;
 
             //! @brief Set dimensions
-            Plane &setDimensions(const Vector3 &dimensions);
+            Plane &setDimensions(const Vector2 &dimensions);
 
             //! @brief Draw point on window
             void drawOn(RAY::Window &window);
-            //! @brief Draw point on image
-            void drawOn(RAY::Image &image);
 
         private:
             //! @brief plane position
