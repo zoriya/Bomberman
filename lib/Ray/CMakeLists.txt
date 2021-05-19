@@ -67,11 +67,11 @@ set(SRC
     src/Drawables/2D/Point.cpp
     src/Drawables/2D/Rectangle.cpp
     src/Drawables/2D/Text.cpp
+    src/Drawables/2D/Triangle.cpp
     src/Drawables/ADrawable2D.cpp
     src/Drawables/ADrawable3D.cpp
     src/Drawables/Image.cpp
     src/Drawables/Texture.cpp
-    src/Drawables/Triangle.cpp
     src/Color.cpp
     src/Font.cpp
     src/Model.cpp

@@ -15,7 +15,7 @@
 
 namespace RAY
 {
-    class Texture: public Canvas, IRessource {
+    class Texture: public IRessource {
         public:
             //! @brief Create an texture, loading a file
             //! @param filename: path to file to load

@@ -12,11 +12,12 @@
 #include <string>
 #include "Vector.hpp"
 #include "Controllers/Keyboard.hpp"
-#include "Canvas.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Camera/Camera3D.hpp"
-#include "Drawables/Texture.hpp"
 #include "Color.hpp"
+#include "Canvas.hpp"
+#include "Drawables/IDrawable.hpp"
+#include "Drawables/Texture.hpp"
 
 namespace RAY {
     class Window: public Canvas {

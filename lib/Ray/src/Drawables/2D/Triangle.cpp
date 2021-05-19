@@ -8,7 +8,7 @@
 #include "Drawables/2D/Triangle.hpp"
 #include <exception>
 
-RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, Vector2 positionB, Vector2 positionC,int length, const Color &color):
+RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, Vector2 positionB, Vector2 positionC, const Color &color):
     ADrawable2D(positionA, color), _posB(positionB), _posC(positionC)
 {
 
@@ -55,6 +55,7 @@ void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Window &window)
 
 void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Image &image)
 {
+    (void)image;
     throw std::exception();
 }
 
