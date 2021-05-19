@@ -11,7 +11,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace RAY {
+namespace RAY::Controller {
 
     //! @brief Entity representing a gamepad controller
     class GamePad {
@@ -53,10 +53,6 @@ namespace RAY {
 
             //! @brief Sets gamepad's id
             void setID(int id);
-
-            //! @brief Fetch currently pressed buttons
-            //! @return Returns a vector containing keycode of currently pressed buttons
-            std::vector<GamePad::Button> getPressedButtons(void);
         
         private:
             //! @brief The id of the controller, used to fetch buttons' states 

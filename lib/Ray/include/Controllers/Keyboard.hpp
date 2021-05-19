@@ -12,7 +12,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace RAY {
+namespace RAY::Controller {
     class Keyboard {
         public:
             typedef ::KeyboardKey Key;
