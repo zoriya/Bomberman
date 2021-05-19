@@ -7,22 +7,22 @@
 
 #include "Camera3D.hpp"
 
-RAY::Camera::Camera3D::Camera3D(Vector3 position, Vector3 target, Vector3 up, float fovy, float projection):
+RAY::Camera::Camera3D::Camera3D(const Vector3 &position, Vector3 target, Vector3 up, float fovy, float projection):
     _camera({position, target, up, fovy, projection})
 {
 }
 
-void RAY::Camera::Camera3D::setPosition(Vector3 Position)
+void RAY::Camera::Camera3D::setPosition(const Vector3 &Position)
 {
     this->_camera.position = Position;
 }
 
-void RAY::Camera::Camera3D::setTarget(Vector3 target)
+void RAY::Camera::Camera3D::setTarget(const Vector3 &target)
 {
     this->_camera.target = target;
 }
 
-void RAY::Camera::Camera3D::setUp(Vector3 up)
+void RAY::Camera::Camera3D::setUp(const Vector3 &up)
 {
     this->_camera.up = up;
 }

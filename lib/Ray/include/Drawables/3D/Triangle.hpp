@@ -21,7 +21,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param positionB position of B point 
             //! @param positionC position of C point  
             //! @param Color Color of the circle  
-            Triangle(Vector3 positionA, Vector3 positionB, Vector3 positionC,int length, Color);
+            Triangle(const Vector3 &positionA, Vector3 positionB, Vector3 positionC,int length, Color);
 
 
             //! @brief A default copy constructor

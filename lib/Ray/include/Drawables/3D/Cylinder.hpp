@@ -21,7 +21,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param radiusBottom radius at the bottom of the cylinder
             //! @param radiusBottom heighth of the cylinder
             //! @param Color Color of the cylinder
-            Cylinder(Vector3 position, float radiusTop, float radiusBottom, float height, Color color);
+            Cylinder(const Vector3 &position, float radiusTop, float radiusBottom, float height, Color color);
 
             
             //! @brief A default copy constructor

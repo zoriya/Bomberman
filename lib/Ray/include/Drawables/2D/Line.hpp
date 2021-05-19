@@ -20,7 +20,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param position position of top-left point  
             //! @param length length of the line
             //! @param Color Color of the circle  
-            Line(Vector2 position, int length, Color);
+            Line(const Vector2 &position, int length, Color);
 
             //! @brief Line constructor
             //! @param x x-position of top-left point  

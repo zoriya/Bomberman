@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param topLeftPos position of top-left point  
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(Vector2 topLeftPos, int radius, Color color);
+            Circle(const Vector2 &topLeftPos, int radius, Color color);
             
             //! @brief Circle constructor
             //! @param topLeftX x-position of top-left point  
