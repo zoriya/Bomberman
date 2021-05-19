@@ -24,7 +24,7 @@ namespace RAY::Camera {
             //! @param up Camera up vector (rotation over its axis)
             //! @param fovy Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
             //! @param projection Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
-            Camera3D(const Vector3 &position, Vector3 target, Vector3 up, float fovy, float projection);
+            Camera3D(const Vector3 &position, const Vector3 &target, const Vector3 &up, float fovy, Projection projection);
 
             //! @brief A copy constructor
             Camera3D(const Camera3D &) = default;

@@ -30,6 +30,7 @@ bool RAY::Audio::Music::load(const std::string &path)
 bool RAY::Audio::Music::unload(void)
 {
     UnloadMusicStream(_music);
+    return true;
 }
 
 bool RAY::Audio::Music::isPlayin(void)

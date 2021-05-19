@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @brief ADrawable constructor
             //! @param poition position of top-left point 
             //! @param Color Color of the color  
-            ADrawable2D(const Vector2 &position, Color color);
+            ADrawable2D(const Vector2 &position, RAY::Color color);
             //! @brief ADrawable constructor
             //! @param x x-position of top-left point  
             //! @param y y-position of top-left point 
@@ -48,7 +48,7 @@ namespace RAY::Drawables::Drawables2D {
             ADrawable2D &setColor(const Color &color) const;
 
             //! @brief Draw drawble on window
-            void drawOn(Window &);
+            virtual void drawOn(Window &) = 0;
 
         private:
             //! @brief Top-left position 

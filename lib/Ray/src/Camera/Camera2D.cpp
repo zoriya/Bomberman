@@ -7,7 +7,7 @@
 
 #include "Camera/Camera2D.hpp"
 
-RAY::Camera::Camera2D::Camera2D(const Vector2 &offset, Vector2 target, float rotation, float zoom = 1):
+RAY::Camera::Camera2D::Camera2D(const Vector2 &offset, const Vector2 &target, float rotation, float zoom):
     _camera({offset, target, rotation, zoom})
 {
 }

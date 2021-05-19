@@ -5,9 +5,9 @@
 ** Camera3D
 */
 
-#include "Camera3D.hpp"
+#include "Camera/Camera3D.hpp"
 
-RAY::Camera::Camera3D::Camera3D(const Vector3 &position, Vector3 target, Vector3 up, float fovy, float projection):
+RAY::Camera::Camera3D::Camera3D(const Vector3 &position, const Vector3 &target, const Vector3 &up, float fovy, Projection projection):
     _camera({position, target, up, fovy, projection})
 {
 }

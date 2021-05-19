@@ -33,7 +33,7 @@ bool RAY::Controller::GamePad::isUp(RAY::Controller::GamePad::Button button)
     return IsGamepadButtonUp(this->_id, button);
 }
 
-bool RAY::Controller::GamePad::isAvailable(RAY::Controller::GamePad::Button button)
+bool RAY::Controller::GamePad::isAvailable()
 {
     return IsGamepadAvailable(this->_id);
 }

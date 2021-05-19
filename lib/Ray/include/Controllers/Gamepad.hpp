@@ -49,7 +49,7 @@ namespace RAY::Controller {
             bool isUp(Button);
 
             //! @brief Returns true if controller is available
-            bool isAvailable(Button);
+            bool isAvailable();
 
             //! @brief Sets gamepad's id
             void setID(int id);

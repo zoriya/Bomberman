@@ -37,9 +37,11 @@ bool RAY::Model::load(const Mesh &mesh)
 bool RAY::Model::unload()
 {
     UnloadModel(_model);
+    return true;
 }
 
 bool RAY::Model::unloadKeepMeshes()
 {
     UnloadModelKeepMeshes(_model);
+    return true;
 }

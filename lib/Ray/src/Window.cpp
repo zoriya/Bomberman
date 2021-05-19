@@ -6,12 +6,12 @@
 */
 
 #include "Window.hpp"
-#include "Mouse.hpp"
+#include "Controllers/Mouse.hpp"
 
 RAY::Window::Window(int width, int height, const std::string title, bool openNow):
-    _isOpen(openNow), _dimensions({width, height}), _title(title)
+    _dimensions({(float)width, (float)height}), _title(title), _isOpen(openNow)
 {
-    if (this->_isOpen)
+    if (openNow)
         this->open();
 }
 
@@ -65,7 +65,7 @@ bool RAY::Window::cursorIsVisible(void) const
 
 Vector2 RAY::Window::getCursorPosition(void) const
 {
-    return RAY::Mouse::getCursorPosition();
+    return RAY::Controller::Mouse::getCursorPosition();
 }
 
 void RAY::Window::setFPS(unsigned int fps)
@@ -113,7 +113,7 @@ void RAY::Window::setTitle(const std::string &title)
     this->_title = title;
 }
 
-void RAY::Window::draw(Drawables::IDrawable &drawable)
+void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
 {
     drawable.drawOn(*this);
 }

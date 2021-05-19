@@ -30,4 +30,5 @@ bool RAY::Font::load(const std::string &filename)
 bool RAY::Font::unload()
 {
     UnloadFont(this->_font);
+    return true;
 }
