@@ -44,7 +44,7 @@ namespace RAY::Drawables::Drawables3D {
             Circle &setRadius(const Vector3 &pos) const;
 
             //! @brief Draw circle on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief Radius of the circle 

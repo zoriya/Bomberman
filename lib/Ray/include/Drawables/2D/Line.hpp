@@ -51,7 +51,7 @@ namespace RAY::Drawables::Drawables2D {
             Line &setRotation(int);
 
             //! @brief Draw line on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
         private:
             //! @brief Length of the line 
             int _length;

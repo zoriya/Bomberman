@@ -46,7 +46,7 @@ namespace RAY::Drawables::Drawables3D {
             Ray &setDirection(const Vector3 &dimensions);
 
             //! @brief Draw ray on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief start position

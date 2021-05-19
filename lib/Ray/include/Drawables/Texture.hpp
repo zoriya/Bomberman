@@ -26,7 +26,7 @@ namespace RAY
             Texture(const Image &image);
 
             //! @brief A default copy constructor
-            Texture(const Texture &);
+            Texture(const Texture &) = default;
 
             //! @brief A default constructor, no ressources loaded
             Texture();
@@ -53,7 +53,7 @@ namespace RAY
         protected:
         private:
             //! @brief Texture, really, that's just it...
-            ::Texture _image;
+            ::Texture _texture;
     };   
 }
 

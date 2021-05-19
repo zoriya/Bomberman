@@ -36,7 +36,7 @@ namespace RAY::Drawables::Drawables2D {
             ~Point() = default;
 
             //! @brief Draw point on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
     };
 };
 

@@ -12,6 +12,7 @@
 #include <string>
 #include "Canvas.hpp"
 #include "IRessource.hpp"
+#include "Drawables/IDrawable.hpp"
 
 namespace RAY
 {
@@ -22,7 +23,7 @@ namespace RAY
             Image(const std::string &filename);
 
             //! @brief A default copy constructor
-            Image(const Image &);
+            Image(const Image &) = default;
 
             //! @brief A default constructor, no ressources loaded
             Image();
@@ -48,7 +49,7 @@ namespace RAY
             const ::Image &getImage(void) const;
 
             //! @brief draw drawable
-            void draw(const Drawables::IDrawable &);
+            void draw(Drawables::IDrawable &);
 
         protected:
         private:

@@ -43,7 +43,7 @@ namespace RAY::Drawables::Drawables3D {
             Plane &setDimensions(const Vector3 &dimensions);
 
             //! @brief Draw plane on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
         private:
             //! @brief plane position
             Vector3 _position;

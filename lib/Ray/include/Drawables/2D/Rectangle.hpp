@@ -48,7 +48,7 @@ namespace RAY::Drawables::Drawables2D {
             Rectangle &setDimensions(int x, int y);
 
             //! @brief Draw rectangle on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief Diemnsions of the rectangle 

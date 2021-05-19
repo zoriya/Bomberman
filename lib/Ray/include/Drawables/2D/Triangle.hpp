@@ -52,7 +52,7 @@ namespace RAY::Drawables::Drawables2D {
             Triangle &setPositionC(Vector2);
 
             //! @brief Draw triangle on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief Position of A

@@ -8,14 +8,14 @@
 #include "Drawables/ADrawable2D.hpp"
 
 RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(const Vector2 &position, const RAY::Color &color):
-    _color(color), _position(position)
+    _position(position), _color(color)
 {
 
 }
 
 
 RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(int x, int y, const RAY::Color &color):
-    _color(color), _position({(float)x, (float)y})
+    _position({(float)x, (float)y}), _color(color)
 {
 
 }

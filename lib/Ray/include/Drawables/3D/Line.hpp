@@ -46,7 +46,7 @@ namespace RAY::Drawables::Drawables3D {
             Line &setEndPosition(const Vector3 &endPosition);
 
             //! @brief Draw line on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief start position

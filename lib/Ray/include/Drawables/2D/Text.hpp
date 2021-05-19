@@ -55,7 +55,7 @@ namespace RAY::Drawables::Drawables2D {
             Text &setFontSize(int size);
 
             //! @brief Draw text on window
-            void drawOn(Window &);
+            void drawOn(Canvas &);
 
         private:
             //! @brief Text, just text

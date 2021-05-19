@@ -68,6 +68,8 @@ set(SRC
     src/Controllers/Mouse.cpp
     src/Drawables/ADrawable2D.cpp
     src/Drawables/ADrawable3D.cpp
+    src/Drawables/Image.cpp
+    src/Drawables/Texture.cpp
 )
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})

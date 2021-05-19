@@ -10,13 +10,13 @@
 
 namespace RAY
 {
-    class Window;
+    class Canvas;
     namespace Drawables {
         class IDrawable {
             public:
                 virtual ~IDrawable() = 0;
 
-                virtual void drawOn(RAY::Window &) = 0;
+                virtual void drawOn(RAY::Canvas &) = 0;
 
             protected:
             private:
