@@ -11,6 +11,9 @@
 #include "Drawables/IDrawable.hpp"
 
 namespace RAY {
+    namespace Drawables {
+        class IDrawable;
+    }
     class Canvas {
         public:
             //! @brief A default destructor

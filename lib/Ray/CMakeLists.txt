@@ -55,10 +55,6 @@ set(HEADERS
 )
 
 set(SRC
-    src/Color.cpp
-    src/Font.cpp
-    src/Model.cpp
-    src/Window.cpp
     src/Audio/Music.cpp
     src/Audio/Sound.cpp
     src/Camera/Camera2D.cpp
@@ -66,10 +62,20 @@ set(SRC
     src/Controllers/Gamepad.cpp
     src/Controllers/Keyboard.cpp
     src/Controllers/Mouse.cpp
+    src/Drawables/2D/Circle.cpp
+    src/Drawables/2D/Line.cpp
+    src/Drawables/2D/Point.cpp
+    src/Drawables/2D/Rectangle.cpp
+    src/Drawables/2D/Text.cpp
     src/Drawables/ADrawable2D.cpp
     src/Drawables/ADrawable3D.cpp
     src/Drawables/Image.cpp
     src/Drawables/Texture.cpp
+    src/Drawables/Triangle.cpp
+    src/Color.cpp
+    src/Font.cpp
+    src/Model.cpp
+    src/Window.cpp
 )
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})

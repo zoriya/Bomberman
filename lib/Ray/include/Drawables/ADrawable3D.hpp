@@ -27,7 +27,10 @@ namespace RAY::Drawables::Drawables3D {
             virtual ~ADrawable3D() = default;
 
             //! @brief Draw drawble on window
-            virtual void drawOn(Canvas &) = 0;
+            virtual void drawOn(RAY::Window &window) = 0;
+
+            //! @brief Draw drawble on image
+            virtual void drawOn(RAY::Image &image) = 0;
 
 
             //! @return the color of the ADrawable
@@ -36,7 +39,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief set color
             ADrawable3D &setColor(const RAY::Color &color);
 
-        private:
+        protected:
             //! @brief Color of the ADrawable
             Color _color;
 

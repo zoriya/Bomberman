@@ -11,6 +11,8 @@
 #include "Drawables/ADrawable2D.hpp"
 #include <string>
 
+#define DEFAULT_LETTER_SPACING 1
+
 namespace RAY::Drawables::Drawables2D {
     class Text: public ADrawable2D
 	{
@@ -20,7 +22,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param fontSize size of the text
             //! @param position position of top-left point 
             //! @param Color Color of the text  
-            Text(const std::string &content, int fontSize, Vector2 position, Color);
+            Text(const std::string &content, int fontSize, Vector2 position, const Color &color);
             
             //! @brief Text constructor
             //! @param content text
@@ -28,7 +30,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param x x-position of top-left point  
             //! @param y y-position of top-left point 
             //! @param Color Color of the text  
-            Text(const std::string &content, int fontSize, int x, int y, Color);
+            Text(const std::string &content, int fontSize, int x, int y, const Color &color);
             
             //! @brief A default copy constructor
             Text(const Text &) = default;
@@ -45,17 +47,25 @@ namespace RAY::Drawables::Drawables2D {
             //! @return the font size
             int getFontSize(void);
 
+            //! @return the letter spacing
+            int getLetterSpacing(void);
+
             //! @return set font
             Text &setFont(const Font &font);
 
             //! @brief set text content
             Text &setText(const std::string &text);
 
+            //! @brief set text spacing
+            Text &setLetterSpacing(int spacing);
+
             //! @brief set font size
             Text &setFontSize(int size);
 
-            //! @brief Draw text on window
-            void drawOn(Canvas &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Text, just text
@@ -66,6 +76,9 @@ namespace RAY::Drawables::Drawables2D {
 
             //! @brief font size of the text
             int _size;
+
+            //! @brief spacing of chars
+            int _spacing;            
     };
 };
 

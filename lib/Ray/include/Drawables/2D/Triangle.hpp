@@ -21,7 +21,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param positionB position of B point 
             //! @param positionC position of C point  
             //! @param Color Color of the circle  
-            Triangle(const Vector2 &positionA, Vector2 positionB, Vector2 positionC,int length, Color);
+            Triangle(const Vector2 &positionA, Vector2 positionB, Vector2 positionC,int length, const Color &color);
 
 
             //! @brief A default copy constructor
@@ -34,29 +34,29 @@ namespace RAY::Drawables::Drawables2D {
             ~Triangle() = default;
 
             //! @return the position of A of the Triangle
-            Vector2 getPositionA(void) const;
+            const Vector2 &getPositionA(void) const;
 
             //! @return the position of B of the Triangle
-            Vector2 getPositionB(void) const;
+            const Vector2 &getPositionB(void) const;
 
             //! @return the position of C of the Triangle
-            Vector2 getPositionC(void) const;
+            const Vector2 &getPositionC(void) const;
 
             //! @brief the position of A of the Triangle
-            Triangle &setPositionA(Vector2);
+            Triangle &setPositionA(const Vector2 &);
 
             //! @brief the position of B of the Triangle
-            Triangle &setPositionB(Vector2);
+            Triangle &setPositionB(const Vector2 &);
 
             //! @brief the position of C of the Triangle
-            Triangle &setPositionC(Vector2);
+            Triangle &setPositionC(const Vector2 &);
 
-            //! @brief Draw triangle on window
-            void drawOn(Canvas &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
         private:
-            //! @brief Position of A
-            Vector2 _posA;
             //! @brief Position of B
             Vector2 _posB;
             //! @brief Position of C

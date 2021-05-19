@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param position position of top-left point  
             //! @param dimensions dimensions of the rectangle 
             //! @param Color Color of the rectangle  
-            Rectangle(const Vector2 &position, Vector2 dimensions, Color);
+            Rectangle(const Vector2 &position, Vector2 dimensions, const Color &color);
 
             //! @brief Rectangle constructor
             //! @param x x-position of top-left point  
@@ -27,7 +27,7 @@ namespace RAY::Drawables::Drawables2D {
             //! @param width width of the rectangle 
             //! @param length length of the rectangle 
             //! @param Color Color of the rectangle  
-            Rectangle(int x, int y, int width, int height, Color);
+            Rectangle(int x, int y, int width, int height, const Color &color);
             
             //! @brief A default copy constructor
             Rectangle(const Rectangle &) = default;
@@ -42,13 +42,15 @@ namespace RAY::Drawables::Drawables2D {
             const Vector2 &getDimensions(void);
 
             //! @brief set dimensions
-            Rectangle &setDimensions(const Vector2 &position);
+            Rectangle &setDimensions(const Vector2 &dimensions);
 
             //! @brief set dimensions
             Rectangle &setDimensions(int x, int y);
 
-            //! @brief Draw rectangle on window
-            void drawOn(Canvas &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Diemnsions of the rectangle 

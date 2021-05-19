@@ -16,20 +16,21 @@
 
 namespace RAY
 {
-    class Image: public Canvas, IRessource {
+    class IRessource;
+    class Image: public Canvas, public IRessource {
         public:
             //! @brief Create an image, loading a file
             //! @param filename: path to file to load
             Image(const std::string &filename);
 
             //! @brief A default copy constructor
-            Image(const Image &) = default;
+            Image(const Image &image) = default;
 
             //! @brief A default constructor, no ressources loaded
             Image();
 
             //! @brief An image is assignable
-            Image &operator=(const Image &) = default;
+            Image &operator=(const Image &image) = default;
             
             //! @brief Image destructor, will unload ressources
             ~Image();
@@ -46,12 +47,11 @@ namespace RAY
             bool unload();
 
             //! @brief get image
-            const ::Image &getImage(void) const;
+            ::Image &getImage(void);
 
             //! @brief draw drawable
             void draw(Drawables::IDrawable &);
 
-        protected:
         private:
             //! @brief Image, really, that's just it...
             ::Image _image;

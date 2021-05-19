@@ -18,13 +18,13 @@ namespace RAY::Drawables::Drawables2D {
             //! @brief Point constructor
             //! @param position position of point  
             //! @param Color Color of the circle
-            Point(const Vector2 &position, Color);
+            Point(const Vector2 &position, const Color &);
 
             //! @brief Point constructor
             //! @param x x-position of point  
             //! @param y y-position of point 
             //! @param Color Color of the circle  
-            Point(int x, int y, Color);
+            Point(int x, int y, const Color &);
 
             //! @brief A default copy constructor
             Point(const Point &) = default;
@@ -36,7 +36,10 @@ namespace RAY::Drawables::Drawables2D {
             ~Point() = default;
 
             //! @brief Draw point on window
-            void drawOn(Canvas &);
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
+
     };
 };
 

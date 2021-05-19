@@ -43,8 +43,10 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief set pos of center 
             Circle &setRadius(const Vector3 &pos) const;
 
-            //! @brief Draw circle on window
-            void drawOn(Canvas &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Radius of the circle 

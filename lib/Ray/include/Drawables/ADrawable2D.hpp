@@ -12,7 +12,6 @@
 #include <Vector.hpp>
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
-#include "Canvas.hpp"
 
 namespace RAY::Drawables::Drawables2D {
     class ADrawable2D: public IDrawable
@@ -50,9 +49,12 @@ namespace RAY::Drawables::Drawables2D {
             ADrawable2D &setColor(const Color &color);
 
             //! @brief Draw drawble on window
-            virtual void drawOn(RAY::Canvas &) = 0;
+            virtual void drawOn(RAY::Window &window) = 0;
 
-        private:
+            //! @brief Draw drawble on image
+            virtual void drawOn(RAY::Image &image) = 0;
+
+        protected:
             //! @brief Top-left position 
             Vector2 _position;
             //! @brief Color of the ADrawable

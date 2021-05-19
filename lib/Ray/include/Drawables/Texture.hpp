@@ -45,7 +45,7 @@ namespace RAY
             bool unload();
 
             //! @brief get image
-            Image toImage(void) const;
+            ::Image toImage(void) const;
 
             //! @return libray Texture struct
             const ::Texture &getTexture(void) const;

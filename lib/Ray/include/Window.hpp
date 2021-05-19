@@ -25,10 +25,10 @@ namespace RAY {
             Window(int width, int height, const std::string title, bool openNow = false);
 
             //! @brief A default copy constructor
-            Window(const Window &) = default;
+            Window(const Window &window) = default;
 
             //! @brief A window is assignable
-            Window &operator=(const Window &) = default;
+            Window &operator=(const Window &window) = default;
             
             //! @brief Closes window if still open
             ~Window() = default;
