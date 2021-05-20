@@ -6,16 +6,16 @@
 
 namespace WAL
 {
-	SceneManager &WAL::SceneManager::addScene(WAL::Scene &&scene)
+	Scene &WAL::SceneManager::addScene(WAL::Scene &&scene)
 	{
 		this->_scenes.push_front(scene);
-		return *this;
+		return this->getCurrent();
 	}
 
-	SceneManager &SceneManager::addBackScene(Scene &&scene)
+	Scene &SceneManager::addBackScene(Scene &&scene)
 	{
 		this->_scenes.insert(++this->_scenes.begin(), scene);
-		return *this;
+		return *(this->_scenes.begin() + 1);
 	}
 
 	Scene &SceneManager::getCurrent()
@@ -25,9 +25,8 @@ namespace WAL
 		return this->_scenes.front();
 	}
 
-	SceneManager &SceneManager::closeCurrent()
+	void SceneManager::closeCurrent()
 	{
 		this->_scenes.pop_front();
-		return *this;
 	}
 }
