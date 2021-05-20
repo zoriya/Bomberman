@@ -29,9 +29,5 @@ jobs:
           cmake --build .
       - name: CheckBinaryName
         shell: bash
-        run: |
-          if [[ "${{runner.os}}" == "Windows" ]]; then
-            test -f build\bomberman.sln
-          else
-            test -f build/bomberman
-          fi
+        if: matrix.name == 'Linux'
+        run: test -f build/bomberman
