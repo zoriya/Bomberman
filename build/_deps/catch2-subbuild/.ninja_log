@@ -1,0 +1,11 @@
+# ninja log v5
+0	171	1621533723644290815	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-mkdir	b00f8597748707df
+171	7330	1621533730807265743	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-download	c2c634299caff113
+7330	7362	0	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-update	e791281e5c3e75d1
+7362	7396	1621533730873265512	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-patch	fdbfc702103cf26
+7396	7431	1621533730908265390	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-configure	f9fdbc688168dcf0
+7431	7467	1621533730943265267	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-build	a678230b059fe58d
+7467	7526	1621533731002265061	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-install	e8b523e2c7791660
+7526	7590	1621533731064264844	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-test	82cdec3276628afe
+7590	7672	1621533731148264549	CMakeFiles/catch2-populate-complete	8362c0c759a2e960
+7590	7672	1621533731148264549	catch2-populate-prefix/src/catch2-populate-stamp/catch2-populate-done	8362c0c759a2e960
