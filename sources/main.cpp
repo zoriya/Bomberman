@@ -5,6 +5,8 @@ int main()
 {
 	WAL::Wal wal;
 
+	auto sceneManager = wal.getSceneManager();
+	//sceneManager.addScene(createGameScene);
 	try {
 		wal.run();
 		return 0;
