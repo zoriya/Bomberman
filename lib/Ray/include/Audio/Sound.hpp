@@ -15,7 +15,7 @@
 
 namespace RAY::Audio
 {
-    class Sound {
+    class Sound: public IAudio {
         public:
 
             //! @brief Load Sound stream from file
