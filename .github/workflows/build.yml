@@ -28,6 +28,7 @@ jobs:
           cmake ..
           cmake --build .
       - name: CheckBinaryName
+        shell: bash
         run: |
           if [[ "${{runner.os}}" == "Windows" ]]; then
             test -f bomberman.exe
