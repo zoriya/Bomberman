@@ -30,14 +30,15 @@ namespace BBM
 
 	void HealthComponent::takeDmg(unsigned int damage)
 	{
-		if (damage >= this->_healthPoint)
+		if (damage >= this->_healthPoint) {
+			this->_healthPoint = 0;
 			this->die();
-		else
+		} else
 			this->_healthPoint -= damage;
 	}
 
 	void HealthComponent::die(void)
 	{
-		this->setDisable(true);
+		this->_entity.setDisable(true)
 	}
 }
