@@ -30,7 +30,7 @@ jobs:
       - name: CheckBinaryName
         run: |
           cd ..
-          if [[ "${{runner.os}}" == "Windows" ]] then
+          if [[ "${{runner.os}}" == "Windows" ]]; then
             test -f bomberman.exe
           else
             test -f bomberman
