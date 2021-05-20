@@ -19,10 +19,9 @@ jobs:
         with:
           submodules: true
       - name: Install Xorg lib
+        if: matrix.name == 'Linux'
         run: |
-          if [[ "${{runner.os}}" == "Linux" ]]; then
             sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
-          fi
       - name: Build
         run: |
           mkdir build && cd build
