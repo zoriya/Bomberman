@@ -6,13 +6,14 @@ jobs:
     name: "Build on ${{ matrix.name }}"
     runs-on: ${{ matrix.os }}
     strategy:
-      include:
-        - os: ubuntu-latest
-          runtime: linux-x64
-          name: Linux
-        - os: windows-latest
-          runtime: win-x64
-          name: Windows
+      matrix:
+        include:
+          - os: ubuntu-latest
+            runtime: linux-x64
+            name: Linux
+          - os: windows-latest
+            runtime: win-x64
+            name: Windows
     steps:
       - uses: actions/checkout@v1
         with:
