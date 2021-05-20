@@ -40,7 +40,7 @@ namespace RAY::Audio
             bool unload(void);
 
             //! @brief Check if Music is playing
-            bool isPlayin(void);
+            bool isPlaying(void);
 
             //! @brief  Start Music
             Music &play(void);

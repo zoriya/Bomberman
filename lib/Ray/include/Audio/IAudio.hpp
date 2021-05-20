@@ -24,7 +24,7 @@ namespace RAY::Audio
             bool unload(void);
 
             //! @brief Check if audio is playing
-            bool isPlayin(void);
+            bool isPlaying(void);
 
             //! @brief  Start audio
             IAudio &play(void);

@@ -33,7 +33,7 @@ bool RAY::Audio::Music::unload(void)
     return true;
 }
 
-bool RAY::Audio::Music::isPlayin(void)
+bool RAY::Audio::Music::isPlaying(void)
 {
     return IsMusicPlaying(_music);
 }
