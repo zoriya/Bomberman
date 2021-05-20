@@ -39,6 +39,6 @@ namespace BBM
 
 	void HealthComponent::die(void)
 	{
-		this->_entity.setDisable(true)
+		this->_entity.setDisable(true);
 	}
 }

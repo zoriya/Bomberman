@@ -25,7 +25,7 @@ namespace BBM
 			//! @brief reduce health
 			void takeDmg(unsigned int damage);
 
-			//! @brief health to 0
+			//! @brief disable the entity
 			void die(void);
 
 			//! @inherit
@@ -45,7 +45,5 @@ namespace BBM
 
 			//! @brief A component can't be assigned
 			HealthComponent &operator=(const HealthComponent &) = delete;
-
-			friend class HealthSystem;
 	};
 }
