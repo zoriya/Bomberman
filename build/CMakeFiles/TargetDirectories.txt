@@ -1,9 +1,0 @@
-/home/arthur/Desktop/B4/YEP/Bomberman/build/CMakeFiles/rebuild_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/CMakeFiles/edit_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/CMakeFiles/bomberman.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/lib/wal/CMakeFiles/rebuild_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/lib/wal/CMakeFiles/edit_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/lib/wal/CMakeFiles/wal_tests.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/lib/wal/CMakeFiles/wal.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/_deps/catch2-build/CMakeFiles/edit_cache.dir
-/home/arthur/Desktop/B4/YEP/Bomberman/build/_deps/catch2-build/CMakeFiles/rebuild_cache.dir
