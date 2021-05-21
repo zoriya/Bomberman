@@ -7,9 +7,9 @@
 
 #include "Audio/Music.hpp"
 
-RAY::Audio::Music::Music(const std::string &path)
+RAY::Audio::Music::Music(const std::string &path):
+    _music(LoadMusicStream(path.c_str()))
 {
-    this->load(path);
 }
 
 RAY::Audio::Music::Music()

@@ -7,9 +7,10 @@
 
 #include "Audio/Sound.hpp"
 
-RAY::Audio::Sound::Sound(const std::string &path)
+RAY::Audio::Sound::Sound(const std::string &path):
+    _sound(LoadSound(path.c_str()))
 {
-    this->load(path);
+
 }
 
 RAY::Audio::Sound::Sound()
