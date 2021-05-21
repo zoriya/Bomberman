@@ -87,5 +87,6 @@ set(SRC
     sources/Window.cpp
 )
 
+find_package(raylib REQUIRED)
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
 target_link_libraries(${LIB_NAME} raylib)
