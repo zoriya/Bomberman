@@ -3,12 +3,12 @@ project(Bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/raylib)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
 add_executable(bomberman
 	sources/main.cpp
 )
 
-find_package(raylib REQUIRED)
-target_link_libraries(bomberman wal raylib)
+target_link_libraries(bomberman wal ray)
