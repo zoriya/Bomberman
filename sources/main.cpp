@@ -24,7 +24,7 @@ int main()
 	const int screenHeight = 450;
 
 	RAY::Vector2 ballPosition = { (float)screenWidth/2, (float)screenHeight/2 };
-	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip");
+	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip", FLAG_WINDOW_RESIZABLE);
     RAY::Camera::Camera3D camera((RAY::Vector3){ 30.0f, 20.0f, 30.0f }, (RAY::Vector3){ 0.0f, 0.0f, 0.0f },
 	(RAY::Vector3){ 0.0f, 1.0f, 0.0f }, 70.0, CAMERA_PERSPECTIVE);
 	RAY::Drawables::Drawables3D::Grid grid(10, 5.0f);

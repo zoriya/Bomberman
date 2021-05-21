@@ -6,17 +6,22 @@
 */
 
 #include "Window.hpp"
+
+#include <utility>
 #include "Controllers/Mouse.hpp"
 
-RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, bool openNow)
+RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, unsigned flags, bool openNow)
 {
-    static RAY::Window window(width, height, title, openNow);
+    static RAY::Window window(width, height, title, flags, openNow);
 
     return window;
 }
 
-RAY::Window::Window(int width, int height, const std::string &title, bool openNow):
-    _dimensions({(float)width, (float)height}), _title(title), _isOpen(openNow)
+RAY::Window::Window(int width, int height, std::string title, unsigned flags, bool openNow):
+    _dimensions({(float)width, (float)height}),
+    _title(std::move(title)),
+    _isOpen(openNow),
+    _flags(flags)
 {
     if (openNow)
         this->open();
@@ -24,6 +29,9 @@ RAY::Window::Window(int width, int height, const std::string &title, bool openNo
 
 bool RAY::Window::open(void)
 {
+	if (this->_flags) {
+		SetConfigFlags(this->_flags);
+	}
     InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
     this->_isOpen = true;
     return true;
@@ -133,4 +141,9 @@ void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, con
 void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix &transform)
 {
     DrawMesh(mesh, material, transform);
+}
+
+void RAY::Window::setIcon(const RAY::Image &img)
+{
+	SetWindowIcon(img.getImage());
 }

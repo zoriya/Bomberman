@@ -23,7 +23,7 @@ namespace RAY {
     class Window: public Canvas {
         public:
             //! @return A widow insta,ce. Only one window can be open at a time
-            static Window &getInstance(int width, int height, const std::string &title, bool openNow = true);
+            static Window &getInstance(int width, int height, const std::string &title, unsigned flags = 0, bool openNow = true);
             
             //! @brief A default copy constructor
             Window(const Window &window) = delete;
@@ -59,6 +59,9 @@ namespace RAY {
 
             //! @brief Check if cursor is not visible
             bool cursorIsVisible(void) const;
+
+            //! @brief set the window icon
+            void setIcon(const Image &img);
 
             //! @brief Get the cursor position
             Vector2 getCursorPosition() const;
@@ -109,7 +112,7 @@ namespace RAY {
 
         private:
             //! @brief Creates window, and opens it if openNow is set to true
-            Window(int width, int height, const std::string &title, bool openNow = true);
+            Window(int width, int height, std::string title, unsigned flags = 0, bool openNow = true);
             //! @brief Dimension of window
             RAY::Vector2 _dimensions;
 
@@ -118,6 +121,9 @@ namespace RAY {
 
             //! @brief has the window been open?
             bool _isOpen;
+
+            //! @brief flags for the window (ex: FLAG_WINDOW_RESIZABLE)
+            unsigned int _flags;
     };
 }
 

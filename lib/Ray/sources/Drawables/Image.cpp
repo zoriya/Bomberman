@@ -40,7 +40,7 @@ bool RAY::Image::unload()
     return true;
 }
 
-::Image &RAY::Image::getImage(void)
+const ::Image &RAY::Image::getImage(void) const
 {
     return _image;
 }
