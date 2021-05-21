@@ -8,71 +8,71 @@
 #include "Camera/Camera3D.hpp"
 
 RAY::Camera::Camera3D::Camera3D(const Vector3 &position, const Vector3 &target, const Vector3 &up, float fovy, Projection projection):
-    _camera({position, target, up, fovy, projection})
+	_camera({position, target, up, fovy, projection})
 {
 }
 
 void RAY::Camera::Camera3D::setPosition(const Vector3 &Position)
 {
-    this->_camera.position = Position;
+	this->_camera.position = Position;
 }
 
 void RAY::Camera::Camera3D::setTarget(const Vector3 &target)
 {
-    this->_camera.target = target;
+	this->_camera.target = target;
 }
 
 void RAY::Camera::Camera3D::setUp(const Vector3 &up)
 {
-    this->_camera.up = up;
+	this->_camera.up = up;
 }
 
 void RAY::Camera::Camera3D::setFovy(float fovy)
 {
-    this->_camera.fovy = fovy;
+	this->_camera.fovy = fovy;
 }
 
 void RAY::Camera::Camera3D::setProjection(Projection projection)
 {
-    this->_camera.projection = projection;
+	this->_camera.projection = projection;
 }
 
 const Vector3 &RAY::Camera::Camera3D::getPosition(void) const
 {
-    return this->_camera.position;
+	return this->_camera.position;
 }
 
 const Vector3 &RAY::Camera::Camera3D::getTarget(void) const
 {
-    return this->_camera.target;
+	return this->_camera.target;
 }
 
 const Vector3 &RAY::Camera::Camera3D::getUp(void) const
 {
-    return this->_camera.up;
+	return this->_camera.up;
 }
 
 float RAY::Camera::Camera3D::getFovy(void) const
 {
-    return this->_camera.fovy;
+	return this->_camera.fovy;
 }
 
 RAY::Camera::Projection RAY::Camera::Camera3D::getProjection(void) const
 {
-    return (RAY::Camera::Projection)this->_camera.projection;
+	return (RAY::Camera::Projection)this->_camera.projection;
 }
 
 Matrix RAY::Camera::Camera3D::getMatrix(void) const
 {
-    return GetCameraMatrix(this->_camera);
+	return GetCameraMatrix(this->_camera);
 }
 
 void RAY::Camera::Camera3D::setMode(Mode mode)
 {
-    this->_mode = mode;
+	this->_mode = mode;
 }
 
 const ::Camera3D &RAY::Camera::Camera3D::getCamera(void) const
 {
-    return this->_camera;
+	return this->_camera;
 }

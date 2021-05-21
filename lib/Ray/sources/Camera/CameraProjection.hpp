@@ -12,7 +12,7 @@
 
 namespace RAY::Camera {
 
-    typedef ::CameraProjection Projection;
+	typedef ::CameraProjection Projection;
 
 }
 

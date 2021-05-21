@@ -15,54 +15,54 @@
 
 namespace RAY::Audio
 {
-    class Music: public IAudio {
-        public:
+	class Music: public IAudio {
+		public:
 
-            //! @brief Load Music stream from file
-            Music(const std::string &path);
+			//! @brief Load Music stream from file
+			Music(const std::string &path);
 
-            //! @brief Default constructor
-            Music();
+			//! @brief Default constructor
+			Music();
 
-            //! @brief Default destructor
-            ~Music();
+			//! @brief Default destructor
+			~Music();
 
-            //! @brief A copy constructor constructor
-            Music(const Music &Music) = default;
+			//! @brief A copy constructor constructor
+			Music(const Music &Music) = default;
 
-            //! @brief A Music is assignable
-            Music &operator=(const Music &Music) = default;
+			//! @brief A Music is assignable
+			Music &operator=(const Music &Music) = default;
 
-            //! @brief Load Music stream from file
-            bool load(const std::string &path) override;
+			//! @brief Load Music stream from file
+			bool load(const std::string &path) override;
 
-            //! @brief Unload Music stream
-            bool unload(void) override;
+			//! @brief Unload Music stream
+			bool unload(void) override;
 
-            //! @brief Check if Music is playing
-            bool isPlaying(void) override;
+			//! @brief Check if Music is playing
+			bool isPlaying(void) override;
 
-            //! @brief  Start Music
-            Music &play(void) override;
+			//! @brief  Start Music
+			Music &play(void) override;
 
-            //! @brief Stop Music playing
-            Music &stop(void) override;
+			//! @brief Stop Music playing
+			Music &stop(void) override;
 
-            //! @brief Pause Music playing
-            Music &pause(void) override;
+			//! @brief Pause Music playing
+			Music &pause(void) override;
 
-            //! @brief Resume playing paused Music
-            Music &resume(void) override;
+			//! @brief Resume playing paused Music
+			Music &resume(void) override;
 
-            //! @brief Set volume for Music (1.0 is max level)
-            Music &setVolume(float volume) override;
+			//! @brief Set volume for Music (1.0 is max level)
+			Music &setVolume(float volume) override;
 
-            // Set pitch for a Music (1.0 is base level)
-            Music &setPitch(float pitch) override;
+			// Set pitch for a Music (1.0 is base level)
+			Music &setPitch(float pitch) override;
 
-        private:
-            ::Music _music;
-    };
+		private:
+			::Music _music;
+	};
 }
 
 #endif /* !Music_HPP_ */

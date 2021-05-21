@@ -11,7 +11,7 @@
 #include <raylib.h>
 
 namespace RAY::Camera {
-    typedef ::CameraMode Mode;
+	typedef ::CameraMode Mode;
 }
 
 #endif /* !CAMERAPROJECTION_HPP_ */

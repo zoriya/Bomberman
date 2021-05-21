@@ -13,18 +13,18 @@
 
 namespace RAY
 {
-    class Window;
-    class Image;
-    namespace Drawables {
-        class IDrawable {
-            public:
-                virtual ~IDrawable() = default;
+	class Window;
+	class Image;
+	namespace Drawables {
+		class IDrawable {
+			public:
+				virtual ~IDrawable() = default;
 
-                virtual void drawOn(RAY::Window &window) = 0;
-            protected:
-            private:
-        };
-    }
+				virtual void drawOn(RAY::Window &) = 0;
+			protected:
+			private:
+		};
+	}
 }
 
 

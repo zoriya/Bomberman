@@ -12,36 +12,36 @@
 #include "Drawables/ADrawable3D.hpp"
 
 namespace RAY::Drawables::Drawables3D {
-    class Point: public ADrawable3D
+	class Point: public ADrawable3D
 	{
-        public:
-            //! @brief Point constructor
-            //! @param position position of point 
-            //! @param Color Color of the point
-            Point(const Vector3 &position, const Color &color);
+		public:
+			//! @brief Point constructor
+			//! @param position position of point 
+			//! @param Color Color of the point
+			Point(const Vector3 &position, const Color &color);
 
-            //! @brief A default copy constructor
-            Point(const Point &) = default;
+			//! @brief A default copy constructor
+			Point(const Point &) = default;
 
-            //! @brief A point is assignable
-            Point &operator=(const Point &) = default;
+			//! @brief A point is assignable
+			Point &operator=(const Point &) = default;
 
-            //! @brief A default destructor
-            ~Point() = default;
+			//! @brief A default destructor
+			~Point() = default;
 
-            //! @return the position of the point
-            const Vector3 &getPosition(void) const;
+			//! @return the position of the point
+			const Vector3 &getPosition(void) const;
 
-            //! @brief Set position
-            Point &setPosition(const Vector3 &Position);
+			//! @brief Set position
+			Point &setPosition(const Vector3 &Position);
 
-            //! @brief Draw point on window
-            void drawOn(RAY::Window &window) override;
+			//! @brief Draw point on window
+			void drawOn(RAY::Window &) override;
 
-        private:
-            //! @brief point position
-            Vector3 _position;
-    };
+		private:
+			//! @brief point position
+			Vector3 _position;
+	};
 };
 
 #endif /* !PIXEL_HPP_ */

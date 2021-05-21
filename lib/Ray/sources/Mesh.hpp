@@ -11,7 +11,7 @@
 #include <raylib.h>
 
 namespace RAY {
-    //! @brief Vertex data definning a mesh
-    typedef ::Mesh Mesh;
+	//! @brief Vertex data definning a mesh
+	typedef ::Mesh Mesh;
 };
 #endif /* !Mesh_HPP_ */

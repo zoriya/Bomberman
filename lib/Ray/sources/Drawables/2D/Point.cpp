@@ -8,25 +8,24 @@
 #include "Drawables/2D/Point.hpp"
 
 RAY::Drawables::Drawables2D::Point::Point(const Vector2 &position, const Color &color):
-    ADrawable2D(position, color)
+	ADrawable2D(position, color)
 {
 
 }
 
 RAY::Drawables::Drawables2D::Point::Point(int x, int y, const Color &color):
-    ADrawable2D(x, y, color)
+	ADrawable2D(x, y, color)
 {
 
 }
 
-void RAY::Drawables::Drawables2D::Point::drawOn(RAY::Window &window)
+void RAY::Drawables::Drawables2D::Point::drawOn(RAY::Window &)
 {
-    (void)window;
-    DrawPixel(this->_position.x, this->_position.y, this->_color.getColor());
+	DrawPixel(this->_position.x, this->_position.y, this->_color.getColor());
 }
 
 void RAY::Drawables::Drawables2D::Point::drawOn(RAY::Image &image)
 {
-    ImageDrawPixel(&(image.getImage()), this->_position.x, this->_position.y, this->_color.getColor());
+	ImageDrawPixel(&(image.getImage()), this->_position.x, this->_position.y, this->_color.getColor());
 }
 

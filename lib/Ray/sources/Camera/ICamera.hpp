@@ -11,12 +11,12 @@
 #include "Matrix.hpp"
 
 namespace RAY::Camera {
-    class ICamera {
-        public:
-            virtual ~ICamera() = default;
+	class ICamera {
+		public:
+			virtual ~ICamera() = default;
 
-            virtual Matrix getMatrix() const = 0;
-    };
+			virtual Matrix getMatrix() const = 0;
+	};
 }
 
 #endif /* !ICAMERA_HPP_ */

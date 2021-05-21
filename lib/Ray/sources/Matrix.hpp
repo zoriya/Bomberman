@@ -11,7 +11,7 @@
 #include <raylib.h>
 
 namespace RAY {
-    typedef ::Matrix Matrix;
+	typedef ::Matrix Matrix;
 }
 
 #endif /* !MATRIX_HPP_ */

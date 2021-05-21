@@ -13,36 +13,36 @@
 
 namespace RAY
 {
-    class Font: public IRessource {
-        public:
-            //! @brief Create an font, loading a file
-            //! @param filename: path to file to load
-            Font(const std::string &filename);
+	class Font: public IRessource {
+		public:
+			//! @brief Create an font, loading a file
+			//! @param filename: path to file to load
+			Font(const std::string &filename);
 
-            //! @brief A default copy constructor
-            Font(const Font &) = default;
+			//! @brief A default copy constructor
+			Font(const Font &) = default;
 
-            //! @brief A default constructor, no ressources loaded
-            Font();
+			//! @brief A default constructor, no ressources loaded
+			Font();
 
-            //! @brief An image is assignable
-            Font &operator=(const Font &) = default;
-            
-            //! @brief Unload font at destruction
-            ~Font();
+			//! @brief An font is assignable
+			Font &operator=(const Font &) = default;
+			
+			//! @brief Unload font at destruction
+			~Font();
 
-            //! @brief load font from file
-            //! @param filename: path of input
-            bool load(const std::string &filename);
+			//! @brief load font from file
+			//! @param filename: path of input
+			bool load(const std::string &filename);
 
-            //! @brief unload ressources
-            bool unload();
+			//! @brief unload ressources
+			bool unload();
 
-        protected:
-        private:
-            //! @brief Font, really, that's just it...
-            ::Font _font;
-    };   
+		protected:
+		private:
+			//! @brief Font, really, that's just it...
+			::Font _font;
+	};   
 }
 
 #endif

@@ -9,20 +9,20 @@
 #define CANVAS_HPP_
 
 namespace RAY {
-    namespace Drawables {
-        class IDrawable;
-    }
-    class Canvas {
-        public:
-            //! @brief A default destructor
-            virtual ~Canvas() = default;
+	namespace Drawables {
+		class IDrawable;
+	}
+	class Canvas {
+		public:
+			//! @brief A default destructor
+			virtual ~Canvas() = default;
 
-            //! @brief draw drawable
-            virtual void draw(Drawables::IDrawable &) = 0;
+			//! @brief draw drawable
+			virtual void draw(Drawables::IDrawable &) = 0;
 
-        protected:
-        private:
-    };
+		protected:
+		private:
+	};
 }
 
 #endif /* !Canvas_HPP_ */

@@ -11,14 +11,14 @@
 #include <string>
 
 namespace RAY {
-    class IRessource {
-        public:
-            virtual ~IRessource() = default;
+	class IRessource {
+		public:
+			virtual ~IRessource() = default;
 
-            virtual bool load(const std::string &filePath) = 0;
+			virtual bool load(const std::string &filePath) = 0;
 
-            virtual bool unload() = 0;
-    };
+			virtual bool unload() = 0;
+	};
 };
 
 #endif /* !RESSOURCE_HPP_ */
