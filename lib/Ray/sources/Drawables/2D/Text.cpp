@@ -61,7 +61,7 @@ RAY::Drawables::Drawables2D::Text &RAY::Drawables::Drawables2D::Text::setLetterS
 void RAY::Drawables::Drawables2D::Text::drawOn(RAY::Window &window)
 {
     (void)window;
-    if (this->_font.recs)
+    if (!this->_font.recs)
         DrawText(this->_text.c_str(), this->_position.x, this->_position.y,
         this->_size, this->_color.getColor());
     else

@@ -19,7 +19,7 @@ int main()
 	const int screenHeight = 450;
 
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip", false);
-	RAY::Drawables::Drawables2D::Text text("Hello World", 10, {190, 200}, RED);
+	RAY::Drawables::Drawables2D::Text text("Hello World", 100, {190, 200}, RED);
 	RAY::Drawables::Drawables2D::Circle circle(400, 225, 50, RED);
 
 	window.open();
