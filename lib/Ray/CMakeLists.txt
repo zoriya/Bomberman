@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(LIB_NAME "ray")
 
 project("${LIB_NAME}")
-include_directories("./include")
+include_directories("./sources")
 
 if (CMAKE_COMPILER_IS_GNUCXX)
 	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
@@ -12,79 +12,79 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif ()
 
 set(HEADERS
-    include/Canvas.hpp
-    include/Color.hpp
-    include/Font.hpp
-    include/IRessource.hpp
-    include/Matrix.hpp
-    include/Mesh.hpp
-    include/Model.hpp
-    include/Vector.hpp
-    include/Window.hpp
-    include/Audio/IAudio.hpp
-    include/Audio/Music.hpp
-    include/Audio/Sound.hpp
-    include/Camera/Camera2D.hpp
-    include/Camera/Camera3D.hpp
-    include/Camera/CameraMode.hpp
-    include/Camera/CameraProjection.hpp
-    include/Camera/ICamera.hpp
-    include/Controllers/Gamepad.hpp
-    include/Controllers/Keyboard.hpp
-    include/Controllers/Mouse.hpp
-    include/Drawables/ADrawable2D.hpp
-    include/Drawables/ADrawable3D.hpp
-    include/Drawables/IDrawable.hpp
-    include/Drawables/Image.hpp
-    include/Drawables/Texture.hpp
-    include/Drawables/2D/Circle.hpp
-    include/Drawables/2D/Line.hpp
-    include/Drawables/2D/Point.hpp
-    include/Drawables/2D/Rectangle.hpp
-    include/Drawables/2D/Text.hpp
-    include/Drawables/2D/Triangle.hpp
-    include/Drawables/3D/Circle.hpp
-    include/Drawables/3D/Cylinder.hpp
-    include/Drawables/3D/Grid.hpp
-    include/Drawables/3D/Line.hpp
-    include/Drawables/3D/Plane.hpp
-    include/Drawables/3D/Point.hpp
-    include/Drawables/3D/Ray.hpp
-    include/Drawables/3D/Sphere.hpp
-    include/Drawables/3D/Triangle.hpp
+    sources/Canvas.hpp
+    sources/Color.hpp
+    sources/Font.hpp
+    sources/IRessource.hpp
+    sources/Matrix.hpp
+    sources/Mesh.hpp
+    sources/Model.hpp
+    sources/Vector.hpp
+    sources/Window.hpp
+    sources/Audio/IAudio.hpp
+    sources/Audio/Music.hpp
+    sources/Audio/Sound.hpp
+    sources/Camera/Camera2D.hpp
+    sources/Camera/Camera3D.hpp
+    sources/Camera/CameraMode.hpp
+    sources/Camera/CameraProjection.hpp
+    sources/Camera/ICamera.hpp
+    sources/Controllers/Gamepad.hpp
+    sources/Controllers/Keyboard.hpp
+    sources/Controllers/Mouse.hpp
+    sources/Drawables/ADrawable2D.hpp
+    sources/Drawables/ADrawable3D.hpp
+    sources/Drawables/IDrawable.hpp
+    sources/Drawables/Image.hpp
+    sources/Drawables/Texture.hpp
+    sources/Drawables/2D/Circle.hpp
+    sources/Drawables/2D/Line.hpp
+    sources/Drawables/2D/Point.hpp
+    sources/Drawables/2D/Rectangle.hpp
+    sources/Drawables/2D/Text.hpp
+    sources/Drawables/2D/Triangle.hpp
+    sources/Drawables/3D/Circle.hpp
+    sources/Drawables/3D/Cylinder.hpp
+    sources/Drawables/3D/Grid.hpp
+    sources/Drawables/3D/Line.hpp
+    sources/Drawables/3D/Plane.hpp
+    sources/Drawables/3D/Point.hpp
+    sources/Drawables/3D/Ray.hpp
+    sources/Drawables/3D/Sphere.hpp
+    sources/Drawables/3D/Triangle.hpp
 )
 
 set(SRC
-    src/Audio/Music.cpp
-    src/Audio/Sound.cpp
-    src/Camera/Camera2D.cpp
-    src/Camera/Camera3D.cpp
-    src/Controllers/Gamepad.cpp
-    src/Controllers/Keyboard.cpp
-    src/Controllers/Mouse.cpp
-    src/Drawables/2D/Circle.cpp
-    src/Drawables/2D/Line.cpp
-    src/Drawables/2D/Point.cpp
-    src/Drawables/2D/Rectangle.cpp
-    src/Drawables/2D/Text.cpp
-    src/Drawables/2D/Triangle.cpp
-    src/Drawables/3D/Circle.cpp
-    src/Drawables/3D/Cylinder.cpp
-    src/Drawables/3D/Grid.cpp
-    src/Drawables/3D/Line.cpp
-    src/Drawables/3D/Plane.cpp
-    src/Drawables/3D/Point.cpp
-    src/Drawables/3D/Ray.cpp
-    src/Drawables/3D/Sphere.cpp
-    src/Drawables/3D/Triangle.cpp
-    src/Drawables/ADrawable2D.cpp
-    src/Drawables/ADrawable3D.cpp
-    src/Drawables/Image.cpp
-    src/Drawables/Texture.cpp
-    src/Color.cpp
-    src/Font.cpp
-    src/Model.cpp
-    src/Window.cpp
+    sources/Audio/Music.cpp
+    sources/Audio/Sound.cpp
+    sources/Camera/Camera2D.cpp
+    sources/Camera/Camera3D.cpp
+    sources/Controllers/Gamepad.cpp
+    sources/Controllers/Keyboard.cpp
+    sources/Controllers/Mouse.cpp
+    sources/Drawables/2D/Circle.cpp
+    sources/Drawables/2D/Line.cpp
+    sources/Drawables/2D/Point.cpp
+    sources/Drawables/2D/Rectangle.cpp
+    sources/Drawables/2D/Text.cpp
+    sources/Drawables/2D/Triangle.cpp
+    sources/Drawables/3D/Circle.cpp
+    sources/Drawables/3D/Cylinder.cpp
+    sources/Drawables/3D/Grid.cpp
+    sources/Drawables/3D/Line.cpp
+    sources/Drawables/3D/Plane.cpp
+    sources/Drawables/3D/Point.cpp
+    sources/Drawables/3D/Ray.cpp
+    sources/Drawables/3D/Sphere.cpp
+    sources/Drawables/3D/Triangle.cpp
+    sources/Drawables/ADrawable2D.cpp
+    sources/Drawables/ADrawable3D.cpp
+    sources/Drawables/Image.cpp
+    sources/Drawables/Texture.cpp
+    sources/Color.cpp
+    sources/Font.cpp
+    sources/Model.cpp
+    sources/Window.cpp
 )
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
