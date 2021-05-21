@@ -9,13 +9,16 @@ int main()
 	const int screenWidth = 800;
 	const int screenHeight = 450;
 
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+	RAY::Window w(screenWidth, screenHeight, "Arthur it works", true);
 
-	SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+//	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+
+	w.setFPS(60);
+	//SetTargetFPS(60);          // Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
-	while (!WindowShouldClose())    // Detect window close button or ESC key
+	while (!w.shouldClose())    // Detect window close button or ESC key
 	{
 		// Update
 		//----------------------------------------------------------------------------------
@@ -24,19 +27,19 @@ int main()
 
 		// Draw
 		//----------------------------------------------------------------------------------
-		BeginDrawing();
+		w.beginDrawing();
 
-		ClearBackground(RAYWHITE);
+		w.clear(RAYWHITE);
 
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		DrawText("Congrats! You created your first window !", 190, 200, 20, LIGHTGRAY);
 
-		EndDrawing();
+		w.endDrawing();
 		//----------------------------------------------------------------------------------
 	}
 
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
-	CloseWindow();        // Close window and OpenGL context
+	w.close();       // Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 
 	return 0;

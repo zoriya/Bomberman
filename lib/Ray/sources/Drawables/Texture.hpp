@@ -35,14 +35,14 @@ namespace RAY
             Texture &operator=(const Texture &) = default;
             
             //! @brief Texture destructor, will unload ressources
-            ~Texture();
+            ~Texture() override;
 
             //! @brief load ressources from file
             //! @param filename: path of input
             bool load(const std::string &filename);
 
             //! @brief unload ressources
-            bool unload();
+            bool unload() override;
 
             //! @brief get image
             ::Image toImage(void) const;

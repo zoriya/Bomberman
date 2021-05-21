@@ -43,3 +43,9 @@ const ::Texture &RAY::Texture::getTexture(void) const
 {
     return this->_texture;
 }
+
+bool RAY::Texture::unload()
+{
+	UnloadTexture(this->_texture);
+	return true;
+}
