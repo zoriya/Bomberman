@@ -9,12 +9,8 @@ add_library(wal
 	sources/System/System.hpp
 	sources/Wal.cpp
 	sources/Wal.hpp
-	sources/Scene/SceneManager.cpp
-	sources/Scene/SceneManager.hpp
 	sources/Scene/Scene.cpp
 	sources/Scene/Scene.hpp
-	sources/Events/EventManager.cpp
-	sources/Events/EventManager.hpp
 	sources/Exception/WalError.cpp
 	sources/Exception/WalError.hpp
 	sources/Entity/Entity.cpp
@@ -27,6 +23,7 @@ add_library(wal
 	sources/System/Movable/MovableSystem.cpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/System.cpp
+	sources/Models/Callback.hpp
 )
 
 target_include_directories(wal PUBLIC sources)

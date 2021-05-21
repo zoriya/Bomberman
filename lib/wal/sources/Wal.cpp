@@ -11,11 +11,6 @@ namespace WAL
 {
 	std::chrono::nanoseconds Wal::timestep = 8ms;
 
-	SceneManager &Wal::getSceneManager()
-	{
-		return this->_sceneManager;
-	}
-
 	void Wal::run()
 	{
 		auto lastTick = std::chrono::steady_clock::now();
@@ -37,7 +32,7 @@ namespace WAL
 
 	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
-		auto &entities = this->_sceneManager.getCurrent().getEntities();
+		auto &entities = this->_scene.getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
@@ -53,7 +48,7 @@ namespace WAL
 
 	void Wal::_fixedUpdate()
 	{
-		auto &entities = this->_sceneManager.getCurrent().getEntities();
+		auto &entities = this->_scene.getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {

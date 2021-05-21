@@ -9,8 +9,7 @@
 #include <memory>
 #include <typeinfo>
 #include <Exception/WalError.hpp>
-#include "Events/EventManager.hpp"
-#include "Scene/SceneManager.hpp"
+#include "Scene/Scene.hpp"
 #include "Entity/Entity.hpp"
 #include "System/System.hpp"
 
@@ -21,9 +20,7 @@ namespace WAL
 	{
 	private:
 		//! @brief The scene manager that allow multiple scene to work together.
-		SceneManager _sceneManager;
-		//! @brief The event manager
-		EventManager _eventManager;
+		Scene _scene;
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
 		//! @brief True if the engine should close after the end of the current tick.
@@ -96,9 +93,6 @@ namespace WAL
 			this->_systems.erase(existing);
 			return *this;
 		}
-
-		//! @brief Get the scene manager.
-		SceneManager &getSceneManager();
 
 		//! @brief Start the game loop
 		void run();

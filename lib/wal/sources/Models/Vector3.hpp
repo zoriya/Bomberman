@@ -23,12 +23,12 @@ namespace WAL
 		T z;
 
 		//! @brief Create a new nil vector3.
-		Vector3<T>()
+		Vector3()
 			: x(0), y(0), z(0)
 		{}
 
 		//! @brief Create a new vector3 representing a specific coordinate.
-		Vector3<T>(T x, T y, T z)
+		Vector3(T x, T y, T z)
 			: x(x), y(y), z(z)
 		{}
 
