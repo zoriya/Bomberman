@@ -11,34 +11,35 @@
 namespace BBM 
 {
 	class ControllableComponent : public WAL::Component
-	{
-	private:
-		float _moveX = 0;
-		float _moveZ = 0;
-		bool _jump = false;
-		bool _bomb = false;
-		bool _pause = false;
-	public:
+	{	
+		public:
+			//! @brief input value for X axe
+			float moveX = 0;
+			//! @brief input value for Z axe
+			float moveZ = 0;
+			//! @brief input value for jump
+			bool jump = false;
+			//! @brief input value for bomb
+			bool bomb = false;
+			//! @brief input value for pause
+			bool pause = false;
 
-		//! @inherit
-		WAL::Component *clone(WAL::Entity &entity) const override;
+			//! @inherit
+			WAL::Component *clone(WAL::Entity &entity) const override;
 
-		//! @brief A component can't be instantiated, it should be derived.
-		explicit ControllableComponent(WAL::Entity &entity);
+			//! @brief A Controllable component can't be instantiated, it should be derived.
+			explicit ControllableComponent(WAL::Entity &entity);
 
-		//! @brief Constructor
-		ControllableComponent(WAL::Entity &entity, unsigned int maxBombCount);
+			//! @brief Constructor
+			ControllableComponent(WAL::Entity &entity, unsigned int maxBombCount);
 
-		//! @brief A component can't be instantiated, it should be derived.
-		ControllableComponent(const ControllableComponent &) = default;
+			//! @brief A Controllable component can't be instantiated, it should be derived.
+			ControllableComponent(const ControllableComponent &) = default;
 
-		//! @brief default destructor
-		~ControllableComponent() override = default;
+			//! @brief default destructor
+			~ControllableComponent() override = default;
 
-		//! @brief A component can't be assigned
-		ControllableComponent &operator=(const ControllableComponent &) = delete;
-
-		friend class KeyboardSystem;
-		friend class ControllableSystem;
+			//! @brief A Controllable omponent can't be assigned
+			ControllableComponent &operator=(const ControllableComponent &) = delete;
 	};
 }

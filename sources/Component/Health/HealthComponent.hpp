@@ -25,27 +25,25 @@ namespace BBM
 			//! @brief reduce health
 			void takeDmg(unsigned int damage);
 
-			//! @brief disable the entity
-			void die(void);
+			//! @brief return health point of the entity
+			unsigned int getHealthPoint(void) const;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 			
-			//! @brief A component can't be instantiated, it should be derived.
+			//! @brief A Health component can't be instantiated, it should be derived.
 			explicit HealthComponent(WAL::Entity &entity);
 
 			//! @brief Constructor
 			HealthComponent(WAL::Entity &entity, unsigned int healthPoint);
 
-			//! @brief A component can't be instantiated, it should be derived.
+			//! @brief A Health component can't be instantiated, it should be derived.
 			HealthComponent(const HealthComponent &) = default;
 
 			//! @brief default destructor
 			~HealthComponent() override = default;
 
-			//! @brief A component can't be assigned
+			//! @brief A Health component can't be assigned
 			HealthComponent &operator=(const HealthComponent &) = delete;
-
-			friend class HealthSystem;
 	};
 }

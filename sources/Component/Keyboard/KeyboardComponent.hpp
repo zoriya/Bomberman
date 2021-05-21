@@ -32,21 +32,19 @@ namespace BBM
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
-			//! @brief A component can't be instantiated, it should be derived.
+			//! @brief A Keyboard component can't be instantiated, it should be derived.
 			explicit KeyboardComponent(WAL::Entity &entity);
 
 			//! @brief Constructor
 			KeyboardComponent(WAL::Entity &entity, unsigned int maxBombCount);
 
-			//! @brief A component can't be instantiated, it should be derived.
+			//! @brief A Keyboard component can't be instantiated, it should be derived.
 			KeyboardComponent(const KeyboardComponent &) = default;
 
 			//! @brief default destructor
 			~KeyboardComponent() override = default;
 
-			//! @brief A component can't be assigned
+			//! @brief A Keyboard component can't be assigned
 			KeyboardComponent &operator=(const KeyboardComponent &) = delete;
-
-			friend class KeyboardSystem;
 	};
 }

@@ -36,8 +36,8 @@ namespace BBM
 			this->_healthPoint -= damage;
 	}
 
-	void HealthComponent::die(void)
+	unsigned int HealthComponent::getHealthPoint(void) const
 	{
-		this->_entity.setDisable(true);
+		return (this->_healthPoint);
 	}
 }
