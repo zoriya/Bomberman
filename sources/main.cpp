@@ -74,7 +74,7 @@ int main()
 					float scatter = sinf(blockScale * 20.0f + (float)(time * 4.0f));
 
 					// Calculate the cube position
-					cube.setPosition((RAY::Vector3){
+					cube.setPosition(RAY::Vector3{
 						static_cast<float>(x - numBlocks / 2) * (scale * 3.0f) + scatter,
 						static_cast<float>(y - numBlocks / 2) * (scale * 2.0f) + scatter,
 						static_cast<float>(z - numBlocks / 2) * (scale * 3.0f) + scatter
