@@ -6,6 +6,7 @@
 */
 
 #include "Audio/Music.hpp"
+#include <raylib.h>
 
 RAY::Audio::Music::Music(const std::string &path):
     _music(LoadMusicStream(path.c_str()))
@@ -35,9 +36,7 @@ bool RAY::Audio::Music::unload(void)
 
 bool RAY::Audio::Music::isPlaying(void)
 {
-	// TODO fix it
-	return false;
-    //return IsMusicPlaying(_music);
+    return IsMusicStreamPlaying(_music);
 }
 
 RAY::Audio::Music &RAY::Audio::Music::play(void)

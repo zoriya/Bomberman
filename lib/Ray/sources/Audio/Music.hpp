@@ -5,8 +5,8 @@
 ** Music
 */
 
-#ifndef Music_HPP_
-#define Music_HPP_
+#ifndef MUSIC_HPP_
+#define MUSIC_HPP_
 
 #include "Audio/IAudio.hpp"
 
