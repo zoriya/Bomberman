@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/bomberman.dir/sources/main.cpp.o -o bomberman  lib/wal/libwal.a _deps/raylib-build/raylib/libraylib.a -lm -lpthread /usr/lib/libGL.so /usr/lib/libGLU.so _deps/raylib-build/raylib/external/glfw/src/libglfw3.a /usr/lib/librt.so -lm -ldl /usr/lib/libX11.so -lpthread 
