@@ -17,6 +17,12 @@ RAY::Image::Image()
 
 }
 
+RAY::Image::Image(RAY::Texture &texture):
+	_image(GetTextureData(texture))
+{
+
+}
+
 RAY::Image::~Image()
 {
 	UnloadImage(_image);
@@ -40,7 +46,12 @@ bool RAY::Image::unload()
 	return true;
 }
 
-::Image &RAY::Image::getImage(void)
+RAY::Image::operator ::Image() const
 {
 	return _image;
+}
+
+RAY::Image::operator ::Image *()
+{
+	return &this->_image;
 }

@@ -40,12 +40,7 @@ bool RAY::Texture::unload()
 	return true;
 }
 
-Image RAY::Texture::toImage(void) const
-{
-	return GetTextureData(_texture);
-}
-
-const ::Texture &RAY::Texture::getTexture(void) const
+RAY::Texture::operator ::Texture() const
 {
 	return this->_texture;
 }

@@ -27,5 +27,5 @@ RAY::Drawables::Drawables3D::Point &RAY::Drawables::Drawables3D::Point::setPosit
 
 void RAY::Drawables::Drawables3D::Point::drawOn(RAY::Window &)
 {
-	DrawPoint3D(this->_position, this->_color.getColor());
+	DrawPoint3D(this->_position, this->_color);
 }

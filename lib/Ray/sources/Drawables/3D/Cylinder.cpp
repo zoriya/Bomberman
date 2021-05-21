@@ -62,5 +62,5 @@ RAY::Drawables::Drawables3D::Cylinder &RAY::Drawables::Drawables3D::Cylinder::se
 
 void RAY::Drawables::Drawables3D::Cylinder::drawOn(RAY::Window &)
 {
-	DrawCylinder(this->_centerPos, this->_topRadius, this->_bottomRadius, this->_height, 0, this->_color.getColor());
+	DrawCylinder(this->_centerPos, this->_topRadius, this->_bottomRadius, this->_height, 0, this->_color);
 }

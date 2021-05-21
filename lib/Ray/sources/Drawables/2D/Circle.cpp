@@ -32,10 +32,10 @@ RAY::Drawables::Drawables2D::Circle &RAY::Drawables::Drawables2D::Circle::setRad
 
 void RAY::Drawables::Drawables2D::Circle::drawOn(RAY::Window &)
 { 
-	DrawCircleV(this->_position, this->_radius, this->_color.getColor());
+	DrawCircleV(this->_position, this->_radius, this->_color);
 }
 
 void RAY::Drawables::Drawables2D::Circle::drawOn(RAY::Image &image)
 {
-	ImageDrawCircleV(&(image.getImage()), this->_position, this->_radius, this->_color.getColor());
+	ImageDrawCircleV(image, this->_position, this->_radius, this->_color);
 }

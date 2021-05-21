@@ -90,7 +90,7 @@ void RAY::Window::setFPS(unsigned int fps)
 
 void RAY::Window::clear(const RAY::Color &color)
 {
-	ClearBackground(color.getColor());
+	ClearBackground(color);
 }
 
 void RAY::Window::beginDrawing(void)
@@ -135,7 +135,7 @@ void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
 
 void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint)
 {
-	DrawTexture(texture.getTexture(), position.x, position.y, tint.getColor());
+	DrawTexture(texture, position.x, position.y, tint);
 }
 
 void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix &transform)
@@ -145,5 +145,5 @@ void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix 
 
 void RAY::Window::setIcon(RAY::Image &img)
 {
-	SetWindowIcon(img.getImage());
+	SetWindowIcon(img);
 }

@@ -62,18 +62,18 @@ void RAY::Drawables::Drawables2D::Text::drawOn(RAY::Window &)
 {
 	if (!this->_font.recs)
 		DrawText(this->_text.c_str(), this->_position.x, this->_position.y,
-		this->_size, this->_color.getColor());
+		this->_size, this->_color);
 	else
 		DrawTextEx(this->_font, this->_text.c_str(), this->_position,
-		this->_size, this->_spacing, this->_color.getColor());
+		this->_size, this->_spacing, this->_color);
 }
 
 void RAY::Drawables::Drawables2D::Text::drawOn(RAY::Image &image)
 {
 	if (!this->_font.recs)
-		ImageDrawText(&(image.getImage()), this->_text.c_str(), this->_position.x, this->_position.y,
-		this->_size, this->_color.getColor());
+		ImageDrawText(image, this->_text.c_str(), this->_position.x, this->_position.y,
+		this->_size, this->_color);
 	else
-		ImageDrawTextEx(&(image.getImage()), this->_font, this->_text.c_str(), this->_position,
-		this->_size, this->_spacing, this->_color.getColor());
+		ImageDrawTextEx(image, this->_font, this->_text.c_str(), this->_position,
+		this->_size, this->_spacing, this->_color);
 }

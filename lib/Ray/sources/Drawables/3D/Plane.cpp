@@ -37,5 +37,5 @@ RAY::Drawables::Drawables3D::Plane &RAY::Drawables::Drawables3D::Plane::setDimen
 
 void RAY::Drawables::Drawables3D::Plane::drawOn(RAY::Window &)
 {
-	DrawPlane(this->_position, this->_dimensions, this->_color.getColor());
+	DrawPlane(this->_position, this->_dimensions, this->_color);
 }

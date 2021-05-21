@@ -24,7 +24,7 @@ namespace WAL
 		//! @return The manager instance used to call this function is returned. This allow method chaining.
 		SceneManager &addBackScene(Scene &&scene);
 
-		//! @breif Get the current scene
+		//! @brief Get the current scene
 		Scene &getCurrent();
 
 		//! @brief Remove the current scene and switch to the previous scene on the stack.

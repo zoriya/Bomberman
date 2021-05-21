@@ -77,7 +77,7 @@ namespace RAY
 		return this->_color.a;
 	}
 
-	const ::Color &Color::getColor(void) const
+	RAY::Color::operator ::Color() const
 	{
 		return this->_color;
 	}

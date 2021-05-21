@@ -21,11 +21,11 @@ RAY::Drawables::Drawables2D::Point::Point(int x, int y, const Color &color):
 
 void RAY::Drawables::Drawables2D::Point::drawOn(RAY::Window &)
 {
-	DrawPixel(this->_position.x, this->_position.y, this->_color.getColor());
+	DrawPixel(this->_position.x, this->_position.y, this->_color);
 }
 
 void RAY::Drawables::Drawables2D::Point::drawOn(RAY::Image &image)
 {
-	ImageDrawPixel(&(image.getImage()), this->_position.x, this->_position.y, this->_color.getColor());
+	ImageDrawPixel(image, this->_position.x, this->_position.y, this->_color);
 }
 

@@ -37,5 +37,5 @@ RAY::Drawables::Drawables3D::Sphere &RAY::Drawables::Drawables3D::Sphere::setRad
 
 void RAY::Drawables::Drawables3D::Sphere::drawOn(RAY::Window &)
 {
-	DrawSphere(this->_centerPos, this->_radius, this->_color.getColor());
+	DrawSphere(this->_centerPos, this->_radius, this->_color);
 }

@@ -68,7 +68,7 @@ namespace RAY {
 			unsigned char getA(void) const;
 
 			//! @return color struct
-			const ::Color &getColor(void) const; 
+			operator ::Color() const;
 
 			//! @return hexadecimal value of color
 			int toHex(void) const;

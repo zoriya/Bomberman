@@ -33,5 +33,5 @@ const RAY::Vector3 &RAY::Drawables::Drawables3D::Circle::getCenterPos(void) cons
 void RAY::Drawables::Drawables3D::Circle::drawOn(RAY::Window &)
 {
 	DrawCircle3D(this->_centerPos, this->_radius,this->_rotationAxis,
-	this->_rotationAngle, this->_color.getColor());
+	this->_rotationAngle, this->_color);
 }

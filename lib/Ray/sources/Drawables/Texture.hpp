@@ -44,11 +44,8 @@ namespace RAY
 			//! @brief unload ressources
 			bool unload() override;
 
-			//! @brief get image
-			::Image toImage(void) const;
-
 			//! @return libray Texture struct
-			const ::Texture &getTexture(void) const;
+			operator ::Texture() const;
 
 		protected:
 		private:

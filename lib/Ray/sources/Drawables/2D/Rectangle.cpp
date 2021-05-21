@@ -40,10 +40,10 @@ RAY::Drawables::Drawables2D::Rectangle &RAY::Drawables::Drawables2D::Rectangle::
 
 void RAY::Drawables::Drawables2D::Rectangle::drawOn(RAY::Window &)
 {
-	DrawRectangleV(this->_position, this->_dimensions, this->_color.getColor());
+	DrawRectangleV(this->_position, this->_dimensions, this->_color);
 }
 
 void RAY::Drawables::Drawables2D::Rectangle::drawOn(RAY::Image &image)
 {
-	ImageDrawRectangleV(&(image.getImage()), this->_position, this->_dimensions, this->_color.getColor());
+	ImageDrawRectangleV(image, this->_position, this->_dimensions, this->_color);
 }

@@ -49,7 +49,7 @@ RAY::Drawables::Drawables3D::Triangle &RAY::Drawables::Drawables3D::Triangle::se
 
 void RAY::Drawables::Drawables3D::Triangle::drawOn(RAY::Window &)
 {
-	DrawTriangle3D(this->_posA, this->_posB, this->_posC, this->_color.getColor());
+	DrawTriangle3D(this->_posA, this->_posB, this->_posC, this->_color);
 }
 
 

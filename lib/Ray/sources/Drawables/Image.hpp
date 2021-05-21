@@ -11,6 +11,7 @@
 #include <raylib.h>
 #include <string>
 #include "Canvas.hpp"
+#include "Texture.hpp"
 #include "IRessource.hpp"
 
 namespace RAY
@@ -24,6 +25,10 @@ namespace RAY
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
 			Image(const std::string &filename);
+
+			//! @brief Create an image, using data from a texure
+			//! @param texture: texture to extract data from
+			Image(Texture &texture);
 
 			//! @brief A default copy constructor
 			Image(const Image &image) = default;
@@ -49,7 +54,8 @@ namespace RAY
 			bool unload() override;
 
 			//! @brief get image
-			::Image &getImage(void);
+			operator ::Image() const;
+			operator ::Image *();
 
 			//! @brief draw drawable
 			void draw(Drawables::ADrawable2D &);

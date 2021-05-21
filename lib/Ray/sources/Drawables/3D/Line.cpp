@@ -37,5 +37,5 @@ RAY::Drawables::Drawables3D::Line &RAY::Drawables::Drawables3D::Line::setEndPosi
 
 void RAY::Drawables::Drawables3D::Line::drawOn(RAY::Window &)
 {
-	DrawLine3D(this->_startPosition, this->_endPosition, this->_color.getColor());
+	DrawLine3D(this->_startPosition, this->_endPosition, this->_color);
 }

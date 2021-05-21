@@ -37,5 +37,5 @@ RAY::Drawables::Drawables3D::Ray &RAY::Drawables::Drawables3D::Ray::setDirection
 
 void RAY::Drawables::Drawables3D::Ray::drawOn(RAY::Window &)
 {
-	DrawRay(this->_ray, this->_color.getColor());
+	DrawRay(this->_ray, this->_color);
 }

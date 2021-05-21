@@ -34,10 +34,10 @@ RAY::Drawables::Drawables2D::Line &RAY::Drawables::Drawables2D::Line::setEndPosi
 
 void RAY::Drawables::Drawables2D::Line::drawOn(RAY::Window &)
 {
-	DrawLineV(this->_position, this->_end, this->_color.getColor());
+	DrawLineV(this->_position, this->_end, this->_color);
 }
 
 void RAY::Drawables::Drawables2D::Line::drawOn(RAY::Image &image)
 {
-	ImageDrawLineV(&(image.getImage()), this->_position, this->_end, this->_color.getColor());
+	ImageDrawLineV(image, this->_position, this->_end, this->_color);
 }

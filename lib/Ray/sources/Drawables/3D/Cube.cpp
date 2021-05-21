@@ -38,5 +38,5 @@ RAY::Drawables::Drawables3D::Cube &RAY::Drawables::Drawables3D::Cube::setPositio
 
 void RAY::Drawables::Drawables3D::Cube::drawOn(RAY::Window &)
 {
-	DrawCubeV(this->_position, this->_dimenstions, this->_color.getColor());
+	DrawCubeV(this->_position, this->_dimenstions, this->_color);
 }
