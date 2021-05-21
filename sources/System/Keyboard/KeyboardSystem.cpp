@@ -19,20 +19,23 @@ namespace BBM
 	{
 		auto &keyboard = entity.getComponent<KeyboardComponent>();
 		auto &controllable= entity.getComponent<ControllableComponent>();
+		static const std::map<int, bool> keyPressedMap = {
+			{keyboard.keyJump, controllable._jump},
+			{keyboard.keyBomb, controllable._bomb},
+			{keyboard.keyPause, controllable._pause}
+		};
 
+		for (auto key : keyPressedMap)
+			key.second = RAY::IsKeyPressed(key.first);
+		controllable._moveX = 0;
+		controllable._moveZ = 0;
 		if (RAY::IsKeyPressed(keyboard.keyRight))
-			controllable._right = true;
+			controllable._moveX += 1;
 		if (RAY::IsKeyPressed(keyboard.keyLeft))
-			controllable._left = true;
+			controllable._moveX -= 1;
 		if (RAY::IsKeyPressed(keyboard.keyUp))
-			controllable._up = true;
+			controllable._moveX += 1;
 		if (RAY::IsKeyPressed(keyboard.keyDown))
-			controllable._down = true;
-		if (RAY::IsKeyPressed(keyboard.keyBomb))
-			controllable._bomb = true;
-		if (RAY::IsKeyPressed(keyboard.keyJump))
-			controllable._jump = true;
-		if (RAY::IsKeyPressed(keyboard.keyPause))
-			controllable._pause = true;
+			controllable._moveX -= 1;
 	}
 }

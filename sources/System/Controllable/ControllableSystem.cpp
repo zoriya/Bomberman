@@ -17,18 +17,9 @@ namespace BBM
 
 	void ControllableSystem::onFixedUpdate(WAL::Entity &entity)
 	{
-		auto &controllable= entity.getComponent<ControllableComponent>();
-		auto &movable= entity.getComponent<WAL::MovableComponent>();
+		auto &controllable = entity.getComponent<ControllableComponent>();
+		auto &movable = entity.getComponent<WAL::MovableComponent>();
 
-		if (controllable._left)
-			movable.addForce(WAL::Vector3f(-1, 0, 0));
-		if (controllable._right)
-			movable.addForce(WAL::Vector3f(1, 0, 0));
-		if (controllable._down)
-			movable.addForce(WAL::Vector3f(0, 0, -1));
-		if (controllable._up)
-			movable.addForce(WAL::Vector3f(0, 0, 1));
-		if (controllable._jump)
-			movable.addForce(WAL::Vector3f(0, 1, 0));
+		movable.addForce(WAL::Vector3f(controllable._moveX, 0, controllable._moveZ));
 	}
 }

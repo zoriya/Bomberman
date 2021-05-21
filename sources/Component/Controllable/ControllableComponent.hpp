@@ -13,13 +13,11 @@ namespace BBM
 	class ControllableComponent : public WAL::Component
 	{
 	private:
-		bool _up;
-		bool _down;
-		bool _left;
-		bool _right;
-		bool _jump;
-		bool _bomb;
-		bool _pause;
+		float _moveX = 0;
+		float _moveZ = 0;
+		bool _jump = false;
+		bool _bomb = false;
+		bool _pause = false;
 	public:
 
 		//! @inherit
