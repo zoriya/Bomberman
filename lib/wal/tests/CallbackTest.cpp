@@ -15,7 +15,7 @@ TEST_CASE("Callback basic test", "[Callback]")
 
 	REQUIRE_NOTHROW(callback("1"));
 	SECTION("Check add") {
-		int id =callback.addCallback([](const std::string& i) {
+		int id = callback.addCallback([](const std::string& i) {
 			if (i == "Super")
 				throw std::runtime_error(i);
 		});
