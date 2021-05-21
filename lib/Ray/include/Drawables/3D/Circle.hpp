@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param centerPosition position of the center 
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(Vector3 centerPosition, int radius, Vector3 rotationAxis, float rotationAngle, Color color);
+            Circle(const Vector3 &centerPosition, int radius, const Color &color, const Vector3 &rotationAxis, float rotationAngle = 0);
 
             
             //! @brief A default copy constructor
@@ -35,16 +35,16 @@ namespace RAY::Drawables::Drawables3D {
             int getRadius(void) const;
 
             //! @brief set radius
-            Circle &setRadius(int radius) const;
+            Circle &setRadius(int radius);
 
             //! @return the position of the center
             const Vector3 &getCenterPos(void) const;
 
             //! @brief set pos of center 
-            Circle &setRadius(Vector3 pos) const;
+            Circle &setRadius(const Vector3 &pos) const;
 
             //! @brief Draw circle on window
-            void drawOn(Window &);
+            void drawOn(RAY::Window &window);
 
         private:
             //! @brief Radius of the circle 
@@ -54,10 +54,10 @@ namespace RAY::Drawables::Drawables3D {
             Vector3 _centerPos;
 
             //! @brief rotation axis
-            Vector3 rotationAxis;
+            Vector3 _rotationAxis;
             
             //! @brief rotation angle
-            float rotationAngle;
+            float _rotationAngle;
     };
 };
 

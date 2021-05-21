@@ -8,19 +8,23 @@
 #ifndef IDRAWABLE_HPP_
 #define IDRAWABLE_HPP_
 
+#include "Drawables/Image.hpp"
 #include "Window.hpp"
 
-namespace RAY::Drawables
+namespace RAY
 {
-    class IDrawable {
-        public:
-            virtual ~IDrawable() = 0;
+    class Window;
+    class Image;
+    namespace Drawables {
+        class IDrawable {
+            public:
+                virtual ~IDrawable() = 0;
 
-            virtual void drawOn(Window &) = 0;
-
-        protected:
-        private:
-    };
+                virtual void drawOn(RAY::Window &window) = 0;
+            protected:
+            private:
+        };
+    }
 }
 
 

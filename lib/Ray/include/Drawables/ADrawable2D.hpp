@@ -11,6 +11,7 @@
 #include <raylib.h>
 #include <Vector.hpp>
 #include "Drawables/IDrawable.hpp"
+#include "Color.hpp"
 
 namespace RAY::Drawables::Drawables2D {
     class ADrawable2D: public IDrawable
@@ -19,12 +20,12 @@ namespace RAY::Drawables::Drawables2D {
             //! @brief ADrawable constructor
             //! @param poition position of top-left point 
             //! @param Color Color of the color  
-            ADrawable2D(Vector2 position, Color color);
+            ADrawable2D(const Vector2 &position, const RAY::Color &color);
             //! @brief ADrawable constructor
             //! @param x x-position of top-left point  
             //! @param y y-position of top-left point 
             //! @param Color Color of the color  
-            ADrawable2D(int x, int y, Color color);
+            ADrawable2D(int x, int y, const RAY::Color &color);
 
             //! @brief A default copy constructor
             ADrawable2D(const ADrawable2D &) = default;
@@ -36,7 +37,7 @@ namespace RAY::Drawables::Drawables2D {
             const Vector2 &getPosition(void) const;
 
             //! @return the color of the ADrawable
-            const Color &getColor(void) const;
+            const RAY::Color &getColor(void) const;
 
             //! @brief set Top-left position
             ADrawable2D &setPosition(const Vector2 &position);
@@ -45,12 +46,15 @@ namespace RAY::Drawables::Drawables2D {
             ADrawable2D &setPosition(int x, int y);
             
             //! @brief set color
-            ADrawable2D &setColor(const Color &color) const;
+            ADrawable2D &setColor(const Color &color);
 
             //! @brief Draw drawble on window
-            void drawOn(Window &);
+            virtual void drawOn(RAY::Window &window) = 0;
 
-        private:
+            //! @brief Draw drawble on image
+            virtual void drawOn(RAY::Image &image) = 0;
+
+        protected:
             //! @brief Top-left position 
             Vector2 _position;
             //! @brief Color of the ADrawable

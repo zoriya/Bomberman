@@ -15,7 +15,7 @@
 
 namespace RAY
 {
-    class Texture: public Canvas, IRessource {
+    class Texture: public IRessource {
         public:
             //! @brief Create an texture, loading a file
             //! @param filename: path to file to load
@@ -26,7 +26,7 @@ namespace RAY
             Texture(const Image &image);
 
             //! @brief A default copy constructor
-            Texture(const Texture &);
+            Texture(const Texture &) = default;
 
             //! @brief A default constructor, no ressources loaded
             Texture();
@@ -45,12 +45,15 @@ namespace RAY
             bool unload();
 
             //! @brief get image
-            Image toImage(void) const;
+            ::Image toImage(void) const;
+
+            //! @return libray Texture struct
+            const ::Texture &getTexture(void) const;
 
         protected:
         private:
             //! @brief Texture, really, that's just it...
-            ::Texture _image;
+            ::Texture _texture;
     };   
 }
 

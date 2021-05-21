@@ -41,8 +41,8 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief Set spacing
             Grid &setSpacing(float spacing);
 
-            //! @brief Draw grid on window
-            void drawOn(Window &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
 
         private:
             //! @brief Grid slices

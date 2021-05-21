@@ -21,10 +21,10 @@ namespace RAY::Camera {
             //! @param target Camera target (rotation and zoom origin
             //! @param rotation Camera rotation in degrees
             //! @param zoom Camera zoom (scaling), should be 1.0f by default
-            Camera2D(Vector2 offset, Vector2 target, float rotation, float zoom = 1);
+            Camera2D(const Vector2 &offset, const Vector2 &target, float rotation, float zoom = 1);
 
             //! @brief A copy constructor
-            Camera2D(const Camera2D &);
+            Camera2D(const Camera2D &) = default;
 
             ~Camera2D() = default;
 
@@ -32,9 +32,9 @@ namespace RAY::Camera {
             Camera2D &operator=(const Camera2D &) = default;
 
             //! @brief Set Offset
-            void setOffset(Vector2 offset);
+            void setOffset(const Vector2 &offset);
             //! @brief Set target
-            void setTarget(Vector2 target);
+            void setTarget(const Vector2 &target);
             //! @brief Set rotation
             void setRotation(float rotation);
             //! @brief Set zoom
@@ -51,6 +51,9 @@ namespace RAY::Camera {
 
             //! @brief Returns camera 2d transform matrix
             Matrix getMatrix(void) const;
+
+            //! @brief get camera struct
+            const ::Camera2D &getCamera(void) const;
 
         private:
             ::Camera2D _camera;

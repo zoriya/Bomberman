@@ -9,12 +9,9 @@
 
 namespace RAY
 {
-	Color::Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+	Color::Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a):
+		_color({r, g, b, a}) 
 	{
-		this->setR(r);
-		this->setG(g);
-		this->setB(b);
-		this->setA(a);
 	}
 
 	Color::Color(const ::Color &color)

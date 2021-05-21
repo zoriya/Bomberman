@@ -24,10 +24,10 @@ namespace RAY::Camera {
             //! @param up Camera up vector (rotation over its axis)
             //! @param fovy Camera field-of-view apperture in Y (degrees) in perspective, used as near plane width in orthographic
             //! @param projection Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
-            Camera3D(Vector3 position, Vector3 target, Vector3 up, float fovy, float projection);
+            Camera3D(const Vector3 &position, const Vector3 &target, const Vector3 &up, float fovy, Projection projection);
 
             //! @brief A copy constructor
-            Camera3D(const Camera3D &);
+            Camera3D(const Camera3D &) = default;
 
             ~Camera3D() = default;
 
@@ -35,13 +35,13 @@ namespace RAY::Camera {
             Camera3D &operator=(const Camera3D &) = default;
 
             //! @brief Set Position
-            void setPosition(Vector3 Position);
+            void setPosition(const Vector3 &Position);
             //! @brief Set target
-            void setTarget(Vector3 target);
+            void setTarget(const Vector3 &target);
             //! @brief Set up
-            void setUp(Vector3 up);
-            //! @brief Set flovy
-            void setFlovy(float flovy);
+            void setUp(const Vector3 &up);
+            //! @brief Set fovy
+            void setFovy(float fovy);
             //! @brief Set Projection
             void setProjection(Projection projection);
 
@@ -51,7 +51,7 @@ namespace RAY::Camera {
             const Vector3 &getTarget(void) const;
             //! @brief Get up
             const Vector3 &getUp(void) const;
-            //! @brief Get Flovy
+            //! @brief Get Fovy
             float getFovy(void) const;
             //! @brief Get projection
             Projection getProjection(void) const;
@@ -62,8 +62,12 @@ namespace RAY::Camera {
             // Set camera mode (multiple camera modes available)
             void setMode(Mode mode);
 
+            //! @brief get camera struct
+            const ::Camera3D &getCamera(void) const;
+
         private:
             ::Camera3D _camera;
+            Mode _mode;
     };
 }
 

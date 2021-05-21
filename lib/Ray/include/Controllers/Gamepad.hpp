@@ -13,7 +13,7 @@
 #include "IController.hpp"
 
 namespace RAY
-{
+::Controller {
 
     //! @brief Entity representing a gamepad controller
     class GamePad : public IController {
@@ -51,14 +51,10 @@ namespace RAY
             bool isUp(Button) override;
 
             //! @brief Returns true if controller is available
-            bool isAvailable(Button) override;
+            bool isAvailable() override;
 
             //! @brief Sets gamepad's id
             void setID(int id);
-
-            //! @brief Fetch currently pressed buttons
-            //! @return Returns a vector containing keycode of currently pressed buttons
-            std::vector<GamePad::Button> getPressedButtons(void) override;
         
         private:
             //! @brief The id of the controller, used to fetch buttons' states 

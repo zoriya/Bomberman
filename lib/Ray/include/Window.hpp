@@ -12,8 +12,12 @@
 #include <string>
 #include "Vector.hpp"
 #include "Controllers/Keyboard.hpp"
-#include "Canvas.hpp"
 #include "Camera/Camera2D.hpp"
+#include "Camera/Camera3D.hpp"
+#include "Color.hpp"
+#include "Canvas.hpp"
+#include "Drawables/IDrawable.hpp"
+#include "Drawables/Texture.hpp"
 
 namespace RAY {
     class Window: public Canvas {
@@ -22,10 +26,10 @@ namespace RAY {
             Window(int width, int height, const std::string title, bool openNow = false);
 
             //! @brief A default copy constructor
-            Window(const Window &) = default;
+            Window(const Window &window) = default;
 
             //! @brief A window is assignable
-            Window &operator=(const Window &) = default;
+            Window &operator=(const Window &window) = default;
             
             //! @brief Closes window if still open
             ~Window() = default;
@@ -37,10 +41,10 @@ namespace RAY {
             bool shouldClose(void) const;
 
             //! @brief Close window and unload OpenGL context
-            bool close(void);
+            void close(void);
 
             //! @brief Check if window is currently focused
-            bool isFocused(void);
+            bool isFocused(void) const;
 
             //! @brief Set window dimensions
             const RAY::Vector2 &getDimensions(void) const;
@@ -64,7 +68,7 @@ namespace RAY {
 
             //! @brief Set background color (framebuffer clear color)
             //! @param color The color to clear the screen (default: black)
-            void clear(const Color &color = Color(0, 0, 0, 0));
+            void clear(const Color &color = BLACK);
 
             //! @brief Setup canvas (framebuffer) to start drawing
             //! @brief Must be called before first draw of iteration
@@ -75,10 +79,10 @@ namespace RAY {
             void endDrawing(void);
 
             //! @brief Initialize 2D mode with custom camera (2D)
-            void beginMode2D(Camera2D &camera);
+            void beginMode2D(Camera::Camera2D &camera);
 
             //! @brief Initialize 3D mode with custom camera (2D)
-            void beginMode3D(Camera3D &camera);
+            void beginMode3D(Camera::Camera3D &camera);
 
             //! @brief Ends 2D mode with custom camera
             void endMode2D(void);
@@ -92,13 +96,13 @@ namespace RAY {
 
             //! @brief draw rectangle
             //! @param drawable The drawable to render on screen
-            void draw(const Drawables::IDrawable &drawable);
+            void draw(Drawables::IDrawable &drawable);
 
             //! @brief draw texture at position
             //! @param texture The object to render
             //! @param position The position of the texture relative to the top left window corner
             //! @param tint
-            void draw(const Texture &texture, Vector2 position, const Color &tint);
+            void draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint);
 
             //! @brief Draw a 3d mesh with material and transform
             void draw(const Mesh &mesh, const Material &material, const Matrix &transform);

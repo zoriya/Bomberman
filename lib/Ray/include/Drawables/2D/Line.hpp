@@ -17,17 +17,19 @@ namespace RAY::Drawables::Drawables2D {
         public:
 
             //! @brief Line constructor
-            //! @param position position of top-left point  
-            //! @param length length of the line
+            //! @param startPosition position of the start point 
+            //! @param endPosition position of the end point
             //! @param Color Color of the circle  
-            Line(Vector2 position, int length, Color);
+            Line(const Vector2 &startPosition, const Vector2 &endPosition, const Color &);
 
             //! @brief Line constructor
-            //! @param x x-position of top-left point  
-            //! @param y y-position of top-left point 
+            //! @param xStart x-position of start point  
+            //! @param yStart y-position of start point 
+            //! @param xEnd x-position of end point  
+            //! @param yEnd y-position of end point 
             //! @param length length of the line
             //! @param Color Color of the circle  
-            Line(int x, int y, int length, Color);
+            Line(int xStart, int yStart, int xEnd, int yEnd, const Color &);
 
             //! @brief A default copy constructor
             Line(const Line &) = default;
@@ -38,25 +40,20 @@ namespace RAY::Drawables::Drawables2D {
             //! @brief A default destructor
             ~Line() = default;
 
-            //! @return the length of the line
-            int getLength(void) const;
+            //! @return the end position of the line
+            const Vector2 &getEndPosition(void) const;
 
-            //! @return the rotation of the line
-            int getRotation(void) const;
+            //! @brief set the end position of the line
+            Line &setEndPosition(const Vector2 &);
 
-            //! @brief set length
-            Line &setLength(int);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
-            //! @brief set rotation
-            Line &setRotation(int);
-
-            //! @brief Draw line on window
-            void drawOn(Window &);
         private:
-            //! @brief Length of the line 
-            int _length;
-            //! @brief Rotation of the line (from origin, in degree)
-            int _rotation;
+            //! @brief Positon of the end of the line 
+            Vector2 _end;
     };
 };
 

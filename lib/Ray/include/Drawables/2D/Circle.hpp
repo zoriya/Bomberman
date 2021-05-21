@@ -16,17 +16,17 @@ namespace RAY::Drawables::Drawables2D {
 	{
         public:
             //! @brief Circle constructor
-            //! @param topLeftPos position of top-left point  
+            //! @param centerPos position of center point  
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(Vector2 topLeftPos, int radius, Color color);
+            Circle(const Vector2 &centerPos, int radius, const Color &color);
             
             //! @brief Circle constructor
-            //! @param topLeftX x-position of top-left point  
-            //! @param topLeftY y-position of top-left point 
+            //! @param centerPosX x-position of center point  
+            //! @param centerPosY y-position of center point 
             //! @param radius radius of the circle
             //! @param Color Color of the circle  
-            Circle(int topLeftX, int topLeftY, int radius, Color color);
+            Circle(int centerPosX, int centerPosY, int radius, const Color &color);
             
             //! @brief A default copy constructor
             Circle(const Circle &) = default;
@@ -41,10 +41,12 @@ namespace RAY::Drawables::Drawables2D {
             int getRadius(void) const;
 
             //! @brief set radius
-            Circle &setRadius(int radius) const;
+            Circle &setRadius(int radius);
 
-            //! @brief Draw Circle on window
-            void drawOn(Window &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
+            //! @brief Draw point on image
+            void drawOn(RAY::Image &image);
 
         private:
             //! @brief Radius of the circle 

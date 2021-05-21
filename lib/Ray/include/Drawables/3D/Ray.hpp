@@ -19,7 +19,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @param startPosition position of top-left point  
             //! @param direction direction of the ray
             //! @param Color Color of the line  
-            Ray(Vector3 startPosition, Vector3 direction, Color color);
+            Ray(const Vector3 &startPosition, const Vector3 &direction, const Color &color);
 
             //! @brief A default copy constructor
             Ray(const Ray &) = default;
@@ -30,29 +30,24 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief A default destructor
             ~Ray() = default;
 
-            //! @return the length of the line
-            int getLength(void) const;
 
             //! @return the start position of the line
-            const Vector3 &getPosition(void) const;
+            const Vector3 &getStartPosition(void) const;
 
             //! @return the end position of the line
             const Vector3 &getDirection(void) const;
 
             //! @brief Set start position
-            Ray &setPosition(Vector3 startPosition);
+            Ray &setStartPosition(const Vector3 &startPosition);
 
             //! @brief Set end position
-            Ray &setDirection(Vector3 dimensions);
+            Ray &setDirection(const Vector3 &direction);
 
-            //! @brief Draw ray on window
-            void drawOn(Window &);
+            //! @brief Draw point on window
+            void drawOn(RAY::Window &window);
 
         private:
-            //! @brief start position
-            Vector3 _startPosition;
-            //! @brief direction
-            Vector3 _direction;
+            ::Ray _ray;
     };
 };
 

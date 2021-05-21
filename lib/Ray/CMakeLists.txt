@@ -5,7 +5,6 @@ set(LIB_NAME "ray")
 
 project("${LIB_NAME}")
 include_directories("./include")
-target_link_libraries(${LIB_NAME} raylib)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
 	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
@@ -16,7 +15,10 @@ set(HEADERS
     include/Canvas.hpp
     include/Color.hpp
     include/Font.hpp
+    include/IRessource.hpp
     include/Matrix.hpp
+    include/Mesh.hpp
+    include/Model.hpp
     include/Vector.hpp
     include/Window.hpp
     include/Audio/IAudio.hpp
@@ -32,6 +34,7 @@ set(HEADERS
     include/Controllers/Mouse.hpp
     include/Drawables/ADrawable2D.hpp
     include/Drawables/ADrawable3D.hpp
+    include/Drawables/IDrawable.hpp
     include/Drawables/Image.hpp
     include/Drawables/Texture.hpp
     include/Drawables/2D/Circle.hpp
@@ -49,11 +52,41 @@ set(HEADERS
     include/Drawables/3D/Ray.hpp
     include/Drawables/3D/Sphere.hpp
     include/Drawables/3D/Triangle.hpp
-    include/Controllers/IController.hpp
+include/Controllers/IController.hpp
     )
 
 set(SRC
+    src/Audio/Music.cpp
+    src/Audio/Sound.cpp
+    src/Camera/Camera2D.cpp
+    src/Camera/Camera3D.cpp
+    src/Controllers/Gamepad.cpp
+    src/Controllers/Keyboard.cpp
+    src/Controllers/Mouse.cpp
+    src/Drawables/2D/Circle.cpp
+    src/Drawables/2D/Line.cpp
+    src/Drawables/2D/Point.cpp
+    src/Drawables/2D/Rectangle.cpp
+    src/Drawables/2D/Text.cpp
+    src/Drawables/2D/Triangle.cpp
+    src/Drawables/3D/Circle.cpp
+    src/Drawables/3D/Cylinder.cpp
+    src/Drawables/3D/Grid.cpp
+    src/Drawables/3D/Line.cpp
+    src/Drawables/3D/Plane.cpp
+    src/Drawables/3D/Point.cpp
+    src/Drawables/3D/Ray.cpp
+    src/Drawables/3D/Sphere.cpp
+    src/Drawables/3D/Triangle.cpp
+    src/Drawables/ADrawable2D.cpp
+    src/Drawables/ADrawable3D.cpp
+    src/Drawables/Image.cpp
+    src/Drawables/Texture.cpp
     src/Color.cpp
-    )
+    src/Font.cpp
+    src/Model.cpp
+    src/Window.cpp
+)
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
+target_link_libraries(${LIB_NAME} raylib)

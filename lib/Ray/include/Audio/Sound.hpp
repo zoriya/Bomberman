@@ -13,9 +13,9 @@
 #include <raylib.h>
 
 
-namespace RAY::Sound
+namespace RAY::Audio
 {
-    class Sound {
+    class Sound: public IAudio {
         public:
 
             //! @brief Load Sound stream from file
@@ -25,10 +25,10 @@ namespace RAY::Sound
             Sound();
 
             //! @brief Default destructor
-            ~Sound() = default;
+            ~Sound();
 
             //! @brief A copy constructor constructor
-            Sound(const Sound &sound);
+            Sound(const Sound &sound) = default;
 
             //! @brief A Sound is assignable
             Sound &operator=(const Sound &sound) = default;
@@ -40,7 +40,7 @@ namespace RAY::Sound
             bool unload(void);
 
             //! @brief Check if Sound is playing
-            bool isPlayin(void);
+            bool isPlaying(void);
 
             //! @brief  Start Sound
             Sound &play(void);

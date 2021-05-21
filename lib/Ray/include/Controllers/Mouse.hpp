@@ -6,13 +6,13 @@
 ** Keyboard
 */
 
-#ifndef KEYBOARD_HPP_
-#define KEYBOARD_HPP_
+#ifndef MOUSE_HPP_
+#define MOUSE_HPP_
 
 #include <raylib.h>
 #include <vector>
 
-namespace RAY {
+namespace RAY::Controller {
     class Mouse {
         public:
             typedef ::MouseButton Button;
@@ -33,9 +33,8 @@ namespace RAY {
             //! @param Key The keycode of the key
             static bool isUp(Button);
 
-            //! @brief Fetch currently pressed buttons
-            //! @return a vector containing keycode of currently pressed buttons
-            static std::vector<Mouse::Button> getPressedButtons(void);
+            //! @return A 2D vector holding the current position of the cursor
+            static Vector2 getCursorPosition(void);
     };
 }
 

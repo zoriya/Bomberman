@@ -5,12 +5,13 @@
 ** Canvas
 */
 
-#ifndef Canvas_HPP_
-#define Canvas_HPP_
-
-#include "Drawables/IDrawable.hpp"
+#ifndef CANVAS_HPP_
+#define CANVAS_HPP_
 
 namespace RAY {
+    namespace Drawables {
+        class IDrawable;
+    }
     class Canvas {
         public:
             //! @brief A default destructor

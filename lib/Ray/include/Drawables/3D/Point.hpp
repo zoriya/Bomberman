@@ -18,7 +18,7 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief Point constructor
             //! @param position position of point 
             //! @param Color Color of the point
-            Point(Vector3 position, Color);
+            Point(const Vector3 &position, const Color &color);
 
             //! @brief A default copy constructor
             Point(const Point &) = default;
@@ -33,10 +33,10 @@ namespace RAY::Drawables::Drawables3D {
             const Vector3 &getPosition(void) const;
 
             //! @brief Set position
-            Point &setPosition(Vector3 Position);
+            Point &setPosition(const Vector3 &Position);
 
             //! @brief Draw point on window
-            void drawOn(Window &);
+            void drawOn(RAY::Window &window);
 
         private:
             //! @brief point position

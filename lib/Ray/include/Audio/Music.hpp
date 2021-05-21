@@ -13,9 +13,9 @@
 #include <raylib.h>
 
 
-namespace RAY::Music
+namespace RAY::Audio
 {
-    class Music {
+    class Music: public IAudio {
         public:
 
             //! @brief Load Music stream from file
@@ -25,10 +25,10 @@ namespace RAY::Music
             Music();
 
             //! @brief Default destructor
-            ~Music() = default;
+            ~Music();
 
             //! @brief A copy constructor constructor
-            Music(const Music &Music);
+            Music(const Music &Music) = default;
 
             //! @brief A Music is assignable
             Music &operator=(const Music &Music) = default;
@@ -40,7 +40,7 @@ namespace RAY::Music
             bool unload(void);
 
             //! @brief Check if Music is playing
-            bool isPlayin(void);
+            bool isPlaying(void);
 
             //! @brief  Start Music
             Music &play(void);
@@ -61,7 +61,7 @@ namespace RAY::Music
             Music &setPitch(float pitch);
 
         private:
-            ::Music _Music;
+            ::Music _music;
     };
 }
 
