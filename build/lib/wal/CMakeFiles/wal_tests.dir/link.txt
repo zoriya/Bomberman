@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/wal_tests.dir/tests/EntityTests.cpp.o CMakeFiles/wal_tests.dir/tests/MainTest.cpp.o CMakeFiles/wal_tests.dir/tests/EngineTests.cpp.o -o wal_tests  libwal.a 
