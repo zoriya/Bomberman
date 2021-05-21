@@ -32,8 +32,7 @@ namespace BBM
 	{
 		if (damage >= this->_healthPoint) {
 			this->_healthPoint = 0;
-			this->die();
-		} else
+ 		} else
 			this->_healthPoint -= damage;
 	}
 

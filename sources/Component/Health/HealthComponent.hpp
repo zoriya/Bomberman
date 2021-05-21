@@ -45,5 +45,7 @@ namespace BBM
 
 			//! @brief A component can't be assigned
 			HealthComponent &operator=(const HealthComponent &) = delete;
+
+			friend class HealthSystem;
 	};
 }
