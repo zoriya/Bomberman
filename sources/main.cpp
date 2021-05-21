@@ -25,8 +25,8 @@ int main()
 
 	RAY::Vector2 ballPosition = { (float)screenWidth/2, (float)screenHeight/2 };
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip");
-    RAY::Camera::Camera3D camera((Vector3){ 30.0f, 20.0f, 30.0f }, (Vector3){ 0.0f, 0.0f, 0.0f },
-	(Vector3){ 0.0f, 1.0f, 0.0f }, 70.0, CAMERA_PERSPECTIVE);
+    RAY::Camera::Camera3D camera((RAY::Vector3){ 30.0f, 20.0f, 30.0f }, (RAY::Vector3){ 0.0f, 0.0f, 0.0f },
+	(RAY::Vector3){ 0.0f, 1.0f, 0.0f }, 70.0, CAMERA_PERSPECTIVE);
 	RAY::Drawables::Drawables3D::Grid grid(10, 5.0f);
 	RAY::Drawables::Drawables3D::Cube cube({0}, {0}, {0});
 
@@ -75,7 +75,7 @@ int main()
                             float scatter = sinf(blockScale*20.0f + (float)(time*4.0f));
 
                             // Calculate the cube position
-							cube.setPosition({
+							cube.setPosition((RAY::Vector3){
                                 (float)(x - numBlocks/2)*(scale*3.0f) + scatter,
                                 (float)(y - numBlocks/2)*(scale*2.0f) + scatter,
                                 (float)(z - numBlocks/2)*(scale*3.0f) + scatter
