@@ -63,7 +63,7 @@ namespace RAY::Camera {
 			void setMode(Mode mode);
 
 			//! @brief get camera struct
-			const ::Camera3D &getCamera(void) const;
+			operator ::Camera3D() const;
 
 		private:
 			::Camera3D _camera;

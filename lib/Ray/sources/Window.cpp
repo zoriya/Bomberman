@@ -21,7 +21,8 @@ RAY::Window::Window(int width, int height, std::string title, unsigned flags, bo
 	_dimensions(width, height),
 	_title(std::move(title)),
 	_isOpen(openNow),
-	_flags(flags)
+	_flags(flags),
+	_drawingState(IDLE), _displayState(NONE)
 {
 	if (openNow)
 		this->open();
@@ -93,34 +94,48 @@ void RAY::Window::clear(const RAY::Color &color)
 	ClearBackground(color);
 }
 
-void RAY::Window::beginDrawing(void)
+void RAY::Window::setDrawingState(enum RAY::Window::drawingState state)
 {
-	::BeginDrawing();
+	if (state == this->_drawingState)
+		return;
+	switch (state)
+	{
+	case DRAWING:
+		BeginDrawing();
+		break;
+	case IDLE:
+		EndDrawing();
+		break;
+	}
+	this->_drawingState = state;
 }
 
-void RAY::Window::endDrawing(void)
+void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
 {
-	::EndDrawing();
+	this->_displayState = RAY::Window::TWO_DIMENSIONNAL;
+	BeginMode2D(camera);
 }
 
-void RAY::Window::beginMode2D(Camera::Camera2D &camera)
+void RAY::Window::useCamera(RAY::Camera::Camera3D &camera)
 {
-	BeginMode2D(camera.getCamera());
+	this->_displayState = RAY::Window::THREE_DIMENSIONNAL;
+	BeginMode3D(camera);
 }
 
-void RAY::Window::beginMode3D(Camera::Camera3D &camera)
+void RAY::Window::unuseCamera(void)
 {
-	BeginMode3D(camera.getCamera());
-}
-
-void RAY::Window::endMode2D(void)
-{
-	EndMode2D();
-}
-
-void RAY::Window::endMode3D(void)
-{
-	EndMode3D();
+	switch (this->_displayState)
+	{
+	case THREE_DIMENSIONNAL:
+		EndMode3D();
+		break;
+	case TWO_DIMENSIONNAL:
+		EndMode2D();
+		break;
+	default:
+		break;
+	}
+	this->_displayState = NONE;
 }
 
 void RAY::Window::setTitle(const std::string &title)

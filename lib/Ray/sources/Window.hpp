@@ -74,25 +74,35 @@ namespace RAY {
 			//! @param color The color to clear the screen (default: black)
 			void clear(const Color &color = BLACK);
 
-			//! @brief Setup canvas (framebuffer) to start drawing
-			//! @brief Must be called before first draw of iteration
-			void beginDrawing(void);
+			//! @brief Different states of the draw-ability of the window
+			enum drawingState {
+				//! @brief Must be called after last draw of iteration
+				IDLE,
+				//! @brief Must be called before first draw of iteration
+				DRAWING,
+			};
 
-			//! @brief End canvas drawing and swap buffers (double buffering)
-			//! @info Must be called after last draw of iteration
-			void endDrawing(void);
+			//! @brief Different states of the view of the window
+			enum displayState {
+				//! @brief When a custom 2D camera is used
+				TWO_DIMENSIONNAL,
+				//! @brief When a custom 3D camera is used
+				THREE_DIMENSIONNAL,
+				//! @brief When no camera is used
+				NONE,
+			};
+
+			//! @brief Set drawing state of the window
+			void setDrawingState(enum drawingState);
 
 			//! @brief Initialize 2D mode with custom camera (2D)
-			void beginMode2D(Camera::Camera2D &camera);
+			void useCamera(Camera::Camera2D &camera);
 
 			//! @brief Initialize 3D mode with custom camera (2D)
-			void beginMode3D(Camera::Camera3D &camera);
+			void useCamera(Camera::Camera3D &camera);
 
-			//! @brief Ends 2D mode with custom camera
-			void endMode2D(void);
-
-			//! @brief Ends 3D mode and returns to default 2D orthographic mode
-			void endMode3D(void);
+			//! @brief Ends current view mode and returns to default mode
+			void unuseCamera(void);
 
 			//! @brief Set the window title
 			void setTitle(const std::string &title);
@@ -111,9 +121,11 @@ namespace RAY {
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
 
+
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true
 			Window(int width, int height, std::string title, unsigned flags = 0, bool openNow = true);
+			
 			//! @brief Dimension of window
 			RAY::Vector2 _dimensions;
 
@@ -125,6 +137,12 @@ namespace RAY {
 
 			//! @brief flags for the window (ex: FLAG_WINDOW_RESIZABLE)
 			unsigned int _flags;
+
+			//! @brief Current window draw-state
+			enum drawingState _drawingState;
+
+			//! @brief Current window draw-state
+			enum displayState _displayState;
 	};
 }
 

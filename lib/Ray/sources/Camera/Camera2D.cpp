@@ -58,7 +58,7 @@ Matrix RAY::Camera::Camera2D::getMatrix(void) const
 	return GetCameraMatrix2D(this->_camera);
 }
 
-const ::Camera2D &RAY::Camera::Camera2D::getCamera(void) const
+RAY::Camera::Camera2D::operator ::Camera2D() const
 {
 	return this->_camera;
 }

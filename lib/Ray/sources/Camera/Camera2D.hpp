@@ -53,7 +53,7 @@ namespace RAY::Camera {
 			Matrix getMatrix(void) const override;
 
 			//! @brief get camera struct
-			const ::Camera2D &getCamera(void) const;
+			operator ::Camera2D() const;
 
 		private:
 			::Camera2D _camera;

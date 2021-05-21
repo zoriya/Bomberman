@@ -60,11 +60,11 @@ int main()
 
 		// Draw
 		//----------------------------------------------------------------------------------
-		window.beginDrawing();
+		window.setDrawingState(RAY::Window::DRAWING);
 
 		window.clear(RAYWHITE);
 
-		window.beginMode3D(camera);
+		window.useCamera(camera);
 
 		window.draw(grid);
 
@@ -97,9 +97,9 @@ int main()
 			}
 		}
 
-		window.endMode3D();
+		window.unuseCamera();
 
-		window.endDrawing();
+		window.setDrawingState(RAY::Window::IDLE);
 		//----------------------------------------------------------------------------------
 	}
 
