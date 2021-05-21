@@ -47,9 +47,9 @@ namespace RAY::Drawables::Drawables2D {
             Line &setEndPosition(const Vector2 &);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
             //! @brief Draw point on image
-            void drawOn(RAY::Image &image);
+            void drawOn(RAY::Image &image) override;
 
         private:
             //! @brief Positon of the end of the line 

@@ -42,7 +42,7 @@ namespace RAY::Drawables::Drawables3D {
             Grid &setSpacing(float spacing);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             //! @brief Grid slices

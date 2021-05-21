@@ -44,7 +44,7 @@ namespace RAY::Drawables::Drawables3D {
             Cube &setPosition(const Vector3 &position);
         
             //! @brief Draw circle on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
         private:
             //! @brief Positon in space of the cube
             Vector3 _position;

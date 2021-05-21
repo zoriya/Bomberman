@@ -34,31 +34,31 @@ namespace RAY::Audio
             Sound &operator=(const Sound &sound) = default;
 
             //! @brief Load Sound stream from file
-            bool load(const std::string &path);
+            bool load(const std::string &path) override;
 
             //! @brief Unload Sound stream
-            bool unload(void);
+            bool unload(void) override;
 
             //! @brief Check if Sound is playing
-            bool isPlaying(void);
+            bool isPlaying(void) override;
 
             //! @brief  Start Sound
-            Sound &play(void);
+            Sound &play(void) override;
 
             //! @brief Stop Sound playing
-            Sound &stop(void);
+            Sound &stop(void) override;
 
             //! @brief Pause Sound playing
-            Sound &pause(void);
+            Sound &pause(void) override;
 
             //! @brief Resume playing paused Sound
-            Sound &resume(void);
+            Sound &resume(void) override;
 
             //! @brief Set volume for Sound (1.0 is max level)
-            Sound &setVolume(float volume);
+            Sound &setVolume(float volume) override;
 
             // Set pitch for a Sound (1.0 is base level)
-            Sound &setPitch(float pitch);
+            Sound &setPitch(float pitch) override;
 
         private:
             ::Sound _sound;

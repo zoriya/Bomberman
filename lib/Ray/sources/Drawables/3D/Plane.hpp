@@ -43,7 +43,7 @@ namespace RAY::Drawables::Drawables3D {
             Plane &setDimensions(const Vector2 &dimensions);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             //! @brief plane position

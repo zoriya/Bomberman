@@ -50,7 +50,7 @@ namespace RAY::Camera {
             float getZoom(void) const;
 
             //! @brief Returns camera 2d transform matrix
-            Matrix getMatrix(void) const;
+            Matrix getMatrix(void) const override;
 
             //! @brief get camera struct
             const ::Camera2D &getCamera(void) const;

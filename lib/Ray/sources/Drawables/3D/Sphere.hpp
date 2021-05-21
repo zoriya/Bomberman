@@ -44,7 +44,7 @@ namespace RAY::Drawables::Drawables3D {
             Sphere &setRadius(const Vector3 &pos);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             //! @brief Radius of the sphere 

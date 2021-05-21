@@ -57,7 +57,7 @@ namespace RAY::Camera {
             Projection getProjection(void) const;
 
             //! @brief Returns camera 3d transform matrix
-            Matrix getMatrix(void) const;
+            Matrix getMatrix(void) const override;
 
             // Set camera mode (multiple camera modes available)
             void setMode(Mode mode);

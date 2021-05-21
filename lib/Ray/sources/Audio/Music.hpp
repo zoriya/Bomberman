@@ -34,31 +34,31 @@ namespace RAY::Audio
             Music &operator=(const Music &Music) = default;
 
             //! @brief Load Music stream from file
-            bool load(const std::string &path);
+            bool load(const std::string &path) override;
 
             //! @brief Unload Music stream
-            bool unload(void);
+            bool unload(void) override;
 
             //! @brief Check if Music is playing
-            bool isPlaying(void);
+            bool isPlaying(void) override;
 
             //! @brief  Start Music
-            Music &play(void);
+            Music &play(void) override;
 
             //! @brief Stop Music playing
-            Music &stop(void);
+            Music &stop(void) override;
 
             //! @brief Pause Music playing
-            Music &pause(void);
+            Music &pause(void) override;
 
             //! @brief Resume playing paused Music
-            Music &resume(void);
+            Music &resume(void) override;
 
             //! @brief Set volume for Music (1.0 is max level)
-            Music &setVolume(float volume);
+            Music &setVolume(float volume) override;
 
             // Set pitch for a Music (1.0 is base level)
-            Music &setPitch(float pitch);
+            Music &setPitch(float pitch) override;
 
         private:
             ::Music _music;

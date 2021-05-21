@@ -36,9 +36,9 @@ namespace RAY::Drawables::Drawables2D {
             ~Point() = default;
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
             //! @brief Draw point on image
-            void drawOn(RAY::Image &image);
+            void drawOn(RAY::Image &image) override;
 
     };
 };

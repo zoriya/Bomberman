@@ -44,7 +44,7 @@ namespace RAY::Drawables::Drawables3D {
             Ray &setDirection(const Vector3 &direction);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             ::Ray _ray;

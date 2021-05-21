@@ -18,31 +18,31 @@ namespace RAY::Audio
             virtual ~IAudio() = 0;
 
              //! @brief Load Audio stream from file
-            bool load(const std::string &path);
+            virtual bool load(const std::string &path) = 0;
 
             //! @brief Unload audio stream
-            bool unload(void);
+            virtual bool unload(void) = 0;
 
             //! @brief Check if audio is playing
-            bool isPlaying(void);
+            virtual bool isPlaying(void) = 0;
 
             //! @brief  Start audio
-            IAudio &play(void);
+            virtual IAudio &play(void) = 0;
 
             //! @brief Stop audio playing
-            IAudio &stop(void);
+            virtual IAudio &stop(void) = 0;
 
             //! @brief Pause audio playing
-            IAudio &pause(void);
+            virtual IAudio &pause(void) = 0;
 
             //! @brief Resume playing paused audio
-            IAudio &resume(void);
+            virtual IAudio &resume(void) = 0;
 
             //! @brief Set volume for audio (1.0 is max level)
-            IAudio &setVolume(float volume);
+            virtual IAudio &setVolume(float volume) = 0;
 
             // Set pitch for a audio (1.0 is base level)
-            IAudio &setPitch(float pitch);
+            virtual IAudio &setPitch(float pitch) = 0;
 
         protected:
         private:

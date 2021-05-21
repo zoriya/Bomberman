@@ -39,14 +39,14 @@ namespace RAY
 
             //! @brief load ressources from file
             //! @param filename: path of input
-            bool load(const std::string &filename);
+            bool load(const std::string &filename) override;
 
             //! @brief export to file
             //! @param outputPath: path of output
             bool exportTo(const std::string &outputPath);
 
             //! @brief unload ressources
-            bool unload();
+            bool unload() override;
 
             //! @brief get image
             ::Image &getImage(void);

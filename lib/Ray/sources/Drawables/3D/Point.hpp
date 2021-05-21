@@ -36,7 +36,7 @@ namespace RAY::Drawables::Drawables3D {
             Point &setPosition(const Vector3 &Position);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             //! @brief point position

@@ -39,7 +39,7 @@ namespace RAY
 
             //! @brief load ressources from file
             //! @param filename: path of input
-            bool load(const std::string &filename);
+            bool load(const std::string &filename) override;
 
             //! @brief unload ressources
             bool unload() override;

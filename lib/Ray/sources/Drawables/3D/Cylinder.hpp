@@ -58,7 +58,7 @@ namespace RAY::Drawables::Drawables3D {
             Cylinder &setHeigth(float heigth);
 
             //! @brief Draw point on window
-            void drawOn(RAY::Window &window);
+            void drawOn(RAY::Window &window) override;
 
         private:
             //! @brief Radius of the cylinder 
