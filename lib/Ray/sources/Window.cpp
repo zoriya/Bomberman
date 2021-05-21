@@ -143,7 +143,7 @@ void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix 
     DrawMesh(mesh, material, transform);
 }
 
-void RAY::Window::setIcon(const RAY::Image &img)
+void RAY::Window::setIcon(RAY::Image &img)
 {
 	SetWindowIcon(img.getImage());
 }

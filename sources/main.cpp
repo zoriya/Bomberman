@@ -30,7 +30,6 @@ int main()
 	RAY::Drawables::Drawables3D::Grid grid(10, 5.0f);
 	RAY::Drawables::Drawables3D::Cube cube({0}, {0}, {0});
 
-
     // Specify the amount of blocks in each direction
     const int numBlocks = 15;
 

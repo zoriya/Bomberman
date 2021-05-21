@@ -49,7 +49,7 @@ namespace RAY
             bool unload() override;
 
             //! @brief get image
-            const ::Image &getImage(void) const;
+            ::Image &getImage(void);
 
             //! @brief draw drawable
             void draw(Drawables::ADrawable2D &);

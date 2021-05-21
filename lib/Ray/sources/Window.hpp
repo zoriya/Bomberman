@@ -61,7 +61,7 @@ namespace RAY {
             bool cursorIsVisible(void) const;
 
             //! @brief set the window icon
-            void setIcon(const Image &img);
+            void setIcon(Image &img);
 
             //! @brief Get the cursor position
             Vector2 getCursorPosition() const;
