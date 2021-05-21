@@ -38,5 +38,11 @@ add_executable(wal_tests EXCLUDE_FROM_ALL
 )
 
 target_link_libraries(wal_tests PRIVATE wal)
-#find_package(Catch2 REQUIRED)
-#target_link_libraries(wal_tests PRIVATE Catch2::Catch2)
+
+find_package(Catch2 QUIET)
+if (NOT Catch2_FOUND)
+	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../catch2)
+	find_package(Catch2 REQUIRED)
+endif()
+
+target_link_libraries(wal_tests PRIVATE Catch2::Catch2)

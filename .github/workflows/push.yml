@@ -1,0 +1,24 @@
+name: Update Mirror
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - workflow
+
+jobs:
+  Push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+        ref: master
+    - name: Push to Epitech repository
+      uses: pixta-dev/repository-mirroring-action@v1
+      with:
+        target_repo_url:
+          git@github.com:EpitechIT2020/B-YEP-400-NAN-4-1-indiestudio-clement.le-bihan.git
+        ssh_private_key:
+          ${{ secrets.SSH_KEY }}

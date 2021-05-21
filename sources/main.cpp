@@ -1,3 +1,11 @@
+/*
+** EPITECH PROJECT, 2021
+** Bomberman
+** File description:
+** main
+*/
+
+
 #include <iostream>
 #include "Window.hpp"
 #include "Drawables/2D/Text.hpp"
