@@ -89,6 +89,11 @@ set(SRC
     sources/Window.cpp
 )
 
-find_package(raylib REQUIRED)
+find_package(raylib QUIET)
+if (NOT raylib_FOUND)
+	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../raylib)
+	find_package(raylib REQUIRED)
+endif()
+
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
 target_link_libraries(${LIB_NAME} raylib)
