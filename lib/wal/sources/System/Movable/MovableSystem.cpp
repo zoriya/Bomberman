@@ -9,10 +9,12 @@
 
 namespace WAL
 {
-	const std::type_info &MovableSystem::getComponent() const
-	{
-		return typeid(MovableComponent);
-	}
+	MovableSystem::MovableSystem()
+		: System({
+			typeid(MovableComponent),
+			typeid(PositionComponent)
+		})
+	{}
 
 	void MovableSystem::onFixedUpdate(Entity &entity)
 	{

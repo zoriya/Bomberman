@@ -14,12 +14,10 @@ namespace WAL
 	{
 	public:
 		//! @inherit
-		const std::type_info &getComponent() const override;
-		//! @inherit
 		void onFixedUpdate(Entity &entity) override;
 
 		//! @brief A default constructor
-		MovableSystem() = default;
+		MovableSystem();
 		//! @brief A movable system is copy constructable
 		MovableSystem(const MovableSystem &) = default;
 		//! @brief A default destructor

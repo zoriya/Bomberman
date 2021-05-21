@@ -31,6 +31,12 @@ namespace WAL
 
 		//! @brief Call the onFixedUpdate of every system with every component
 		void _fixedUpdate();
+
+		//! @brief Check if an entity met a system's dependencies.
+		//! @param entity The entity to check
+		//! @param system The system that will list dependencies
+		//! @return True if all dependencies are met, false otherwise.
+		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;

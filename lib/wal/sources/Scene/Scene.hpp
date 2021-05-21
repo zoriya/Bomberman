@@ -30,10 +30,6 @@ namespace WAL
 			return *this;
 		}
 
-		//! @brief Remove every entity of this scene that matches the given predicate
-		//! @param predicate The predicate used to filer entities
-		void removeAll(std::function<bool (const Entity &)> &predicate);
-
 		//! @brief A default constructor
 		Scene() = default;
 		//! @brief A scene is copy constructable
