@@ -14,28 +14,28 @@ RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, const 
 
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionA(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionA(void) const
 {
 	return this->getPosition();
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionB(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionB(void) const
 {
 	return this->_posB;
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionC(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables2D::Triangle::getPositionC(void) const
 {
 	return this->_posC;
 }
 
-RAY::Drawables::Drawables2D::Triangle &RAY::Drawables::Drawables2D::Triangle::setPositionA(const Vector2 &position)
+RAY::Drawables::Drawables2D::Triangle &RAY::Drawables::Drawables2D::Triangle::setPositionA(const RAY::Vector2 &position)
 {
 	this->_position = position;
 	return *this;
 }
 
-RAY::Drawables::Drawables2D::Triangle &RAY::Drawables::Drawables2D::Triangle::setPositionB(const Vector2 &position)
+RAY::Drawables::Drawables2D::Triangle &RAY::Drawables::Drawables2D::Triangle::setPositionB(const RAY::Vector2 &position)
 {
 	this->_posB = position;
 	return *this;

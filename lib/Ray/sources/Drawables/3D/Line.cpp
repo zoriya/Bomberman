@@ -13,13 +13,12 @@ RAY::Drawables::Drawables3D::Line::Line(const Vector3 &startPosition, const Vect
 
 }
 
-
-const Vector3 &RAY::Drawables::Drawables3D::Line::getStartPosition(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Line::getStartPosition(void) const
 {
 	return this->_startPosition;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Line::getEndPosition(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Line::getEndPosition(void) const
 {
 	return this->_endPosition;
 }

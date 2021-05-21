@@ -32,10 +32,10 @@ namespace RAY::Drawables::Drawables3D {
 
 
 			//! @return the start position of the line
-			const Vector3 &getStartPosition(void) const;
+			const Vector3 getStartPosition(void) const;
 
 			//! @return the end position of the line
-			const Vector3 &getDirection(void) const;
+			const Vector3 getDirection(void) const;
 
 			//! @brief Set start position
 			Ray &setStartPosition(const Vector3 &startPosition);

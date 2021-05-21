@@ -13,12 +13,12 @@ RAY::Drawables::Drawables3D::Ray::Ray(const Vector3 &startPosition, const Vector
 
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Ray::getStartPosition(void) const
+const RAY::Vector3 RAY::Drawables::Drawables3D::Ray::getStartPosition(void) const
 {
 	return this->_ray.position;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Ray::getDirection(void) const
+const RAY::Vector3 RAY::Drawables::Drawables3D::Ray::getDirection(void) const
 {
 	return this->_ray.direction;
 }

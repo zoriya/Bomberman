@@ -10,7 +10,7 @@
 
 #include <raylib.h>
 #include <string>
-#include "Vector.hpp"
+#include <Vector/Vector2.hpp>
 #include "Controllers/Keyboard.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Camera/Camera3D.hpp"

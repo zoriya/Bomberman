@@ -38,7 +38,7 @@ RAY::Drawables::Drawables3D::Cylinder &RAY::Drawables::Drawables3D::Cylinder::se
 	return *this;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Cylinder::getPosition(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Cylinder::getPosition(void) const
 {
 	return this->_centerPos;
 }

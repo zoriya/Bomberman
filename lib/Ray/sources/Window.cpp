@@ -18,7 +18,7 @@ RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &
 }
 
 RAY::Window::Window(int width, int height, std::string title, unsigned flags, bool openNow):
-	_dimensions({(float)width, (float)height}),
+	_dimensions(width, height),
 	_title(std::move(title)),
 	_isOpen(openNow),
 	_flags(flags)
@@ -78,7 +78,7 @@ bool RAY::Window::cursorIsVisible(void) const
 	return !IsCursorHidden();
 }
 
-Vector2 RAY::Window::getCursorPosition(void) const
+RAY::Vector2 RAY::Window::getCursorPosition(void) const
 {
 	return RAY::Controller::Mouse::getCursorPosition();
 }

@@ -15,12 +15,12 @@ RAY::Drawables::Drawables2D::Rectangle::Rectangle(const Vector2 &position, const
 }
 
 RAY::Drawables::Drawables2D::Rectangle::Rectangle(int x, int y, int width, int height, const Color &color):
-	ADrawable2D(x, y, color), _dimensions({(float)width, (float)height})
+	ADrawable2D(x, y, color), _dimensions(width, height)
 {
 
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::Rectangle::getDimensions(void)
+const RAY::Vector2 &RAY::Drawables::Drawables2D::Rectangle::getDimensions(void)
 {
 	return this->_dimensions;
 }

@@ -25,7 +25,7 @@ RAY::Drawables::Drawables3D::Circle &RAY::Drawables::Drawables3D::Circle::setRad
 	return *this;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Circle::getCenterPos(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Circle::getCenterPos(void) const
 {
 	return this->_centerPos;
 }

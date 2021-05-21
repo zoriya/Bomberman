@@ -13,8 +13,7 @@ RAY::Drawables::Drawables3D::Plane::Plane(const Vector3 &position, const Vector2
 
 }
 
-
-const Vector3 &RAY::Drawables::Drawables3D::Plane::getPosition(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Plane::getPosition(void) const
 {
 	return this->_position;
 }
@@ -25,7 +24,7 @@ RAY::Drawables::Drawables3D::Plane &RAY::Drawables::Drawables3D::Plane::setPosit
 	return *this;
 }
 
-const Vector2 &RAY::Drawables::Drawables3D::Plane::getDimensions(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables3D::Plane::getDimensions(void) const
 {
 	return this->_dimensions;
 }

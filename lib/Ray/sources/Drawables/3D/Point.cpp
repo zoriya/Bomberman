@@ -14,7 +14,7 @@ RAY::Drawables::Drawables3D::Point::Point(const Vector3 &position, const Color &
 
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Point::getPosition(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Point::getPosition(void) const
 {
 	return this->_position;
 }

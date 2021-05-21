@@ -33,7 +33,9 @@ int main()
 	                             70.0,
 	                             CAMERA_PERSPECTIVE);
 	RAY::Drawables::Drawables3D::Grid grid(10, 5.0f);
-	RAY::Drawables::Drawables3D::Cube cube({0}, {0}, {0});
+	RAY::Drawables::Drawables3D::Cube cube(RAY::Vector3(0, 0, 0),
+										   RAY::Vector3(0, 0, 0),
+										   RAY::Color(0, 0, 0, 0));
 
 	// Specify the amount of blocks in each direction
 	const int numBlocks = 15;

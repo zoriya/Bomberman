@@ -14,17 +14,17 @@ RAY::Drawables::Drawables3D::Triangle::Triangle(const Vector3 &positionA, const 
 
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionA(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionA(void) const
 {
 	return this->_posA;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionB(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionB(void) const
 {
 	return this->_posB;
 }
 
-const Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionC(void) const
+const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionC(void) const
 {
 	return this->_posC;
 }

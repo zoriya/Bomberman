@@ -16,12 +16,12 @@ RAY::Drawables::Drawables2D::Line::Line(const Vector2 &startPosition, const Vect
 }
 
 RAY::Drawables::Drawables2D::Line::Line(int xStart, int yStart, int xEnd, int yEnd, const Color &color):
-	ADrawable2D(xStart, yStart, color), _end({(float)xEnd, (float)yEnd})
+	ADrawable2D(xStart, yStart, color), _end(xEnd, yEnd)
 {
 
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::Line::getEndPosition(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables2D::Line::getEndPosition(void) const
 {
 	return this->_end;
 }

@@ -15,12 +15,12 @@ RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(const Vector2 &position, c
 
 
 RAY::Drawables::Drawables2D::ADrawable2D::ADrawable2D(int x, int y, const RAY::Color &color):
-	_position({(float)x, (float)y}), _color(color)
+	_position(x, y), _color(color)
 {
 
 }
 
-const Vector2 &RAY::Drawables::Drawables2D::ADrawable2D::getPosition(void) const
+const RAY::Vector2 &RAY::Drawables::Drawables2D::ADrawable2D::getPosition(void) const
 {
 	return this->_position;
 }
