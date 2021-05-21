@@ -10,13 +10,12 @@
 
 #include <raylib.h>
 #include <vector>
-#include "IController.hpp"
 
 namespace RAY
 ::Controller {
 
     //! @brief Entity representing a gamepad controller
-    class GamePad : public IController {
+    class GamePad {
         public:
             typedef ::GamepadButton Button;
 
@@ -25,7 +24,7 @@ namespace RAY
             GamePad(int id);
 
             //! @brief A default destructor
-            ~GamePad() = override default;
+            ~GamePad() = default;
 
             //! @brief A default copy constructor
             GamePad(const GamePad &) = default;
@@ -36,22 +35,22 @@ namespace RAY
 
             //! @brief Returns true if Button is pressed on the gamepad
             //! @param Button The keycode of the button
-            bool isPressed(Button) override;
+            bool isPressed(Button);
 
             //! @brief Returns true if Button is down on the gamepad
             //! @param Button The keycode of the button
-            bool isDown(Button) override;
+            bool isDown(Button);
 
             //! @brief Returns true if Button is released on the gamepad
             //! @param Button The keycode of the button
-            bool isReleased(Button) override;
+            bool isReleased(Button);
 
             //! @brief Returns true if Button is up on the gamepad
             //! @param Button The keycode of the button
-            bool isUp(Button) override;
+            bool isUp(Button);
 
             //! @brief Returns true if controller is available
-            bool isAvailable() override;
+            bool isAvailable();
 
             //! @brief Sets gamepad's id
             void setID(int id);
