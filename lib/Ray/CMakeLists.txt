@@ -11,7 +11,7 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
 endif ()
 
-find_package(raylib REQUIRED)
+#find_package(raylib REQUIRED)
 
 set(HEADERS
     sources/Canvas.hpp
