@@ -96,7 +96,7 @@ namespace RAY {
 
             //! @brief draw rectangle
             //! @param drawable The drawable to render on screen
-            void draw(Drawables::IDrawable &drawable);
+            void draw(Drawables::IDrawable &drawable) override;
 
             //! @brief draw texture at position
             //! @param texture The object to render

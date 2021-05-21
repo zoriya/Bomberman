@@ -35,7 +35,7 @@ namespace RAY
             Texture &operator=(const Texture &) = default;
             
             //! @brief Texture destructor, will unload ressources
-            ~Texture();
+            ~Texture() override;
 
             //! @brief load ressources from file
             //! @param filename: path of input
