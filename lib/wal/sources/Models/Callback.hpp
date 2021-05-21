@@ -22,10 +22,10 @@ namespace WAL
 		//! @brief Add a method to be called when this callback is invoked.
 		//! @param callback The list of arguments of the callback method
 		//! @return A unique ID for this callback. That can be used to remove the callback later.
-		int addCallback(std::function<R (Types...)> callback)
+		int addCallback(std::function<void (Types...)> callback)
 		{
 			int id = this->_nextID++;
-			this->_functions.emplace_back(id, std::move(callback));
+			this->_functions[id] = std::move(callback);
 			return id;
 		}
 
@@ -38,7 +38,7 @@ namespace WAL
 
 		void operator()(Types ...args) const
 		{
-			for (auto &callback : this->_functions)
+			for (const auto &[_, callback] : this->_functions)
 				callback(args...);
 		}
 
