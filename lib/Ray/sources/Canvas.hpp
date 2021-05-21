@@ -18,7 +18,7 @@ namespace RAY {
             virtual ~Canvas() = default;
 
             //! @brief draw drawable
-            virtual void draw(const Drawables::IDrawable &) = 0;
+            virtual void draw(Drawables::IDrawable &) = 0;
 
         protected:
         private:

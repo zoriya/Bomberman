@@ -1,6 +1,7 @@
 #include <iostream>
-#include "Wal.hpp"
 #include "Window.hpp"
+#include "Drawables/2D/Text.hpp"
+#include "Drawables/2D/Circle.hpp"
 
 int main()
 {
@@ -9,13 +10,17 @@ int main()
 	const int screenWidth = 800;
 	const int screenHeight = 450;
 
-	InitWindow(screenWidth, screenHeight, "raylib [core] example - basic window");
+	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip", false);
+	RAY::Drawables::Drawables2D::Text text("Hello World", 10, {190, 200}, RED);
+	RAY::Drawables::Drawables2D::Circle circle(400, 225, 50, RED);
 
-	SetTargetFPS(60);               // Set our game to run at 60 frames-per-second
+	window.open();
+
+	window.setFPS(60);               // Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
-	while (!WindowShouldClose())    // Detect window close button or ESC key
+	while (!window.shouldClose())    // Detect window close button or ESC key
 	{
 		// Update
 		//----------------------------------------------------------------------------------
@@ -24,19 +29,20 @@ int main()
 
 		// Draw
 		//----------------------------------------------------------------------------------
-		BeginDrawing();
+		window.beginDrawing();
 
-		ClearBackground(RAYWHITE);
+		window.clear();
 
-		DrawText("Congrats! You created your first window!", 190, 200, 20, LIGHTGRAY);
+		window.draw(circle);
+		window.draw(text);
 
-		EndDrawing();
+		window.endDrawing();
 		//----------------------------------------------------------------------------------
 	}
 
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
-	CloseWindow();        // Close window and OpenGL context
+	window.close();       // Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 
 	return 0;

@@ -18,7 +18,7 @@ namespace RAY
     namespace Drawables {
         class IDrawable {
             public:
-                virtual ~IDrawable() = 0;
+                virtual ~IDrawable() = default;
 
                 virtual void drawOn(RAY::Window &window) = 0;
             protected:

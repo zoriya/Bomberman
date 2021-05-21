@@ -8,7 +8,14 @@
 #include "Window.hpp"
 #include "Controllers/Mouse.hpp"
 
-RAY::Window::Window(int width, int height, const std::string title, bool openNow):
+RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, bool openNow)
+{
+    static RAY::Window window(width, height, title, openNow);
+
+    return window;
+}
+
+RAY::Window::Window(int width, int height, const std::string &title, bool openNow):
     _dimensions({(float)width, (float)height}), _title(title), _isOpen(openNow)
 {
     if (openNow)

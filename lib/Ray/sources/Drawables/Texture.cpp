@@ -34,6 +34,12 @@ bool RAY::Texture::load(const std::string &filename)
     return true;
 }
 
+bool RAY::Texture::unload()
+{
+    UnloadTexture(this->_texture);
+    return true;
+}
+
 Image RAY::Texture::toImage(void) const
 {
     return GetTextureData(_texture);

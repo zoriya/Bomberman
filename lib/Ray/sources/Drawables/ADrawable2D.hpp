@@ -31,7 +31,7 @@ namespace RAY::Drawables::Drawables2D {
             ADrawable2D(const ADrawable2D &) = default;
 
             //! @brief A default destructor
-            virtual ~ADrawable2D() = 0;
+            virtual ~ADrawable2D() = default;
 
             //! @return the top-left position of the ADrawable
             const Vector2 &getPosition(void) const;

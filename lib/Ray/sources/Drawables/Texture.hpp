@@ -42,7 +42,7 @@ namespace RAY
             bool load(const std::string &filename);
 
             //! @brief unload ressources
-            bool unload();
+            bool unload() override;
 
             //! @brief get image
             ::Image toImage(void) const;

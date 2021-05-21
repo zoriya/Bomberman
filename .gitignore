@@ -2,3 +2,5 @@
 cmake-build-debug
 ./bomberman
 .vscode
+build/*
+docs/*

@@ -22,14 +22,14 @@
 namespace RAY {
     class Window: public Canvas {
         public:
-            //! @brief Creates window, and opens it if openNow is set to true
-            Window(int width, int height, const std::string title, bool openNow = false);
-
+            //! @return A widow insta,ce. Only one window can be open at a time
+            static Window &getInstance(int width, int height, const std::string &title, bool openNow = true);
+            
             //! @brief A default copy constructor
-            Window(const Window &window) = default;
+            Window(const Window &window) = delete;
 
             //! @brief A window is assignable
-            Window &operator=(const Window &window) = default;
+            Window &operator=(const Window &window) = delete;
             
             //! @brief Closes window if still open
             ~Window() = default;
@@ -108,6 +108,8 @@ namespace RAY {
             void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
 
         private:
+            //! @brief Creates window, and opens it if openNow is set to true
+            Window(int width, int height, const std::string &title, bool openNow = true);
             //! @brief Dimension of window
             RAY::Vector2 _dimensions;
 
