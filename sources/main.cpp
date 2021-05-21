@@ -15,9 +15,11 @@
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/3D/Cube.hpp"
 #include <cmath>
+#include "Wal.hpp"
 
 int main()
 {
+	WAL::Wal wal;
 	SetTraceLogLevel(LOG_WARNING);
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
