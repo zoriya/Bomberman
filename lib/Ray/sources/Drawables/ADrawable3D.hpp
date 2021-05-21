@@ -29,10 +29,6 @@ namespace RAY::Drawables::Drawables3D {
             //! @brief Draw drawble on window
             virtual void drawOn(RAY::Window &window) = 0;
 
-            //! @brief Draw drawble on image
-            virtual void drawOn(RAY::Image &image) = 0;
-
-
             //! @return the color of the ADrawable
             const Color &getColor(void) const;
             

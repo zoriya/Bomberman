@@ -20,6 +20,12 @@ namespace RAY {
             //! @param a A-component of color
             Color(unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 
+            //! @brief A Color constructor
+            //! @param h H-component of color
+            //! @param s S-component of color
+            //! @param v V-component of color
+            Color(float h, float s, float v);
+
             //! @brief A constructor using ray's own color struct
             //! @info Useful when want to use pre-defined color
             Color(const ::Color &);

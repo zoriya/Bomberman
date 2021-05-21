@@ -14,6 +14,12 @@ namespace RAY
 	{
 	}
 
+	Color::Color(float h, float s, float v):
+		_color(ColorFromHSV(h, s, v))
+	{
+
+	}
+
 	Color::Color(const ::Color &color)
 		: _color(color)
 	{

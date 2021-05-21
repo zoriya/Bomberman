@@ -46,6 +46,7 @@ set(HEADERS
     sources/Drawables/2D/Text.hpp
     sources/Drawables/2D/Triangle.hpp
     sources/Drawables/3D/Circle.hpp
+    sources/Drawables/3D/Cube.hpp
     sources/Drawables/3D/Cylinder.hpp
     sources/Drawables/3D/Grid.hpp
     sources/Drawables/3D/Line.hpp
@@ -71,6 +72,7 @@ set(SRC
     sources/Drawables/2D/Text.cpp
     sources/Drawables/2D/Triangle.cpp
     sources/Drawables/3D/Circle.cpp
+    sources/Drawables/3D/Cube.cpp
     sources/Drawables/3D/Cylinder.cpp
     sources/Drawables/3D/Grid.cpp
     sources/Drawables/3D/Line.cpp
