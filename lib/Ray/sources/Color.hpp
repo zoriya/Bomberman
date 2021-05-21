@@ -11,6 +11,7 @@
 #include <raylib.h>
 
 namespace RAY {
+	//! @brief Object representation of color
 	class Color {
 		public:
 			//! @brief A Color constructor

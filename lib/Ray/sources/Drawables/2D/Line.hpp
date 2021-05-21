@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable2D.hpp"
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Line in a two-dimensionnal space
 	class Line: public ADrawable2D
 	{
 		public:

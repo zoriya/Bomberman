@@ -15,6 +15,7 @@
 
 namespace RAY::Audio
 {
+	//! @brief A manager for sound stream
 	class Sound: public IAudio {
 		public:
 

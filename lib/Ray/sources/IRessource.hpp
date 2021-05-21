@@ -11,6 +11,7 @@
 #include <string>
 
 namespace RAY {
+	//! @brief A Ressource interface
 	class IRessource {
 		public:
 			virtual ~IRessource() = default;

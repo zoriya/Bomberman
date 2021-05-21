@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 
 namespace RAY::Drawables::Drawables3D {
+	//! @brief Circle in a three-dimensionnal space
 	class Circle: public ADrawable3D
 	{
 		public:

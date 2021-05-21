@@ -20,6 +20,7 @@ namespace RAY
 		class ADrawable2D;
 	}
 	class IRessource;
+	//! @brief Object representation of a framebuffer
 	class Image: public Canvas, public IRessource {
 		public:
 			//! @brief Create an image, loading a file

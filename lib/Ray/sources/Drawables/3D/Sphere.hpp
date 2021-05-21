@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 
 namespace RAY::Drawables::Drawables3D {
+	//! @brief Sphere in a three-dimensionnal space
 	class Sphere: public ADrawable3D
 	{
 		public:

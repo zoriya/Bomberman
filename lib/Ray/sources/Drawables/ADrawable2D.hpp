@@ -14,6 +14,7 @@
 #include "Color.hpp"
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Abstraction of any two-dimensionnal drawable
 	class ADrawable2D: public IDrawable
 	{
 		public:

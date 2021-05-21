@@ -13,6 +13,7 @@
 #include <vector>
 
 namespace RAY::Controller {
+	//! @brief Keyboard event manager
 	class Keyboard {
 		public:
 			typedef ::KeyboardKey Key;

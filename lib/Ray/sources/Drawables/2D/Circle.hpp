@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable2D.hpp"
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Circle in a two-dimensionnal space
 	class Circle: public ADrawable2D
 	{
 		public:

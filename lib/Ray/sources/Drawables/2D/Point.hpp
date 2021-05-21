@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable2D.hpp"
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Point in a two-dimensionnal space
 	class Point: public ADrawable2D
 	{
 		public:

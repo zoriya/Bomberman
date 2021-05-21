@@ -12,6 +12,7 @@ namespace RAY {
 	namespace Drawables {
 		class IDrawable;
 	}
+	//! @brief Interface for any drawable surface
 	class Canvas {
 		public:
 			//! @brief A default destructor

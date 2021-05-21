@@ -16,6 +16,7 @@ namespace RAY
 	class Window;
 	class Image;
 	namespace Drawables {
+		//! @brief Interface for any drawable
 		class IDrawable {
 			public:
 				virtual ~IDrawable() = default;

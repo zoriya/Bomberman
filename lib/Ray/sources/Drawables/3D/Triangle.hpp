@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 
 namespace RAY::Drawables::Drawables3D {
+	//! @brief Triangle in a three-dimensionnal space
 	class Triangle: public ADrawable3D
 	{
 		public:

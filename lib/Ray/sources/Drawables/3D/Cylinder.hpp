@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 
 namespace RAY::Drawables::Drawables3D {
+	//! @brief Cylinder in a three-dimensionnal space
 	class Cylinder: public ADrawable3D
 	{
 		public:

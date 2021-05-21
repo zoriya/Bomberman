@@ -13,6 +13,7 @@
 
 namespace RAY
 {
+	//! @brief A font manager
 	class Font: public IRessource {
 		public:
 			//! @brief Create an font, loading a file

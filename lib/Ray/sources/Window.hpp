@@ -20,6 +20,7 @@
 #include "Drawables/Texture.hpp"
 
 namespace RAY {
+	//! @brief Window manager
 	class Window: public Canvas {
 		public:
 			//! @return A widow insta,ce. Only one window can be open at a time

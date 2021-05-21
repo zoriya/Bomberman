@@ -11,7 +11,7 @@
 #include <raylib.h>
 
 namespace RAY {
-	//! @brief A Two-diemnsionnal Vector data type.
+	//! @brief A Two-dimensionnal Vector data type.
 	struct Vector2
 	{
 		//! @brief Vector 2 constructor

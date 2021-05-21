@@ -11,6 +11,7 @@
 #include "Matrix.hpp"
 
 namespace RAY::Camera {
+	//! @brief Interface for Cameras
 	class ICamera {
 		public:
 			virtual ~ICamera() = default;

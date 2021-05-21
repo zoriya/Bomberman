@@ -14,6 +14,7 @@
 #define DEFAULT_LETTER_SPACING 1
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Text in a two-dimensionnal space
 	class Text: public ADrawable2D
 	{
 		public:

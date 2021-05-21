@@ -11,8 +11,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace RAY
-::Controller {
+namespace RAY::Controller {
 
 	//! @brief Entity representing a gamepad controller
 	class GamePad {

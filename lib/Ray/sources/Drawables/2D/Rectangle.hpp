@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable2D.hpp"
 
 namespace RAY::Drawables::Drawables2D {
+	//! @brief Rectangle in a two-dimensionnal space
 	class Rectangle: public ADrawable2D
 	{
 		public:

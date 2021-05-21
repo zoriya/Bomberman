@@ -15,6 +15,7 @@
 
 namespace RAY
 {
+	//! @brief Object representation of a texture
 	class Texture: public IRessource {
 		public:
 			//! @brief Create an texture, loading a file

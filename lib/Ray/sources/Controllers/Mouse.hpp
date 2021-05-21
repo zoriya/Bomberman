@@ -13,6 +13,7 @@
 #include <vector>
 
 namespace RAY::Controller {
+	//! @brief Mouse event manager
 	class Mouse {
 		public:
 			typedef ::MouseButton Button;

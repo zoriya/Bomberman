@@ -13,6 +13,7 @@
 
 namespace RAY::Audio
 {
+	//! @brief Interface for Audio ressources
 	class IAudio: public IRessource {
 		public:
 			virtual ~IAudio() = 0;
