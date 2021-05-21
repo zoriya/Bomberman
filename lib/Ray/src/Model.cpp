@@ -7,14 +7,14 @@
 
 #include "Model.hpp"
 
-RAY::Model::Model(const std::string &filename)
+RAY::Model::Model(const std::string &filename):
+    _model(LoadModel(filename.c_str()))
 {
-    this->load(filename);
 }
 
-RAY::Model::Model(const Mesh &mesh)
+RAY::Model::Model(const Mesh &mesh):
+    _model(LoadModelFromMesh(mesh))
 {
-    this->load(mesh);
 }
 
 RAY::Model::~Model()

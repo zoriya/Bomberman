@@ -7,9 +7,9 @@
 
 #include "Font.hpp"
 
-RAY::Font::Font(const std::string &filename)
+RAY::Font::Font(const std::string &filename):
+    _font(LoadFont(filename.c_str()))
 {
-    this->load(filename);
 }
 
 RAY::Font::Font()
