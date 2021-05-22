@@ -10,6 +10,7 @@
 
 #include "Model/ModelAnimation.hpp"
 #include <vector>
+#include <string>
 
 namespace RAY {
 	//! @brief A Holder for Model Animations
