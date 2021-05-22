@@ -8,11 +8,11 @@
 #ifndef VECTOR3_HPP_
 #define VECTOR3_HPP_
 
-#include "Vector/Vector2.hpp"
+#include <raylib.h>
 
 namespace RAY {
 	//! @brief A Three-dimensionnal Vector data type.
-	struct Vector3: public Vector2
+	struct Vector3
 	{
 		//! @brief Vector 3 constructor
 		//! @param x x-value of vector, such as a width
@@ -39,6 +39,10 @@ namespace RAY {
 		//! @brief A RAY Vector3 is cast-able in libray's Vector3
 		operator ::Vector3() const;
 		
+		//! @brief X value of vector
+		float x;
+		//! @brief Y value of vector
+		float y;
 		//! @brief Z value of vector
 		float z;
 	};

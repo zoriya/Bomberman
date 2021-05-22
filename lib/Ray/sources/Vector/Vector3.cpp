@@ -8,12 +8,12 @@
 #include "Vector/Vector3.hpp"
 
 RAY::Vector3::Vector3(float X, float Y, float Z):
-	Vector2(X, Y), z(Z)
+	x(X), y(Y), z(Z)
 {
 }
 
 RAY::Vector3::Vector3():
-	Vector2(0, 0), z(0)
+	x(0), y(0), z(0)
 {
 }
 
