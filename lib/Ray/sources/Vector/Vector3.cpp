@@ -17,6 +17,12 @@ RAY::Vector3::Vector3():
 {
 }
 
+RAY::Vector3::Vector3(const ::Vector3 &vector):
+	x(vector.x), y(vector.y), z(vector.z)
+{
+
+}
+
 RAY::Vector3::operator ::Vector3() const
 {
 	::Vector3 v;

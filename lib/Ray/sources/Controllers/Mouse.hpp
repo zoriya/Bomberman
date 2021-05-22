@@ -10,7 +10,7 @@
 #define MOUSE_HPP_
 
 #include <raylib.h>
-#include <vector>
+#include "Vector/Vector2.hpp"
 
 namespace RAY::Controller {
 	//! @brief Mouse event manager
@@ -35,7 +35,7 @@ namespace RAY::Controller {
 			static bool isUp(Button);
 
 			//! @return A 2D vector holding the current position of the cursor
-			static Vector2 getCursorPosition(void);
+			static RAY::Vector2 getCursorPosition(void);
 	};
 }
 

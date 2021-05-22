@@ -27,7 +27,7 @@ bool RAY::Controller::Mouse::isUp(RAY::Controller::Mouse::Button button)
 	return IsMouseButtonUp(button);
 }
 
-Vector2 RAY::Controller::Mouse::getCursorPosition(void)
+RAY::Vector2 RAY::Controller::Mouse::getCursorPosition(void)
 {
 	return GetMousePosition();
 }

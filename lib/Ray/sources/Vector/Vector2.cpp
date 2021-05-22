@@ -17,6 +17,12 @@ RAY::Vector2::Vector2():
 {
 }
 
+RAY::Vector2::Vector2(const ::Vector2 &vector):
+	x(vector.x), y(vector.y)
+{
+
+}
+
 RAY::Vector2::operator ::Vector2() const
 {
 	::Vector2 v;
