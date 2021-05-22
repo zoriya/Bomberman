@@ -67,6 +67,10 @@ namespace WAL
 		//! @param type The type of the component
 		bool hasComponent(const std::type_info &type) const;
 
+		//! @brief Check if this entity has a component.
+		//! @param type The type of the component
+		bool hasComponent(const std::type_index &type) const;
+
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
 		//! @return This entity is returned
