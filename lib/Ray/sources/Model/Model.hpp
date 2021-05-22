@@ -45,6 +45,9 @@ namespace RAY {
 			//! @brief Load model from mesh (default materials)
 			bool load(const Mesh &mesh);
 
+			//! @brief Unload model (including meshes) from memory (RAM and/or VRAM)
+			bool unload() override;
+
 			//! @brief Unload model (excluding meshes) from memory (RAM and/or VRAM)
 			bool unloadKeepMeshes();
 

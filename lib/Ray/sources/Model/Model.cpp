@@ -19,7 +19,7 @@ RAY::Model::Model(const Mesh &mesh):
 
 RAY::Model::~Model()
 {
-	UnloadModel(this->_model);
+	this->unload();
 }
 
 bool RAY::Model::load(const std::string &filename)
@@ -31,6 +31,12 @@ bool RAY::Model::load(const std::string &filename)
 bool RAY::Model::load(const Mesh &mesh)
 {
 	this->_model = LoadModelFromMesh(mesh);
+	return true;
+}
+
+bool RAY::Model::unload()
+{
+	UnloadModel(this->_model);
 	return true;
 }
 
