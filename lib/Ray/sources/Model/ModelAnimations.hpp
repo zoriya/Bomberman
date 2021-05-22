@@ -16,7 +16,7 @@ namespace RAY {
 	class ModelAnimations {
 		public:
 			//! @brief A Model animation constructor
-			//! @param filePath an animation pointer, returned by the nimation-loading function
+			//! @param filePath Path to the file containing animations
 			ModelAnimations(const std::string &filePath);
 
 			//! @brief Only single entity can hold these animations pointers
