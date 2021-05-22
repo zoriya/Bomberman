@@ -72,6 +72,11 @@ void RAY::Camera::Camera3D::setMode(Mode mode)
 	this->_mode = mode;
 }
 
+void RAY::Camera::Camera3D::update(void)
+{
+	UpdateCamera(&this->_camera);
+}
+
 RAY::Camera::Camera3D::operator ::Camera3D() const
 {
 	return this->_camera;

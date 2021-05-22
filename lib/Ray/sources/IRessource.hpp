@@ -17,8 +17,6 @@ namespace RAY {
 			virtual ~IRessource() = default;
 
 			virtual bool load(const std::string &filePath) = 0;
-
-			virtual bool unload() = 0;
 	};
 };
 

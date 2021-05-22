@@ -10,7 +10,8 @@
 
 #include <raylib.h>
 #include <string>
-#include <Vector/Vector2.hpp>
+#include "Vector/Vector2.hpp"
+#include "Vector/Vector3.hpp"
 #include "Controllers/Keyboard.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Camera/Camera3D.hpp"
@@ -18,8 +19,10 @@
 #include "Canvas.hpp"
 #include "Drawables/IDrawable.hpp"
 #include "Drawables/Texture.hpp"
+#include "Model/Model.hpp"
 
 namespace RAY {
+	class Model;
 	//! @brief Window manager
 	class Window: public Canvas {
 		public:
@@ -116,10 +119,14 @@ namespace RAY {
 			//! @param texture The object to render
 			//! @param position The position of the texture relative to the top left window corner
 			//! @param tint
-			void draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint);
+			void draw(const Texture &texture, const Vector2 &position, const Color &tint);
 
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
+
+			//! @brief Draw a model
+			void draw(const Model &model, const Vector3 &position, const Vector3 &rotationAxis = Vector3(0, 0, 0),
+					  float rotationAngle = 0, const Vector3 &scale = Vector3(1, 1, 1), const Color &tint = WHITE);
 
 
 		private:

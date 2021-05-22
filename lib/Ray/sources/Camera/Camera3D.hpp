@@ -59,8 +59,11 @@ namespace RAY::Camera {
 			//! @brief Returns camera 3d transform matrix
 			Matrix getMatrix(void) const override;
 
-			// Set camera mode (multiple camera modes available)
+			//! @brief Set camera mode (multiple camera modes available)
 			void setMode(Mode mode);
+
+			//! @brief Update camera position for selected mode
+			void update(void);
 
 			//! @brief get camera struct
 			operator ::Camera3D() const;

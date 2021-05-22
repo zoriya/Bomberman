@@ -52,7 +52,7 @@ namespace RAY
 			bool exportTo(const std::string &outputPath);
 
 			//! @brief unload ressources
-			bool unload() override;
+			bool unload();;
 
 			//! @brief get image
 			operator ::Image() const;

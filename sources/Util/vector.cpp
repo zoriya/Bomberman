@@ -10,5 +10,5 @@
 
 RAY::Vector3 toRAY(const WAL::Vector3f &wal)
 {
-    return RAY::Vector3(wal.x, wal.y, wal.y);
+	return RAY::Vector3(wal.x, wal.y, wal.y);
 }

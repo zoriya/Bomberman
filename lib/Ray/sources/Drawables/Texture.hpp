@@ -43,7 +43,7 @@ namespace RAY
 			bool load(const std::string &filename) override;
 
 			//! @brief unload ressources
-			bool unload() override;
+			bool unload();;
 
 			//! @return libray Texture struct
 			operator ::Texture() const;

@@ -6,98 +6,75 @@
 */
 
 
-#include <iostream>
-#include "Window.hpp"
-#include "Drawables/2D/Text.hpp"
-#include "Drawables/2D/Circle.hpp"
-#include "Controllers/Keyboard.hpp"
-#include "Camera/Camera3D.hpp"
-#include "Drawables/3D/Grid.hpp"
-#include "Drawables/3D/Cube.hpp"
-#include <cmath>
 #include "Wal.hpp"
+#include "Camera/Camera3D.hpp"
+#include "Controllers/Keyboard.hpp"
+#include "Drawables/2D/Text.hpp"
+#include "Drawables/3D/Grid.hpp"
+#include "Drawables/Texture.hpp"
+#include "Model/Model.hpp"
+#include "Model/ModelAnimations.hpp"
+#include "Vector/Vector3.hpp"
+#include "Window.hpp"
 
 int main()
 {
 	WAL::Wal wal;
-	SetTraceLogLevel(LOG_WARNING);
+	
+	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
 	const int screenHeight = 450;
+	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
+	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
+								 RAY::Vector3(0.0f, 0.0f, 0.0f),
+								 RAY::Vector3(0.0f, 1.0f, 0.0f), 
+								 45.0f, CAMERA_PERSPECTIVE
+								);
+	RAY::Model model("guy.iqm");
+	RAY::Texture texture("guytex.png");
+	RAY::ModelAnimations animations("guy.iqm");
+	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
+	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
+	model.setTextureToMaterial(MAP_DIFFUSE, texture);
 
-	RAY::Vector2 ballPosition = {(float)screenWidth / 2, (float)screenHeight / 2};
-	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Ta mère en slip", FLAG_WINDOW_RESIZABLE);
-	RAY::Camera::Camera3D camera(RAY::Vector3{30.0f, 20.0f, 30.0f},
-	                             RAY::Vector3{0.0f, 0.0f, 0.0f},
-	                             RAY::Vector3{0.0f, 1.0f, 0.0f},
-	                             70.0,
-	                             CAMERA_PERSPECTIVE);
-	RAY::Drawables::Drawables3D::Grid grid(10, 5.0f);
-	RAY::Drawables::Drawables3D::Cube cube(RAY::Vector3(0, 0, 0),
-										   RAY::Vector3(0, 0, 0),
-										   RAY::Color(0, 0, 0, 0));
+	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
 
-	// Specify the amount of blocks in each direction
-	const int numBlocks = 15;
+	camera.setMode(CAMERA_FREE); // Set free camera mode
 
-	window.setFPS(60);
+	window.setFPS(60);				   // Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 
 	// Main game loop
-	while (!window.shouldClose())    // Detect window close button or ESC key
+	while (!window.shouldClose())		// Detect window close button or ESC key
 	{
 		// Update
 		//----------------------------------------------------------------------------------
-		double time = GetTime();
+		camera.update();
 
-		// Calculate time scale for cube position and size
-		float scale = (2.0f + (float)sin(time)) * 0.7f;
-
-		// Move camera around the scene
-		double cameraTime = time * 0.3;
-		camera.setPosition({(float)cos(cameraTime) * 40.0f, 20.0f, (float)sin(cameraTime) * 40.0f});
+		// Play animation when spacebar is held down
+		if (RAY::Controller::Keyboard::isDown(KEY_SPACE))
+		{
+			animations[0].incrementFrameCounter();
+			model.setAnimation(animations[0]);
+		}
 		//----------------------------------------------------------------------------------
 
 		// Draw
 		//----------------------------------------------------------------------------------
 		window.setDrawingState(RAY::Window::DRAWING);
 
-		window.clear(RAYWHITE);
+			window.clear();
 
-		window.useCamera(camera);
+			window.useCamera(camera);
 
-		window.draw(grid);
+				window.draw(model, position, RAY::Vector3(1.0f, 0.0f, 0.0f), -90.0f, RAY::Vector3( 1.0f, 1.0f, 1.0f ));
 
-		for (int x = 0; x < numBlocks; x++) {
-			for (int y = 0; y < numBlocks; y++) {
-				for (int z = 0; z < numBlocks; z++) {
-					// Scale of the blocks depends on x/y/z positions
-					float blockScale = (x + y + z) / 30.0f;
+				window.draw(grid);
 
-					// Scatter makes the waving effect by adding blockScale over time
-					float scatter = sinf(blockScale * 20.0f + (float)(time * 4.0f));
+			window.unuseCamera();
 
-					// Calculate the cube position
-					cube.setPosition(RAY::Vector3{
-						static_cast<float>(x - numBlocks / 2) * (scale * 3.0f) + scatter,
-						static_cast<float>(y - numBlocks / 2) * (scale * 2.0f) + scatter,
-						static_cast<float>(z - numBlocks / 2) * (scale * 3.0f) + scatter
-					});
-
-					// Pick a color with a hue depending on cube position for the rainbow color effect
-					cube.setColor(RAY::Color(static_cast<float>(((x + y + z) * 18) % 360), 0.75f, 0.9f));
-
-					// Calculate cube size
-					float cubeSize = (2.4f - scale) * blockScale;
-					cube.setDimensions({cubeSize, cubeSize, cubeSize});
-
-					// And finally, draw the cube!
-					window.draw(cube);
-				}
-			}
-		}
-
-		window.unuseCamera();
+			window.draw(instructionText);
 
 		window.setDrawingState(RAY::Window::IDLE);
 		//----------------------------------------------------------------------------------
@@ -105,7 +82,8 @@ int main()
 
 	// De-Initialization
 	//--------------------------------------------------------------------------------------
-	window.close();        // Close window and OpenGL context
+
+	window.close();			  // Close window and OpenGL context
 	//--------------------------------------------------------------------------------------
 
 	return 0;

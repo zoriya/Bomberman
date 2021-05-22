@@ -52,9 +52,8 @@ void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Window &)
 	DrawTriangle(this->_position, this->_posB, this->_posC, this->_color);
 }
 
-void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Image &image)
+void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Image &)
 {
-	(void)image;
 	throw std::exception();
 }
 
