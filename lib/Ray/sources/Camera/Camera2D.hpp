@@ -52,11 +52,12 @@ namespace RAY::Camera {
 			//! @brief Returns camera 2d transform matrix
 			Matrix getMatrix(void) const override;
 
-			//! @brief get camera struct
-			operator ::Camera2D() const;
-
 		private:
 			::Camera2D _camera;
+
+		INTERNAL:
+			//! @brief get camera struct
+			operator ::Camera2D() const;
 	};
 }
 

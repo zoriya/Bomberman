@@ -99,4 +99,6 @@ if (NOT raylib_FOUND)
 endif()
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
+target_compile_definitions(${LIB_NAME} INTERFACE INTERNAL=private)
+target_compile_definitions(${LIB_NAME} PRIVATE INTERNAL=public)
 target_link_libraries(${LIB_NAME} raylib)
