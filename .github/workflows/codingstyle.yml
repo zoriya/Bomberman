@@ -10,7 +10,6 @@ jobs:
 
       - name: Comment Pull Request
         uses: thollander/actions-comment-pull-request@1.0.1
-        if: ${{ github.event_name == 'pull_request' }}
         with:
           message: '${{ cat tmp }}'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
