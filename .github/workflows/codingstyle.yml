@@ -10,10 +10,4 @@ jobs:
         run: pip install cpplint
       - name: Check coding style
         run: |
-          cpplint --recursive --quiet . 2> tmp || (echo "CPP_LINT_LOG=$(cat tmp)" >> $GITHUB_ENV && cat tmp && false)
-      - name: Comment PR
-        if: ${{ failure() && github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@master
-        with:
-          message: ${{ env.CPP_LINT_LOG }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          cpplint --recursive --quiet --verbose=3 .
