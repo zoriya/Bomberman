@@ -112,12 +112,14 @@ void RAY::Window::setDrawingState(enum RAY::Window::drawingState state)
 
 void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
 {
+	this->unuseCamera();
 	this->_displayState = RAY::Window::TWO_DIMENSIONNAL;
 	BeginMode2D(camera);
 }
 
 void RAY::Window::useCamera(RAY::Camera::Camera3D &camera)
 {
+	this->unuseCamera();
 	this->_displayState = RAY::Window::THREE_DIMENSIONNAL;
 	BeginMode3D(camera);
 }
