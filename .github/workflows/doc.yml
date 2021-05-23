@@ -1,4 +1,4 @@
-name: Update the documentation
+name: Check coding style
 on: [push]
 
 jobs:
@@ -10,4 +10,4 @@ jobs:
         run: pip install cpplint
       - name: Check coding style
         run: |
-          cpplint --recursive --quiet --verbose=3
+          cpplint --recursive --quiet --verbose=3 .
