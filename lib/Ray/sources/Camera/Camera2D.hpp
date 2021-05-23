@@ -26,7 +26,7 @@ namespace RAY::Camera {
 			//! @brief A copy constructor
 			Camera2D(const Camera2D &) = default;
 
-			~Camera2D() = default;
+			~Camera2D() override = default;
 
 			//! @brief A Camera is assignable
 			Camera2D &operator=(const Camera2D &) = default;
@@ -52,11 +52,12 @@ namespace RAY::Camera {
 			//! @brief Returns camera 2d transform matrix
 			Matrix getMatrix(void) const override;
 
-			//! @brief get camera struct
-			operator ::Camera2D() const;
-
 		private:
 			::Camera2D _camera;
+
+		INTERNAL:
+			//! @brief get camera struct
+			operator ::Camera2D() const;
 	};
 }
 

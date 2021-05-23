@@ -8,13 +8,13 @@
 #include "Drawables/2D/Text.hpp"
 
 RAY::Drawables::Drawables2D::Text::Text(const std::string &content, int fontSize, const Vector2 &position, const Color &color):
-	ADrawable2D(position, color), _text(content), _size(fontSize), _spacing(DEFAULT_LETTER_SPACING)
+	ADrawable2D(position, color), _text(content), _size(fontSize), _spacing(this->DefaultLetterSpacing)
 {
 	this->_font.recs = nullptr;
 }
 
 RAY::Drawables::Drawables2D::Text::Text(const std::string &content, int fontSize, int x, int y, const Color &color):
-	ADrawable2D(x, y, color), _text(content), _size(fontSize), _spacing(DEFAULT_LETTER_SPACING)
+	ADrawable2D(x, y, color), _text(content), _size(fontSize), _spacing(this->DefaultLetterSpacing)
 {
 	this->_font.recs = nullptr;
 }

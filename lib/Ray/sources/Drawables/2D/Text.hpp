@@ -11,13 +11,12 @@
 #include "Drawables/ADrawable2D.hpp"
 #include <string>
 
-#define DEFAULT_LETTER_SPACING 1
-
 namespace RAY::Drawables::Drawables2D {
 	//! @brief Text in a two-dimensionnal space
 	class Text: public ADrawable2D
 	{
 		public:
+			static constexpr int DefaultLetterSpacing = 1;
 			//! @brief Text constructor
 			//! @param content text
 			//! @param fontSize size of the text
@@ -79,7 +78,8 @@ namespace RAY::Drawables::Drawables2D {
 			int _size;
 
 			//! @brief spacing of chars
-			int _spacing;			
+			int _spacing;
+
 	};
 };
 

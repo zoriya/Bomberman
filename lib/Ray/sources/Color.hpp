@@ -68,8 +68,6 @@ namespace RAY {
 			//! @return A-component of color
 			unsigned char getA(void) const;
 
-			//! @return color struct
-			operator ::Color() const;
 
 			//! @return hexadecimal value of color
 			int toHex(void) const;
@@ -77,6 +75,10 @@ namespace RAY {
 		private:
 			//! @brief Color, really, that's just it...
 			::Color _color;
+		
+		INTERNAL:
+			//! @return color struct
+			operator ::Color() const;
 	};
 };
 

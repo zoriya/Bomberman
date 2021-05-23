@@ -54,9 +54,6 @@ namespace RAY
 			//! @brief unload ressources
 			bool unload() override;
 
-			//! @brief get image
-			operator ::Image() const;
-			operator ::Image *();
 
 			//! @brief draw drawable
 			void draw(Drawables::ADrawable2D &);
@@ -64,6 +61,11 @@ namespace RAY
 		private:
 			//! @brief Image, really, that's just it...
 			::Image _image;
+		
+		INTERNAL:
+			//! @brief get image
+			operator ::Image() const;
+			operator ::Image *();
 	};   
 }
 

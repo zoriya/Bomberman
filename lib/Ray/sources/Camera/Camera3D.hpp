@@ -29,7 +29,7 @@ namespace RAY::Camera {
 			//! @brief A copy constructor
 			Camera3D(const Camera3D &) = default;
 
-			~Camera3D() = default;
+			~Camera3D() override = default;
 
 			//! @brief A Camera is assignable
 			Camera3D &operator=(const Camera3D &) = default;
@@ -67,10 +67,13 @@ namespace RAY::Camera {
 
 			//! @brief get camera struct
 			operator ::Camera3D() const;
-
 		private:
 			::Camera3D _camera;
 			Mode _mode;
+		
+		INTERNAL:
+			//! @brief get camera struct
+			operator ::Camera3D() const;
 	};
 }
 

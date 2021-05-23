@@ -45,13 +45,14 @@ namespace RAY
 			//! @brief unload ressources
 			bool unload() override;
 
-			//! @return libray Texture struct
-			operator ::Texture() const;
-
 		protected:
 		private:
 			//! @brief Texture, really, that's just it...
 			::Texture _texture;
+
+		INTERNAL:
+			//! @return libray Texture struct
+			operator ::Texture() const;
 	};   
 }
 
