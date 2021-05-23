@@ -6,6 +6,7 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
+      - uses: thollander/actions-comment-pull-request@master
       - name: Install cpplint
         run: pip install cpplint
       - name: Run cpplint
@@ -13,7 +14,6 @@ jobs:
           cpplint --recursive --quiet --verbose=3 . 2 > tmp
       - name: Comment PR
         if: ${{ failure() && github.event_name == 'pull_request' }}
-        uses: thollander/actions-comment-pull-request@master
         with:
-          message: ${{ cat tmp }}
+          message: '${{ cat tmp }}'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
