@@ -51,6 +51,7 @@ set(HEADERS
     sources/Drawables/3D/Ray.hpp
     sources/Drawables/3D/Sphere.hpp
     sources/Drawables/3D/Triangle.hpp
+    sources/Exceptions/RayError.hpp
     sources/Model/Model.hpp
     sources/Model/ModelAnimation.hpp
     sources/Model/ModelAnimations.hpp
@@ -62,9 +63,6 @@ set(SRC
     sources/Color.cpp
     sources/Font.cpp
     sources/Window.cpp
-    sources/Model/Model.cpp
-    sources/Model/ModelAnimation.cpp
-    sources/Model/ModelAnimations.cpp
     sources/Audio/Music.cpp
     sources/Audio/Sound.cpp
     sources/Camera/Camera2D.cpp
@@ -92,6 +90,10 @@ set(SRC
     sources/Drawables/ADrawable3D.cpp
     sources/Drawables/Image.cpp
     sources/Drawables/Texture.cpp
+    sources/Exceptions/RayError.cpp
+    sources/Model/Model.cpp
+    sources/Model/ModelAnimation.cpp
+    sources/Model/ModelAnimations.cpp
     sources/Vector/Vector2.cpp
     sources/Vector/Vector3.cpp
 )

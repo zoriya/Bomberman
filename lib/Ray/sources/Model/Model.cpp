@@ -6,6 +6,7 @@
 */
 
 #include "Model/Model.hpp"
+#include "Exceptions/RayError.hpp"
 
 RAY::Model::Model(const std::string &filename):
 	_model(LoadModel(filename.c_str()))
@@ -49,7 +50,7 @@ bool RAY::Model::unloadKeepMeshes()
 bool RAY::Model::setAnimation(const RAY::ModelAnimation &animation)
 {
 	if (!IsModelAnimationValid(this->_model, animation))
-		return false;
+		throw RAY::Exception::NotCompatibleError("The animation is not compatible with the model");
 	UpdateModelAnimation(this->_model, animation, animation.getFrameCounter());
 	return true;
 }

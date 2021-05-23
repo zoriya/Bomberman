@@ -52,7 +52,6 @@ namespace RAY {
 			bool unloadKeepMeshes();
 
 			//! @brief Update model animation pose
-			//! @return false if animation is not compatible
 			bool setAnimation(const RAY::ModelAnimation &animation);
 
 			//! @brief Sets a texture to the Nth material
