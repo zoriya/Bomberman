@@ -59,14 +59,15 @@ namespace RAY {
 			//! @param texture the texture to apply
 			bool setTextureToMaterial(MaterialType materialType, const RAY::Texture &texture);
 
-			//! @brief A RAY Model is cast-able in libray's model
-			operator ::Model() const;
-
 			//! @return The number of bones in the model
 			int getBoneCount() const;
 		private:
 			//! @brief Raw data from raylib
 			::Model _model;
+
+		INTERNAL:
+			//! @brief A RAY Model is cast-able in libray's model
+			operator ::Model() const;
 			
 	};
 };

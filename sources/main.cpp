@@ -30,9 +30,9 @@ int main()
 								 RAY::Vector3(0.0f, 1.0f, 0.0f), 
 								 45.0f, CAMERA_PERSPECTIVE
 								);
-	RAY::Model model("ressources/guy.iqm");
-	RAY::Texture texture("ressources/guytex.png");
-	RAY::ModelAnimations animations("ressources/guy.iqm");
+	RAY::Model model("assets/guy.iqm");
+	RAY::Texture texture("assets/guytex.png");
+	RAY::ModelAnimations animations("assets/guy.iqm");
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
 	model.setTextureToMaterial(MAP_DIFFUSE, texture);

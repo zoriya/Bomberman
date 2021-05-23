@@ -25,12 +25,6 @@ namespace RAY {
 			//! @brief A model animation is assignable
 			ModelAnimation &operator=(const ModelAnimation &) = default;
 
-			//! @brief Castin Object to raw model animation pointer
-			operator ::ModelAnimation *();
-
-			//! @brief Castin Object to raw model animation pointer
-			operator ::ModelAnimation() const;
-
 			//! @brief Returns the current frame the animation is at
 			size_t getFrameCounter() const;
 
@@ -49,7 +43,13 @@ namespace RAY {
 		private:
 			::ModelAnimation &_animation;
 
+		INTERNAL:
 			size_t _frameCounter;
+			//! @brief Castin Object to raw model animation pointer
+			operator ::ModelAnimation *();
+
+			//! @brief Castin Object to raw model animation pointer
+			operator ::ModelAnimation() const;
 	};
 }
 

@@ -65,8 +65,6 @@ namespace RAY::Camera {
 			//! @brief Update camera position for selected mode
 			void update(void);
 
-			//! @brief get camera struct
-			operator ::Camera3D() const;
 		private:
 			::Camera3D _camera;
 			Mode _mode;
