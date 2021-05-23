@@ -1,15 +1,15 @@
-on: pull_request
+name: Check coding style
+on: [push, pull_request]
 
 jobs:
-  example_comment_pr:
-    runs-on: ubuntu-latest
-    name: An example job to comment a PR
+  Building:
+    runs-on: [ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Comment PR
-        uses: thollander/actions-comment-pull-request@master
+      - name: Comment Pull Request
+        uses: thollander/actions-comment-pull-request@1.0.1
         with:
           message: 'Example of message !'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
