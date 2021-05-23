@@ -10,8 +10,6 @@
 #include <cmath>
 #include "Wal.hpp"
 
-using namespace std;
-
 int main()
 {
 	WAL::Wal wal;
