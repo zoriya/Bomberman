@@ -3,6 +3,7 @@
 //
 
 #include <chrono>
+#include <algorithm>
 #include "Wal.hpp"
 
 using namespace std::chrono_literals;
@@ -10,11 +11,6 @@ using namespace std::chrono_literals;
 namespace WAL
 {
 	std::chrono::nanoseconds Wal::timestep = 8ms;
-
-	SceneManager &Wal::getSceneManager()
-	{
-		return this->_sceneManager;
-	}
 
 	void Wal::run()
 	{
@@ -37,14 +33,12 @@ namespace WAL
 
 	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
-		auto &entities = this->_sceneManager.getCurrent().getEntities();
+		auto &entities = this->_scene.getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
-				const auto &cmp = system->getComponent();
-				if (!entity.hasComponent(cmp))
+				if (!Wal::_hasDependencies(entity, *system))
 					continue;
-				// TODO handle dependencies.
 				system->onUpdate(entity, dtime);
 			}
 			system->onSelfUpdate();
@@ -53,16 +47,23 @@ namespace WAL
 
 	void Wal::_fixedUpdate()
 	{
-		auto &entities = this->_sceneManager.getCurrent().getEntities();
+		auto &entities = this->_scene.getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
-				auto &cmp = system->getComponent();
-				if (!entity.hasComponent(cmp))
+				if (!Wal::_hasDependencies(entity, *system))
 					continue;
-				// TODO handle dependencies.
 				system->onFixedUpdate(entity);
 			}
 		}
+	}
+
+	bool Wal::_hasDependencies(const Entity &entity, const System &system)
+	{
+		// TODO use an hashmap to cache results.
+		const auto &dependency = system.getDependencies();
+		return std::ranges::all_of(dependency.begin(), dependency.end(), [&entity](const auto &dependency) {
+			return entity.hasComponent(dependency);
+		});
 	}
 }
