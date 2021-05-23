@@ -5,15 +5,11 @@ jobs:
   Building:
     runs-on: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v1
-      - name: Install cpplint
-        run: pip install cpplint
-      - name: Run cpplint
-        run: |
-          cpplint --recursive --quiet --verbose=3 . 2 > tmp
-      - name: Comment Pull Request
-        uses: thollander/actions-comment-pull-request@1.0.1
-        if: ${{ failure() && github.event_name == 'pull_request' }}
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Comment PR
+        uses: thollander/actions-comment-pull-request@master
         with:
-          message: '${{ cat tmp }}'
+          message: 'Example of message !'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
