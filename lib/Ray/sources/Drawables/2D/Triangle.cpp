@@ -6,7 +6,7 @@
 */
 
 #include "Drawables/2D/Triangle.hpp"
-#include <exception>
+#include "Exceptions/RayError.hpp"
 
 RAY::Drawables::Drawables2D::Triangle::Triangle(const Vector2 &positionA, const Vector2 &positionB, const Vector2 &positionC, const Color &color):
 	ADrawable2D(positionA, color), _posB(positionB), _posC(positionC)
@@ -52,9 +52,8 @@ void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Window &)
 	DrawTriangle(this->_position, this->_posB, this->_posC, this->_color);
 }
 
-void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Image &image)
+void RAY::Drawables::Drawables2D::Triangle::drawOn(RAY::Image &)
 {
-	(void)image;
-	throw std::exception();
+	throw RAY::Exception::NotSupportedError("An triangle cannot be drawn on an image");
 }
 

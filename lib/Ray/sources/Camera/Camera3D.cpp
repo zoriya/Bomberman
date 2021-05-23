@@ -7,7 +7,7 @@
 
 #include "Camera/Camera3D.hpp"
 
-RAY::Camera::Camera3D::Camera3D(const Vector3 &position, const Vector3 &target, const Vector3 &up, float fovy, Projection projection):
+RAY::Camera::Camera3D::Camera3D(const RAY::Vector3 &position, const RAY::Vector3 &target, const RAY::Vector3 &up, float fovy, Projection projection):
 	_camera({position, target, up, fovy, projection})
 {
 }
@@ -37,17 +37,17 @@ void RAY::Camera::Camera3D::setProjection(Projection projection)
 	this->_camera.projection = projection;
 }
 
-const Vector3 &RAY::Camera::Camera3D::getPosition(void) const
+RAY::Vector3 RAY::Camera::Camera3D::getPosition(void) const
 {
 	return this->_camera.position;
 }
 
-const Vector3 &RAY::Camera::Camera3D::getTarget(void) const
+RAY::Vector3 RAY::Camera::Camera3D::getTarget(void) const
 {
 	return this->_camera.target;
 }
 
-const Vector3 &RAY::Camera::Camera3D::getUp(void) const
+RAY::Vector3 RAY::Camera::Camera3D::getUp(void) const
 {
 	return this->_camera.up;
 }
@@ -70,6 +70,11 @@ Matrix RAY::Camera::Camera3D::getMatrix(void) const
 void RAY::Camera::Camera3D::setMode(Mode mode)
 {
 	this->_mode = mode;
+}
+
+void RAY::Camera::Camera3D::update(void)
+{
+	UpdateCamera(&this->_camera);
 }
 
 RAY::Camera::Camera3D::operator ::Camera3D() const

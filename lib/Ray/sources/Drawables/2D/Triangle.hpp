@@ -54,7 +54,7 @@ namespace RAY::Drawables::Drawables2D {
 
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;
-			//! @brief Draw point on image
+			//! @brief A Triangle cannot be drawn on an image, an exception will be thrown
 			void drawOn(RAY::Image &image) override;
 
 		private:

@@ -9,7 +9,6 @@
 #define ADRAWABLE3D_HPP_
 
 #include <raylib.h>
-#include "Vector/Vector3.hpp"
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
 

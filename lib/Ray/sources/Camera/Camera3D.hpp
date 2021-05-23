@@ -9,6 +9,7 @@
 #define CAMERA3D_HPP_
 
 #include <raylib.h>
+#include "Vector/Vector3.hpp"
 #include "Camera/ICamera.hpp"
 #include "Camera/CameraProjection.hpp"
 #include "Camera/CameraMode.hpp"
@@ -46,11 +47,11 @@ namespace RAY::Camera {
 			void setProjection(Projection projection);
 
 			//! @brief Get Position
-			const Vector3 &getPosition(void) const;
+			Vector3 getPosition(void) const;
 			//! @brief Get target
-			const Vector3 &getTarget(void) const;
+			Vector3 getTarget(void) const;
 			//! @brief Get up
-			const Vector3 &getUp(void) const;
+			Vector3 getUp(void) const;
 			//! @brief Get Fovy
 			float getFovy(void) const;
 			//! @brief Get projection
@@ -59,8 +60,11 @@ namespace RAY::Camera {
 			//! @brief Returns camera 3d transform matrix
 			Matrix getMatrix(void) const override;
 
-			// Set camera mode (multiple camera modes available)
+			//! @brief Set camera mode (multiple camera modes available)
 			void setMode(Mode mode);
+
+			//! @brief Update camera position for selected mode
+			void update(void);
 
 		private:
 			::Camera3D _camera;

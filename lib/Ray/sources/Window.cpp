@@ -160,6 +160,11 @@ void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix 
 	DrawMesh(mesh, material, transform);
 }
 
+void RAY::Window::draw(const RAY::Model &model, const RAY::Vector3 &position, const RAY::Vector3 &rotationAxis, float rotationAngle, const RAY::Vector3 &scale, const RAY::Color &tint)
+{
+	DrawModelEx(model, position, rotationAxis, rotationAngle, scale, tint);
+}
+
 void RAY::Window::setIcon(RAY::Image &img)
 {
 	SetWindowIcon(img);

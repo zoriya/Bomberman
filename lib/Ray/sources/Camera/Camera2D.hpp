@@ -9,6 +9,7 @@
 #define CAMERA2D_HPP_
 
 #include <raylib.h>
+#include "Vector/Vector2.hpp"
 #include "Camera/ICamera.hpp"
 
 namespace RAY::Camera {
@@ -41,9 +42,9 @@ namespace RAY::Camera {
 			void setZoom(float zoom);
 
 			//! @brief Get Offset
-			const Vector2 &getOffset(void) const;
+			Vector2 getOffset(void) const;
 			//! @brief Get target
-			const Vector2 &getTarget(void) const;
+			Vector2 getTarget(void) const;
 			//! @brief Get rotation
 			float getRotation(void) const;
 			//! @brief Get zoom

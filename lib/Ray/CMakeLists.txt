@@ -18,7 +18,6 @@ set(HEADERS
     sources/IRessource.hpp
     sources/Matrix.hpp
     sources/Mesh.hpp
-    sources/Model.hpp
     sources/Window.hpp
     sources/Audio/IAudio.hpp
     sources/Audio/Music.hpp
@@ -52,11 +51,18 @@ set(HEADERS
     sources/Drawables/3D/Ray.hpp
     sources/Drawables/3D/Sphere.hpp
     sources/Drawables/3D/Triangle.hpp
+    sources/Exceptions/RayError.hpp
+    sources/Model/Model.hpp
+    sources/Model/ModelAnimation.hpp
+    sources/Model/ModelAnimations.hpp
     sources/Vector/Vector2.hpp
     sources/Vector/Vector3.hpp
 )
 
 set(SRC
+    sources/Color.cpp
+    sources/Font.cpp
+    sources/Window.cpp
     sources/Audio/Music.cpp
     sources/Audio/Sound.cpp
     sources/Camera/Camera2D.cpp
@@ -84,12 +90,12 @@ set(SRC
     sources/Drawables/ADrawable3D.cpp
     sources/Drawables/Image.cpp
     sources/Drawables/Texture.cpp
+    sources/Exceptions/RayError.cpp
+    sources/Model/Model.cpp
+    sources/Model/ModelAnimation.cpp
+    sources/Model/ModelAnimations.cpp
     sources/Vector/Vector2.cpp
     sources/Vector/Vector3.cpp
-    sources/Color.cpp
-    sources/Font.cpp
-    sources/Model.cpp
-    sources/Window.cpp
 )
 
 find_package(raylib QUIET)
@@ -99,6 +105,5 @@ if (NOT raylib_FOUND)
 endif()
 
 add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
-target_compile_definitions(${LIB_NAME} INTERFACE INTERNAL=private)
-target_compile_definitions(${LIB_NAME} PRIVATE INTERNAL=public)
+target_compile_definitions(${LIB_NAME} INTERFACE INTERNAL=private PRIVATE INTERNAL=public)
 target_link_libraries(${LIB_NAME} raylib)
