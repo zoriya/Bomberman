@@ -2,6 +2,7 @@
 // Created by Zoe Roux on 2021-05-14.
 //
 
+#include <string>
 #include "WalError.hpp"
 
 namespace WAL

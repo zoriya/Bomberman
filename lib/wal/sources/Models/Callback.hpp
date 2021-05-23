@@ -6,6 +6,8 @@
 #pragma once
 
 #include <functional>
+#include <utility>
+#include <unordered_map>
 
 namespace WAL
 {
@@ -16,13 +18,13 @@ namespace WAL
 	private:
 		int _nextID = 0;
 		//! @brief The list of functions to call.
-		std::unordered_map<int, std::function<void (Types...)>> _functions = {};
+		std::unordered_map<int, std::function<void(Types...)>> _functions = {};
 
 	public:
 		//! @brief Add a method to be called when this callback is invoked.
 		//! @param callback The list of arguments of the callback method
 		//! @return A unique ID for this callback. That can be used to remove the callback later.
-		int addCallback(std::function<void (Types...)> callback)
+		int addCallback(std::function<void(Types...)> callback)
 		{
 			int id = this->_nextID++;
 			this->_functions[id] = std::move(callback);

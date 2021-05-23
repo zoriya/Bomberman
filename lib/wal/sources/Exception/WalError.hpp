@@ -7,6 +7,7 @@
 
 #include <exception>
 #include <stdexcept>
+#include <string>
 
 namespace WAL
 {

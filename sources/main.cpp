@@ -18,7 +18,7 @@ int main()
 		wal.run();
 		return 0;
 	} catch (const std::exception &ex) {
-std::cerr << ex.what() << std::endl;
+		std::cerr << ex.what() << std::endl;
 		return 84;
 	}
 }

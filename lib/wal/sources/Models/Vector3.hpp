@@ -157,11 +157,11 @@ namespace WAL
 	typedef Vector3<float> Vector3f;
 	typedef Vector3<unsigned> Vector3u;
 	typedef Vector3<int> Vector3i;
-}
+} // namespace WAL
 
 template<typename T>
 std::ostream &operator<<(std::ostream &s, const WAL::Vector3<T> &v)
 {
 	s << "Vector3<" << typeid(T).name() << ">("<< v.x << ", " << v.y << ", " << v.z << ")";
 	return s;
-} // namespace WAL
+}

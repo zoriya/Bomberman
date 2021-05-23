@@ -3,7 +3,7 @@
 //
 
 #include "System.hpp"
-
+#include <vector>
 #include <utility>
 
 namespace WAL

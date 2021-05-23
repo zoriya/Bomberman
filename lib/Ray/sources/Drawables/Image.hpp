@@ -39,7 +39,7 @@ namespace RAY
 
 			//! @brief An image is assignable
 			Image &operator=(const Image &image) = default;
-			
+
 			//! @brief Image destructor, will unload ressources
 			~Image() override;
 
