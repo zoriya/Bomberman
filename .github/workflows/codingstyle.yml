@@ -11,6 +11,8 @@ jobs:
       - name: Check coding style
         run: |
           cpplint --recursive --quiet --verbose=3 . 2> tmp
+          cat tmp
+          ls >> tmp
           echo "CPP_LINT_LOG=$(cat tmp)" >> $GITHUB_ENV
       - name: Comment PR
         if: ${{ failure() && github.event_name == 'pull_request' }}
