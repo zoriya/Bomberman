@@ -6,13 +6,13 @@ jobs:
     runs-on: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v1
-      - uses: thollander/actions-comment-pull-request@master
       - name: Install cpplint
         run: pip install cpplint
       - name: Run cpplint
         run: |
           cpplint --recursive --quiet --verbose=3 . 2 > tmp
-      - name: Comment PR
+      - name: Comment Pull Request
+        uses: thollander/actions-comment-pull-request@1.0.1
         if: ${{ failure() && github.event_name == 'pull_request' }}
         with:
           message: '${{ cat tmp }}'
