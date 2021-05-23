@@ -9,13 +9,11 @@ jobs:
         uses: actions/checkout@v1
       - name: Install cpplint
         run: pip install cpplint
-      - name: Check coding style
-        run: |
-          cpplint --recursive --quiet --verbose=3 . 2> tmp
+
 
       - name: Comment Pull Request
         uses: thollander/actions-comment-pull-request@1.0.1
-        if: ${{ failure() && github.event_name == 'pull_request' }}
+        if: ${{ github.event_name == 'pull_request' }}
         with:
           message: '${{ cat tmp }}'
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
