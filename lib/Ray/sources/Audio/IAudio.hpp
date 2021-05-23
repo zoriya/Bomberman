@@ -16,7 +16,7 @@ namespace RAY::Audio
 	//! @brief Interface for Audio ressources
 	class IAudio: public IRessource {
 		public:
-			virtual ~IAudio() = 0;
+			virtual ~IAudio() = default;
 
 			 //! @brief Load Audio stream from file
 			virtual bool load(const std::string &path) = 0;
