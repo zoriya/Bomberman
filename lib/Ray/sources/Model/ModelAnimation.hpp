@@ -43,8 +43,8 @@ namespace RAY {
 		private:
 			::ModelAnimation &_animation;
 
-		INTERNAL:
 			size_t _frameCounter;
+		INTERNAL:
 			//! @brief Castin Object to raw model animation pointer
 			operator ::ModelAnimation *();
 
