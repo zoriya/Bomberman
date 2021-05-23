@@ -12,7 +12,7 @@ jobs:
         run: |
           cpplint --recursive --quiet --verbose=3 .
       - name: Comment PR
-        if: ${{ failure() && github.event_name == 'pull_request' }}
+        if: ${{ failure() }}
         uses: thollander/actions-comment-pull-request@master
         with:
           message: '${{ cat tmp }}'
