@@ -7,9 +7,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v1
-      - name: Install cpplint
-        run: pip install cpplint
-
 
       - name: Comment Pull Request
         uses: thollander/actions-comment-pull-request@1.0.1
