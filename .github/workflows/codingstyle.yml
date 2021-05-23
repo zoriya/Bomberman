@@ -10,7 +10,10 @@ jobs:
         run: pip install cpplint
       - name: Run cpplint
         run: |
-          cpplint --recursive --quiet --verbose=3 .
-        env:
+          cpplint --recursive --quiet --verbose=3 . 2 > tmp
+      - name: Comment PR
+        if: ${{ failure() && github.event_name == 'pull_request' }}
+        uses: thollander/actions-comment-pull-request@master
+        with:
+          message: ${{ cat tmp }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_REPO: "github.com/AnonymusRaccoon/Bomberman"
