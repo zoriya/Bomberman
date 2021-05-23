@@ -10,7 +10,7 @@ jobs:
         run: pip install cpplint
       - name: Check coding style
         run: |
-          cpplint --recursive --quiet --verbose=3 . 2> tmp
+          cpplint --recursive --quiet --verbose=3 .
       - name: Comment PR
         if: ${{ failure() && github.event_name == 'pull_request' }}
         uses: thollander/actions-comment-pull-request@master
