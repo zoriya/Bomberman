@@ -22,11 +22,11 @@ namespace WAL
 
 	void Component::onStart()
 	{
-		//TODO handle events here
+		// TODO handle events here
 	}
 
 	void Component::onStop()
 	{
-		//TODO handle events here
+		// TODO handle events here
 	}
 }

@@ -12,7 +12,7 @@ namespace WAL
 {
 	//! @brief The entity class, used to prevent circular dependencies.
 	class Entity;
-	
+
 	//! @brief Represent a single component of WAL.
 	class Component
 	{
