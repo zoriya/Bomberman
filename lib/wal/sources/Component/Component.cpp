@@ -29,4 +29,4 @@ namespace WAL
 	{
 		// TODO handle events here
 	}
-}
+} // namespace WAL

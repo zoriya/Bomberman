@@ -51,4 +51,4 @@ namespace WAL
 		//! @brief A default assignment operator
 		NotFoundError &operator=(const NotFoundError &) = default;
 	};
-}
+} // namespace WAL

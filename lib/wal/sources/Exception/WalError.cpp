@@ -17,4 +17,4 @@ namespace WAL
 	NotFoundError::NotFoundError(const std::string &what)
 		: WalError(what)
 	{}
-}
+} // namespace WAL

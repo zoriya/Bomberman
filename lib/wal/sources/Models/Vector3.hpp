@@ -85,13 +85,13 @@ namespace WAL
 		}
 
 		template<typename T2>
-		Vector3<T> operator*(Vector3<T2> &b) const
+		Vector3<T> operator*(const Vector3<T2> &b) const
 		{
 			return Vector3<T>(this->x * b.x, this->y * b.y, this->z * b.z);
 		}
 
 		template<typename T2>
-		Vector3<T> operator/=(Vector3<T2> &b)
+		Vector3<T> operator/=(const Vector3<T2> &b)
 		{
 			this->x /= b.x;
 			this->y /= b.y;
@@ -100,7 +100,7 @@ namespace WAL
 		}
 
 		template<typename T2>
-		Vector3<T> operator/(Vector3<T2> &b) const
+		Vector3<T> operator/(const Vector3<T2> &b) const
 		{
 			return Vector3<T>(this->x / b.x, this->y / b.y, this->z / b.z);
 		}
@@ -164,4 +164,4 @@ std::ostream &operator<<(std::ostream &s, const WAL::Vector3<T> &v)
 {
 	s << "Vector3<" << typeid(T).name() << ">("<< v.x << ", " << v.y << ", " << v.z << ")";
 	return s;
-}
+} // namespace WAL

@@ -51,4 +51,4 @@ namespace WAL
 		//! @brief A default assignment operator
 		Callback &operator=(const Callback &) = default;
 	};
-}
+} // namespace WAL

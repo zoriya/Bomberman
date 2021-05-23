@@ -34,7 +34,7 @@ namespace WAL
 		//! @brief Get the name fo the entity
 		std::string getName() const;
 
-		//! @brief Used if the entity is disabled 
+		//! @brief Used if the entity is disabled
 		bool isDisable() const;
 
 		//! @brief Disable this entity.
@@ -114,4 +114,4 @@ namespace WAL
 		//! @brief An entity is assignable
 		Entity &operator=(const Entity &) = default;
 	};
-}
+} // namespace WAL

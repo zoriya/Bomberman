@@ -6,6 +6,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include <memory>
 #include <typeinfo>
 #include <Exception/WalError.hpp>
@@ -112,4 +113,4 @@ namespace WAL
 		//! @brief A WAL can't be assigned.
 		Wal &operator=(const Wal &) = delete;
 	};
-}
+} // namespace WAL

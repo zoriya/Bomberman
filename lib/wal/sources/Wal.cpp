@@ -66,4 +66,4 @@ namespace WAL
 			return entity.hasComponent(dependency);
 		});
 	}
-}
+} // namespace WAL

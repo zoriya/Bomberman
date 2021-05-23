@@ -37,7 +37,7 @@ namespace WAL
 		//! @param entity The entity that owns the ne component.
 		virtual Component *clone(Entity &entity) const = 0;
 
-		//! @brief Used if the component is disabled 
+		//! @brief Used if the component is disabled
 		bool isDisabled() const;
 		//! @brief Disable this component.
 		void setDisable(bool disabled);
@@ -48,4 +48,4 @@ namespace WAL
 		//! @brief The entity or this component has just been disable.
 		virtual void onStop();
 	};
-}
+} // namespace WAL

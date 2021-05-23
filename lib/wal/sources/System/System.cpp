@@ -25,4 +25,4 @@ namespace WAL
 	{
 		return this->_dependencies;
 	}
-}
+} // namespace WAL

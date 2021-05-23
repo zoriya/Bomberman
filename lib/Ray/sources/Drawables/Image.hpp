@@ -64,7 +64,7 @@ namespace RAY
 		private:
 			//! @brief Image, really, that's just it...
 			::Image _image;
-	};   
-}
+	};
+} // namespace RAY
 
 #endif /* !IMAGE_HPP_ */

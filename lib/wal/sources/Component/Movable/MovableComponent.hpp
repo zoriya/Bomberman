@@ -36,4 +36,4 @@ namespace WAL
 
 		friend class MovableSystem;
 	};
-}
+} // namespace WAL
