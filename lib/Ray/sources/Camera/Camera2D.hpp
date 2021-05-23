@@ -26,7 +26,7 @@ namespace RAY::Camera {
 			//! @brief A copy constructor
 			Camera2D(const Camera2D &) = default;
 
-			~Camera2D() = default;
+			~Camera2D() override = default;
 
 			//! @brief A Camera is assignable
 			Camera2D &operator=(const Camera2D &) = default;
