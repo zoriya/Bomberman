@@ -7,7 +7,7 @@
 
 #include "Camera/Camera2D.hpp"
 
-RAY::Camera::Camera2D::Camera2D(const Vector2 &offset, const Vector2 &target, float rotation, float zoom):
+RAY::Camera::Camera2D::Camera2D(const RAY::Vector2 &offset, const RAY::Vector2 &target, float rotation, float zoom):
 	_camera({offset, target, rotation, zoom})
 {
 }
@@ -33,12 +33,12 @@ void RAY::Camera::Camera2D::setZoom(float zoom)
 	this->_camera.zoom = zoom;
 }
 
-const Vector2 &RAY::Camera::Camera2D::getOffset(void) const
+RAY::Vector2 RAY::Camera::Camera2D::getOffset(void) const
 {
 	return this->_camera.offset;
 }
 
-const Vector2 &RAY::Camera::Camera2D::getTarget(void) const
+RAY::Vector2 RAY::Camera::Camera2D::getTarget(void) const
 {
 	return this->_camera.target;
 }
