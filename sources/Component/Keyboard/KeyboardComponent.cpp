@@ -5,10 +5,15 @@
 
 #include "KeyboardComponent.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	KeyboardComponent::KeyboardComponent(WAL::Entity &entity)
-	: WAL::Component(entity)
+		: WAL::Component(entity)
 	{}
-	
+
+	WAL::Component *KeyboardComponent::clone(WAL::Entity &entity) const
+	{
+		return new KeyboardComponent(entity);
+	}
+
 } // namespace BMM

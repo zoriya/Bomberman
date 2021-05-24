@@ -6,10 +6,10 @@
 
 #pragma once
 
-#include "lib/wal/sources/Component/Component.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Component/Component.hpp"
+#include "Entity/Entity.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	class HealthComponent : public WAL::Component
 	{

@@ -4,38 +4,44 @@
 //
 
 #include "KeyboardSystem.hpp"
-#include "sources/Component/Keyboard/KeyboardComponent.hpp"
-#include "sources/Component/Controllable/ControllableComponent.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Component/Keyboard/KeyboardComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Entity/Entity.hpp"
+#include "Controllers/Keyboard.hpp"
 
-namespace Bomberman
+using Keyboard = RAY::Controller::Keyboard;
+
+namespace BBM
 {
-	const std::type_info &KeyboardSystem::getComponent() const
-	{
-		return typeid(KeyboardComponent);
-	}
+	KeyboardSystem::KeyboardSystem()
+		: WAL::System({
+			typeid(KeyboardComponent),
+			typeid(ControllableComponent)
+		})
+	{}
 
 	void KeyboardSystem::onFixedUpdate(WAL::Entity &entity)
 	{
-		auto &keyboard = entity.getComponent<KeyboardComponent>();
-		auto &controllable= entity.getComponent<ControllableComponent>();
-		static const std::map<int, bool> keyPressedMap = {
+		const auto &keyboard = entity.getComponent<KeyboardComponent>();
+		auto &controllable = entity.getComponent<ControllableComponent>();
+
+		const std::map<KeyboardKey, bool> keyPressedMap = {
 			{keyboard.keyJump, controllable.jump},
 			{keyboard.keyBomb, controllable.bomb},
 			{keyboard.keyPause, controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = RAY::IsKeyPressed(key.first);
+			key.second = Keyboard::isPressed(key.first);
 		controllable.moveX = 0;
 		controllable.moveZ = 0;
-		if (RAY::IsKeyPressed(keyboard.keyRight))
+		if (Keyboard::isPressed(keyboard.keyRight))
 			controllable.moveX += 1;
-		if (RAY::IsKeyPressed(keyboard.keyLeft))
+		if (Keyboard::isPressed(keyboard.keyLeft))
 			controllable.moveX -= 1;
-		if (RAY::IsKeyPressed(keyboard.keyUp))
+		if (Keyboard::isPressed(keyboard.keyUp))
 			controllable.moveX += 1;
-		if (RAY::IsKeyPressed(keyboard.keyDown))
+		if (Keyboard::isPressed(keyboard.keyDown))
 			controllable.moveX -= 1;
 	}
 }

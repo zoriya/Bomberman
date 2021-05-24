@@ -7,7 +7,7 @@
 #include "Component/Movable/MovableComponent.hpp"
 #include "Wal.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	MovableSystem::MovableSystem()
 		: System({

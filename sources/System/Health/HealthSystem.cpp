@@ -4,16 +4,17 @@
 //
 
 #include "HealthSystem.hpp"
-#include "sources/Component/Health/HealthComponent.hpp"
-#include "sources/Component/Controllable/ControllableComponent.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Component/Health/HealthComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Entity/Entity.hpp"
 
-namespace Bomberman
+namespace BBM
 {
-	const std::type_info &HealthSystem::getComponent() const
-	{
-		return typeid(HealthComponent);
-	}
+	HealthSystem::HealthSystem()
+		: WAL::System({
+			typeid(HealthComponent)
+		})
+	{}
 
 	void HealthSystem::onFixedUpdate(WAL::Entity &entity)
 	{

@@ -6,7 +6,7 @@
 
 #include "BombHolderComponent.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	BombHolderComponent::BombHolderComponent(WAL::Entity &entity)
 		: WAL::Component(entity),

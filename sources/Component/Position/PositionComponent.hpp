@@ -7,7 +7,7 @@
 #include "Models/Vector3.hpp"
 #include "Component/Component.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief A basic position component
 	class PositionComponent : public WAL::Component

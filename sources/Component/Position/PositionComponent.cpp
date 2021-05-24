@@ -4,7 +4,7 @@
 
 #include "PositionComponent.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	PositionComponent::PositionComponent(WAL::Entity &entity)
 		: Component(entity),

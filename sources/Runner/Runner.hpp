@@ -4,7 +4,7 @@
 
 #pragma once
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief Start the game and run a Bomberman.
 	//! @return 0 on success, another value on error.

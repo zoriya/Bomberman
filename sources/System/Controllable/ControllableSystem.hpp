@@ -5,21 +5,19 @@
 
 #pragma once
 
-#include "lib/wal/sources/System/System.hpp"
+#include "System/System.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief A system to handle Controllable entities.
 	class ControllableSystem : public WAL::System
 	{
 	public:
 		//! @inherit
-		const std::type_info &getComponent() const override;
-		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
-		ControllableSystem() = default;
+		ControllableSystem();
 		//! @brief A Controllable system is copy constructable
 		ControllableSystem(const ControllableSystem &) = default;
 		//! @brief A default destructor

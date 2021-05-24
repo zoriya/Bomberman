@@ -6,7 +6,7 @@
 
 #include "HealthComponent.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	HealthComponent::HealthComponent(WAL::Entity &entity)
 		: WAL::Component(entity),

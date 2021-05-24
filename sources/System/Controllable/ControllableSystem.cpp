@@ -4,22 +4,24 @@
 //
 
 #include "ControllableSystem.hpp"
-#include "lib/wal/sources/Component/Movable/MovableComponent.hpp"
-#include "sources/Component/Controllable/ControllableComponent.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Component/Movable/MovableComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Entity/Entity.hpp"
 
-namespace Bomberman
+namespace BBM
 {
-	const std::type_info &ControllableSystem::getComponent() const
-	{
-		return typeid(ControllableComponent);
-	}
+	ControllableSystem::ControllableSystem()
+		: WAL::System({
+			typeid(ControllableComponent),
+			typeid(MovableComponent)
+		})
+	{}
 
 	void ControllableSystem::onFixedUpdate(WAL::Entity &entity)
 	{
 		auto &controllable = entity.getComponent<ControllableComponent>();
-		auto &movable = entity.getComponent<WAL::MovableComponent>();
+		auto &movable = entity.getComponent<MovableComponent>();
 
-		movable.addForce(WAL::Vector3f(controllable._moveX, 0, controllable._moveZ));
+		movable.addForce(Vector3f(controllable.moveX, 0, controllable.moveZ));
 	}
 }

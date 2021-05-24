@@ -41,7 +41,7 @@ set(SOURCES
 add_executable(bomberman
 	sources/main.cpp
 	${SOURCES}
-)
+	sources/Component/Controllable/ControllableComponent.cpp)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 

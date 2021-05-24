@@ -5,40 +5,39 @@
 
 #pragma once
 
-#include "lib/wal/sources/Component/Component.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include <Controllers/Keyboard.hpp>
+#include "Component/Component.hpp"
+#include "Entity/Entity.hpp"
 
-namespace Bomberman
+using Key = RAY::Controller::Keyboard::Key;
+
+namespace BBM
 {
 	class KeyboardComponent : public WAL::Component
 	{
 		public:
-
 			//! @brief jump key
-			int keyJump;
+			Key keyJump = KEY_SPACE;
 			//! @brief bomb key
-			int keyBomb;
+			Key keyBomb = KEY_E;
 			//! @brief pause key
-			int keyPause;
+			Key keyPause = KEY_ESCAPE;
 			//! @brief move right key
-			int keyRight;
+			Key keyRight = KEY_Q;
 			//! @brief move left key
-			int keyLeft;
+			Key keyLeft = KEY_D;
 			//! @brief move up key
-			int keyUp;
+			Key keyUp = KEY_Z;
 			//! @brief move down key
-			int keyDown;
+			Key keyDown = KEY_S;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
-			//! @brief A Keyboard component can't be instantiated, it should be derived.
+			//! @brief Create a new keyboard component using default keys.
 			explicit KeyboardComponent(WAL::Entity &entity);
 
-			//! @brief Constructor
-			KeyboardComponent(WAL::Entity &entity, unsigned int maxBombCount);
-
-			//! @brief A Keyboard component can't be instantiated, it should be derived.
+			//! @brief A Keyboard component is copy constructable.
 			KeyboardComponent(const KeyboardComponent &) = default;
 
 			//! @brief default destructor

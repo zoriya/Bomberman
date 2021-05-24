@@ -5,10 +5,10 @@
 
 #pragma once
 
-#include "lib/wal/sources/Component/Component.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Component/Component.hpp"
+#include "Entity/Entity.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	class ControllableComponent : public WAL::Component
 	{	
@@ -27,19 +27,13 @@ namespace Bomberman
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
-			//! @brief A Controllable component can't be instantiated, it should be derived.
+			//! @brief Initialize a new controllable component.
 			explicit ControllableComponent(WAL::Entity &entity);
-
-			//! @brief Constructor
-			ControllableComponent(WAL::Entity &entity, unsigned int maxBombCount);
-
-			//! @brief A Controllable component can't be instantiated, it should be derived.
+			//! @brief A Controllable component is copy constructable.
 			ControllableComponent(const ControllableComponent &) = default;
-
 			//! @brief default destructor
 			~ControllableComponent() override = default;
-
-			//! @brief A Controllable omponent can't be assigned
+			//! @brief A Controllable component can't be assigned
 			ControllableComponent &operator=(const ControllableComponent &) = delete;
 	};
 }

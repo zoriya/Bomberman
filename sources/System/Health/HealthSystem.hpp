@@ -5,21 +5,19 @@
 
 #pragma once
 
-#include "lib/wal/sources/System/System.hpp"
+#include "System/System.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief A system to handle Health entities.
 	class HealthSystem : public WAL::System
 	{
 	public:
 		//! @inherit
-		const std::type_info &getComponent() const override;
-		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
-		HealthSystem() = default;
+		HealthSystem();
 		//! @brief A Health system is copy constructable
 		HealthSystem(const HealthSystem &) = default;
 		//! @brief A default destructor

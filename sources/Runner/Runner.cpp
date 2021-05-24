@@ -7,7 +7,7 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	void updateState(WAL::Wal &engine, GameState &state)
 	{
