@@ -7,17 +7,21 @@
 
 
 #include <iostream>
-#include <Wal.hpp>
+#include "Runner/Runner.hpp"
 
-int main()
+void usage(const std::string &bin)
 {
-	WAL::Wal wal;
+	std::cout << "Bomberman." << std::endl
+		<< "\tUsage: " << bin << " [options]" << std::endl
+		<< "Options:" << std::endl
+		<< "\t-h:\tPrint this help message" << std::endl;
+}
 
-	try {
-		wal.run();
-		return 0;
-	} catch (const std::exception &ex) {
-		std::cerr << ex.what() << std::endl;
-		return 84;
+int main(int argc, char **argv)
+{
+	if (argc == 2 && std::string(argv[1]) == "-h") {
+		usage(argv[0]);
+		return 1;
 	}
+	return Bomberman::run();
 }

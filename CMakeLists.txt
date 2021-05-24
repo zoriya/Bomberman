@@ -7,7 +7,11 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 
 add_executable(bomberman
 	sources/main.cpp
+	sources/Models/GameState.hpp
+	sources/Runner/Runner.cpp
+	sources/Runner/Runner.hpp
 )
+target_include_directories(bomberman PUBLIC sources)
 
 find_package(raylib QUIET)
 if (NOT raylib_FOUND)
