@@ -30,18 +30,8 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief A default destructor
 			~Point() = default;
 
-			//! @return the position of the point
-			const Vector3 &getPosition(void) const;
-
-			//! @brief Set position
-			Point &setPosition(const Vector3 &Position);
-
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;
-
-		private:
-			//! @brief point position
-			Vector3 _position;
 	};
 };
 

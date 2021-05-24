@@ -51,9 +51,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Radius of the circle 
 			int _radius;
 
-			//! @brief position of the center
-			Vector3 _centerPos;
-
 			//! @brief rotation axis
 			Vector3 _rotationAxis;
 			

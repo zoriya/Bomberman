@@ -48,8 +48,6 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 		private:
-			//! @brief start position
-			Vector3 _startPosition;
 			//! @brief end position
 			Vector3 _endPosition;
 	};
