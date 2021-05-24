@@ -17,8 +17,24 @@ set(SOURCES
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
 	sources/Component/Movable/MovableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/Keyboard/KeyboardComponent.cpp
+	sources/Component/Keyboard/KeyboardComponent.hpp
+	sources/Component/BombHolder/BombHolderComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.hpp
+	sources/Component/Health/HealthComponent.cpp
+	sources/Component/Health/HealthComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/Movable/MovableSystem.cpp
+	sources/System/Controllable/ControllableSystem.cpp
+	sources/System/Controllable/ControllableSystem.hpp
+	sources/System/Health/HealthSystem.cpp
+	sources/System/Health/HealthSystem.hpp
+	sources/System/Keyboard/KeyboardSystem.cpp
+	sources/System/Keyboard/KeyboardSystem.hpp
+	sources/System/Movable/MovableSystem.cpp
+	sources/System/Movable/MovableSystem.hpp
 	sources/Models/Vector3.hpp
 )
 
