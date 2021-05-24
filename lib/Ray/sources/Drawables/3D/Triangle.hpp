@@ -56,8 +56,6 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 		private:
-			//! @brief Position of A
-			Vector3 _posA;
 			//! @brief Position of B
 			Vector3 _posB;
 			//! @brief Position of C

@@ -38,21 +38,12 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief set radius
 			Sphere &setRadius(int radius);
 
-			//! @return the position of the center
-			const Vector3 &getCenterPos(void) const;
-
-			//! @brief set pos of center 
-			Sphere &setRadius(const Vector3 &pos);
-
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;
 
 		private:
 			//! @brief Radius of the sphere 
 			int _radius;
-
-			//! @brief position of the center
-			Vector3 _centerPos;
 	};
 };
 

@@ -31,12 +31,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief A default destructor
 			~Plane() = default;
 
-			//! @return the position of the plane
-			const Vector3 &getPosition(void) const;
-
-			//! @brief Set position
-			Plane &setPosition(const Vector3 &Position);
-
 			//! @return the dimensions of the plane
 			const Vector2 &getDimensions(void) const;
 
@@ -47,8 +41,6 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 		private:
-			//! @brief plane position
-			Vector3 _position;
 
 			//! @brief plane dimensions
 			Vector2 _dimensions;

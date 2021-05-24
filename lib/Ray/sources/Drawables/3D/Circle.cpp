@@ -8,11 +8,10 @@
 #include "Drawables/3D/Circle.hpp"
 
 RAY::Drawables::Drawables3D::Circle::Circle(const Vector3 &centerPosition, int radius, const Color &color, const Vector3 &rotationAxis, float rotationAngle):
-	ADrawable3D(color), _radius(radius), _centerPos(centerPosition), _rotationAxis(rotationAxis), _rotationAngle(rotationAngle)
+	ADrawable3D(centerPosition, color), _radius(radius), _rotationAxis(rotationAxis), _rotationAngle(rotationAngle)
 {
 
 }
-
 
 int RAY::Drawables::Drawables3D::Circle::getRadius(void) const
 {
@@ -27,11 +26,11 @@ RAY::Drawables::Drawables3D::Circle &RAY::Drawables::Drawables3D::Circle::setRad
 
 const RAY::Vector3 &RAY::Drawables::Drawables3D::Circle::getCenterPos(void) const
 {
-	return this->_centerPos;
+	return this->_position;
 }
 
 void RAY::Drawables::Drawables3D::Circle::drawOn(RAY::Window &)
 {
-	DrawCircle3D(this->_centerPos, this->_radius,this->_rotationAxis,
+	DrawCircle3D(this->_position, this->_radius,this->_rotationAxis,
 	this->_rotationAngle, this->_color);
 }

@@ -9,14 +9,14 @@
 #include <exception>
 
 RAY::Drawables::Drawables3D::Triangle::Triangle(const Vector3 &positionA, const Vector3 &positionB, const Vector3 &positionC, const Color &color):
-	ADrawable3D(color), _posA(positionA), _posB(positionB), _posC(positionC)
+	ADrawable3D(positionA, color), _posB(positionB), _posC(positionC)
 {
 
 }
 
 const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionA(void) const
 {
-	return this->_posA;
+	return this->getPosition();
 }
 
 const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionB(void) const
@@ -31,7 +31,7 @@ const RAY::Vector3 &RAY::Drawables::Drawables3D::Triangle::getPositionC(void) co
 
 RAY::Drawables::Drawables3D::Triangle &RAY::Drawables::Drawables3D::Triangle::setPositionA(const Vector3 &position)
 {
-	this->_posA = position;
+	this->setPosition(position);
 	return *this;
 }
 
@@ -49,7 +49,7 @@ RAY::Drawables::Drawables3D::Triangle &RAY::Drawables::Drawables3D::Triangle::se
 
 void RAY::Drawables::Drawables3D::Triangle::drawOn(RAY::Window &)
 {
-	DrawTriangle3D(this->_posA, this->_posB, this->_posC, this->_color);
+	DrawTriangle3D(this->_position, this->_posB, this->_posC, this->_color);
 }
 
 
