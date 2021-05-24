@@ -12,18 +12,14 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
 add_executable(bomberman
                sources/main.cpp
-               sources/Component/Drawable/RectangleDrawable2DComponent.cpp
-               sources/Component/Drawable/RectangleDrawable2DComponent.hpp
-               sources/Component/Drawable/Drawable2DComponent.hpp
-               sources/Component/Drawable/Drawable2DComponent.cpp
+               sources/Component/Drawable/DrawableComponent.hpp
                sources/Component/Movable/MovableComponent.cpp
                sources/Component/Movable/MovableComponent.hpp
                sources/Component/Position/PositionComponent.cpp
                sources/Component/Position/PositionComponent.hpp
                sources/System/Movable/MovableSystem.cpp
                sources/System/Movable/MovableSystem.hpp
-               sources/System/Renderer/RendererSystem.cpp
                sources/System/Renderer/RendererSystem.hpp
-               sources/System/Renderer/RectangleDrawable2DSystem.cpp sources/System/Renderer/RectangleDrawable2DSystem.hpp)
+               )
 
 target_link_libraries(bomberman wal ray)

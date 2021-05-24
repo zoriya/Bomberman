@@ -21,7 +21,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @param radius radius of the sphere
 			//! @param Color Color of the sphere  
 			Sphere(const Vector3 &centerPosition, int radius, const Color &color);
-
 			
 			//! @brief A default copy constructor
 			Sphere(const Sphere &) = default;
