@@ -10,7 +10,7 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
 add_executable(bomberman
-	sources/main.cpp
-)
+               sources/main.cpp
+               sources/Component/Drawable/RectangleDrawable2DComponent.cpp sources/Component/Drawable/RectangleDrawable2DComponent.hpp)
 
 target_link_libraries(bomberman wal ray)

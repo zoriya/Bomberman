@@ -13,7 +13,6 @@ RAY::Drawables::Drawables3D::Circle::Circle(const Vector3 &centerPosition, int r
 
 }
 
-
 int RAY::Drawables::Drawables3D::Circle::getRadius(void) const
 {
 	return this->_radius;

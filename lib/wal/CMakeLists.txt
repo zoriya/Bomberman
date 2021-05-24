@@ -15,11 +15,7 @@ add_library(wal
             sources/Exception/WalError.hpp
             sources/Entity/Entity.cpp
             sources/Component/Component.cpp
-            sources/Component/Position/PositionComponent.cpp
-            sources/Component/Position/PositionComponent.hpp
             sources/Models/Vector3.hpp
-            sources/Component/Movable/MovableComponent.cpp
-            sources/Component/Movable/MovableComponent.hpp
             sources/System/Movable/MovableSystem.cpp
             sources/System/Movable/MovableSystem.hpp
             sources/System/System.cpp

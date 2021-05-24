@@ -19,7 +19,7 @@
 
 int main()
 {
-	
+	SetTraceLogLevel(LOG_WARNING);
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
