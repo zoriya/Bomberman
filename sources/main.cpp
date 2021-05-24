@@ -16,6 +16,7 @@
 #include "Model/ModelAnimations.hpp"
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
+#include "TraceLog.hpp"
 
 int main()
 {
@@ -24,6 +25,7 @@ int main()
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
 	const int screenHeight = 450;
+	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
 								 RAY::Vector3(0.0f, 0.0f, 0.0f),
