@@ -9,7 +9,7 @@
 #include <Scene/Scene.hpp>
 
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief A class representing the current game state. This allow one to retain information between update calls.
 	class GameState

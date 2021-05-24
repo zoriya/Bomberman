@@ -7,7 +7,7 @@
 #include <catch2/catch.hpp>
 
 using namespace WAL;
-using namespace Bomberman;
+using namespace BBM;
 
 TEST_CASE("Component", "[Entity]")
 {

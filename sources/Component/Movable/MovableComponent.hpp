@@ -7,7 +7,7 @@
 #include "Models/Vector3.hpp"
 #include "Entity/Entity.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	//! @brief A component to place on entities that can move or be moved.
 	class MovableComponent : public WAL::Component

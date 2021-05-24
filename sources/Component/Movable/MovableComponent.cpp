@@ -4,7 +4,7 @@
 
 #include "MovableComponent.hpp"
 
-namespace Bomberman
+namespace BBM
 {
 	MovableComponent::MovableComponent(WAL::Entity &entity)
 		: Component(entity)
