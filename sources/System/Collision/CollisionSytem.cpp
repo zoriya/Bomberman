@@ -20,7 +20,9 @@ namespace BBM
 			auto &movable = entity.getComponent<WAL::MovableComponent>();
 			auto &position = entity.getComponent<WAL::PositionComponent>();
 			auto &collision = entity.getComponent<CollisionComponent>();
-			WAL::Vector3f minA(position.getX(), position.getY(), position.getZ());
+			WAL::Vector3f minA(position.getX() + movable._velocity.x,
+								position.getY() + movable._velocity.y,
+								position.getZ() + movable._velocity.z);
 			WAL::Vector3f maxA(	minA.x + collision.getBoundX(),
 								minA.y + collision.getBoundY(),
 								minA.z + collision.getBoundZ());
