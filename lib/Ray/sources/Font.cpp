@@ -1,0 +1,34 @@
+/*
+** EPITECH PROJECT, 2021
+** Bomberman
+** File description:
+** Font
+*/
+
+#include "Font.hpp"
+
+RAY::Font::Font(const std::string &filename):
+	_font(LoadFont(filename.c_str()))
+{
+}
+
+RAY::Font::Font()
+{
+}
+
+RAY::Font::~Font()
+{
+	this->unload();
+}
+
+bool RAY::Font::load(const std::string &filename)
+{
+	this->_font = LoadFont(filename.c_str());
+	return true;
+}
+
+bool RAY::Font::unload()
+{
+	UnloadFont(this->_font);
+	return true;
+}
