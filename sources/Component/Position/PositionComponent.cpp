@@ -4,24 +4,24 @@
 
 #include "PositionComponent.hpp"
 
-namespace WAL
+namespace Bomberman
 {
-	PositionComponent::PositionComponent(Entity &entity)
+	PositionComponent::PositionComponent(WAL::Entity &entity)
 		: Component(entity),
 		  position()
 	{}
 
-	PositionComponent::PositionComponent(Entity &entity, Vector3f pos)
+	PositionComponent::PositionComponent(WAL::Entity &entity, Vector3f pos)
 		: Component(entity),
 		  position(pos)
 	{}
 
-	PositionComponent::PositionComponent(Entity &entity, float x, float y, float z)
+	PositionComponent::PositionComponent(WAL::Entity &entity, float x, float y, float z)
 		: Component(entity),
 		  position(x, y, z)
 	{}
 
-	Component *PositionComponent::clone(WAL::Entity &entity) const
+	WAL::Component *PositionComponent::clone(WAL::Entity &entity) const
 	{
 		return new PositionComponent(entity, this->position);
 	}
