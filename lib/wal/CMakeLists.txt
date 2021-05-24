@@ -4,27 +4,27 @@ project(wal)
 set(CMAKE_CXX_STANDARD 20)
 
 add_library(wal
-	sources/Entity/Entity.hpp
-	sources/Component/Component.hpp
-	sources/System/System.hpp
-	sources/Wal.cpp
-	sources/Wal.hpp
-	sources/Scene/Scene.cpp
-	sources/Scene/Scene.hpp
-	sources/Exception/WalError.cpp
-	sources/Exception/WalError.hpp
-	sources/Entity/Entity.cpp
-	sources/Component/Component.cpp
-	sources/Component/Position/PositionComponent.cpp
-	sources/Component/Position/PositionComponent.hpp
-	sources/Models/Vector3.hpp
-	sources/Component/Movable/MovableComponent.cpp
-	sources/Component/Movable/MovableComponent.hpp
-	sources/System/Movable/MovableSystem.cpp
-	sources/System/Movable/MovableSystem.hpp
-	sources/System/System.cpp
-	sources/Models/Callback.hpp
-)
+            sources/Entity/Entity.hpp
+            sources/Component/Component.hpp
+            sources/System/System.hpp
+            sources/Wal.cpp
+            sources/Wal.hpp
+            sources/Scene/Scene.cpp
+            sources/Scene/Scene.hpp
+            sources/Exception/WalError.cpp
+            sources/Exception/WalError.hpp
+            sources/Entity/Entity.cpp
+            sources/Component/Component.cpp
+            sources/Component/Position/PositionComponent.cpp
+            sources/Component/Position/PositionComponent.hpp
+            sources/Models/Vector3.hpp
+            sources/Component/Movable/MovableComponent.cpp
+            sources/Component/Movable/MovableComponent.hpp
+            sources/System/Movable/MovableSystem.cpp
+            sources/System/Movable/MovableSystem.hpp
+            sources/System/System.cpp
+            sources/Models/Callback.hpp
+            sources/System/Movable/RendererSystem.cpp sources/System/Movable/RendererSystem.hpp)
 
 target_include_directories(wal PUBLIC sources)
 
