@@ -3,31 +3,16 @@
 //
 
 #include "RendererSystem.hpp"
-#include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Window.hpp"
 
 namespace BBM
 {
-
-	void RendererSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
-	{
-		WAL::System::onUpdate(entity, dtime);
-	}
-
-	void RendererSystem::onFixedUpdate(WAL::Entity &entity)
-	{
-		WAL::System::onFixedUpdate(entity);
-	}
-
-	void RendererSystem::onSelfUpdate()
-	{
-		WAL::System::onSelfUpdate();
-	}
-
-	RendererSystem::RendererSystem()
+	RendererSystem::RendererSystem(RAY::Window &window)
 		: System({
 			typeid(PositionComponent)
-		})
+		}),
+		_w(window)
 	{
 	}
 }

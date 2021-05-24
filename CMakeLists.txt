@@ -24,6 +24,6 @@ add_executable(bomberman
                sources/System/Movable/MovableSystem.hpp
                sources/System/Renderer/RendererSystem.cpp
                sources/System/Renderer/RendererSystem.hpp
-               )
+               sources/System/Renderer/RectangleDrawable2DSystem.cpp sources/System/Renderer/RectangleDrawable2DSystem.hpp)
 
 target_link_libraries(bomberman wal ray)
