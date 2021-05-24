@@ -16,11 +16,9 @@ add_library(wal
             sources/Entity/Entity.cpp
             sources/Component/Component.cpp
             sources/Models/Vector3.hpp
-            sources/System/Movable/MovableSystem.cpp
-            sources/System/Movable/MovableSystem.hpp
             sources/System/System.cpp
             sources/Models/Callback.hpp
-            sources/System/Movable/RendererSystem.cpp sources/System/Movable/RendererSystem.hpp)
+            )
 
 target_include_directories(wal PUBLIC sources)
 

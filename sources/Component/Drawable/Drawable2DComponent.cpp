@@ -3,11 +3,13 @@
 //
 
 #include "Drawable2DComponent.hpp"
+#include "Component/Component.hpp"
 
 namespace BBM
 {
 	Drawable2DComponent::Drawable2DComponent(WAL::Entity &entity)
-		: Component(entity)
+		: WAL::Component(entity),
+		  color(0)
 	{
 	}
 }

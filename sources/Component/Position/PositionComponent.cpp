@@ -3,25 +3,27 @@
 //
 
 #include "PositionComponent.hpp"
+#include "Entity/Entity.hpp"
+#include "Component/Component.hpp"
 
-namespace WAL
+namespace BBM
 {
-	PositionComponent::PositionComponent(Entity &entity)
-		: Component(entity),
+	PositionComponent::PositionComponent(WAL::Entity &entity)
+		: WAL::Component(entity),
 		  position()
 	{}
 
-	PositionComponent::PositionComponent(Entity &entity, Vector3f pos)
-		: Component(entity),
+	PositionComponent::PositionComponent(WAL::Entity &entity, WAL::Vector3f pos)
+		: WAL::Component(entity),
 		  position(pos)
 	{}
 
-	PositionComponent::PositionComponent(Entity &entity, float x, float y, float z)
-		: Component(entity),
+	PositionComponent::PositionComponent(WAL::Entity &entity, float x, float y, float z)
+		: WAL::Component(entity),
 		  position(x, y, z)
 	{}
 
-	Component *PositionComponent::clone(WAL::Entity &entity) const
+	WAL::Component *PositionComponent::clone(WAL::Entity &entity) const
 	{
 		return new PositionComponent(entity, this->position);
 	}

@@ -11,6 +11,5 @@ namespace BBM
 	RectangleDrawableComponent::RectangleDrawableComponent(WAL::Entity &entity)
 		: Drawable2DComponent(entity)
 	{
-
 	}
 }

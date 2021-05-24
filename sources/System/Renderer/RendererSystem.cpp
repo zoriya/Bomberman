@@ -3,24 +3,25 @@
 //
 
 #include "RendererSystem.hpp"
+#include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
 
-namespace WAL
+namespace BBM
 {
 
-	void RendererSystem::onUpdate(Entity &entity, std::chrono::nanoseconds dtime)
+	void RendererSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
 	{
-		System::onUpdate(entity, dtime);
+		WAL::System::onUpdate(entity, dtime);
 	}
 
-	void RendererSystem::onFixedUpdate(Entity &entity)
+	void RendererSystem::onFixedUpdate(WAL::Entity &entity)
 	{
-		System::onFixedUpdate(entity);
+		WAL::System::onFixedUpdate(entity);
 	}
 
 	void RendererSystem::onSelfUpdate()
 	{
-		System::onSelfUpdate();
+		WAL::System::onSelfUpdate();
 	}
 
 	RendererSystem::RendererSystem()

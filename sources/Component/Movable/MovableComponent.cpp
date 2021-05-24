@@ -3,19 +3,20 @@
 //
 
 #include "MovableComponent.hpp"
+#include "Entity/Entity.hpp"
 
-namespace WAL
+namespace BBM
 {
-	MovableComponent::MovableComponent(Entity &entity)
+	MovableComponent::MovableComponent(WAL::Entity &entity)
 		: Component(entity)
 	{}
 
-	Component *MovableComponent::clone(Entity &entity) const
+	WAL::Component *MovableComponent::clone(WAL::Entity &entity) const
 	{
 		return new MovableComponent(entity);
 	}
 
-	void MovableComponent::addForce(Vector3f force)
+	void MovableComponent::addForce(WAL::Vector3f force)
 	{
 		this->_acceleration += force;
 	}
