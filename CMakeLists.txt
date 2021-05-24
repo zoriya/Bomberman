@@ -36,12 +36,14 @@ set(SOURCES
 	sources/System/Movable/MovableSystem.cpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/Models/Vector3.hpp
-)
+	sources/Component/GridCentered/GridCenteredComponent.cpp
+	sources/Component/GridCentered/GridCenteredComponent.hpp
+	sources/System/GridCentered/GridCenteredSystem.cpp sources/System/GridCentered/GridCenteredSystem.hpp)
 
 add_executable(bomberman
 	sources/main.cpp
 	${SOURCES}
-	sources/Component/Controllable/ControllableComponent.cpp)
+)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
