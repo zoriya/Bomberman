@@ -8,6 +8,7 @@
 #include <catch2/catch.hpp>
 
 using namespace WAL;
+using namespace BBM;
 
 TEST_CASE("Create system", "[Engine][System]")
 {

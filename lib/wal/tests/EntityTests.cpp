@@ -6,6 +6,7 @@
 #include "Component/Position/PositionComponent.hpp"
 #include <catch2/catch.hpp>
 
+using namespace BBM;
 using namespace WAL;
 
 TEST_CASE("Component", "[Entity]")
