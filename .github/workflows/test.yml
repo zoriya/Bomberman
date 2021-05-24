@@ -22,4 +22,4 @@ jobs:
           cmake --build . -t unit_tests 
       - name: Run tests
         run: |
-          ./unit_tests 
+          ./build/unit_tests
