@@ -25,4 +25,4 @@ namespace WAL
 		//! @brief A movable system is assignable.
 		MovableSystem &operator=(const MovableSystem &) = default;
 	};
-}
+} // namespace WAL

@@ -25,4 +25,4 @@ namespace WAL
 		movable._velocity = movable._acceleration * Wal::timestep.count();
 		movable._acceleration = Vector3f();
 	}
-}
+} // namespace WAL

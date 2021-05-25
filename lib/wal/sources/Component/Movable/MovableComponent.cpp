@@ -19,4 +19,4 @@ namespace WAL
 	{
 		this->_acceleration += force;
 	}
-}
+} // namespace WAL
