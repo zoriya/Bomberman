@@ -10,7 +10,6 @@
 
 #include <raylib.h>
 #include <string>
-#include "Canvas.hpp"
 #include "Texture.hpp"
 #include "IRessource.hpp"
 
@@ -21,7 +20,7 @@ namespace RAY
 	}
 	class IRessource;
 	//! @brief Object representation of a framebuffer
-	class Image: public Canvas, public IRessource {
+	class Image: public IRessource {
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load

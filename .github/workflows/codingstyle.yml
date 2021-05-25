@@ -1,0 +1,13 @@
+name: Check coding style
+on: [push]
+
+jobs:
+  Building:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install cpplint
+        run: pip install cpplint
+      - name: Check coding style
+        run: |
+          cpplint --recursive --quiet --verbose=3 .

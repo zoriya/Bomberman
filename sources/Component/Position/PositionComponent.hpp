@@ -39,4 +39,4 @@ namespace BBM
 		//! @brief A position component is not assignable
 		PositionComponent &operator=(const PositionComponent &) = delete;
 	};
-}
+} // namespace WAL

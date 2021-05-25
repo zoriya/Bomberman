@@ -6,7 +6,6 @@
 */
 
 #include "Window.hpp"
-
 #include <utility>
 #include "Controllers/Mouse.hpp"
 #include "Drawables/ADrawable2D.hpp"

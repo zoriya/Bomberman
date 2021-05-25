@@ -6,11 +6,9 @@
 #include <algorithm>
 #include "Wal.hpp"
 
-using namespace std::chrono_literals;
-
 namespace WAL
 {
-	std::chrono::nanoseconds Wal::timestep = 8ms;
+	std::chrono::nanoseconds Wal::timestep = std::chrono::milliseconds(8);
 
 	void Wal::run()
 	{
@@ -66,4 +64,4 @@ namespace WAL
 			return entity.hasComponent(dependency);
 		});
 	}
-}
+} // namespace WAL

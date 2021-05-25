@@ -3,7 +3,7 @@
 //
 
 #include "Entity/Entity.hpp"
-
+#include <string>
 #include <utility>
 
 namespace WAL
@@ -67,4 +67,4 @@ namespace WAL
 		});
 		return existing != this->_components.end();
 	}
-}
+} // namespace WAL

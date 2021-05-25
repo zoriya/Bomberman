@@ -18,7 +18,7 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Grid constructor
 			//! @param slices slices of the grid
 			//! @param spacing spacing of slices
-			Grid(int slices, float spacing, const Color & = LIGHTGRAY);
+			Grid(int slices, float spacing, const Color &color = LIGHTGRAY);
 
 			//! @brief A default copy constructor
 			Grid(const Grid &) = default;
@@ -27,7 +27,7 @@ namespace RAY::Drawables::Drawables3D {
 			Grid &operator=(const Grid &) = default;
 
 			//! @brief A default destructor
-			~Grid() = default;
+			~Grid() override = default;
 
 			//! @return the slices of the Grid
 			int getSlices(void) const;

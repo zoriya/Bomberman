@@ -13,8 +13,11 @@
 #include "Drawables/Image.hpp"
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/Texture.hpp"
+#include "Drawables/2D/Circle.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
+#include "System/Renderer/Renderer2DSystem.hpp"
+#include "Component/Drawable/Drawable2DComponent.hpp"
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
 #include "TraceLog.hpp"
@@ -46,7 +49,7 @@ int main()
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
 								 RAY::Vector3(0.0f, 0.0f, 0.0f),
-								 RAY::Vector3(0.0f, 1.0f, 0.0f), 
+								 RAY::Vector3(0.0f, 1.0f, 0.0f),
 								 45.0f, CAMERA_PERSPECTIVE
 								);
 	RAY::Model model(modelPath);

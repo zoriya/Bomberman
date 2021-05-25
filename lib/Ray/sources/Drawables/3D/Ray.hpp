@@ -29,7 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Ray &operator=(const Ray &) = default;
 
 			//! @brief A default destructor
-			~Ray() = default;
+			~Ray() override = default;
 
 
 

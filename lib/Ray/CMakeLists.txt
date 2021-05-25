@@ -12,7 +12,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif ()
 
 set(HEADERS
-    sources/Canvas.hpp
     sources/Color.hpp
     sources/Font.hpp
     sources/IRessource.hpp

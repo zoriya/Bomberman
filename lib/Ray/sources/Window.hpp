@@ -16,9 +16,6 @@
 #include "Camera/Camera2D.hpp"
 #include "Camera/Camera3D.hpp"
 #include "Color.hpp"
-#include "Canvas.hpp"
-#include "Drawables/ADrawable3D.hpp"
-#include "Drawables/ADrawable2D.hpp"
 #include "Drawables/Texture.hpp"
 #include "Model/Model.hpp"
 
@@ -28,7 +25,7 @@ namespace RAY {
 	namespace Drawables {
 		class ADrawable3D;
 	}
-	class Window: public Canvas {
+	class Window {
 		public:
 			//! @return A widow insta,ce. Only one window can be open at a time
 			static Window &getInstance(int width, int height, const std::string &title, unsigned flags = 0, bool openNow = true);
@@ -117,7 +114,7 @@ namespace RAY {
 
 			//! @brief draw drawable
 			//! @param drawable The drawable to render on screen
-			void draw(RAY::Drawables::ADrawable2D &drawable) override;
+			void draw(RAY::Drawables::ADrawable2D &drawable);
 
 			//! @brief draw drawable
 			//! @param drawable The drawable to render on screen
