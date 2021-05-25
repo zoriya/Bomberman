@@ -32,10 +32,10 @@ namespace RAY::Drawables::Drawables2D {
 			ADrawable2D(const ADrawable2D &) = default;
 
 			//! @brief A default destructor
-			virtual ~ADrawable2D() = default;
+			~ADrawable2D() override = default;
 
 			//! @return the top-left position of the ADrawable
-			const Vector2 &getPosition(void) const;
+			const RAY::Vector2 &getPosition(void) const;
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;
