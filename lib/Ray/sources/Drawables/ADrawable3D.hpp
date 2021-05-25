@@ -37,7 +37,7 @@ namespace RAY::Drawables::Drawables3D {
 			ADrawable3D &setColor(const RAY::Color &color);
 
 			//! @return the position of the ADrawable
-			virtual const Vector3 &getPosition(void) const;
+			virtual const RAY::Vector3 &getPosition(void) const;
 			
 			//! @brief set position
 			virtual ADrawable3D &setPosition(const Vector3 &position);

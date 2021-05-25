@@ -32,7 +32,7 @@ namespace RAY::Drawables::Drawables2D {
 			Triangle &operator=(const Triangle &) = default;
 
 			//! @brief A default destructor
-			~Triangle() = default;
+			~Triangle() override = default;
 
 			//! @return the position of A of the Triangle
 			const Vector2 &getPositionA(void) const;
@@ -58,6 +58,7 @@ namespace RAY::Drawables::Drawables2D {
 			void drawOn(RAY::Image &image) override;
 
 		private:
+			//! @note Position of A is given by the Drawable2D position
 			//! @brief Position of B
 			Vector2 _posB;
 			//! @brief Position of C

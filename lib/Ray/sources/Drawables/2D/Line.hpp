@@ -39,7 +39,7 @@ namespace RAY::Drawables::Drawables2D {
 			Line &operator=(const Line &) = default;
 
 			//! @brief A default destructor
-			~Line() = default;
+			~Line() override = default;
 
 			//! @return the end position of the line
 			const Vector2 &getEndPosition(void) const;
