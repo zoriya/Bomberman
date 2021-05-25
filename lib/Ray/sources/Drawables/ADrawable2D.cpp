@@ -7,7 +7,7 @@
 
 #include "Drawables/ADrawable2D.hpp"
 
-namespace RAY::Drawables::Drawables2D
+namespace RAY::Drawables
 {
 
 	ADrawable2D::ADrawable2D(const Vector2 &position, const RAY::Color &color) :

@@ -13,7 +13,7 @@
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
 
-namespace RAY::Drawables::Drawables2D {
+namespace RAY::Drawables {
 	//! @brief Abstraction of any two-dimensionnal drawable
 	class ADrawable2D: public IDrawable
 	{

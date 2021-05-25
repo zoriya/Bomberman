@@ -10,7 +10,6 @@
 
 #include <raylib.h>
 #include <string>
-#include "Canvas.hpp"
 #include "IRessource.hpp"
 
 namespace RAY

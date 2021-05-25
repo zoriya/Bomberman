@@ -10,6 +10,7 @@
 #include "Camera/Camera3D.hpp"
 #include "Controllers/Keyboard.hpp"
 #include "Drawables/2D/Text.hpp"
+#include "Drawables/Image.hpp"
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/Texture.hpp"
 #include "Drawables/2D/Circle.hpp"
@@ -21,14 +22,29 @@
 #include "Window.hpp"
 #include "TraceLog.hpp"
 
+const std::vector<std::string>textures = {
+	"black", "blue", "pink", "red", "white", "yellow"
+};
+
+std::string get_full_path(const std::string &color)
+{
+	std::string path = "assets/player_";
+
+	path += color;
+	path += ".png";
+	return path;
+}
+
 int main()
 {
-	SetTraceLogLevel(LOG_WARNING);
-
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
 	const int screenHeight = 450;
+	std::vector<std::string>::const_iterator iterator = textures.begin();
+	const std::string modelPath = "assets/player.obj";
+	const std::string texturePath = "assets/player_blue.png";
+	//const std::string animationPath = "assets/guy.iqm";
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
@@ -36,13 +52,15 @@ int main()
 								 RAY::Vector3(0.0f, 1.0f, 0.0f),
 								 45.0f, CAMERA_PERSPECTIVE
 								);
+	RAY::Model model(modelPath);
+	RAY::Image icon("assets/bomberman.ico");
+	RAY::Texture texture(get_full_path(*iterator));
+	window.setIcon(icon);
+	//RAY::ModelAnimations animations(animationPath);
 	RAY::Drawables::Drawables2D::Circle circle{10, 10, 10, 0};
 	WAL::Entity myEntity{"myEntity"};
 	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(myEntity, circle);
 	//BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> textSystem(window);
-	RAY::Model model("assets/guy.iqm");
-	RAY::Texture texture("assets/guytex.png");
-	RAY::ModelAnimations animations("assets/guy.iqm");
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
 	model.setTextureToMaterial(MAP_DIFFUSE, texture);
@@ -51,6 +69,7 @@ int main()
 
 	camera.setMode(CAMERA_FREE); // Set free camera mode
 
+	float y_rotation = 0;
 	window.setFPS(60);				   // Set our game to run at 60 frames-per-second
 	//--------------------------------------------------------------------------------------
 
@@ -62,10 +81,16 @@ int main()
 		camera.update();
 
 		// Play animation when spacebar is held down
-		if (RAY::Controller::Keyboard::isDown(KEY_SPACE))
+		if (RAY::Controller::Keyboard::isReleased(KEY_SPACE))
 		{
-			animations[0].incrementFrameCounter();
-			model.setAnimation(animations[0]);
+			++iterator;
+			if (iterator == textures.end())
+				iterator = textures.begin();
+			texture.unload();
+			texture.load(get_full_path(*iterator));
+			model.setTextureToMaterial(MAP_DIFFUSE, texture);
+			//animations[0].incrementFrameCounter();
+			//model.setAnimation(animations[0]);
 		}
 		//----------------------------------------------------------------------------------
 
@@ -77,7 +102,7 @@ int main()
 
 			window.useCamera(camera);
 
-				window.draw(model, position, RAY::Vector3(1.0f, 0.0f, 0.0f), -90.0f, RAY::Vector3( 1.0f, 1.0f, 1.0f ));
+				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 5.0f, 5.0f, 5.0f ));
 
 				window.draw(grid);
 

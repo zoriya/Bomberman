@@ -7,7 +7,7 @@
 
 #include "Drawables/ADrawable3D.hpp"
 
-namespace RAY::Drawables::Drawables3D
+namespace RAY::Drawables
 {
 
 	ADrawable3D::ADrawable3D(const RAY::Vector3 &position, const RAY::Color &color) :
