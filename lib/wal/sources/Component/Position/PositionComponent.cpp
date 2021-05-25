@@ -40,4 +40,4 @@ namespace WAL
 	{
 		return this->position.z;
 	}
-}
+} // namespace WAL

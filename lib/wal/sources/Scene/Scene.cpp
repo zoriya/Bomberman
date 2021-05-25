@@ -10,5 +10,4 @@ namespace WAL
 	{
 		return this->_entities;
 	}
-}
-
+} // namespace WAL
