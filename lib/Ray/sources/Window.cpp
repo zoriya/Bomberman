@@ -9,6 +9,8 @@
 
 #include <utility>
 #include "Controllers/Mouse.hpp"
+#include "Drawables/ADrawable2D.hpp"
+#include "Drawables/ADrawable3D.hpp"
 
 RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, unsigned flags, bool openNow)
 {
@@ -145,7 +147,12 @@ void RAY::Window::setTitle(const std::string &title)
 	this->_title = title;
 }
 
-void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
+void RAY::Window::draw(RAY::Drawables::ADrawable2D &drawable)
+{
+	drawable.drawOn(*this);
+}
+
+void RAY::Window::draw(RAY::Drawables::ADrawable3D &drawable)
 {
 	drawable.drawOn(*this);
 }

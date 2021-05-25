@@ -10,7 +10,7 @@
 
 namespace RAY {
 	namespace Drawables {
-		class IDrawable;
+		class ADrawable2D;
 	}
 	//! @brief Interface for any drawable surface
 	class Canvas {
@@ -19,7 +19,7 @@ namespace RAY {
 			virtual ~Canvas() = default;
 
 			//! @brief draw drawable
-			virtual void draw(Drawables::IDrawable &) = 0;
+			virtual void draw(Drawables::ADrawable2D &) = 0;
 
 		protected:
 		private:

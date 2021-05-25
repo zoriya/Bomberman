@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/Image.hpp"
+#include "Drawables/IDrawable.hpp"
 
 RAY::Image::Image(const std::string &filename):
 	_image(LoadImage(filename.c_str()))

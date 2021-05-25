@@ -17,13 +17,17 @@
 #include "Camera/Camera3D.hpp"
 #include "Color.hpp"
 #include "Canvas.hpp"
-#include "Drawables/IDrawable.hpp"
+#include "Drawables/ADrawable3D.hpp"
+#include "Drawables/ADrawable2D.hpp"
 #include "Drawables/Texture.hpp"
 #include "Model/Model.hpp"
 
 namespace RAY {
 	class Model;
 	//! @brief Window manager
+	namespace Drawables {
+		class ADrawable3D;
+	}
 	class Window: public Canvas {
 		public:
 			//! @return A widow insta,ce. Only one window can be open at a time
@@ -111,9 +115,13 @@ namespace RAY {
 			void setTitle(const std::string &title);
 
 
-			//! @brief draw rectangle
+			//! @brief draw drawable
 			//! @param drawable The drawable to render on screen
-			void draw(Drawables::IDrawable &drawable) override;
+			void draw(RAY::Drawables::ADrawable2D &drawable) override;
+
+			//! @brief draw drawable
+			//! @param drawable The drawable to render on screen
+			void draw(RAY::Drawables::ADrawable3D &drawable);
 
 			//! @brief draw texture at position
 			//! @param texture The object to render
