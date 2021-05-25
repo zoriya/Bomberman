@@ -19,5 +19,10 @@ namespace BBM
 			: WAL::Component(entity)
 		{
 		}
+
+		WAL::Component *clone(WAL::Entity &entity) const override
+		{
+			return new Drawable2DComponent(entity);
+		}
 	};
 }

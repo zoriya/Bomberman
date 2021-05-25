@@ -21,17 +21,17 @@ namespace BBM
 		RAY::Window &_window;
 	public:
 		explicit Renderer2DSystem(RAY::Window &window)
-			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent<T>)}),
+			: WAL::System({typeid(PositionComponent), typeid(Drawable2DComponent<T>)}),
 			_window(window)
 		{
 		}
 
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override
 		{
-			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
+			auto &comp = entity.getComponent<Drawable2DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			// TODO update drawable pos with pos
+			comp.setPosition({pos.getX(), pos.getY()});
 			comp.member.drawOn(this->_window);
 		}
 
