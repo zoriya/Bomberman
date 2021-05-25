@@ -25,11 +25,11 @@ namespace RAY
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
-			explicit Image(const std::string &filename);
+			Image(const std::string &filename);
 
 			//! @brief Create an image, using data from a texure
 			//! @param texture: texture to extract data from
-			explicit Image(Texture &texture);
+			Image(Texture &texture);
 
 			//! @brief A default copy constructor
 			Image(const Image &image) = default;
@@ -39,9 +39,9 @@ namespace RAY
 
 			//! @brief An image is assignable
 			Image &operator=(const Image &image) = default;
-
+			
 			//! @brief Image destructor, will unload ressources
-			~Image() override;
+			~Image();
 
 			//! @brief load ressources from file
 			//! @param filename: path of input
@@ -54,9 +54,6 @@ namespace RAY
 			//! @brief unload ressources
 			bool unload() override;
 
-			//! @brief get image
-			operator ::Image() const;
-			operator ::Image *();
 
 			//! @brief draw drawable
 			void draw(Drawables::ADrawable2D &);
@@ -64,7 +61,12 @@ namespace RAY
 		private:
 			//! @brief Image, really, that's just it...
 			::Image _image;
-	};
-} // namespace RAY
+		
+		INTERNAL:
+			//! @brief get image
+			operator ::Image() const;
+			operator ::Image *();
+	};   
+}
 
 #endif /* !IMAGE_HPP_ */
