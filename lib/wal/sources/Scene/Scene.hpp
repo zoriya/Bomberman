@@ -39,4 +39,4 @@ namespace WAL
 		//! @brief A scene is assignable
 		Scene &operator=(const Scene &) = default;
 	};
-}
+} // namespace WAL

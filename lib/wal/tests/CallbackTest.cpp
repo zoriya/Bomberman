@@ -4,7 +4,7 @@
 
 #include <catch2/catch.hpp>
 #include <stdexcept>
-#include <Entity/Entity.hpp>
+#include "Entity/Entity.hpp"
 #include "Models/Callback.hpp"
 
 using namespace WAL;

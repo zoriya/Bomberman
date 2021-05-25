@@ -6,6 +6,8 @@
 #pragma once
 
 #include <functional>
+#include <utility>
+#include <unordered_map>
 
 namespace WAL
 {
@@ -51,4 +53,4 @@ namespace WAL
 		//! @brief A default assignment operator
 		Callback &operator=(const Callback &) = default;
 	};
-}
+} // namespace WAL
