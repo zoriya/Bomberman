@@ -15,8 +15,9 @@ namespace BBM
 	public:
 		T member;
 
-		explicit Drawable3DComponent(WAL::Entity &entity)
-			: WAL::Component(entity)
+		explicit Drawable3DComponent(WAL::Entity &entity, T member)
+			: WAL::Component(entity),
+			member(std::move(member))
 		{
 		}
 

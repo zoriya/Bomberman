@@ -36,7 +36,10 @@ int main()
 								 RAY::Vector3(0.0f, 1.0f, 0.0f),
 								 45.0f, CAMERA_PERSPECTIVE
 								);
-	BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Text> textSystem(window);
+	RAY::Drawables::Drawables2D::Circle circle{10, 10, 10, 0};
+	WAL::Entity myEntity{"myEntity"};
+	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(myEntity, circle);
+	//BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> textSystem(window);
 	RAY::Model model("assets/guy.iqm");
 	RAY::Texture texture("assets/guytex.png");
 	RAY::ModelAnimations animations("assets/guy.iqm");

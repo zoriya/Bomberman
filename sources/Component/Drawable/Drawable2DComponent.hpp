@@ -10,18 +10,21 @@
 namespace BBM
 {
 	template <class T>
-	class Drawable2DComponent : public WAL::Component, public T
+	class Drawable2DComponent : public WAL::Component
 	{
 	public:
 
-		explicit Drawable2DComponent(WAL::Entity &entity)
-			: WAL::Component(entity)
+		T member;
+
+		explicit Drawable2DComponent(WAL::Entity &entity, T member)
+			: WAL::Component(entity),
+			member(std::move(member))
 		{
 		}
 
 		WAL::Component *clone(WAL::Entity &entity) const override
 		{
-			return new Drawable2DComponent(entity);
+			return new Drawable2DComponent(entity, this->member);
 		}
 
 
