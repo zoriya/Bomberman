@@ -25,10 +25,10 @@ namespace RAY::Drawables::Drawables3D {
 			ADrawable3D(const ADrawable3D &) = default;
 
 			//! @brief A default destructor
-			virtual ~ADrawable3D() = default;
+			~ADrawable3D() override = default;
 
 			//! @brief Draw drawble on window
-			virtual void drawOn(RAY::Window &) = 0;
+			void drawOn(RAY::Window &) override = 0;
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;

@@ -50,7 +50,7 @@ namespace RAY::Drawables::Drawables2D {
 			ADrawable2D &setColor(const Color &color);
 
 			//! @brief Draw drawble on window
-			virtual void drawOn(RAY::Window &) = 0;
+			void drawOn(RAY::Window &) override = 0;
 
 			//! @brief Draw drawble on image
 			virtual void drawOn(RAY::Image &image) = 0;
