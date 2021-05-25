@@ -29,7 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Sphere &operator=(const Sphere &) = default;
 
 			//! @brief A default destructor
-			~Sphere() = default;
+			~Sphere() override = default;
 
 			//! @return the radius of the sphere
 			int getRadius(void) const;

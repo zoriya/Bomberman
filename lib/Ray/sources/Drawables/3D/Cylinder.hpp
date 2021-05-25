@@ -32,7 +32,7 @@ namespace RAY::Drawables::Drawables3D {
 			Cylinder &operator=(const Cylinder &) = default;
 
 			//! @brief A default destructor
-			~Cylinder() = default;
+			~Cylinder() override = default;
 
 			//! @return the radius of the cylinder
 			int getTopRadius(void) const;

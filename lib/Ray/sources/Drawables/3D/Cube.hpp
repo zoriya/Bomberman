@@ -30,7 +30,7 @@ namespace RAY::Drawables::Drawables3D {
 			Cube &operator=(const Cube &) = default;
 
 			//! @brief A default destructor
-			~Cube() = default;
+			~Cube() override = default;
 
 
 			//! @return the dimensions of the cube
@@ -43,7 +43,7 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 		private:
 			//! @brief Dimensions of the cube
-			Vector3 _dimenstions;
+			Vector3 _dimensions;
 	};
 }
 

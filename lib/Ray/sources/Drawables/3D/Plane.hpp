@@ -29,7 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Plane &operator=(const Plane &) = default;
 
 			//! @brief A default destructor
-			~Plane() = default;
+			~Plane() override = default;
 
 			//! @return the dimensions of the plane
 			const Vector2 &getDimensions(void) const;
@@ -41,7 +41,6 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 		private:
-
 			//! @brief plane dimensions
 			Vector2 _dimensions;
 	};

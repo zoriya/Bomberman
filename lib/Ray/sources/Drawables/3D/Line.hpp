@@ -29,7 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Line &operator=(const Line &) = default;
 
 			//! @brief A default destructor
-			~Line() = default;
+			~Line() override = default;
 
 
 			//! @return the start position of the line

@@ -7,25 +7,27 @@
 
 #include "Drawables/3D/Ray.hpp"
 
-RAY::Drawables::Drawables3D::Ray::Ray(const Vector3 &startPosition, const Vector3 &direction, const Color &color):
-	ADrawable3D(startPosition, color), _direction(direction)
+namespace RAY::Drawables::Drawables3D
 {
 
-}
+	Ray::Ray(const Vector3 &startPosition, const Vector3 &direction, const Color &color) :
+		ADrawable3D(startPosition, color), _direction(direction)
+	{
+	}
 
-const RAY::Vector3 &RAY::Drawables::Drawables3D::Ray::getDirection(void) const
-{
-	return this->_direction;
-}
+	const RAY::Vector3 &Ray::getDirection(void) const
+	{
+		return this->_direction;
+	}
 
-RAY::Drawables::Drawables3D::Ray &RAY::Drawables::Drawables3D::Ray::setDirection(const Vector3 &direction)
-{
-	this->_direction = direction;
-	return *this;
-}
+	Ray &Ray::setDirection(const Vector3 &direction)
+	{
+		this->_direction = direction;
+		return *this;
+	}
 
-void RAY::Drawables::Drawables3D::Ray::drawOn(RAY::Window &)
-{
-	::Ray ray = {this->_position, this->_direction};
-	DrawRay(ray, this->_color);
+	void Ray::drawOn(RAY::Window &)
+	{
+		DrawRay({this->_position, this->_direction}, this->_color);
+	}
 }
