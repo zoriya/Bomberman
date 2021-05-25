@@ -6,17 +6,16 @@
 
 #include "Component/Component.hpp"
 #include "Drawables/ADrawable2D.hpp"
-#include "Color.hpp"
 
 namespace BBM
 {
 	template <class T>
-	class DrawableComponent : public WAL::Component
+	class Drawable2DComponent : public WAL::Component
 	{
 	public:
 		T member;
 
-		explicit DrawableComponent(WAL::Entity &entity)
+		explicit Drawable2DComponent(WAL::Entity &entity)
 			: WAL::Component(entity)
 		{
 		}

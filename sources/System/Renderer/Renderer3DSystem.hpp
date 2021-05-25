@@ -8,35 +8,35 @@
 #include "System/System.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Drawable/DrawableComponent.hpp"
+#include "Component/Drawable/Drawable3DComponent.hpp"
 #include "Window.hpp"
 
 namespace BBM
 {
 	template <class T>
-	class RendererSystem : public WAL::System
+	class Renderer3DSystem : public WAL::System
 	{
 	private:
 		//! @brief The class to render
 		RAY::Window &_window;
 	public:
-		explicit RendererSystem(RAY::Window &window)
-			: WAL::System({typeid(PositionComponent), typeid(DrawableComponent<T>)}),
+		explicit Renderer3DSystem(RAY::Window &window)
+			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent<T>)}),
 			_window(window)
 		{
 		}
 
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override
 		{
-			auto &comp = entity.getComponent<DrawableComponent<T>>();
+			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
 			// TODO update drawable pos with pos
 			comp.member.drawOn(this->_window);
 		}
 
-		RendererSystem(const RendererSystem &) = default;
-		~RendererSystem() override = default;
-		RendererSystem &operator=(const RendererSystem &) = delete;
+		Renderer3DSystem(const Renderer3DSystem &) = default;
+		~Renderer3DSystem() override = default;
+		Renderer3DSystem &operator=(const Renderer3DSystem &) = delete;
 	};
 }
