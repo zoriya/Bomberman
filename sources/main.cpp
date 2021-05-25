@@ -12,6 +12,7 @@
 #include "Drawables/2D/Text.hpp"
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/Texture.hpp"
+#include "Drawables/2D/Circle.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer2DSystem.hpp"

@@ -32,10 +32,10 @@ namespace BBM
 			auto &pos = entity.getComponent<PositionComponent>();
 
 			comp.setPosition({pos.getX(), pos.getY()});
-			comp.member.drawOn(this->_window);
+			comp.drawOn(this->_window);
 		}
 
-		Renderer2DSystem(const Renderer3DSystem &) = default;
+		Renderer2DSystem(const Renderer2DSystem &) = default;
 		~Renderer2DSystem() override = default;
 		Renderer2DSystem &operator=(const Renderer2DSystem &) = delete;
 	};

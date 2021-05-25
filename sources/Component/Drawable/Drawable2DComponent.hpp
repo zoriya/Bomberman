@@ -10,10 +10,9 @@
 namespace BBM
 {
 	template <class T>
-	class Drawable2DComponent : public WAL::Component
+	class Drawable2DComponent : public WAL::Component, public T
 	{
 	public:
-		T member;
 
 		explicit Drawable2DComponent(WAL::Entity &entity)
 			: WAL::Component(entity)
@@ -24,5 +23,7 @@ namespace BBM
 		{
 			return new Drawable2DComponent(entity);
 		}
+
+
 	};
 }

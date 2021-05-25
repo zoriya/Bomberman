@@ -31,7 +31,7 @@ namespace BBM
 			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			comp.setPosition(pos);
+			comp.member.setPosition(pos);
 			comp.member.drawOn(this->_window);
 		}
 
