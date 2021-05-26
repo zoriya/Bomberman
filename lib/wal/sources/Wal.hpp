@@ -20,7 +20,7 @@ namespace WAL
 	//! @brief The main WAL class, it is used to setup and run the ECS.
 	class Wal
 	{
-	private:
+	public:
 		//! @brief The scene manager that allow multiple scene to work together.
 		Scene _scene;
 		//! @brief The list of registered systems

@@ -17,6 +17,8 @@
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/Texture.hpp"
 #include "Drawables/3D/Circle.hpp"
+#include "Drawables/3D/Cube.hpp"
+#include "Drawables/3D/Sphere.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
@@ -56,18 +58,24 @@ int demo()
 	                             45.0f, CAMERA_PERSPECTIVE
 	);
 	WAL::Entity entityPlayer("roger");
-	RAY::Drawables::Drawables3D::Circle circle({30, 30, 30}, 50, 0XFFFFFFF, {0, 0, 0}, 0);
+	RAY::Drawables::Drawables3D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
+	RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
 	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
-	BBM::PositionComponent posComponent(entityPlayer, {20, 20, 20});
+	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
+	BBM::PositionComponent posComponent(entityPlayer, {0, 0, 0});
 
 	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
+	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
 
 	BBM::RenderScreenSystem<RAY::Camera::Camera3D> renderSystem(window, camera);
 
 	wal.addSystem(circleSystem);
 	wal.addSystem(renderSystem);
+	wal.addSystem(cubeSystem);
 	entityPlayer.addComponent(circleComponent);
+	entityPlayer.addComponent(cubeComponent);
 	entityPlayer.addComponent(posComponent);
+	wal._scene.addEntity(entityPlayer);
 
 	camera.setMode(CAMERA_FREE); // Set free camera mode
 
@@ -78,8 +86,9 @@ int demo()
 
 	window.close();
 
-	/*
-	 * const int screenWidth = 800;
+
+/*
+	const int screenWidth = 800;
 	const int screenHeight = 450;
 	auto iterator = textures.begin();
 	const std::string modelPath = "assets/player/player.obj";
@@ -96,7 +105,7 @@ int demo()
 	                             45.0f, CAMERA_PERSPECTIVE
 	);
 	WAL::Entity entityPlayer("roger");
-	RAY::Drawables::Drawables3D::Circle circle({300, 300, 300}, 50, 0XFFFFFFF, {0, 0, 0}, 0);
+	RAY::Drawables::Drawables3D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
 	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
 
 	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
@@ -137,13 +146,14 @@ int demo()
 			window.useCamera(camera);
 				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 5.0f, 5.0f, 5.0f ));
 				window.draw(grid);
+				window.draw(circle);
 			window.unuseCamera();
 			window.draw(instructionText);
 		window.setDrawingState(RAY::Window::IDLE);
 	}
-
+*/
 	window.close();
-	 */
+
 
 	return 0;
 }

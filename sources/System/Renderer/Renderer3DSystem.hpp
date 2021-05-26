@@ -32,7 +32,6 @@ namespace BBM
 		//! @param dtime The delta time.
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds) override
 		{
-			std::cout << "Drawing: " << typeid(T).name() << std::endl;
 			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
