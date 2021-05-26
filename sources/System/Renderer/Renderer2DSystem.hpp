@@ -26,6 +26,9 @@ namespace BBM
 		{
 		}
 
+		//! @brief Update the corresponding component of the given entity
+		//! @param entity The entity to update.
+		//! @param dtime The delta time.
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override
 		{
 			auto &comp = entity.getComponent<Drawable2DComponent<T>>();
@@ -35,8 +38,11 @@ namespace BBM
 			comp.member.drawOn(this->_window);
 		}
 
+		//! @brief default copy ctor
 		Renderer2DSystem(const Renderer2DSystem &) = default;
+		//! @brief default dtor
 		~Renderer2DSystem() override = default;
+		//! @brief Default assignment operator
 		Renderer2DSystem &operator=(const Renderer2DSystem &) = delete;
 	};
 }

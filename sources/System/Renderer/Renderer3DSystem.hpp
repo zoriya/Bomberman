@@ -20,12 +20,16 @@ namespace BBM
 		//! @brief The class to render
 		RAY::Window &_window;
 	public:
+		//! @brief ctor
 		explicit Renderer3DSystem(RAY::Window &window)
 			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent<T>)}),
 			_window(window)
 		{
 		}
 
+		//! @brief Update the corresponding component of the given entity
+		//! @param entity The entity to update.
+		//! @param dtime The delta time.
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override
 		{
 			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
@@ -35,8 +39,11 @@ namespace BBM
 			comp.member.drawOn(this->_window);
 		}
 
+		//! @brief Default copy ctor
 		Renderer3DSystem(const Renderer3DSystem &) = default;
+		//! @brief Default dtor
 		~Renderer3DSystem() override = default;
+		//! @brief Default assignment operator
 		Renderer3DSystem &operator=(const Renderer3DSystem &) = delete;
 	};
 }
