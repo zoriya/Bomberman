@@ -19,7 +19,7 @@ namespace BBM
 		T &_camera;
 	public:
 		//! @brief ctor
-		explicit RenderScreenSystem(RAY::Window &window, T camera)
+		explicit RenderScreenSystem(RAY::Window &window, T &camera)
 			: WAL::System({typeid(RenderScreenSystem)}),
 			  _window(window),
 			  _camera(camera)
@@ -39,11 +39,11 @@ namespace BBM
 		}
 
 		//! @brief Default copy ctor
-		RenderScreenSystem(const RenderScreenSystem &) = delete;
+		RenderScreenSystem(const RenderScreenSystem &) = default;
 		//! @brief Default dtor
 		~RenderScreenSystem() override = default;
 		//! @brief Default assignment operator
-		RenderScreenSystem &operator=(const RenderScreenSystem &) = delete;
+		RenderScreenSystem &operator=(const RenderScreenSystem &) = default;
 
 	};
 
