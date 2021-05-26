@@ -21,6 +21,7 @@
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
 #include "Component/Drawable/Drawable3DComponent.hpp"
+#include "System/Renderer/RenderScreenSystem.hpp"
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
 #include "TraceLog.hpp"
@@ -64,6 +65,8 @@ int demo()
 
 	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
 
+	BBM::RenderScreenSystem<RAY::Camera::Camera3D> renderSystem(window, camera);
+
 	wal.addSystem(circleSystem);
 	entityPlayer.addComponent(circleComponent);
 
@@ -80,30 +83,7 @@ int demo()
 	float y_rotation = 0;
 	window.setFPS(60);
 
-	while (!window.shouldClose())
-	{
-		camera.update();
-
-		if (RAY::Controller::Keyboard::isReleased(KEY_SPACE))
-		{
-			++iterator;
-			if (iterator == textures.end())
-				iterator = textures.begin();
-			texture.unload();
-			texture.load(get_full_path(*iterator));
-			model.setTextureToMaterial(MAP_DIFFUSE, texture);
-			//animations[0].incrementFrameCounter();
-			//model.setAnimation(animations[0]);
-		}
-		window.setDrawingState(RAY::Window::DRAWING);
-			window.clear();
-			window.useCamera(camera);
-				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 5.0f, 5.0f, 5.0f ));
-				window.draw(grid);
-			window.unuseCamera();
-			window.draw(instructionText);
-		window.setDrawingState(RAY::Window::IDLE);
-	}
+	//wal.run();
 
 	window.close();
 

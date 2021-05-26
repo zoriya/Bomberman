@@ -28,9 +28,9 @@ set(SOURCES
 )
 
 add_executable(bomberman
-	sources/main.cpp
-	${SOURCES}
-)
+               sources/main.cpp
+               ${SOURCES}
+               sources/System/Renderer/RenderScreenSystem.hpp)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
