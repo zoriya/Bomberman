@@ -13,7 +13,7 @@ namespace BBM
 	{
 		//! @brief Convert BBM Vector3f to RAY Vector3
 		static RAY::Vector3 toRAY(const BBM::Vector3f &wal);
-p
+
 		//! @brief default ctor
 		Utils() = default;
 		//! @brief Default copy ctor
