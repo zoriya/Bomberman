@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "Vector/Vector3.hpp"
 
 namespace BBM
 {
@@ -157,7 +158,12 @@ namespace BBM
 	typedef Vector3<float> Vector3f;
 	typedef Vector3<unsigned> Vector3u;
 	typedef Vector3<int> Vector3i;
-} // namespace WAL
+
+	RAY::Vector3 operator*(const Vector3f &v);
+}
+
+
+
 
 template<typename T>
 std::ostream &operator<<(std::ostream &s, const BBM::Vector3<T> &v)

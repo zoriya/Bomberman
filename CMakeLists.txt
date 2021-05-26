@@ -33,7 +33,7 @@ set(SOURCES
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-               )
+               sources/Models/Vector3.cpp)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
