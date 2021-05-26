@@ -7,14 +7,14 @@
 
 #include "System/System.hpp"
 
-namespace WAL
+namespace BBM
 {
 	//! @brief A system to handle movable entities. This system update velocity based on accelerations and positions based on velocity.
-	class MovableSystem : public System
+	class MovableSystem : public WAL::System
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(Entity &entity) override;
+		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
 		MovableSystem();

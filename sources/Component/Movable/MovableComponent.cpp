@@ -4,13 +4,13 @@
 
 #include "MovableComponent.hpp"
 
-namespace WAL
+namespace BBM
 {
-	MovableComponent::MovableComponent(Entity &entity)
+	MovableComponent::MovableComponent(WAL::Entity &entity)
 		: Component(entity)
 	{}
 
-	Component *MovableComponent::clone(Entity &entity) const
+	WAL::Component *MovableComponent::clone(WAL::Entity &entity) const
 	{
 		return new MovableComponent(entity);
 	}

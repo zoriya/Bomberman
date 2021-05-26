@@ -7,10 +7,10 @@
 #include "Models/Vector3.hpp"
 #include "Entity/Entity.hpp"
 
-namespace WAL
+namespace BBM
 {
 	//! @brief A component to place on entities that can move or be moved.
-	class MovableComponent : public Component
+	class MovableComponent : public WAL::Component
 	{
 	private:
 		//! @brief The acceleration of this entity.
@@ -23,10 +23,10 @@ namespace WAL
 		void addForce(Vector3f force);
 
 		//! @inherit
-		Component *clone(Entity &entity) const override;
+		WAL::Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new movable component.
-		explicit MovableComponent(Entity &entity);
+		explicit MovableComponent(WAL::Entity &entity);
 		//! @brief A movable component is copy constructable.
 		MovableComponent(const MovableComponent &) = default;
 		//! @brief A default destructor

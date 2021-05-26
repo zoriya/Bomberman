@@ -19,7 +19,7 @@ jobs:
         run: |
           mkdir build && cd build
           cmake ..
-          cmake --build . -t wal_tests 
+          cmake --build . -t unit_tests 
       - name: Run tests
         run: |
-          ./build/lib/wal/wal_tests 
+          ./build/unit_tests

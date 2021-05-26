@@ -6,7 +6,10 @@
 */
 
 
-#include "Wal.hpp"
+#include <iostream>
+#include "Runner/Runner.hpp"
+
+// Dependencies of the demo
 #include "Camera/Camera3D.hpp"
 #include "Controllers/Keyboard.hpp"
 #include "Drawables/2D/Text.hpp"
@@ -17,19 +20,19 @@
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
 
-int main()
+int demo()
 {
-	
+
 	// Initialization
 	//--------------------------------------------------------------------------------------
 	const int screenWidth = 800;
 	const int screenHeight = 450;
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
-								 RAY::Vector3(0.0f, 0.0f, 0.0f),
-								 RAY::Vector3(0.0f, 1.0f, 0.0f), 
-								 45.0f, CAMERA_PERSPECTIVE
-								);
+	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
+	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
+	                             45.0f, CAMERA_PERSPECTIVE
+	);
 	RAY::Model model("assets/guy.iqm");
 	RAY::Texture texture("assets/guytex.png");
 	RAY::ModelAnimations animations("assets/guy.iqm");
@@ -63,17 +66,17 @@ int main()
 		//----------------------------------------------------------------------------------
 		window.setDrawingState(RAY::Window::DRAWING);
 
-			window.clear();
+		window.clear();
 
-			window.useCamera(camera);
+		window.useCamera(camera);
 
-				window.draw(model, position, RAY::Vector3(1.0f, 0.0f, 0.0f), -90.0f, RAY::Vector3( 1.0f, 1.0f, 1.0f ));
+		window.draw(model, position, RAY::Vector3(1.0f, 0.0f, 0.0f), -90.0f, RAY::Vector3( 1.0f, 1.0f, 1.0f ));
 
-				window.draw(grid);
+		window.draw(grid);
 
-			window.unuseCamera();
+		window.unuseCamera();
 
-			window.draw(instructionText);
+		window.draw(instructionText);
 
 		window.setDrawingState(RAY::Window::IDLE);
 		//----------------------------------------------------------------------------------
@@ -86,4 +89,23 @@ int main()
 	//--------------------------------------------------------------------------------------
 
 	return 0;
+}
+
+
+void usage(const std::string &bin)
+{
+	std::cout << "Bomberman." << std::endl
+		<< "\tUsage: " << bin << " [options]" << std::endl
+		<< "Options:" << std::endl
+		<< "\t-h:\tPrint this help message" << std::endl;
+}
+
+int main(int argc, char **argv)
+{
+	if (argc == 2 && std::string(argv[1]) == "-h") {
+		usage(argv[0]);
+		return 1;
+	}
+	return demo();
+	return BBM::run();
 }
