@@ -21,18 +21,18 @@ namespace BBM
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
-		//! @brief Create a new movable component.
+		//! @brief Create a new collider component.
 		explicit ColliderComponent(WAL::Entity &entity);
 
-		//! @brief Create a new movable component with a callback.
+		//! @brief Create a new collider component with a callback.
 		ColliderComponent::ColliderComponent(WAL::Entity &entity, std::function<void (const WAL::Entity &, WAL::Entity &)> callback);
-		//! @brief A movable component is copy constructable.
+		//! @brief A collider component is copy constructable.
 		ColliderComponent(const ColliderComponent &) = default;
 		//! @brief A default destructor
 		~ColliderComponent() override = default;
-		//! @brief A movable component is not assignable.
+		//! @brief A collider component is not assignable.
 		ColliderComponent &operator=(const ColliderComponent &) = delete;
 
-		friend class MovableSystem;
+		friend class colliderSystem;
 	};
 } // namespace WAL
