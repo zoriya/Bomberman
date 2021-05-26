@@ -154,7 +154,7 @@ namespace BBM
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
 		}
 
-		explicit operator RAY::Vector3() const { return {this->x, this->y, this->z };}
+		explicit operator RAY::Vector3() const { return {this->x, this->y, this->z};}
 	};
 
 	typedef Vector3<float> Vector3f;
