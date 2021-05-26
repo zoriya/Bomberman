@@ -32,7 +32,6 @@ namespace BBM
 		{
 			this->_window.unuseCamera();
 			this->_window.setDrawingState(RAY::Window::IDLE);
-			this->_camera.update();
 			this->_window.setDrawingState(RAY::Window::DRAWING);
 			this->_window.clear();
 			this->_window.useCamera(_camera);
@@ -44,7 +43,6 @@ namespace BBM
 		~RenderScreenSystem() override = default;
 		//! @brief Default assignment operator
 		RenderScreenSystem &operator=(const RenderScreenSystem &) = default;
-
 	};
 
 }
