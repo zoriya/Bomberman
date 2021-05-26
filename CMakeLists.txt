@@ -26,12 +26,14 @@ set(SOURCES
 	sources/System/Renderer/Renderer3DSystem.hpp
 	sources/System/Renderer/Renderer2DSystem.hpp
 	sources/Util/Utils.cpp
+	sources/System/Renderer/RenderScreenSystem.hpp
+	sources/Util/Utils.hpp
 )
 
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-               sources/System/Renderer/RenderScreenSystem.hpp sources/Util/Utils.hpp)
+               )
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 

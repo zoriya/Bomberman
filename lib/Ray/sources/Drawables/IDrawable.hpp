@@ -19,10 +19,10 @@ namespace RAY
 			public:
 				virtual ~IDrawable() = default;
 
-				virtual void drawOn(Window &) = 0;
+				virtual void drawOn(RAY::Window &) = 0;
 			protected:
 			private:
-		};
+		};p
 	}
 }
 
