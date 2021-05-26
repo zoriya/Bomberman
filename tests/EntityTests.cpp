@@ -8,6 +8,7 @@
 
 using namespace BBM;
 using namespace WAL;
+using namespace BBM;
 
 TEST_CASE("Component", "[Entity]")
 {

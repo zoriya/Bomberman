@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cmath>
 
-namespace WAL
+namespace BBM
 {
 	//! @brief A Vector3 data type. (templated to allow any kind of vector3)
 	template<typename T>
@@ -160,7 +160,7 @@ namespace WAL
 } // namespace WAL
 
 template<typename T>
-std::ostream &operator<<(std::ostream &s, const WAL::Vector3<T> &v)
+std::ostream &operator<<(std::ostream &s, const BBM::Vector3<T> &v)
 {
 	s << "Vector3<" << typeid(T).name() << ">("<< v.x << ", " << v.y << ", " << v.z << ")";
 	return s;

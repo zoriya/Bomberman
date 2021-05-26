@@ -10,25 +10,6 @@ namespace WAL
 {
 	std::chrono::nanoseconds Wal::timestep = std::chrono::milliseconds(8);
 
-	void Wal::run()
-	{
-		auto lastTick = std::chrono::steady_clock::now();
-		std::chrono::nanoseconds fBehind(0);
-
-		while (!this->_shouldClose) {
-			auto now = std::chrono::steady_clock::now();
-			std::chrono::nanoseconds dtime = now - lastTick;
-			fBehind += dtime;
-			lastTick = now;
-
-			while (fBehind > Wal::timestep) {
-				fBehind -= Wal::timestep;
-				this->_fixedUpdate();
-			}
-			this->_update(dtime);
-		}
-	}
-
 	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
 		auto &entities = this->_scene.getEntities();

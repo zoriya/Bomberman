@@ -6,7 +6,10 @@
 */
 
 
-#include "Wal.hpp"
+#include <iostream>
+#include "Runner/Runner.hpp"
+
+// Dependencies of the demo
 #include "Camera/Camera3D.hpp"
 #include "Controllers/Keyboard.hpp"
 #include "Drawables/2D/Text.hpp"
@@ -35,7 +38,7 @@ std::string get_full_path(const std::string &color)
 	return path;
 }
 
-int main()
+int demo()
 {
 	WAL::Wal wal;
 	const int screenWidth = 800;
@@ -50,10 +53,10 @@ int main()
 	window.setIcon(icon);
 	RAY::Model model(modelPath);
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
-								 RAY::Vector3(0.0f, 0.0f, 0.0f),
-								 RAY::Vector3(0.0f, 1.0f, 0.0f),
-								 45.0f, CAMERA_PERSPECTIVE
-								);
+	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
+	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
+	                             45.0f, CAMERA_PERSPECTIVE
+	);
 	WAL::Entity entityPlayer("roger");
 	RAY::Drawables::Drawables3D::Circle circle({300, 300, 300}, 50, 0XFFFFFFF, {0, 0, 0}, 0);
 	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
@@ -104,4 +107,23 @@ int main()
 	window.close();
 
 	return 0;
+}
+
+
+void usage(const std::string &bin)
+{
+	std::cout << "Bomberman." << std::endl
+		<< "\tUsage: " << bin << " [options]" << std::endl
+		<< "Options:" << std::endl
+		<< "\t-h:\tPrint this help message" << std::endl;
+}
+
+int main(int argc, char **argv)
+{
+	if (argc == 2 && std::string(argv[1]) == "-h") {
+		usage(argv[0]);
+		return 1;
+	}
+	return demo();
+	return BBM::run();
 }
