@@ -9,6 +9,7 @@
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Drawable/Drawable3DComponent.hpp"
+#include "Util/Utils.hpp"
 #include "Window.hpp"
 
 namespace BBM
@@ -35,7 +36,7 @@ namespace BBM
 			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			comp.member.setPosition({pos.getX(), pos.getY(), pos.getZ()});
+			comp.member.setPosition(Utils::toRAY(pos.position));
 			comp.member.drawOn(this->_window);
 		}
 

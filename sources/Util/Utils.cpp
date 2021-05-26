@@ -7,8 +7,12 @@
 
 #include "Vector/Vector3.hpp"
 #include "Models/Vector3.hpp"
+#include "Utils.hpp"
 
-RAY::Vector3 toRAY(const WAL::Vector3f &wal)
+namespace BBM
 {
-	return RAY::Vector3(wal.x, wal.y, wal.y);
+	RAY::Vector3 Utils::toRAY(const BBM::Vector3f &wal)
+	{
+		return RAY::Vector3(wal.x, wal.y, wal.y);
+	}
 }
