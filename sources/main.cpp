@@ -60,7 +60,7 @@ int demo()
 	                             45.0f, CAMERA_PERSPECTIVE
 	);
 	WAL::Entity entityPlayer("roger");
-	RAY::Drawables::Drawables3D::Circle circle({300, 300, 300}, 50, 0XFFFFFFF, {0, 0, 0}, 0);
+	RAY::Drawables::Drawables3D::Circle circle({30, 30, 30}, 50, 0XFFFFFFF, {0, 0, 0}, 0);
 	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
 
 	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
@@ -83,7 +83,7 @@ int demo()
 	float y_rotation = 0;
 	window.setFPS(60);
 
-	//wal.run();
+	wal.run<int>([](WAL::Wal &wal, int) {});
 
 	window.close();
 
