@@ -9,7 +9,6 @@
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Drawable/Drawable3DComponent.hpp"
-#include "Util/Utils.hpp"
 #include "Window.hpp"
 
 namespace BBM

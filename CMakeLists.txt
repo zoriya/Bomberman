@@ -25,9 +25,7 @@ set(SOURCES
 	sources/Component/Drawable/Drawable2DComponent.hpp
 	sources/System/Renderer/Renderer3DSystem.hpp
 	sources/System/Renderer/Renderer2DSystem.hpp
-	sources/Util/Utils.cpp
 	sources/System/Renderer/RenderScreenSystem.hpp
-	sources/Util/Utils.hpp
 )
 
 add_executable(bomberman
