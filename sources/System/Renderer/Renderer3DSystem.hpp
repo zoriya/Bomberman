@@ -35,7 +35,7 @@ namespace BBM
 			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			comp.member.setPosition(*pos.position);
+			comp.member.setPosition(static_cast<RAY::Vector3>(pos.position));
 			comp.member.drawOn(this->_window);
 		}
 
