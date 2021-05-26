@@ -30,6 +30,7 @@ namespace BBM
 		//! @note render on screen here
 		void onSelfUpdate() override
 		{
+			std::cout << "render" << std::endl;
 			this->_window.unuseCamera();
 			this->_window.setDrawingState(RAY::Window::IDLE);
 			this->_camera.update();
