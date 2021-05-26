@@ -31,8 +31,8 @@ namespace BBM
 			auto &comp = entity.getComponent<Drawable2DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			comp.setPosition({pos.getX(), pos.getY()});
-			comp.drawOn(this->_window);
+			comp.member.setPosition({pos.getX(), pos.getY()});
+			comp.member.drawOn(this->_window);
 		}
 
 		Renderer2DSystem(const Renderer2DSystem &) = default;

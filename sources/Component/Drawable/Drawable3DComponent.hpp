@@ -23,7 +23,7 @@ namespace BBM
 
 		WAL::Component *clone(WAL::Entity &entity) const override
 		{
-			return new Drawable3DComponent(entity);
+			return new Drawable3DComponent(entity, this->member);
 		}
 	};
 }
