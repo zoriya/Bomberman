@@ -6,6 +6,7 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include <memory>
 #include <typeinfo>
 #include "Exception/WalError.hpp"
@@ -84,7 +85,6 @@ namespace WAL
 			if (existing == this->_systems.end())
 				throw NotFoundError("A system of the type \"" + std::string(type.name()) + "\" could not be found.");
 			return *static_cast<T *>(existing->get());
-
 		}
 
 		//! @brief Remove a system using it's type.
@@ -146,4 +146,4 @@ namespace WAL
 		//! @brief A WAL can't be assigned.
 		Wal &operator=(const Wal &) = delete;
 	};
-}
+} // namespace WAL

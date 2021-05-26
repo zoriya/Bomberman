@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Game issue
+    about: Create an Game related issue
+    url: https://github.com/AnonymusRaccoon/Bomberman/issues/new?projects=AnonymusRaccoon/Bomberman/2&labels=Game
+  - name: ECS issue
+    about: Create an ECS related issue
+    url: https://github.com/AnonymusRaccoon/Bomberman/issues/new?projects=AnonymusRaccoon/Bomberman/1&labels=ECS
+  - name: Renderer issue
+    about: Create an Renderer/Encapsulation related issue
+    url: https://github.com/AnonymusRaccoon/Bomberman/issues/new?projects=AnonymusRaccoon/Bomberman/3&labels=Renderer

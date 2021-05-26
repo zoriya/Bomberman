@@ -6,6 +6,8 @@
 #pragma once
 
 #include <functional>
+#include <utility>
+#include <unordered_map>
 
 namespace WAL
 {
@@ -57,4 +59,4 @@ namespace WAL
 			this->addCallback(callback);
 		}
 	};
-}
+} // namespace WAL

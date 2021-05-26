@@ -85,13 +85,13 @@ namespace BBM
 		}
 
 		template<typename T2>
-		Vector3<T> operator*(Vector3<T2> &b) const
+		Vector3<T> operator*(const Vector3<T2> &b) const
 		{
 			return Vector3<T>(this->x * b.x, this->y * b.y, this->z * b.z);
 		}
 
 		template<typename T2>
-		Vector3<T> operator/=(Vector3<T2> &b)
+		Vector3<T> operator/=(const Vector3<T2> &b)
 		{
 			this->x /= b.x;
 			this->y /= b.y;
@@ -100,7 +100,7 @@ namespace BBM
 		}
 
 		template<typename T2>
-		Vector3<T> operator/(Vector3<T2> &b) const
+		Vector3<T> operator/(const Vector3<T2> &b) const
 		{
 			return Vector3<T>(this->x / b.x, this->y / b.y, this->z / b.z);
 		}
@@ -157,7 +157,7 @@ namespace BBM
 	typedef Vector3<float> Vector3f;
 	typedef Vector3<unsigned> Vector3u;
 	typedef Vector3<int> Vector3i;
-}
+} // namespace WAL
 
 template<typename T>
 std::ostream &operator<<(std::ostream &s, const BBM::Vector3<T> &v)

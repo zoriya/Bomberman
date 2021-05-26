@@ -40,4 +40,4 @@ namespace BBM
 	{
 		return this->position.z;
 	}
-}
+} // namespace WAL

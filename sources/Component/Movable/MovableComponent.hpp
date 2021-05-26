@@ -36,4 +36,4 @@ namespace BBM
 
 		friend class MovableSystem;
 	};
-}
+} // namespace WAL
