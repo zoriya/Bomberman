@@ -20,9 +20,7 @@ namespace WAL
 	//! @brief The main WAL class, it is used to setup and run the ECS.
 	class Wal
 	{
-	public:
-		//! @brief The scene manager that allow multiple scene to work together.
-		Scene _scene;
+	private:
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
 		//! @brief True if the engine should close after the end of the current tick.
@@ -40,6 +38,8 @@ namespace WAL
 		//! @return True if all dependencies are met, false otherwise.
 		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
+		//! @brief The scene manager that allow multiple scene to work together.
+		Scene scene;
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
 

@@ -146,12 +146,7 @@ void RAY::Window::setTitle(const std::string &title)
 	this->_title = title;
 }
 
-void RAY::Window::draw(RAY::Drawables::ADrawable2D &drawable)
-{
-	drawable.drawOn(*this);
-}
-
-void RAY::Window::draw(RAY::Drawables::ADrawable3D &drawable)
+void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
 {
 	drawable.drawOn(*this);
 }

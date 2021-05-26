@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include "Vector/Vector2.hpp"
+#include "Image.hpp"
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
 

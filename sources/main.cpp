@@ -75,7 +75,7 @@ int demo()
 	entityPlayer.addComponent(circleComponent);
 	entityPlayer.addComponent(cubeComponent);
 	entityPlayer.addComponent(posComponent);
-	wal._scene.addEntity(entityPlayer);
+	wal.scene.addEntity(entityPlayer);
 
 	camera.setMode(CAMERA_FREE); // Set free camera mode
 
