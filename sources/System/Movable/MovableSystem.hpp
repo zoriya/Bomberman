@@ -11,7 +11,7 @@
 namespace BBM
 {
 	//! @brief A system to handle movable entities. This system update velocity based on accelerations and positions based on velocity.
-class MovableSystem : public WAL::System
+	class MovableSystem : public WAL::System
 	{
 	public:
 		//! @inherit

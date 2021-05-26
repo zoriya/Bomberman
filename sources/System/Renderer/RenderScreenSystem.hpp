@@ -20,7 +20,7 @@ namespace BBM
 	public:
 		//! @brief ctor
 		explicit RenderScreenSystem(RAY::Window &window, T &camera)
-			: WAL::System({typeid(RenderScreenSystem)}),
+			: WAL::System({}),
 			  _window(window),
 			  _camera(camera)
 		{
