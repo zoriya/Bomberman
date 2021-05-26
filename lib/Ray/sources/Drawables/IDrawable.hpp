@@ -22,7 +22,7 @@ namespace RAY
 				virtual void drawOn(RAY::Window &) = 0;
 			protected:
 			private:
-		};p
+		};
 	}
 }
 
