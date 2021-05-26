@@ -14,13 +14,13 @@ namespace BBM
 	{
 	private:
 		//! @brief The acceleration of this entity.
-		WAL::Vector3f _acceleration;
+		Vector3f _acceleration;
 		//! @brief The velocity of the entity.
-		WAL::Vector3f _velocity;
+		Vector3f _velocity;
 	public:
 		//! @brief Add an instant force to this entity.
 		//! @param force The force to add to this entity's acceleration. The force is added instantly and in one go.
-		void addForce(WAL::Vector3f force);
+		void addForce(Vector3f force);
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;

@@ -14,7 +14,7 @@ namespace BBM
 	{
 	public:
 		//! @brief Get the editable position of this entity
-		WAL::Vector3f position;
+		Vector3f position;
 
 		//! @brief Get the X position of this entity.
 		float getX() const;
@@ -29,7 +29,7 @@ namespace BBM
 		//! @brief Create a new PositionComponent linked to a specific entity
 		explicit PositionComponent(WAL::Entity &entity);
 		//! @brief Create a new PositionComponent at a certain position
-		PositionComponent(WAL::Entity &entity, WAL::Vector3f pos);
+		PositionComponent(WAL::Entity &entity, Vector3f pos);
 		//! @brief Create a new PositionComponent at a certain position
 		PositionComponent(WAL::Entity &entity, float x, float y, float z);
 		//! @brief A position component is copy constructable

@@ -23,6 +23,6 @@ namespace BBM
 
 		position.position += movable._velocity * WAL::Wal::timestep.count();
 		movable._velocity = movable._acceleration * WAL::Wal::timestep.count();
-		movable._acceleration = WAL::Vector3f();
+		movable._acceleration = Vector3f();
 	}
 } // namespace WAL

@@ -24,6 +24,7 @@
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
 #include "TraceLog.hpp"
+#include "Wal.hpp"
 
 const std::vector<std::string>textures = {
 	"black", "blue", "pink", "red", "white", "yellow"
