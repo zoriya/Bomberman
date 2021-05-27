@@ -10,7 +10,7 @@
 namespace BBM
 {
 	MovableSystem::MovableSystem()
-		: System({
+		: WAL::System({
 			typeid(MovableComponent),
 			typeid(PositionComponent)
 		})

@@ -32,7 +32,7 @@ namespace RAY::Drawables::Drawables3D {
 			Cylinder &operator=(const Cylinder &) = default;
 
 			//! @brief A default destructor
-			~Cylinder() = default;
+			~Cylinder() override = default;
 
 			//! @return the radius of the cylinder
 			int getTopRadius(void) const;
@@ -44,13 +44,7 @@ namespace RAY::Drawables::Drawables3D {
 			int getBottomRadius(void) const;
 
 			//! @brief set radius
-			Cylinder &setBottopRadius(float radius);
-
-			//! @return the position of the center
-			const Vector3 &getPosition(void) const;
-
-			//! @brief the position of the center
-			Cylinder &setPosition(const Vector3 &);
+			Cylinder &setBottomRadius(float radius);
 
 			//! @return the Height
 			float getHeight(void) const;
@@ -73,8 +67,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief height of the cylinder 
 			float _height;
 
-			//! @brief position of the center
-			Vector3 _centerPos;
 	};
 };
 

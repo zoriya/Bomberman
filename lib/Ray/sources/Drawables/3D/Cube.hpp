@@ -30,19 +30,14 @@ namespace RAY::Drawables::Drawables3D {
 			Cube &operator=(const Cube &) = default;
 
 			//! @brief A default destructor
-			~Cube() = default;
+			~Cube() override = default;
 
-			//! @return the position of the cube
-			const Vector3 &getPosition(void) const;
 
 			//! @return the dimensions of the cube
 			const Vector3 &getDimensions(void) const;
 
 			//! @brief set the dimensions of the cube
 			Cube &setDimensions(const Vector3 &dimensions);
-
-			//! @brief set the dimensions of the cube
-			Cube &setPosition(const Vector3 &position);
 		
 			//! @brief Draw circle on window
 			void drawOn(RAY::Window &) override;
@@ -50,8 +45,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Get the bounding box
 			BoundingBox getBoundingBox(void) override;
 		private:
-			//! @brief Positon in space of the cube
-			Vector3 _position;
 			//! @brief Dimensions of the cube
 			Vector3 _dimensions;
 	};

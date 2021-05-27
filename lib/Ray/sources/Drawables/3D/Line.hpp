@@ -29,7 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Line &operator=(const Line &) = default;
 
 			//! @brief A default destructor
-			~Line() = default;
+			~Line() override = default;
 
 
 			//! @return the start position of the line
@@ -50,8 +50,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Get the bounding box
 			BoundingBox getBoundingBox(void) override;
 		private:
-			//! @brief start position
-			Vector3 _startPosition;
 			//! @brief end position
 			Vector3 _endPosition;
 	};

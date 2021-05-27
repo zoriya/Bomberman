@@ -32,7 +32,7 @@ namespace RAY::Drawables::Drawables3D {
 			Triangle &operator=(const Triangle &) = default;
 
 			//! @brief A default destructor
-			~Triangle() = default;
+			~Triangle() override = default;
 
 			//! @return the position of A of the Triangle
 			const Vector3 &getPositionA(void) const;
@@ -58,8 +58,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Get the bounding box
 			BoundingBox getBoundingBox(void) override;
 		private:
-			//! @brief Position of A
-			Vector3 _posA;
 			//! @brief Position of B
 			Vector3 _posB;
 			//! @brief Position of C

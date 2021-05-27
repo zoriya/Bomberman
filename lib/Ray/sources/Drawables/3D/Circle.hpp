@@ -31,7 +31,7 @@ namespace RAY::Drawables::Drawables3D {
 			Circle &operator=(const Circle &) = default;
 
 			//! @brief A default destructor
-			~Circle() = default;
+			~Circle() override = default;
 
 			//! @return the radius of the circle
 			int getRadius(void) const;
@@ -42,9 +42,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @return the position of the center
 			const Vector3 &getCenterPos(void) const;
 
-			//! @brief set pos of center 
-			Circle &setRadius(const Vector3 &pos) const;
-
 			//! @brief Draw circle on window
 			void drawOn(RAY::Window &) override;
 
@@ -54,9 +51,6 @@ namespace RAY::Drawables::Drawables3D {
 		private:
 			//! @brief Radius of the circle 
 			int _radius;
-
-			//! @brief position of the center
-			Vector3 _centerPos;
 
 			//! @brief rotation axis
 			Vector3 _rotationAxis;

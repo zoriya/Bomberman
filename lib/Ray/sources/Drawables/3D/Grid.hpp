@@ -18,7 +18,7 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Grid constructor
 			//! @param slices slices of the grid
 			//! @param spacing spacing of slices
-			Grid(int slices, float spacing);
+			Grid(int slices, float spacing, const Color &color = LIGHTGRAY);
 
 			//! @brief A default copy constructor
 			Grid(const Grid &) = default;
@@ -27,7 +27,7 @@ namespace RAY::Drawables::Drawables3D {
 			Grid &operator=(const Grid &) = default;
 
 			//! @brief A default destructor
-			~Grid() = default;
+			~Grid() override = default;
 
 			//! @return the slices of the Grid
 			int getSlices(void) const;
@@ -40,6 +40,14 @@ namespace RAY::Drawables::Drawables3D {
 
 			//! @brief Set spacing
 			Grid &setSpacing(float spacing);
+
+			//! @throw NotSupportedError
+			//! @remark The grid does not have a position
+			const Vector3 &getPosition(void) const override;
+			
+			//! @throw NotSupportedError
+			//! @remark The grid does not have a position
+			virtual Grid &setPosition(const Vector3 &position) override;
 
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;

@@ -14,33 +14,43 @@
 #include "BoundingBox.hpp"
 #include "Color.hpp"
 
-namespace RAY::Drawables::Drawables3D {
+namespace RAY::Drawables {
 	//! @brief Abstraction of any three-dimensionnal drawable
 	class ADrawable3D: public IDrawable
 	{
 		public:
-			//! @param Color Color of the drawable  
-			ADrawable3D(const RAY::Color &color);
+			//! @param Color Color of the drawable 
+			//! @param Position Position of the drawable (wether its center or start position for lines)
+			ADrawable3D(const RAY::Vector3 &position, const RAY::Color &color);
 
 			//! @brief A default copy constructor
 			ADrawable3D(const ADrawable3D &) = default;
 
 			//! @brief A default destructor
-			virtual ~ADrawable3D() = default;
+			~ADrawable3D() override = default;
 
 			//! @brief Draw drawble on window
-			virtual void drawOn(RAY::Window &) = 0;
+			void drawOn(RAY::Window &) override = 0;
 
 			//! @brief get the bounding box of the drawable
 			virtual BoundingBox getBoundingBox(void) = 0;
 
 			//! @return the color of the ADrawable
-			const Color &getColor(void) const;
+			const RAY::Color &getColor(void) const;
 			
 			//! @brief set color
 			ADrawable3D &setColor(const RAY::Color &color);
 
+			//! @return the position of the ADrawable
+			virtual const RAY::Vector3 &getPosition(void) const;
+			
+			//! @brief set position
+			virtual ADrawable3D &setPosition(const Vector3 &position);
+
 		protected:
+			//! @brief Position of the ADrawable
+			Vector3 _position;
+
 			//! @brief Color of the ADrawable
 			Color _color;
 

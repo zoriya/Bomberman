@@ -29,13 +29,7 @@ namespace RAY::Drawables::Drawables3D {
 			Plane &operator=(const Plane &) = default;
 
 			//! @brief A default destructor
-			~Plane() = default;
-
-			//! @return the position of the plane
-			const Vector3 &getPosition(void) const;
-
-			//! @brief Set position
-			Plane &setPosition(const Vector3 &Position);
+			~Plane() override = default;
 
 			//! @return the dimensions of the plane
 			const Vector2 &getDimensions(void) const;
@@ -49,9 +43,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Get the bounding box
 			BoundingBox getBoundingBox(void) override;
 		private:
-			//! @brief plane position
-			Vector3 _position;
-
 			//! @brief plane dimensions
 			Vector2 _dimensions;
 	};
