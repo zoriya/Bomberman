@@ -8,7 +8,7 @@
 #include "System/System.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Drawable/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Window.hpp"
 
 namespace BBM

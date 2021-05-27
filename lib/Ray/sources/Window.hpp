@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include <string>
+#include <optional>
 #include "Drawables/Image.hpp"
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
@@ -29,10 +30,19 @@ namespace RAY {
 		class ADrawable3D;
 	}
 	class Window {
+		private:
+			//! @brief The window's instance as an optional.
+			static std::optional<Window> _instance;
 		public:
+			//! @brief Get The window's instance, if the window has not been already constructed a runtime exception is thrown.
+			static Window &getInstance();
+
 			//! @return A widow insta,ce. Only one window can be open at a time
-			static Window &getInstance(int width, int height, const std::string &title, unsigned flags = 0, bool openNow = true);
+			static Window &getInstance(int width, int height, const std::string &title, unsigned flags = 0, bool openNow = true) noexcept;
 			
+			//! @brief A window is movable.
+			Window(Window &&) = default;
+
 			//! @brief A default copy constructor
 			Window(const Window &window) = delete;
 
@@ -81,14 +91,6 @@ namespace RAY {
 			//! @param color The color to clear the screen (default: black)
 			void clear(const Color &color = BLACK);
 
-			//! @brief Different states of the draw-ability of the window
-			enum drawingState {
-				//! @brief Must be called after last draw of iteration
-				IDLE,
-				//! @brief Must be called before first draw of iteration
-				DRAWING,
-			};
-
 			//! @brief Different states of the view of the window
 			enum displayState {
 				//! @brief When a custom 2D camera is used
@@ -99,8 +101,8 @@ namespace RAY {
 				NONE,
 			};
 
-			//! @brief Set drawing state of the window
-			void setDrawingState(enum drawingState);
+			//! @brief Draw the content of the buffer on the screen.
+			void draw();
 
 			//! @brief Initialize 2D mode with custom camera (2D)
 			void useCamera(Camera::Camera2D &camera);
@@ -136,7 +138,7 @@ namespace RAY {
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true
 			Window(int width, int height, std::string title, unsigned flags = 0, bool openNow = true);
-			
+
 			//! @brief Dimension of window
 			RAY::Vector2 _dimensions;
 
@@ -148,9 +150,6 @@ namespace RAY {
 
 			//! @brief flags for the window (ex: FLAG_WINDOW_RESIZABLE)
 			unsigned int _flags;
-
-			//! @brief Current window draw-state
-			enum drawingState _drawingState;
 
 			//! @brief Current window draw-state
 			enum displayState _displayState;

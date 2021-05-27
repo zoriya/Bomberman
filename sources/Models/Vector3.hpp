@@ -154,17 +154,16 @@ namespace BBM
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
 		}
 
-		explicit operator RAY::Vector3() const { return {this->x, this->y, this->z};}
+		operator RAY::Vector3() const requires(std::is_same_v<T, float>)
+		{
+			return RAY::Vector3(this->x, this->y, this->z);
+		}
 	};
 
 	typedef Vector3<float> Vector3f;
 	typedef Vector3<unsigned> Vector3u;
 	typedef Vector3<int> Vector3i;
-
-
 }
-
-
 
 
 template<typename T>

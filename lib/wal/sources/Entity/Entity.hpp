@@ -75,11 +75,11 @@ namespace WAL
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
 		//! @return This entity is returned
 		template<typename T, typename ...Types>
-		Entity &addComponent(Types ...params)
+		Entity &addComponent(Types &&...params)
 		{
 			if (this->hasComponent<T>())
 				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
-			this->_components.push_back(std::make_unique<T>(*this, params...));
+			this->_components.push_back(std::make_unique<T>(*this, std::forward<Types>(params)...));
 			return *this;
 		}
 

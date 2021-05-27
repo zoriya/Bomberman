@@ -21,11 +21,17 @@ set(SOURCES
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/Movable/MovableSystem.cpp
 	sources/Models/Vector3.hpp
-	sources/Component/Drawable/Drawable3DComponent.hpp
-	sources/Component/Drawable/Drawable2DComponent.hpp
+	sources/Models/Vector2.hpp
+	sources/Component/Renderer/Drawable3DComponent.hpp
+	sources/Component/Renderer/Drawable2DComponent.hpp
 	sources/System/Renderer/Renderer3DSystem.hpp
 	sources/System/Renderer/Renderer2DSystem.hpp
 	sources/System/Renderer/RenderScreenSystem.hpp
+	sources/System/Renderer/RenderScreenSystem.cpp
+	sources/Component/Renderer/CameraComponent.cpp
+	sources/Component/Renderer/CameraComponent.hpp
+	sources/System/Renderer/Render2DScreenSystem.cpp
+	sources/System/Renderer/Render2DScreenSystem.hpp
 )
 
 add_executable(bomberman

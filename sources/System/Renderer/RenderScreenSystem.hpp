@@ -10,39 +10,28 @@
 
 namespace BBM
 {
-	template <class  T>
 	class RenderScreenSystem : public WAL::System
 	{
 		//! @brief The window to render on
 		RAY::Window &_window;
-		//! @brief The camera
-		T &_camera;
-	public:
-		//! @brief ctor
-		explicit RenderScreenSystem(RAY::Window &window, T &camera)
-			: WAL::System({}),
-			  _window(window),
-			  _camera(camera)
-		{
-		}
 
+		//! @brief The camera used to render.
+		RAY::Camera::Camera3D _camera;
+	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here
-		void onSelfUpdate() override
-		{
-			this->_window.unuseCamera();
-			this->_window.setDrawingState(RAY::Window::IDLE);
-			this->_window.setDrawingState(RAY::Window::DRAWING);
-			this->_window.clear();
-			this->_window.useCamera(_camera);
-		}
+		void onSelfUpdate() override;
 
+		//! @inherit
+		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
+
+		//! @brief ctor
+		explicit RenderScreenSystem(RAY::Window &window);
 		//! @brief Default copy ctor
 		RenderScreenSystem(const RenderScreenSystem &) = default;
 		//! @brief Default dtor
 		~RenderScreenSystem() override = default;
-		//! @brief Default assignment operator
-		RenderScreenSystem &operator=(const RenderScreenSystem &) = default;
+		//! @brief A render screen system can't be assigned.
+		RenderScreenSystem &operator=(const RenderScreenSystem &) = delete;
 	};
-
 }

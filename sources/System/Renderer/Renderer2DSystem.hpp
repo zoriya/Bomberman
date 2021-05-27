@@ -8,7 +8,7 @@
 #include "System/System.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Drawable/Drawable2DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Window.hpp"
 
 namespace BBM
@@ -20,9 +20,9 @@ namespace BBM
 		//! @brief The class to render
 		RAY::Window &_window;
 	public:
-		explicit Renderer2DSystem(RAY::Window &window)
+		explicit Renderer2DSystem()
 			: WAL::System({typeid(PositionComponent), typeid(Drawable2DComponent<T>)}),
-			_window(window)
+			_window(RAY::Window::getInstance())
 		{
 		}
 

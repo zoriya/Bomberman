@@ -17,11 +17,17 @@ namespace BBM
 		T member;
 
 		//! @brief ctor
-		explicit Drawable3DComponent(WAL::Entity &entity, T member)
+		Drawable3DComponent(WAL::Entity &entity, T member)
 			: WAL::Component(entity),
 			member(std::move(member))
-		{
-		}
+		{}
+
+		//! ctor
+		template<typename ...Params>
+		explicit Drawable3DComponent(WAL::Entity &entity, Params &&...params)
+			: WAL::Component(entity),
+			member(std::forward<Params>(params)...)
+		{}
 
 		//! @brief Clone a component for another or the same entity.
 		//! @param entity The entity that owns the ne component.

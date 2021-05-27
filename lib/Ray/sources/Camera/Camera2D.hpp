@@ -19,7 +19,7 @@ namespace RAY::Camera {
 		public:
 			//! @brief 2D Camera constructor
 			//! @param offset Camera offset (displacement from target)
-			//! @param target Camera target (rotation and zoom origin
+			//! @param target Camera target (rotation and zoom origin)
 			//! @param rotation Camera rotation in degrees
 			//! @param zoom Camera zoom (scaling), should be 1.0f by default
 			Camera2D(const Vector2 &offset, const Vector2 &target, float rotation, float zoom = 1);

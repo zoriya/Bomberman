@@ -24,8 +24,8 @@
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
 #include "System/Renderer/Renderer2DSystem.hpp"
-#include "Component/Drawable/Drawable3DComponent.hpp"
-#include "Component/Drawable/Drawable2DComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "System/Renderer/RenderScreenSystem.hpp"
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
@@ -47,52 +47,52 @@ std::string get_full_path(const std::string &color)
 
 int demo()
 {
-	WAL::Wal wal;
-	const int screenWidth = 800;
-	const int screenHeight = 450;
-
-	RAY::TraceLog::setLevel(LOG_WARNING);
-	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
-	RAY::Image icon("assets/icon.png");
-	window.setIcon(icon);
-	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
-	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
-	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
-	                             45.0f, CAMERA_PERSPECTIVE
-	);
-
-	RAY::Camera::Camera2D camera2D(RAY::Vector2(screenWidth / 2.0f, screenHeight / 2.0f),
-	                             RAY::Vector2(20.0f, 20.0f),
-	                             0., 1);
-	WAL::Entity entityPlayer("roger");
-	//RAY::Drawables::Drawables2D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
-	RAY::Drawables::Drawables2D::Circle circle({0, 0}, 50, MAROON);
-	//RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
-	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(entityPlayer, circle);
-//	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
-	BBM::PositionComponent posComponent(entityPlayer, {0, 0, 0});
-
-	BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> circleSystem(window);
-	//BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
-
-	BBM::RenderScreenSystem<RAY::Camera::Camera2D> renderSystem(window, camera2D);
-
-	wal.addSystem(circleSystem);
-	wal.addSystem(renderSystem);
-	//wal.addSystem(cubeSystem);
-	entityPlayer.addComponent(circleComponent);
-	//entityPlayer.addComponent(cubeComponent);
-	entityPlayer.addComponent(posComponent);
-	wal.scene.addEntity(entityPlayer);
-
-	camera.setMode(CAMERA_FREE); // Set free camera mode
-
-	float y_rotation = 0;
-	window.setFPS(60);
-
-	wal.run<int>([](WAL::Wal &wal, int) {});
-
-	window.close();
+//	WAL::Wal wal;
+//	const int screenWidth = 800;
+//	const int screenHeight = 450;
+//
+//	RAY::TraceLog::setLevel(LOG_WARNING);
+//	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
+//	RAY::Image icon("assets/icon.png");
+//	window.setIcon(icon);
+//	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
+//	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
+//	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
+//	                             45.0f, CAMERA_PERSPECTIVE
+//	);
+//
+//	RAY::Camera::Camera2D camera2D(RAY::Vector2(screenWidth / 2.0f, screenHeight / 2.0f),
+//	                             RAY::Vector2(20.0f, 20.0f),
+//	                             0., 1);
+//	WAL::Entity entityPlayer("roger");
+//	//RAY::Drawables::Drawables2D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
+//	RAY::Drawables::Drawables2D::Circle circle({0, 0}, 50, MAROON);
+//	//RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
+//	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(entityPlayer, circle);
+////	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
+//	BBM::PositionComponent posComponent(entityPlayer, {0, 0, 0});
+//
+//	BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> circleSystem(window);
+//	//BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
+//
+////	BBM::RenderScreenSystem<RAY::Camera::Camera2D> renderSystem(window, camera2D);
+//
+//	wal.addSystem(circleSystem);
+////	wal.addSystem(renderSystem);
+//	//wal.addSystem(cubeSystem);
+//	entityPlayer.addComponent(circleComponent);
+//	//entityPlayer.addComponent(cubeComponent);
+//	entityPlayer.addComponent(posComponent);
+//	wal.scene.addEntity(entityPlayer);
+//
+//	camera.setMode(CAMERA_FREE); // Set free camera mode
+//
+//	float y_rotation = 0;
+//	window.setFPS(60);
+//
+//	wal.run<int>([](WAL::Wal &wal, int) {});
+//
+//	window.close();
 
 
 /*
@@ -160,7 +160,7 @@ int demo()
 		window.setDrawingState(RAY::Window::IDLE);
 	}
 */
-	window.close();
+//	window.close();
 
 
 	return 0;
@@ -181,6 +181,6 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
-	return demo();
+//	return demo();
 	return BBM::run();
 }

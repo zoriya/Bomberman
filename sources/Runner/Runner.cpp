@@ -4,6 +4,12 @@
 
 #include <Wal.hpp>
 #include <iostream>
+#include <System/Movable/MovableSystem.hpp>
+#include <System/Renderer/RenderScreenSystem.hpp>
+#include <System/Renderer/Render2DScreenSystem.hpp>
+#include <System/Renderer/Renderer2DSystem.hpp>
+#include <Drawables/2D/Rectangle.hpp>
+#include <Models/Vector2.hpp>
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 
@@ -17,9 +23,36 @@ namespace BBM
 		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
 	}
 
+	void enableRaylib(WAL::Wal &wal)
+	{
+		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
+
+//		wal.addSystem<>(); 3D elements here
+
+		wal.addSystem<Render2DScreenSystem>(window)
+		   .addSystem<Renderer2DSystem<RAY::Drawables::Drawables2D::Rectangle>>();
+		wal.addSystem<RenderScreenSystem>(window);
+	}
+
+	WAL::Scene loadGameScene()
+	{
+		WAL::Scene scene;
+		scene.addEntity("cube")
+			.addComponent<PositionComponent>()
+		    .addComponent<Drawable2DComponent<RAY::Drawables::Drawables2D::Rectangle>>(Vector2f(), Vector2f(1, 1), RED);
+		return scene;
+	}
+
 	int run()
 	{
 		WAL::Wal wal;
+		wal.addSystem<MovableSystem>();
+		enableRaylib(wal);
+		WAL::Scene scene = loadGameScene();
+		wal.scene = scene;
+
+
+		// wal.scene = loadGameScene();
 
 		try {
 			wal.run<GameState>(updateState);

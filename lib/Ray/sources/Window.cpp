@@ -11,11 +11,22 @@
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/ADrawable3D.hpp"
 
-RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, unsigned flags, bool openNow)
-{
-	static RAY::Window window(width, height, title, flags, openNow);
+std::optional<RAY::Window> RAY::Window::_instance = std::nullopt;
 
-	return window;
+RAY::Window &RAY::Window::getInstance()
+{
+	if (!RAY::Window::_instance.has_value())
+		throw std::runtime_error("No window has been constructed.");
+	return RAY::Window::_instance.value();
+}
+
+RAY::Window &RAY::Window::getInstance(int width, int height, const std::string &title, unsigned flags, bool openNow) noexcept
+{
+	if (!RAY::Window::_instance.has_value()){
+		RAY::Window window(width, height, title, flags, openNow);
+		RAY::Window::_instance.emplace(std::move(window));
+	}
+	return RAY::Window::_instance.value();
 }
 
 RAY::Window::Window(int width, int height, std::string title, unsigned flags, bool openNow):
@@ -23,7 +34,7 @@ RAY::Window::Window(int width, int height, std::string title, unsigned flags, bo
 	_title(std::move(title)),
 	_isOpen(openNow),
 	_flags(flags),
-	_drawingState(IDLE), _displayState(NONE)
+	_displayState(NONE)
 {
 	if (openNow)
 		this->open();
@@ -95,20 +106,10 @@ void RAY::Window::clear(const RAY::Color &color)
 	ClearBackground(color);
 }
 
-void RAY::Window::setDrawingState(enum RAY::Window::drawingState state)
+void RAY::Window::draw()
 {
-	if (state == this->_drawingState)
-		return;
-	switch (state)
-	{
-	case DRAWING:
-		BeginDrawing();
-		break;
-	case IDLE:
-		EndDrawing();
-		break;
-	}
-	this->_drawingState = state;
+	EndDrawing();
+	BeginDrawing();
 }
 
 void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
