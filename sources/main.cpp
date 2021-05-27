@@ -42,9 +42,9 @@ int main()
 	const int screenWidth = 800;
 	const int screenHeight = 450;
 	std::vector<std::string>::const_iterator iterator = textures.begin();
-	const std::string modelPath = "assets/player/player.obj";
-	const std::string texturePath = "assets/player/blue.png";
-	//const std::string animationPath = "assets/guy.iqm";
+	const std::string modelPath = "assets/player/HugoSohm.iqm";
+	const std::string texturePath = "assets/player/HugoSohm.png";
+	const std::string animationPath = "assets/player/HugoSohmAnimation.iqm";
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
@@ -55,8 +55,8 @@ int main()
 								 RAY::Vector3(0.0f, 1.0f, 0.0f),
 								 45.0f, CAMERA_PERSPECTIVE
 								);
-	RAY::Texture texture(get_full_path(*iterator));
-	//RAY::ModelAnimations animations(modelPath);
+	RAY::Texture texture(texturePath);
+	RAY::ModelAnimations animations(animationPath);
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
 	model.setTextureToMaterial(MAP_DIFFUSE, texture);
@@ -77,16 +77,16 @@ int main()
 		camera.update();
 
 		// Play animation when spacebar is held down
-		if (RAY::Controller::Keyboard::isReleased(KEY_SPACE))
+		if (RAY::Controller::Keyboard::isDown(KEY_SPACE))
 		{
-			++iterator;
-			if (iterator == textures.end())
-				iterator = textures.begin();
-			texture.unload();
-			texture.load(get_full_path(*iterator));
-			model.setTextureToMaterial(MAP_DIFFUSE, texture);
-			//animations[0].incrementFrameCounter();
-			//model.setAnimation(animations[0]);
+			//++iterator;
+			//if (iterator == textures.end())
+			//	iterator = textures.begin();
+			//texture.unload();
+			//texture.load(get_full_path(*iterator));
+			//model.setTextureToMaterial(MAP_DIFFUSE, texture);
+			animations[0].incrementFrameCounter();
+			model.setAnimation(animations[0]);
 		}
 		//----------------------------------------------------------------------------------
 
@@ -98,7 +98,7 @@ int main()
 
 			window.useCamera(camera);
 
-				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 5.0f, 5.0f, 5.0f ));
+				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 1.0f, 1.0f, 1.0f ));
 
 				window.draw(grid);
 
