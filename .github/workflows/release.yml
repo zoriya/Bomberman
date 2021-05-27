@@ -27,7 +27,6 @@ jobs:
           cmake --build .
       - name: CheckBinaryName
         shell: bash
-        if: matrix.name == 'Linux'
         run: test -f build/bomberman
       - name: Create release
       - uses: ncipollo/release-action@v1
