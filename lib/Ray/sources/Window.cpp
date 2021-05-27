@@ -156,7 +156,7 @@ void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, con
 	DrawTexture(texture, position.x, position.y, tint);
 }
 
-void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix &transform)
+void RAY::Window::draw(const RAY::Mesh &mesh, const Material &material, const Matrix &transform)
 {
 	DrawMesh(mesh, material, transform);
 }

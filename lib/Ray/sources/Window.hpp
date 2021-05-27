@@ -20,7 +20,7 @@
 #include "Drawables/Texture.hpp"
 
 namespace RAY {
-	//! @brief Window manager
+	class Mesh;
 	namespace Drawables {
 		class IDrawable;
 		class ADrawable3D;
@@ -29,6 +29,7 @@ namespace RAY {
 			class Model;
 		}
 	}
+	//! @brief Window manager
 	class Window {
 		public:
 			//! @return A widow insta,ce. Only one window can be open at a time

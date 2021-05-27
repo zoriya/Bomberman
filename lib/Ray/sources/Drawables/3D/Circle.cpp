@@ -39,7 +39,7 @@ namespace RAY::Drawables::Drawables3D
 
 	RAY::BoundingBox Circle::getBoundingBox(void)
 	{
-		RAY::Mesh mesh = GenMeshSphere(_radius, _radius, 1);
-		return GetMeshBoundingBox(mesh);
+		RAY::Mesh mesh(GenMeshSphere(_radius, _radius, 1));
+		return RAY::BoundingBox(mesh);
 	}
 }

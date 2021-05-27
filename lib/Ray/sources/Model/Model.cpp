@@ -14,7 +14,7 @@ RAY::Drawables::Drawables3D::Model::Model(const std::string &filename, const RAY
 {
 }
 
-RAY::Drawables::Drawables3D::Model::Model(const Mesh &mesh)
+RAY::Drawables::Drawables3D::Model::Model(const RAY::Mesh &mesh)
 : ADrawable3D({0, 0, 0}, WHITE), _model(LoadModelFromMesh(mesh))
 {
 }

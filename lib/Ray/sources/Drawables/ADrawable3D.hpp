@@ -11,8 +11,8 @@
 #include <raylib.h>
 #include "Drawables/IDrawable.hpp"
 #include "Mesh.hpp"
-#include "BoundingBox.hpp"
 #include "Color.hpp"
+#include "BoundingBox.hpp"
 
 namespace RAY::Drawables {
 	//! @brief Abstraction of any three-dimensionnal drawable
@@ -33,7 +33,7 @@ namespace RAY::Drawables {
 			void drawOn(RAY::Window &) override = 0;
 
 			//! @brief get the bounding box of the drawable
-			virtual BoundingBox getBoundingBox(void) = 0;
+			virtual RAY::BoundingBox getBoundingBox(void) = 0;
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;

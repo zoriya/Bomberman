@@ -56,6 +56,7 @@ namespace RAY::Drawables::Drawables3D
 	RAY::BoundingBox Grid::getBoundingBox(void)
 	{
 		RAY::Mesh mesh = GenMeshPlane(0, 0, 0, 0);
-		return GetMeshBoundingBox(mesh);
+
+		return RAY::BoundingBox(GetMeshBoundingBox(mesh));
 	}
 }
