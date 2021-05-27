@@ -8,8 +8,19 @@
 
 namespace BBM
 {
+	//! @brief The system handling GridCenteredComponent
 	class GridCenteredSystem : public WAL::System
 	{
+	public:
+		void onFixedUpdate(Entity &entity) override;
 
+		//! @brief A default constructor
+		GridCenteredSystem();
+		//! @brief A GridCenteredSystem is copyable.
+		GridCenteredSystem(const GridCenteredSystem &) = default;
+		//! @brief A default destructor
+		~GridCenteredSystem() override = default;
+		//! @brief A GridCenteredSystem is assignable
+		GridCenteredSystem &operator=(const GridCenteredSystem &) = default;
 	};
 }
