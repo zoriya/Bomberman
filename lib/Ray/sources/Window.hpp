@@ -20,11 +20,14 @@
 #include "Drawables/Texture.hpp"
 
 namespace RAY {
-	class Model;
 	//! @brief Window manager
 	namespace Drawables {
 		class IDrawable;
 		class ADrawable3D;
+		namespace Drawables3D
+		{
+			class Model;
+		}
 	}
 	class Window {
 		public:

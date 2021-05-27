@@ -55,7 +55,8 @@ int demo()
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
-	RAY::Model model(modelPath);
+	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
+	RAY::Drawables::Drawables3D::Model model(modelPath, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
 	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
 	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
@@ -75,7 +76,6 @@ int demo()
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
 	size_t animationIndex = 0;
-	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
 
 	model.setTextureToMaterial(MAP_DIFFUSE, texture);
 	window.setIcon(icon);
@@ -117,7 +117,7 @@ int demo()
 			window.clear();
 			window.useCamera(camera);
 
-				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
+				window.draw(model);
 
 				window.draw(grid);
 				window.draw(circle);

@@ -15,7 +15,7 @@
 #include <raylib.h>
 #include <vector>
 
-namespace RAY {
+namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
 	class Model: public IRessource, public Drawables::ADrawable3D {
 		public:
@@ -24,7 +24,7 @@ namespace RAY {
 
 			//! @brief Create an model, loading a file
 			//! @param filePath: path to file to load
-			Model(const std::string &filePath, const RAY::Vector3 &position, const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0), float rotationAngle = 0, const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
+			Model(const std::string &filePath, const RAY::Vector3 &position = {0, 0, 0}, const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0), float rotationAngle = 0, const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
@@ -69,16 +69,18 @@ namespace RAY {
 			float getRotationAngle(void);
 	
 			//! @brief Set Rotation Axis
-			Model &setRotationAxix(const RAY::Vector3 &scale);
+			Model &setRotationAxis(const RAY::Vector3 &scale);
 
 			//! @return rotation axis
-			const RAY::Vector3 & getRotationAxix(void);
+			const RAY::Vector3 & getRotationAxis(void);
 
 			//! @brief Set Scale
 			Model &setScale(const RAY::Vector3 &scale);
 
 			//! @return Scale
 			const RAY::Vector3 & getScale(void);
+
+			void drawOn(RAY::Window &) override;
 
 		private:
 			//! @brief Raw data from raylib
