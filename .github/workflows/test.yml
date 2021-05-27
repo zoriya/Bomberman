@@ -1,0 +1,25 @@
+name: Tests
+on: [push, pull_request]
+
+jobs:
+  Build:
+    name: "Run tests"
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          submodules: true
+      - name: Install Xorg lib
+        run: |
+            sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+      - name: Update G++
+        run: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build . -t unit_tests 
+      - name: Run tests
+        run: |
+          ./build/unit_tests

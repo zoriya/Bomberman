@@ -34,7 +34,7 @@ namespace WAL
 		//! @brief Get the name fo the entity
 		std::string getName() const;
 
-		//! @brief Used if the entity is disabled 
+		//! @brief Used if the entity is disabled
 		bool isDisable() const;
 
 		//! @brief Disable this entity.
@@ -66,6 +66,10 @@ namespace WAL
 		//! @brief Check if this entity has a component.
 		//! @param type The type of the component
 		bool hasComponent(const std::type_info &type) const;
+
+		//! @brief Check if this entity has a component.
+		//! @param type The type of the component
+		bool hasComponent(const std::type_index &type) const;
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
@@ -110,4 +114,4 @@ namespace WAL
 		//! @brief An entity is assignable
 		Entity &operator=(const Entity &) = default;
 	};
-}
+} // namespace WAL

@@ -12,7 +12,7 @@ namespace WAL
 {
 	//! @brief The entity class, used to prevent circular dependencies.
 	class Entity;
-	
+
 	//! @brief Represent a single component of WAL.
 	class Component
 	{
@@ -22,8 +22,6 @@ namespace WAL
 	protected:
 		//! @brief The entity that own this component
 		Entity &_entity;
-		//! @brief The list of dependencies of this component.
-		std::vector<std::type_index> _dependencies;
 
 		//! @brief A component can't be instantiated, it should be derived.
 		explicit Component(Entity &entity);
@@ -39,13 +37,10 @@ namespace WAL
 		//! @param entity The entity that owns the ne component.
 		virtual Component *clone(Entity &entity) const = 0;
 
-		//! @brief Used if the component is disabled 
+		//! @brief Used if the component is disabled
 		bool isDisabled() const;
 		//! @brief Disable this component.
 		void setDisable(bool disabled);
-
-		//! @brief Get the dependencies of this component.
-		const std::vector<std::type_index> &getDependencies() const;
 
 		//! @brief The entity or this component has just been enabled.
 		virtual void onStart();
@@ -53,4 +48,4 @@ namespace WAL
 		//! @brief The entity or this component has just been disable.
 		virtual void onStop();
 	};
-}
+} // namespace WAL

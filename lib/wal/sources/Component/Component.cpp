@@ -20,18 +20,13 @@ namespace WAL
 		this->_disabled = disabled;
 	}
 
-	const std::vector<std::type_index> &Component::getDependencies() const
-	{
-		return this->_dependencies;
-	}
-
 	void Component::onStart()
 	{
-		//TODO handle events here
+		// TODO handle events here
 	}
 
 	void Component::onStop()
 	{
-		//TODO handle events here
+		// TODO handle events here
 	}
-}
+} // namespace WAL

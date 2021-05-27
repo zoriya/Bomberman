@@ -7,6 +7,7 @@
 
 #include <exception>
 #include <stdexcept>
+#include <string>
 
 namespace WAL
 {
@@ -51,4 +52,4 @@ namespace WAL
 		//! @brief A default assignment operator
 		NotFoundError &operator=(const NotFoundError &) = default;
 	};
-}
+} // namespace WAL

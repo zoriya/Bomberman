@@ -3,7 +3,7 @@
 //
 
 #include "Entity/Entity.hpp"
-
+#include <string>
 #include <utility>
 
 namespace WAL
@@ -59,4 +59,12 @@ namespace WAL
 		});
 		return existing != this->_components.end();
 	}
-}
+
+	bool Entity::hasComponent(const std::type_index &type) const
+	{
+		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
+			return std::type_index(typeid(*cmp)) == type;
+		});
+		return existing != this->_components.end();
+	}
+} // namespace WAL

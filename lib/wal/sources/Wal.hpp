@@ -6,13 +6,14 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include <memory>
 #include <typeinfo>
-#include <Exception/WalError.hpp>
-#include "Events/EventManager.hpp"
-#include "Scene/SceneManager.hpp"
+#include "Exception/WalError.hpp"
+#include "Scene/Scene.hpp"
 #include "Entity/Entity.hpp"
 #include "System/System.hpp"
+#include "Models/Callback.hpp"
 
 namespace WAL
 {
@@ -21,9 +22,7 @@ namespace WAL
 	{
 	private:
 		//! @brief The scene manager that allow multiple scene to work together.
-		SceneManager _sceneManager;
-		//! @brief The event manager
-		EventManager _eventManager;
+		Scene _scene;
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
 		//! @brief True if the engine should close after the end of the current tick.
@@ -34,6 +33,12 @@ namespace WAL
 
 		//! @brief Call the onFixedUpdate of every system with every component
 		void _fixedUpdate();
+
+		//! @brief Check if an entity met a system's dependencies.
+		//! @param entity The entity to check
+		//! @param system The system that will list dependencies
+		//! @return True if all dependencies are met, false otherwise.
+		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
@@ -80,7 +85,6 @@ namespace WAL
 			if (existing == this->_systems.end())
 				throw NotFoundError("A system of the type \"" + std::string(type.name()) + "\" could not be found.");
 			return *static_cast<T *>(existing->get());
-
 		}
 
 		//! @brief Remove a system using it's type.
@@ -97,11 +101,41 @@ namespace WAL
 			return *this;
 		}
 
-		//! @brief Get the scene manager.
-		SceneManager &getSceneManager();
+		//! @brief Start the game loop
+		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
+		//! @param state An initial game state. If not specified, it will be defaulted.
+		//! @tparam T A type used to track your game state. It must be default constructable.
+		template<typename T>
+		void run(const std::function<void (Wal &, T &)> &callback, T state = T())
+		{
+			Callback<Wal &, T &> update(callback);
+			return this->run(update, state);
+		}
 
 		//! @brief Start the game loop
-		void run();
+		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
+		//! @param state An initial game state. If not specified, it will be defaulted.
+		//! @tparam T A type used to track your game state. It must be default constructable.
+		template<typename T>
+		void run(const Callback<Wal &, T &> &callback, T state = T())
+		{
+			auto lastTick = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds fBehind(0);
+
+			while (!this->_shouldClose) {
+				auto now = std::chrono::steady_clock::now();
+				std::chrono::nanoseconds dtime = now - lastTick;
+				fBehind += dtime;
+				lastTick = now;
+
+				while (fBehind > Wal::timestep) {
+					fBehind -= Wal::timestep;
+					this->_fixedUpdate();
+				}
+				this->_update(dtime);
+				callback(*this, state);
+			}
+		}
 
 		//! @brief A default constructor
 		Wal() = default;
@@ -112,4 +146,4 @@ namespace WAL
 		//! @brief A WAL can't be assigned.
 		Wal &operator=(const Wal &) = delete;
 	};
-}
+} // namespace WAL
