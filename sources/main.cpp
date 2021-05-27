@@ -17,12 +17,15 @@
 #include "Drawables/3D/Grid.hpp"
 #include "Drawables/Texture.hpp"
 #include "Drawables/3D/Circle.hpp"
+#include "Drawables/2D/Circle.hpp"
 #include "Drawables/3D/Cube.hpp"
 #include "Drawables/3D/Sphere.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
+#include "System/Renderer/Renderer2DSystem.hpp"
 #include "Component/Drawable/Drawable3DComponent.hpp"
+#include "Component/Drawable/Drawable2DComponent.hpp"
 #include "System/Renderer/RenderScreenSystem.hpp"
 #include "Vector/Vector3.hpp"
 #include "Window.hpp"
@@ -57,23 +60,28 @@ int demo()
 	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
 	                             45.0f, CAMERA_PERSPECTIVE
 	);
+
+	RAY::Camera::Camera2D camera2D(RAY::Vector2(screenWidth / 2.0f, screenHeight / 2.0f),
+	                             RAY::Vector2(20.0f, 20.0f),
+	                             0., 1);
 	WAL::Entity entityPlayer("roger");
-	RAY::Drawables::Drawables3D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
-	RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
-	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
-	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
+	//RAY::Drawables::Drawables2D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
+	RAY::Drawables::Drawables2D::Circle circle({0, 0}, 50, MAROON);
+	//RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
+	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(entityPlayer, circle);
+//	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
 	BBM::PositionComponent posComponent(entityPlayer, {0, 0, 0});
 
-	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
-	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
+	BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> circleSystem(window);
+	//BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
 
-	BBM::RenderScreenSystem<RAY::Camera::Camera3D> renderSystem(window, camera);
+	BBM::RenderScreenSystem<RAY::Camera::Camera2D> renderSystem(window, camera2D);
 
 	wal.addSystem(circleSystem);
 	wal.addSystem(renderSystem);
-	wal.addSystem(cubeSystem);
+	//wal.addSystem(cubeSystem);
 	entityPlayer.addComponent(circleComponent);
-	entityPlayer.addComponent(cubeComponent);
+	//entityPlayer.addComponent(cubeComponent);
 	entityPlayer.addComponent(posComponent);
 	wal.scene.addEntity(entityPlayer);
 

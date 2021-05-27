@@ -29,7 +29,7 @@ namespace BBM
 		//! @brief Update the corresponding component of the given entity
 		//! @param entity The entity to update.
 		//! @param dtime The delta time.
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override
+		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds) override
 		{
 			auto &comp = entity.getComponent<Drawable2DComponent<T>>();
 			auto &pos = entity.getComponent<PositionComponent>();
