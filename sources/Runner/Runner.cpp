@@ -45,11 +45,12 @@ namespace BBM
 
 	int run()
 	{
+		WAL::Scene gameScene = loadGameScene();
 		WAL::Wal wal;
 		wal.addSystem<MovableSystem>();
 		enableRaylib(wal);
 		WAL::Scene scene = loadGameScene();
-		wal.scene = scene;
+		wal.scene = std::make_shared<WAL::Scene>(scene);
 
 
 		// wal.scene = loadGameScene();

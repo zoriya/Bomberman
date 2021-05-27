@@ -111,7 +111,7 @@ namespace WAL
 		Entity(Entity &&) = default;
 		//! @brief A default destructor
 		~Entity() = default;
-		//! @brief An entity is assignable
-		Entity &operator=(const Entity &) = default;
+		//! @brief An entity is not assignable
+		Entity &operator=(const Entity &) = delete;
 	};
 } // namespace WAL

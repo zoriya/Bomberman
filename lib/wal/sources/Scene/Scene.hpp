@@ -36,7 +36,7 @@ namespace WAL
 		//! @brief A default destructor
 		~Scene() = default;
 		//! @brief A scene is assignable
-		Scene &operator=(const Scene &) = default;
+		Scene &operator=(const Scene &);
 		Scene(Scene &&) = default;
 	};
 } // namespace WAL

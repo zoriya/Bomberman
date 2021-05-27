@@ -39,7 +39,7 @@ namespace WAL
 		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
 		//! @brief The scene that contains entities.
-		Scene scene;
+		std::shared_ptr<Scene> scene;
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
 
