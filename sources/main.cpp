@@ -33,7 +33,7 @@
 #include "Wal.hpp"
 
 const std::vector<std::string>textures = {
-	"blue", "cyan", "green", "orange", "purple", "red", "yellow"
+	"blue", "cyan", "green", "purple", "red", "yellow"
 };
 
 std::string get_full_path(const std::string &color)
