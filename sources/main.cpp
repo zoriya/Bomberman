@@ -44,7 +44,7 @@ int main()
 	std::vector<std::string>::const_iterator iterator = textures.begin();
 	const std::string modelPath = "assets/player/HugoSohm.iqm";
 	const std::string texturePath = "assets/player/HugoSohm.png";
-	const std::string animationPath = "assets/player/HugoSohmAnimation.iqm";
+	const std::string animationPath = "assets/player/HugoSohm.iqm";
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
