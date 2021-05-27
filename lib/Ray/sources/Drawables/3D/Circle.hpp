@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include "Drawables/ADrawable3D.hpp"
+#include "BoundingBox.hpp"
 
 namespace RAY::Drawables::Drawables3D {
 	//! @brief Circle in a three-dimensionnal space
@@ -46,6 +47,9 @@ namespace RAY::Drawables::Drawables3D {
 
 			//! @brief Draw circle on window
 			void drawOn(RAY::Window &) override;
+
+			//! @brief Get the bounding box
+			BoundingBox getBoundingBox(void) override;
 
 		private:
 			//! @brief Radius of the circle 

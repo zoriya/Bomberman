@@ -35,3 +35,9 @@ void RAY::Drawables::Drawables3D::Circle::drawOn(RAY::Window &)
 	DrawCircle3D(this->_centerPos, this->_radius,this->_rotationAxis,
 	this->_rotationAngle, this->_color);
 }
+
+RAY::BoundingBox RAY::Drawables::Drawables3D::Circle::getBoundingBox(void)
+{
+	RAY::Mesh mesh = GenMeshSphere(_radius, _radius, _radius);
+	return GetMeshBoundingBox(mesh);
+}

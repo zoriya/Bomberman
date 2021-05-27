@@ -46,11 +46,14 @@ namespace RAY::Drawables::Drawables3D {
 		
 			//! @brief Draw circle on window
 			void drawOn(RAY::Window &) override;
+
+			//! @brief Get the bounding box
+			BoundingBox getBoundingBox(void) override;
 		private:
 			//! @brief Positon in space of the cube
 			Vector3 _position;
 			//! @brief Dimensions of the cube
-			Vector3 _dimenstions;
+			Vector3 _dimensions;
 	};
 }
 

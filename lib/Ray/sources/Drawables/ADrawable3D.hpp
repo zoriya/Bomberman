@@ -10,6 +10,8 @@
 
 #include <raylib.h>
 #include "Drawables/IDrawable.hpp"
+#include "Mesh.hpp"
+#include "BoundingBox.hpp"
 #include "Color.hpp"
 
 namespace RAY::Drawables::Drawables3D {
@@ -28,6 +30,9 @@ namespace RAY::Drawables::Drawables3D {
 
 			//! @brief Draw drawble on window
 			virtual void drawOn(RAY::Window &) = 0;
+
+			//! @brief get the bounding box of the drawable
+			virtual BoundingBox getBoundingBox(void) = 0;
 
 			//! @return the color of the ADrawable
 			const Color &getColor(void) const;

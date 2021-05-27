@@ -47,6 +47,8 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;
 
+			//! @brief Get the bounding box
+			BoundingBox getBoundingBox(void) override;
 		private:
 			//! @brief start position
 			Vector3 _startPosition;
