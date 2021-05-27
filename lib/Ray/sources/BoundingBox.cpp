@@ -20,3 +20,13 @@ RAY::BoundingBox::operator ::BoundingBox() const
 {
     return this->_boundingBox;
 }
+
+bool RAY::BoundingBox::collide(const RAY::BoundingBox &other) const
+{
+    return CheckCollisionBoxes(*this, other);
+}
+
+bool RAY::BoundingBox::collision(const RAY::BoundingBox &one, const RAY::BoundingBox &other)
+{
+    return one.collide(other);
+}

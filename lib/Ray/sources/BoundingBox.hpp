@@ -24,6 +24,10 @@ namespace RAY {
 			//! @brief A circle is assignable
 			BoundingBox &operator=(const BoundingBox &) = default;
 
+			//! @return true if the boxes collide
+			bool collide(const BoundingBox &other) const;
+			static bool collision(const BoundingBox &box1, const BoundingBox &box2);
+
 			//! @brief A default destructor
 			~BoundingBox() = default;
 
