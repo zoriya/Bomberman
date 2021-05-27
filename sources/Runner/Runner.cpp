@@ -9,7 +9,9 @@
 #include <System/Renderer/Render2DScreenSystem.hpp>
 #include <System/Renderer/Renderer2DSystem.hpp>
 #include <Drawables/2D/Rectangle.hpp>
-#include <Models/Vector2.hpp>
+#include <System/Renderer/Renderer3DSystem.hpp>
+#include "Models/Vector2.hpp"
+#include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 
@@ -27,7 +29,7 @@ namespace BBM
 	{
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
-//		wal.addSystem<>(); 3D elements here
+//		wal.addSystem<Renderer3DSystem<RAY::Drawables::Drawables3D::Model>>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
 		   .addSystem<Renderer2DSystem<RAY::Drawables::Drawables2D::Rectangle>>();
@@ -39,7 +41,10 @@ namespace BBM
 		WAL::Scene scene;
 		scene.addEntity("cube")
 			.addComponent<PositionComponent>()
-		    .addComponent<Drawable2DComponent<RAY::Drawables::Drawables2D::Rectangle>>(Vector2f(), Vector2f(1, 1), RED);
+			.addComponent<Drawable2DComponent<RAY::Drawables::Drawables2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED);
+		scene.addEntity("camera")
+			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<CameraComponent>();
 		return scene;
 	}
 

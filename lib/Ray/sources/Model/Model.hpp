@@ -10,21 +10,21 @@
 
 #include "IRessource.hpp"
 #include "Drawables/Texture.hpp"
-#include "Drawables/IDrawable.hpp"
+#include "Drawables/ADrawable3D.hpp"
 #include "Model/ModelAnimation.hpp"
 #include <raylib.h>
 #include <vector>
 
-namespace RAY {
+namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
-	class Model: public IRessource {
+	class Model: public IRessource, public Drawables::ADrawable3D {
 		public:
 
 			typedef ::MaterialMapIndex MaterialType;
 
 			//! @brief Create an model, loading a file
 			//! @param filePath: path to file to load
-			Model(const std::string &filePath);
+			Model(const std::string &filePath, const RAY::Vector3 &position = {0, 0, 0}, const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0), float rotationAngle = 0, const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
@@ -61,9 +61,36 @@ namespace RAY {
 
 			//! @return The number of bones in the model
 			int getBoneCount() const;
+
+			//! @brief Set rotation angle
+			Model &setRotationAngle(float roationAngle);
+
+			//! @return rotation angle
+			float getRotationAngle(void);
+	
+			//! @brief Set Rotation Axis
+			Model &setRotationAxis(const RAY::Vector3 &scale);
+
+			//! @return rotation axis
+			const RAY::Vector3 & getRotationAxis(void);
+
+			//! @brief Set Scale
+			Model &setScale(const RAY::Vector3 &scale);
+
+			//! @return Scale
+			const RAY::Vector3 & getScale(void);
+
+			void drawOn(RAY::Window &) override;
+
 		private:
 			//! @brief Raw data from raylib
 			::Model _model;
+			//! @brief Rotation property
+			RAY::Vector3 _rotationAxis;
+			//! @brief Rotation property
+			float _rotationAngle;
+			//! @brief Scale of the shape
+			RAY::Vector3 _scale;
 
 		INTERNAL:
 			//! @brief A RAY Model is cast-able in libray's model

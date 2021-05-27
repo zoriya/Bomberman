@@ -33,7 +33,7 @@
 #include "Wal.hpp"
 
 const std::vector<std::string>textures = {
-	"black", "blue", "pink", "red", "white", "yellow"
+	"blue", "cyan", "green", "orange", "purple", "red", "yellow"
 };
 
 std::string get_full_path(const std::string &color)
@@ -47,66 +47,16 @@ std::string get_full_path(const std::string &color)
 
 int demo()
 {
-//	WAL::Wal wal;
-//	const int screenWidth = 800;
-//	const int screenHeight = 450;
-//
-//	RAY::TraceLog::setLevel(LOG_WARNING);
-//	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
-//	RAY::Image icon("assets/icon.png");
-//	window.setIcon(icon);
-//	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
-//	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
-//	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
-//	                             45.0f, CAMERA_PERSPECTIVE
-//	);
-//
-//	RAY::Camera::Camera2D camera2D(RAY::Vector2(screenWidth / 2.0f, screenHeight / 2.0f),
-//	                             RAY::Vector2(20.0f, 20.0f),
-//	                             0., 1);
-//	WAL::Entity entityPlayer("roger");
-//	//RAY::Drawables::Drawables2D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
-//	RAY::Drawables::Drawables2D::Circle circle({0, 0}, 50, MAROON);
-//	//RAY::Drawables::Drawables3D::Cube cube({0, 0, 0}, {2, 2, 2}, BLUE);
-//	BBM::Drawable2DComponent<RAY::Drawables::Drawables2D::Circle> circleComponent(entityPlayer, circle);
-////	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Cube> cubeComponent(entityPlayer, cube);
-//	BBM::PositionComponent posComponent(entityPlayer, {0, 0, 0});
-//
-//	BBM::Renderer2DSystem<RAY::Drawables::Drawables2D::Circle> circleSystem(window);
-//	//BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Cube> cubeSystem(window);
-//
-////	BBM::RenderScreenSystem<RAY::Camera::Camera2D> renderSystem(window, camera2D);
-//
-//	wal.addSystem(circleSystem);
-////	wal.addSystem(renderSystem);
-//	//wal.addSystem(cubeSystem);
-//	entityPlayer.addComponent(circleComponent);
-//	//entityPlayer.addComponent(cubeComponent);
-//	entityPlayer.addComponent(posComponent);
-//	wal.scene.addEntity(entityPlayer);
-//
-//	camera.setMode(CAMERA_FREE); // Set free camera mode
-//
-//	float y_rotation = 0;
-//	window.setFPS(60);
-//
-//	wal.run<int>([](WAL::Wal &wal, int) {});
-//
-//	window.close();
-
-
-/*
+	WAL::Wal wal;
 	const int screenWidth = 800;
 	const int screenHeight = 450;
-	auto iterator = textures.begin();
-	const std::string modelPath = "assets/player/player.obj";
-	const std::string texturePath = "assets/player/blue.png";
-	//const std::string animationPath = "assets/guy.iqm";
+	std::vector<std::string>::const_iterator iterator = textures.begin();
+	const std::string modelPath = "assets/player/player.iqm";
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
-	window.setIcon(icon);
-	RAY::Model model(modelPath);
+	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
+	RAY::Drawables::Drawables3D::Model model(modelPath, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
 	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
 	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
@@ -122,13 +72,13 @@ int demo()
 	entityPlayer.addComponent(circleComponent);
 
 	RAY::Texture texture(get_full_path(*iterator));
-	//RAY::ModelAnimations animations(modelPath);
+	RAY::ModelAnimations animations(modelPath);
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
+	size_t animationIndex = 0;
+
 	model.setTextureToMaterial(MAP_DIFFUSE, texture);
-
-	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
-
+	window.setIcon(icon);
 	camera.setMode(CAMERA_FREE); // Set free camera mode
 
 	float y_rotation = 0;
@@ -138,7 +88,13 @@ int demo()
 	{
 		camera.update();
 
-		if (RAY::Controller::Keyboard::isReleased(KEY_SPACE))
+		// Play animation when spacebar is held down
+		if (RAY::Controller::Keyboard::isDown(KEY_SPACE))
+		{
+			animations[animationIndex].incrementFrameCounter();
+			model.setAnimation(animations[animationIndex]);
+		}
+		if (RAY::Controller::Keyboard::isReleased(KEY_UP))
 		{
 			++iterator;
 			if (iterator == textures.end())
@@ -146,21 +102,30 @@ int demo()
 			texture.unload();
 			texture.load(get_full_path(*iterator));
 			model.setTextureToMaterial(MAP_DIFFUSE, texture);
-			//animations[0].incrementFrameCounter();
-			//model.setAnimation(animations[0]);
 		}
-		window.setDrawingState(RAY::Window::DRAWING);
+		if (RAY::Controller::Keyboard::isReleased(KEY_LEFT))
+		{
+			animationIndex = --animationIndex % animations.getAnimationsCount();
+			model.setAnimation(animations[animationIndex]);
+		}
+		if (RAY::Controller::Keyboard::isReleased(KEY_RIGHT))
+		{
+			animationIndex = ++animationIndex % animations.getAnimationsCount();
+			model.setAnimation(animations[animationIndex]);
+		}
+//		window.setDrawingState(RAY::Window::DRAWING);
 			window.clear();
 			window.useCamera(camera);
-				window.draw(model, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 5.0f, 5.0f, 5.0f ));
+
+				window.draw(model);
+
 				window.draw(grid);
 				window.draw(circle);
 			window.unuseCamera();
 			window.draw(instructionText);
-		window.setDrawingState(RAY::Window::IDLE);
+//		window.setDrawingState(RAY::Window::IDLE);
 	}
-*/
-//	window.close();
+	window.close();
 
 
 	return 0;

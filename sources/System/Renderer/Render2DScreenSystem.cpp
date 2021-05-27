@@ -9,7 +9,7 @@ namespace BBM
 	Render2DScreenSystem::Render2DScreenSystem(RAY::Window &window)
 		: WAL::System({}),
 		  _window(window),
-		  _camera(RAY::Vector2(), RAY::Vector2(), 0)
+		  _camera(RAY::Vector2(10, 10), RAY::Vector2(), 0)
 	{}
 
 	void Render2DScreenSystem::onSelfUpdate()
