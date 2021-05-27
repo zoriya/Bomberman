@@ -17,7 +17,6 @@
 #include "Camera/Camera3D.hpp"
 #include "Color.hpp"
 #include "Drawables/Texture.hpp"
-#include "Model/Model.hpp"
 
 namespace RAY {
 	class Model;
@@ -128,10 +127,6 @@ namespace RAY {
 
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
-
-			//! @brief Draw a model
-			void draw(const Model &model, const Vector3 &position, const Vector3 &rotationAxis = Vector3(0, 0, 0),
-					  float rotationAngle = 0, const Vector3 &scale = Vector3(1, 1, 1), const Color &tint = WHITE);
 
 
 		private:
