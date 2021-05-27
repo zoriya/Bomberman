@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include <string>
+#include "Drawables/Image.hpp"
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
 #include "Controllers/Keyboard.hpp"
@@ -22,6 +23,7 @@ namespace RAY {
 	class Model;
 	//! @brief Window manager
 	namespace Drawables {
+		class IDrawable;
 		class ADrawable3D;
 	}
 	class Window {
@@ -65,7 +67,7 @@ namespace RAY {
 			bool cursorIsVisible(void) const;
 
 			//! @brief set the window icon
-			void setIcon(Image &img);
+			void setIcon(RAY::Image &img);
 
 			//! @brief Get the cursor position
 			Vector2 getCursorPosition() const;
@@ -113,11 +115,7 @@ namespace RAY {
 
 			//! @brief draw drawable
 			//! @param drawable The drawable to render on screen
-			void draw(RAY::Drawables::ADrawable2D &drawable);
-
-			//! @brief draw drawable
-			//! @param drawable The drawable to render on screen
-			void draw(RAY::Drawables::ADrawable3D &drawable);
+			void draw(RAY::Drawables::IDrawable &drawable);
 
 			//! @brief draw texture at position
 			//! @param texture The object to render

@@ -9,10 +9,11 @@
 #include <string>
 #include <memory>
 #include <typeinfo>
-#include <Exception/WalError.hpp>
+#include "Exception/WalError.hpp"
 #include "Scene/Scene.hpp"
 #include "Entity/Entity.hpp"
 #include "System/System.hpp"
+#include "Models/Callback.hpp"
 
 namespace WAL
 {
@@ -20,8 +21,6 @@ namespace WAL
 	class Wal
 	{
 	private:
-		//! @brief The scene manager that allow multiple scene to work together.
-		Scene _scene;
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
 		//! @brief True if the engine should close after the end of the current tick.
@@ -39,6 +38,8 @@ namespace WAL
 		//! @return True if all dependencies are met, false otherwise.
 		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
+		//! @brief The scene manager that allow multiple scene to work together.
+		Scene scene;
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
 
@@ -101,7 +102,40 @@ namespace WAL
 		}
 
 		//! @brief Start the game loop
-		void run();
+		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
+		//! @param state An initial game state. If not specified, it will be defaulted.
+		//! @tparam T A type used to track your game state. It must be default constructable.
+		template<typename T>
+		void run(const std::function<void (Wal &, T &)> &callback, T state = T())
+		{
+			Callback<Wal &, T &> update(callback);
+			return this->run(update, state);
+		}
+
+		//! @brief Start the game loop
+		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
+		//! @param state An initial game state. If not specified, it will be defaulted.
+		//! @tparam T A type used to track your game state. It must be default constructable.
+		template<typename T>
+		void run(const Callback<Wal &, T &> &callback, T state = T())
+		{
+			auto lastTick = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds fBehind(0);
+
+			while (!this->_shouldClose) {
+				auto now = std::chrono::steady_clock::now();
+				std::chrono::nanoseconds dtime = now - lastTick;
+				fBehind += dtime;
+				lastTick = now;
+
+				while (fBehind > Wal::timestep) {
+					fBehind -= Wal::timestep;
+					this->_fixedUpdate();
+				}
+				this->_update(dtime);
+				callback(*this, state);
+			}
+		}
 
 		//! @brief A default constructor
 		Wal() = default;

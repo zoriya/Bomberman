@@ -3,23 +3,21 @@
 //
 
 #include "PositionComponent.hpp"
-#include "Entity/Entity.hpp"
-#include "Component/Component.hpp"
 
 namespace BBM
 {
 	PositionComponent::PositionComponent(WAL::Entity &entity)
-		: WAL::Component(entity),
+		: Component(entity),
 		  position()
 	{}
 
-	PositionComponent::PositionComponent(WAL::Entity &entity, WAL::Vector3f pos)
-		: WAL::Component(entity),
+	PositionComponent::PositionComponent(WAL::Entity &entity, Vector3f pos)
+		: Component(entity),
 		  position(pos)
 	{}
 
 	PositionComponent::PositionComponent(WAL::Entity &entity, float x, float y, float z)
-		: WAL::Component(entity),
+		: Component(entity),
 		  position(x, y, z)
 	{}
 
@@ -42,4 +40,4 @@ namespace BBM
 	{
 		return this->position.z;
 	}
-}
+} // namespace WAL

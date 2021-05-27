@@ -3,7 +3,6 @@
 //
 
 #include "MovableComponent.hpp"
-#include "Entity/Entity.hpp"
 
 namespace BBM
 {
@@ -16,8 +15,8 @@ namespace BBM
 		return new MovableComponent(entity);
 	}
 
-	void MovableComponent::addForce(WAL::Vector3f force)
+	void MovableComponent::addForce(Vector3f force)
 	{
 		this->_acceleration += force;
 	}
-}
+} // namespace WAL
