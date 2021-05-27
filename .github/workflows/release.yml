@@ -1,36 +1,18 @@
-name: Linux Release
+name: Releases
 
 on:
   push:
-    branches:
-      - master
-      - ci_fix
     tags:
       - '*'
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-        with:
-          submodules: true
-      - name: Install Xorg lib
-        run: |
-          sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
-      - name: Update G++
-        run: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
-      - name: Build
-        run: |
-          mkdir build && cd build
-          cmake ..
-          cmake --build .
-      - name: CheckBinaryName
-        shell: bash
-        run: test -f build/bomberman
-      - name: Create release
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.tar.gz, bomberman, ../assets/, ../README.md"
+          artifacts: "release.tar.gz, assets/"
           bodyFile: "body.md"
           token: ${{ secrets.GITHUB_TOKEN }}
