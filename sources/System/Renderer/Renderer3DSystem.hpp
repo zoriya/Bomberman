@@ -21,11 +21,10 @@ namespace BBM
 		RAY::Window &_window;
 	public:
 		//! @brief ctor
-		explicit Renderer3DSystem(RAY::Window &window)
+		explicit Renderer3DSystem()
 			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent<T>)}),
-			_window(window)
-		{
-		}
+			_window(RAY::Window::getInstance())
+		{}
 
 		//! @brief Update the corresponding component of the given entity
 		//! @param entity The entity to update.
