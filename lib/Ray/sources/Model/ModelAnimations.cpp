@@ -11,7 +11,7 @@ RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
 	_animationsPtr(LoadModelAnimations(filePath.c_str(), &this->_animationCount))
 {
 	::ModelAnimation *ptr = this->_animationsPtr.get();
-	printf("%d\n", this->_animationCount);
+
 	for (int i = 0; i < this->_animationCount; i++)
 		this->_animations.push_back(RAY::ModelAnimation(ptr[i]));
 }
