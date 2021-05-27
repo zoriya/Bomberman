@@ -52,7 +52,7 @@ int demo()
 	const int screenHeight = 450;
 	auto iterator = textures.begin();
 	const std::string modelPath = "assets/player/player.iqm";
-//	RAY::TraceLog::setLevel(LOG_WARNING);
+	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
 	RAY::Drawables::Drawables3D::Model model(modelPath, std::pair(MAP_DIFFUSE, "assets/player/blue.png"));

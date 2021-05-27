@@ -10,6 +10,7 @@
 #include <System/Renderer/Renderer2DSystem.hpp>
 #include <Model/Model.hpp>
 #include <Drawables/2D/Rectangle.hpp>
+#include <TraceLog.hpp>
 #include <System/Renderer/Renderer3DSystem.hpp>
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
@@ -27,10 +28,13 @@ namespace BBM
 
 		// If you want to keep a scene loaded but not running, store it in the state.loadedScenes.
 		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
+		if (RAY::Window::getInstance().shouldClose())
+			engine.shouldClose = true;
 	}
 
 	void enableRaylib(WAL::Wal &wal)
 	{
+		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
