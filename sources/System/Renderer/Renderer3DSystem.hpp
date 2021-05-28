@@ -13,7 +13,6 @@
 
 namespace BBM
 {
-	template <class T>
 	class Renderer3DSystem : public WAL::System
 	{
 	private:
@@ -22,7 +21,7 @@ namespace BBM
 	public:
 		//! @brief ctor
 		explicit Renderer3DSystem(RAY::Window &window)
-			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent<T>)}),
+			: WAL::System({typeid(PositionComponent), typeid(Drawable3DComponent)}),
 			_window(window)
 		{
 		}
@@ -32,11 +31,11 @@ namespace BBM
 		//! @param dtime The delta time.
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds) override
 		{
-			auto &comp = entity.getComponent<Drawable3DComponent<T>>();
+			auto &comp = entity.getComponent<Drawable3DComponent>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-			comp.member.setPosition(static_cast<RAY::Vector3>(pos.position));
-			comp.member.drawOn(this->_window);
+			comp.member.get()->setPosition(static_cast<RAY::Vector3>(pos.position));
+			comp.member.get()->drawOn(this->_window);
 		}
 
 		//! @brief Default copy ctor

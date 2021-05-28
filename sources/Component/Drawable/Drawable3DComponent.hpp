@@ -5,21 +5,22 @@
 #pragma once
 
 #include "Component/Component.hpp"
+#include "Drawables/IDrawable.hpp"
 #include "Drawables/ADrawable3D.hpp"
 
 namespace BBM
 {
-	template <class T>
 	class Drawable3DComponent : public WAL::Component
 	{
 	public:
 		//! @brief The type of the component
-		T member;
+		std::shared_ptr<RAY::Drawables::ADrawable3D> &member;
 
 		//! @brief ctor
-		explicit Drawable3DComponent(WAL::Entity &entity, T member)
+		template <class T>
+		explicit Drawable3DComponent(WAL::Entity &entity, std::shared_ptr<T> member)
 			: WAL::Component(entity),
-			member(std::move(member))
+			member(member)
 		{
 		}
 

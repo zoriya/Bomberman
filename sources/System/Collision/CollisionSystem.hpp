@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include "Wal.hpp"
 #include "System/System.hpp"
 
 namespace BBM
@@ -11,12 +12,14 @@ namespace BBM
     //! @brief A system to handle collisions.
     class CollisionSystem : public WAL::System
     {
+	private:
+		WAL::Wal &_wal;
     public:
         //! @inherit
         void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
-		CollisionSystem() = default;
+		CollisionSystem(WAL::Wal &wal);
 		//! @brief A movable system is copy constructable
 		CollisionSystem(const CollisionSystem &) = default;
 		//! @brief A default destructor

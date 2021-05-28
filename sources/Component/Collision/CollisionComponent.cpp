@@ -17,13 +17,13 @@ namespace BBM
         return new CollisionComponent(entity);
     }
 
-    CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, WAL::Entity &)> callback)
+    CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback)
     : WAL::Component(entity), onCollide(callback)
     {
 
     }
 
-    CollisionComponent::CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, WAL::Entity &> callback)
+    CollisionComponent::CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback)
     : WAL::Component(entity), onCollide(callback)
     {
 

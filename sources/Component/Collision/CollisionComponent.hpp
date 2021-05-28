@@ -13,8 +13,9 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 		private:
-			WAL::Callback<WAL::Entity &, WAL::Entity &> onCollide;
 		public:
+			//onCollide functions to be called
+			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 			
@@ -22,10 +23,10 @@ namespace BBM
 			explicit CollisionComponent(WAL::Entity &entity);
 
 			//! @brief Constructor with a callback function
-			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, WAL::Entity &)> callback);
+			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback);
 
             //! @brief Constructor with a WAL::Callback
-			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, WAL::Entity &> callback);
+			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback);
 
 			//! @brief A default copy constructor
 			CollisionComponent(const CollisionComponent &) = default;
