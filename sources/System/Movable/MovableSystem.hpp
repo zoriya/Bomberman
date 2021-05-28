@@ -6,6 +6,7 @@
 #pragma once
 
 #include "System/System.hpp"
+#include "Entity/Entity.hpp"
 
 namespace BBM
 {

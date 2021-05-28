@@ -21,12 +21,8 @@ namespace WAL
 	class Wal
 	{
 	private:
-		//! @brief The scene manager that allow multiple scene to work together.
-		Scene _scene;
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
-		//! @brief True if the engine should close after the end of the current tick.
-		bool _shouldClose = false;
 
 		//! @brief Call the onUpdate of every system with every component
 		void _update(std::chrono::nanoseconds dtime);
@@ -40,13 +36,17 @@ namespace WAL
 		//! @return True if all dependencies are met, false otherwise.
 		static bool _hasDependencies(const Entity &entity, const System &system);
 	public:
+		//! @brief The scene that contains entities.
+		std::shared_ptr<Scene> scene;
+		//! @brief True if the engine should close after the end of the current tick.
+		bool shouldClose = false;
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
 
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
 		template<typename T, class ...Types>
-		Wal &addSystem(Types ...params)
+		Wal &addSystem(Types &&...params)
 		{
 			const std::type_info &type = typeid(T);
 			auto existing = std::find_if(this->_systems.begin(), this->_systems.end(), [&type] (auto &sys) {
@@ -54,7 +54,7 @@ namespace WAL
 			});
 			if (existing != this->_systems.end())
 				throw DuplicateError("A system of the type \"" + std::string(type.name()) + "\" already exists.");
-			this->_systems.push_back(std::make_unique<T>(params...));
+			this->_systems.push_back(std::make_unique<T>(std::forward<Types>(params)...));
 			return *this;
 		}
 
@@ -122,7 +122,7 @@ namespace WAL
 			auto lastTick = std::chrono::steady_clock::now();
 			std::chrono::nanoseconds fBehind(0);
 
-			while (!this->_shouldClose) {
+			while (!this->shouldClose) {
 				auto now = std::chrono::steady_clock::now();
 				std::chrono::nanoseconds dtime = now - lastTick;
 				fBehind += dtime;

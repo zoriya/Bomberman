@@ -29,17 +29,12 @@ namespace RAY::Drawables::Drawables3D {
 			Ray &operator=(const Ray &) = default;
 
 			//! @brief A default destructor
-			~Ray() = default;
+			~Ray() override = default;
 
 
-			//! @return the start position of the line
-			const Vector3 getStartPosition(void) const;
 
 			//! @return the end position of the line
-			const Vector3 getDirection(void) const;
-
-			//! @brief Set start position
-			Ray &setStartPosition(const Vector3 &startPosition);
+			const Vector3 &getDirection(void) const;
 
 			//! @brief Set end position
 			Ray &setDirection(const Vector3 &direction);
@@ -48,7 +43,7 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 		private:
-			::Ray _ray;
+			Vector3 _direction;
 	};
 };
 

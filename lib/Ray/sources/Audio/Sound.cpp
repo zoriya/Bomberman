@@ -19,19 +19,7 @@ RAY::Audio::Sound::Sound()
 
 RAY::Audio::Sound::~Sound()
 {
-	this->unload();
-}
-
-bool RAY::Audio::Sound::load(const std::string &path)
-{
-	_sound = LoadSound(path.c_str());
-	return true;
-}
-
-bool RAY::Audio::Sound::unload(void)
-{
 	UnloadSound(_sound);
-	return true;
 }
 
 bool RAY::Audio::Sound::isPlaying(void)
