@@ -10,6 +10,12 @@ include_directories(bomberman sources)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
+if (EMSCRIPTEN)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+    set(CMAKE_EXECUTABLE_SUFFIX ".html") # This line is used to set your executable to build with the emscripten html template so taht you can directly open it.
+endif ()
+
+
 set(SOURCES
 	sources/Models/GameState.hpp
 	sources/Runner/Runner.cpp

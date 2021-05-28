@@ -15,6 +15,12 @@
 #include "System/System.hpp"
 #include "Models/Callback.hpp"
 
+#ifdef PLATFORM_WEB
+#include <emscripten/emscripten.h>
+WAL::Wal *walPtr = nullptr;
+void *callbackPtr = nullptr;
+#endif
+
 namespace WAL
 {
 	//! @brief The main WAL class, it is used to setup and run the ECS.
@@ -109,7 +115,14 @@ namespace WAL
 		void run(const std::function<void (Wal &, T &)> &callback, T state = T())
 		{
 			Callback<Wal &, T &> update(callback);
+
+			#ifdef PLATFORM_WEB
+			walPtr = this;
+			callbackPtr = &callback;
+			return emscripten_set_main_loop_arg(runWASM, &state, 0, 1);
+			#else
 			return this->run(update, state);
+			#endif
 		}
 
 		//! @brief Start the game loop
@@ -136,6 +149,27 @@ namespace WAL
 				callback(*this, state);
 			}
 		}
+
+		#ifdef PLATFORM_WEB
+		template<typename T>
+		static void runIteration(T *state)
+		{
+			static std::function<void (Wal &, T &)> callback = callbackPtr;
+			static auto lastTick = std::chrono::steady_clock::now();
+			static std::chrono::nanoseconds fBehind(0);
+
+			auto now = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds dtime = now - lastTick;
+			fBehind += dtime;
+			lastTick = now;
+			while (fBehind > Wal::timestep) {
+				fBehind -= Wal::timestep;
+				this->_fixedUpdate();
+			}
+			walPtr->_update(dtime);
+			callback(wal, state);
+		}
+		#endif
 
 		//! @brief A default constructor
 		Wal() = default;
