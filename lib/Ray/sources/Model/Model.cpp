@@ -8,10 +8,20 @@
 #include "Model/Model.hpp"
 #include "Exceptions/RayError.hpp"
 
-RAY::Drawables::Drawables3D::Model::Model(const std::string &filename, const RAY::Vector3 &position, const RAY::Vector3 &rotationAxis, float rotationAngle, const RAY::Vector3 &scale):
-	ADrawable3D(position, WHITE), _model(LoadModel(filename.c_str())),
-	_rotationAxis(rotationAxis), _rotationAngle(rotationAngle), _scale(scale)
+RAY::Drawables::Drawables3D::Model::Model(const std::string &filename,
+                                          std::optional<std::pair<MaterialType, std::string>> texture,
+										  const RAY::Vector3 &position,
+										  const RAY::Vector3 &rotationAxis,
+										  float rotationAngle,
+										  const RAY::Vector3 &scale)
+	: ADrawable3D(position, WHITE),
+	_model(LoadModel(filename.c_str())),
+	_rotationAxis(rotationAxis),
+	_rotationAngle(rotationAngle),
+	_scale(scale)
 {
+	if (texture.has_value())
+		this->setTextureToMaterial(texture->first, texture->second);
 }
 
 RAY::Drawables::Drawables3D::Model::Model(const Mesh &mesh)
@@ -58,7 +68,15 @@ bool RAY::Drawables::Drawables3D::Model::setAnimation(const RAY::ModelAnimation 
 
 bool RAY::Drawables::Drawables3D::Model::setTextureToMaterial(RAY::Drawables::Drawables3D::Model::MaterialType materialType, const RAY::Texture &texture)
 {
-	SetMaterialTexture(&this->_model.materials[materialType], materialType, texture);
+	this->_textureList[materialType] = texture;
+	SetMaterialTexture(&this->_model.materials[materialType], materialType, this->_textureList[materialType]);
+	return true;
+}
+
+bool RAY::Drawables::Drawables3D::Model::setTextureToMaterial(RAY::Drawables::Drawables3D::Model::MaterialType materialType, const std::string &texturePath)
+{
+	this->_textureList.emplace(materialType, texturePath);
+	SetMaterialTexture(&this->_model.materials[materialType], materialType, this->_textureList[materialType]);
 	return true;
 }
 

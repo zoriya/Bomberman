@@ -14,6 +14,8 @@
 #include "Model/ModelAnimation.hpp"
 #include <raylib.h>
 #include <vector>
+#include <optional>
+#include <map>
 
 namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
@@ -24,7 +26,12 @@ namespace RAY::Drawables::Drawables3D {
 
 			//! @brief Create an model, loading a file
 			//! @param filePath: path to file to load
-			Model(const std::string &filePath, const RAY::Vector3 &position = {0, 0, 0}, const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0), float rotationAngle = 0, const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
+			Model(const std::string &filePath,
+			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
+			      const RAY::Vector3 &position = {0, 0, 0},
+			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0),
+			      float rotationAngle = 0,
+			      const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
@@ -58,6 +65,7 @@ namespace RAY::Drawables::Drawables3D {
 			//! @param materielIndex The type of material to apply the texture to (serves as an index)
 			//! @param texture the texture to apply
 			bool setTextureToMaterial(MaterialType materialType, const RAY::Texture &texture);
+			bool setTextureToMaterial(MaterialType materialType, const std::string &texture);
 
 			//! @return The number of bones in the model
 			int getBoneCount() const;
@@ -85,6 +93,8 @@ namespace RAY::Drawables::Drawables3D {
 		private:
 			//! @brief Raw data from raylib
 			::Model _model;
+			//! @brief The list of textures that can be applied to this model.
+			std::map<MaterialType, Texture> _textureList;
 			//! @brief Rotation property
 			RAY::Vector3 _rotationAxis;
 			//! @brief Rotation property

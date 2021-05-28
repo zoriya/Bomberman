@@ -23,8 +23,6 @@ namespace WAL
 	private:
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<System>> _systems = {};
-		//! @brief True if the engine should close after the end of the current tick.
-		bool _shouldClose = false;
 
 		//! @brief Call the onUpdate of every system with every component
 		void _update(std::chrono::nanoseconds dtime);
@@ -40,6 +38,8 @@ namespace WAL
 	public:
 		//! @brief The scene that contains entities.
 		std::shared_ptr<Scene> scene;
+		//! @brief True if the engine should close after the end of the current tick.
+		bool shouldClose = false;
 		//! @brief The time between each fixed update.
 		static std::chrono::nanoseconds timestep;
 
@@ -122,7 +122,7 @@ namespace WAL
 			auto lastTick = std::chrono::steady_clock::now();
 			std::chrono::nanoseconds fBehind(0);
 
-			while (!this->_shouldClose) {
+			while (!this->shouldClose) {
 				auto now = std::chrono::steady_clock::now();
 				std::chrono::nanoseconds dtime = now - lastTick;
 				fBehind += dtime;

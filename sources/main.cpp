@@ -50,13 +50,12 @@ int demo()
 	WAL::Wal wal;
 	const int screenWidth = 800;
 	const int screenHeight = 450;
-	std::vector<std::string>::const_iterator iterator = textures.begin();
+	auto iterator = textures.begin();
 	const std::string modelPath = "assets/player/player.iqm";
 	RAY::TraceLog::setLevel(LOG_WARNING);
 	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
 	RAY::Image icon("assets/icon.png");
-	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
-	RAY::Drawables::Drawables3D::Model model(modelPath, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
+	RAY::Drawables::Drawables3D::Model model(modelPath, std::pair(MAP_DIFFUSE, "assets/player/blue.png"));
 	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
 	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
 	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
@@ -66,18 +65,19 @@ int demo()
 	RAY::Drawables::Drawables3D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
 	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
 
-	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
+	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem;
 
 	wal.addSystem(circleSystem);
 	entityPlayer.addComponent(circleComponent);
 
-	RAY::Texture texture(get_full_path(*iterator));
+//	RAY::Texture texture(get_full_path(*iterator));
 	RAY::ModelAnimations animations(modelPath);
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
 	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
 	size_t animationIndex = 0;
+	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
 
-	model.setTextureToMaterial(MAP_DIFFUSE, texture);
+//	model.setTextureToMaterial(MAP_DIFFUSE, texture);
 	window.setIcon(icon);
 	camera.setMode(CAMERA_FREE); // Set free camera mode
 
@@ -99,9 +99,9 @@ int demo()
 			++iterator;
 			if (iterator == textures.end())
 				iterator = textures.begin();
-			texture.unload();
-			texture.load(get_full_path(*iterator));
-			model.setTextureToMaterial(MAP_DIFFUSE, texture);
+//			texture.unload();
+//			texture.load(get_full_path(*iterator));
+//			model.setTextureToMaterial(MAP_DIFFUSE, texture);
 		}
 		if (RAY::Controller::Keyboard::isReleased(KEY_LEFT))
 		{
@@ -113,17 +113,17 @@ int demo()
 			animationIndex = ++animationIndex % animations.getAnimationsCount();
 			model.setAnimation(animations[animationIndex]);
 		}
-//		window.setDrawingState(RAY::Window::DRAWING);
-			window.clear();
-			window.useCamera(camera);
+		window.draw();
+		window.clear();
+		window.useCamera(camera);
 
-				window.draw(model);
+		model.drawOn(window);//, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
 
-				window.draw(grid);
-				window.draw(circle);
-			window.unuseCamera();
-			window.draw(instructionText);
-//		window.setDrawingState(RAY::Window::IDLE);
+		window.draw(grid);
+		window.draw(circle);
+		window.unuseCamera();
+		window.draw(instructionText);
+		window.draw();
 	}
 	window.close();
 
