@@ -3,9 +3,12 @@
 // Edited by Benjamin Henry on 5/26/21.
 //
 
+#pragma once
+
 #include <cmath>
 #include <Component/Component.hpp>
 #include <Component/Collider/ColliderComponent.hpp>
+#include <Component/Position/PositionComponent.hpp>
 #include <Component/Movable/MovableComponent.hpp>
 #include <Scene/Scene.hpp>
 #include <map>
@@ -18,15 +21,16 @@ namespace BBM
 	{
 		private:
 			//! @brief Enum of the block available.
-			static enum BlockType {
-				NOTHING = 0,
-				BREAKABLE = 1,
-				UNBREAKABLE = 2,
-				HOLE = 3,
-				BUMPER = 4,
-				STAIRS = 5,
-				END = 6
-			}
+			enum BlockType {
+				NOTHING,
+				BREAKABLE,
+				UNBREAKABLE,
+				HOLE,
+				BUMPER,
+				STAIRS,
+				SPAWNER,
+				END
+			};
 
 			//! @param seed seed to generate random block type
 			//! @param blockCreated block created since the beginning
@@ -36,7 +40,7 @@ namespace BBM
 			//! @param map ASCII map
 			//! @param x x index on the block
 			//! @param y y index on the block
-			static bool isBlockCloseToPlayer(std::map<std::tuple<int, int>, char> map, int x, int y)
+			static bool isBlockCloseToPlayer(std::map<std::tuple<int, int>, BlockType> map, int x, int y);
 
 			//! @param width Width of the map
 			//! @param height Height of the map
@@ -85,7 +89,6 @@ namespace BBM
 			//! @param scene Scene where the map is instanced
 			//! @brief Create stair of the map
 			static void createStairs(Vector3f coords, Vector3f size, WAL::Scene &scene);
-			static char enumToChar(BlockType blockType);
 		public:
 			//! @param width Width of the map
 			//! @param height Height of the map
@@ -93,5 +96,5 @@ namespace BBM
 			//! @brief Generate the map
 			static void generateMap(int width, int height, int seed, WAL::Scene &scene);
 			
-	}
+	};
 } // namespace BBM
