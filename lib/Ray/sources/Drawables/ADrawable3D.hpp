@@ -47,6 +47,9 @@ namespace RAY::Drawables {
 			//! @brief set position
 			virtual ADrawable3D &setPosition(const Vector3 &position);
 
+			//! @return bounding box of drawable
+			operator RAY::BoundingBox() const;
+
 		protected:
 			//! @brief Position of the ADrawable
 			Vector3 _position;

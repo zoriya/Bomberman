@@ -20,4 +20,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawPoint3D(this->_position, this->_color);
 	}
+	
+	RAY::BoundingBox Point::getBoundingBox(void) const
+	{
+		return RAY::BoundingBox(this->_position, this->_position);
+	}
 }

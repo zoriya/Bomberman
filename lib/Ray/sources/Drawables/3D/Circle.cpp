@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/3D/Circle.hpp"
+#include "Exceptions/RayError.hpp"
 
 namespace RAY::Drawables::Drawables3D
 {
@@ -37,9 +38,8 @@ namespace RAY::Drawables::Drawables3D
 		             this->_rotationAngle, this->_color);
 	}
 
-	RAY::BoundingBox Circle::getBoundingBox(void)
+	RAY::BoundingBox Circle::getBoundingBox(void) const
 	{
-		RAY::Mesh mesh(GenMeshSphere(_radius, _radius, 1));
-		return RAY::BoundingBox(mesh);
+		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
 	}
 }

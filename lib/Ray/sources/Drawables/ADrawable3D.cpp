@@ -36,4 +36,9 @@ namespace RAY::Drawables
 		this->_position = position;
 		return *this;
 	}
+
+	ADrawable3D::operator RAY::BoundingBox() const
+	{
+		return this->getBoundingBox();
+	}
 }

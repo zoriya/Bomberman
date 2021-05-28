@@ -41,4 +41,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawLine3D(this->_position, this->_endPosition, this->_color);
 	}
+
+	BoundingBox Line::getBoundingBox(void) const
+	{
+		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
+	}
 }

@@ -30,4 +30,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawRay({this->_position, this->_direction}, this->_color);
 	}
+
+	BoundingBox RAY::getBoundingBox(void) const
+	{
+		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
+	}
 }

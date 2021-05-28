@@ -110,7 +110,7 @@ void RAY::Drawables::Drawables3D::Model::drawOn(RAY::Window &)
 	DrawModelEx(this->_model, this->_position, this->_rotationAxis, this->_rotationAngle, this->_scale, this->_color);
 }
 
-RAY::BoundingBox RAY::Drawables::Drawables3D::Model::getBoundingBox(void)
+RAY::BoundingBox RAY::Drawables::Drawables3D::Model::getBoundingBox(void) const
 {
 	RAY::Mesh mesh = _model.meshes[0];
 	return GetMeshBoundingBox(mesh);
