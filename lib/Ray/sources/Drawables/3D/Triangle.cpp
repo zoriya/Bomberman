@@ -7,6 +7,7 @@
 
 #include "Drawables/3D/Triangle.hpp"
 #include <exception>
+#include "Exceptions/RayError.hpp"
 
 namespace RAY::Drawables::Drawables3D
 {
@@ -56,7 +57,7 @@ namespace RAY::Drawables::Drawables3D
 
 	BoundingBox Triangle::getBoundingBox(void) const
 	{
-		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
+		throw Exception::NotSupportedError("Can't compute bounding box for this drawable");
 	}
 }
 

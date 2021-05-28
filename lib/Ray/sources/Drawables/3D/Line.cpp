@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/3D/Line.hpp"
+#include "Exceptions/RayError.hpp"
 
 namespace RAY::Drawables::Drawables3D
 {
@@ -44,6 +45,6 @@ namespace RAY::Drawables::Drawables3D
 
 	BoundingBox Line::getBoundingBox(void) const
 	{
-		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
+		throw Exception::NotSupportedError("Can't compute bounding box for this drawable");
 	}
 }

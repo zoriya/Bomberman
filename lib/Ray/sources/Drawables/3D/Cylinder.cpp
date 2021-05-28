@@ -59,13 +59,13 @@ namespace RAY::Drawables::Drawables3D
 		RAY::Vector3 max;
 		float maxRadius = this->_bottomRadius > this->_topRadius ? this->_bottomRadius : this->_topRadius;
 
-		min.x = this->_position.x - maxRadius / 2;
-		min.y = this->_position.y - maxRadius / 2;
-		min.z = this->_position.z - maxRadius / 2;
+		min.x = this->_position.x - maxRadius;
+		min.y = this->_position.y - maxRadius;
+		min.z = this->_position.z - maxRadius;
 
-		max.x = this->_position.x + maxRadius / 2;
-		max.y = this->_position.y + maxRadius / 2;
-		max.z = this->_position.z + maxRadius / 2;
+		max.x = this->_position.x + maxRadius;
+		max.y = this->_position.y + maxRadius;
+		max.z = this->_position.z + maxRadius;
 
 		return RAY::BoundingBox(min, max);
 	}

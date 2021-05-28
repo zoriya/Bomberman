@@ -36,13 +36,13 @@ namespace RAY::Drawables::Drawables3D
 		RAY::Vector3 min;
 		RAY::Vector3 max;
 
-		min.x = this->_position.x - this->_radius / 2;
-		min.y = this->_position.y - this->_radius / 2;
-		min.z = this->_position.z - this->_radius / 2;
+		min.x = this->_position.x - this->_radius;
+		min.y = this->_position.y - this->_radius;
+		min.z = this->_position.z - this->_radius;
 
-		max.x = this->_position.x + this->_radius / 2;
-		max.y = this->_position.y + this->_radius / 2;
-		max.z = this->_position.z + this->_radius / 2;
+		max.x = this->_position.x + this->_radius;
+		max.y = this->_position.y + this->_radius;
+		max.z = this->_position.z + this->_radius;
 
 		return RAY::BoundingBox(min, max);
 	}
