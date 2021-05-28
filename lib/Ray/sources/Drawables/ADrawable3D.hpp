@@ -33,7 +33,7 @@ namespace RAY::Drawables {
 			void drawOn(RAY::Window &) override = 0;
 
 			//! @brief get the bounding box of the drawable
-			virtual RAY::BoundingBox getBoundingBox(void) = 0;
+			virtual RAY::BoundingBox getBoundingBox(void) const = 0;
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;

@@ -52,4 +52,21 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawCylinder(this->_position, this->_topRadius, this->_bottomRadius, this->_height, 0, this->_color);
 	}
+
+	RAY::BoundingBox Cylinder::getBoundingBox(void) const
+	{
+		RAY::Vector3 min;
+		RAY::Vector3 max;
+		float maxRadius = this->_bottomRadius > this->_topRadius ? this->_bottomRadius : this->_topRadius;
+
+		min.x = this->_position.x - maxRadius / 2;
+		min.y = this->_position.y - maxRadius / 2;
+		min.z = this->_position.z - maxRadius / 2;
+
+		max.x = this->_position.x + maxRadius / 2;
+		max.y = this->_position.y + maxRadius / 2;
+		max.z = this->_position.z + maxRadius / 2;
+
+		return RAY::BoundingBox(min, max);
+	}
 }

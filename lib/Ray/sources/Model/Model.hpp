@@ -84,7 +84,7 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 			//! @brief Get bounding box
-			RAY::BoundingBox getBoundingBox(void) override;
+			RAY::BoundingBox getBoundingBox(void) const override;
 		private:
 			//! @brief Raw data from raylib
 			::Model _model;

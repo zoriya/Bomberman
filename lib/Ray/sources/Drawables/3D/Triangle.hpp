@@ -56,7 +56,7 @@ namespace RAY::Drawables::Drawables3D {
 			void drawOn(RAY::Window &) override;
 
 			//! @brief Get the bounding box
-			BoundingBox getBoundingBox(void) override;
+			BoundingBox getBoundingBox(void) const override;
 		private:
 			//! @brief Position of B
 			Vector3 _posB;

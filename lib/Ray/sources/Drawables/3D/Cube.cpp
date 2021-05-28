@@ -30,4 +30,20 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawCubeV(this->_position, this->_dimensions, this->_color);
 	}
+
+	RAY::BoundingBox Cube::getBoundingBox(void) const
+	{
+		RAY::Vector3 min;
+		RAY::Vector3 max;
+
+		min.x = this->_position.x - this->_dimensions.x / 2;
+		min.y = this->_position.y - this->_dimensions.y / 2;
+		min.z = this->_position.z - this->_dimensions.z / 2;
+
+		max.x = this->_position.x + this->_dimensions.x / 2;
+		max.y = this->_position.y + this->_dimensions.y / 2;
+		max.z = this->_position.z + this->_dimensions.z / 2;
+
+		return RAY::BoundingBox(min, max);
+	}
 }

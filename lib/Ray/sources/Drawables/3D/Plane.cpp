@@ -30,4 +30,20 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawPlane(this->_position, this->_dimensions, this->_color);
 	}
+
+	RAY::BoundingBox Plane::getBoundingBox(void) const
+	{
+		RAY::Vector3 min;
+		RAY::Vector3 max;
+
+		min.x = this->_position.x - this->_dimensions.x / 2;
+		min.y = this->_position.y;
+		min.z = this->_position.z - this->_dimensions.y / 2;
+
+		max.x = this->_position.x + this->_dimensions.x / 2;
+		max.y = this->_position.y;
+		max.z = this->_position.z + this->_dimensions.y / 2;
+
+		return RAY::BoundingBox(min, max);
+	}
 }

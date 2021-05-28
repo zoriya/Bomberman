@@ -30,4 +30,20 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawSphere(this->_position, this->_radius, this->_color);
 	}
+
+	RAY::BoundingBox Sphere::getBoundingBox(void) const
+	{
+		RAY::Vector3 min;
+		RAY::Vector3 max;
+
+		min.x = this->_position.x - this->_radius / 2;
+		min.y = this->_position.y - this->_radius / 2;
+		min.z = this->_position.z - this->_radius / 2;
+
+		max.x = this->_position.x + this->_radius / 2;
+		max.y = this->_position.y + this->_radius / 2;
+		max.z = this->_position.z + this->_radius / 2;
+
+		return RAY::BoundingBox(min, max);
+	}
 }

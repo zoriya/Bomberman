@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/3D/Grid.hpp"
+#include <limits.h>
 #include "Exceptions/RayError.hpp"
 
 namespace RAY::Drawables::Drawables3D
@@ -53,10 +54,13 @@ namespace RAY::Drawables::Drawables3D
 		DrawGrid(this->_slices, this->_spacing);
 	}
 
-	RAY::BoundingBox Grid::getBoundingBox(void)
+	RAY::BoundingBox Grid::getBoundingBox(void) const
 	{
-		RAY::Mesh mesh = GenMeshPlane(0, 0, 0, 0);
+		float floatMin = std::numeric_limits<float>::min();
+		float floatMax = std::numeric_limits<float>::max();
+		RAY::Vector3 min(floatMin, 0, floatMin);
+		RAY::Vector3 max(floatMax, 0, floatMax);
 
-		return RAY::BoundingBox(GetMeshBoundingBox(mesh));
+		return RAY::BoundingBox(min, max);
 	}
 }
