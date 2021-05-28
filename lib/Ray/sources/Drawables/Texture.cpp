@@ -18,11 +18,6 @@ RAY::Texture::Texture(const Image &image):
 
 }
 
-RAY::Texture::Texture()
-{
-
-}
-
 RAY::Texture::~Texture()
 {
 	UnloadTexture(this->_texture);

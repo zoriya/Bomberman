@@ -25,14 +25,11 @@ namespace RAY
 			//! @param image: reference to image to create texture from
 			Texture(const Image &image);
 
-			//! @brief A default copy constructor
-			Texture(const Texture &) = default;
-
-			//! @brief A default constructor, no ressources loaded
-			Texture();
+			//! @brief A texture is not copy constructable
+			Texture(const Texture &) = delete;
 
 			//! @brief An image is assignable
-			Texture &operator=(const Texture &) = default;
+			Texture &operator=(const Texture &) = delete;
 			
 			//! @brief Texture destructor, will unload ressources
 			~Texture() override;
