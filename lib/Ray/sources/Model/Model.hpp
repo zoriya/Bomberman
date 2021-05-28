@@ -8,7 +8,6 @@
 #ifndef MODEL_HPP_
 #define MODEL_HPP_
 
-#include "IRessource.hpp"
 #include "Drawables/Texture.hpp"
 #include "Drawables/ADrawable3D.hpp"
 #include "Model/ModelAnimation.hpp"
@@ -19,7 +18,7 @@
 
 namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
-	class Model: public IRessource, public Drawables::ADrawable3D {
+	class Model: public Drawables::ADrawable3D {
 		public:
 
 			typedef ::MaterialMapIndex MaterialType;
@@ -46,15 +45,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Model destructor, unloads all related data
 			~Model();
 
-			//! @brief Load model from file (meshes and materials)
-			bool load(const std::string &filePath);
-
-			//! @brief Load model from mesh (default materials)
-			bool load(const Mesh &mesh);
-
-			//! @brief Unload model (including meshes) from memory (RAM and/or VRAM)
-			bool unload() override;
-
 			//! @brief Unload model (excluding meshes) from memory (RAM and/or VRAM)
 			bool unloadKeepMeshes();
 
@@ -64,7 +54,6 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Sets a texture to the Nth material
 			//! @param materielIndex The type of material to apply the texture to (serves as an index)
 			//! @param texture the texture to apply
-			bool setTextureToMaterial(MaterialType materialType, const RAY::Texture &texture);
 			bool setTextureToMaterial(MaterialType materialType, const std::string &texture);
 
 			//! @return The number of bones in the model

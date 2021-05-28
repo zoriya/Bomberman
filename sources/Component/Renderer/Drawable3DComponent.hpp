@@ -6,6 +6,7 @@
 
 #include "Component/Component.hpp"
 #include "Drawables/ADrawable3D.hpp"
+#include "Model/Model.hpp"
 
 namespace BBM
 {

@@ -10,41 +10,31 @@
 
 #include <raylib.h>
 #include <string>
-#include "IRessource.hpp"
 
 namespace RAY
 {
 	//! @brief Object representation of a texture
-	class Texture: public IRessource {
+	class Texture {
 		public:
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
 			Texture(const std::string &filename);
 
-			//! @brief Create an texture, from an image
-			//! @param image: reference to image to create texture from
-			Texture(const Image &image);
-
 			//! @brief A texture is not copy constructable
-			Texture(const Texture &) = delete;
+			Texture(const Texture &);
 
 			//! @brief An image is assignable
-			Texture &operator=(const Texture &) = delete;
+			Texture &operator=(const Texture &);
 			
 			//! @brief Texture destructor, will unload ressources
-			~Texture() override;
-
-			//! @brief load ressources from file
-			//! @param filename: path of input
-			bool load(const std::string &filename) override;
-
-			//! @brief unload ressources
-			bool unload() override;
+			~Texture();
 
 		protected:
 		private:
 			//! @brief Texture, really, that's just it...
 			::Texture _texture;
+
+			std::string _resourcePath;
 
 		INTERNAL:
 			//! @return libray Texture struct

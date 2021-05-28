@@ -13,11 +13,6 @@ RAY::Image::Image(const std::string &filename):
 {
 }
 
-RAY::Image::Image()
-{
-
-}
-
 RAY::Image::Image(RAY::Texture &texture):
 	_image(GetTextureData(texture))
 {
@@ -29,21 +24,9 @@ RAY::Image::~Image()
 	UnloadImage(_image);
 }
 
-bool RAY::Image::load(const std::string &filename)
-{
-	this->_image = LoadImage(filename.c_str());
-	return true;
-}
-
 bool RAY::Image::exportTo(const std::string &outputPath)
 {
 	ExportImage(_image, outputPath.c_str());
-	return true;
-}
-
-bool RAY::Image::unload()
-{
-	UnloadImage(_image);
 	return true;
 }
 

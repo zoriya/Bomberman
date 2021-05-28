@@ -7,35 +7,36 @@
 
 #include "Drawables/Texture.hpp"
 
-RAY::Texture::Texture(const std::string &filename):
-	_texture(LoadTexture(filename.c_str()))
-{
-}
+namespace RAY {
 
-RAY::Texture::Texture(const Image &image):
-	_texture(LoadTextureFromImage(image))
-{
+	Texture::Texture(const std::string &filename):
+		_texture(LoadTexture(filename.c_str())),
+		_resourcePath(filename)
+	{
+	}
 
-}
+	Texture::Texture(const Texture &texture):
+		_texture(LoadTexture(texture._resourcePath.c_str())),
+		_resourcePath(texture._resourcePath)
+	{
+	}
 
-RAY::Texture::~Texture()
-{
-	UnloadTexture(this->_texture);
-}
 
-bool RAY::Texture::load(const std::string &filename)
-{
-	this->_texture = LoadTexture(filename.c_str());
-	return true;
-}
+	Texture &Texture::operator=(const Texture &other)
+	{
+		UnloadTexture(this->_texture);
+		this->_resourcePath = other._resourcePath;
+		this->_texture = LoadTexture(this->_resourcePath.c_str());
+		return *this;
+	}
 
-bool RAY::Texture::unload()
-{
-	UnloadTexture(this->_texture);
-	return true;
-}
+	Texture::~Texture()
+	{
+		UnloadTexture(this->_texture);
+	}
 
-RAY::Texture::operator ::Texture() const
-{
-	return this->_texture;
+	Texture::operator ::Texture() const
+	{
+		return this->_texture;
+	}
 }

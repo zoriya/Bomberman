@@ -18,17 +18,5 @@ RAY::Font::Font()
 
 RAY::Font::~Font()
 {
-	this->unload();
-}
-
-bool RAY::Font::load(const std::string &filename)
-{
-	this->_font = LoadFont(filename.c_str());
-	return true;
-}
-
-bool RAY::Font::unload()
-{
 	UnloadFont(this->_font);
-	return true;
 }

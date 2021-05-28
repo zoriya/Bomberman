@@ -11,16 +11,14 @@
 #include <raylib.h>
 #include <string>
 #include "Texture.hpp"
-#include "IRessource.hpp"
 
 namespace RAY
 {
 	namespace Drawables {
 		class ADrawable2D;
 	}
-	class IRessource;
 	//! @brief Object representation of a framebuffer
-	class Image: public IRessource {
+	class Image {
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
@@ -31,27 +29,17 @@ namespace RAY
 			Image(Texture &texture);
 
 			//! @brief A default copy constructor
-			Image(const Image &image) = default;
-
-			//! @brief A default constructor, no ressources loaded
-			Image();
+			Image(const Image &image) = delete;
 
 			//! @brief An image is assignable
-			Image &operator=(const Image &image) = default;
+			Image &operator=(const Image &image) = delete;
 			
 			//! @brief Image destructor, will unload ressources
 			~Image();
 
-			//! @brief load ressources from file
-			//! @param filename: path of input
-			bool load(const std::string &filename) override;
-
 			//! @brief export to file
 			//! @param outputPath: path of output
 			bool exportTo(const std::string &outputPath);
-
-			//! @brief unload ressources
-			bool unload() override;
 
 
 			//! @brief draw drawable

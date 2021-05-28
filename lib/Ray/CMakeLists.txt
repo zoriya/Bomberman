@@ -14,7 +14,6 @@ endif ()
 set(HEADERS
     sources/Color.hpp
     sources/Font.hpp
-    sources/IRessource.hpp
     sources/Matrix.hpp
     sources/Mesh.hpp
     sources/TraceLog.hpp
