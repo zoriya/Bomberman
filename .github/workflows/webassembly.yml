@@ -1,0 +1,17 @@
+name: Web Building
+on:
+  push:
+    branches:
+      wasm
+
+jobs:
+  Push:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+        ref: master
+    - name: Exec
+      shell: bash
+      run: ./emsdk.sh

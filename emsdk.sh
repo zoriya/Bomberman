@@ -1,15 +1,16 @@
 #! /bin/bash
 PRJECTDIR=`pwd`
 EMSDK_PATH=$HOME/emsdk
-cd $EMSDK_PATH && git pull &&
-./emcmdprompt
+if [[ ! -d $HOME/emsdk ]]; then
+    git clone https://github.com/emscripten-core/emsdk.git
+fi
+cd $EMSDK_PATH &&
+./emsdk install tot &&
 ./emsdk install latest && 
 ./emsdk activate latest && 
 source ./emsdk_env.sh &&
-HELLO=WORLD
 EMSCRIPTEN_PATH=$EMSDK_PATH/upstream/emscripten
 CLANG_PATH=$EMSDK_PATH/upstream/bin
-NODE_PATH=$EMSDK_PATH/node/12.9.1_64bit/bin
 PATH=$PATH:$EMSDK_PATH:$EMSCRIPTEN_PATH:$CLANG_PATH:$NODE_PATH &&
 cd $PRJECTDIR &&
 emcmake cmake -S . -B build &&
