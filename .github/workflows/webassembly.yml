@@ -17,7 +17,7 @@ jobs:
       run: |
         PRJECTDIR=`pwd`
         git clone https://github.com/emscripten-core/emsdk.git
-        EMSDK_PATH=$HOME/emsdk
+        EMSDK_PATH=$PRJECTDIR/emsdk
         cd $EMSDK_PATH &&
         ./emsdk install tot &&
         ./emsdk install latest && 
