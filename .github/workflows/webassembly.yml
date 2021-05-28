@@ -27,6 +27,7 @@ jobs:
         CLANG_PATH=$EMSDK_PATH/upstream/bin
         PATH=$PATH:$EMSDK_PATH:$EMSCRIPTEN_PATH:$CLANG_PATH:$NODE_PATH &&
         cd $PRJECTDIR &&
+
         emcmake cmake -S . -B build &&
         make PLATFORM=PLATFORM_WEB -B &&
         cmake --build build && 

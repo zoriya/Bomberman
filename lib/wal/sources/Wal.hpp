@@ -17,8 +17,8 @@
 
 #ifdef PLATFORM_WEB
 #include <emscripten/emscripten.h>
-WAL::Wal *walPtr = nullptr;
-void *callbackPtr = nullptr;
+void *walPtr = nullptr;
+void *statePtr = nullptr;
 #endif
 
 namespace WAL
@@ -118,8 +118,8 @@ namespace WAL
 
 			#ifdef PLATFORM_WEB
 			walPtr = this;
-			callbackPtr = &callback;
-			return emscripten_set_main_loop_arg(runWASM, &state, 0, 1);
+			statePtr = &state;
+			return emscripten_set_main_loop_arg((em_arg_callback_func)&runIteration<T>, (void *)&callback, 0, 1);
 			#else
 			return this->run(update, state);
 			#endif
@@ -152,9 +152,11 @@ namespace WAL
 
 		#ifdef PLATFORM_WEB
 		template<typename T>
-		static void runIteration(T *state)
+		static void runIteration(void *callbackPtr)
 		{
-			static std::function<void (Wal &, T &)> callback = callbackPtr;
+			static const Callback<Wal &, T &> callback = *((Callback<Wal &, T &> *)callbackPtr);
+			static Wal *wal = (Wal *)walPtr;
+			static T *state = (T *)statePtr;
 			static auto lastTick = std::chrono::steady_clock::now();
 			static std::chrono::nanoseconds fBehind(0);
 
@@ -164,10 +166,10 @@ namespace WAL
 			lastTick = now;
 			while (fBehind > Wal::timestep) {
 				fBehind -= Wal::timestep;
-				this->_fixedUpdate();
+				wal->_fixedUpdate();
 			}
-			walPtr->_update(dtime);
-			callback(wal, state);
+			wal->_update(dtime);
+			callback(*wal, *state);
 		}
 		#endif
 

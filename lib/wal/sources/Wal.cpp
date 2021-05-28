@@ -41,8 +41,8 @@ namespace WAL
 	{
 		// TODO use an hashmap to cache results.
 		const auto &dependency = system.getDependencies();
-		return std::ranges::all_of(dependency.begin(), dependency.end(), [&entity](const auto &dependency) {
-			return entity.hasComponent(dependency);
-		});
+		//return std::ranges::all_of(dependency.begin(), dependency.end(), [&entity](const auto &dependency) {
+		//	return entity.hasComponent(dependency);
+		//});
 	}
 } // namespace WAL
