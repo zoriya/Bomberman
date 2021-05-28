@@ -14,6 +14,8 @@ set(SOURCES
 	sources/Models/GameState.hpp
 	sources/Runner/Runner.cpp
 	sources/Runner/Runner.hpp
+	sources/Component/Collision/CollisionComponent.hpp
+	sources/Component/Collision/CollisionComponent.cpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -23,6 +25,8 @@ set(SOURCES
 	sources/Models/Vector3.hpp
 	sources/Component/Drawable/Drawable3DComponent.hpp
 	sources/Component/Drawable/Drawable2DComponent.hpp
+	sources/System/Collision/CollisionSystem.cpp
+	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Renderer/Renderer3DSystem.hpp
 	sources/System/Renderer/Renderer2DSystem.hpp
 	sources/System/Renderer/RenderScreenSystem.hpp

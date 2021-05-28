@@ -2,8 +2,8 @@
 // Created by Louis Auzuret on 2021-05-20.
 //
 
-#include "lib/wal/sources/Entity/Entity.hpp"
-#include "sources/Component/Collision/CollisionComponent.hpp"
+#include "Entity/Entity.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 
 
 namespace BBM 

@@ -4,9 +4,9 @@
 
 #pragma once
 
-#include "lib/wal/sources/Models/Callback.hpp"
-#include "lib/wal/sources/Component/Component.hpp"
-#include "lib/wal/sources/Entity/Entity.hpp"
+#include "Models/Callback.hpp"
+#include "Component/Component.hpp"
+#include "Entity/Entity.hpp"
 
 namespace BBM 
 {

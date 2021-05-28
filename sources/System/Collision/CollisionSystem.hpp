@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include "lib/wal/sources/System/System.hpp"
+#include "System/System.hpp"
 
 namespace BBM
 {
@@ -12,8 +12,6 @@ namespace BBM
     class CollisionSystem : public WAL::System
     {
     public:
-        //! @inherit
-        const std::type_info &getComponent() const override;
         //! @inherit
         void onFixedUpdate(WAL::Entity &entity) override;
 

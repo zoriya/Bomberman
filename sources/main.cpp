@@ -20,6 +20,7 @@
 #include "Drawables/2D/Circle.hpp"
 #include "Drawables/3D/Cube.hpp"
 #include "Drawables/3D/Sphere.hpp"
+#include "Drawables/3D/Cylinder.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
@@ -47,87 +48,86 @@ std::string get_full_path(const std::string &color)
 
 int demo()
 {
-	WAL::Wal wal;
-	const int screenWidth = 800;
-	const int screenHeight = 450;
-	std::vector<std::string>::const_iterator iterator = textures.begin();
-	const std::string modelPath = "assets/player/player.iqm";
-	RAY::TraceLog::setLevel(LOG_WARNING);
-	RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "Bidibidibop", FLAG_WINDOW_RESIZABLE);
-	RAY::Image icon("assets/icon.png");
-	RAY::Vector3 position(0.0f, 0.0f, 0.0f);			// Set model position
-	RAY::Drawables::Drawables3D::Model model(modelPath, position, RAY::Vector3(1.0f, 20, 0.0f), -180.0f, RAY::Vector3( 3.0f, 3.0f, 3.0f ));
-	RAY::Camera::Camera3D camera(RAY::Vector3(10.0f, 10.0f, 10.0f),
-	                             RAY::Vector3(0.0f, 0.0f, 0.0f),
-	                             RAY::Vector3(0.0f, 1.0f, 0.0f),
-	                             45.0f, CAMERA_PERSPECTIVE
-	);
-	WAL::Entity entityPlayer("roger");
-	RAY::Drawables::Drawables3D::Circle circle({0, 0, 0}, 5, MAROON, {0, 0, 0}, 0);
-	BBM::Drawable3DComponent<RAY::Drawables::Drawables3D::Circle> circleComponent(entityPlayer, circle);
+    // Initialization
+    //--------------------------------------------------------------------------------------
+    const int screenWidth = 800;
+    const int screenHeight = 450;
 
-	BBM::Renderer3DSystem<RAY::Drawables::Drawables3D::Circle> circleSystem(window);
+    RAY::Window &window = RAY::Window::getInstance(screenWidth, screenHeight, "raylib [models] example - box collisions");
 
-	wal.addSystem(circleSystem);
-	entityPlayer.addComponent(circleComponent);
+    // Define the camera to look into our 3d world
+    RAY::Camera::Camera3D camera(RAY::Vector3(0.0f, 10.0f, 10.0f), RAY::Vector3(0.0f, 0.0f, 0.0f), RAY::Vector3(0.0f, 1.0f, 0.0f ), 45.0f, RAY::Camera::Projection::CAMERA_PERSPECTIVE);
 
-	RAY::Texture texture(get_full_path(*iterator));
-	RAY::ModelAnimations animations(modelPath);
+    RAY::Vector3 playerPosition = { 0.0f, 1.0f, 2.0f };
+    RAY::Vector3 playerSize = { 1.0f, 2.0f, 1.0f };
+    RAY::Color playerColor = GREEN;
+
+    RAY::Vector3 enemyBoxPos(-4.0f, 1.0f, 0.0f);
+    RAY::Vector3 enemyBoxSize(2.0f, 2.0f, 2.0f);
+
+    RAY::Vector3 enemySpherePos(4.0f, 0.0f, 0.0f);
+    float enemySphereSize = 1.5f;
 	RAY::Drawables::Drawables3D::Grid grid(10, 1.0f);
-	RAY::Drawables::Drawables2D::Text instructionText("PRESS SPACE to PLAY MODEL ANIMATION", 10, {10, 20} , MAROON);
-	size_t animationIndex = 0;
+	RAY::Drawables::Drawables3D::Cube enemy(enemyBoxPos, enemyBoxSize, MAGENTA);
+	RAY::Drawables::Drawables3D::Cube player(playerPosition, playerSize, playerColor);
+	RAY::Drawables::Drawables3D::Cylinder cylinder(enemySpherePos, 2, 2, 2, MAGENTA);
 
-	model.setTextureToMaterial(MAP_DIFFUSE, texture);
-	window.setIcon(icon);
-	camera.setMode(CAMERA_FREE); // Set free camera mode
+    bool collision = false;
 
-	float y_rotation = 0;
-	window.setFPS(60);
+    window.setFPS(60);               // Set our game to run at 60 frames-per-second
+    //--------------------------------------------------------------------------------------
 
-	while (!window.shouldClose())
-	{
-		camera.update();
+    // Main game loop
+    while (!window.shouldClose())    // Detect window close button or ESC key
+    {
+        // Update
+        //----------------------------------------------------------------------------------
 
-		// Play animation when spacebar is held down
-		if (RAY::Controller::Keyboard::isDown(KEY_SPACE))
-		{
-			animations[animationIndex].incrementFrameCounter();
-			model.setAnimation(animations[animationIndex]);
-		}
-		if (RAY::Controller::Keyboard::isReleased(KEY_UP))
-		{
-			++iterator;
-			if (iterator == textures.end())
-				iterator = textures.begin();
-			texture.unload();
-			texture.load(get_full_path(*iterator));
-			model.setTextureToMaterial(MAP_DIFFUSE, texture);
-		}
-		if (RAY::Controller::Keyboard::isReleased(KEY_LEFT))
-		{
-			animationIndex = --animationIndex % animations.getAnimationsCount();
-			model.setAnimation(animations[animationIndex]);
-		}
-		if (RAY::Controller::Keyboard::isReleased(KEY_RIGHT))
-		{
-			animationIndex = ++animationIndex % animations.getAnimationsCount();
-			model.setAnimation(animations[animationIndex]);
-		}
-		window.setDrawingState(RAY::Window::DRAWING);
-			window.clear();
-			window.useCamera(camera);
+        // Move player
+        if (RAY::Controller::Keyboard::isDown(RAY::Controller::Keyboard::Key::KEY_RIGHT)) playerPosition.x += 0.2f;
+        else if (RAY::Controller::Keyboard::isDown(RAY::Controller::Keyboard::Key::KEY_LEFT)) playerPosition.x -= 0.2f;
+        else if (RAY::Controller::Keyboard::isDown(RAY::Controller::Keyboard::Key::KEY_DOWN)) playerPosition.z += 0.2f;
+        else if (RAY::Controller::Keyboard::isDown(RAY::Controller::Keyboard::Key::KEY_UP)) playerPosition.z -= 0.2f;
 
-				window.draw(model);
+		player.setPosition(playerPosition);
+        collision = RAY::BoundingBox::collision(player, enemy);
+		collision = collision || RAY::BoundingBox::collision(player, cylinder);
+        // Check collisions player vs enemy-box
 
-				window.draw(grid);
-				window.draw(circle);
-			window.unuseCamera();
-			window.draw(instructionText);
-		window.setDrawingState(RAY::Window::IDLE);
-	}
-	window.close();
+        if (collision) player.setColor(RED);
+        else player.setColor(GREEN);
+        //----------------------------------------------------------------------------------
 
+        // Draw
+        //----------------------------------------------------------------------------------
+        window.setDrawingState(RAY::Window::DRAWING);
 
+            window.clear();
+
+            window.useCamera(camera);
+
+                // Draw enemy-box
+				
+                window.draw(enemy);
+
+                // Draw enemy-sphere
+				window.draw(cylinder);
+
+                // Draw player
+                window.draw(player);
+
+                window.draw(grid);        // Draw a grid
+
+            window.unuseCamera();
+
+        window.setDrawingState(RAY::Window::IDLE);
+        //----------------------------------------------------------------------------------
+    }
+
+    // De-Initialization
+    //--------------------------------------------------------------------------------------
+    window.close();        // Close window and OpenGL context
+    //----
 	return 0;
 }
 
