@@ -1,5 +1,5 @@
 name: Build
-on: [push, pull_request]
+on: [push]
 
 jobs:
   Build:
@@ -9,8 +9,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            name: Linux
+         # - os: ubuntu-latest
+         #   name: Linux
          # - os: macOS-latest
          #   name: MacOS
           - os: windows-latest

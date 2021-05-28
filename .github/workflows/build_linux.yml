@@ -1,0 +1,20 @@
+name: Linux Build epi env
+on: [push]
+
+jobs:
+  testbox:
+    runs-on: ubuntu-latest
+    container:
+      image: epitechcontent/epitest-docker:latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+      - name: Build
+        run: |
+          mkdir build && cd build
+          cmake ..
+          cmake --build .
+      - name: CheckBinaryName
+        shell: bash
+        run: test -f build/bomberman
