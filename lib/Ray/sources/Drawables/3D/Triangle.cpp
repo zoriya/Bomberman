@@ -53,5 +53,10 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawTriangle3D(this->_position, this->_posB, this->_posC, this->_color);
 	}
+
+	BoundingBox Triangle::getBoundingBox(void) const
+	{
+		throw RAY::Exception::NotSupportedError("Can't compute bounding box for this drawable");
+	}
 }
 

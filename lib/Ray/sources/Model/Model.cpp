@@ -113,5 +113,12 @@ void RAY::Drawables::Drawables3D::Model::drawOn(RAY::Window &)
 RAY::BoundingBox RAY::Drawables::Drawables3D::Model::getBoundingBox(void) const
 {
 	RAY::Mesh mesh = _model.meshes[0];
-	return GetMeshBoundingBox(mesh);
+	RAY::BoundingBox boundings(mesh);
+	RAY::Vector3 min(this->_position);
+	RAY::Vector3 max;
+
+	max.x = this->_position.x + boundings.getMax().x;
+	max.y = this->_position.y + boundings.getMax().y;
+	max.z = this->_position.z + boundings.getMax().z;
+	return RAY::BoundingBox(min, max);
 }
