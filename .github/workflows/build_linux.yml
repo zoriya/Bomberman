@@ -1,8 +1,9 @@
 name: Linux Build epi env
-on: [push]
+on: [push, pull_request]
 
 jobs:
   testbox:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     runs-on: ubuntu-latest
     container:
       image: epitechcontent/epitest-docker:latest
