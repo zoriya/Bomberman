@@ -1,4 +1,5 @@
 #! /bin/bash
+rm -rf build
 PRJECTDIR=`pwd`
 EMSDK_PATH=./emsdk
 if [[ ! -d ./emsdk ]]; then

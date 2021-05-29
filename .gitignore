@@ -4,4 +4,4 @@ cmake-build-debug
 .vscode
 build/*
 docs/*
-emsdk/*
+emsdk/

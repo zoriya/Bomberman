@@ -115,7 +115,7 @@ namespace WAL
 			Callback<Wal &, T &> update(callback);
 
 			#ifdef PLATFORM_WEB
-			void *paramPtr[3] = {(void *)this, (void *)&callback, (void *)&state};
+			void *paramPtr[3] = {(void *)this, (void *)&update, (void *)&state};
 			return emscripten_set_main_loop_arg((em_arg_callback_func)&runIteration<T>, (void *)paramPtr, 0, 1);
 			#else
 			return this->run(update, state);
