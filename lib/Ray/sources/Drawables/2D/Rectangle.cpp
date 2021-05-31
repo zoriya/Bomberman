@@ -52,9 +52,12 @@ namespace RAY::Drawables::Drawables2D
 
 	Rectangle::operator  ::Rectangle () const
 	{
-		return (::Rectangle){
-			this->_position.x, this->_position.y,
-			this->_dimensions.x, this->_dimensions.y
-		};
+		::Rectangle rect;
+
+		rect.x = this->_position.x;
+		rect.y = this->_position.y;
+		rect.width = this->_dimensions.x;
+		rect.height = this->_dimensions.y;
+		return rect;
 	}
 }
