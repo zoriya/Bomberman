@@ -56,7 +56,7 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
-	sources/System/BombHolder/BombHolderSystem.cpp sources/System/BombHolder/BombHolderSystem.hpp)
+	sources/System/BombHolder/BombHolderSystem.cpp sources/System/BombHolder/BombHolderSystem.hpp sources/Component/Timer/TimerComponent.cpp sources/Component/Timer/TimerComponent.hpp)
 
 add_executable(bomberman
                sources/main.cpp
