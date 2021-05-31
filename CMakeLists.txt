@@ -19,6 +19,8 @@ set(SOURCES
 	sources/Component/Movable/MovableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/Gamepad/GamepadComponent.cpp
+	sources/Component/Gamepad/GamepadComponent.hpp
 	sources/Component/Keyboard/KeyboardComponent.cpp
 	sources/Component/Keyboard/KeyboardComponent.hpp
 	sources/Component/BombHolder/BombHolderComponent.cpp
@@ -29,6 +31,8 @@ set(SOURCES
 	sources/System/Movable/MovableSystem.cpp
 	sources/System/Controllable/ControllableSystem.cpp
 	sources/System/Controllable/ControllableSystem.hpp
+	sources/System/Gamepad/GamepadSystem.cpp
+	sources/System/Gamepad/GamepadSystem.hpp
 	sources/System/Health/HealthSystem.cpp
 	sources/System/Health/HealthSystem.hpp
 	sources/System/Keyboard/KeyboardSystem.cpp
