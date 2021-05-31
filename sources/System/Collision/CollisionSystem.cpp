@@ -25,6 +25,8 @@ namespace BBM
 								std::max(posA.getY(), posA.getY() + col.getBoundY()),
 								std::max(posA.getZ(), posA.getZ() + col.getBoundZ())};
 			for (auto &other : _wal.scene->getEntities()) {
+				if (&other == &entity)
+					continue;
 				auto &colB = entity.getComponent<CollisionComponent>();
 				auto &posB = other.getComponent<PositionComponent>();
 				Vector3f minB = {	std::min(posB.getX(), posB.getX() + colB.getBoundX()),

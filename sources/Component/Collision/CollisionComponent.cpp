@@ -32,6 +32,14 @@ namespace BBM
 	: WAL::Component(entity), onCollide(callback), _bound({boundSize, boundSize, boundSize})
 	{ }
 
+	CollisionComponent::CollisionComponent(WAL::Entity &entity, Vector3f bound)
+	: WAL::Component(entity), onCollide(), _bound(bound)
+	{ }
+
+	CollisionComponent::CollisionComponent(WAL::Entity &entity, float boundSize)
+	: WAL::Component(entity), onCollide(), _bound({boundSize, boundSize, boundSize})
+	{ }
+
 	float CollisionComponent::getBoundX(void) const
 	{
 		return _bound.x;

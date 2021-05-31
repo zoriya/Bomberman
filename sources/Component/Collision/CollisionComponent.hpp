@@ -47,7 +47,13 @@ namespace BBM
 
 			//! @brief Constructor with a WAL::Callback
 			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, float boundSize = 0);
-			
+
+			//! @brief Constructor of collider with no callback
+			CollisionComponent(WAL::Entity &entity, Vector3f bound);
+
+			//! @brief Constructor no callback, same boundSize for all axis
+			CollisionComponent(WAL::Entity &entity, float boundSize);
+
 			//! @brief A component can't be instantiated, it should be derived.
 			CollisionComponent(const CollisionComponent &) = default;
 
