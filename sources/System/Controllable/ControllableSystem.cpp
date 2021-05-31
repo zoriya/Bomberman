@@ -22,6 +22,6 @@ namespace BBM
 		auto &controllable = entity.getComponent<ControllableComponent>();
 		auto &movable = entity.getComponent<MovableComponent>();
 
-		movable.addForce(Vector3f(controllable.moveX, 0, controllable.moveZ));
+		movable.addForce(Vector3f(controllable.moveX, controllable.jump, controllable.moveZ));
 	}
 }

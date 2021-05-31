@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
+include_directories(bomberman sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
@@ -38,12 +39,24 @@ set(SOURCES
 	sources/Models/Vector3.hpp
 	sources/Component/GridCentered/GridCenteredComponent.cpp
 	sources/Component/GridCentered/GridCenteredComponent.hpp
-	sources/System/GridCentered/GridCenteredSystem.cpp sources/System/GridCentered/GridCenteredSystem.hpp)
+	sources/System/GridCentered/GridCenteredSystem.cpp
+	sources/System/GridCentered/GridCenteredSystem.hpp
+	sources/Models/Vector2.hpp
+	sources/Component/Renderer/Drawable3DComponent.hpp
+	sources/Component/Renderer/Drawable2DComponent.hpp
+	sources/System/Renderer/Renderer3DSystem.hpp
+	sources/System/Renderer/Renderer2DSystem.hpp
+	sources/System/Renderer/RenderScreenSystem.hpp
+	sources/System/Renderer/RenderScreenSystem.cpp
+	sources/Component/Renderer/CameraComponent.cpp
+	sources/Component/Renderer/CameraComponent.hpp
+	sources/System/Renderer/Render2DScreenSystem.cpp
+	sources/System/Renderer/Render2DScreenSystem.hpp
+)
 
 add_executable(bomberman
-	sources/main.cpp
-	${SOURCES}
-)
+               sources/main.cpp
+               ${SOURCES})
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 

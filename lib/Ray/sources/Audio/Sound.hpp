@@ -34,12 +34,6 @@ namespace RAY::Audio
 			//! @brief A Sound is assignable
 			Sound &operator=(const Sound &sound) = default;
 
-			//! @brief Load Sound stream from file
-			bool load(const std::string &path) override;
-
-			//! @brief Unload Sound stream
-			bool unload(void) override;
-
 			//! @brief Check if Sound is playing
 			bool isPlaying(void) override;
 

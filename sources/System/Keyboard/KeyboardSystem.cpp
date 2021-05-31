@@ -3,6 +3,7 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
+#include <iostream>
 #include "KeyboardSystem.hpp"
 #include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -25,23 +26,23 @@ namespace BBM
 		const auto &keyboard = entity.getComponent<KeyboardComponent>();
 		auto &controllable = entity.getComponent<ControllableComponent>();
 
-		const std::map<KeyboardKey, bool> keyPressedMap = {
+		const std::map<KeyboardKey, bool &> keyPressedMap = {
 			{keyboard.keyJump, controllable.jump},
 			{keyboard.keyBomb, controllable.bomb},
 			{keyboard.keyPause, controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isPressed(key.first);
+			key.second = Keyboard::isDown(key.first);
 		controllable.moveX = 0;
 		controllable.moveZ = 0;
-		if (Keyboard::isPressed(keyboard.keyRight))
+		if (Keyboard::isDown(keyboard.keyRight))
 			controllable.moveX += 1;
-		if (Keyboard::isPressed(keyboard.keyLeft))
+		if (Keyboard::isDown(keyboard.keyLeft))
 			controllable.moveX -= 1;
-		if (Keyboard::isPressed(keyboard.keyUp))
-			controllable.moveX += 1;
-		if (Keyboard::isPressed(keyboard.keyDown))
-			controllable.moveX -= 1;
+		if (Keyboard::isDown(keyboard.keyUp))
+			controllable.moveZ += 1;
+		if (Keyboard::isDown(keyboard.keyDown))
+			controllable.moveZ -= 1;
 	}
 }

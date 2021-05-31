@@ -19,4 +19,4 @@ namespace BBM
 	{
 		this->_acceleration += force;
 	}
-}
+} // namespace WAL

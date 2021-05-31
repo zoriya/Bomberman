@@ -34,7 +34,7 @@ namespace RAY::Drawables::Drawables2D {
 			Point &operator=(const Point &) = default;
 
 			//! @brief A default destructor
-			~Point() = default;
+			~Point() override = default;
 
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;

@@ -6,6 +6,7 @@
 #pragma once
 
 #include "System/System.hpp"
+#include "Entity/Entity.hpp"
 
 namespace BBM
 {
@@ -25,4 +26,4 @@ namespace BBM
 		//! @brief A movable system is assignable.
 		MovableSystem &operator=(const MovableSystem &) = default;
 	};
-}
+} // namespace WAL

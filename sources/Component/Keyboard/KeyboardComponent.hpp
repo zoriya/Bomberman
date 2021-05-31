@@ -23,11 +23,11 @@ namespace BBM
 			//! @brief pause key
 			Key keyPause = KEY_ESCAPE;
 			//! @brief move right key
-			Key keyRight = KEY_Q;
+			Key keyRight = KEY_A;
 			//! @brief move left key
 			Key keyLeft = KEY_D;
 			//! @brief move up key
-			Key keyUp = KEY_Z;
+			Key keyUp = KEY_W;
 			//! @brief move down key
 			Key keyDown = KEY_S;
 
