@@ -114,9 +114,9 @@ namespace WAL
 		{
 			Callback<Wal &, T &> update(callback);
 
-			#ifdef PLATFORM_WEB
+			#if defined(PLATFORM_WEB)
 			void *paramPtr[3] = {(void *)this, (void *)&update, (void *)&state};
-			return emscripten_set_main_loop_arg((em_arg_callback_func)&runIteration<T>, (void *)paramPtr, 0, 1);
+			return emscripten_set_main_loop_arg((em_arg_callback_func)runIteration<T>, (void *)paramPtr, 0, 1);
 			#else
 			return this->run(update, state);
 			#endif
@@ -151,9 +151,9 @@ namespace WAL
 		template<typename T>
 		static void runIteration(void *param)
 		{
-			void **paramsPtr = (void **)param;
-			static const Callback<Wal &, T &> callback = *((Callback<Wal &, T &> *)paramsPtr[1]);
+			static void **paramsPtr = (void **)param;
 			static Wal *wal = (Wal *)paramsPtr[0];
+			static const Callback<Wal &, T &> callback = *((Callback<Wal &, T &> *)paramsPtr[1]);
 			static T *state = (T *)paramsPtr[2];
 			static auto lastTick = std::chrono::steady_clock::now();
 			static std::chrono::nanoseconds fBehind(0);
