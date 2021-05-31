@@ -36,7 +36,7 @@ namespace RAY::Drawables::Drawables2D {
 			Circle &operator=(const Circle &) = default;
 
 			//! @brief A default destructor
-			~Circle() = default;
+			~Circle() override = default;
 
 			//! @return the radius of the circle
 			int getRadius(void) const;

@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cmath>
+#include "Vector/Vector3.hpp"
 
 namespace BBM
 {
@@ -152,12 +153,18 @@ namespace BBM
 		{
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
 		}
+
+		operator RAY::Vector3() const requires(std::is_same_v<T, float>)
+		{
+			return RAY::Vector3(this->x, this->y, this->z);
+		}
 	};
 
 	typedef Vector3<float> Vector3f;
 	typedef Vector3<unsigned> Vector3u;
 	typedef Vector3<int> Vector3i;
-} // namespace WAL
+}
+
 
 template<typename T>
 std::ostream &operator<<(std::ostream &s, const BBM::Vector3<T> &v)

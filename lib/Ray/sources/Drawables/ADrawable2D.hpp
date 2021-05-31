@@ -10,10 +10,11 @@
 
 #include <raylib.h>
 #include "Vector/Vector2.hpp"
+#include "Image.hpp"
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
 
-namespace RAY::Drawables::Drawables2D {
+namespace RAY::Drawables {
 	//! @brief Abstraction of any two-dimensionnal drawable
 	class ADrawable2D: public IDrawable
 	{
@@ -32,10 +33,10 @@ namespace RAY::Drawables::Drawables2D {
 			ADrawable2D(const ADrawable2D &) = default;
 
 			//! @brief A default destructor
-			virtual ~ADrawable2D() = default;
+			~ADrawable2D() override = default;
 
 			//! @return the top-left position of the ADrawable
-			const Vector2 &getPosition(void) const;
+			const RAY::Vector2 &getPosition(void) const;
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;
@@ -50,7 +51,7 @@ namespace RAY::Drawables::Drawables2D {
 			ADrawable2D &setColor(const Color &color);
 
 			//! @brief Draw drawble on window
-			virtual void drawOn(RAY::Window &) = 0;
+			void drawOn(RAY::Window &) override = 0;
 
 			//! @brief Draw drawble on image
 			virtual void drawOn(RAY::Image &image) = 0;
