@@ -110,7 +110,7 @@ namespace RAY::Drawables::Drawables3D {
 	{
 		if (Model::_modelsCache.find(path) == Model::_modelsCache.end())
 			Model::_modelsCache.emplace(path, std::shared_ptr<::Model>(
-			new ::Model(LoadModel(path.c_str())), [](auto p) {
+			new ::Model(LoadModel(path.c_str())), [](::Model *p) {
            		UnloadModel(*p);
            		delete p;
         	}));

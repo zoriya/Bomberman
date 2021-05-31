@@ -47,7 +47,7 @@ namespace RAY {
 	{
 		if (Image::_modelsCache.find(path) == Image::_modelsCache.end())
 			Image::_modelsCache.emplace(path, std::shared_ptr<::Image>(
-			new ::Image(LoadImage(path.c_str())), [](auto p) {
+			new ::Image(LoadImage(path.c_str())), [](::Image *p) {
 	       		UnloadImage(*p);
 	       		delete p;
 	    	}));
