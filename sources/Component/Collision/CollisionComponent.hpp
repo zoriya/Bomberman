@@ -17,6 +17,8 @@ namespace BBM
 			//! @brief Bound size on all axis
 			Vector3f _bound;
 		public:
+			//! @brief get vector of bounds
+			Vector3f getBounds(void) const;
 			//! @brief get bound size on the X axis
 			float getBoundX(void) const;
 			//! @brief get bound size on the Y axis

@@ -158,6 +158,22 @@ namespace BBM
 		{
 			return RAY::Vector3(this->x, this->y, this->z);
 		}
+
+		static Vector3<T> min(Vector3<T> a, Vector3<T> b)
+		{
+			Vector3<T> min = {	std::min(a.x, b.x),
+								std::min(a.y, b.y),
+								std::min(a.z, b.z)};
+			return min;	
+		}
+
+		static Vector3<T> max(Vector3<T> a, Vector3<T> b)
+		{
+			Vector3<T> max = {	std::max(a.x, b.x),
+								std::max(a.y, b.y),
+								std::max(a.z, b.z)};
+			return max;	
+		}
 	};
 
 	typedef Vector3<float> Vector3f;

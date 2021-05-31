@@ -40,6 +40,11 @@ namespace BBM
 	: WAL::Component(entity), onCollide(), _bound({boundSize, boundSize, boundSize})
 	{ }
 
+	Vector3f CollisionComponent::getBounds(void) const
+	{
+		return _bound;
+	}
+
 	float CollisionComponent::getBoundX(void) const
 	{
 		return _bound.x;

@@ -35,5 +35,6 @@ namespace BBM
 		MovableComponent &operator=(const MovableComponent &) = delete;
 
 		friend class MovableSystem;
+		friend class CollisionSystem;
 	};
 } // namespace WAL
