@@ -24,8 +24,6 @@ set(SOURCES
 	sources/Component/Gamepad/GamepadComponent.hpp
 	sources/Component/Keyboard/KeyboardComponent.cpp
 	sources/Component/Keyboard/KeyboardComponent.hpp
-	sources/Component/BombHolder/BombHolderComponent.cpp
-	sources/Component/BombHolder/BombHolderComponent.hpp
 	sources/Component/Health/HealthComponent.cpp
 	sources/Component/Health/HealthComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
