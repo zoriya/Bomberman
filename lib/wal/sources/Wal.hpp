@@ -133,6 +133,7 @@ namespace WAL
 					this->_fixedUpdate();
 				}
 				this->_update(dtime);
+				// TODO delete entities scheduled for deletion.
 				callback(*this, state);
 			}
 		}
