@@ -16,6 +16,7 @@
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
+#include "Map/Map.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -56,6 +57,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(10, 10, 10)
 			.addComponent<CameraComponent>();
+		Map::generateMap(15, 15, rand(), scene);
 		return scene;
 	}
 
