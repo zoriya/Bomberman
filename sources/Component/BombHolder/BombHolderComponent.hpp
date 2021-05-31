@@ -22,7 +22,7 @@ namespace BBM
 			//! @brief The max number of  bomb that this entity can have.
 			unsigned int maxBombCount = 3;
 			//! @brief The number of seconds of each refill. This variable is used to reset the nextBombRefill value.
-			std::chrono::nanoseconds refillRate = 5000ns;
+			std::chrono::nanoseconds refillRate = 5000ms;
 			//! @brief The number of nanosecond before the next bomb refill.
 			std::chrono::nanoseconds nextBombRefill = refillRate;
 

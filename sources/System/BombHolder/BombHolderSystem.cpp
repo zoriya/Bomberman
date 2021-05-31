@@ -36,18 +36,16 @@ namespace BBM
 		auto &position = entity.getComponent<PositionComponent>();
 		auto &controllable = entity.getComponent<ControllableComponent>();
 
+		if (controllable.bomb && holder.bombCount > 0) {
+			holder.bombCount--;
+			this->_spawnBomb(position.position);
+		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;
 			if (holder.nextBombRefill <= 0ns) {
 				holder.nextBombRefill = holder.refillRate;
 				holder.bombCount++;
-				std::cout << "Count: " << holder.bombCount << std::endl;
 			}
-		}
-		if (controllable.bomb && holder.bombCount > 0) {
-			holder.bombCount--;
-			std::cout << "Now" << std::endl;
-			this->_spawnBomb(position.position);
 		}
 	}
 }
