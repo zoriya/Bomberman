@@ -14,6 +14,7 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 		private:
+			//! @brief Bound size on all axis
 			Vector3f _bound;
 		public:
 			//! @brief get bound size on the X axis
@@ -28,7 +29,7 @@ namespace BBM
 			void setBoundY(float);
 			//! @brief set bound size on the Z axis
 			void setBoundZ(float);
-			//onCollide functions to be called
+			//! @brief onCollide functions to be called
 			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
@@ -39,13 +40,13 @@ namespace BBM
 			//! @brief Constructor with a callback function
 			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, Vector3f bound);
 
-			//! @brief Constructor with a callback function
+			//! @brief Constructor with a callback function, same boundSize for all axis
 			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, float boundSize = 0);
 
 			//! @brief Constructor with a WAL::Callback
 			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, Vector3f bound);
 
-			//! @brief Constructor with a WAL::Callback
+			//! @brief Constructor with a WAL::Callback, same boundSize for all axis
 			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, float boundSize = 0);
 
 			//! @brief Constructor of collider with no callback
@@ -54,7 +55,7 @@ namespace BBM
 			//! @brief Constructor no callback, same boundSize for all axis
 			CollisionComponent(WAL::Entity &entity, float boundSize);
 
-			//! @brief A component can't be instantiated, it should be derived.
+			//! @brief Default copy constructor
 			CollisionComponent(const CollisionComponent &) = default;
 
 			//! @brief default destructor

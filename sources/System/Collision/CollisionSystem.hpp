@@ -15,6 +15,7 @@ namespace BBM
     class CollisionSystem : public WAL::System
     {
 	private:
+		//! @brief reference to the ECS engine to get other entities
 		WAL::Wal &_wal;
     public:
         //! @inherit
@@ -22,11 +23,11 @@ namespace BBM
 
 		//! @brief A default constructor
 		CollisionSystem(WAL::Wal &wal);
-		//! @brief A movable system is copy constructable
+		//! @brief A Collision system is copy constructable
 		CollisionSystem(const CollisionSystem &) = default;
 		//! @brief A default destructor
 		~CollisionSystem() override = default;
-		//! @brief A movable system is assignable.
+		//! @brief A Collision system is assignable.
 		CollisionSystem &operator=(const CollisionSystem &) = default;
     };
 }
