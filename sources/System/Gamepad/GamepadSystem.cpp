@@ -1,6 +1,5 @@
 //
-// Created by Tom Augier on 2021-05-20.
-// Edited by Benjamin Henry on 2021-05-20.
+// Created by Arthur Jamet on 2021-05-31.
 //
 
 #include "GamepadSystem.hpp"

@@ -17,6 +17,7 @@
 #include <Component/Movable/MovableComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
+#include <System/Gamepad/GamepadSystem.hpp>
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
@@ -40,6 +41,7 @@ namespace BBM
 	void addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<KeyboardSystem>()
+		    .addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<MovableSystem>();
 	}
