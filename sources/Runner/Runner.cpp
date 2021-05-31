@@ -55,7 +55,7 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"));
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<PositionComponent>(25, 25, 25)
 			.addComponent<CameraComponent>();
 		Map::generateMap(15, 15, rand(), scene);
 		return scene;

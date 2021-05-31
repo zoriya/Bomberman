@@ -142,7 +142,7 @@ namespace BBM
 				map[std::make_tuple(i, j)] = NOTHING;
 		map[std::make_tuple(1, 1)] = SPAWNER;
 		map[std::make_tuple(width - 1, 1)] = SPAWNER;
-		map[std::make_tuple(1, height - 2)] = SPAWNER;
+		map[std::make_tuple(1, height - 1)] = SPAWNER;
 		map[std::make_tuple(width - 1, height - 1)] = SPAWNER;
 		for (int i = 1; i < width - 1; i++) {
 			for (int j = 1; j < height - 1; j++) {
@@ -151,7 +151,7 @@ namespace BBM
 				} else {
 					map[std::make_tuple(i, j)] = getRandomBlockType(seed, i * width + j);
 				}
-				if (isBlockCloseToBlockType(map, i , j, UNBREAKABLE) && !isBlockCloseToBlockType(map, i , j, SPAWNER)) {
+				if (map[std::make_tuple(i, j)] != NOTHING && isBlockCloseToBlockType(map, i , j, UNBREAKABLE) && !isBlockCloseToBlockType(map, i , j, SPAWNER)) {
 					map[std::make_tuple(i, j)] = BREAKABLE;
 				}
 			}
