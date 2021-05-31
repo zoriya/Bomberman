@@ -56,11 +56,18 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
-	sources/System/BombHolder/BombHolderSystem.cpp sources/System/BombHolder/BombHolderSystem.hpp sources/Component/Timer/TimerComponent.cpp sources/Component/Timer/TimerComponent.hpp)
+	sources/System/BombHolder/BombHolderSystem.cpp
+	sources/System/BombHolder/BombHolderSystem.hpp
+	sources/Component/Timer/TimerComponent.cpp
+	sources/Component/Timer/TimerComponent.hpp
+	sources/System/Timer/TimerSystem.cpp
+	sources/System/Timer/TimerSystem.hpp
+)
 
 add_executable(bomberman
                sources/main.cpp
-               ${SOURCES})
+               ${SOURCES}
+)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
@@ -71,7 +78,8 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/MainTest.cpp
 	tests/EngineTests.cpp
 	tests/CallbackTest.cpp
-	tests/MoveTests.cpp)
+	tests/MoveTests.cpp
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

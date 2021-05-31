@@ -11,6 +11,7 @@
 #include <Model/Model.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
+#include "System/Timer/TimerSystem.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "System/BombHolder/BombHolderSystem.hpp"
 #include "System/Renderer/Renderer3DSystem.hpp"
@@ -42,7 +43,8 @@ namespace BBM
 
 	void addSystems(WAL::Wal &wal)
 	{
-		wal.addSystem<KeyboardSystem>()
+		wal.addSystem<TimerSystem>()
+			.addSystem<KeyboardSystem>()
 		    .addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<BombHolderSystem>(wal)
