@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Component/Component.hpp>
+#include <Models/Vector3.hpp>
 
 namespace BBM
 {
@@ -13,11 +14,14 @@ namespace BBM
 	class CameraComponent : public WAL::Component
 	{
 	public:
+		//! @brief The camera's target, the cam will look at this position.
+		Vector3f target;
+
 		//! @inherit
 		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Ctor
-		explicit CameraComponent(WAL::Entity &);
+		explicit CameraComponent(WAL::Entity &, Vector3f target = Vector3f());
 		//! @brief A camera component is copy constructable.
 		CameraComponent(const CameraComponent &) = default;
 		//! @brief Default destructor.

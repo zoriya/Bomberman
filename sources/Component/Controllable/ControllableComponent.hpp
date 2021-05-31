@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <Models/Vector2.hpp>
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 
@@ -13,10 +14,8 @@ namespace BBM
 	class ControllableComponent : public WAL::Component
 	{	
 		public:
-			//! @brief input value for X axe
-			float moveX = 0;
-			//! @brief input value for Z axe
-			float moveZ = 0;
+			//! @brief The X and Z abscis of the movement.
+			Vector2f move;
 			//! @brief input value for jump
 			bool jump = false;
 			//! @brief input value for bomb

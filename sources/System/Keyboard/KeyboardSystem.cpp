@@ -34,15 +34,14 @@ namespace BBM
 
 		for (auto key : keyPressedMap)
 			key.second = Keyboard::isDown(key.first);
-		controllable.moveX = 0;
-		controllable.moveZ = 0;
+		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
-			controllable.moveX += 1;
+			controllable.move.x += 1;
 		if (Keyboard::isDown(keyboard.keyLeft))
-			controllable.moveX -= 1;
+			controllable.move.x -= 1;
 		if (Keyboard::isDown(keyboard.keyUp))
-			controllable.moveZ += 1;
+			controllable.move.y += 1;
 		if (Keyboard::isDown(keyboard.keyDown))
-			controllable.moveZ -= 1;
+			controllable.move.y -= 1;
 	}
 }

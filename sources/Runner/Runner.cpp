@@ -72,7 +72,7 @@ namespace BBM
 			.addComponent<KeyboardComponent>()
 			.addComponent<MovableComponent>();
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<PositionComponent>(0, 20, -5)
 			.addComponent<CameraComponent>();
 		return scene;
 	}

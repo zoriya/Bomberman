@@ -10,6 +10,8 @@
 
 namespace BBM
 {
+	float ControllableSystem::speed = .25f;
+
 	ControllableSystem::ControllableSystem()
 		: WAL::System({
 			typeid(ControllableComponent),
@@ -21,7 +23,8 @@ namespace BBM
 	{
 		auto &controllable = entity.getComponent<ControllableComponent>();
 		auto &movable = entity.getComponent<MovableComponent>();
+		Vector2f move = controllable.move.normalized() * ControllableSystem::speed;
 
-		movable.addForce(Vector3f(controllable.moveX, controllable.jump, controllable.moveZ));
+		movable.addForce(Vector3f(move.x, controllable.jump, move.y));
 	}
 }

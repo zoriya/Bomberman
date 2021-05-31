@@ -13,6 +13,9 @@ namespace BBM
 	class ControllableSystem : public WAL::System
 	{
 	public:
+		//! @brief The speed applied to every controllable entities.
+		static float speed;
+
 		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
 
