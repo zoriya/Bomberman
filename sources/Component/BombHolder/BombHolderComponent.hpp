@@ -8,30 +8,23 @@
 
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace BBM
 {
 	class BombHolderComponent : public WAL::Component
 	{
-
-		private:
-			//! @brief bomb count of an entity
-			unsigned int _bombCount;
-			//! @brief max bomb count of an entity
-			unsigned int _maxBombCount;
-
 		public:
-			//! @brief add bomb to the entity
-			void addBomb(unsigned int bombCount);
-			
-			//! @brief add bomb bax of the entity
-			void addMaxBombCount(unsigned int maxBombCount);
-
-			//! @brief reduce bomb max of the entity
-			void removeMaxBombCount(unsigned int bombCount);
-			
-			//! @brief reduce bomb
-			void removeBomb(unsigned int bombCount);
+			//! @brief The number of bomb that this entity hold.
+			unsigned int bombCount = 1;
+			//! @brief The max number of  bomb that this entity can have.
+			unsigned int maxBombCount = 3;
+			//! @brief The number of seconds of each refill. This variable is used to reset the nextBombRefill value.
+			std::chrono::nanoseconds refillRate = 5000ns;
+			//! @brief The number of nanosecond before the next bomb refill.
+			std::chrono::nanoseconds nextBombRefill = refillRate;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;

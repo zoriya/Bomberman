@@ -3,7 +3,6 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
-#include <iostream>
 #include "KeyboardSystem.hpp"
 #include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -21,7 +20,7 @@ namespace BBM
 		})
 	{}
 
-	void KeyboardSystem::onFixedUpdate(WAL::Entity &entity)
+	void KeyboardSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds)
 	{
 		const auto &keyboard = entity.getComponent<KeyboardComponent>();
 		auto &controllable = entity.getComponent<ControllableComponent>();
@@ -33,7 +32,7 @@ namespace BBM
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isDown(key.first);
+			key.second = Keyboard::isPressed(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
 			controllable.move.x += 1;

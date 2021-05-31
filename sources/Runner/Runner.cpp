@@ -4,20 +4,22 @@
 
 #include <Wal.hpp>
 #include <iostream>
-#include <System/Movable/MovableSystem.hpp>
-#include <System/Renderer/RenderScreenSystem.hpp>
-#include <System/Renderer/Render2DScreenSystem.hpp>
-#include <System/Renderer/Renderer2DSystem.hpp>
+#include "System/Movable/MovableSystem.hpp"
+#include "System/Renderer/RenderScreenSystem.hpp"
+#include "System/Renderer/Render2DScreenSystem.hpp"
+#include "System/Renderer/Renderer2DSystem.hpp"
 #include <Model/Model.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
-#include <System/Renderer/Renderer3DSystem.hpp>
-#include <System/Keyboard/KeyboardSystem.hpp>
-#include <System/Controllable/ControllableSystem.hpp>
-#include <Component/Movable/MovableComponent.hpp>
-#include <Component/Controllable/ControllableComponent.hpp>
-#include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
+#include "Component/BombHolder/BombHolderComponent.hpp"
+#include "System/BombHolder/BombHolderSystem.hpp"
+#include "System/Renderer/Renderer3DSystem.hpp"
+#include "System/Keyboard/KeyboardSystem.hpp"
+#include "System/Controllable/ControllableSystem.hpp"
+#include "Component/Movable/MovableComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Component/Keyboard/KeyboardComponent.hpp"
+#include "System/Gamepad/GamepadSystem.hpp"
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
@@ -43,6 +45,7 @@ namespace BBM
 		wal.addSystem<KeyboardSystem>()
 		    .addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
+			.addSystem<BombHolderSystem>(wal)
 			.addSystem<MovableSystem>();
 	}
 
@@ -66,13 +69,14 @@ namespace BBM
 			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<MovableComponent>();;
+			.addComponent<MovableComponent>();
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<MovableComponent>();
+			.addComponent<MovableComponent>()
+			.addComponent<BombHolderComponent>();
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(0, 20, -5)
 			.addComponent<CameraComponent>();

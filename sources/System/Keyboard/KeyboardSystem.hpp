@@ -15,7 +15,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds) override;
 
 		//! @brief A default constructor
 		KeyboardSystem();
