@@ -32,6 +32,10 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
+	sources/Component/Collision/CollisionComponent.cpp
+	sources/Component/Collision/CollisionComponent.hpp
+	sources/System/Collision/CollisionSystem.hpp
+	sources/System/Collision/CollisionSystem.cpp
 )
 
 add_executable(bomberman
