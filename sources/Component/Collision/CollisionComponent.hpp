@@ -14,23 +14,9 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 		private:
-			//! @brief Bound size on all axis
-			Vector3f _bound;
 		public:
-			//! @brief get vector of bounds
-			Vector3f getBounds(void) const;
-			//! @brief get bound size on the X axis
-			float getBoundX(void) const;
-			//! @brief get bound size on the Y axis
-			float getBoundY(void) const;
-			//! @brief get bound size on the Z axis
-			float getBoundZ(void) const;
-			//! @brief set bound size on the X axis
-			void setBoundX(float);
-			//! @brief set bound size on the Y axis
-			void setBoundY(float);
-			//! @brief set bound size on the Z axis
-			void setBoundZ(float);
+			//! @brief Bound size on all axis
+			Vector3f bound;
 			//! @brief onCollide functions to be called
 			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
 			//! @inherit

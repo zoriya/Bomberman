@@ -11,15 +11,15 @@
 
 namespace BBM
 {
-    //! @brief A system to handle collisions.
-    class CollisionSystem : public WAL::System
-    {
+	//! @brief A system to handle collisions.
+	class CollisionSystem : public WAL::System
+	{
 	private:
 		//! @brief reference to the ECS engine to get other entities
 		WAL::Wal &_wal;
-    public:
-        //! @inherit
-        void onFixedUpdate(WAL::Entity &entity) override;
+	public:
+		//! @inherit
+		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
 		CollisionSystem(WAL::Wal &wal);
@@ -29,5 +29,5 @@ namespace BBM
 		~CollisionSystem() override = default;
 		//! @brief A Collision system is assignable.
 		CollisionSystem &operator=(const CollisionSystem &) = default;
-    };
+	};
 }

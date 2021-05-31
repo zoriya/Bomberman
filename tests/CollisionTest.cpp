@@ -33,9 +33,9 @@ TEST_CASE("Collsion test", "[Component][System]")
 	Entity &entity = wal.scene->getEntities()[0];
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
-	entity.getComponent<CollisionComponent>()._bound.x = 5;
-	entity.getComponent<CollisionComponent>()._bound.y = 5;
-	entity.getComponent<CollisionComponent>()._bound.z = 5;
+	entity.getComponent<CollisionComponent>().bound.x = 5;
+	entity.getComponent<CollisionComponent>().bound.y = 5;
+	entity.getComponent<CollisionComponent>().bound.z = 5;
 
 	collision.onUpdate(entity, std::chrono::nanoseconds(1));
 	collision.onFixedUpdate(entity);
