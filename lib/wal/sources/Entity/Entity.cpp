@@ -46,25 +46,43 @@ namespace WAL
 
 	Entity &Entity::addComponent(const Component &component)
 	{
-		if (this->hasComponent(typeid(component)))
+		if (this->hasComponent(typeid(component), false))
 			throw DuplicateError("A component of the type \"" + std::string(typeid(component).name()) + "\" already exists.");
 		this->_components.emplace_back(component.clone(*this));
 		return *this;
 	}
 
-	bool Entity::hasComponent(const std::type_info &type) const
+	bool Entity::hasComponent(const std::type_info &type, bool skipDisabled) const
 	{
 		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
 			return typeid(*cmp) == type;
 		});
-		return existing != this->_components.end();
+		if (existing == this->_components.end())
+			return false;
+		if (skipDisabled)
+			return !(*existing)->isDisabled();
+		return true;
 	}
 
-	bool Entity::hasComponent(const std::type_index &type) const
+	bool Entity::hasComponent(const std::type_index &type, bool skipDisabled) const
 	{
 		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
 			return std::type_index(typeid(*cmp)) == type;
 		});
-		return existing != this->_components.end();
+		if (existing == this->_components.end())
+			return false;
+		if (skipDisabled)
+			return !(*existing)->isDisabled();
+		return true;
+	}
+
+	bool Entity::shouldDelete() const
+	{
+		return this->_shouldDelete;
+	}
+
+	void Entity::scheduleDeletion()
+	{
+		this->_shouldDelete = true;
 	}
 } // namespace WAL

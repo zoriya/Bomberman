@@ -23,6 +23,8 @@ namespace WAL
 		std::string _name;
 		//! @brief Is this entity enabled?
 		bool _disabled = false;
+		//! @brief Has this entity been scheduled for deletion?
+		bool _shouldDelete;
 		//! @brief The list of the components of this entity
 		std::vector<std::unique_ptr<Component>> _components = {};
 
@@ -36,9 +38,13 @@ namespace WAL
 
 		//! @brief Used if the entity is disabled
 		bool isDisable() const;
-
 		//! @brief Disable this entity.
 		void setDisable(bool disabled);
+
+		//! @brief Has this entity been scheduled for deletion?
+		bool shouldDelete() const;
+		//! @brief Schedule this entity for deletion
+		void scheduleDeletion();
 
 		//! @brief Get a component of a specific type
 		//! @throw NotFoundError if the component could not be found
@@ -55,21 +61,24 @@ namespace WAL
 		}
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @tparam T The type of the component
 		template<typename T>
-		bool hasComponent() const
+		bool hasComponent(bool skipDisabled = true) const
 		{
 			const std::type_info &type = typeid(T);
-			return this->hasComponent(type);
+			return this->hasComponent(type, skipDisabled);
 		}
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_info &type) const;
+		bool hasComponent(const std::type_info &type, bool skipDisabled = true) const;
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_index &type) const;
+		bool hasComponent(const std::type_index &type, bool skipDisabled = true) const;
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
@@ -77,7 +86,7 @@ namespace WAL
 		template<typename T, typename ...Types>
 		Entity &addComponent(Types &&...params)
 		{
-			if (this->hasComponent<T>())
+			if (this->hasComponent<T>(false))
 				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
 			this->_components.push_back(std::make_unique<T>(*this, std::forward<Types>(params)...));
 			return *this;
