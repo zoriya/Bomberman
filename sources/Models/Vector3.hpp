@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <cmath>
-#include "Vector/Vector3.hpp"
 
 namespace BBM
 {
