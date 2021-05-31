@@ -11,7 +11,6 @@
 #include <raylib.h>
 #include <string>
 #include <optional>
-#include "Drawables/Image.hpp"
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
 #include "Controllers/Keyboard.hpp"
@@ -22,6 +21,7 @@
 
 namespace RAY {
 	//! @brief Window manager
+	class Image;
 	namespace Drawables {
 		class IDrawable;
 		class ADrawable3D;

@@ -11,43 +11,55 @@
 #include <raylib.h>
 #include <string>
 #include "Texture.hpp"
+#include <memory>
+#include <unordered_map>
+#include "Drawables/ADrawable2D.hpp"
 
 namespace RAY
 {
-	namespace Drawables {
-		class ADrawable2D;
-	}
 	//! @brief Object representation of a framebuffer
-	class Image {
+	class Image: public Drawables::ADrawable2D {
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
 			Image(const std::string &filename);
 
-			//! @brief Create an image, using data from a texure
-			//! @param texture: texture to extract data from
-			Image(Texture &texture);
-
 			//! @brief A default copy constructor
-			Image(const Image &image) = delete;
+			Image(const Image &image) = default;
 
 			//! @brief An image is assignable
-			Image &operator=(const Image &image) = delete;
+			Image &operator=(const Image &image) = default;
 			
 			//! @brief Image destructor, will unload ressources
-			~Image();
+			~Image() = default;
 
 			//! @brief export to file
 			//! @param outputPath: path of output
 			bool exportTo(const std::string &outputPath);
+			//! @brief Resize picture
+            Image &resize(const Vector2 &dimensions);
+            //! @return current sprite dimensions
+            Vector2 getDimensions() const;
 
 
-			//! @brief draw drawable
+			//! @brief draw drawable on image
 			void draw(Drawables::ADrawable2D &);
+
+			//! @brief Draw image on window
+			void drawOn(RAY::Window &) override;
+
+			//! @brief Draw image on another image
+			void drawOn(RAY::Image &image) override;
+
 
 		private:
 			//! @brief Image, really, that's just it...
-			::Image _image;
+			std::shared_ptr<::Image> _image;
+			//! @brief, look through cache to see if a model using same file
+			std::shared_ptr<::Image>fetchImageInCache(const std::string &path);
+
+			static std::unordered_map<std::string, std::shared_ptr<::Image>> _modelsCache;
+
 		
 		INTERNAL:
 			//! @brief get image

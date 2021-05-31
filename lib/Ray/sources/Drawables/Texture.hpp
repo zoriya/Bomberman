@@ -20,10 +20,13 @@ namespace RAY
 			//! @param filename: path to file to load
 			Texture(const std::string &filename);
 
-			//! @brief A texture is not copy constructable
+			//! @brief A texture is not constructable
 			Texture(const Texture &);
 
-			//! @brief An image is assignable
+			//! @brief A textrue can be loaded from an image
+			Texture(const Image &);
+
+			//! @brief An texture is assignable
 			Texture &operator=(const Texture &);
 			
 			//! @brief Texture destructor, will unload ressources
