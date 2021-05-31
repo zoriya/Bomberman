@@ -6,16 +6,19 @@
 */
 
 #include "Drawables/Texture.hpp"
+#include "Exceptions/RayError.hpp"
 
 namespace RAY {
 
 	Texture::Texture(const std::string &filename):
+		ADrawable2D(0, 0, WHITE),
 		_texture(LoadTexture(filename.c_str())),
 		_resourcePath(filename)
 	{
 	}
 
 	Texture::Texture(const Texture &texture):
+		ADrawable2D(0, 0, WHITE),
 		_texture(LoadTexture(texture._resourcePath.c_str())),
 		_resourcePath(texture._resourcePath)
 	{
@@ -24,7 +27,6 @@ namespace RAY {
 
 	Texture &Texture::operator=(const Texture &other)
 	{
-		UnloadTexture(this->_texture);
 		this->_resourcePath = other._resourcePath;
 		this->_texture = LoadTexture(this->_resourcePath.c_str());
 		return *this;
@@ -35,8 +37,19 @@ namespace RAY {
 		UnloadTexture(this->_texture);
 	}
 
+	void Texture::drawOn(RAY::Window &)
+	{
+		DrawTexture(this->_texture, this->_position.x, this->_position.y, this->_color);
+	}
+
+	void Texture::drawOn(RAY::Image &)
+	{
+		throw RAY::Exception::NotSupportedError("A texture cannot be drawn on an image");
+	}
+
 	Texture::operator ::Texture() const
 	{
 		return this->_texture;
 	}
+
 }

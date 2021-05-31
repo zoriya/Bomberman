@@ -10,11 +10,13 @@
 
 #include <raylib.h>
 #include <string>
+#include "Drawables/ADrawable2D.hpp"
 
 namespace RAY
 {
+	class Image;
 	//! @brief Object representation of a texture
-	class Texture {
+	class Texture: public Drawables::ADrawable2D {
 		public:
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
@@ -29,7 +31,12 @@ namespace RAY
 			//! @brief Texture destructor, will unload ressources
 			~Texture();
 
-		protected:
+			//! @brief Draw drawble on window
+			void drawOn(RAY::Window &) override;
+
+			//! @brief Draw on image
+			void drawOn(RAY::Image &image) override;
+
 		private:
 			//! @brief Texture, really, that's just it...
 			::Texture _texture;

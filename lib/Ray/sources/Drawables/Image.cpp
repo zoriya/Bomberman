@@ -7,6 +7,7 @@
 
 #include "Drawables/Image.hpp"
 #include "Drawables/IDrawable.hpp"
+#include "Drawables/Texture.hpp"
 
 RAY::Image::Image(const std::string &filename):
 	_image(LoadImage(filename.c_str()))
@@ -38,4 +39,10 @@ RAY::Image::operator ::Image() const
 RAY::Image::operator ::Image *()
 {
 	return &this->_image;
+}
+
+RAY::Image &RAY::Image::resize(const RAY::Vector2 &dimensions)
+{
+	ImageResize(*this, dimensions.x, dimensions.y);
+	return *this;
 }

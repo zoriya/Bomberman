@@ -10,13 +10,14 @@
 
 #include <raylib.h>
 #include <string>
-#include "Texture.hpp"
+#include "Vector/Vector2.hpp"
 
 namespace RAY
 {
 	namespace Drawables {
 		class ADrawable2D;
 	}
+	class Texture;
 	//! @brief Object representation of a framebuffer
 	class Image {
 		public:
@@ -41,6 +42,8 @@ namespace RAY
 			//! @param outputPath: path of output
 			bool exportTo(const std::string &outputPath);
 
+			//! @brief resize image dimension
+			Image &resize(const RAY::Vector2 &dimensions);
 
 			//! @brief draw drawable
 			void draw(Drawables::ADrawable2D &);
