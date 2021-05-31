@@ -17,48 +17,48 @@ namespace BBM
 	}
 
 	CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, Vector3f bound)
-	: WAL::Component(entity), onCollide(callback), _boundX(bound.x), _boundY(bound.y), _boundZ(bound.z)
+	: WAL::Component(entity), onCollide(callback), _bound(bound)
 	{ }
 
 	CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, float boundSize)
-	: WAL::Component(entity), onCollide(callback), _boundX(boundSize), _boundY(boundSize), _boundZ(boundSize)
+	: WAL::Component(entity), onCollide(callback), _bound({boundSize, boundSize, boundSize})
 	{ }
 
 	CollisionComponent::CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, Vector3f bound)
-	: WAL::Component(entity), onCollide(callback), _boundX(bound.x), _boundY(bound.y), _boundZ(bound.z)
+	: WAL::Component(entity), onCollide(callback), _bound(bound)
 	{ }
 
 	CollisionComponent::CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, float boundSize)
-	: WAL::Component(entity), onCollide(callback), _boundX(boundSize), _boundY(boundSize), _boundZ(boundSize)
+	: WAL::Component(entity), onCollide(callback), _bound({boundSize, boundSize, boundSize})
 	{ }
 
 	float CollisionComponent::getBoundX(void) const
 	{
-		return _boundX;
+		return _bound.x;
 	}
 
 	float CollisionComponent::getBoundY(void) const
 	{
-		return _boundY;
+		return _bound.y;
 	}
 
 	float CollisionComponent::getBoundZ(void) const
 	{
-		return _boundZ;
+		return _bound.z;
 	}
 
 	void CollisionComponent::setBoundX(float value)
 	{
-		_boundX = value;
+		_bound.x = value;
 	}
 
 	void CollisionComponent::setBoundY(float value)
 	{
-		_boundY = value;
+		_bound.y = value;
 	}
 
 	void CollisionComponent::setBoundZ(float value)
 	{
-		_boundZ = value;
+		_bound.z = value;
 	}
 }

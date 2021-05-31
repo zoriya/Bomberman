@@ -14,9 +14,7 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 		private:
-			float _boundX;
-			float _boundY;
-			float _boundZ;
+			Vector3f _bound;
 		public:
 			//! @brief get bound size on the X axis
 			float getBoundX(void) const;
