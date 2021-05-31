@@ -41,7 +41,7 @@ namespace BBM
 	void addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<KeyboardSystem>()
-		    .addSystem<GamepadSystem>()
+			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<MovableSystem>();
 	}

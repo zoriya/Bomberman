@@ -6,6 +6,7 @@
 
 #pragma once
 
+#include <Models/Callback.hpp>
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 
@@ -19,6 +20,9 @@ namespace BBM
 			unsigned int _healthPoint;
 
 		public:
+			//! @brief The callback invoked on this entity's death.
+			WAL::Callback<WAL::Entity &> onDeath;
+
 			//! @brief add health to the entity
 			void addHealthPoint(unsigned int healthPoint);
 			
