@@ -16,13 +16,14 @@ namespace RAY::Drawables::Drawables2D {
 	class Text: public ADrawable2D
 	{
 		public:
+			//! @brief The Letter spacing used when creating a Text instance
 			static constexpr int DefaultLetterSpacing = 1;
 			//! @brief Text constructor
 			//! @param content text
 			//! @param fontSize size of the text
 			//! @param position position of top-left point 
 			//! @param Color Color of the text  
-			Text(const std::string &content, int fontSize, const Vector2 &position, const Color &color);
+			Text(std::string content, int fontSize, const Vector2 &position, const Color &color);
 			
 			//! @brief Text constructor
 			//! @param content text
@@ -30,7 +31,7 @@ namespace RAY::Drawables::Drawables2D {
 			//! @param x x-position of top-left point  
 			//! @param y y-position of top-left point 
 			//! @param Color Color of the text  
-			Text(const std::string &content, int fontSize, int x, int y, const Color &color);
+			Text(std::string content, int fontSize, int x, int y, const Color &color);
 			
 			//! @brief A default copy constructor
 			Text(const Text &) = default;
@@ -39,16 +40,16 @@ namespace RAY::Drawables::Drawables2D {
 			Text &operator=(const Text &) = default;
 
 			//! @brief A default destructor
-			~Text() = default;
+			~Text() override = default;
 
 			//! @return the text's content
 			const std::string &getString(void);
 
 			//! @return the font size
-			int getFontSize(void);
+			int getFontSize(void) const;
 
 			//! @return the letter spacing
-			int getLetterSpacing(void);
+			int getLetterSpacing(void) const;
 
 			//! @return set font
 			Text &setFont(const Font &font);
@@ -79,9 +80,7 @@ namespace RAY::Drawables::Drawables2D {
 
 			//! @brief spacing of chars
 			int _spacing;
-
 	};
 };
-
 
 #endif /* !TEXT_HPP_ */

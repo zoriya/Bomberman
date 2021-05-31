@@ -9,12 +9,12 @@
 #define FONT_HPP_
 
 #include <raylib.h>
-#include "IRessource.hpp"
+#include <string>
 
 namespace RAY
 {
 	//! @brief A font manager
-	class Font: public IRessource {
+	class Font {
 		public:
 			//! @brief Create an font, loading a file
 			//! @param filename: path to file to load
@@ -31,13 +31,6 @@ namespace RAY
 			
 			//! @brief Unload font at destruction
 			~Font();
-
-			//! @brief load font from file
-			//! @param filename: path of input
-			bool load(const std::string &filename);
-
-			//! @brief unload ressources
-			bool unload();
 
 		protected:
 		private:

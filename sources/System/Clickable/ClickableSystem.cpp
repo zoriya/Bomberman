@@ -4,13 +4,13 @@
 
 #pragma once
 
-#include "sources/Component/Clickable/ClickableComponent.hpp"
-#include "sources/System/Clickable/ClickableSystem.hpp"
+#include "Component/Clickable/ClickableComponent.hpp"
+#include "System/Clickable/ClickableSystem.hpp"
 
 namespace BBM
 {
 	ClickableSystem::ClickableSystem()
-	: WAL::System({typeid(ClickableComponent<int>)})
+	: WAL::System({typeid(ClickableComponent)})
 	{ }
 	void ClickableSystem::onFixedUpdate(WAL::Entity &entity)
 	{

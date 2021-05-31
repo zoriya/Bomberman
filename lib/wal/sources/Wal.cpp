@@ -6,34 +6,13 @@
 #include <algorithm>
 #include "Wal.hpp"
 
-using namespace std::chrono_literals;
-
 namespace WAL
 {
-	std::chrono::nanoseconds Wal::timestep = 8ms;
-
-	void Wal::run()
-	{
-		auto lastTick = std::chrono::steady_clock::now();
-		std::chrono::nanoseconds fBehind(0);
-
-		while (!this->_shouldClose) {
-			auto now = std::chrono::steady_clock::now();
-			std::chrono::nanoseconds dtime = now - lastTick;
-			fBehind += dtime;
-			lastTick = now;
-
-			while (fBehind > Wal::timestep) {
-				fBehind -= Wal::timestep;
-				this->_fixedUpdate();
-			}
-			this->_update(dtime);
-		}
-	}
+	std::chrono::nanoseconds Wal::timestep = std::chrono::milliseconds(8);
 
 	void Wal::_update(std::chrono::nanoseconds dtime)
 	{
-		auto &entities = this->_scene.getEntities();
+		auto &entities = this->scene->getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
@@ -47,7 +26,7 @@ namespace WAL
 
 	void Wal::_fixedUpdate()
 	{
-		auto &entities = this->_scene.getEntities();
+		auto &entities = this->scene->getEntities();
 
 		for (auto &system : this->_systems) {
 			for (auto &entity : entities) {
@@ -66,4 +45,4 @@ namespace WAL
 			return entity.hasComponent(dependency);
 		});
 	}
-}
+} // namespace WAL
