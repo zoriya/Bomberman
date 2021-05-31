@@ -1,9 +1,11 @@
+
 //
 // Created by Louis Auzuret on 5/20/21
 //
 
 #pragma once
 
+#include <algorithm>
 #include "Wal.hpp"
 #include "System/System.hpp"
 

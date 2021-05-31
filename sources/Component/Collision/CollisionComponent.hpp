@@ -5,6 +5,7 @@
 #pragma once
 
 #include "Models/Callback.hpp"
+#include "Models/Vector3.hpp"
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 
@@ -12,23 +13,45 @@ namespace BBM
 {
 	class CollisionComponent : public WAL::Component
 	{
+
 		private:
+			float _boundX;
+			float _boundY;
+			float _boundZ;
 		public:
+			//! @brief get bound size on the X axis
+			float getBoundX(void) const;
+			//! @brief get bound size on the Y axis
+			float getBoundY(void) const;
+			//! @brief get bound size on the Z axis
+			float getBoundZ(void) const;
+			//! @brief set bound size on the X axis
+			void setBoundX(float);
+			//! @brief set bound size on the Y axis
+			void setBoundY(float);
+			//! @brief set bound size on the Z axis
+			void setBoundZ(float);
 			//onCollide functions to be called
 			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 			
-			//! @brief A collision component with no callback.
+			//! @brief A component can't be instantiated, it should be derived.
 			explicit CollisionComponent(WAL::Entity &entity);
 
 			//! @brief Constructor with a callback function
-			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback);
+			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, Vector3f bound);
 
-            //! @brief Constructor with a WAL::Callback
-			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback);
+			//! @brief Constructor with a callback function
+			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> callback, float boundSize = 0);
 
-			//! @brief A default copy constructor
+			//! @brief Constructor with a WAL::Callback
+			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, Vector3f bound);
+
+			//! @brief Constructor with a WAL::Callback
+			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> callback, float boundSize = 0);
+			
+			//! @brief A component can't be instantiated, it should be derived.
 			CollisionComponent(const CollisionComponent &) = default;
 
 			//! @brief default destructor
