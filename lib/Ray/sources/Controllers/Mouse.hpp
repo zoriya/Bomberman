@@ -18,19 +18,19 @@ namespace RAY::Controller {
 		public:
 			typedef ::MouseButton Button;
 
-			//! @return true if Key is pressed on the keyboard
+			//! @return true if Key is pressed on the mouse
 			//! @param Key The keycode of the key
 			static bool isPressed(Button);
 
-			//! @return true if Key is down on the keyboard
+			//! @return true if Key is down on the mouse
 			//! @param Key The keycode of the key
 			static bool isDown(Button);
 
-			//! @return true if Key is released on the keyboard
+			//! @return true if Key is released on the mouse
 			//! @param Key The keycode of the key
 			static bool isReleased(Button);
 
-			//! @return true if Key is up on the keyboard
+			//! @return true if Key is up on the mouse
 			//! @param Key The keycode of the key
 			static bool isUp(Button);
 
