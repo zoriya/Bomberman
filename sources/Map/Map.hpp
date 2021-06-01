@@ -34,11 +34,14 @@ namespace BBM
 				NOTHING,
 				BREAKABLE,
 				HOLE,
+				FLOOR,
 				BUMPER,
 				STAIRS,
 				SPAWNER,
 				UNBREAKABLE
 			};
+
+			using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
 
 			//! @brief Generate random block type
 			static BlockType getRandomBlockType();
@@ -47,7 +50,7 @@ namespace BBM
 			//! @param x x index on the block
 			//! @param z z index on the block
 			//! @param blockType blockType to compare with position
-			static bool isCloseToBlockType(std::map<std::tuple<int, int>, BlockType> map, int x, int z, BlockType blockType);
+			static bool isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z, BlockType blockType);
 
 			//! @param width Width of the map
 			//! @param height Height of the map
@@ -94,23 +97,41 @@ namespace BBM
 
 			//! @param coords coords of the element
 			//! @param scene Scene where the map is instanced
+			//! @brief Create bumper of the map
+			static void createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+
+
+			//! @param coords coords of the element
+			//! @param scene Scene where the map is instanced
 			//! @brief Create stair of the map
 			static void createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+			
+			//! @param map Map to load with block declared inside
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @brief Generate map of block to be loaded
+			static MapBlock createSpawner(MapBlock map, int width, int height);
+
+			//! @param map Map to load with block declared inside
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @brief Generate height for the map
+			static MapBlock createHeight(MapBlock map, int width, int height);
+
 
 		public:
 
 			//! @param width Width of the map
 			//! @param height Height of the map
 			//! @brief Generate map of block to be loaded
-			static std::map<std::tuple<int, int>, BlockType> createMap(int width, int height);
+			static MapBlock createMap(int width, int height);
 
 			//! @param width Width of the map
 			//! @param height Height of the map
 			//! @param map Map to load with block declared inside
 			//! @param scene Scene where the map is instanced
 			//! @brief Generate the map
-			static void loadMap(int width, int height, std::map<std::tuple<int, int>, \
-BlockType> map, std::shared_ptr<WAL::Scene> scene);
+			static void loadMap(int width, int height, MapBlock map, std::shared_ptr<WAL::Scene> scene);
 			
 	};
 } // namespace BBM

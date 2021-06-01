@@ -75,8 +75,8 @@ namespace BBM
 			.addComponent<KeyboardComponent>()
 			.addComponent<MovableComponent>();
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(0, 20, -5)
-			.addComponent<CameraComponent>();
+			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		std::srand(std::time(NULL));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
