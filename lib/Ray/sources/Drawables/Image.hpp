@@ -31,7 +31,7 @@ namespace RAY
 			Image &operator=(const Image &image) = default;
 			
 			//! @brief Image destructor, will unload ressources
-			~Image() = default;
+			~Image() override = default;
 
 			//! @brief export to file
 			//! @param outputPath: path of output

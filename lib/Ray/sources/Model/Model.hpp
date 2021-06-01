@@ -44,7 +44,7 @@ namespace RAY::Drawables::Drawables3D {
 			Model& operator=(const Model &model) = default;
 
 			//! @brief Model destructor, model's data will be deleted if it's the last entity alive
-			~Model() = default;
+			~Model() override = default;
 
 			//! @brief Unload model (excluding meshes) from memory (RAM and/or VRAM)
 			bool unloadKeepMeshes();

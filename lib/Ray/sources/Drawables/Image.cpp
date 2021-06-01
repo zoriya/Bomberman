@@ -37,13 +37,13 @@ namespace RAY {
 
 	std::shared_ptr<::Image> Image::fetchImageInCache(const std::string &path)
 	{
-		if (Image::_modelsCache.find(path) == Image::_modelsCache.end())
-			Image::_modelsCache.emplace(path, std::shared_ptr<::Image>(
+		if (Image::_ImageCache.find(path) == Image::_ImageCache.end())
+			Image::_ImageCache.emplace(path, std::shared_ptr<::Image>(
 			new ::Image(LoadImage(path.c_str())), [](::Image *p) {
 	       		UnloadImage(*p);
 	       		delete p;
 	    	}));
-		return _modelsCache[path];
+		return _ImageCache[path];
 	}
 
 	void Image::draw(Drawables::ADrawable2D &drawable)

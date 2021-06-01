@@ -37,7 +37,7 @@ namespace RAY::Drawables::Drawables2D {
 			Rectangle &operator=(const Rectangle &) = default;
 
 			//! @brief A default destructor
-			~Rectangle() override = default;
+			virtual ~Rectangle() override = default;
 
 			//! @return the dimensions of the rectangle
 			const Vector2 &getDimensions(void);
