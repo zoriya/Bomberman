@@ -31,45 +31,30 @@ namespace BBM
 		std::string UnbreakableObj = "assets/wall/unbreakable_wall.obj";
 		std::string UnbreakablePnj = "assets/wall/unbreakable_wall.png";
 
-		for (int i = -1; i < width + 1; i++) {
-			scene->addEntity("Vertical Wall")
-				.addComponent<PositionComponent>(Vector3f(i, 0, height + 1))
-				//.addComponent<CollisionComponent>(1)
-				.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj));
-			scene->addEntity("Vertical Wall")
-				.addComponent<PositionComponent>(Vector3f(i, 0, -1))
-				//.addComponent<CollisionComponent>(1)
-				.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj));
-		}
-		for (int i = -1; i < height + 1; i++) {
-			scene->addEntity("Horizontal Wall")
-				.addComponent<PositionComponent>(Vector3f(width + 1, 0, i))
-				//.addComponent<CollisionComponent>(1)
-				.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj));
-			scene->addEntity("Horizontal Wall")
-				.addComponent<PositionComponent>(Vector3f(-1, 0, i))
-				//.addComponent<CollisionComponent>(1)
-				.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj));
-		}
-		scene->addEntity("Vertical Wall")
-				.addComponent<PositionComponent>(Vector3f(width + 1, 0, height + 1))
-				//.addComponent<CollisionComponent>(1)
-				.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj));
+		scene->addEntity("Bottom Wall")
+			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
+			//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(width + 3, 1, 1));
+		scene->addEntity("Upper Wall")
+			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
+			//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(width + 3, 1, 1));
+		scene->addEntity("Left Wall")
+			.addComponent<PositionComponent>(Vector3f(width + 1, 0, (height + 1) / 2))
+			//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(1, 1, height + 3));
+		scene->addEntity("Right Wall")
+			.addComponent<PositionComponent>(Vector3f(-1, 0, (height + 1) / 2))
+			//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(1, 1, height + 3));
 	}
 
 	void MapGenerator::generateFloor(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
-		/* RAY3D::Model model = RAY3D::Model("assets/wall/unbreakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/unbreakable_wall.png"));
-		
-		model.setScale(RAY::Vector3(width, 0, height)); */
-		for (int i = 0; i < width + 1; i++) {
-			for (int j = 0; j < height + 1; j++) {
-				scene->addEntity("Floor")
-					.addComponent<PositionComponent>(Vector3f(i,-1,j))
-					//.addComponent<CollisionComponent>(1)
-					.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/floor.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/floor.png"));
-			}
-		}
+		scene->addEntity("Floor")
+			.addComponent<PositionComponent>(Vector3f(width / 2, -1, height / 2))
+			//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/floor.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/floor.png"), RAY::Vector3(width + 2, 0, height + 2));
 	}
 
 	void MapGenerator::createElement(Vector3f coords, std::shared_ptr<WAL::Scene> scene, BlockType blockType)
@@ -229,7 +214,6 @@ namespace BBM
 			for (int j = 0; j < height + 1; j++)
 				if (!((i + 1) % 2) && !((j + 1) % 2))
 					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
-		//map = createHeight(map, width, height);
 		return (map);
 	}
 
