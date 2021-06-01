@@ -16,7 +16,7 @@ jobs:
       run: ./emsdk.sh
     - name: Check files creation
       run: |
-        test -f build/bomberman.html
-        test -f build/bomberman.js
-        test -f build/bomberman.wasm 
-        test -f build/bomberman.data
+        test -f build_web/bomberman.html
+        test -f build_web/bomberman.js
+        test -f build_web/bomberman.wasm 
+        test -f build_web/bomberman.data
