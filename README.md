@@ -36,7 +36,10 @@ cd Bomberman
 Create `build` dir and compile using CMake
 
 ```bash
-mkdir build && cd build && cmake .. && make
+mkdir build
+cd build
+cmake ..
+cmake --build .
 ```
 
 Enjoy !
