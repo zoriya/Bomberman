@@ -28,7 +28,6 @@ namespace BBM
 	class MapGenerator
 	{
 		private:
-			using MapElem = std::function<void (Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 			//! @brief Enum of the block available.
 			enum BlockType {
 				NOTHING,
@@ -41,6 +40,7 @@ namespace BBM
 				UNBREAKABLE
 			};
 
+			using MapElem = std::function<void (Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 			using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
 
 			//! @brief Generate random block type
