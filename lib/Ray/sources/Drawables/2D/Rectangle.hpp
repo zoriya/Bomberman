@@ -49,11 +49,11 @@ namespace RAY::Drawables::Drawables2D {
 			Rectangle &setDimensions(int x, int y);
 
 			//! @brief Draw point on window
-			void drawOn(RAY::Window &) override;
+			virtual void drawOn(RAY::Window &) override;
 			//! @brief Draw point on image
-			void drawOn(RAY::Image &image) override;
+			virtual void drawOn(RAY::Image &image) override;
 
-		private:
+		protected:
 			//! @brief Diemnsions of the rectangle 
 			Vector2 _dimensions;
 		

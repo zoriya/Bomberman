@@ -13,9 +13,10 @@ namespace RAY {
 	std::unordered_map<std::string, std::shared_ptr<::Image>> Image::_modelsCache;
 
 	Image::Image(const std::string &filename):
-		ADrawable2D(Vector2(0, 0), WHITE),
+		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
 		_image(fetchImageInCache(filename))
 	{
+		this->_dimensions = Vector2(this->_image->width, this->_image->height);
 	}
 
 	bool Image::exportTo(const std::string &outputPath)
@@ -33,16 +34,7 @@ namespace RAY {
 	{
 		return this->_image.get();
 	}
-	Image &Image::resize(const Vector2 &dimensions)
-	{
-		ImageResize(this->_image.get(), dimensions.x, dimensions.y);
-		return *this;
-	}
-    
-    Vector2 Image::getDimensions() const
-	{
-		return Vector2(this->_image->width, this->_image->height);
-	}
+
 	std::shared_ptr<::Image> Image::fetchImageInCache(const std::string &path)
 	{
 		if (Image::_modelsCache.find(path) == Image::_modelsCache.end())
@@ -61,9 +53,14 @@ namespace RAY {
 
 	void Image::drawOn(RAY::Window &)
 	{
+		//Since the image is a shared object, when it is resized, it mush be resized after to its previous dimensions
+		Vector2 oldDims = Vector2(this->_image->width, this->_image->height);
+
+		ImageResize(*this, this->_dimensions.x, this->_dimensions.y);
 		Texture texture(*this);
 
 		DrawTexture(texture, this->_position.x, this->_position.y, this->_color); 
+		ImageResize(*this, oldDims.x, oldDims.y);
 	}
 
 	void Image::drawOn(RAY::Image &image)

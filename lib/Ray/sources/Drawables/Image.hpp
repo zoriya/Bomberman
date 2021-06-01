@@ -13,12 +13,12 @@
 #include "Texture.hpp"
 #include <memory>
 #include <unordered_map>
-#include "Drawables/ADrawable2D.hpp"
+#include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY
 {
 	//! @brief Object representation of a framebuffer
-	class Image: public Drawables::ADrawable2D {
+	class Image: public Drawables::Drawables2D::Rectangle {
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
@@ -36,11 +36,6 @@ namespace RAY
 			//! @brief export to file
 			//! @param outputPath: path of output
 			bool exportTo(const std::string &outputPath);
-			//! @brief Resize picture
-            Image &resize(const Vector2 &dimensions);
-            //! @return current sprite dimensions
-            Vector2 getDimensions() const;
-
 
 			//! @brief draw drawable on image
 			void draw(Drawables::ADrawable2D &);
