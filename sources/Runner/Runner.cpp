@@ -48,7 +48,7 @@ namespace BBM
 	{
 		wal.addSystem<TimerSystem>(wal)
 			.addSystem<KeyboardSystem>()
-		    .addSystem<GamepadSystem>()
+			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<BombHolderSystem>(wal)
 			.addSystem<EventSystem>()

@@ -20,12 +20,12 @@ set(SOURCES
 	sources/Component/Movable/MovableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.hpp
 	sources/Component/Gamepad/GamepadComponent.cpp
 	sources/Component/Gamepad/GamepadComponent.hpp
 	sources/Component/Keyboard/KeyboardComponent.cpp
 	sources/Component/Keyboard/KeyboardComponent.hpp
-	sources/Component/BombHolder/BombHolderComponent.cpp
-	sources/Component/BombHolder/BombHolderComponent.hpp
 	sources/Component/Health/HealthComponent.cpp
 	sources/Component/Health/HealthComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
@@ -62,7 +62,9 @@ set(SOURCES
 	sources/Component/Timer/TimerComponent.hpp
 	sources/System/Timer/TimerSystem.cpp
 	sources/System/Timer/TimerSystem.hpp
-	sources/System/Event/EventSystem.cpp sources/System/Event/EventSystem.hpp)
+	sources/System/Event/EventSystem.cpp
+	sources/System/Event/EventSystem.hpp
+)
 
 add_executable(bomberman
                sources/main.cpp

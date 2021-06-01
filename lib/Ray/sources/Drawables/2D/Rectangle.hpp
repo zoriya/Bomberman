@@ -20,7 +20,7 @@ namespace RAY::Drawables::Drawables2D {
 			//! @param position position of top-left point  
 			//! @param dimensions dimensions of the rectangle 
 			//! @param Color Color of the rectangle  
-			Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color);
+			Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color = WHITE);
 
 			//! @brief Rectangle constructor
 			//! @param x x-position of top-left point  
@@ -28,7 +28,7 @@ namespace RAY::Drawables::Drawables2D {
 			//! @param width width of the rectangle 
 			//! @param length length of the rectangle 
 			//! @param Color Color of the rectangle  
-			Rectangle(int x, int y, int width, int height, const Color &color);
+			Rectangle(int x, int y, int width, int height, const Color &color = WHITE);
 			
 			//! @brief A default copy constructor
 			Rectangle(const Rectangle &) = default;
@@ -37,7 +37,7 @@ namespace RAY::Drawables::Drawables2D {
 			Rectangle &operator=(const Rectangle &) = default;
 
 			//! @brief A default destructor
-			~Rectangle() override = default;
+			virtual ~Rectangle() override = default;
 
 			//! @return the dimensions of the rectangle
 			const Vector2 &getDimensions(void);
@@ -49,13 +49,16 @@ namespace RAY::Drawables::Drawables2D {
 			Rectangle &setDimensions(int x, int y);
 
 			//! @brief Draw point on window
-			void drawOn(RAY::Window &) override;
+			virtual void drawOn(RAY::Window &) override;
 			//! @brief Draw point on image
-			void drawOn(RAY::Image &image) override;
+			virtual void drawOn(RAY::Image &image) override;
 
-		private:
+		protected:
 			//! @brief Diemnsions of the rectangle 
 			Vector2 _dimensions;
+		
+		INTERNAL:
+			operator ::Rectangle() const;
 	};
 };
 

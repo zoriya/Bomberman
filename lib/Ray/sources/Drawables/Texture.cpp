@@ -21,6 +21,12 @@ namespace RAY {
 	{
 	}
 
+	Texture::Texture(const Image &image):
+		_texture(LoadTextureFromImage(image)),
+		_resourcePath()
+	{
+	}
+
 
 	Texture &Texture::operator=(const Texture &other)
 	{

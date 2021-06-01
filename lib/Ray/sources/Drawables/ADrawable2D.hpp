@@ -10,10 +10,12 @@
 
 #include <raylib.h>
 #include "Vector/Vector2.hpp"
-#include "Image.hpp"
 #include "Drawables/IDrawable.hpp"
 #include "Color.hpp"
 
+namespace RAY {
+	class Image;
+}
 namespace RAY::Drawables {
 	//! @brief Abstraction of any two-dimensionnal drawable
 	class ADrawable2D: public IDrawable

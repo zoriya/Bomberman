@@ -20,7 +20,7 @@ namespace BBM
 	{
 		auto &health = entity.getComponent<HealthComponent>();
 
-		if (health.getHealthPoint() == 0);
-			entity.setDisable(true);
+		if (health.getHealthPoint() == 0)
+			health.onDeath(entity);
 	}
 }
