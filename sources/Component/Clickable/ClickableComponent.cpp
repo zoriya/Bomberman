@@ -9,9 +9,8 @@ namespace BBM
 {
     
     ClickableComponent::ClickableComponent(WAL::Entity &entity):
-        Component(entity), _callbacks(3)
+        Component(entity), _onClick()
     {
-
     }
 
     ClickableComponent *ClickableComponent::clone(WAL::Entity &entity) const
@@ -19,23 +18,8 @@ namespace BBM
         return new ClickableComponent(entity);
     }
 
-    int ClickableComponent::addCallback(ClickableComponent::CallbackType type, std::function<void (WAL::Entity &)> callback)
+    int ClickableComponent::addCallback(std::function<void (WAL::Entity &)> callback)
     {
-        return this->_callbacks[type].addCallback(callback);
-    }
-
-    int ClickableComponent::addClickCallback(std::function<void (WAL::Entity &)> callback)
-    {
-        return this->_callbacks[CLICK].addCallback(callback);
-    }
-
-    int ClickableComponent::addHoverCallback(std::function<void (WAL::Entity &)> callback)
-    {
-        return this->_callbacks[HOVER].addCallback(callback);
-    }
-
-    int ClickableComponent::addIdleCallback(std::function<void (WAL::Entity &)> callback)
-    {
-        return this->_callbacks[IDLE].addCallback(callback);
+        return _onClick.addCallback(callback);
     }
 }

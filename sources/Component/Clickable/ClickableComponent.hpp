@@ -14,13 +14,9 @@ namespace BBM
 	class ClickableComponent : public WAL::Component
 	{
 		private:
-			std::unordered_map<int, WAL::Callback<WAL::Entity &>> _callbacks;
 		public:
-			enum CallbackType {
-				IDLE,
-				CLICK,
-				HOVER
-			};
+			//! @brief Callback holder
+			WAL::Callback<WAL::Entity &> _onClick;
 			//! @brief Instanciate the component with no callback
 			ClickableComponent(WAL::Entity &entity);
 
@@ -39,16 +35,6 @@ namespace BBM
 
 			//! @brief add a callback to the component
 			//! @param type the type of event the callback will be assigned to
-			int addCallback(enum CallbackType type, std::function<void (WAL::Entity &)> callback);
-
-			//! @brief add a click callback to the component
-			int addClickCallback(std::function<void (WAL::Entity &)> callback);
-
-			//! @brief add an hover callback to the component
-			int addHoverCallback(std::function<void (WAL::Entity &)> callback);
-
-			//! @brief add an idle callback to the component
-			int addIdleCallback(std::function<void (WAL::Entity &)> callback);
-
+			int addCallback(std::function<void (WAL::Entity &)> callback);
 	};
 } //namespace BBM
