@@ -20,7 +20,7 @@ namespace RAY
 			//! @param filename: path to file to load
 			Texture(const std::string &filename);
 
-			//! @brief A texture is not constructable
+			//! @brief A texture is copy constructable
 			Texture(const Texture &);
 
 			//! @brief A textrue can be loaded from an image
