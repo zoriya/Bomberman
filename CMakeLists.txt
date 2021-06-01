@@ -54,13 +54,16 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
-	sources/Component/Animation/AnimationComponent.cpp
-	sources/Component/Animation/AnimationComponent.hpp
+	sources/Component/Animation/AnimationsComponent.cpp
+	sources/Component/Animation/AnimationsComponent.hpp
+    sources/System/Animation/AnimationsSystem.cpp
+    sources/System/Animation/AnimationsSystem.hpp
 )
 
 add_executable(bomberman
                sources/main.cpp
-               ${SOURCES})
+               ${SOURCES}
+               )
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
