@@ -167,3 +167,8 @@ void RAY::Window::setIcon(RAY::Image &img)
 {
 	SetWindowIcon(img);
 }
+
+void RAY::Window::drawFPS(const RAY::Vector2 &position)
+{
+	DrawFPS(position.x, position.y);
+}

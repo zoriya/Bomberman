@@ -15,10 +15,13 @@ namespace BBM
 		}),
 		_window(window),
 		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE)
-	{}
+	{
+		this->_window.setFPS(RenderScreenSystem::FPS);
+	}
 
 	void RenderScreenSystem::onSelfUpdate()
 	{
+		this->_window.drawFPS(RAY::Vector2(1, 1));
 		this->_window.draw();
 		this->_window.clear();
 		this->_window.useCamera(this->_camera);
