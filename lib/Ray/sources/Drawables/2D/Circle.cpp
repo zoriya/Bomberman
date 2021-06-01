@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/2D/Circle.hpp"
+#include "Drawables/Image.hpp"
 
 namespace RAY::Drawables::Drawables2D
 {

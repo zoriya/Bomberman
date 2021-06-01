@@ -11,6 +11,7 @@
 #include "Controllers/Mouse.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/ADrawable3D.hpp"
+#include "Drawables/Image.hpp"
 
 std::optional<RAY::Window> RAY::Window::_instance = std::nullopt;
 
