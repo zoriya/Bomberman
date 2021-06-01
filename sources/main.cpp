@@ -22,12 +22,8 @@
 #include "Drawables/3D/Sphere.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
-#include <System/Movable/MovableSystem.hpp>
-#include <Drawables/2D/Rectangle.hpp>
-#include "Component/Renderer/CameraComponent.hpp"
 #include <System/Renderer/RenderScreenSystem.hpp>
 #include <System/Renderer/Render2DScreenSystem.hpp>
-#include <System/Movable/MovableSystem.hpp>
 #include <System/Renderer/Renderer2DSystem.hpp>
 #include <System/Renderer/Renderer3DSystem.hpp>
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -37,11 +33,6 @@
 #include "Window.hpp"
 #include "TraceLog.hpp"
 #include "Wal.hpp"
-#include "Map/Map.hpp"
-#include "Models/GameState.hpp"
-
-namespace RAY2D = RAY::Drawables::Drawables2D;
-namespace RAY3D = RAY::Drawables::Drawables3D;
 
 const std::vector<std::string>textures = {
 	"blue", "cyan", "green", "purple", "red", "yellow"
