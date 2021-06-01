@@ -10,11 +10,11 @@
 #include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY {
-	std::unordered_map<std::string, std::shared_ptr<::Image>> Image::_ImageCache;
+	Cache<::Image> Image::_imagesCache(LoadImage, UnloadImage);
 
 	Image::Image(const std::string &filename):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
-		_image(fetchImageInCache(filename))
+		_image(_imagesCache.fetch(filename))
 	{
 		this->_dimensions = Vector2(this->_image->width, this->_image->height);
 	}
@@ -33,17 +33,6 @@ namespace RAY {
 	Image::operator ::Image *()
 	{
 		return this->_image.get();
-	}
-
-	std::shared_ptr<::Image> Image::fetchImageInCache(const std::string &path)
-	{
-		if (Image::_ImageCache.find(path) == Image::_ImageCache.end())
-			Image::_ImageCache.emplace(path, std::shared_ptr<::Image>(
-			new ::Image(LoadImage(path.c_str())), [](::Image *p) {
-	       		UnloadImage(*p);
-	       		delete p;
-	    	}));
-		return _ImageCache[path];
 	}
 
 	void Image::draw(Drawables::ADrawable2D &drawable)
