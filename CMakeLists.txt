@@ -18,9 +18,31 @@ set(SOURCES
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
 	sources/Component/Movable/MovableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/Gamepad/GamepadComponent.cpp
+	sources/Component/Gamepad/GamepadComponent.hpp
+	sources/Component/Keyboard/KeyboardComponent.cpp
+	sources/Component/Keyboard/KeyboardComponent.hpp
+	sources/Component/Health/HealthComponent.cpp
+	sources/Component/Health/HealthComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/Movable/MovableSystem.cpp
+	sources/System/Controllable/ControllableSystem.cpp
+	sources/System/Controllable/ControllableSystem.hpp
+	sources/System/Gamepad/GamepadSystem.cpp
+	sources/System/Gamepad/GamepadSystem.hpp
+	sources/System/Health/HealthSystem.cpp
+	sources/System/Health/HealthSystem.hpp
+	sources/System/Keyboard/KeyboardSystem.cpp
+	sources/System/Keyboard/KeyboardSystem.hpp
+	sources/System/Movable/MovableSystem.cpp
+	sources/System/Movable/MovableSystem.hpp
 	sources/Models/Vector3.hpp
+	sources/Component/GridCentered/GridCenteredComponent.cpp
+	sources/Component/GridCentered/GridCenteredComponent.hpp
+	sources/System/GridCentered/GridCenteredSystem.cpp
+	sources/System/GridCentered/GridCenteredSystem.hpp
 	sources/Models/Vector2.hpp
 	sources/Component/Renderer/Drawable3DComponent.hpp
 	sources/Component/Renderer/Drawable2DComponent.hpp
@@ -52,6 +74,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/EngineTests.cpp
 	tests/CallbackTest.cpp
 	tests/CollisionTest.cpp
+	tests/MoveTests.cpp
 )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)

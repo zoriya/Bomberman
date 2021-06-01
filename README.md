@@ -2,6 +2,11 @@
 
 A recreation of the classic Bomberman arcade game
 
+[![Linux Build (Epitech Container)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_linux.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_linux.yml)
+[![Windows Build](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_windows.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_windows.yml)
+[![Web Building](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/webassembly.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/webassembly.yml)
+[![Unit Tests](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/test.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/test.yml)
+
 Repository link: https://github.com/AnonymusRaccoon/Bomberman/
 
 ## Demo
@@ -31,7 +36,10 @@ cd Bomberman
 Create `build` dir and compile using CMake
 
 ```bash
-mkdir build && cd build && cmake .. && make
+mkdir build
+cd build
+cmake ..
+cmake --build .
 ```
 
 Enjoy !

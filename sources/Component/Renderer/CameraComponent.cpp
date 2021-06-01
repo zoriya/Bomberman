@@ -6,8 +6,9 @@
 
 namespace BBM
 {
-	CameraComponent::CameraComponent(WAL::Entity &entity)
-		: Component(entity)
+	CameraComponent::CameraComponent(WAL::Entity &entity, Vector3f target)
+		: Component(entity),
+		target(target)
 	{}
 
 	WAL::Component *BBM::CameraComponent::clone(WAL::Entity &entity) const
