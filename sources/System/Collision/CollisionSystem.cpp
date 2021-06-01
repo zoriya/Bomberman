@@ -14,6 +14,16 @@ namespace BBM
 	{
 
 	}
+
+	bool CollisionSystem::collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB)
+	{
+		bool overlapX = (minA.x <= maxB.x && maxA.x >= minB.x) || (minB.x <= maxA.x && maxB.x >= minA.x);
+		bool overlapY = (minA.y <= maxB.y && maxA.y >= minB.y) || (minB.y <= maxA.y && maxB.y >= minA.y);
+		bool overlapZ = (minA.z <= maxB.z && maxA.z >= minB.z) || (minB.z <= maxA.z && maxB.z >= minA.z);
+
+		return (overlapX && overlapY && overlapZ);
+	}
+
 	void CollisionSystem::onFixedUpdate(WAL::Entity &entity)
 	{
 		auto &posA = entity.getComponent<PositionComponent>();
@@ -29,13 +39,11 @@ namespace BBM
 			if (!other.hasComponent(typeid(CollisionComponent)) ||
 				!other.hasComponent(typeid(PositionComponent)))
 				continue;
-			auto colB = entity.getComponent<CollisionComponent>();
+			auto colB = other.getComponent<CollisionComponent>();
 			auto posB = other.getComponent<PositionComponent>().position;
 			Vector3f minB = Vector3f::min(posB, posB + colB.bound);
 			Vector3f maxB = Vector3f::max(posB, posB + colB.bound);
-			if ((minA.x <= maxB.x && maxA.x >= minB.x) &&
-        		(minA.y <= maxB.y && maxA.y >= minB.y) &&
-        		(minA.z <= maxB.z && maxA.z >= minB.z)) {
+			if (collide(minA, maxA, minB, maxB)) {
 				col.getOnCollide()(entity, other);
 				colB.getOnCollided()(entity, other);
 			}

@@ -10,11 +10,14 @@
 #include <System/Renderer/Renderer2DSystem.hpp>
 #include <Model/Model.hpp>
 #include <Drawables/2D/Rectangle.hpp>
+#include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
 #include <System/Renderer/Renderer3DSystem.hpp>
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
+#include <System/Collision/CollisionSystem.hpp>
 #include <Component/Movable/MovableComponent.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <System/Gamepad/GamepadSystem.hpp>
@@ -43,6 +46,7 @@ namespace BBM
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
+			.addSystem<CollisionSystem>(wal)
 			.addSystem<MovableSystem>();
 	}
 
@@ -52,6 +56,7 @@ namespace BBM
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
+		wal.addSystem<Renderer3DSystem<RAY3D::Cube>>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
 			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
@@ -61,20 +66,30 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("cube")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<MovableComponent>();;
+		RAY3D::Cube cube(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED);
+		RAY3D::Cube cubePlayer(Vector3f(0, 0, 0), Vector3f(3, 3, 3), GREEN);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<Drawable3DComponent<RAY3D::Cube>>(cubePlayer)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<CollisionComponent>(3)
 			.addComponent<MovableComponent>();
+		scene->addEntity("cube")
+			.addComponent<PositionComponent>(-5, 0, -5)
+			.addComponent<Drawable3DComponent<RAY3D::Cube>>(cube)
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
+			[](WAL::Entity &actual, const WAL::Entity &) {
+			try {
+			auto &mov = actual.getComponent<MovableComponent>();
+			mov.resetVelocity();
+			} catch (std::exception &e) { };
+			}, 3);
+		
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(0, 20, -5)
+			.addComponent<PositionComponent>(0, 20, -1)
 			.addComponent<CameraComponent>();
 		return scene;
 	}
