@@ -67,13 +67,12 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		RAY3D::Cube cube(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED);
-		RAY3D::Cube cubePlayer(Vector3f(0, 0, 0), Vector3f(3, 3, 3), GREEN);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent<RAY3D::Cube>>(cubePlayer)
+			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(3)
+			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>();
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
@@ -83,8 +82,8 @@ namespace BBM
 			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
 			[](WAL::Entity &actual, const WAL::Entity &) {
 			try {
-			auto &mov = actual.getComponent<MovableComponent>();
-			mov.resetVelocity();
+				auto &mov = actual.getComponent<MovableComponent>();
+				mov.resetVelocity();
 			} catch (std::exception &e) { };
 			}, 3);
 		

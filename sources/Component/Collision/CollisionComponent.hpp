@@ -14,11 +14,11 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 		private:
-			//! @brief onCollide functions to be called
-			WAL::Callback<WAL::Entity &, const WAL::Entity &> _onCollide;
-			//! @brief onCollided functions to be called
-			WAL::Callback<WAL::Entity &, const WAL::Entity &> _onCollided;
 		public:
+			//! @brief onCollide functions to be called
+			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
+			//! @brief onCollided functions to be called
+			WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollided;
 			//! @brief Bound size on all axis
 			Vector3f bound;
 			//! @inherit
@@ -53,11 +53,5 @@ namespace BBM
 
 			//! @brief A component can't be assigned
 			CollisionComponent &operator=(const CollisionComponent &) = delete;
-
-			//! @brief Get reference of the onCollide callback
-			const WAL::Callback<WAL::Entity &, const WAL::Entity &> &getOnCollide(void) const;
-
-			//! @brief Get reference of the onCollided callback
-			const WAL::Callback<WAL::Entity &, const WAL::Entity &> &getOnCollided(void) const;
 	};
 }

@@ -36,16 +36,16 @@ namespace BBM
 		for (auto &other : _wal.scene->getEntities()) {
 			if (&other == &entity)
 				continue;
-			if (!other.hasComponent(typeid(CollisionComponent)) ||
-				!other.hasComponent(typeid(PositionComponent)))
+			if (!other.hasComponent<CollisionComponent>() ||
+				!other.hasComponent<PositionComponent>())
 				continue;
 			auto colB = other.getComponent<CollisionComponent>();
 			auto posB = other.getComponent<PositionComponent>().position;
 			Vector3f minB = Vector3f::min(posB, posB + colB.bound);
 			Vector3f maxB = Vector3f::max(posB, posB + colB.bound);
 			if (collide(minA, maxA, minB, maxB)) {
-				col.getOnCollide()(entity, other);
-				colB.getOnCollided()(entity, other);
+				col.onCollide(entity, other);
+				colB.onCollided(entity, other);
 			}
 		}
 	}
