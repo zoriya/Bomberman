@@ -5,6 +5,8 @@
 #include <catch2/catch.hpp>
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
+#include "System/Movable/MovableSystem.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Wal.hpp"
 
@@ -15,7 +17,7 @@ using namespace WAL;
 using namespace BBM;
 
 
-TEST_CASE("Collsion test", "[Component][System]")
+TEST_CASE("Collision test", "[Component][System]")
 {
 	Wal wal;
 	CollisionSystem collision(wal);
@@ -55,4 +57,41 @@ TEST_CASE("Collsion test", "[Component][System]")
 	REQUIRE(player.getComponent<PositionComponent>().position.x == 1.0);
 	REQUIRE(player.getComponent<PositionComponent>().position.y == 1);
 	REQUIRE(player.getComponent<PositionComponent>().position.z == 1);
-} 
+}
+
+
+TEST_CASE("Collsion test with movable", "[Component][System]")
+{
+	Wal wal;
+	CollisionSystem collision(wal);
+	MovableSystem movable;
+	wal.scene = std::shared_ptr<Scene>(new Scene);
+	wal.scene->addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<CollisionComponent>([](Entity &actual, const Entity &) {
+			try {
+			auto &mov = actual.getComponent<MovableComponent>();
+			mov._velocity = {0, 0, 0};
+			} catch (std::exception &e) {};
+		}, 5.0)
+		.addComponent<MovableComponent>();
+	
+	wal.scene->addEntity("block")
+		.addComponent<PositionComponent>(0, 0, 0)
+		.addComponent<CollisionComponent>(1);
+	Entity &entity = wal.scene->getEntities()[0];
+	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
+
+	entity.getComponent<CollisionComponent>().bound.x = 5;
+	entity.getComponent<CollisionComponent>().bound.y = 5;
+	entity.getComponent<CollisionComponent>().bound.z = 5;
+
+	entity.getComponent<MovableComponent>().addForce({1, 1, 1});
+	collision.onUpdate(entity, std::chrono::nanoseconds(1));
+	collision.onFixedUpdate(entity);
+	movable.onUpdate(entity, std::chrono::nanoseconds(1));
+	movable.onFixedUpdate(entity);
+	REQUIRE(entity.getComponent<PositionComponent>().position.x == 0.0);
+	REQUIRE(entity.getComponent<PositionComponent>().position.y == 0.0);
+	REQUIRE(entity.getComponent<PositionComponent>().position.z == 0.0);
+}
