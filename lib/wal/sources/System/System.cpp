@@ -3,7 +3,7 @@
 //
 
 #include "System.hpp"
-
+#include <vector>
 #include <utility>
 
 namespace WAL
@@ -25,4 +25,4 @@ namespace WAL
 	{
 		return this->_dependencies;
 	}
-}
+} // namespace WAL

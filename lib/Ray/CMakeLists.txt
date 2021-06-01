@@ -12,12 +12,11 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif ()
 
 set(HEADERS
-    sources/Canvas.hpp
     sources/Color.hpp
     sources/Font.hpp
-    sources/IRessource.hpp
     sources/Matrix.hpp
     sources/Mesh.hpp
+    sources/TraceLog.hpp
     sources/Window.hpp
     sources/Audio/IAudio.hpp
     sources/Audio/Music.hpp
@@ -62,6 +61,7 @@ set(HEADERS
 set(SRC
     sources/Color.cpp
     sources/Font.cpp
+    sources/TraceLog.cpp
     sources/Window.cpp
     sources/Audio/Music.cpp
     sources/Audio/Sound.cpp

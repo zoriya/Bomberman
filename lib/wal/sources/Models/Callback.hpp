@@ -6,6 +6,8 @@
 #pragma once
 
 #include <functional>
+#include <utility>
+#include <unordered_map>
 
 namespace WAL
 {
@@ -50,5 +52,11 @@ namespace WAL
 		~Callback() = default;
 		//! @brief A default assignment operator
 		Callback &operator=(const Callback &) = default;
+
+		//! @brief Implicitly transform a function into a callback.
+		Callback(std::function<void (Types...)> callback) // NOLINT(google-explicit-constructor)
+		{
+			this->addCallback(callback);
+		}
 	};
-}
+} // namespace WAL

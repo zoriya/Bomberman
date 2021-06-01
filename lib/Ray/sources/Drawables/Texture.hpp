@@ -10,45 +10,38 @@
 
 #include <raylib.h>
 #include <string>
-#include "Canvas.hpp"
-#include "IRessource.hpp"
+#include "Drawables/ADrawable2D.hpp"
 
 namespace RAY
 {
+	class Image;
 	//! @brief Object representation of a texture
-	class Texture: public IRessource {
+	class Texture: public Drawables::ADrawable2D {
 		public:
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
 			Texture(const std::string &filename);
 
-			//! @brief Create an texture, from an image
-			//! @param image: reference to image to create texture from
-			Texture(const Image &image);
-
-			//! @brief A default copy constructor
-			Texture(const Texture &) = default;
-
-			//! @brief A default constructor, no ressources loaded
-			Texture();
+			//! @brief A texture is not copy constructable
+			Texture(const Texture &);
 
 			//! @brief An image is assignable
-			Texture &operator=(const Texture &) = default;
+			Texture &operator=(const Texture &);
 			
 			//! @brief Texture destructor, will unload ressources
-			~Texture() override;
+			~Texture();
 
-			//! @brief load ressources from file
-			//! @param filename: path of input
-			bool load(const std::string &filename) override;
+			//! @brief Draw drawble on window
+			void drawOn(RAY::Window &) override;
 
-			//! @brief unload ressources
-			bool unload() override;
+			//! @brief Draw on image
+			void drawOn(RAY::Image &image) override;
 
-		protected:
 		private:
 			//! @brief Texture, really, that's just it...
 			::Texture _texture;
+
+			std::string _resourcePath;
 
 		INTERNAL:
 			//! @return libray Texture struct

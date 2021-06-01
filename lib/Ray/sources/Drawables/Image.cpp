@@ -6,15 +6,12 @@
 */
 
 #include "Drawables/Image.hpp"
+#include "Drawables/IDrawable.hpp"
+#include "Drawables/Texture.hpp"
 
 RAY::Image::Image(const std::string &filename):
 	_image(LoadImage(filename.c_str()))
 {
-}
-
-RAY::Image::Image()
-{
-
 }
 
 RAY::Image::Image(RAY::Texture &texture):
@@ -28,21 +25,9 @@ RAY::Image::~Image()
 	UnloadImage(_image);
 }
 
-bool RAY::Image::load(const std::string &filename)
-{
-	this->_image = LoadImage(filename.c_str());
-	return true;
-}
-
 bool RAY::Image::exportTo(const std::string &outputPath)
 {
 	ExportImage(_image, outputPath.c_str());
-	return true;
-}
-
-bool RAY::Image::unload()
-{
-	UnloadImage(_image);
 	return true;
 }
 
@@ -54,4 +39,10 @@ RAY::Image::operator ::Image() const
 RAY::Image::operator ::Image *()
 {
 	return &this->_image;
+}
+
+RAY::Image &RAY::Image::resize(const RAY::Vector2 &dimensions)
+{
+	ImageResize(*this, dimensions.x, dimensions.y);
+	return *this;
 }

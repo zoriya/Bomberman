@@ -6,41 +6,50 @@
 */
 
 #include "Drawables/Texture.hpp"
+#include "Exceptions/RayError.hpp"
 
-RAY::Texture::Texture(const std::string &filename):
-	_texture(LoadTexture(filename.c_str()))
-{
-}
+namespace RAY {
 
-RAY::Texture::Texture(const Image &image):
-	_texture(LoadTextureFromImage(image))
-{
+	Texture::Texture(const std::string &filename):
+		ADrawable2D(0, 0, WHITE),
+		_texture(LoadTexture(filename.c_str())),
+		_resourcePath(filename)
+	{
+	}
 
-}
+	Texture::Texture(const Texture &texture):
+		ADrawable2D(0, 0, WHITE),
+		_texture(LoadTexture(texture._resourcePath.c_str())),
+		_resourcePath(texture._resourcePath)
+	{
+	}
 
-RAY::Texture::Texture()
-{
 
-}
+	Texture &Texture::operator=(const Texture &other)
+	{
+		this->_resourcePath = other._resourcePath;
+		this->_texture = LoadTexture(this->_resourcePath.c_str());
+		return *this;
+	}
 
-RAY::Texture::~Texture()
-{
-	UnloadTexture(this->_texture);
-}
+	Texture::~Texture()
+	{
+		UnloadTexture(this->_texture);
+	}
 
-bool RAY::Texture::load(const std::string &filename)
-{
-	this->_texture = LoadTexture(filename.c_str());
-	return true;
-}
+	void Texture::drawOn(RAY::Window &)
+	{
+		DrawTexture(this->_texture, this->_position.x, this->_position.y, this->_color);
+	}
 
-bool RAY::Texture::unload()
-{
-	UnloadTexture(this->_texture);
-	return true;
-}
+	void Texture::drawOn(RAY::Image &)
+	{
+		throw RAY::Exception::NotSupportedError("A texture cannot be drawn on an image");
+	}
 
-RAY::Texture::operator ::Texture() const
-{
-	return this->_texture;
+	Texture::operator ::Texture() const
+	{
+		return this->_texture;
+	}
+
 }

@@ -19,19 +19,7 @@ RAY::Audio::Music::Music()
 
 RAY::Audio::Music::~Music()
 {
-	this->unload();
-}
-
-bool RAY::Audio::Music::load(const std::string &path)
-{
-	_music = LoadMusicStream(path.c_str());
-	return true;
-}
-
-bool RAY::Audio::Music::unload(void)
-{
 	UnloadMusicStream(_music);
-	return true;
 }
 
 bool RAY::Audio::Music::isPlaying(void)

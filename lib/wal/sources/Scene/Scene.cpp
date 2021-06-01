@@ -10,5 +10,8 @@ namespace WAL
 	{
 		return this->_entities;
 	}
-}
-
+	Scene &Scene::operator=(const Scene &)
+	{
+		return *this;
+	}
+} // namespace WAL

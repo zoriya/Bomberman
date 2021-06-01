@@ -5,6 +5,7 @@
 #pragma once
 
 #include <chrono>
+#include <vector>
 #include "Entity/Entity.hpp"
 
 namespace WAL
@@ -44,4 +45,4 @@ namespace WAL
 		//! @brief A system can't be instantiated, it should be derived.
 		System &operator=(const System &) = default;
 	};
-}
+} // namespace WAL

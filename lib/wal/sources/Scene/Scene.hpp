@@ -24,10 +24,9 @@ namespace WAL
 		//! @brief Add a new entity to the scene, you can use this method with the same arguments as the entity's constructor.
 		//! @return The current scene is returned to allow you to chain call.
 		template <class ...Params>
-		Scene &addEntity(Params ...params)
+		Entity &addEntity(Params &&...params)
 		{
-			this->_entities.emplace_back(params...);
-			return *this;
+			return this->_entities.emplace_back(std::forward<Params>(params)...);
 		}
 
 		//! @brief A default constructor
@@ -37,6 +36,7 @@ namespace WAL
 		//! @brief A default destructor
 		~Scene() = default;
 		//! @brief A scene is assignable
-		Scene &operator=(const Scene &) = default;
+		Scene &operator=(const Scene &);
+		Scene(Scene &&) = default;
 	};
-}
+} // namespace WAL
