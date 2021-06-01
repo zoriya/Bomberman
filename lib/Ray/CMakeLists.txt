@@ -56,6 +56,7 @@ set(HEADERS
     sources/Model/ModelAnimations.hpp
     sources/Vector/Vector2.hpp
     sources/Vector/Vector3.hpp
+    sources/Utils/Cache.hpp
 )
 
 set(SRC

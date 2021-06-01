@@ -10,8 +10,7 @@
 
 #include <raylib.h>
 #include <string>
-#include <unordered_map>
-#include <memory>
+#include "Utils/Cache.hpp"
 
 namespace RAY
 {
@@ -42,10 +41,7 @@ namespace RAY
 			//! @brief path to the file the texture is loaded from
 			std::string _resourcePath;
 
-			//! @param path path of the file to load
-			//! @return a newly loaded texture if it hasn't be previously loaded, or one from cache
-			std::shared_ptr<::Texture> fetchTextureInCache(const std::string &path);
-			static std::unordered_map<std::string, std::shared_ptr<::Texture>> _textureCache; 
+			static Cache<::Texture> _texturesCache; 
 
 		INTERNAL:
 			//! @return libray Texture struct

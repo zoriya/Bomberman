@@ -14,8 +14,7 @@
 #include <raylib.h>
 #include <vector>
 #include <optional>
-#include <unordered_map>
-#include <memory>
+#include "Utils/Cache.hpp"
 
 namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
@@ -91,10 +90,8 @@ namespace RAY::Drawables::Drawables3D {
 			float _rotationAngle;
 			//! @brief Scale of the shape
 			RAY::Vector3 _scale;
-			//! @brief, look through cache to see if a model using same file
-			std::shared_ptr<::Model>fetchModelInCache(const std::string &path);
 
-			static std::unordered_map<std::string, std::shared_ptr<::Model>> _modelsCache;
+			static RAY::Cache<::Model> _modelsCache;
 
 		INTERNAL:
 			//! @brief A RAY Model is cast-able in libray's model

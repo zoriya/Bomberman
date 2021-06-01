@@ -9,10 +9,10 @@
 
 namespace RAY {
 
-	std::unordered_map<std::string, std::shared_ptr<::Texture>> Texture::_textureCache; 
+	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture); 
 
 	Texture::Texture(const std::string &filename):
-		_texture(fetchTextureInCache(filename)),
+		_texture(_texturesCache.fetch(filename)),
 		_resourcePath(filename)
 	{
 	}
@@ -26,16 +26,5 @@ namespace RAY {
 	Texture::operator ::Texture() const
 	{
 		return *this->_texture;
-	}
-
-	std::shared_ptr<::Texture> Texture::fetchTextureInCache(const std::string &path)
-	{
-		if (Texture::_textureCache.find(path) == Texture::_textureCache.end())
-			Texture::_textureCache.emplace(path, std::shared_ptr<::Texture>(
-			new ::Texture(LoadTexture(path.c_str())), [](::Texture *p) {
-           		UnloadTexture(*p);
-           		delete p;
-        	}));
-		return _textureCache[path];
 	}
 }

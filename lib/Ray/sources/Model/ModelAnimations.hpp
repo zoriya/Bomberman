@@ -11,6 +11,7 @@
 #include "Model/ModelAnimation.hpp"
 #include <vector>
 #include <string>
+#include "Utils/Cache.hpp"
 
 namespace RAY {
 	//! @brief A Holder for Model Animations
@@ -23,8 +24,8 @@ namespace RAY {
 			//! @brief Only single entity can hold these animations pointers
 			ModelAnimations(const ModelAnimations &) = delete;
 
-			//! @brief Unloads all animations
-			~ModelAnimations();
+			//! @brief Default constructor
+			~ModelAnimations() = default;
 
 			//! @brief Only single entity can hold these animations pointers
 			ModelAnimations &operator=(const ModelAnimations &) = delete;
@@ -37,13 +38,15 @@ namespace RAY {
 
 		private:
 			//! @brief Holds the pointer returned by the loading function
-			std::unique_ptr<::ModelAnimation> _animationsPtr;
+			std::shared_ptr<::ModelAnimation> _animationsPtr;
 
 			//! @brief A holder for animations
 			std::vector<ModelAnimation> _animations;
 
 			//! @brief the number of loaded animations
 			int _animationCount;
+
+			static Cache<::ModelAnimation> _animationsCache;
 	};
 }
 
