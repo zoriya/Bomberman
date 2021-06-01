@@ -1,8 +1,8 @@
-# floor.obj
+# hole.obj
 #
 
-mtllib floor.mtl
-o floor
+mtllib hole.mtl
+o hole
 
 v -0.500000 -0.500000 0.500000
 v 0.500000 -0.500000 0.500000

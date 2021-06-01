@@ -14,6 +14,8 @@ set(SOURCES
 	sources/Models/GameState.hpp
 	sources/Runner/Runner.cpp
 	sources/Runner/Runner.hpp
+	sources/Map/Map.cpp
+	sources/Map/Map.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp

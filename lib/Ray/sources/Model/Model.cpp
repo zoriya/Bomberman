@@ -16,10 +16,10 @@ namespace RAY::Drawables::Drawables3D {
 
 	Model::Model(const std::string &filename,
 	                                          std::optional<std::pair<MaterialType, std::string>> texture,
+											  const RAY::Vector3 &scale,
 											  const RAY::Vector3 &position,
 											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle,
-											  const RAY::Vector3 &scale)
+											  float rotationAngle)
 		: ADrawable3D(position, WHITE),
 		_model(_modelsCache.fetch(filename)),
 		_rotationAxis(rotationAxis),
