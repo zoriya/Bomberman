@@ -10,7 +10,7 @@
 #include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY {
-	std::unordered_map<std::string, std::shared_ptr<::Image>> Image::_modelsCache;
+	std::unordered_map<std::string, std::shared_ptr<::Image>> Image::_ImageCache;
 
 	Image::Image(const std::string &filename):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),

@@ -50,7 +50,7 @@ namespace RAY::Drawables::Drawables2D
 		ImageDrawRectangleV(image, this->_position, this->_dimensions, this->_color);
 	}
 
-	Rectangle::operator  ::Rectangle () const
+	Rectangle::operator  ::Rectangle() const
 	{
 		::Rectangle rect;
 

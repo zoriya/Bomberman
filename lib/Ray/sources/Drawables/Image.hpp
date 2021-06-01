@@ -53,7 +53,7 @@ namespace RAY
 			//! @brief, look through cache to see if a model using same file
 			std::shared_ptr<::Image>fetchImageInCache(const std::string &path);
 
-			static std::unordered_map<std::string, std::shared_ptr<::Image>> _modelsCache;
+			static std::unordered_map<std::string, std::shared_ptr<::Image>> _ImageCache;
 
 		
 		INTERNAL:
