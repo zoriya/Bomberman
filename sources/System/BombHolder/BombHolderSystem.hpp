@@ -20,10 +20,12 @@ namespace BBM
 		void _spawnBomb(Vector3f position);
 
 		//! @brief The method triggered when the bomb explode.
-		static void _bombExplosion(WAL::Entity &bomb, const WAL::Wal &);
+		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
 	public:
 		//! @brief The explosion time of new bombs.
 		static std::chrono::nanoseconds explosionTimer;
+		//! @brief The radius of the explosion.
+		static float explosionRadius;
 
 		//! @inherit
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;

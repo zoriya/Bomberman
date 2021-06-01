@@ -62,7 +62,7 @@ set(SOURCES
 	sources/Component/Timer/TimerComponent.hpp
 	sources/System/Timer/TimerSystem.cpp
 	sources/System/Timer/TimerSystem.hpp
-)
+	sources/System/Event/EventSystem.cpp sources/System/Event/EventSystem.hpp)
 
 add_executable(bomberman
                sources/main.cpp

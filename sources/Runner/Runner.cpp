@@ -11,6 +11,9 @@
 #include <Model/Model.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
+#include <Component/Health/HealthComponent.hpp>
+#include "System/Event/EventSystem.hpp"
+#include "System/Health/HealthSystem.hpp"
 #include "System/Timer/TimerSystem.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "System/BombHolder/BombHolderSystem.hpp"
@@ -48,6 +51,8 @@ namespace BBM
 		    .addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<BombHolderSystem>(wal)
+			.addSystem<EventSystem>()
+			.addSystem<HealthSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -78,7 +83,8 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<MovableComponent>()
-			.addComponent<BombHolderComponent>();
+			.addComponent<BombHolderComponent>()
+			.addComponent<HealthComponent>(1);
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(0, 20, -5)
 			.addComponent<CameraComponent>();

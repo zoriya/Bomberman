@@ -16,7 +16,7 @@ namespace BBM
 	{
 	public:
 		//! @brief The callback to call when the timer ring.
-		WAL::Callback<WAL::Entity &, const WAL::Wal &> callback;
+		WAL::Callback<WAL::Entity &, WAL::Wal &> callback;
 		//! @brief The ring delay of this timer component.
 		std::chrono::nanoseconds ringIn;
 
