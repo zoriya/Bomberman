@@ -27,6 +27,8 @@ namespace BBM
 	void RenderScreenSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
 	{
 		const auto &pos = entity.getComponent<PositionComponent>();
+		const auto &cam = entity.getComponent<CameraComponent>();
 		_camera.setPosition(pos.position);
+		_camera.setTarget(cam.target);
 	}
 }

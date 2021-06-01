@@ -102,7 +102,7 @@ void RAY::Window::setFPS(unsigned int fps)
 	SetTargetFPS(fps);
 }
 
-void RAY::Window::clear(const RAY::Color &color)
+void RAY::Window::clear(RAY::Color color)
 {
 	ClearBackground(color);
 }

@@ -136,6 +136,12 @@ namespace BBM
 		{
 			double mag = this->magnitude();
 
+			if (mag == 0) {
+				this->x = 0;
+				this->y = 0;
+				this->z = 0;
+				return *this;
+			}
 			this->x /= mag;
 			this->y /= mag;
 			this->z /= mag;
@@ -146,6 +152,8 @@ namespace BBM
 		{
 			T mag = this->magnitude();
 
+			if (mag == 0)
+				return Vector3<T>();
 			return Vector3<T>(this->x / mag, this->y / mag, this->z / mag);
 		}
 

@@ -12,6 +12,12 @@
 #include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include <System/Renderer/Renderer3DSystem.hpp>
+#include <System/Keyboard/KeyboardSystem.hpp>
+#include <System/Controllable/ControllableSystem.hpp>
+#include <Component/Movable/MovableComponent.hpp>
+#include <Component/Controllable/ControllableComponent.hpp>
+#include <Component/Keyboard/KeyboardComponent.hpp>
+#include <System/Gamepad/GamepadSystem.hpp>
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
@@ -32,6 +38,14 @@ namespace BBM
 			engine.shouldClose = true;
 	}
 
+	void addSystems(WAL::Wal &wal)
+	{
+		wal.addSystem<KeyboardSystem>()
+			.addSystem<GamepadSystem>()
+			.addSystem<ControllableSystem>()
+			.addSystem<MovableSystem>();
+	}
+
 	void enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
@@ -40,7 +54,7 @@ namespace BBM
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
-		   .addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
+			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
 		wal.addSystem<RenderScreenSystem>(window);
 	}
 
@@ -49,12 +63,18 @@ namespace BBM
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED);
+			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED)
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<MovableComponent>();;
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"));
+			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<MovableComponent>();
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<PositionComponent>(0, 20, -5)
 			.addComponent<CameraComponent>();
 		return scene;
 	}
@@ -62,7 +82,7 @@ namespace BBM
 	int run()
 	{
 		WAL::Wal wal;
-		wal.addSystem<MovableSystem>();
+		addSystems(wal);
 		enableRaylib(wal);
 		wal.scene = loadGameScene();
 
