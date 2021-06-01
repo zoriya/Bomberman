@@ -54,6 +54,8 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
+	sources/Component/Animation/AnimationComponent.cpp
+	sources/Component/Animation/AnimationComponent.hpp
 )
 
 add_executable(bomberman
