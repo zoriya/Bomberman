@@ -133,7 +133,10 @@ namespace WAL
 					this->_fixedUpdate();
 				}
 				this->_update(dtime);
-				// TODO delete entities scheduled for deletion.
+				auto &entities = this->scene->getEntities();
+				entities.erase(std::remove_if(entities.begin(), entities.end(), [](auto &entity) {
+					return entity.shouldDelete();
+				}), entities.end());
 				callback(*this, state);
 			}
 		}

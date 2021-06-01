@@ -122,5 +122,7 @@ namespace WAL
 		~Entity() = default;
 		//! @brief An entity is not assignable
 		Entity &operator=(const Entity &) = delete;
+		//! @brief An entity is move assignable.
+		Entity &operator=(Entity &&) = default;
 	};
 } // namespace WAL
