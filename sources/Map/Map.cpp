@@ -90,7 +90,7 @@ namespace BBM
 	{
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
-			//.addComponent<HealthComponent>(1)
+			.addComponent<HealthComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/breakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/breakable_wall.png"));
 	}
 
