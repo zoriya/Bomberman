@@ -9,10 +9,11 @@ using namespace std::chrono_literals;
 
 namespace BBM
 {
-	TimerSystem::TimerSystem()
+	TimerSystem::TimerSystem(WAL::Wal &wal)
 		: WAL::System({
 			typeid(TimerComponent)
-		})
+		}),
+		_wal(wal)
 	{}
 
 	void TimerSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
@@ -21,7 +22,7 @@ namespace BBM
 		timer.ringIn -= dtime;
 		if (timer.ringIn <= 0ns) {
 			timer.setDisable(true);
-			timer.callback(entity);
+			timer.callback(entity, this->_wal);
 		}
 	}
 }

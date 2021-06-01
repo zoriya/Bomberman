@@ -18,7 +18,13 @@ namespace BBM
 		WAL::Wal &_wal;
 		//! @brief Spawn a bomb at the specified position.
 		void _spawnBomb(Vector3f position);
+
+		//! @brief The method triggered when the bomb explode.
+		static void _bombExplosion(WAL::Entity &bomb, const WAL::Wal &);
 	public:
+		//! @brief The explosion time of new bombs.
+		static std::chrono::nanoseconds explosionTimer;
+
 		//! @inherit
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
 

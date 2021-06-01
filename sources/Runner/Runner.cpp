@@ -43,7 +43,7 @@ namespace BBM
 
 	void addSystems(WAL::Wal &wal)
 	{
-		wal.addSystem<TimerSystem>()
+		wal.addSystem<TimerSystem>(wal)
 			.addSystem<KeyboardSystem>()
 		    .addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
