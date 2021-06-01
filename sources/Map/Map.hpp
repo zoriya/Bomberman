@@ -7,6 +7,8 @@
 #pragma once
 
 #include <cmath>
+#include <ctime>
+#include <cstdlib>
 #include <random>
 #include <map>
 #include <tuple>
@@ -26,7 +28,7 @@ namespace BBM
 	class MapGenerator
 	{
 		private:
-			using MapElem = void (Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+			using MapElem = std::function<void (Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 			//! @brief Enum of the block available.
 			enum BlockType {
 				NOTHING,
@@ -52,6 +54,7 @@ namespace BBM
 			//! @param scene Scene where the map is instanced
 			//! @brief Generate the unbreakable block of the map
 			static void generateUnbreakableBlock(int width, int height, std::shared_ptr<WAL::Scene> scene);
+
 			//! @param width Width of the map
 			//! @param height Height of the map
 			//! @param scene Scene where the map is instanced
@@ -93,12 +96,21 @@ namespace BBM
 			//! @param scene Scene where the map is instanced
 			//! @brief Create stair of the map
 			static void createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+
 		public:
+
 			//! @param width Width of the map
 			//! @param height Height of the map
+			//! @brief Generate map of block to be loaded
+			static std::map<std::tuple<int, int>, BlockType> createMap(int width, int height);
+
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @param map Map to load with block declared inside
 			//! @param scene Scene where the map is instanced
 			//! @brief Generate the map
-			static void generateMap(int width, int height, int seed, std::shared_ptr<WAL::Scene> scene);
+			static void loadMap(int width, int height, std::map<std::tuple<int, int>, \
+BlockType> map, std::shared_ptr<WAL::Scene> scene);
 			
 	};
 } // namespace BBM

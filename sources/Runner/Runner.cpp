@@ -77,7 +77,8 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(0, 20, -5)
 			.addComponent<CameraComponent>();
-		MapGenerator::generateMap(15, 15, rand(), scene);
+		std::srand(std::time(NULL));
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
 
