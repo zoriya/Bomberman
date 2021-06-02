@@ -2,8 +2,6 @@
 // Created by Zoe Roux on 5/27/21.
 //
 
-#undef INTERNAL
-#define INTERNAL public
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include "Models/Vector2.hpp"
 #include "RenderSystem.hpp"
@@ -28,10 +26,10 @@ namespace BBM
 	void RenderSystem::onSelfUpdate()
 	{
 		this->_camera.update();
-		BeginDrawing();
-		ClearBackground(BLACK);
+		this->_window.beginDrawing();
+		this->_window.clear();
 
-		BeginMode3D(this->_camera);
+		this->_window.useCamera(this->_camera);
 		for (auto &entity : this->_wal.scene->getEntities()) {
 			if (!entity.hasComponent<Drawable3DComponent>()
 			    || !entity.hasComponent<PositionComponent>())
@@ -42,7 +40,7 @@ namespace BBM
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
 		}
-		EndMode3D();
+		this->_window.unuseCamera();
 
 		// TODO sort entities based on the Z axis
 		for (auto &entity : this->_wal.scene->getEntities()) {
@@ -55,7 +53,7 @@ namespace BBM
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 		}
-		EndDrawing();
+		this->_window.endDrawing();
 	}
 
 	void RenderSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)

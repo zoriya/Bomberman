@@ -107,10 +107,14 @@ void RAY::Window::clear(const RAY::Color &color)
 	ClearBackground(color);
 }
 
-void RAY::Window::draw()
+void RAY::Window::beginDrawing()
+{
+	BeginDrawing();
+}
+
+void RAY::Window::endDrawing()
 {
 	EndDrawing();
-	BeginDrawing();
 }
 
 void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
