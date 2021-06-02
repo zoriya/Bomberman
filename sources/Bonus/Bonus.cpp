@@ -2,42 +2,43 @@
 // Created by HENRY Benjamin on 02/06/2021.
 //
 
+#include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
 //#include "Component/BombHolderComponent/BombHolderComponent.hpp"
 
 namespace BBM {
-	void Bonus::BombUpBonus(const WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::BombUpBonus(WAL::Entity &entity, const WAL::Entity &other)
 	{
-		auto &bombHolder = other.getComponent<BombHolderComponent>();
-		bombHolder.maxBombCount++;
-		//entity.scheduleDeletion(true);
+		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
+		//bombHolder.maxBombCount++;
+		//other.scheduleDeletion(true);
 	}
 
-	void Bonus::DamageIncreasedBonus(const WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::DamageIncreasedBonus(WAL::Entity &entity, const WAL::Entity &other)
 	{
-		auto &bombHolder = other.getComponent<BombHolderComponent>();
+		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
 		//bombHolder.damage++;
-		//entity.scheduleDeletion(true);
+		//other.scheduleDeletion(true);
 	}
 
-	void Bonus::ExplosionRangeBonus(const WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::ExplosionRangeBonus(WAL::Entity &entity, const WAL::Entity &other)
 	{
-		auto &bombHolder = other.getComponent<BombHolderComponent>();
+		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
 		//bombHolder.explosionRange++;
-		//entity.scheduleDeletion(true);
+		//other.scheduleDeletion(true);
 	}
 
-	void Bonus::SpeedUpBonus(const WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::SpeedUpBonus(WAL::Entity &entity, const WAL::Entity &other)
 	{
-		auto &movable = other.getComponent<MovableComponent>();
+		auto &movable = entity.getComponent<MovableComponent>();
 		movable.addForce(Vector3f(1, 0, 1));
-		//entity.scheduleDeletion(true);
+		//other.scheduleDeletion(true);
 	}
 
-	void Bonus::IgnoreWallsBonus(const WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::IgnoreWallsBonus(WAL::Entity &entity, const WAL::Entity &other)
 	{
-		auto &bombHolder = other.getComponent<BombHolderComponent>();
+		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
 		//bombHolder.ignoreWall = false;
-		//entity.scheduleDeletion(true);
+		//other.scheduleDeletion(true);
 	}
 }
