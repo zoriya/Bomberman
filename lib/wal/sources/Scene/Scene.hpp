@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <functional>
+#include "View/View.hpp"
 #include "Entity/Entity.hpp"
 
 namespace WAL
@@ -17,6 +18,8 @@ namespace WAL
 	private:
 		//! @brief The list of registered entities
 		std::vector<Entity> _entities = {};
+		//! @brief A list of cached views.
+//		std::vector<View> _views = {};
 	public:
 		//! @brief Get the list of entities.
 		std::vector<Entity> &getEntities();
