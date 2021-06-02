@@ -68,7 +68,7 @@ namespace BBM
 			//! @param height Height of the map
 			//! @param scene Scene where the map is instanced
 			//! @brief Generate the floor of the map
-			static void generateFloor(int width, int height, std::shared_ptr<WAL::Scene> scene);
+			static void generateFloor(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene);
 
 			//! @param coords coords of the element
 			//! @param scene Scene where the map is instanced
