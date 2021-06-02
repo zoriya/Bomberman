@@ -5,35 +5,35 @@
 #pragma once
 
 #include "Component/Component.hpp"
-#include "Drawables/ADrawable2D.hpp"
+#include "Drawables/ADrawable3D.hpp"
+#include "Model/Model.hpp"
 
 namespace BBM
 {
-	template <class T>
 	class Drawable2DComponent : public WAL::Component
 	{
 	public:
 		//! @brief The type of the component
-		T member;
+		std::shared_ptr<RAY::Drawables::ADrawable2D> drawable;
 
-		//! ctor
-		Drawable2DComponent(WAL::Entity &entity, T member)
+		//! @brief ctor
+		Drawable2DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable2D> drawable)
 			: WAL::Component(entity),
-			member(std::move(member))
+			  drawable(std::move(drawable))
 		{}
 
 		//! ctor
-		template<typename ...Params>
+		template<typename T, typename ...Params>
 		explicit Drawable2DComponent(WAL::Entity &entity, Params &&...params)
 			: WAL::Component(entity),
-			  member(std::forward<Params>(params)...)
+			 drawable(std::move(T(std::forward<Params>(params)...)))
 		{}
 
 		//! @brief Clone a component for another or the same entity.
 		//! @param entity The entity that owns the ne component.
 		WAL::Component *clone(WAL::Entity &entity) const override
 		{
-			return new Drawable2DComponent(entity, this->member);
+			return new Drawable2DComponent(entity, this->drawable);
 		}
 
 		//! @brief Default copy ctor
@@ -42,7 +42,5 @@ namespace BBM
 		~Drawable2DComponent() override = default;
 		//! @brief Default assignment operator
 		Drawable2DComponent &operator=(const Drawable2DComponent &) = delete;
-
-
 	};
 }
