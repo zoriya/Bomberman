@@ -4,6 +4,7 @@
 
 #pragma once
 
+#include <Models/TypeHolder.hpp>
 #include "Component/Component.hpp"
 #include "Drawables/ADrawable3D.hpp"
 #include "Model/Model.hpp"
@@ -24,9 +25,9 @@ namespace BBM
 
 		//! ctor
 		template<typename T, typename ...Params>
-		explicit Drawable2DComponent(WAL::Entity &entity, Params &&...params)
+		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, Params &&...params)
 			: WAL::Component(entity),
-			 drawable(std::move(T(std::forward<Params>(params)...)))
+			 drawable(new T(std::forward<Params>(params)...))
 		{}
 
 		//! @brief Clone a component for another or the same entity.

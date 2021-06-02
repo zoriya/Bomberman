@@ -4,10 +4,14 @@
 
 #undef INTERNAL
 #define INTERNAL public
-#include <Component/Renderer/Drawable2DComponent.hpp>
+#include <Component/Renderer/Drawable3DComponent.hpp>
+#include "Models/Vector2.hpp"
 #include "RenderSystem.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Drawables/ADrawable2D.hpp"
+#include "Drawables/ADrawable3D.hpp"
 
 namespace BBM
 {
@@ -26,7 +30,21 @@ namespace BBM
 		this->_camera.update();
 		BeginDrawing();
 		ClearBackground(BLACK);
+
 		BeginMode3D(this->_camera);
+		for (auto &entity : this->_wal.scene->getEntities()) {
+			if (!entity.hasComponent<Drawable3DComponent>()
+			    || !entity.hasComponent<PositionComponent>())
+				continue;
+			auto &drawable = entity.getComponent<Drawable3DComponent>();
+			auto &pos = entity.getComponent<PositionComponent>();
+
+			drawable.drawable->setPosition(pos.position);
+			drawable.drawable->drawOn(this->_window);
+		}
+		EndMode3D();
+
+		// TODO sort entities based on the Z axis
 		for (auto &entity : this->_wal.scene->getEntities()) {
 			if (!entity.hasComponent<Drawable2DComponent>()
 		    || !entity.hasComponent<PositionComponent>())
@@ -34,10 +52,9 @@ namespace BBM
 			auto &drawable = entity.getComponent<Drawable2DComponent>();
 			auto &pos = entity.getComponent<PositionComponent>();
 
-//			drawable.drawable->setPosition(static_cast<RAY::Vector3>(pos.position));
-//			drawable.drawable->drawOn(this->_window);
+			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
+			drawable.drawable->drawOn(this->_window);
 		}
-		EndMode3D();
 		EndDrawing();
 	}
 

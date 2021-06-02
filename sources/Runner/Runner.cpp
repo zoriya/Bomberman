@@ -41,12 +41,10 @@ namespace BBM
 
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
-//		Drawable2DComponent cmp = Drawable2DComponent(Vector2f(), Vector2f(), RED);
-
 		auto scene = std::make_shared<WAL::Scene>();
-//		scene->addEntity("cube")
-//			.addComponent<PositionComponent>()
-//			.addComponent<Drawable2DComponent>(Vector2f(), Vector2f(10, 10), RED);
+		scene->addEntity("cube")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(10, 10), RED);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"));
