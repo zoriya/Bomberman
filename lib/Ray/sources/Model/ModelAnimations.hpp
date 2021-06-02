@@ -27,14 +27,23 @@ namespace RAY {
 			//! @brief Default constructor
 			~ModelAnimations() = default;
 
+			//! @brief Default move ctor
+			ModelAnimations(ModelAnimations &&) = default;
+
 			//! @brief Only single entity can hold these animations pointers
 			ModelAnimations &operator=(const ModelAnimations &) = delete;
 
 			//! @brief Castin Object to raw model animation pointer
 			ModelAnimation &operator[](int index);
 
+			//! @brief Same usage as the operator[] but const
+			const ModelAnimation &at(int index) const;
+
 			//! @return the number of loaded animations
 			size_t getAnimationsCount() const;
+
+			//! @brief Get the creation file
+			std::string getFilePath() const;
 
 		private:
 			//! @brief Holds the pointer returned by the loading function
@@ -45,6 +54,9 @@ namespace RAY {
 
 			//! @brief the number of loaded animations
 			int _animationCount;
+
+			//! @brief The file where the animations were loaded (used to create a copy of this class)
+			const std::string _filePath;
 
 			static Cache<::ModelAnimation> _animationsCache;
 	};

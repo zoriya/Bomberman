@@ -10,7 +10,8 @@
 RAY::Cache<::ModelAnimation> RAY::ModelAnimations::_animationsCache(LoadModelAnimations, UnloadModelAnimations);
 
 RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
-	_animationsPtr(_animationsCache.fetch(filePath, &this->_animationCount))
+	_animationsPtr(_animationsCache.fetch(filePath, &this->_animationCount)),
+	_filePath(filePath)
 {
 	::ModelAnimation *ptr = this->_animationsPtr.get();
 
@@ -20,11 +21,21 @@ RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
 
 RAY::ModelAnimation &RAY::ModelAnimations::operator[](int index)
 {
-	return this->_animations[index];
+	return this->_animations.at(index);
 }
 
 size_t RAY::ModelAnimations::getAnimationsCount() const
 {
 	return this->_animationCount;
+}
+
+std::string RAY::ModelAnimations::getFilePath() const
+{
+	return this->_filePath;
+}
+
+const RAY::ModelAnimation &RAY::ModelAnimations::at(int index) const
+{
+	return this->_animations.at(index);
 }
 

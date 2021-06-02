@@ -8,9 +8,9 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations &modelAnimation, int animIndex)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex)
 		: WAL::Component(entity),
-		  _modelAnimation(modelAnimation),
+		  _modelAnimation(std::move(modelAnimation)),
 		  _currentAnimIndex(animIndex)
 	{
 		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(0);
@@ -18,15 +18,17 @@ namespace BBM
 
 	WAL::Component *AnimationsComponent::clone(WAL::Entity &entity) const
 	{
-		return new AnimationsComponent(entity, this->_modelAnimation, this->_currentAnimIndex);
+		return new AnimationsComponent(entity,
+								 RAY::ModelAnimations(this->_modelAnimation.getFilePath()),
+								 this->_currentAnimIndex);
 	}
 
 	size_t AnimationsComponent::getCurrentAnimFrameCounter() const
 	{
-		return this->_modelAnimation[this->_currentAnimIndex].getFrameCounter();
+		return this->_modelAnimation.at(this->_currentAnimIndex).getFrameCounter();
 	}
 
-	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim() const
+	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim()
 	{
 		return this->_modelAnimation[this->_currentAnimIndex];
 	}

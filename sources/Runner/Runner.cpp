@@ -22,6 +22,9 @@
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
+#include <Model/ModelAnimations.hpp>
+#include "Component/Animation/AnimationsComponent.hpp"
+#include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -53,6 +56,7 @@ namespace BBM
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
+		wal.addSystem<AnimationsSystem>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
 			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
@@ -73,6 +77,7 @@ namespace BBM
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<MovableComponent>();
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)

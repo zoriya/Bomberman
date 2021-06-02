@@ -15,7 +15,7 @@ namespace BBM
 	{
 	private:
 		//! @brief To get the animation data
-		RAY::ModelAnimations &_modelAnimation;
+		RAY::ModelAnimations _modelAnimation;
 		//! @brief The index of the
 		int _currentAnimIndex;
 	public:
@@ -32,7 +32,7 @@ namespace BBM
 		size_t getCurrentAnimFrameCounter() const;
 
 		//! @brief get the current
-		RAY::ModelAnimation getCurrentModelAnim() const;
+		RAY::ModelAnimation getCurrentModelAnim();
 
 		//! @brief set the anim frame counter
 		void setCurrentAnimFrameCounter(size_t animFrameCounter);
@@ -44,7 +44,7 @@ namespace BBM
 		void incCurrentAnimFrameCounter();
 
 		//! @brief ctor entity and the path of the animation file
-		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations &modelAnimation, int animIndex);
+		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex);
 		//! @brief copy ctor
 		AnimationsComponent(const AnimationsComponent &) = default;
 		//! @brief dtor
