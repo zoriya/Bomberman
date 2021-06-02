@@ -10,29 +10,34 @@ namespace BBM {
 	{
 		auto &bombHolder = other.getComponent<BombHolderComponent>();
 		bombHolder.maxBombCount++;
+		//entity.scheduleDeletion(true);
 	}
 
 	void Bonus::DamageIncreasedBonus(const WAL::Entity &entity, const WAL::Entity &other)
 	{
 		auto &bombHolder = other.getComponent<BombHolderComponent>();
 		//bombHolder.damage++;
+		//entity.scheduleDeletion(true);
 	}
 
 	void Bonus::ExplosionRangeBonus(const WAL::Entity &entity, const WAL::Entity &other)
 	{
 		auto &bombHolder = other.getComponent<BombHolderComponent>();
 		//bombHolder.explosionRange++;
+		//entity.scheduleDeletion(true);
 	}
 
 	void Bonus::SpeedUpBonus(const WAL::Entity &entity, const WAL::Entity &other)
 	{
 		auto &movable = other.getComponent<MovableComponent>();
 		movable.addForce(Vector3f(1, 0, 1));
+		//entity.scheduleDeletion(true);
 	}
 
 	void Bonus::IgnoreWallsBonus(const WAL::Entity &entity, const WAL::Entity &other)
 	{
 		auto &bombHolder = other.getComponent<BombHolderComponent>();
 		//bombHolder.ignoreWall = false;
+		//entity.scheduleDeletion(true);
 	}
 }
