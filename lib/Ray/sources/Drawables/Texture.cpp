@@ -52,4 +52,9 @@ namespace RAY {
 		return this->_texture;
 	}
 
+	bool Texture::isCoordInside(Vector2 coord)
+	{
+		return (coord.x >= _position.x && coord.x <= _position.x + _texture.width &&
+				coord.y >= _position.y && coord.y <= _position.y + _texture.height);
+	}
 }

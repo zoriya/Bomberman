@@ -91,7 +91,7 @@ namespace RAY::Drawables::Drawables2D
 			                this->_size, this->_spacing, this->_color);
 	}
 
-	bool Text::isCoordInside(Vector2 coord)
+	bool Text::isCoordInside(Vector2)
 	{
 		return (false);
 	}

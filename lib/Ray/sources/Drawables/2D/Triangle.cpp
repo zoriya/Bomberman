@@ -59,8 +59,18 @@ namespace RAY::Drawables::Drawables2D
 		throw RAY::Exception::NotSupportedError("An triangle cannot be drawn on an image");
 	}
 
+	float Triangle::area(Vector2 posA, Vector2 posB, Vector2 posC)
+	{
+		return abs((posA.x * (posB.y-posC.y) + posB.x * (posC.y - posA.y) + posC.x * (posA.y - posB.y)) / 2.0);
+	}
+
 	bool Triangle::isCoordInside(Vector2 coord)
 	{
-		float A = ((_position.x *(_posB.y-_posC.y) + _posB.x * (_posC.y - _position.y)
+		float areaABC = area(_position, _posB, _posC);
+		float areaPBC = area(coord, _posB, _posC);
+		float areaPAC = area(_posB, coord, _posC);
+		float areaPAB = area(_position, _posB, coord);
+
+		return (areaABC == areaPBC + areaPAC + areaPAB);
 	}
 }

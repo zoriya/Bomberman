@@ -61,6 +61,9 @@ namespace RAY::Drawables::Drawables2D {
 			bool isCoordInside(Vector2 coord) override;
 
 		private:
+			//! @brief Get the area of a triangle
+			float area(Vector2 posA, Vector2 posB, Vector2 posC);
+
 			//! @note Position of A is given by the Drawable2D position
 			//! @brief Position of B
 			Vector2 _posB;
