@@ -9,14 +9,23 @@
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
+#include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
-#include "Component/Position/PositionComponent.hpp"
+#include <System/Keyboard/KeyboardSystem.hpp>
+#include <System/Controllable/ControllableSystem.hpp>
+#include <System/Collision/CollisionSystem.hpp>
+#include <Component/Movable/MovableComponent.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Controllable/ControllableComponent.hpp>
+#include <Component/Keyboard/KeyboardComponent.hpp>
+#include <System/Gamepad/GamepadSystem.hpp>
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
+#include "Map/Map.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -33,6 +42,15 @@ namespace BBM
 			engine.shouldClose = true;
 	}
 
+	void addSystems(WAL::Wal &wal)
+	{
+		wal.addSystem<KeyboardSystem>()
+			.addSystem<GamepadSystem>()
+			.addSystem<ControllableSystem>()
+			.addSystem<CollisionSystem>(wal)
+			.addSystem<MovableSystem>();
+	}
+
 	void enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
@@ -43,25 +61,38 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("cube")
-			.addComponent<PositionComponent>(10, 10, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(10, 10), GREEN);
-		scene->addEntity("cube2")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(10, 10), RED);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"));
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<CollisionComponent>(2)
+			.addComponent<MovableComponent>();
+		scene->addEntity("cube")
+			.addComponent<PositionComponent>(-5, 0, -5)
+			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
+			[](WAL::Entity &actual, const WAL::Entity &) {
+			try {
+				auto &mov = actual.getComponent<MovableComponent>();
+				mov.resetVelocity();
+			} catch (std::exception &e) { };
+			}, 3);
+		
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 10, 15)
-			.addComponent<CameraComponent>();
+			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+		std::srand(std::time(NULL));
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
 
 	int run()
 	{
 		WAL::Wal wal;
-		wal.addSystem<MovableSystem>();
+		addSystems(wal);
 		enableRaylib(wal);
 		wal.scene = loadGameScene();
 

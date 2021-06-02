@@ -11,7 +11,6 @@
 #include <raylib.h>
 #include <string>
 #include <optional>
-#include "Drawables/Image.hpp"
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
 #include "Controllers/Keyboard.hpp"
@@ -22,6 +21,7 @@
 
 namespace RAY {
 	//! @brief Window manager
+	class Image;
 	namespace Drawables {
 		class IDrawable;
 		class ADrawable3D;
@@ -90,7 +90,7 @@ namespace RAY {
 
 			//! @brief Set background color (framebuffer clear color)
 			//! @param color The color to clear the screen (default: black)
-			void clear(const Color &color = BLACK);
+			void clear(Color color = BLACK);
 
 			//! @brief Different states of the view of the window
 			enum displayState {

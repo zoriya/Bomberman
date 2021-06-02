@@ -136,6 +136,12 @@ namespace BBM
 		{
 			double mag = this->magnitude();
 
+			if (mag == 0) {
+				this->x = 0;
+				this->y = 0;
+				this->z = 0;
+				return *this;
+			}
 			this->x /= mag;
 			this->y /= mag;
 			this->z /= mag;
@@ -146,6 +152,8 @@ namespace BBM
 		{
 			T mag = this->magnitude();
 
+			if (mag == 0)
+				return Vector3<T>();
 			return Vector3<T>(this->x / mag, this->y / mag, this->z / mag);
 		}
 
@@ -157,6 +165,22 @@ namespace BBM
 		operator RAY::Vector3() const requires(std::is_same_v<T, float>)
 		{
 			return RAY::Vector3(this->x, this->y, this->z);
+		}
+
+		static Vector3<T> min(Vector3<T> a, Vector3<T> b)
+		{
+			Vector3<T> min = {	std::min(a.x, b.x),
+								std::min(a.y, b.y),
+								std::min(a.z, b.z)};
+			return min;	
+		}
+
+		static Vector3<T> max(Vector3<T> a, Vector3<T> b)
+		{
+			Vector3<T> max = {	std::max(a.x, b.x),
+								std::max(a.y, b.y),
+								std::max(a.z, b.z)};
+			return max;	
 		}
 	};
 

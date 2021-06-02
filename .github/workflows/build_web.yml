@@ -1,4 +1,4 @@
-name: Web Building
+name: Web Build (Emscripten)
 on:
   push:
     branches:
@@ -13,7 +13,7 @@ jobs:
         submodules: true
     - name: Exec
       shell: bash
-      run: ./emsdk.sh
+      run: ./build_web.sh
     - name: Check files creation
       run: |
         test -f build_web/bomberman.html

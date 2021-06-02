@@ -6,7 +6,7 @@
 
 #include <Models/TypeHolder.hpp>
 #include "Component/Component.hpp"
-#include "Drawables/ADrawable3D.hpp"
+#include "Drawables/ADrawable2D.hpp"
 #include "Model/Model.hpp"
 
 namespace BBM

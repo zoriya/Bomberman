@@ -1,4 +1,4 @@
-name: Linux Build epi env
+name: Linux Build (Epitech Container)
 on: [push, pull_request]
 
 jobs:

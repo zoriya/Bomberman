@@ -6,7 +6,7 @@
 */
 
 #include "Drawables/2D/Text.hpp"
-
+#include "Drawables/Image.hpp"
 #include <utility>
 
 namespace RAY::Drawables::Drawables2D

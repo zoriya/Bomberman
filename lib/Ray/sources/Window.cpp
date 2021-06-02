@@ -11,6 +11,7 @@
 #include "Controllers/Mouse.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/ADrawable3D.hpp"
+#include "Drawables/Image.hpp"
 
 std::optional<RAY::Window> RAY::Window::_instance = std::nullopt;
 
@@ -102,7 +103,7 @@ void RAY::Window::setFPS(unsigned int fps)
 	SetTargetFPS(fps);
 }
 
-void RAY::Window::clear(const RAY::Color &color)
+void RAY::Window::clear(RAY::Color color)
 {
 	ClearBackground(color);
 }
