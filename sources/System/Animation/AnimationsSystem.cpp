@@ -27,6 +27,6 @@ namespace BBM
 		if (anim.isDisabled())
 			return;
 		model.member.setAnimation(anim.getCurrentModelAnim());
-		anim.setCurrentAnimFrameCounter(anim.getCurrentAnimFrameCounter() + 1);
+		anim.incCurrentAnimFrameCounter();
 	}
 }

@@ -60,5 +60,4 @@ namespace BBM
 		//! @brief assignment operator
 		AnimationsComponent &operator=(const AnimationsComponent &) = delete;
 	};
-
 }
