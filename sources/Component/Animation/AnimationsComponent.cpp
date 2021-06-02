@@ -20,8 +20,8 @@ namespace BBM
 	WAL::Component *AnimationsComponent::clone(WAL::Entity &entity) const
 	{
 		return new AnimationsComponent(entity,
-								 RAY::ModelAnimations(this->_modelAnimation.getFilePath()),
-								 this->_currentAnimIndex);
+		                               RAY::ModelAnimations(this->_modelAnimation.getFilePath()),
+		                               this->_currentAnimIndex);
 	}
 
 	size_t AnimationsComponent::getCurrentAnimFrameCounter() const

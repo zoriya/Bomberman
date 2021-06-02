@@ -80,7 +80,9 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/MainTest.cpp
 	tests/EngineTests.cpp
 	tests/CallbackTest.cpp
-	tests/MoveTests.cpp)
+	tests/MoveTests.cpp
+    tests/CollisionTest.cpp
+   )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

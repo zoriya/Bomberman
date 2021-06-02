@@ -13,7 +13,7 @@ namespace BBM
 
 	AnimationsSystem::AnimationsSystem()
 		: WAL::System({
-		    typeid(Drawable3DComponent<RAY::Drawables::Drawables3D::Model>),
+			typeid(Drawable3DComponent<RAY::Drawables::Drawables3D::Model>),
 			typeid(AnimationsComponent)
 		})
 	{
