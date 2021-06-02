@@ -18,9 +18,16 @@ namespace BBM
 		//! @brief The velocity of the entity.
 		Vector3f _velocity;
 	public:
+
 		//! @brief Add an instant force to this entity.
 		//! @param force The force to add to this entity's acceleration. The force is added instantly and in one go.
 		void addForce(Vector3f force);
+
+		//! @brief Set velocity to 0
+		void resetVelocity(void);
+
+		//! @brief Get velocity
+		const Vector3f &getVelocity(void) const;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
