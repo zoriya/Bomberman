@@ -18,6 +18,8 @@ namespace BBM
 		RAY::ModelAnimations _modelAnimation;
 		//! @brief The index of the
 		int _currentAnimIndex;
+		//! @brief Bool allowing to play pause an animation
+		bool _animDisabled;
 	public:
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
@@ -43,8 +45,14 @@ namespace BBM
 		//! @brief Increment the internal anim counter
 		void incCurrentAnimFrameCounter();
 
+		//! @brief Allow to play pause animations
+		void setAnimDisabled(bool disable);
+
+		//! @brief To know if the animation will be updated or not
+		bool isAnimDisabled() const;
+
 		//! @brief ctor entity and the path of the animation file
-		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex);
+		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play = true);
 		//! @brief copy ctor
 		AnimationsComponent(const AnimationsComponent &) = default;
 		//! @brief dtor

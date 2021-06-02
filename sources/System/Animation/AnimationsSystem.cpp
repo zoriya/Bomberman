@@ -24,6 +24,8 @@ namespace BBM
 		auto &model = entity.getComponent<Drawable3DComponent<RAY::Drawables::Drawables3D::Model>>();
 		auto &anim = entity.getComponent<AnimationsComponent>();
 
+		if (anim.isDisabled())
+			return;
 		model.member.setAnimation(anim.getCurrentModelAnim());
 		anim.setCurrentAnimFrameCounter(anim.getCurrentAnimFrameCounter() + 1);
 	}

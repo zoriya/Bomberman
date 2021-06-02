@@ -8,10 +8,11 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play)
 		: WAL::Component(entity),
 		  _modelAnimation(std::move(modelAnimation)),
-		  _currentAnimIndex(animIndex)
+		  _currentAnimIndex(animIndex),
+		  _animDisabled(play)
 	{
 		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(0);
 	}
@@ -56,5 +57,15 @@ namespace BBM
 	void AnimationsComponent::incCurrentAnimFrameCounter()
 	{
 		this->_modelAnimation[this->_currentAnimIndex].incrementFrameCounter();
+	}
+
+	void AnimationsComponent::setAnimDisabled(bool disable)
+	{
+		this->_animDisabled = disable;
+	}
+
+	bool AnimationsComponent::isAnimDisabled() const
+	{
+		return this->_animDisabled;
 	}
 }
