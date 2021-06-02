@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include <string>
+#include "Utils/Cache.hpp"
 
 namespace RAY
 {
@@ -21,23 +22,26 @@ namespace RAY
 			Texture(const std::string &filename);
 
 			//! @brief A texture is copy constructable
-			Texture(const Texture &);
+			Texture(const Texture &) = default;
 
 			//! @brief A textrue can be loaded from an image
 			Texture(const Image &);
 
 			//! @brief An texture is assignable
-			Texture &operator=(const Texture &);
+			Texture &operator=(const Texture &) = default;
 			
-			//! @brief Texture destructor, will unload ressources
-			~Texture();
+			//! @brief Texture destructor, will not unload ressources
+			~Texture() = default;
 
 		protected:
 		private:
 			//! @brief Texture, really, that's just it...
-			::Texture _texture;
+			std::shared_ptr<::Texture> _texture;
 
+			//! @brief path to the file the texture is loaded from
 			std::string _resourcePath;
+
+			static Cache<::Texture> _texturesCache; 
 
 		INTERNAL:
 			//! @return libray Texture struct

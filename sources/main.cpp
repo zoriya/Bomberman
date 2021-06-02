@@ -22,8 +22,10 @@
 #include "Drawables/3D/Sphere.hpp"
 #include "Model/Model.hpp"
 #include "Model/ModelAnimations.hpp"
-#include "System/Renderer/Renderer3DSystem.hpp"
-#include "System/Renderer/Renderer2DSystem.hpp"
+#include <System/Renderer/RenderScreenSystem.hpp>
+#include <System/Renderer/Render2DScreenSystem.hpp>
+#include <System/Renderer/Renderer2DSystem.hpp>
+#include <System/Renderer/Renderer3DSystem.hpp>
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "System/Renderer/RenderScreenSystem.hpp"
@@ -45,8 +47,11 @@ std::string get_full_path(const std::string &color)
 	return path;
 }
 
-
-
+int demo(void)
+{
+	
+	return (0);
+}
 
 void usage(const std::string &bin)
 {
@@ -62,6 +67,6 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
-//	return demo();
+	//return demo();
 	return BBM::run();
 }

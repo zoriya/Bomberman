@@ -12,15 +12,16 @@
 
 namespace RAY::Drawables::Drawables3D {
 
-	std::unordered_map<std::string, std::shared_ptr<::Model>> Model::_modelsCache;
+	RAY::Cache<::Model> Model::_modelsCache(LoadModel, UnloadModel);
+
 	Model::Model(const std::string &filename,
 	                                          std::optional<std::pair<MaterialType, std::string>> texture,
+											  const RAY::Vector3 &scale,
 											  const RAY::Vector3 &position,
 											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle,
-											  const RAY::Vector3 &scale)
+											  float rotationAngle)
 		: ADrawable3D(position, WHITE),
-		_model(fetchModelInCache(filename)),
+		_model(_modelsCache.fetch(filename)),
 		_rotationAxis(rotationAxis),
 		_rotationAngle(rotationAngle),
 		_scale(scale)
@@ -104,16 +105,5 @@ namespace RAY::Drawables::Drawables3D {
 	void Model::drawOn(RAY::Window &)
 	{
 		DrawModelEx(*this->_model, this->_position, this->_rotationAxis, this->_rotationAngle, this->_scale, this->_color);
-	}
-
-	std::shared_ptr<::Model> Model::fetchModelInCache(const std::string &path)
-	{
-		if (Model::_modelsCache.find(path) == Model::_modelsCache.end())
-			Model::_modelsCache.emplace(path, std::shared_ptr<::Model>(
-			new ::Model(LoadModel(path.c_str())), [](::Model *p) {
-           		UnloadModel(*p);
-           		delete p;
-        	}));
-		return _modelsCache[path];
 	}
 }

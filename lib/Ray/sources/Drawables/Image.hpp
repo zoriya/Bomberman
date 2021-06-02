@@ -11,8 +11,7 @@
 #include <raylib.h>
 #include <string>
 #include "Texture.hpp"
-#include <memory>
-#include <unordered_map>
+#include "Utils/Cache.hpp"
 #include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY
@@ -50,10 +49,8 @@ namespace RAY
 		private:
 			//! @brief Image, really, that's just it...
 			std::shared_ptr<::Image> _image;
-			//! @brief, look through cache to see if a model using same file
-			std::shared_ptr<::Image>fetchImageInCache(const std::string &path);
 
-			static std::unordered_map<std::string, std::shared_ptr<::Image>> _ImageCache;
+			static Cache<::Image> _imagesCache;
 
 		
 		INTERNAL:

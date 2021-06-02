@@ -7,18 +7,15 @@
 
 #include "Model/ModelAnimations.hpp"
 
+RAY::Cache<::ModelAnimation> RAY::ModelAnimations::_animationsCache(LoadModelAnimations, UnloadModelAnimations);
+
 RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
-	_animationsPtr(LoadModelAnimations(filePath.c_str(), &this->_animationCount))
+	_animationsPtr(_animationsCache.fetch(filePath, &this->_animationCount))
 {
 	::ModelAnimation *ptr = this->_animationsPtr.get();
 
 	for (int i = 0; i < this->_animationCount; i++)
 		this->_animations.emplace_back(RAY::ModelAnimation(ptr[i]));
-}
-
-RAY::ModelAnimations::~ModelAnimations()
-{
-	UnloadModelAnimations(this->_animationsPtr.release(), this->_animationCount);
 }
 
 RAY::ModelAnimation &RAY::ModelAnimations::operator[](int index)
