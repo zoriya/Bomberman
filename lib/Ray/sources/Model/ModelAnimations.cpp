@@ -39,3 +39,12 @@ const RAY::ModelAnimation &RAY::ModelAnimations::at(int index) const
 	return this->_animations.at(index);
 }
 
+const RAY::ModelAnimation &RAY::ModelAnimations::operator[](int index) const
+{
+	return this->_animations[index];
+}
+
+RAY::ModelAnimation &RAY::ModelAnimations::at(int index)
+{
+	return this->_animations.at(index);
+}

@@ -36,8 +36,14 @@ namespace RAY {
 			//! @brief Castin Object to raw model animation pointer
 			ModelAnimation &operator[](int index);
 
-			//! @brief Same usage as the operator[] but const
+			//! @brief std [] const
+			const ModelAnimation &operator[](int index) const;
+
+			//! @brief std at const
 			const ModelAnimation &at(int index) const;
+
+			//! @brief std at
+			ModelAnimation &at(int index);
 
 			//! @return the number of loaded animations
 			size_t getAnimationsCount() const;
