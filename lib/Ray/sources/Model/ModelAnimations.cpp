@@ -21,7 +21,7 @@ RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
 
 RAY::ModelAnimation &RAY::ModelAnimations::operator[](int index)
 {
-	return this->_animations.at(index);
+	return this->_animations[index];
 }
 
 size_t RAY::ModelAnimations::getAnimationsCount() const
