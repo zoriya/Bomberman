@@ -167,3 +167,8 @@ void RAY::Window::setIcon(RAY::Image &img)
 {
 	SetWindowIcon(img);
 }
+
+bool RAY::Window::isReady() const
+{
+	return IsWindowReady();
+}

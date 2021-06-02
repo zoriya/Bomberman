@@ -35,7 +35,8 @@ namespace BBM
 			auto &pos = entity.getComponent<PositionComponent>();
 
 			comp.member.setPosition({pos.getX(), pos.getY()});
-			comp.member.drawOn(this->_window);
+			this->_window.draw(comp.member);
+			printf("Drawing smth\n");
 		}
 
 		//! @brief default copy ctor

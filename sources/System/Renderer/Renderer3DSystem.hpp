@@ -35,7 +35,7 @@ namespace BBM
 			auto &pos = entity.getComponent<PositionComponent>();
 
 			comp.member.setPosition(static_cast<RAY::Vector3>(pos.position));
-			comp.member.drawOn(this->_window);
+			this->_window.draw(comp.member);
 		}
 
 		//! @brief Default copy ctor

@@ -13,9 +13,6 @@ namespace BBM
 	{
 		//! @brief The window to render on
 		RAY::Window &_window;
-
-		//! @brief The camera used to render.
-		RAY::Camera::Camera2D _camera;
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here

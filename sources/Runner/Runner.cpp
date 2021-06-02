@@ -9,6 +9,7 @@
 #include <System/Renderer/Render2DScreenSystem.hpp>
 #include <System/Renderer/Renderer2DSystem.hpp>
 #include <Model/Model.hpp>
+#include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include <System/Renderer/Renderer3DSystem.hpp>
@@ -34,27 +35,31 @@ namespace BBM
 
 	void enableRaylib(WAL::Wal &wal)
 	{
-		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
+		//RAY::TraceLog::setLevel(LOG_WARNING);
+		RAY::Window &window = RAY::Window::getInstance(800, 600, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
-		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
+		wal.addSystem<RenderScreenSystem>(window)
+		   .addSystem<Renderer3DSystem<RAY3D::Cube>>()
+		   .addSystem<Renderer3DSystem<RAY3D::Model>>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
 		   .addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
-		wal.addSystem<RenderScreenSystem>(window);
 	}
 
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("cube")
+			.addComponent<PositionComponent>(10, 10, 0)
+			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), GREEN);
+		scene->addEntity("cube2")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(Vector2f(), Vector2f(10, 10), RED);
+			.addComponent<Drawable3DComponent<RAY3D::Cube>>(Vector3f(), Vector3f(1, 1, 1), RED);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"));
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<PositionComponent>(10, 10, 15)
 			.addComponent<CameraComponent>();
 		return scene;
 	}

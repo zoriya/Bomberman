@@ -7,7 +7,7 @@
 
 #ifndef WINDOW_HPP_
 #define WINDOW_HPP_
-
+#define INTERNAL public
 #include <raylib.h>
 #include <string>
 #include <optional>
@@ -130,6 +130,8 @@ namespace RAY {
 
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
+
+			bool isReady() const;
 
 
 		private:
