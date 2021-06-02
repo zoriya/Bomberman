@@ -20,6 +20,7 @@
 #include "Component/Component.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Health/HealthComponent.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 
 namespace BBM
