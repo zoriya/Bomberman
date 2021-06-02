@@ -16,6 +16,10 @@ set(SOURCES
 	sources/Runner/Runner.hpp
 	sources/Map/Map.cpp
 	sources/Map/Map.hpp
+	sources/Bonus/Bonus.cpp
+	sources/Bonus/Bonus.hpp
+	sources/Component/Bonus/BonusComponent.cpp
+	sources/Component/Bonus/BonusComponent.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -28,6 +32,8 @@ set(SOURCES
 	sources/Component/Keyboard/KeyboardComponent.hpp
 	sources/Component/Health/HealthComponent.cpp
 	sources/Component/Health/HealthComponent.hpp
+	sources/Component/Bonus/BonusComponent.cpp
+	sources/Component/Bonus/BonusComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/Movable/MovableSystem.cpp
 	sources/System/Controllable/ControllableSystem.cpp
