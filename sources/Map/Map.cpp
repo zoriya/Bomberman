@@ -3,6 +3,7 @@
 // Edited by Benjamin Henry on 5/26/21.
 //
 
+#include <Component/Collision/CollisionComponent.hpp>
 #include "Map.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -18,8 +19,8 @@ namespace BBM
 			for (int j = 0; j < height + 1; j++) {
 				if (!(i % 2) && !(j % 2)) {
 					scene->addEntity("Unbreakable Wall")
-						.addComponent<PositionComponent>(Vector3f(i, 0, j))
-						//.addComponent<CollisionComponent>(1)
+						.addComponent<PositionComponent>(i, 0, j)
+						.addComponent<CollisionComponent>(1)
 						.addComponent<Drawable3DComponent<RAY3D::Model>>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj));
 				}
 			}
@@ -33,19 +34,19 @@ namespace BBM
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, (height + 1) / 2))
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(1, 1, height + 3));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, (height + 1) / 2))
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(1, 1, height + 3));
 	}
 
@@ -53,7 +54,6 @@ namespace BBM
 	{
 		scene->addEntity("Floor")
 			.addComponent<PositionComponent>(Vector3f(width / 2, -1, height / 2))
-			//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/floor.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/floor.png"), RAY::Vector3(width + 2, 0, height + 2));
 	}
 
@@ -81,7 +81,7 @@ namespace BBM
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/breakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/breakable_wall.png"));
 	}
 
@@ -89,7 +89,6 @@ namespace BBM
 	{
 		scene->addEntity("Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-			//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/floor.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/floor.png"));
 	}
 
@@ -97,7 +96,7 @@ namespace BBM
 	{
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
-			//.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/unbreakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/unbreakable_wall.png"));
 	}
 

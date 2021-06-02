@@ -5,7 +5,7 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <unordered_map>
 #include <typeinfo>
 #include <memory>
 #include "Component/Component.hpp"
@@ -24,7 +24,7 @@ namespace WAL
 		//! @brief Is this entity enabled?
 		bool _disabled = false;
 		//! @brief The list of the components of this entity
-		std::vector<std::unique_ptr<Component>> _components = {};
+		std::unordered_map<std::type_index, std::unique_ptr<Component>> _components = {};
 
 		//! @brief This ID will be the one of the next entity created.
 		static unsigned nextID;
@@ -45,13 +45,11 @@ namespace WAL
 		template<typename T>
 		T &getComponent()
 		{
-			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-				return typeid(*cmp) == type;
-			});
+			const std::type_index &type = typeid(T);
+			auto existing = this->_components.find(type);
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
-			return *static_cast<T *>(existing->get());
+			return *static_cast<T *>(existing->second.get());
 		}
 
 		//! @brief Check if this entity has a component.
@@ -77,9 +75,10 @@ namespace WAL
 		template<typename T, typename ...Types>
 		Entity &addComponent(Types &&...params)
 		{
-			if (this->hasComponent<T>())
-				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
-			this->_components.push_back(std::make_unique<T>(*this, std::forward<Types>(params)...));
+			const std::type_index &type = typeid(T);
+			if (this->hasComponent(type))
+				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
+			this->_components[type] = std::make_unique<T>(*this, std::forward<Types>(params)...);
 			return *this;
 		}
 
@@ -94,9 +93,7 @@ namespace WAL
 		Entity &removeComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-				return typeid(*cmp) == type;
-			});
+			auto existing = this->_components.find(type);
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
 			this->_components.erase(existing);

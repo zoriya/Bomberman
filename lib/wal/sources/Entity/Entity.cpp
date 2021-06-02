@@ -21,7 +21,7 @@ namespace WAL
 		_disabled(other._disabled)
 	{
 		for (const auto &cmp : other._components)
-			this->addComponent(*cmp);
+			this->addComponent(*cmp.second);
 	}
 
 	unsigned Entity::getUid() const
@@ -46,25 +46,20 @@ namespace WAL
 
 	Entity &Entity::addComponent(const Component &component)
 	{
-		if (this->hasComponent(typeid(component)))
-			throw DuplicateError("A component of the type \"" + std::string(typeid(component).name()) + "\" already exists.");
-		this->_components.emplace_back(component.clone(*this));
+		const std::type_index &type = typeid(component);
+		if (this->hasComponent(type))
+			throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
+		this->_components.emplace(type, component.clone(*this));
 		return *this;
 	}
 
 	bool Entity::hasComponent(const std::type_info &type) const
 	{
-		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-			return typeid(*cmp) == type;
-		});
-		return existing != this->_components.end();
+		return this->hasComponent(static_cast<const std::type_index &>(type));
 	}
 
 	bool Entity::hasComponent(const std::type_index &type) const
 	{
-		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-			return std::type_index(typeid(*cmp)) == type;
-		});
-		return existing != this->_components.end();
+		return this->_components.contains(type);
 	}
 } // namespace WAL
