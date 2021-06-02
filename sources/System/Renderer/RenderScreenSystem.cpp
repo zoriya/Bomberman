@@ -15,7 +15,9 @@ namespace BBM
 		}),
 		_window(window),
 		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE)
-	{}
+	{
+		this->_window.setFPS(60);
+	}
 
 	void RenderScreenSystem::onSelfUpdate()
 	{
