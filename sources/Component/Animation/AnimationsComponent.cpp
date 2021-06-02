@@ -8,36 +8,51 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations &modelAnimation)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations &modelAnimation, int animIndex)
 		: WAL::Component(entity),
 		  _modelAnimation(modelAnimation),
-		  _animFrameCounter(0)
+		  _currentAnimIndex(animIndex)
 	{
+		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(0);
 	}
 
 	WAL::Component *AnimationsComponent::clone(WAL::Entity &entity) const
 	{
-		return new AnimationsComponent(entity, this->_modelAnimation);
+		return new AnimationsComponent(entity, this->_modelAnimation, this->_currentAnimIndex);
 	}
 
-	size_t AnimationsComponent::getAnimFrameCounter() const
+	size_t AnimationsComponent::getCurrentAnimFrameCounter() const
 	{
-		return this->_animFrameCounter;
+		return this->_modelAnimation[this->_currentAnimIndex].getFrameCounter();
 	}
 
 	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim() const
 	{
-		return this->_modelAnimation[static_cast<int>(this->_animFrameCounter)];
+		return this->_modelAnimation[this->_currentAnimIndex];
 	}
 
-	void AnimationsComponent::setAnimFrameCounter(size_t animFrameCounter)
+	void AnimationsComponent::setCurrentAnimFrameCounter(size_t animFrameCounter)
 	{
-		this->_animFrameCounter = animFrameCounter;
-		this->_animFrameCounter %= this->_modelAnimation.getAnimationsCount();
+		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(animFrameCounter);
 	}
 
-	void AnimationsComponent::resetAnimFrameCounter()
+	void AnimationsComponent::resetCurrentAnimFrameCounter()
 	{
-		this->_animFrameCounter = 0;
+		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(0);
+	}
+
+	size_t AnimationsComponent::getCurrentAnimIndex() const
+	{
+		return this->_currentAnimIndex;
+	}
+
+	void AnimationsComponent::setAnimIndex(int animIndex)
+	{
+		this->_currentAnimIndex = animIndex % static_cast<int>(this->_modelAnimation.getAnimationsCount());
+	}
+
+	void AnimationsComponent::incCurrentAnimFrameCounter()
+	{
+		this->_modelAnimation[this->_currentAnimIndex].incrementFrameCounter();
 	}
 }

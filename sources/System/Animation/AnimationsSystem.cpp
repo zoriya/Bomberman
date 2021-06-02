@@ -22,6 +22,6 @@ namespace BBM
 		auto &anim = entity.getComponent<AnimationsComponent>();
 
 		model.member.setAnimation(anim.getCurrentModelAnim());
-		anim.setAnimFrameCounter(anim.getAnimFrameCounter() + 1);
+		anim.setCurrentAnimFrameCounter(anim.getCurrentAnimFrameCounter() + 1);
 	}
 }
