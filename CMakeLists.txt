@@ -60,6 +60,10 @@ set(SOURCES
 	sources/Component/Animation/AnimationsComponent.hpp
     sources/System/Animation/AnimationsSystem.cpp
     sources/System/Animation/AnimationsSystem.hpp
+	sources/Component/Collision/CollisionComponent.cpp
+	sources/Component/Collision/CollisionComponent.hpp
+	sources/System/Collision/CollisionSystem.hpp
+	sources/System/Collision/CollisionSystem.cpp
 )
 
 add_executable(bomberman
