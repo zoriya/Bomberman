@@ -90,4 +90,9 @@ namespace RAY::Drawables::Drawables2D
 			ImageDrawTextEx(image, this->_font, this->_text.c_str(), this->_position,
 			                this->_size, this->_spacing, this->_color);
 	}
+
+	bool Text::isCoordInside(Vector2 coord)
+	{
+		return (false);
+	}
 }

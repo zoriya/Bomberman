@@ -37,6 +37,9 @@ namespace RAY
 			//! @brief Draw on image
 			void drawOn(RAY::Image &image) override;
 
+			//! @brief Check if the point coord is inside the texture
+			bool isCoordInside(Vector2 coord) override;
+
 		private:
 			//! @brief Texture, really, that's just it...
 			::Texture _texture;

@@ -48,4 +48,10 @@ namespace RAY::Drawables::Drawables2D
 	{
 		ImageDrawRectangleV(image, this->_position, this->_dimensions, this->_color);
 	}
+
+	bool Rectangle::isCoordInside(Vector2 coord)
+	{
+		return (coord.x >= _position.x && coord.x <= _position.x + _dimensions.x &&
+				coord.y >= _position.y && coord.y <= _position.y + _dimensions.y);
+	}
 }

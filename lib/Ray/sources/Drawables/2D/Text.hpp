@@ -68,6 +68,8 @@ namespace RAY::Drawables::Drawables2D {
 			//! @brief Draw point on image
 			void drawOn(RAY::Image &image) override;
 
+			//! @brief Check if the point coord is inside the text
+			bool isCoordInside(Vector2 coord) override;
 		private:
 			//! @brief Text, just text
 			std::string _text;

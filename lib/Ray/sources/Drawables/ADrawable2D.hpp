@@ -56,6 +56,8 @@ namespace RAY::Drawables {
 			//! @brief Draw drawble on image
 			virtual void drawOn(RAY::Image &image) = 0;
 
+			virtual bool isCoordInside(Vector2 coord) = 0;
+
 		protected:
 			//! @brief Top-left position 
 			Vector2 _position;

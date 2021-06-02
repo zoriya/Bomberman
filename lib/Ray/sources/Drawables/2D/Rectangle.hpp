@@ -53,6 +53,9 @@ namespace RAY::Drawables::Drawables2D {
 			//! @brief Draw point on image
 			void drawOn(RAY::Image &image) override;
 
+			//! @brief Check if the point coord is inside the rectangle
+			bool isCoordInside(Vector2 coord) override;
+
 		private:
 			//! @brief Diemnsions of the rectangle 
 			Vector2 _dimensions;

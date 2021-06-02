@@ -40,4 +40,13 @@ namespace RAY::Drawables::Drawables2D
 	{
 		ImageDrawLineV(image, this->_position, this->_end, this->_color);
 	}
+
+	bool Line::isCoordInside(Vector2 coord)
+	{
+		long distAB = sqrt(pow((coord.x - _position.x), 2) + pow((coord.y - _position.y), 2));
+		long distBC = sqrt(pow((coord.x - _end.x), 2) + pow((coord.y - _end.y), 2));
+		long distAC = sqrt(pow((_end.x - _position.x), 2) + pow((_end.y - _position.y), 2));
+	
+		return (distAB + distBC >= distAC && distAB + distBC <= distAC + 0.01);
+	}
 }

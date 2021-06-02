@@ -57,6 +57,9 @@ namespace RAY::Drawables::Drawables2D {
 			//! @brief A Triangle cannot be drawn on an image, an exception will be thrown
 			void drawOn(RAY::Image &image) override;
 
+			//! @brief Check if the point coord is inside the triangle
+			bool isCoordInside(Vector2 coord) override;
+
 		private:
 			//! @note Position of A is given by the Drawable2D position
 			//! @brief Position of B

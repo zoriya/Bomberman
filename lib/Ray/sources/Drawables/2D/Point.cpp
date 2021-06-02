@@ -29,4 +29,9 @@ namespace RAY::Drawables::Drawables2D
 	{
 		ImageDrawPixel(image, this->_position.x, this->_position.y, this->_color);
 	}
+	
+	bool Point::isCoordInside(Vector2 coord)
+	{
+		return (coord.x == _position.x && coord.y == _position.y);
+	}
 }

@@ -58,4 +58,9 @@ namespace RAY::Drawables::Drawables2D
 	{
 		throw RAY::Exception::NotSupportedError("An triangle cannot be drawn on an image");
 	}
+
+	bool Triangle::isCoordInside(Vector2 coord)
+	{
+		float A = ((_position.x *(_posB.y-_posC.y) + _posB.x * (_posC.y - _position.y)
+	}
 }

@@ -5,6 +5,7 @@
 ** Circle
 */
 
+#include <cmath>
 #include "Drawables/2D/Circle.hpp"
 
 namespace RAY::Drawables::Drawables2D
@@ -38,5 +39,11 @@ namespace RAY::Drawables::Drawables2D
 	void Circle::drawOn(RAY::Image &image)
 	{
 		ImageDrawCircleV(image, this->_position, this->_radius, this->_color);
+	}
+
+	bool Circle::isCoordInside(Vector2 coord)
+	{
+		return (pow((coord.x - this->_position.x), 2) + pow((coord.y - this->_position.y), 2)
+				< pow(_radius, 2));
 	}
 }
