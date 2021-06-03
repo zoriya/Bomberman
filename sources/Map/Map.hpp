@@ -34,6 +34,7 @@ namespace BBM
 				NOTHING,
 				BREAKABLE,
 				HOLE,
+				UPPERFLOOR,
 				FLOOR,
 				BUMPER,
 				STAIRS,
@@ -98,8 +99,13 @@ namespace BBM
 
 			//! @param coords coords of the element
 			//! @param scene Scene where the map is instanced
-			//! @brief Create bumper of the map
+			//! @brief Create floor of the map
 			static void createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+
+			//! @param coords coords of the element
+			//! @param scene Scene where the map is instanced
+			//! @brief Create upper floor of the map
+			static void createUpperFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
 
 
 			//! @param coords coords of the element
@@ -119,6 +125,13 @@ namespace BBM
 			//! @brief Generate height for the map
 			static MapBlock createHeight(MapBlock map, int width, int height);
 
+			//! @param map Map to load with block declared inside
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @brief Clean breakable on stairs, bumpers, etc..
+			static MapBlock cleanBreakable(MapBlock map, int width, int height);
+
+			
 
 		public:
 
