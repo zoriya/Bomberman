@@ -10,7 +10,7 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace BBM
 {	
 	const std::string MapGenerator::assetsPath = "./assets/";
-	const std::string MapGenerator::wallAssetsPath = MapGenerator::assetsPath + "wall/";
+	const std::string MapGenerator::wallAssetsPath = MapGenerator::assetsPath + "map/";
 	const std::string MapGenerator::imageExtension = ".png";
 	const std::string MapGenerator::objExtension = ".obj";
 	const std::string MapGenerator::breakableWallPath = MapGenerator::wallAssetsPath + "breakable_wall";
