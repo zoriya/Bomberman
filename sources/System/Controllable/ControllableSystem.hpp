@@ -14,7 +14,7 @@ namespace BBM
 	{
 	public:
 		//! @brief The speed applied to every controllable entities.
-		static float speed;
+		static constexpr const float speed = .25f;
 
 		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
