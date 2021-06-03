@@ -64,6 +64,8 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/IA/IAComponent.hpp
+	sources/Component/IA/IAComponent.cpp
 )
 
 add_executable(bomberman
