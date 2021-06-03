@@ -11,8 +11,8 @@ jobs:
         include:
          # - os: ubuntu-latest
          #   name: Linux
-         # - os: macOS-latest
-         #   name: MacOS
+          - os: macOS-latest
+            name: MacOS
           - os: windows-latest
             name: Windows
     steps:
