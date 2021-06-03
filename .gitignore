@@ -4,5 +4,5 @@ cmake-build-debug
 .vscode
 build/*
 docs/*
-emsdk/*
+emsdk/
 build_web/*

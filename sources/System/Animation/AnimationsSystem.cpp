@@ -13,7 +13,7 @@ namespace BBM
 
 	AnimationsSystem::AnimationsSystem()
 		: WAL::System({
-			typeid(Drawable3DComponent<RAY::Drawables::Drawables3D::Model>),
+			typeid(Drawable3DComponent),
 			typeid(AnimationsComponent)
 		})
 	{
@@ -21,12 +21,15 @@ namespace BBM
 
 	void AnimationsSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds)
 	{
-		auto &model = entity.getComponent<Drawable3DComponent<RAY::Drawables::Drawables3D::Model>>();
+		auto &model = entity.getComponent<Drawable3DComponent>();
 		auto &anim = entity.getComponent<AnimationsComponent>();
 
 		if (anim.isDisabled())
 			return;
-		model.member.setAnimation(anim.getCurrentModelAnim());
-		anim.incCurrentAnimFrameCounter();
+		auto modelPtr = std::dynamic_pointer_cast<RAY::Drawables::Drawables3D::Model>(model.drawable);
+		if (modelPtr) {
+			modelPtr->setAnimation(anim.getCurrentModelAnim());
+			anim.incCurrentAnimFrameCounter();
+		}
 	}
 }
