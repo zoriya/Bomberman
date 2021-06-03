@@ -6,7 +6,7 @@
 */
 
 #include "IAComponent.hpp"
-#include <lua.hpp>
+#include "lua.h"
 
 namespace BBM
 {

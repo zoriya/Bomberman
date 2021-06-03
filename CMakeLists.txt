@@ -3,6 +3,11 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
+
+# Find Lua
+find_package(Lua REQUIRED)                                                         #-> CHANGE
+
+include_directories(bomberman ${LUA_INCLUDE_DIR})    #-> ADDED '{LUA_INCLUDE_DIR}'
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
 include_directories(bomberman sources)
@@ -70,13 +75,13 @@ set(SOURCES
 	sources/Component/IA/IAComponent.hpp
 	sources/Component/IA/IAComponent.cpp
 )
+
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
                )
-target_include_directories(bomberman PUBLIC sources)
+target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
 target_link_libraries(bomberman PUBLIC wal ray)
-
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
 	${SOURCES}
