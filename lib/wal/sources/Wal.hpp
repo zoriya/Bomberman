@@ -21,10 +21,6 @@
 namespace WAL
 {
 	class Entity;
-	class Scene;
-
-	template<typename ...Dependencies>
-	class System;
 
 	//! @brief The main WAL class, it is used to setup and run the ECS.
 	class Wal
