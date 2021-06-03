@@ -14,39 +14,27 @@
 
 namespace BBM
 {
-    class IAComponent : public WAL::Component
+    class IAControllableComponent : public WAL::Component
     {    
         private:
-
-            Vector3f _pos;
             const std::string _scriptPath;
 
         public:
 
-            //! @brief get IA Position
-            Vector3f getPosition(void) const;
-
-            //! @param pos Position of the player
-            //! @brief set IA position
-            void setPosition(Vector3f &);
-
             //! @inherit
             WAL::Component *clone(WAL::Entity &entity) const override;
-                
-            //! @brief A IA component can't be instantiated, it should be derived.
-            explicit IAComponent(WAL::Entity &entity);
 
             //! @brief Constructor
-            IAComponent(WAL::Entity &entity, std::string scripPath);
+            IAControllableComponent(WAL::Entity &entity, std::string scripPath);
 
             //! @brief A IA component can't be instantiated, it should be derived.
-            IAComponent(const IAComponent &) = default;
+            IAControllableComponent(const IAControllableComponent &) = default;
 
             //! @brief default destructor
-            ~IAComponent() override = default;
+            ~IAControllableComponent() override = default;
 
             //! @brief A IA component can't be assigned
-            IAComponent &operator=(const IAComponent &) = delete;
+            IAControllableComponent &operator=(const IAControllableComponent &) = delete;
         protected:
     };
 }
