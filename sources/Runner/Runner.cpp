@@ -16,6 +16,7 @@
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
 #include <System/Collision/CollisionSystem.hpp>
+#include "Component/Button/ButtonComponent.hpp"
 #include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
@@ -67,31 +68,41 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("player")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(2)
-			.addComponent<MovableComponent>();
-		scene->addEntity("cube")
-			.addComponent<PositionComponent>(-5, 0, -5)
-			.addComponent<Drawable3DComponent<RAY3D::Cube>>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
-			[](WAL::Entity &actual, const WAL::Entity &) {
-			try {
-				auto &mov = actual.getComponent<MovableComponent>();
-				mov.resetVelocity();
-			} catch (std::exception &e) { };
-			}, 3);
-		
+		scene->addEntity("first button")
+			.addComponent<ButtonComponent>(
+			[]() {
+
+			},
+			[]() {
+				
+			},
+			[]() {
+				
+			}
+			)
+			.addComponent<PositionComponent>(40, 100, 0)
+			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(0, 0, 50, 50, RED);
+
+		scene->addEntity("second button")
+			.addComponent<ButtonComponent>(
+			[]() {
+				
+			},
+			[]() {
+				
+			},
+			[]() {
+				
+			}
+			)
+			.addComponent<PositionComponent>(40, 200, 0)
+			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(0, 0, 50, 50, RED);
+
+
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		std::srand(std::time(NULL));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
 

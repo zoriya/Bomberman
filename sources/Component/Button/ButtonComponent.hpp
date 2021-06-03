@@ -31,6 +31,10 @@ namespace BBM
 
 			//! @brief Constructor with the 3 callback
 			ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback, WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback);
+			
+			//! @brief Constructor with the 3 std functions
+			ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback, std::function<void()> hoverCallback, std::function<void()> clickCallback);
+			
 			//! @brief A Controllable component is copy constructable.
 			ButtonComponent(const ButtonComponent &) = default;
 			//! @brief default destructor

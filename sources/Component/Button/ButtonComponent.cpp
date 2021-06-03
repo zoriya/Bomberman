@@ -22,4 +22,12 @@ namespace BBM
 		onHover(hoverCallback),
 		onClick(clickCallback)
 	{ }
+
+	ButtonComponent::ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback,
+	std::function<void()> hoverCallback, std::function<void()> clickCallback)
+	:	WAL::Component(entity),
+		onIdle(idleCallback),
+		onHover(hoverCallback),
+		onClick(clickCallback)
+	{ }
 }
