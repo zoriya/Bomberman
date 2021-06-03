@@ -5,12 +5,14 @@
 
 #pragma once
 
+#include "Component/Movable/MovableComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
 #include "System/System.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle Controllable entities.
-	class ControllableSystem : public WAL::System
+	class ControllableSystem : public WAL::System<ControllableComponent, MovableComponent>
 	{
 	public:
 		//! @brief The speed applied to every controllable entities.
@@ -20,12 +22,12 @@ namespace BBM
 		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
-		ControllableSystem();
+		explicit ControllableSystem(WAL::Wal &wal);
 		//! @brief A Controllable system is copy constructable
 		ControllableSystem(const ControllableSystem &) = default;
 		//! @brief A default destructor
 		~ControllableSystem() override = default;
-		//! @brief A Controllable system is assignable.
-		ControllableSystem &operator=(const ControllableSystem &) = default;
+		//! @brief A system is not assignable.
+		ControllableSystem &operator=(const ControllableSystem &) = delete;
 	};
 }

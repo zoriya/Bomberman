@@ -11,10 +11,8 @@
 namespace BBM
 {
 	CollisionSystem::CollisionSystem(WAL::Wal &wal)
-	: WAL::System({typeid(PositionComponent), typeid(CollisionComponent)}), _wal(wal)
-	{
-
-	}
+		: System(wal)
+	{ }
 
 	bool CollisionSystem::collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB)
 	{

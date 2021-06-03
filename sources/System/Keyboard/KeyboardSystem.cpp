@@ -14,11 +14,8 @@ using Keyboard = RAY::Controller::Keyboard;
 
 namespace BBM
 {
-	KeyboardSystem::KeyboardSystem()
-		: WAL::System({
-			typeid(KeyboardComponent),
-			typeid(ControllableComponent)
-		})
+	KeyboardSystem::KeyboardSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void KeyboardSystem::onFixedUpdate(WAL::Entity &entity)

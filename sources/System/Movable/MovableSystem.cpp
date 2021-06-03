@@ -8,11 +8,8 @@
 
 namespace BBM
 {
-	MovableSystem::MovableSystem()
-		: WAL::System({
-			typeid(MovableComponent),
-			typeid(PositionComponent)
-		})
+	MovableSystem::MovableSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void MovableSystem::onFixedUpdate(WAL::Entity &entity)

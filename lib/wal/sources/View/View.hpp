@@ -23,7 +23,7 @@ namespace WAL
 		//! @brief The list of types that every entity of the view has.
 		std::vector<std::type_index> types = {};
 
-		size_t size()
+		size_t size() const
 		{
 			return entities.size();
 		}

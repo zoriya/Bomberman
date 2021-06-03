@@ -8,12 +8,8 @@
 
 namespace BBM
 {
-	GridCenteredSystem::GridCenteredSystem()
-		: WAL::System({
-			typeid(GridCenteredComponent),
-			typeid(MovableComponent),
-//			typeid(PositionComponent)
-		})
+	GridCenteredSystem::GridCenteredSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void GridCenteredSystem::onFixedUpdate(WAL::Entity &entity)

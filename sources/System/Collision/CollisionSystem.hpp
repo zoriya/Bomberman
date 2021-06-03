@@ -12,23 +12,20 @@
 namespace BBM
 {
 	//! @brief A system to handle collisions.
-	class CollisionSystem : public WAL::System
+	class CollisionSystem : public WAL::System<PositionComponent, CollisionComponent>
 	{
-	private:
-		//! @brief reference to the ECS engine to get other entities
-		WAL::Wal &_wal;
 	public:
 		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
 
 		//! @brief A default constructor
-		CollisionSystem(WAL::Wal &wal);
+		explicit CollisionSystem(WAL::Wal &wal);
 		//! @brief A Collision system is copy constructable
 		CollisionSystem(const CollisionSystem &) = default;
 		//! @brief A default destructor
 		~CollisionSystem() override = default;
-		//! @brief A Collision system is assignable.
-		CollisionSystem &operator=(const CollisionSystem &) = default;
+		//! @brief A system is not assignable.
+		CollisionSystem &operator=(const CollisionSystem &) = delete;
 
 		//! @brief check AABB collision
 		static bool collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB);

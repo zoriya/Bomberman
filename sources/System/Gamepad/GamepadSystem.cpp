@@ -13,11 +13,8 @@ using Gamepad = RAY::Controller::GamePad;
 
 namespace BBM
 {
-	GamepadSystem::GamepadSystem()
-		: WAL::System({
-			typeid(GamepadComponent),
-			typeid(ControllableComponent)
-		})
+	GamepadSystem::GamepadSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void GamepadSystem::onFixedUpdate(WAL::Entity &entity)

@@ -20,7 +20,7 @@ using namespace BBM;
 TEST_CASE("Collision test", "[Component][System]")
 {
 	Wal wal;
-	CollisionSystem collision(wal);
+	CollisionSystem collision(<#initializer#>, wal);
 	wal.scene = std::make_shared<Scene>();
 	wal.scene->addEntity("player")
 		.addComponent<PositionComponent>()
@@ -63,7 +63,7 @@ TEST_CASE("Collision test", "[Component][System]")
 TEST_CASE("Collsion test with movable", "[Component][System]")
 {
 	Wal wal;
-	CollisionSystem collision(wal);
+	CollisionSystem collision(<#initializer#>, wal);
 	MovableSystem movable;
 	wal.scene = std::make_shared<Scene>();
 	wal.scene->addEntity("player")

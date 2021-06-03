@@ -10,10 +10,8 @@
 
 namespace BBM
 {
-	HealthSystem::HealthSystem()
-		: WAL::System({
-			typeid(HealthComponent)
-		})
+	HealthSystem::HealthSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void HealthSystem::onFixedUpdate(WAL::Entity &entity)

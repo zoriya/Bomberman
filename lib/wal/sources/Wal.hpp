@@ -10,7 +10,7 @@
 #include <memory>
 #include <typeinfo>
 #include "Exception/WalError.hpp"
-#include "System/System.hpp"
+#include "System/ISystem.hpp"
 #include "Models/Callback.hpp"
 #include "Scene/Scene.hpp"
 
@@ -19,31 +19,22 @@ namespace WAL
 	class Entity;
 	class Scene;
 
+	template<typename ...Dependencies>
+	class System;
+
 	//! @brief The main WAL class, it is used to setup and run the ECS.
 	class Wal
 	{
 	private:
 		//! @brief The list of registered systems
-		std::vector<std::unique_ptr<System>> _systems = {};
-
-		//! @brief Call the onUpdate of every system with every component
-		void _update(std::chrono::nanoseconds dtime);
-
-		//! @brief Call the onFixedUpdate of every system with every component
-		void _fixedUpdate();
-
-		//! @brief Check if an entity met a system's dependencies.
-		//! @param entity The entity to check
-		//! @param system The system that will list dependencies
-		//! @return True if all dependencies are met, false otherwise.
-		static bool _hasDependencies(const Entity &entity, const System &system);
+		std::vector<std::unique_ptr<ISystem>> _systems = {};
 	public:
 		//! @brief The scene that contains entities.
 		std::shared_ptr<Scene> scene;
 		//! @brief True if the engine should close after the end of the current tick.
 		bool shouldClose = false;
 		//! @brief The time between each fixed update.
-		static std::chrono::nanoseconds timestep;
+		static constexpr std::chrono::nanoseconds timestep = std::chrono::milliseconds(8);
 
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
@@ -132,9 +123,16 @@ namespace WAL
 
 				while (fBehind > Wal::timestep) {
 					fBehind -= Wal::timestep;
-					this->_fixedUpdate();
+					for (auto &system : this->_systems) {
+						for (auto &entity : system->getView().entities)
+							system->onFixedUpdate(entity);
+					}
 				}
-				this->_update(dtime);
+				for (auto &system : this->_systems) {
+					for (auto &entity : system->getView().entities)
+						system->onUpdate(entity, dtime);
+					system->onSelfUpdate();
+				}
 				callback(*this, state);
 			}
 		}
