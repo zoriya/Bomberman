@@ -88,7 +88,7 @@ namespace BBM
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
 			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/breakatble_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/breakable_wall.png"));
+			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/wall/breakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/breakable_wall.png"));
 	}
 
 	void MapGenerator::createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
