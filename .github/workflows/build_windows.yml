@@ -1,4 +1,4 @@
-name: Windows Build
+name: Windows & MacOs Build
 on: [push, pull_request]
 
 jobs:
