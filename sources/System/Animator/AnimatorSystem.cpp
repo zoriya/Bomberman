@@ -7,40 +7,50 @@
 #include <Controllers/Keyboard.hpp>
 #include <Model/Model.hpp>
 #include <Component/Animation/AnimationsComponent.hpp>
+#include <Component/Controllable/ControllableComponent.hpp>
 #include "AnimatorSystem.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 
 using Keyboard = RAY::Controller::Keyboard;
 namespace RAY3D = RAY::Drawables::Drawables3D;
+using Key = RAY::Controller::Keyboard::Key;
 
 namespace BBM
 {
 	AnimatorSystem::AnimatorSystem()
 			: WAL::System({
 				typeid(AnimatorComponent),
-				typeid(KeyboardComponent)
+				typeid(ControllableComponent)
 			})
 	{}
 
 	void AnimatorSystem::onFixedUpdate(WAL::Entity &entity)
 	{
-		if (!entity.hasComponent<KeyboardComponent>())
+		if (!entity.hasComponent<ControllableComponent>())
 			return;
+		const auto &controllable = entity.getComponent<ControllableComponent>();
 		auto &model = entity.getComponent<Drawable3DComponent<RAY3D::Model>>();
 		auto &animation = entity.getComponent<AnimationsComponent>();
-		const auto &keyboard = entity.getComponent<KeyboardComponent>();
-		animation.setAnimIndex(1);
-		if (Keyboard::isDown(keyboard.keyRight)) {
+		if (controllable.move.x == 1) {
 			model.member.setRotationAngle(180.0f);
+			animation.setAnimIndex(0);
+			return;
 		}
-		if (Keyboard::isDown(keyboard.keyLeft)) {
+		if (controllable.move.x == -1) {
 			model.member.setRotationAngle(0.0f);
+			animation.setAnimIndex(0);
+			return;
 		}
-		if (Keyboard::isDown(keyboard.keyUp)) {
+		if (controllable.move.y == 1) {
 			model.member.setRotationAngle(90.0f);
+			animation.setAnimIndex(0);
+			return;
 		}
-		if (Keyboard::isDown(keyboard.keyDown)) {
+		if (controllable.move.y == -1) {
 			model.member.setRotationAngle(270.0f);
+			animation.setAnimIndex(0);
+			return;
 		}
+		animation.setAnimIndex(1);
 	}
 }

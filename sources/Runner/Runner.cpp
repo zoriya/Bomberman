@@ -53,7 +53,6 @@ namespace BBM
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
-			.addSystem<AnimatorSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -65,6 +64,7 @@ namespace BBM
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
 		wal.addSystem<Renderer3DSystem<RAY3D::Cube>>();
 		wal.addSystem<AnimationsSystem>();
+		wal.addSystem<AnimatorSystem>();
 
 		wal.addSystem<Render2DScreenSystem>(window)
 			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
@@ -80,7 +80,7 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>();
 		scene->addEntity("cube")
