@@ -16,8 +16,8 @@ set(SOURCES
 	sources/Runner/Runner.hpp
 	sources/Map/Map.cpp
 	sources/Map/Map.hpp
-	sources/Bonus/Bonus.cpp
-	sources/Bonus/Bonus.hpp
+	sources/Items/Bonus.cpp
+	sources/Items/Bonus.hpp
 	sources/Component/Bonus/BonusComponent.cpp
 	sources/Component/Bonus/BonusComponent.hpp
 	sources/Component/Position/PositionComponent.cpp
