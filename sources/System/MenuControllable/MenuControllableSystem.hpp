@@ -12,8 +12,24 @@ namespace BBM
 	class MenuControllableSystem : public WAL::System
 	{
 	private:
+		//! @brief index of the current button selected
 		unsigned _buttonIndex = 0;
+
+		//! @brief move vector
+		Vector2f move;
+
+		//! @brief Select action
+		bool select = false;
+
+		//! @brief Cancel action
+		bool cancel = false;
+
+		//! @brief update button index
+		//! @param length length of the button set
+		void updateButtonIndex(int length);
 	public:
+		//! @inherit
+		void onSelfUpdate(void) override;
 
 		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;
