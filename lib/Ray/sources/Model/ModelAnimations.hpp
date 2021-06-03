@@ -21,17 +21,14 @@ namespace RAY {
 			//! @param filePath Path to the file containing animations
 			ModelAnimations(const std::string &filePath);
 
-			//! @brief Only single entity can hold these animations pointers
-			ModelAnimations(const ModelAnimations &) = delete;
+			//! @brief default copy ctor
+			ModelAnimations(const ModelAnimations &) = default;
 
 			//! @brief Default constructor
 			~ModelAnimations() = default;
 
-			//! @brief Default move ctor
-			ModelAnimations(ModelAnimations &&) = default;
-
-			//! @brief Only single entity can hold these animations pointers
-			ModelAnimations &operator=(const ModelAnimations &) = delete;
+			//! @brief Default assignment operator
+			ModelAnimations &operator=(const ModelAnimations &) = default;
 
 			//! @brief Castin Object to raw model animation pointer
 			ModelAnimation &operator[](int index);
