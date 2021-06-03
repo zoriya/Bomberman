@@ -102,8 +102,10 @@ namespace RAY {
 				NONE,
 			};
 
-			//! @brief Draw the content of the buffer on the screen.
-			void draw();
+			//! @brief Setup canvas (framebuffer) to start drawing
+			void beginDrawing();
+			//! @brief End canvas drawing and swap buffers (double buffering)
+			void endDrawing();
 
 			//! @brief Initialize 2D mode with custom camera (2D)
 			void useCamera(Camera::Camera2D &camera);
@@ -130,6 +132,9 @@ namespace RAY {
 
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
+
+			//! @return true if the window's context has been correctly initialized
+			bool isReady() const;
 
 
 		private:

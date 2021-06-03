@@ -15,6 +15,10 @@
 #include "System/System.hpp"
 #include "Models/Callback.hpp"
 
+#if defined(PLATFORM_WEB)
+#include <emscripten/emscripten.h>
+#endif
+
 namespace WAL
 {
 	//! @brief The main WAL class, it is used to setup and run the ECS.
@@ -109,7 +113,13 @@ namespace WAL
 		void run(const std::function<void (Wal &, T &)> &callback, T state = T())
 		{
 			Callback<Wal &, T &> update(callback);
+
+			#if defined(PLATFORM_WEB)
+			std::tuple iterationParams(this, &update, &state);
+			return emscripten_set_main_loop_arg((em_arg_callback_func)runIteration<T>, (void *)&iterationParams, 0, 1);
+			#else
 			return this->run(update, state);
+			#endif
 		}
 
 		//! @brief Start the game loop
@@ -136,6 +146,30 @@ namespace WAL
 				callback(*this, state);
 			}
 		}
+
+		#if defined(PLATFORM_WEB)
+		template<typename T>
+		static void runIteration(void *param)
+		{
+			static auto iterationParams = reinterpret_cast<std::tuple<Wal *, Callback<Wal &, T &> *, T *> *>(param);
+			static const Callback<Wal &, T &> callback = *((Callback<Wal &, T &> *)std::get<1>(*iterationParams));
+			static T *state = (T *)std::get<2>(*iterationParams);
+			static Wal *wal = (Wal *)std::get<0>(*iterationParams);
+			static auto lastTick = std::chrono::steady_clock::now();
+			static std::chrono::nanoseconds fBehind(0);
+
+			auto now = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds dtime = now - lastTick;
+			fBehind += dtime;
+			lastTick = now;
+			while (fBehind > Wal::timestep) {
+				fBehind -= Wal::timestep;
+				wal->_fixedUpdate();
+			}
+			wal->_update(dtime);
+			callback(*wal, *state);
+		}
+		#endif
 
 		//! @brief A default constructor
 		Wal() = default;

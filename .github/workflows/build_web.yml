@@ -1,0 +1,22 @@
+name: Web Build (Emscripten)
+on:
+  push:
+    branches:
+      wasm
+
+jobs:
+  Push:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Exec
+      shell: bash
+      run: ./build_web.sh
+    - name: Check files creation
+      run: |
+        test -f build_web/bomberman.html
+        test -f build_web/bomberman.js
+        test -f build_web/bomberman.wasm 
+        test -f build_web/bomberman.data

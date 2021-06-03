@@ -10,6 +10,13 @@ include_directories(bomberman sources)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
+if (EMSCRIPTEN)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s NO_DISABLE_EXCEPTION_CATCHING --shell-file ../sources/wasm/frontend.html --preload-file ../assets")
+    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+endif ()
+
 set(SOURCES
 	sources/Models/GameState.hpp
 	sources/Runner/Runner.cpp
@@ -46,16 +53,12 @@ set(SOURCES
 	sources/System/GridCentered/GridCenteredSystem.cpp
 	sources/System/GridCentered/GridCenteredSystem.hpp
 	sources/Models/Vector2.hpp
-	sources/Component/Renderer/Drawable3DComponent.hpp
 	sources/Component/Renderer/Drawable2DComponent.hpp
-	sources/System/Renderer/Renderer3DSystem.hpp
-	sources/System/Renderer/Renderer2DSystem.hpp
-	sources/System/Renderer/RenderScreenSystem.hpp
-	sources/System/Renderer/RenderScreenSystem.cpp
+	sources/Component/Renderer/Drawable3DComponent.hpp
+	sources/System/Renderer/RenderSystem.hpp
+	sources/System/Renderer/RenderSystem.cpp
 	sources/Component/Renderer/CameraComponent.cpp
 	sources/Component/Renderer/CameraComponent.hpp
-	sources/System/Renderer/Render2DScreenSystem.cpp
-	sources/System/Renderer/Render2DScreenSystem.hpp
 	sources/Component/Animation/AnimationsComponent.cpp
 	sources/Component/Animation/AnimationsComponent.hpp
 	sources/System/Animation/AnimationsSystem.cpp
@@ -67,7 +70,6 @@ set(SOURCES
 	sources/Component/IA/IAComponent.hpp
 	sources/Component/IA/IAComponent.cpp
 )
-
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
