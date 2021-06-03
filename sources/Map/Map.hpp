@@ -132,6 +132,27 @@ namespace BBM
 			static MapBlock cleanBreakable(MapBlock map, int width, int height);
 
 			
+			static const std::string assetsPath;
+
+			static const std::string wallAssetsPath;
+
+			static const std::string imageExtension;
+
+			static const std::string objExtension;
+
+			static const std::string unbreakableWallPath;
+
+			static const std::string breakableWallPath;
+
+			static const std::string floorPath;
+
+			static const std::string stairsPath;
+
+			static const std::string bumperPath;
+
+			static const std::string secondFloorPath;
+
+			static const std::string holePath;
 
 		public:
 
