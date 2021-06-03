@@ -13,8 +13,7 @@ namespace BBM
 {
 	HealthSystem::HealthSystem()
 		: WAL::System({
-			typeid(HealthComponent),
-			typeid(AnimationsComponent)
+			typeid(HealthComponent)
 		})
 	{}
 
@@ -23,10 +22,6 @@ namespace BBM
 		auto &health = entity.getComponent<HealthComponent>();
 
 		if (health.getHealthPoint() == 0) {
-			if (entity.hasComponent<AnimationsComponent>()) {
-				auto &animation = entity.getComponent<AnimationsComponent>();
-				animation.setAnimIndex(5);
-			}
 			health.onDeath(entity);
 		}
 	}

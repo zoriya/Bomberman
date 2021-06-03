@@ -28,28 +28,17 @@ namespace BBM
 	{
 		if (!entity.hasComponent<ControllableComponent>())
 			return;
+		const std::vector<std::vector<float>> moveDiag = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}};
+		const std::vector<float> rotationAngle = {0.0f, 45.0f, 90.0f, 135.0f, 180.0f, 225.0f, 270.0f, 315.0f};
 		const auto &controllable = entity.getComponent<ControllableComponent>();
 		auto &model = entity.getComponent<Drawable3DComponent<RAY3D::Model>>();
 		auto &animation = entity.getComponent<AnimationsComponent>();
-		if (controllable.move.x == 1) {
-			model.member.setRotationAngle(180.0f);
-			animation.setAnimIndex(0);
-			return;
-		}
-		if (controllable.move.x == -1) {
-			model.member.setRotationAngle(0.0f);
-			animation.setAnimIndex(0);
-			return;
-		}
-		if (controllable.move.y == 1) {
-			model.member.setRotationAngle(90.0f);
-			animation.setAnimIndex(0);
-			return;
-		}
-		if (controllable.move.y == -1) {
-			model.member.setRotationAngle(270.0f);
-			animation.setAnimIndex(0);
-			return;
+		for (int i = 0; i != moveDiag.size(); i++) {
+			if (controllable.move.x == moveDiag[i][0] && controllable.move.y == moveDiag[i][1]) {
+				model.member.setRotationAngle(rotationAngle[i]);
+				animation.setAnimIndex(0);
+				return;
+			}
 		}
 		animation.setAnimIndex(1);
 	}

@@ -18,6 +18,12 @@ namespace BBM
 		  _healthPoint(healthPoint)
 	{}
 
+	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, std::function<void (WAL::Entity &)> callback)
+			: WAL::Component(entity),
+			  _healthPoint(healthPoint),
+			  onDeath(callback)
+	{}
+
 	WAL::Component *HealthComponent::clone(WAL::Entity &entity) const
 	{
 		return new HealthComponent(entity);
