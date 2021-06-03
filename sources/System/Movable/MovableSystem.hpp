@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Component/Movable/MovableComponent.hpp"
+#include "Component/Position/PositionComponent.hpp"
 #include "System/System.hpp"
 #include "Entity/Entity.hpp"
 

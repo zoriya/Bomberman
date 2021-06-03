@@ -10,6 +10,7 @@
 #include <memory>
 #include "Component/Component.hpp"
 #include "Exception/WalError.hpp"
+#include "Models/TypeHolder.hpp"
 
 namespace WAL
 {
@@ -84,13 +85,13 @@ namespace WAL
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
 		//! @return This entity is returned
-		template<typename T, typename ...Types>
+		template<typename T, typename ...TNested, typename ...Types>
 		Entity &addComponent(Types &&...params)
 		{
 			const std::type_index &type = typeid(T);
 			if (this->hasComponent(type))
 				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
-			this->_components[type] = std::make_unique<T>(*this, std::forward<Types>(params)...);
+			this->_components[type] = std::make_unique<T>(*this, TypeHolder<TNested>()..., std::forward<Types>(params)...);
 			this->_componentAdded(type);
 			return *this;
 		}

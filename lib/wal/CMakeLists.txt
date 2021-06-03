@@ -15,6 +15,9 @@ add_library(wal
 	sources/Entity/Entity.cpp
 	sources/Component/Component.cpp
 	sources/Models/Callback.hpp
-	sources/View/View.hpp sources/System/ISystem.hpp)
+	sources/View/View.hpp
+	sources/System/ISystem.hpp
+	sources/Models/TypeHolder.hpp
+)
 
 target_include_directories(wal PUBLIC sources)
