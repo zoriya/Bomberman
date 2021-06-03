@@ -12,6 +12,7 @@
 #include "Exception/WalError.hpp"
 #include "System/System.hpp"
 #include "Models/Callback.hpp"
+#include "Scene/Scene.hpp"
 
 namespace WAL
 {

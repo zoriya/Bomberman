@@ -8,11 +8,10 @@
 #include <vector>
 #include <typeinfo>
 #include <typeindex>
+#include "Entity/Entity.hpp"
 
 namespace WAL
 {
-	class Entity;
-
 	//! @brief A base system of WAL
 	class System
 	{

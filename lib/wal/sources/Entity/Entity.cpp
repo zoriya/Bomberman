@@ -3,6 +3,7 @@
 //
 
 #include "Entity/Entity.hpp"
+#include "Scene/Scene.hpp"
 #include <string>
 #include <utility>
 
@@ -64,5 +65,15 @@ namespace WAL
 	bool Entity::hasComponent(const std::type_index &type) const
 	{
 		return this->_components.contains(type);
+	}
+
+	void Entity::_componentAdded(const std::type_index &type)
+	{
+		this->_scene._componentAdded(*this, type);
+	}
+
+	void Entity::_componentRemoved(const std::type_index &type)
+	{
+		this->_scene._componentRemoved(*this, type);
 	}
 } // namespace WAL

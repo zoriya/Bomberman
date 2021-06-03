@@ -19,8 +19,7 @@ using namespace BBM;
 
 TEST_CASE("Move test", "[Component][System]")
 {
-	Wal wal;
-	Scene scene(wal);
+	Scene scene;
 	scene.addEntity("player")
 		.addComponent<ControllableComponent>()
 		.addComponent<MovableComponent>()

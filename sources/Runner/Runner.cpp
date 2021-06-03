@@ -66,7 +66,7 @@ namespace BBM
 
 	std::shared_ptr<WAL::Scene> loadGameScene(WAL::Wal &wal)
 	{
-		auto scene = std::make_shared<WAL::Scene>(wal);
+		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))

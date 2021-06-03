@@ -3,11 +3,11 @@
 //
 
 
-#ifndef WAL_SCENE
-#define WAL_SCENE
+#pragma once
 
 #include <vector>
 #include <functional>
+#include <View/BaseView.hpp>
 #include "Entity/Entity.hpp"
 
 namespace WAL
@@ -18,15 +18,17 @@ namespace WAL
 	private:
 		//! @brief The list of registered entities
 		std::vector<Entity> _entities = {};
+		//! @brief The list of cached views to update.
+		std::vector<std::shared_ptr<BaseView>> _views = {};
 
 		//! @brief Notify this scene that a component has been added to the given entity.
 		//! @param entity The entity with the new component
 		//! @param type The type of the component added.
-		void _componentAdded(const Entity &entity, std::type_index type);
+		void _componentAdded(Entity &entity, const std::type_index &type);
 		//! @brief Notify this scene that a component has been removed to the given entity.
 		//! @param entity The entity with the removed component
 		//! @param type The type of the component removed.
-		void _componentRemoved(const Entity &entity, std::type_index type);
+		void _componentRemoved(const Entity &entity, const std::type_index &type);
 	public:
 		//! @brief Get the list of entities.
 		std::vector<Entity> &getEntities();
@@ -37,24 +39,12 @@ namespace WAL
 		Entity &addEntity(const std::string &name);
 
 		template<typename ...Components>
-		std::vector<std::reference_wrapper<Entity>> &view()
+		View<Components...> &view()
 		{
-			return this->view(typeid(Components)...);
+			static auto view = std::make_shared<View<Components...>>(this->_entities);
+			this->_views.emplace_back(view);
+			return *view;
 		}
-
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "NotImplementedFunctions"
-		template<typename ...Components>
-		std::vector<std::reference_wrapper<Entity>> &view(const Components &...index) requires(std::is_same_v<Components...>)
-		{
-			static std::vector<std::reference_wrapper<Entity>> view;
-
-			std::copy_if(this->_entities.begin(), this->_entities.end(), std::back_inserter(view), [&index...](Entity &entity) {
-				return (entity.hasComponent(index) && ...);
-			});
-			return view;
-		}
-#pragma clang diagnostic pop
 
 		//! @brief A default constructor
 		Scene() = default;
@@ -69,7 +59,3 @@ namespace WAL
 		friend Entity;
 	};
 } // namespace WAL
-
-#else
-
-#endif

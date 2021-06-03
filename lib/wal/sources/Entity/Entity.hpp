@@ -10,22 +10,10 @@
 #include <memory>
 #include "Component/Component.hpp"
 #include "Exception/WalError.hpp"
-#include "Wal.hpp"
 
 namespace WAL
 {
-
-		class Scene {
-		public:
-			//! @brief Notify this scene that a component has been added to the given entity.
-			//! @param entity The entity with the new component
-			//! @param type The type of the component added.
-			void _componentAdded(const Entity &entity, std::type_index type);
-			//! @brief Notify this scene that a component has been removed to the given entity.
-			//! @param entity The entity with the removed component
-			//! @param type The type of the component removed.	namespace WAL
-			void _componentRemoved(const Entity &entity, std::type_index type);
-		};
+	class Scene;
 
 	//! @brief An entity of the WAL's ECS.
 	class Entity
@@ -42,6 +30,13 @@ namespace WAL
 
 		//! @brief This ID will be the one of the next entity created.
 		static unsigned nextID;
+
+		//! @brief Callback called when a component is added
+		//! @param type The type of component
+		void _componentAdded(const std::type_index &type);
+		//! @brief Callback called when a component is removed
+		//! @param type The type of component
+		void _componentRemoved(const std::type_index &type);
 	protected:
 		//! @brief A reference to the ECS.
 		Scene &_scene;
@@ -96,7 +91,7 @@ namespace WAL
 			if (this->hasComponent(type))
 				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
 			this->_components[type] = std::make_unique<T>(*this, std::forward<Types>(params)...);
-			this->_scene._componentAdded(*this, type);
+			this->_componentAdded(type);
 			return *this;
 		}
 
@@ -115,7 +110,7 @@ namespace WAL
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
 			this->_components.erase(existing);
-			this->_scene._componentRemoved(*this, type);
+			this->_componentRemoved(type);
 			return *this;
 		}
 

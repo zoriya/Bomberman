@@ -6,6 +6,7 @@
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
+#include "Scene/Scene.hpp"
 
 namespace BBM
 {

@@ -21,7 +21,7 @@ TEST_CASE("Collision test", "[Component][System]")
 {
 	Wal wal;
 	CollisionSystem collision(wal);
-	wal.scene = std::make_shared<Scene>(wal);
+	wal.scene = std::make_shared<Scene>();
 	wal.scene->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &) {
@@ -65,7 +65,7 @@ TEST_CASE("Collsion test with movable", "[Component][System]")
 	Wal wal;
 	CollisionSystem collision(wal);
 	MovableSystem movable;
-	wal.scene = std::make_shared<Scene>(wal);
+	wal.scene = std::make_shared<Scene>();
 	wal.scene->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &) {}, [](Entity &actual, const Entity &) {}, 5.0)

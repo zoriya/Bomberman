@@ -18,8 +18,7 @@ using namespace BBM;
 
 TEST_CASE("View creation", "[View]")
 {
-	Wal wal;
-	Scene scene(wal);
+	Scene scene;
 	scene.addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<ControllableComponent>();
@@ -28,6 +27,6 @@ TEST_CASE("View creation", "[View]")
 	REQUIRE(scene.view<PositionComponent>().size() == 2);
 	REQUIRE(scene.view<PositionComponent, ControllableComponent>().size() == 1);
 	Entity &entity = *scene.getEntities().begin();
-	Entity &firstView = *scene.view<PositionComponent, ControllableComponent>().begin();
+	Entity &firstView = *scene.view<PositionComponent, ControllableComponent>().entities.begin();
 	REQUIRE(&entity == &firstView);
 }
