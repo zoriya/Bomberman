@@ -44,7 +44,9 @@ namespace BBM
 		this->_wal.scene->addEntity("Bonus")
 			.addComponent<PositionComponent>(position)
 			.addComponent<HealthComponent>(1)
-			.addComponent<CollisionComponent>(func[bonusType - 1], [](WAL::Entity &, const WAL::Entity &){}, 5.0)
+			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player) {
+					//bonus.scheduleDeletion(true);
+				}, func[bonusType - 1])
 			//.addComponent<TimerComponent>(timer, &[](WAL::Entity &bonus){
 			//  std::cout << "Bonus disappeared" << std::endl;
 			//  bonus.scheduleDeletion();

@@ -7,38 +7,43 @@
 //#include "Component/BombHolderComponent/BombHolderComponent.hpp"
 
 namespace BBM {
-	void Bonus::BombUpBonus(WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus)
 	{
-		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
-		//bombHolder.maxBombCount++;
-		//other.scheduleDeletion(true);
+		/* if (player.hasComponent<BombHolderComponent>()) {
+			auto &bombHolder = player.getComponent<BombHolderComponent>();
+			bombHolder.maxBombCount++;
+		} */
 	}
 
-	void Bonus::DamageIncreasedBonus(WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::DamageIncreasedBonus(WAL::Entity &player, const WAL::Entity &bonus)
 	{
-		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
-		//bombHolder.damage++;
-		//other.scheduleDeletion(true);
+		/* if (player.hasComponent<BombHolderComponent>()) {
+			auto &bombHolder = player.getComponent<BombHolderComponent>();
+			bombHolder.damage++;
+		} */
 	}
 
-	void Bonus::ExplosionRangeBonus(WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus)
 	{
-		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
-		//bombHolder.explosionRange++;
-		//other.scheduleDeletion(true);
+		/* if (player.hasComponent<BombHolderComponent>()) {
+			auto &bombHolder = player.getComponent<BombHolderComponent>();
+			bombHolder.explosionRange++;
+		} */
 	}
 
-	void Bonus::SpeedUpBonus(WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus)
 	{
-		auto &movable = entity.getComponent<MovableComponent>();
+		if (!player.hasComponent<MovableComponent>())
+			return;
+		auto &movable = player.getComponent<MovableComponent>();
 		movable.addForce(Vector3f(1, 0, 1));
-		//other.scheduleDeletion(true);
 	}
 
-	void Bonus::IgnoreWallsBonus(WAL::Entity &entity, const WAL::Entity &other)
+	void Bonus::IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus)
 	{
-		//auto &bombHolder = entity.getComponent<BombHolderComponent>();
-		//bombHolder.ignoreWall = false;
-		//other.scheduleDeletion(true);
+		/* if (player.hasComponent<BombHolderComponent>()) {
+			auto &bombHolder = player.getComponent<BombHolderComponent>();
+			bombHolder.ignoreWalls = true;
+		} */
 	}
 }
