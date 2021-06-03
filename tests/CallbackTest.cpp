@@ -4,6 +4,7 @@
 
 #include <catch2/catch.hpp>
 #include <stdexcept>
+#include <Wal.hpp>
 #include "Entity/Entity.hpp"
 #include "Models/Callback.hpp"
 
@@ -36,6 +37,7 @@ TEST_CASE("Callback multiple arguments", "[Callback]")
 	callback.addCallback([](const std::string& str, int a, unsigned *value, Entity &entity) {
 		throw std::runtime_error("");
 	});
-	Entity entity("name");
+	Wal wal;
+	Entity entity(wal, "name");
 	REQUIRE_THROWS_AS(callback("1", 0, nullptr, entity), std::runtime_error);
 }

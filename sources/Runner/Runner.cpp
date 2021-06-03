@@ -64,9 +64,9 @@ namespace BBM
 		wal.addSystem<RenderScreenSystem>(window);
 	}
 
-	std::shared_ptr<WAL::Scene> loadGameScene()
+	std::shared_ptr<WAL::Scene> loadGameScene(WAL::Wal &wal)
 	{
-		auto scene = std::make_shared<WAL::Scene>();
+		auto scene = std::make_shared<WAL::Scene>(wal);
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
@@ -90,7 +90,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		std::srand(std::time(NULL));
+		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
@@ -100,7 +100,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadGameScene();
+		wal.scene = loadGameScene(wal);
 
 		try {
 			wal.run<GameState>(updateState);

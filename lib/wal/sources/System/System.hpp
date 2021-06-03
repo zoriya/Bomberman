@@ -6,10 +6,13 @@
 
 #include <chrono>
 #include <vector>
-#include "Entity/Entity.hpp"
+#include <typeinfo>
+#include <typeindex>
 
 namespace WAL
 {
+	class Entity;
+
 	//! @brief A base system of WAL
 	class System
 	{

@@ -10,13 +10,14 @@
 #include <memory>
 #include <typeinfo>
 #include "Exception/WalError.hpp"
-#include "Scene/Scene.hpp"
-#include "Entity/Entity.hpp"
 #include "System/System.hpp"
 #include "Models/Callback.hpp"
 
 namespace WAL
 {
+	class Entity;
+	class Scene;
+
 	//! @brief The main WAL class, it is used to setup and run the ECS.
 	class Wal
 	{

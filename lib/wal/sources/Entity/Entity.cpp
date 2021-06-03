@@ -10,13 +10,15 @@ namespace WAL
 {
 	unsigned Entity::nextID = 0;
 
-	Entity::Entity(std::string name)
+	Entity::Entity(Scene &scene, std::string name)
 		: _uid(Entity::nextID++),
+		_scene(scene),
 		_name(std::move(name))
 	{ }
 
 	Entity::Entity(const Entity &other)
 		: _uid(Entity::nextID++),
+		_scene(other._scene),
 		_name(other._name),
 		_disabled(other._disabled)
 	{
@@ -50,6 +52,7 @@ namespace WAL
 		if (this->hasComponent(type))
 			throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
 		this->_components.emplace(type, component.clone(*this));
+		this->_scene._componentAdded(*this, type);
 		return *this;
 	}
 

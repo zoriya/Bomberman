@@ -77,6 +77,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/CallbackTest.cpp
 	tests/CollisionTest.cpp
 	tests/MoveTests.cpp
+	tests/ViewTest.cpp
 )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)

@@ -17,6 +17,6 @@ add_library(wal
 	sources/Component/Component.cpp
 	sources/System/System.cpp
 	sources/Models/Callback.hpp
-	sources/View/View.hpp)
+)
 
 target_include_directories(wal PUBLIC sources)

@@ -5,6 +5,7 @@
 #include <chrono>
 #include <algorithm>
 #include "Wal.hpp"
+#include "Scene/Scene.hpp"
 
 namespace WAL
 {
