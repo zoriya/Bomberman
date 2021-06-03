@@ -4,14 +4,9 @@
 
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "System/Movable/MovableSystem.hpp"
-#include "System/Controllable/ControllableSystem.hpp"
 #include <catch2/catch.hpp>
 #include <Wal.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
-
-#define private public
-#include <Component/Movable/MovableComponent.hpp>
 
 using namespace WAL;
 using namespace BBM;
@@ -30,3 +25,44 @@ TEST_CASE("View creation", "[View]")
 	Entity &firstView = *scene.view<PositionComponent, ControllableComponent>().entities.begin();
 	REQUIRE(&entity == &firstView);
 }
+
+TEST_CASE("View update", "[View]")
+{
+	Scene scene;
+	scene.addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<ControllableComponent>();
+	auto &view = scene.view<PositionComponent>();
+	auto &entity = scene.addEntity("Box")
+		.addComponent<PositionComponent>();
+	REQUIRE(view.size() == 2);
+	entity.removeComponent<PositionComponent>();
+	REQUIRE(view.size() == 1);
+}
+
+TEST_CASE("View cache", "[View]")
+{
+	Scene scene;
+	scene.addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<ControllableComponent>();
+	auto &view = scene.view<PositionComponent>();
+	REQUIRE(&view == &scene.view<PositionComponent>());
+}
+
+//TEST_CASE("View iteration", "[View]")
+//{
+//	Scene scene;
+//	scene.addEntity("player")
+//		.addComponent<PositionComponent>()
+//		.addComponent<ControllableComponent>();
+//	scene.addEntity("Box")
+//		.addComponent<PositionComponent>();
+//	int i = 0;
+//	for (auto &entity : scene.view<PositionComponent>()) {
+//		if (i == 0)
+//			REQUIRE(entity.getName() == "player");
+//		else
+//			REQUIRE(entity.getName() == "Box");
+//	}
+//}

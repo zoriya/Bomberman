@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <functional>
-#include <View/BaseView.hpp>
+#include <View/View.hpp>
 #include "Entity/Entity.hpp"
 
 namespace WAL
