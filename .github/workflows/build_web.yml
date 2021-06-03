@@ -1,12 +1,10 @@
 name: Web Build (Emscripten)
-on:
-  push:
-    branches:
-      wasm
+on: [push, pull_request]
 
 jobs:
   Push:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
     steps:
     - uses: actions/checkout@v1
       with:
