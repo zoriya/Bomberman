@@ -26,6 +26,8 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
+#include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Animator/AnimatorSystem.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -51,6 +53,7 @@ namespace BBM
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
+			.addSystem<AnimatorSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -75,8 +78,9 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
+			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>();
 		scene->addEntity("cube")
