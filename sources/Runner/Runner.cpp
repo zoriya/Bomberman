@@ -25,6 +25,9 @@
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
+#include <Model/ModelAnimations.hpp>
+#include "Component/Animation/AnimationsComponent.hpp"
+#include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -66,6 +69,7 @@ namespace BBM
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>();
 		scene->addEntity("cube")
@@ -80,7 +84,7 @@ namespace BBM
 				mov.resetVelocity();
 			} catch (std::exception &e) { };
 			}, 3);
-		
+
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));

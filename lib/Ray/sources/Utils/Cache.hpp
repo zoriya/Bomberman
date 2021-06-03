@@ -60,13 +60,17 @@ namespace RAY {
 			{};
 			std::shared_ptr<::ModelAnimation> fetch(const std::string &path, int *counter)
 			{
-				if (this->_cache.find(path) == this->_cache.end())
-					this->_cache.emplace(path, std::shared_ptr<::ModelAnimation>(
-					this->_dataLoader(path.c_str(), counter), [this, counter](::ModelAnimation *p) {
-				   		this->_dataUnloader(p, *counter);
-				   		delete p;
-					}));
-				return _cache[path];
+				if (this->_cache.find(path) != this->_cache.end())
+					return this->_cache[path];
+
+				::ModelAnimation *animations = this->_dataLoader(path.c_str(), counter);
+				unsigned int animCount = *counter;
+
+				this->_cache.emplace(path, std::shared_ptr<::ModelAnimation>(
+				animations, [this, animCount](::ModelAnimation *p) {
+			        this->_dataUnloader(p, animCount);
+				}));
+				return this->_cache[path];
 			};
 		private:
 			//! @brief function to call to load data
