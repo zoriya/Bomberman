@@ -14,7 +14,7 @@
 #include <tuple>
 #include <algorithm>
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "System/Renderer/Renderer3DSystem.hpp"
+#include "System/Renderer/RenderSystem.hpp"
 #include "Scene/Scene.hpp"
 #include "Model/Model.hpp"
 #include "Component/Component.hpp"

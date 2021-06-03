@@ -8,6 +8,7 @@
 #include <algorithm>
 #include "Wal.hpp"
 #include "System/System.hpp"
+#include "Models/Vector3.hpp"
 
 namespace BBM
 {
