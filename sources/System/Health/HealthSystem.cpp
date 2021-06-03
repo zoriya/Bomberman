@@ -11,7 +11,7 @@
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Bonus/BonusComponent.hpp"
 #include "Entity/Entity.hpp"
-#include "Bonus/Bonus.hpp"
+#include "Items/Bonus.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
