@@ -56,6 +56,10 @@ set(SOURCES
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/System/Renderer/Render2DScreenSystem.cpp
 	sources/System/Renderer/Render2DScreenSystem.hpp
+	sources/Component/Animation/AnimationsComponent.cpp
+	sources/Component/Animation/AnimationsComponent.hpp
+	sources/System/Animation/AnimationsSystem.cpp
+	sources/System/Animation/AnimationsSystem.hpp
 	sources/Component/Collision/CollisionComponent.cpp
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
@@ -64,7 +68,8 @@ set(SOURCES
 
 add_executable(bomberman
                sources/main.cpp
-               ${SOURCES})
+               ${SOURCES}
+               )
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
@@ -75,9 +80,9 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/MainTest.cpp
 	tests/EngineTests.cpp
 	tests/CallbackTest.cpp
-	tests/CollisionTest.cpp
 	tests/MoveTests.cpp
-)
+	tests/CollisionTest.cpp
+   )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 
