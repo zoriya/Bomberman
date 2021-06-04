@@ -127,7 +127,7 @@ namespace BBM
 		scene->addEntity("Upper Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
 			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent<RAY3D::Model>>(floorObj);
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
 	}
 
 
