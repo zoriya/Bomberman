@@ -129,16 +129,11 @@ namespace WAL
 
 				while (fBehind > Wal::timestep) {
 					fBehind -= Wal::timestep;
-					for (auto &system : this->_systems) {
-						for (auto &entity : system->getView().entities)
-							system->onFixedUpdate(entity);
-					}
+					for (auto &system : this->_systems)
+						system->fixedUpdate();
 				}
-				for (auto &system : this->_systems) {
-					for (auto &entity : system->getView().entities)
-						system->onUpdate(entity, dtime);
-					system->onSelfUpdate();
-				}
+				for (auto &system : this->_systems)
+					system->update(dtime);
 				callback(*this, state);
 			}
 		}

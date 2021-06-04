@@ -35,15 +35,33 @@ namespace WAL
 		//! @brief Update the corresponding component of the given entity
 		//! @param entity The entity to update.
 		//! @param dtime The delta time.
-		void onUpdate(Entity &entity, std::chrono::nanoseconds dtime) override {}
+		virtual void onUpdate(ViewEntity<Dependencies...> &entity, std::chrono::nanoseconds dtime) {}
 
 		//! @brief An alternative of onUpdate that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up.
 		//! @remark This should be used for Physics, AI and everything that could be imprecise due to float rounding.
 		//! @param entity The entity to update.
-		void onFixedUpdate(Entity &entity) override {}
+		virtual void onFixedUpdate(ViewEntity<Dependencies...> &entity) {}
 
 		//! @brief A method called after all entities that this system manage has been updated.
-		void onSelfUpdate() override {}
+		virtual void onSelfUpdate() {}
+
+
+		//! @brief Update the whole system (every entities that this system is responsible can be updated.
+		//! @param dtime The delta time since the last call to this method.
+		void update(std::chrono::nanoseconds dtime) final
+		{
+			for (auto entity : this->getView())
+				this->onUpdate(entity, dtime);
+			this->onSelfUpdate();
+		}
+
+		//! @brief An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up.
+		//! @remark This should be used for Physics, AI and everything that could be imprecise due to float rounding.
+		void fixedUpdate() final
+		{
+			for (auto entity : this->getView())
+				this->onFixedUpdate(entity);
+		}
 	protected:
 		//! @brief A reference to the ECS.
 		Wal &_wal;

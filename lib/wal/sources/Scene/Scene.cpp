@@ -26,25 +26,22 @@ namespace WAL
 	void Scene::_componentAdded(Entity &entity, const std::type_index &type)
 	{
 		for (auto &view : this->_views) {
-			if (std::find(view->types.begin(), view->types.end(), type) == view->types.end())
+			if (std::find(view->getTypes().begin(), view->getTypes().end(), type) == view->getTypes().end())
 				continue;
-			bool valid = std::all_of(view->types.begin(), view->types.end(), [&entity](const auto &type){
+			bool valid = std::all_of(view->getTypes().begin(), view->getTypes().end(), [&entity](const auto &type){
 				return entity.hasComponent(type);
 			});
 			if (valid)
-				view->entities.emplace_back(entity);
+				view->emplace_back(entity);
 		}
 	}
 
 	void Scene::_componentRemoved(const Entity &entity, const std::type_index &type)
 	{
 		for (auto &view : this->_views) {
-			if (std::find(view->types.begin(), view->types.end(), type) == view->types.end())
+			if (std::find(view->getTypes().begin(), view->getTypes().end(), type) == view->getTypes().end())
 				continue;
-			view->entities.erase(std::remove_if(view->entities.begin(), view->entities.end(), [&entity](const auto &ref)
-			{
-				return &ref.get() == &entity;
-			}), view->entities.end());
+			view->erase(entity);
 		}
 	}
 } // namespace WAL

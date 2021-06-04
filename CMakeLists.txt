@@ -35,34 +35,34 @@ set(SOURCES
 	sources/Component/Keyboard/KeyboardComponent.hpp
 	sources/Component/Health/HealthComponent.cpp
 	sources/Component/Health/HealthComponent.hpp
-	sources/System/Movable/MovableSystem.hpp
-	sources/System/Movable/MovableSystem.cpp
-	sources/System/Controllable/ControllableSystem.cpp
-	sources/System/Controllable/ControllableSystem.hpp
-	sources/System/Gamepad/GamepadSystem.cpp
-	sources/System/Gamepad/GamepadSystem.hpp
-	sources/System/Health/HealthSystem.cpp
-	sources/System/Health/HealthSystem.hpp
-	sources/System/Keyboard/KeyboardSystem.cpp
-	sources/System/Keyboard/KeyboardSystem.hpp
-	sources/System/Movable/MovableSystem.cpp
-	sources/System/Movable/MovableSystem.hpp
+#	sources/System/Movable/MovableSystem.hpp
+#	sources/System/Movable/MovableSystem.cpp
+#	sources/System/Controllable/ControllableSystem.cpp
+#	sources/System/Controllable/ControllableSystem.hpp
+#	sources/System/Gamepad/GamepadSystem.cpp
+#	sources/System/Gamepad/GamepadSystem.hpp
+#	sources/System/Health/HealthSystem.cpp
+#	sources/System/Health/HealthSystem.hpp
+#	sources/System/Keyboard/KeyboardSystem.cpp
+#	sources/System/Keyboard/KeyboardSystem.hpp
+#	sources/System/Movable/MovableSystem.cpp
+#	sources/System/Movable/MovableSystem.hpp
 	sources/Models/Vector3.hpp
 	sources/Component/GridCentered/GridCenteredComponent.cpp
 	sources/Component/GridCentered/GridCenteredComponent.hpp
-	sources/System/GridCentered/GridCenteredSystem.cpp
-	sources/System/GridCentered/GridCenteredSystem.hpp
+#	sources/System/GridCentered/GridCenteredSystem.cpp
+#	sources/System/GridCentered/GridCenteredSystem.hpp
 	sources/Models/Vector2.hpp
 	sources/Component/Renderer/Drawable2DComponent.hpp
 	sources/Component/Renderer/Drawable3DComponent.hpp
-	sources/System/Renderer/RenderSystem.hpp
-	sources/System/Renderer/RenderSystem.cpp
+#	sources/System/Renderer/RenderSystem.hpp
+#	sources/System/Renderer/RenderSystem.cpp
 	sources/Component/Renderer/CameraComponent.cpp
 	sources/Component/Renderer/CameraComponent.hpp
 	sources/Component/Animation/AnimationsComponent.cpp
 	sources/Component/Animation/AnimationsComponent.hpp
-	sources/System/Animation/AnimationsSystem.cpp
-	sources/System/Animation/AnimationsSystem.hpp
+#	sources/System/Animation/AnimationsSystem.cpp
+#	sources/System/Animation/AnimationsSystem.hpp
 	sources/Component/Collision/CollisionComponent.cpp
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp

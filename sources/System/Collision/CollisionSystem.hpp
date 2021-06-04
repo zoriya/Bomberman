@@ -10,6 +10,7 @@
 #include "System/System.hpp"
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
+#include "Component/Position/PositionComponent.hpp"
 
 namespace BBM
 {
@@ -18,7 +19,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit CollisionSystem(WAL::Wal &wal);

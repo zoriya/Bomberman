@@ -4,30 +4,30 @@
 
 #include <Wal.hpp>
 #include <iostream>
-#include "System/Movable/MovableSystem.hpp"
-#include "System/Renderer/RenderSystem.hpp"
+//#include "System/Movable/MovableSystem.hpp"
+//#include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
-#include <Drawables/3D/Cube.hpp>
+//#include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
-#include <System/Keyboard/KeyboardSystem.hpp>
-#include <System/Controllable/ControllableSystem.hpp>
+//#include <System/Keyboard/KeyboardSystem.hpp>
+//#include <System/Controllable/ControllableSystem.hpp>
 #include <System/Collision/CollisionSystem.hpp>
 #include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
-#include "Models/Vector2.hpp"
+//#include <System/Gamepad/GamepadSystem.hpp>
+//#include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
+//#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
-#include "System/Animation/AnimationsSystem.hpp"
+//#include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -47,18 +47,19 @@ namespace BBM
 
 	void addSystems(WAL::Wal &wal)
 	{
-		wal.addSystem<KeyboardSystem>()
-			.addSystem<GamepadSystem>()
-			.addSystem<ControllableSystem>()
-			.addSystem<CollisionSystem>()
-			.addSystem<MovableSystem>();
+		wal.addSystem<CollisionSystem>();
+		//		wal.addSystem<KeyboardSystem>()
+//			.addSystem<GamepadSystem>()
+//			.addSystem<ControllableSystem>()
+//			.addSystem<CollisionSystem>()
+//			.addSystem<MovableSystem>();
 	}
 
 	void enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
-		wal.addSystem<RenderSystem>(window);
+//		wal.addSystem<RenderSystem>(window);
 	}
 
 	std::shared_ptr<WAL::Scene> loadGameScene(WAL::Wal &wal)

@@ -23,20 +23,20 @@ namespace BBM
 		return (overlapX && overlapY && overlapZ);
 	}
 
-	void CollisionSystem::onFixedUpdate(WAL::Entity &entity)
+	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
 	{
-		auto &posA = entity.getComponent<PositionComponent>();
-		auto &col = entity.getComponent<CollisionComponent>();
+		auto &posA = entity.get<PositionComponent>();
+		auto &col = entity.get<CollisionComponent>();
 		Vector3f position = posA.position;
-		if (entity.hasComponent(typeid(MovableComponent)))
-			position += entity.getComponent<MovableComponent>().getVelocity();
+//		if (entity.hasComponent(typeid(MovableComponent)))
+//			position += entity.getComponent<MovableComponent>().getVelocity();
 		Vector3f minA = Vector3f::min(position, position + col.bound);
 		Vector3f maxA = Vector3f::max(position, position + col.bound);
-		for (WAL::Entity &other : this->getView().entities) {
-			if (&other == &entity)
+		for (auto other : this->getView()) {
+			if (other->getUid() == entity->getUid())
 				continue;
-			auto colB = other.getComponent<CollisionComponent>();
-			auto posB = other.getComponent<PositionComponent>().position;
+			auto colB = other.get<CollisionComponent>();
+			auto posB = other.get<PositionComponent>().position;
 			Vector3f minB = Vector3f::min(posB, posB + colB.bound);
 			Vector3f maxB = Vector3f::max(posB, posB + colB.bound);
 			if (collide(minA, maxA, minB, maxB)) {

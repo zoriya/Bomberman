@@ -65,6 +65,16 @@ namespace WAL
 			return *static_cast<T *>(existing->second.get());
 		}
 
+		template<typename T>
+		T *getComponentOrDefault()
+		{
+			const std::type_index &type = typeid(T);
+			auto existing = this->_components.find(type);
+			if (existing == this->_components.end())
+				return nullptr;
+			return *static_cast<T *>(existing->second.get());
+		}
+
 		//! @brief Check if this entity has a component.
 		//! @tparam T The type of the component
 		template<typename T>

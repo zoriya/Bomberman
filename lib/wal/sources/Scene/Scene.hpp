@@ -24,7 +24,7 @@ namespace WAL
 		//! @brief The list of registered entities
 		std::list<Entity> _entities = {};
 		//! @brief The list of cached views to update.
-		std::vector<std::shared_ptr<BaseView>> _views = {};
+		std::vector<std::shared_ptr<IView>> _views = {};
 
 		//! @brief Notify this scene that a component has been added to the given entity.
 		//! @param entity The entity with the new component
