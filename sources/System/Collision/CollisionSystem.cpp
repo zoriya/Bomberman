@@ -32,11 +32,8 @@ namespace BBM
 			position += entity.getComponent<MovableComponent>().getVelocity();
 		Vector3f minA = Vector3f::min(position, position + col.bound);
 		Vector3f maxA = Vector3f::max(position, position + col.bound);
-		for (auto &other : _wal.scene->getEntities()) {
+		for (WAL::Entity &other : _wal.scene->view<PositionComponent, CollisionSystem>().entities) {
 			if (&other == &entity)
-				continue;
-			if (!other.hasComponent<CollisionComponent>() ||
-				!other.hasComponent<PositionComponent>())
 				continue;
 			auto colB = other.getComponent<CollisionComponent>();
 			auto posB = other.getComponent<PositionComponent>().position;
