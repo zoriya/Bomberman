@@ -11,43 +11,47 @@
 #include <raylib.h>
 #include <string>
 #include "Texture.hpp"
+#include "Utils/Cache.hpp"
+#include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY
 {
-	namespace Drawables {
-		class ADrawable2D;
-	}
 	//! @brief Object representation of a framebuffer
-	class Image {
+	class Image: public Drawables::Drawables2D::Rectangle {
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
 			Image(const std::string &filename);
 
-			//! @brief Create an image, using data from a texure
-			//! @param texture: texture to extract data from
-			Image(Texture &texture);
-
 			//! @brief A default copy constructor
-			Image(const Image &image) = delete;
+			Image(const Image &image) = default;
 
 			//! @brief An image is assignable
-			Image &operator=(const Image &image) = delete;
+			Image &operator=(const Image &image) = default;
 			
 			//! @brief Image destructor, will unload ressources
-			~Image();
+			~Image() override = default;
 
 			//! @brief export to file
 			//! @param outputPath: path of output
 			bool exportTo(const std::string &outputPath);
 
-
-			//! @brief draw drawable
+			//! @brief draw drawable on image
 			void draw(Drawables::ADrawable2D &);
+
+			//! @brief Draw image on window
+			void drawOn(RAY::Window &) override;
+
+			//! @brief Draw image on another image
+			void drawOn(RAY::Image &image) override;
+
 
 		private:
 			//! @brief Image, really, that's just it...
-			::Image _image;
+			std::shared_ptr<::Image> _image;
+
+			static Cache<::Image> _imagesCache;
+
 		
 		INTERNAL:
 			//! @brief get image

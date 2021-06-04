@@ -7,11 +7,15 @@
 #include "System/System.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Window.hpp"
+#include "Wal.hpp"
 
 namespace BBM
 {
-	class RenderScreenSystem : public WAL::System
+	class RenderSystem : public WAL::System
 	{
+		//! @brief The ECS to update.
+		WAL::Wal &_wal;
+
 		//! @brief The window to render on
 		RAY::Window &_window;
 
@@ -29,12 +33,12 @@ namespace BBM
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief ctor
-		explicit RenderScreenSystem(RAY::Window &window);
+		RenderSystem(WAL::Wal &wal, RAY::Window &window);
 		//! @brief Default copy ctor
-		RenderScreenSystem(const RenderScreenSystem &) = default;
+		RenderSystem(const RenderSystem &) = default;
 		//! @brief Default dtor
-		~RenderScreenSystem() override = default;
+		~RenderSystem() override = default;
 		//! @brief A render screen system can't be assigned.
-		RenderScreenSystem &operator=(const RenderScreenSystem &) = delete;
+		RenderSystem &operator=(const RenderSystem &) = delete;
 	};
 }

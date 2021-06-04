@@ -7,6 +7,7 @@
 
 #include "Drawables/2D/Line.hpp"
 #include <cmath>
+#include "Drawables/Image.hpp"
 
 namespace RAY::Drawables::Drawables2D
 {

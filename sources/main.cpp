@@ -9,45 +9,6 @@
 #include <iostream>
 #include "Runner/Runner.hpp"
 
-// Dependencies of the demo
-#include "Camera/Camera3D.hpp"
-#include "Controllers/Keyboard.hpp"
-#include "Drawables/2D/Text.hpp"
-#include "Drawables/Image.hpp"
-#include "Drawables/3D/Grid.hpp"
-#include "Drawables/Texture.hpp"
-#include "Drawables/3D/Circle.hpp"
-#include "Drawables/2D/Circle.hpp"
-#include "Drawables/3D/Cube.hpp"
-#include "Drawables/3D/Sphere.hpp"
-#include "Model/Model.hpp"
-#include "Model/ModelAnimations.hpp"
-#include "System/Renderer/Renderer3DSystem.hpp"
-#include "System/Renderer/Renderer2DSystem.hpp"
-#include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
-#include "System/Renderer/RenderScreenSystem.hpp"
-#include "Vector/Vector3.hpp"
-#include "Window.hpp"
-#include "TraceLog.hpp"
-#include "Wal.hpp"
-
-const std::vector<std::string>textures = {
-	"blue", "cyan", "green", "purple", "red", "yellow"
-};
-
-std::string get_full_path(const std::string &color)
-{
-	std::string path = "assets/player/";
-
-	path += color;
-	path += ".png";
-	return path;
-}
-
-
-
-
 void usage(const std::string &bin)
 {
 	std::cout << "Bomberman." << std::endl
@@ -62,6 +23,5 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
-//	return demo();
 	return BBM::run();
 }

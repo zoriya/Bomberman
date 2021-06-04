@@ -6,6 +6,7 @@
 */
 
 #include "Drawables/ADrawable2D.hpp"
+#include "Image.hpp"
 
 namespace RAY::Drawables
 {

@@ -11,7 +11,6 @@
 #include <raylib.h>
 #include <string>
 #include <optional>
-#include "Drawables/Image.hpp"
 #include "Vector/Vector2.hpp"
 #include "Vector/Vector3.hpp"
 #include "Controllers/Keyboard.hpp"
@@ -22,6 +21,7 @@
 
 namespace RAY {
 	//! @brief Window manager
+	class Image;
 	namespace Drawables {
 		class IDrawable;
 		class ADrawable3D;
@@ -102,8 +102,10 @@ namespace RAY {
 				NONE,
 			};
 
-			//! @brief Draw the content of the buffer on the screen.
-			void draw();
+			//! @brief Setup canvas (framebuffer) to start drawing
+			void beginDrawing();
+			//! @brief End canvas drawing and swap buffers (double buffering)
+			void endDrawing();
 
 			//! @brief Initialize 2D mode with custom camera (2D)
 			void useCamera(Camera::Camera2D &camera);
@@ -133,6 +135,8 @@ namespace RAY {
 
 			//! @brief Draws current FPS on the frame
 			void drawFPS(const Vector2 &position);
+			//! @return true if the window's context has been correctly initialized
+			bool isReady() const;
 
 
 		private:

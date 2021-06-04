@@ -7,6 +7,7 @@
 
 #include "Drawables/2D/Triangle.hpp"
 #include "Exceptions/RayError.hpp"
+#include "Drawables/Image.hpp"
 
 namespace RAY::Drawables::Drawables2D
 {

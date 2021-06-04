@@ -14,7 +14,7 @@
 #include <raylib.h>
 #include <vector>
 #include <optional>
-#include <map>
+#include "Utils/Cache.hpp"
 
 namespace RAY::Drawables::Drawables3D {
 	//! @brief Basic 3D Model type
@@ -27,10 +27,10 @@ namespace RAY::Drawables::Drawables3D {
 			//! @param filePath: path to file to load
 			Model(const std::string &filePath,
 			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
+				  const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1),
 			      const RAY::Vector3 &position = {0, 0, 0},
 			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0),
-			      float rotationAngle = 0,
-			      const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1));
+			      float rotationAngle = 0);
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
@@ -42,8 +42,8 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief A model is assignable
 			Model& operator=(const Model &model) = default;
 
-			//! @brief Model destructor, unloads all related data
-			~Model();
+			//! @brief Model destructor, model's data will be deleted if it's the last entity alive
+			~Model() override = default;
 
 			//! @brief Unload model (excluding meshes) from memory (RAM and/or VRAM)
 			bool unloadKeepMeshes();
@@ -81,15 +81,17 @@ namespace RAY::Drawables::Drawables3D {
 
 		private:
 			//! @brief Raw data from raylib
-			::Model _model;
+			std::shared_ptr<::Model> _model;
 			//! @brief The list of textures that can be applied to this model.
-			std::map<MaterialType, Texture> _textureList;
+			std::unordered_map<MaterialType, Texture> _textureList;
 			//! @brief Rotation property
 			RAY::Vector3 _rotationAxis;
 			//! @brief Rotation property
 			float _rotationAngle;
 			//! @brief Scale of the shape
 			RAY::Vector3 _scale;
+
+			static RAY::Cache<::Model> _modelsCache;
 
 		INTERNAL:
 			//! @brief A RAY Model is cast-able in libray's model

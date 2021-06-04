@@ -11,6 +11,7 @@
 #include "Controllers/Mouse.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/ADrawable3D.hpp"
+#include "Drawables/Image.hpp"
 
 std::optional<RAY::Window> RAY::Window::_instance = std::nullopt;
 
@@ -107,10 +108,14 @@ void RAY::Window::clear(RAY::Color color)
 	ClearBackground(color);
 }
 
-void RAY::Window::draw()
+void RAY::Window::beginDrawing()
+{
+	BeginDrawing();
+}
+
+void RAY::Window::endDrawing()
 {
 	EndDrawing();
-	BeginDrawing();
 }
 
 void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
@@ -171,4 +176,9 @@ void RAY::Window::setIcon(RAY::Image &img)
 void RAY::Window::drawFPS(const RAY::Vector2 &position)
 {
 	DrawFPS(position.x, position.y);
+}
+
+bool RAY::Window::isReady() const
+{
+	return IsWindowReady();
 }

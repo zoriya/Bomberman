@@ -10,6 +10,7 @@
 
 #include <raylib.h>
 #include <string>
+#include "Utils/Cache.hpp"
 
 namespace RAY
 {
@@ -29,13 +30,15 @@ namespace RAY
 			//! @brief An font is assignable
 			Font &operator=(const Font &) = default;
 			
-			//! @brief Unload font at destruction
-			~Font();
+			//! @brief Default destructor
+			~Font() = default;
 
 		protected:
 		private:
 			//! @brief Font, really, that's just it...
-			::Font _font;
+			std::shared_ptr<::Font> _font;
+
+			static Cache<::Font> _fontsCache;
 	};   
 }
 

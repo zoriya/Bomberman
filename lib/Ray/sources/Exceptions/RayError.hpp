@@ -9,6 +9,7 @@
 #define RAYERROR_HPP_
 
 #include <stdexcept>
+#include <string>
 
 namespace RAY::Exception {
 	//! @brief base exception class for RAY lib
