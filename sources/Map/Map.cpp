@@ -68,7 +68,7 @@ namespace BBM
 
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
-				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, 0, j)] != BUMPER)
+				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
 						//.addComponent<CollisionComponent>(1)
@@ -222,8 +222,8 @@ namespace BBM
 			map[std::make_tuple(0, 0, 1)] = STAIRS;
 			map[std::make_tuple(width, 0, height - 1)] = STAIRS;
 			map[std::make_tuple(width, 0, 1)] = STAIRS;
-			map[std::make_tuple(width / 2, 0, height - 1)] = BUMPER;
-			map[std::make_tuple(width / 2, 0, 1)] = BUMPER;
+			map[std::make_tuple(width / 2, -1, height - 1)] = BUMPER;
+			map[std::make_tuple(width / 2, -1, 1)] = BUMPER;
 		}
 		if (rnd > 0.30) {
 			std::cout << "Up center" << std::endl;
@@ -303,7 +303,7 @@ namespace BBM
 		generateFloor(map, width, height, scene);
 		for (int x = 0; x < width + 1; x++)
 			for (int z = 0; z < height + 1; z++)
-				for (int y = 0; y < 1 + 1; y++)
+				for (int y = -1; y < 1 + 1; y++)
 					createElement(Vector3f(x, y, z), scene, map[std::make_tuple(x, y, z)]);
 	}
 
