@@ -53,7 +53,7 @@ namespace BBM
 
 	void enableRaylib(WAL::Wal &wal)
 	{
-		RAY::TraceLog::setLevel(LOG_WARNING);
+		//RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 
 		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
