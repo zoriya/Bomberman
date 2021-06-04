@@ -17,8 +17,12 @@ namespace BBM
 		//! @brief The list of scenes available.
 		enum SceneID
 		{
-			MainMenu,
-			GameScene
+			MainMenuScene,
+			GameScene,
+			SettingsScene,
+			PauseMenuScene,
+			LobbyScene,
+
 		};
 
 
