@@ -50,6 +50,22 @@ TEST_CASE("View cache", "[View]")
 	REQUIRE(&view == &scene.view<PositionComponent>());
 }
 
+TEST_CASE("View cache switch", "[View]")
+{
+	Scene scene;
+	scene.addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<ControllableComponent>();
+	auto &view = scene.view<PositionComponent>();
+	Scene scene2;
+	scene2.addEntity("box")
+		.addComponent<PositionComponent>();
+
+	REQUIRE(&view == &scene.view<PositionComponent>());
+	REQUIRE(view.entities.begin()->get().getName() == "player");
+	REQUIRE(scene2.view<PositionComponent>().entities.begin()->get().getName() == "box");
+}
+
 //TEST_CASE("View iteration", "[View]")
 //{
 //	Scene scene;

@@ -6,6 +6,7 @@
 #pragma once
 
 #include <vector>
+#include <list>
 #include <functional>
 #include <View/View.hpp>
 #include "Entity/Entity.hpp"
@@ -16,8 +17,12 @@ namespace WAL
 	class Scene
 	{
 	private:
+		static int _nextID;
+		//! @brief An ID representing this scene.
+		int _id = _nextID++;
+
 		//! @brief The list of registered entities
-		std::vector<Entity> _entities = {};
+		std::list<Entity> _entities = {};
 		//! @brief The list of cached views to update.
 		std::vector<std::shared_ptr<BaseView>> _views = {};
 
@@ -31,7 +36,7 @@ namespace WAL
 		void _componentRemoved(const Entity &entity, const std::type_index &type);
 	public:
 		//! @brief Get the list of entities.
-		std::vector<Entity> &getEntities();
+		std::list<Entity> &getEntities();
 
 		//! @brief Add a new entity to the scene.
 		//! @param name The name of the created entity.
@@ -41,8 +46,13 @@ namespace WAL
 		template<typename ...Components>
 		View<Components...> &view()
 		{
-			static auto view = std::make_shared<View<Components...>>(this->_entities);
+			static std::unordered_map<int, std::weak_ptr<View<Components...>>> cache;
+			auto existing = cache.find(this->_id);
+			if (existing != cache.end() && !existing->second.expired())
+				return *existing->second.lock();
+			auto view = std::make_shared<View<Components...>>(this->_entities);
 			this->_views.emplace_back(view);
+			cache.emplace(this->_id, view);
 			return *view;
 		}
 

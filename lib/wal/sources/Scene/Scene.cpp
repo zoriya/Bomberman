@@ -6,7 +6,9 @@
 
 namespace WAL
 {
-	std::vector<Entity> &Scene::getEntities()
+	int Scene::_nextID = 0;
+
+	std::list<Entity> &Scene::getEntities()
 	{
 		return this->_entities;
 	}

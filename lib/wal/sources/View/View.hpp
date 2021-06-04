@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include <vector>
+#include <list>
 #include <tuple>
 #include <typeindex>
 #include <functional>
@@ -47,7 +47,7 @@ namespace WAL
 	public:
 		//! @brief Construct a view from a list of entities.
 		//!        Those entities are never copied but references to them are kept internally.
-		explicit View(std::vector<Entity> &scene)
+		explicit View(std::list<Entity> &scene)
 		{
 			this->types = {typeid(Components)...};
 			std::copy_if(scene.begin(), scene.end(), std::back_inserter(this->entities), [](Entity &entity) {

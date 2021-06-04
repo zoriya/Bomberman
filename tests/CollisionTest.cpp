@@ -32,7 +32,7 @@ TEST_CASE("Collision test", "[Component][System]")
 			pos.position.z = 1;
 			} catch (std::exception &e) {};
 		}, [](Entity &, const Entity &){}, 5.0);
-	Entity &entity = wal.scene->getEntities()[0];
+	Entity &entity = wal.scene->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;
@@ -48,7 +48,7 @@ TEST_CASE("Collision test", "[Component][System]")
 	wal.scene->addEntity("block")
 		.addComponent<PositionComponent>(2,2,2)
 		.addComponent<CollisionComponent>(1);
-	Entity &player = wal.scene->getEntities()[0];
+	Entity &player = wal.scene->getEntities().front();
 	collision.onUpdate(entity, std::chrono::nanoseconds(1));
 	REQUIRE(player.hasComponent(typeid(PositionComponent)));
 	collision.onFixedUpdate(player);
@@ -79,7 +79,7 @@ TEST_CASE("Collsion test with movable", "[Component][System]")
 			mov.resetVelocity();
 			} catch (std::exception &e) {};
 		}, 1);
-	Entity &entity = wal.scene->getEntities()[0];
+	Entity &entity = wal.scene->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;

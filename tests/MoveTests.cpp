@@ -25,7 +25,7 @@ TEST_CASE("Move test", "[Component][System]")
 		.addComponent<ControllableComponent>()
 		.addComponent<MovableComponent>()
 		.addComponent<PositionComponent>();
-	Entity &entity = scene.getEntities()[0];
+	Entity &entity = *scene.getEntities().begin();
 
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
