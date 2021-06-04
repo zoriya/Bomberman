@@ -10,8 +10,6 @@
 
 namespace BBM
 {
-	float ControllableSystem::speed = .25f;
-
 	ControllableSystem::ControllableSystem()
 		: WAL::System({
 			typeid(ControllableComponent),
