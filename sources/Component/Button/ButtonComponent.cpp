@@ -16,18 +16,20 @@ namespace BBM
 	}
 
 	ButtonComponent::ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback,
-	WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback)
+	WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback, WAL::Callback<> holdCallback)
 	:	WAL::Component(entity),
 		onIdle(idleCallback),
 		onHover(hoverCallback),
-		onClick(clickCallback)
+		onClick(clickCallback),
+		onHold(holdCallback)
 	{ }
 
 	ButtonComponent::ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback,
-	std::function<void()> hoverCallback, std::function<void()> clickCallback)
+	std::function<void()> hoverCallback, std::function<void()> clickCallback, std::function<void()> holdCallback)
 	:	WAL::Component(entity),
 		onIdle(idleCallback),
 		onHover(hoverCallback),
-		onClick(clickCallback)
+		onClick(clickCallback),
+		onHold(holdCallback)
 	{ }
 }

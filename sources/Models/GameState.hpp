@@ -22,7 +22,6 @@ namespace BBM
 			SettingsScene,
 			PauseMenuScene,
 			LobbyScene,
-
 		};
 
 

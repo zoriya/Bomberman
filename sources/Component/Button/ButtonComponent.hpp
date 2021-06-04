@@ -19,8 +19,11 @@ namespace BBM
 			//! @brief onHover callback
 			WAL::Callback<> onHover;
 
-			//! @brief onClick callback
+			//! @brief onClick callback, when the mouse button is released
 			WAL::Callback<> onClick;
+
+			//! @brief onHold callback, when the mouse button is pressed
+			WAL::Callback<> onHold;
 			
 
 			//! @inherit
@@ -30,10 +33,10 @@ namespace BBM
 			explicit ButtonComponent(WAL::Entity &entity);
 
 			//! @brief Constructor with the 3 callback
-			ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback, WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback);
+			ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback, WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback, WAL::Callback<> holdCallback);
 			
 			//! @brief Constructor with the 3 std functions
-			ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback, std::function<void()> hoverCallback, std::function<void()> clickCallback);
+			ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback, std::function<void()> hoverCallback, std::function<void()> clickCallback, std::function<void()> holdCallback);
 			
 			//! @brief A Controllable component is copy constructable.
 			ButtonComponent(const ButtonComponent &) = default;
