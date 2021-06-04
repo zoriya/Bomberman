@@ -22,8 +22,12 @@ namespace BBM
 		//! @brief The camera used to render.
 		RAY::Camera::Camera3D _camera;
 
+		//! @brief Defines if the debug informations must be displayed or not
+		bool _debugMode;
+
 		//! @brief Window framerate limit
 		static constexpr short FPS = 30;
+
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here
