@@ -3,6 +3,7 @@
 //
 
 #include "Scene.hpp"
+#include <algorithm>
 
 namespace WAL
 {
