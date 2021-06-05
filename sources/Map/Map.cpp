@@ -151,7 +151,7 @@ namespace BBM
 		scene->addEntity("Hole Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
-			/* .addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
+			/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
 				if (other.hasComponent<HealthComponent>()) {
 					auto &health = other.getComponent<HealthComponent>();
 					health.takeDmg(health.getHealthPoint());

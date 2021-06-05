@@ -108,10 +108,14 @@ void RAY::Window::clear(RAY::Color color)
 	ClearBackground(color);
 }
 
-void RAY::Window::draw()
+void RAY::Window::beginDrawing()
+{
+	BeginDrawing();
+}
+
+void RAY::Window::endDrawing()
 {
 	EndDrawing();
-	BeginDrawing();
 }
 
 void RAY::Window::useCamera(RAY::Camera::Camera2D &camera)
@@ -167,4 +171,9 @@ void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix 
 void RAY::Window::setIcon(RAY::Image &img)
 {
 	SetWindowIcon(img);
+}
+
+bool RAY::Window::isReady() const
+{
+	return IsWindowReady();
 }
