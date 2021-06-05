@@ -12,6 +12,7 @@
 #include "Wal.hpp"
 #include "View/View.hpp"
 #include "ISystem.hpp"
+#include <iostream>
 
 namespace WAL
 {
@@ -50,7 +51,7 @@ namespace WAL
 		//! @param dtime The delta time since the last call to this method.
 		void update(std::chrono::nanoseconds dtime) final
 		{
-			for (auto entity : this->getView())
+			for (auto &entity : this->getView())
 				this->onUpdate(entity, dtime);
 			this->onSelfUpdate();
 		}
@@ -59,7 +60,7 @@ namespace WAL
 		//! @remark This should be used for Physics, AI and everything that could be imprecise due to float rounding.
 		void fixedUpdate() final
 		{
-			for (auto entity : this->getView())
+			for (auto &entity : this->getView())
 				this->onFixedUpdate(entity);
 		}
 	protected:

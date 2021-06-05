@@ -15,7 +15,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<HealthComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit HealthSystem(WAL::Wal &wal);

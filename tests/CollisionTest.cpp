@@ -39,8 +39,8 @@ TEST_CASE("Collision test", "[Component][System]")
 	entity.getComponent<CollisionComponent>().bound.y = 5;
 	entity.getComponent<CollisionComponent>().bound.z = 5;
 
-	collision.onUpdate(entity, std::chrono::nanoseconds(1));
-	collision.onFixedUpdate(entity);
+	collision.update(std::chrono::nanoseconds(1));
+	collision.fixedUpdate();
 	REQUIRE(entity.getComponent<PositionComponent>().position.x == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.y == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.z == 0.0);
@@ -49,9 +49,9 @@ TEST_CASE("Collision test", "[Component][System]")
 		.addComponent<PositionComponent>(2,2,2)
 		.addComponent<CollisionComponent>(1);
 	Entity &player = wal.scene->getEntities().front();
-	collision.onUpdate(entity, std::chrono::nanoseconds(1));
+	collision.update(std::chrono::nanoseconds(1));
 	REQUIRE(player.hasComponent(typeid(PositionComponent)));
-	collision.onFixedUpdate(player);
+	collision.fixedUpdate();
 	REQUIRE(wal.scene->getEntities().size() == 2);
 	REQUIRE(player.hasComponent(typeid(PositionComponent)));
 	REQUIRE(player.getComponent<PositionComponent>().position.x == 1.0);
@@ -87,10 +87,10 @@ TEST_CASE("Collsion test with movable", "[Component][System]")
 	entity.getComponent<CollisionComponent>().bound.z = 5;
 
 	entity.getComponent<MovableComponent>().addForce({1, 1, 1});
-	collision.onUpdate(entity, std::chrono::nanoseconds(1));
-	collision.onFixedUpdate(entity);
-	movable.onUpdate(entity, std::chrono::nanoseconds(1));
-	movable.onFixedUpdate(entity);
+	collision.update(std::chrono::nanoseconds(1));
+	collision.fixedUpdate();
+	movable.update(std::chrono::nanoseconds(1));
+	movable.fixedUpdate();
 	REQUIRE(entity.getComponent<PositionComponent>().position.x == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.y == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.z == 0.0);

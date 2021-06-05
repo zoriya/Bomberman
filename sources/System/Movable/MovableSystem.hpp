@@ -17,7 +17,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<MovableComponent, PositionComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit MovableSystem(WAL::Wal &wal);

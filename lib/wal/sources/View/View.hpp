@@ -9,6 +9,8 @@
 #include <tuple>
 #include <typeindex>
 #include <functional>
+#include <utility>
+#include <optional>
 #include "Entity/Entity.hpp"
 
 namespace WAL
@@ -43,6 +45,12 @@ namespace WAL
 		{
 			return std::get<std::reference_wrapper<T>>(this->_value);
 		}
+
+		template<std::size_t I>
+		auto &get()
+		{
+			return std::get<I>(this->_value);
+		}
 	};
 
 	template<typename It, typename ...Components>
@@ -50,18 +58,19 @@ namespace WAL
 	{
 	private:
 		It _it;
+		std::optional<ViewEntity<Components...>> _entity;
 
 	public:
-		ViewEntity<Components...> operator*()
+		ViewEntity<Components...> &operator*()
 		{
-			ViewEntity<Components...> entity(*this->_it);
-			return entity;
+			this->_entity.emplace(*this->_it);
+			return this->_entity.value();
 		}
 
-		ViewEntity<Components...> operator->()
+		ViewEntity<Components...> *operator->()
 		{
-			ViewEntity<Components...> entity(*this->_it);
-			return entity;
+			this->_entity.emplace(*this->_it);
+			return &this->_entity;
 		}
 
 		ViewIterator &operator++()
@@ -88,7 +97,8 @@ namespace WAL
 		}
 
 		explicit ViewIterator(It current)
-			: _it(current)
+			: _it(current),
+			_entity(std::nullopt)
 		{}
 	};
 
@@ -129,7 +139,22 @@ namespace WAL
 
 		iterator end()
 		{
-			return iterator(this->_entities.begin());
+			return iterator(this->_entities.end());
+		}
+
+		std::size_t size() const
+		{
+			return this->_entities.size();
+		}
+
+		ViewEntity<Components...> front()
+		{
+			return *iterator(this->_entities.begin());
+		}
+
+		ViewEntity<Components...> back()
+		{
+			return *iterator(--this->_entities.end());
 		}
 
 		const std::vector<std::type_index> &getTypes() const override
@@ -137,14 +162,21 @@ namespace WAL
 			return this->_types;
 		}
 
-		void emplace_back(Entity &) override
+		void emplace_back(Entity &entity) override
 		{
-
+			auto tuple = std::make_tuple<Components *...>(entity.tryGetComponent<Components>()...);
+			if (std::apply([](const auto *...component) {return ((component == nullptr) || ...);}, tuple))
+				return;
+			std::apply([&](auto *...component) {
+				this->_entities.emplace_back(entity, *component...);
+			}, tuple);
 		}
 
-		void erase(const Entity &) override
+		void erase(const Entity &entity) override
 		{
-
+			this->_entities.erase(std::remove_if(this->_entities.begin(), this->_entities.end(), [&entity](const auto &ref){
+				return &std::get<0>(ref).get() == &entity;
+			}));
 		}
 
 		//! @brief Construct a view from a list of entities.
@@ -152,14 +184,8 @@ namespace WAL
 		explicit View(std::list<Entity> &scene)
 		{
 			this->_types = {typeid(Components)...};
-			for (auto &entity : scene) {
-				auto tuple = std::make_tuple<Components *...>(entity.tryGetComponent<Components>()...);
-				if (std::apply([](const auto *...component) {return ((component == nullptr) || ...);}, tuple))
-					continue;
-				std::apply([&](auto *...component) {
-					this->_entities.emplace_back(entity, *component...);
-				}, tuple);
-			}
+			for (auto &entity : scene)
+				this->emplace_back(entity);
 		}
 
 		//! @brief Copying a view is not possible since a view must be managed by a scene.
@@ -168,5 +194,25 @@ namespace WAL
 		~View() override = default;
 		//! @brief A view is not assignable.
 		View &operator=(const View &) = delete;
+	};
+}
+
+namespace std
+{
+	template<typename ...Components>
+	struct tuple_size<::WAL::ViewEntity<Components...>>
+		: public std::integral_constant<std::size_t, 1 + sizeof...(Components)>
+	{};
+
+	template<typename ...Components>
+	struct tuple_element<0, ::WAL::ViewEntity<Components...>>
+	{
+		using type = WAL::Entity &;
+	};
+
+	template<std::size_t N, typename ...Components>
+	struct tuple_element<N, ::WAL::ViewEntity<Components...>>
+	{
+		using type = typename std::tuple_element<N - 1, std::tuple<Components...>>::type;
 	};
 }

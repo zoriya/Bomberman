@@ -52,10 +52,10 @@ namespace BBM
 		this->_window.endDrawing();
 	}
 
-	void RenderSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
+	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime)
 	{
-		const auto &pos = entity.getComponent<PositionComponent>();
-		const auto &cam = entity.getComponent<CameraComponent>();
+		const auto &pos = entity.get<PositionComponent>();
+		const auto &cam = entity.get<CameraComponent>();
 		_camera.setPosition(pos.position);
 		_camera.setTarget(cam.target);
 	}

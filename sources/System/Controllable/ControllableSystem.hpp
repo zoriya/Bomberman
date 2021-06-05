@@ -19,7 +19,7 @@ namespace BBM
 		static constexpr const float speed = .25f;
 
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit ControllableSystem(WAL::Wal &wal);

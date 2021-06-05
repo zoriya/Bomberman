@@ -14,9 +14,9 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void HealthSystem::onFixedUpdate(WAL::Entity &entity)
+	void HealthSystem::onFixedUpdate(WAL::ViewEntity<HealthComponent> &entity)
 	{
-		auto &health = entity.getComponent<HealthComponent>();
+		auto &health = entity.get<HealthComponent>();
 
 		if (health.getHealthPoint() == 0)
 			health.onDeath(entity);

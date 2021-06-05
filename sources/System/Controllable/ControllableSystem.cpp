@@ -14,10 +14,10 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void ControllableSystem::onFixedUpdate(WAL::Entity &entity)
+	void ControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity)
 	{
-		auto &controllable = entity.getComponent<ControllableComponent>();
-		auto &movable = entity.getComponent<MovableComponent>();
+		auto &controllable = entity.get<ControllableComponent>();
+		auto &movable = entity.get<MovableComponent>();
 		Vector2f move = controllable.move.normalized() * ControllableSystem::speed;
 
 		movable.addForce(Vector3f(move.x, controllable.jump, move.y));

@@ -16,7 +16,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<GamepadComponent, ControllableComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit GamepadSystem(WAL::Wal &wal);

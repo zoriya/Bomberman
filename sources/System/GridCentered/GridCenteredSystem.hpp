@@ -13,7 +13,7 @@ namespace BBM
 	class GridCenteredSystem : public WAL::System<GridCenteredComponent, MovableComponent, PositionComponent>
 	{
 	public:
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<GridCenteredComponent, MovableComponent, PositionComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit GridCenteredSystem(WAL::Wal &wal);

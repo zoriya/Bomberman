@@ -27,7 +27,7 @@ namespace BBM
 		void onSelfUpdate() override;
 
 		//! @inherit
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief ctor
 		RenderSystem(WAL::Wal &wal, RAY::Window &window);

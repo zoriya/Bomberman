@@ -20,32 +20,32 @@ using namespace BBM;
 TEST_CASE("Move test", "[Component][System]")
 {
 	Wal wal;
-	Scene scene;
-	scene.addEntity("player")
+	wal.scene = std::make_shared<Scene>();
+	wal.scene->addEntity("player")
 		.addComponent<ControllableComponent>()
 		.addComponent<MovableComponent>()
 		.addComponent<PositionComponent>();
-	Entity &entity = *scene.getEntities().begin();
+	Entity &entity = wal.scene->getEntities().front();
 
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<ControllableComponent>().move = Vector2f(1, 1);
 
 	ControllableSystem controllable(wal);
-	controllable.onUpdate(entity, std::chrono::nanoseconds(1));
-	controllable.onFixedUpdate(entity);
+	controllable.update(std::chrono::nanoseconds(1));
+	controllable.fixedUpdate();
 	REQUIRE(entity.getComponent<MovableComponent>()._acceleration.x > 0);
 	REQUIRE(entity.getComponent<MovableComponent>()._acceleration.z > 0);
 
 	MovableSystem movable(wal);
-	movable.onUpdate(entity, std::chrono::nanoseconds(1));
-	movable.onFixedUpdate(entity);
+	movable.update(std::chrono::nanoseconds(1));
+	movable.fixedUpdate();
 	REQUIRE(entity.getComponent<MovableComponent>()._velocity.x > 0);
 	REQUIRE(entity.getComponent<MovableComponent>()._velocity.z > 0);
 	REQUIRE(entity.getComponent<MovableComponent>()._acceleration.x == 0);
 	REQUIRE(entity.getComponent<MovableComponent>()._acceleration.z == 0);
-	movable.onUpdate(entity, std::chrono::nanoseconds(1));
-	movable.onFixedUpdate(entity);
+	movable.update(std::chrono::nanoseconds(1));
+	movable.fixedUpdate();
 	REQUIRE(entity.getComponent<PositionComponent>().position.x > 0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.z > 0);
 

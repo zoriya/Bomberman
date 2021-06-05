@@ -28,8 +28,8 @@ namespace BBM
 		auto &posA = entity.get<PositionComponent>();
 		auto &col = entity.get<CollisionComponent>();
 		Vector3f position = posA.position;
-//		if (entity.hasComponent(typeid(MovableComponent)))
-//			position += entity.getComponent<MovableComponent>().getVelocity();
+		if (auto *movable = entity->tryGetComponent<MovableComponent>())
+			position += movable->getVelocity();
 		Vector3f minA = Vector3f::min(position, position + col.bound);
 		Vector3f maxA = Vector3f::max(position, position + col.bound);
 		for (auto other : this->getView()) {

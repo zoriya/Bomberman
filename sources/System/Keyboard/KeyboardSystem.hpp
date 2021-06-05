@@ -17,7 +17,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit KeyboardSystem(WAL::Wal &wal);
