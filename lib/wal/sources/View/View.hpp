@@ -153,18 +153,19 @@ namespace WAL
 		{
 			this->_types = {typeid(Components)...};
 			for (auto &entity : scene) {
-				auto tuple = std::make_tuple<Entity &, Components *...>(entity, entity.getComponentOrDefault<Components>()...);
-				std::apply(&this->_entities.emplace_back, tuple);
+				auto tuple = std::make_tuple<Components *...>(entity.tryGetComponent<Components>()...);
+				if (std::apply([](const auto *...component) {return ((component == nullptr) || ...);}, tuple))
+					continue;
+				std::apply([&](auto *...component) {
+					this->_entities.emplace_back(entity, *component...);
+				}, tuple);
 			}
-			//			std::copy_if(scene.begin(), scene.end(), std::back_inserter(this->entities), [](Entity &entity) {
-//				return (entity.hasComponent<Components>() && ...);
-//			});
 		}
 
 		//! @brief Copying a view is not possible since a view must be managed by a scene.
 		View(const View &) = delete;
 		//! @brief A default destructor
-		~View() = default;
+		~View() override = default;
 		//! @brief A view is not assignable.
 		View &operator=(const View &) = delete;
 	};

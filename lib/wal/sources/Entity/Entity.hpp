@@ -54,25 +54,29 @@ namespace WAL
 		void setDisable(bool disabled);
 
 		//! @brief Get a component of a specific type
+		//! @tparam The type of the component
 		//! @throw NotFoundError if the component could not be found
+		//! @return The component of the requested type.
 		template<typename T>
 		T &getComponent()
 		{
-			const std::type_index &type = typeid(T);
-			auto existing = this->_components.find(type);
-			if (existing == this->_components.end())
-				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
-			return *static_cast<T *>(existing->second.get());
+			T *ret = this->tryGetComponent<T>();
+			if (ret == nullptr)
+				throw NotFoundError("No component could be found with the type \"" + std::string(typeid(T).name()) + "\".");
+			return *ret;
 		}
 
+		//! @brief Get a component of a specific type or null if not found.
+		//! @tparam The type of the component
+		//! @return The component or nullptr if not found.
 		template<typename T>
-		T *getComponentOrDefault()
+		T *tryGetComponent()
 		{
 			const std::type_index &type = typeid(T);
 			auto existing = this->_components.find(type);
 			if (existing == this->_components.end())
 				return nullptr;
-			return *static_cast<T *>(existing->second.get());
+			return static_cast<T *>(existing->second.get());
 		}
 
 		//! @brief Check if this entity has a component.
