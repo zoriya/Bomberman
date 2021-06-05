@@ -32,7 +32,7 @@ namespace BBM
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, 0, j))
 						//.addComponent<CollisionComponent>(1)
-						.addComponent<Drawable3DComponent, RAY3D::Model>>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePng));
+						.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePng));
 				}
 			}
 		}
@@ -101,6 +101,7 @@ namespace BBM
 	{
 		static const std::string breakableObj = breakableWallPath + objExtension;
 		static const std::string breakablePng = breakableWallPath + imageExtension;
+
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
@@ -146,6 +147,7 @@ namespace BBM
 	{
 		static const std::string holeObj = holePath + objExtension;
 		static const std::string holePng = holePath + imageExtension;
+
 		scene->addEntity("Hole Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
@@ -161,7 +163,7 @@ namespace BBM
 	{	
 		static const std::string bumperObj = bumperPath + objExtension;
 		static const std::string bumperPng = bumperPath + imageExtension;
-		std::cout << "Bumper Created" << std::endl;
+
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng));
@@ -177,7 +179,7 @@ namespace BBM
 	{
 		static const std::string stairsObj = stairsPath + objExtension;
 		static const std::string stairsPng = stairsPath + imageExtension;
-		std::cout << "Stairs Created" << std::endl;
+
 		scene->addEntity("Stairs Block")
 			.addComponent<PositionComponent>(coords)
 			//.addComponent<CollisionComponent>(1)
@@ -205,13 +207,9 @@ namespace BBM
 
 	MapGenerator::MapBlock MapGenerator::createHeight(MapBlock map, int width, int height)
 	{
-		//double rnd = static_cast<double>(std::rand())/RAND_MAX;
+		double rnd = static_cast<double>(std::rand())/RAND_MAX;
 
-		double rnd = 1;
-
-		std::cout << "Height rnd" << rnd << std::endl;
 		if (rnd > 0.60) {
-			std::cout << "Up border" << std::endl;
 			for (int i = 0; i < width + 1; i++) {
 				map[std::make_tuple(i, 1, height)] = map[std::make_tuple(i, 0, height)];
 				map[std::make_tuple(i, 0, height)] = UPPERFLOOR;
@@ -226,7 +224,6 @@ namespace BBM
 			map[std::make_tuple(width / 2, -1, 1)] = BUMPER;
 		}
 		if (rnd > 0.30) {
-			std::cout << "Up center" << std::endl;
 			for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 				for (int j = height / 2 - height/4; j < height / 2 + height / 4 + 1; j++) {
 					if (map[std::make_tuple(i, 0, j)] == FLOOR)
