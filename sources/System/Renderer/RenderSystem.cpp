@@ -26,26 +26,14 @@ namespace BBM
 		this->_window.clear();
 
 		this->_window.useCamera(this->_camera);
-		for (auto &entity : this->_wal.scene->getEntities()) {
-			if (!entity.hasComponent<Drawable3DComponent>()
-			    || !entity.hasComponent<PositionComponent>())
-				continue;
-			auto &drawable = entity.getComponent<Drawable3DComponent>();
-			auto &pos = entity.getComponent<PositionComponent>();
-
+		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
 		}
 		this->_window.unuseCamera();
 
 		// TODO sort entities based on the Z axis
-		for (auto &entity : this->_wal.scene->getEntities()) {
-			if (!entity.hasComponent<Drawable2DComponent>()
-		    || !entity.hasComponent<PositionComponent>())
-				continue;
-			auto &drawable = entity.getComponent<Drawable2DComponent>();
-			auto &pos = entity.getComponent<PositionComponent>();
-
+		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable2DComponent>()) {
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 		}

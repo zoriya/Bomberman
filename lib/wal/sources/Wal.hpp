@@ -28,6 +28,56 @@ namespace WAL
 	private:
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<ISystem>> _systems = {};
+
+		//! @brief Start the game loop
+		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
+		//! @param state An initial game state. If not specified, it will be defaulted.
+		//! @tparam T A type used to track your game state. It must be default constructable.
+		template<typename T>
+		void _run(const Callback<Wal &, T &> &callback, T state = T())
+		{
+			auto lastTick = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds fBehind(0);
+
+			while (!this->shouldClose) {
+				auto now = std::chrono::steady_clock::now();
+				std::chrono::nanoseconds dtime = now - lastTick;
+				fBehind += dtime;
+				lastTick = now;
+
+				while (fBehind > Wal::timestep) {
+					fBehind -= Wal::timestep;
+					for (auto &system : this->_systems)
+						system->fixedUpdate();
+				}
+				for (auto &system : this->_systems)
+					system->update(dtime);
+				callback(*this, state);
+			}
+		}
+
+#if defined(PLATFORM_WEB)
+		template<typename T>
+		static void _runIteration(void *param)
+		{
+			static auto [wal, callback, state] = *reinterpret_cast<std::tuple<Wal &, const Callback<Wal &, T &> &, T &> *>(param);
+			static auto lastTick = std::chrono::steady_clock::now();
+			static std::chrono::nanoseconds fBehind(0);
+
+			auto now = std::chrono::steady_clock::now();
+			std::chrono::nanoseconds dtime = now - lastTick;
+			fBehind += dtime;
+			lastTick = now;
+			while (fBehind > Wal::timestep) {
+				fBehind -= Wal::timestep;
+				for (auto &system : wal._systems)
+					system->fixedUpdate();
+			}
+			for (auto &system : wal._systems)
+				system->update(dtime);
+			callback(wal, state);
+		}
+#endif
 	public:
 		//! @brief The scene that contains entities.
 		std::shared_ptr<Scene> scene;
@@ -99,68 +149,15 @@ namespace WAL
 		//! @param state An initial game state. If not specified, it will be defaulted.
 		//! @tparam T A type used to track your game state. It must be default constructable.
 		template<typename T>
-		void run(const std::function<void (Wal &, T &)> &callback, T state = T())
-		{
-			Callback<Wal &, T &> update(callback);
-
-			#if defined(PLATFORM_WEB)
-			std::tuple iterationParams(this, &update, &state);
-			return emscripten_set_main_loop_arg((em_arg_callback_func)runIteration<T>, (void *)&iterationParams, 0, 1);
-			#else
-			return this->run(update, state);
-			#endif
-		}
-
-		//! @brief Start the game loop
-		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
-		//! @param state An initial game state. If not specified, it will be defaulted.
-		//! @tparam T A type used to track your game state. It must be default constructable.
-		template<typename T>
 		void run(const Callback<Wal &, T &> &callback, T state = T())
 		{
-			auto lastTick = std::chrono::steady_clock::now();
-			std::chrono::nanoseconds fBehind(0);
-
-			while (!this->shouldClose) {
-				auto now = std::chrono::steady_clock::now();
-				std::chrono::nanoseconds dtime = now - lastTick;
-				fBehind += dtime;
-				lastTick = now;
-
-				while (fBehind > Wal::timestep) {
-					fBehind -= Wal::timestep;
-					for (auto &system : this->_systems)
-						system->fixedUpdate();
-				}
-				for (auto &system : this->_systems)
-					system->update(dtime);
-				callback(*this, state);
-			}
+			#if defined(PLATFORM_WEB)
+				std::tuple<Wal &, const Callback<Wal &, T &> &, T &> iterationParams(*this, callback, state);
+				return emscripten_set_main_loop_arg((em_arg_callback_func)_runIteration<T>, (void *)&iterationParams, 0, 1);
+			#else
+				return this->_run(callback, state);
+			#endif
 		}
-
-		#if defined(PLATFORM_WEB)
-		template<typename T>
-		static void runIteration(void *param)
-		{
-			static auto iterationParams = reinterpret_cast<std::tuple<Wal *, Callback<Wal &, T &> *, T *> *>(param);
-			static const Callback<Wal &, T &> callback = *((Callback<Wal &, T &> *)std::get<1>(*iterationParams));
-			static T *state = (T *)std::get<2>(*iterationParams);
-			static Wal *wal = (Wal *)std::get<0>(*iterationParams);
-			static auto lastTick = std::chrono::steady_clock::now();
-			static std::chrono::nanoseconds fBehind(0);
-
-			auto now = std::chrono::steady_clock::now();
-			std::chrono::nanoseconds dtime = now - lastTick;
-			fBehind += dtime;
-			lastTick = now;
-			while (fBehind > Wal::timestep) {
-				fBehind -= Wal::timestep;
-				wal->_fixedUpdate();
-			}
-			wal->_update(dtime);
-			callback(*wal, *state);
-		}
-		#endif
 
 		//! @brief A default constructor
 		Wal() = default;
