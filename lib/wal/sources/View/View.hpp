@@ -19,9 +19,9 @@ namespace WAL
 	class ViewEntity
 	{
 	private:
-		std::tuple<std::reference_wrapper<Entity>, std::reference_wrapper<Components>...> _value;
+		std::tuple<std::reference_wrapper<Entity>, std::reference_wrapper<Components>...> &_value;
 	public:
-		explicit ViewEntity(std::tuple<std::reference_wrapper<Entity>, std::reference_wrapper<Components>...> value)
+		explicit ViewEntity(std::tuple<std::reference_wrapper<Entity>, std::reference_wrapper<Components>...> &value)
 			: _value(value)
 		{}
 
@@ -63,19 +63,22 @@ namespace WAL
 	public:
 		ViewEntity<Components...> &operator*()
 		{
-			this->_entity.emplace(*this->_it);
-			return this->_entity.value();
+			if (!this->_entity)
+				this->_entity.emplace(*this->_it);
+			return *this->_entity;
 		}
 
 		ViewEntity<Components...> *operator->()
 		{
-			this->_entity.emplace(*this->_it);
+			if (!this->_entity)
+				this->_entity =(*this->_it);
 			return &this->_entity;
 		}
 
 		ViewIterator &operator++()
 		{
 			this->_it++;
+			this->_entity = std::nullopt;
 			return *this;
 		}
 
@@ -83,6 +86,7 @@ namespace WAL
 		{
 			ViewIterator copy = *this;
 			this->_it++;
+			this->_entity = std::nullopt;
 			return *this;
 		}
 

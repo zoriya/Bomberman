@@ -32,13 +32,11 @@ namespace BBM
 			position += movable->getVelocity();
 		Vector3f minA = Vector3f::min(position, position + col.bound);
 		Vector3f maxA = Vector3f::max(position, position + col.bound);
-		for (auto other : this->getView()) {
-			if (other->getUid() == entity->getUid())
+		for (auto &[other, posB, colB] : this->getView()) {
+			if (other.getUid() == entity->getUid())
 				continue;
-			auto colB = other.get<CollisionComponent>();
-			auto posB = other.get<PositionComponent>().position;
-			Vector3f minB = Vector3f::min(posB, posB + colB.bound);
-			Vector3f maxB = Vector3f::max(posB, posB + colB.bound);
+			Vector3f minB = Vector3f::min(posB.position, posB.position + colB.bound);
+			Vector3f maxB = Vector3f::max(posB.position, posB.position + colB.bound);
 			if (collide(minA, maxA, minB, maxB)) {
 				col.onCollide(entity, other);
 				colB.onCollided(entity, other);
