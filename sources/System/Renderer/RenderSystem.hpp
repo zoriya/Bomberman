@@ -26,7 +26,7 @@ namespace BBM
 		bool _debugMode;
 
 		//! @brief Window framerate limit
-		static constexpr short FPS = 30;
+		static constexpr short FPS = 60;
 
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
