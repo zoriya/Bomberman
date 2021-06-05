@@ -65,6 +65,74 @@ namespace BBM
 		wal.addSystem<RenderScreenSystem>(window);
 	}
 
+	std::shared_ptr<WAL::Scene> loadTitleScreenScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+		//needed material
+		//game logo
+		//plain background
+		//text "press to play"
+		//music
+		//sound
+		return scene;
+	}
+
+	std::shared_ptr<WAL::Scene> loadMainMenuScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+		//needed material
+		//play button
+		//play button assets
+		//settings button
+		//settings button assets
+		//quit button
+		//quit button assets
+		//plain background
+		//logo
+		//music
+		//sound
+		return scene;
+	}
+
+	std::shared_ptr<WAL::Scene> loadPauseMenuScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+		//needed material
+		//return button
+		//return button assets
+		//settings button
+		//settings button assets
+		//quit button
+		//quit button assets
+		//plain background
+		//logo
+		//music
+		//sound
+		return scene;
+	}
+
+	std::shared_ptr<WAL::Scene> loadSettingsMenuScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+		//needed material
+		// music logo
+		// sound logo
+		// plus button
+		// minus button
+		//mute music logo
+		//mute sound logo
+		//text for debug
+		// ticked box
+		// unticked box
+		// back button
+		// back button asset
+		//plain background
+		//logo
+		//music
+		//sound
+		return scene;
+	}
+
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
