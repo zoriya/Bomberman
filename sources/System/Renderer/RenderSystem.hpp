@@ -37,7 +37,7 @@ namespace BBM
 		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief ctor
-		RenderSystem(WAL::Wal &wal, RAY::Window &window);
+		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = true);
 		//! @brief Default copy ctor
 		RenderSystem(const RenderSystem &) = default;
 		//! @brief Default dtor

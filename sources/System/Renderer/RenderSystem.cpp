@@ -13,7 +13,7 @@
 
 namespace BBM
 {
-	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window)
+	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode)
 		: WAL::System({
 			typeid(CameraComponent),
 			typeid(PositionComponent)
@@ -21,7 +21,7 @@ namespace BBM
 		_wal(wal),
 		_window(window),
 		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
-		_debugMode(true)
+		_debugMode(debugMode)
 	{
 		this->_window.setFPS(this->FPS);
 	}
