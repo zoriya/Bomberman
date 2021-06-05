@@ -22,11 +22,12 @@ namespace BBM
 			SettingsScene,
 			PauseMenuScene,
 			LobbyScene,
+			SplashscreenScene,
 		};
 
 
 		//! @brief The currently loaded scene
-		SceneID currentScene = MainMenu;
+		SceneID currentScene = SplashscreenScene;
 
 		//! @brief The list of loaded scenes.
 		std::unordered_map<SceneID, WAL::Scene> _loadedScenes = {};
