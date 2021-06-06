@@ -5,12 +5,12 @@
 #include <catch2/catch.hpp>
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Movable/MovableComponent.hpp"
-#include "System/Movable/MovableSystem.hpp"
-#include "System/Collision/CollisionSystem.hpp"
 #include "Wal.hpp"
 
 #define private public
+#include "System/Collision/CollisionSystem.hpp"
+#include "System/Movable/MovableSystem.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 
 using namespace WAL;
@@ -76,7 +76,7 @@ TEST_CASE("Collsion test with movable", "[Component][System]")
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &){}, [](Entity &actual, const Entity &) {
 			try {
 			auto &mov = actual.getComponent<MovableComponent>();
-			mov.resetVelocity();
+			mov._velocity = Vector3f();
 			} catch (std::exception &e) {};
 		}, 1);
 	Entity &entity = wal.scene->getEntities().front();
