@@ -8,7 +8,7 @@
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
-{	
+{
 	const std::string MapGenerator::assetsPath = "./assets/";
 	const std::string MapGenerator::wallAssetsPath = MapGenerator::assetsPath + "map/";
 	const std::string MapGenerator::imageExtension = ".png";
@@ -31,8 +31,9 @@ namespace BBM
 				if (!(i % 2) && !(j % 2)) {
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, 0, j))
-						//.addComponent<CollisionComponent>(1)
-						.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePng));
+							//.addComponent<CollisionComponent>(1)
+						.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+						                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng));
 				}
 			}
 		}
@@ -45,24 +46,32 @@ namespace BBM
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(width + 3, 1, 1));
+				//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(width + 3, 1, 1));
+				//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(1, 1, height + 1));
+				//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			                                                 RAY::Vector3(1, 1, height + 1));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePnj), RAY::Vector3(1, 1, height + 1));
+				//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			                                                 RAY::Vector3(1, 1, height + 1));
 	}
 
 	void MapGenerator::generateFloor(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
-	{	
+	{
 		static const std::string floorObj = floorPath + objExtension;
 		static const std::string floorPng = floorPath + imageExtension;
 
@@ -71,8 +80,9 @@ namespace BBM
 				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
-						//.addComponent<CollisionComponent>(1)
-						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
+							//.addComponent<CollisionComponent>(1)
+						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj,
+						                                                 std::make_pair(MAP_DIFFUSE, floorPng));
 			}
 		}
 	}
@@ -80,13 +90,13 @@ namespace BBM
 	void MapGenerator::createElement(Vector3f coords, std::shared_ptr<WAL::Scene> scene, BlockType blockType)
 	{
 		std::map<BlockType, MapElem> elements = {
-			{BREAKABLE, &createBreakable},
+			{BREAKABLE,   &createBreakable},
 			{UNBREAKABLE, &createUnbreakable},
-			{HOLE, &createHole},
-			{FLOOR, &createFloor},
-			{BUMPER, &createBumper},
-			{STAIRS, &createStairs},
-			{UPPERFLOOR, &createUpperFloor},
+			{HOLE,        &createHole},
+			{FLOOR,       &createFloor},
+			{BUMPER,      &createBumper},
+			{STAIRS,      &createStairs},
+			{UPPERFLOOR,  &createUpperFloor},
 		};
 
 		try {
@@ -105,7 +115,7 @@ namespace BBM
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
-			//.addComponent<CollisionComponent>(1)
+				//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 
@@ -116,7 +126,7 @@ namespace BBM
 
 		scene->addEntity("Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-			//.addComponent<CollisionComponent>(1)
+				//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
 	}
 
@@ -127,7 +137,7 @@ namespace BBM
 
 		scene->addEntity("Upper Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-			//.addComponent<CollisionComponent>(1)
+				//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
 	}
 
@@ -139,8 +149,9 @@ namespace BBM
 
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, std::make_pair(MAP_DIFFUSE, UnbreakablePng));
+				//.addComponent<CollisionComponent>(1)
+			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng));
 	}
 
 	void MapGenerator::createHole(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -151,28 +162,28 @@ namespace BBM
 		scene->addEntity("Hole Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
-			/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
-				if (other.hasComponent<HealthComponent>()) {
-					auto &health = other.getComponent<HealthComponent>();
-					health.takeDmg(health.getHealthPoint());
-				}
-			}, [](WAL::Entity &other, const WAL::Entity &entity){}); */
+		/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
+			if (other.hasComponent<HealthComponent>()) {
+				auto &health = other.getComponent<HealthComponent>();
+				health.takeDmg(health.getHealthPoint());
+			}
+		}, [](WAL::Entity &other, const WAL::Entity &entity){}); */
 	}
 
 	void MapGenerator::createBumper(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
-	{	
+	{
 		static const std::string bumperObj = bumperPath + objExtension;
 		static const std::string bumperPng = bumperPath + imageExtension;
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng));
-			/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
-				if (other.hasComponent<MovableComponent>()) {
-					auto &movable = other.getComponent<MovableComponent>();
-					movable.addForce(Vector3f(0, 5, 0));
-				}
-			}); */
+		/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
+			if (other.hasComponent<MovableComponent>()) {
+				auto &movable = other.getComponent<MovableComponent>();
+				movable.addForce(Vector3f(0, 5, 0));
+			}
+		}); */
 	}
 
 	void MapGenerator::createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -182,32 +193,33 @@ namespace BBM
 
 		scene->addEntity("Stairs Block")
 			.addComponent<PositionComponent>(coords)
-			//.addComponent<CollisionComponent>(1)
+				//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng));
 	}
 
-	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z, BlockType blockType)
+	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z,
+	                                      BlockType blockType)
 	{
 		return (map[std::make_tuple(x - 1, y, z)] == blockType ||
-			map[std::make_tuple(x + 1, y, z)] == blockType ||
-			map[std::make_tuple(x, y,  z + 1)] == blockType ||
-			map[std::make_tuple(x, y, z - 1)] == blockType);
+		        map[std::make_tuple(x + 1, y, z)] == blockType ||
+		        map[std::make_tuple(x, y, z + 1)] == blockType ||
+		        map[std::make_tuple(x, y, z - 1)] == blockType);
 	}
 
 	MapGenerator::BlockType MapGenerator::getRandomBlockType()
-	{	
-    	double rnd = static_cast<double>(std::rand())/RAND_MAX;
-		
+	{
+		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
+
 		if (rnd > 0.95)
 			return HOLE;
 		if (rnd > 0.25)
 			return BREAKABLE;
-    	return NOTHING;
+		return NOTHING;
 	}
 
 	MapGenerator::MapBlock MapGenerator::createHeight(MapBlock map, int width, int height)
 	{
-		double rnd = static_cast<double>(std::rand())/RAND_MAX;
+		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
 		if (rnd > 0.60) {
 			for (int i = 0; i < width + 1; i++) {
@@ -225,7 +237,7 @@ namespace BBM
 		}
 		if (rnd > 0.30) {
 			for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
-				for (int j = height / 2 - height/4; j < height / 2 + height / 4 + 1; j++) {
+				for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
 					if (map[std::make_tuple(i, 0, j)] == FLOOR)
 						continue;
 					map[std::make_tuple(i, 1, j)] = map[std::make_tuple(i, 0, j)];
@@ -276,7 +288,7 @@ namespace BBM
 			for (int j = 0; j < height + 1; j++) {
 				if (map[std::make_tuple(i, 0, j)] == SPAWNER)
 					continue;
-				if (isCloseToBlockType(map, i , 0, j, SPAWNER)) {
+				if (isCloseToBlockType(map, i, 0, j, SPAWNER)) {
 					map[std::make_tuple(i, 0, j)] = NOTHING;
 				} else {
 					map[std::make_tuple(i, 0, j)] = getRandomBlockType();
@@ -295,7 +307,7 @@ namespace BBM
 	}
 
 	void MapGenerator::loadMap(int width, int height, MapBlock map, std::shared_ptr<WAL::Scene> scene)
-	{	
+	{
 		generateWall(width, height, scene);
 		generateFloor(map, width, height, scene);
 		for (int x = 0; x < width + 1; x++)
