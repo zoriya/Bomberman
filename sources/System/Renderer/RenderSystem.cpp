@@ -13,15 +13,18 @@
 
 namespace BBM
 {
-	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window)
+	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode)
 		: WAL::System({
 			typeid(CameraComponent),
 			typeid(PositionComponent)
 		}),
 		_wal(wal),
 		_window(window),
-		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE)
-	{}
+		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
+		_debugMode(debugMode)
+	{
+		this->_window.setFPS(this->FPS);
+	}
 
 	void RenderSystem::onSelfUpdate()
 	{
@@ -53,6 +56,8 @@ namespace BBM
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 		}
+		if (this->_debugMode)
+			this->_window.drawFPS(Vector2f());
 		this->_window.endDrawing();
 	}
 
