@@ -41,32 +41,32 @@ namespace BBM
 
 	void MapGenerator::generateWall(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
-		static const std::string UnbreakableObj = unbreakableWallPath + objExtension;
-		static const std::string UnbreakablePnj = unbreakableWallPath + imageExtension;
+		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
+		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
 				//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
-			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
 				//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
-			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
 				//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
-			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 				//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
-			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePnj),
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
+			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
 	}
 
