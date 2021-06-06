@@ -66,20 +66,8 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
-			.addComponent<CollisionComponent>(2)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>();
-		scene->addEntity("cube")
-			.addComponent<PositionComponent>(-5, 0, -5)
-			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
-				[](WAL::Entity &actual, const WAL::Entity &) {
-					try {
-						auto &mov = actual.getComponent<MovableComponent>();
-						mov.resetVelocity();
-					} catch (std::exception &e) { }
-				}, 3);
 
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)

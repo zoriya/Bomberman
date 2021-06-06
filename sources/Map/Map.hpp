@@ -119,6 +119,8 @@ namespace BBM
 
 
 		public:
+			static void wallCollide(WAL::Entity &entity, const WAL::Entity &wall);
+
 
 			//! @param width Width of the map
 			//! @param height Height of the map

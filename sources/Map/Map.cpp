@@ -5,11 +5,31 @@
 
 #include <Component/Collision/CollisionComponent.hpp>
 #include "Map.hpp"
+#include <iostream>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
-{	
+{
+	void MapGenerator::wallCollide(WAL::Entity &entity, const WAL::Entity &wall)
+	{
+		auto *mov = entity.tryGetComponent<MovableComponent>();
+		if (!mov)
+			return;
+		auto &pos = entity.getComponent<PositionComponent>();
+		const auto &wallPos = wall.getComponent<PositionComponent>();
+		auto diff = pos.position + mov->getVelocity() - wallPos.position;
+		std::cout << diff << std::endl;
+		if (diff.x <= 0 && mov->_velocity.x < 0)
+			mov->_velocity.x = 0;
+		if (diff.x >= 0 && mov->_velocity.x > 0)
+			mov->_velocity.x = 0;
+		if (diff.z <= 0 && mov->_velocity.z < 0)
+			mov->_velocity.z = 0;
+		if (diff.z >= 0 && mov->_velocity.z > 0)
+			mov->_velocity.z = 0;
+	}
+
 	void MapGenerator::generateUnbreakableBlock(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
 		std::string unbreakableObj = "assets/wall/unbreakable_wall.obj";
@@ -20,7 +40,7 @@ namespace BBM
 				if (!(i % 2) && !(j % 2)) {
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(i, 0, j)
-						.addComponent<CollisionComponent>(1)
+						.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 						.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj));
 				}
 			}
@@ -34,19 +54,19 @@ namespace BBM
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, (height + 1) / 2))
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(1, 1, height + 3));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, (height + 1) / 2))
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePnj), RAY::Vector3(1, 1, height + 3));
 	}
 
@@ -81,7 +101,7 @@ namespace BBM
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/wall/breakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/breakable_wall.png"));
 	}
 
@@ -96,7 +116,7 @@ namespace BBM
 	{
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/wall/unbreakable_wall.obj", std::make_pair(MAP_DIFFUSE, "assets/wall/unbreakable_wall.png"));
 	}
 
@@ -155,7 +175,7 @@ namespace BBM
 
 	MapGenerator::MapBlock MapGenerator::createHeight(MapBlock map, int width, int height)
 	{
-		double rnd = static_cast<double>(std::rand())/RAND_MAX;
+		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
 		if (rnd > 0.60) {
 			for (int i = 0; i < width; i++) {
