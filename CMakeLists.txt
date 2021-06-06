@@ -81,7 +81,7 @@ add_executable(bomberman
                ${SOURCES}
                )
 target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
-target_link_libraries(bomberman PUBLIC wal ray)
+target_link_libraries(bomberman PUBLIC wal ray lua)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
 	${SOURCES}

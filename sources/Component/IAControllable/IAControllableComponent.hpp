@@ -11,15 +11,18 @@
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 #include "Models/Vector3.hpp"
+#include "lua.hpp"
 
 namespace BBM
 {
     class IAControllableComponent : public WAL::Component
     {    
         private:
+            //! @brief path to the lua script
             const std::string _scriptPath;
-
         public:
+            //! @brief Lua executing state
+            lua_State *state;
 
             //! @inherit
             WAL::Component *clone(WAL::Entity &entity) const override;

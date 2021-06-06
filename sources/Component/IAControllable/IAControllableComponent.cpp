@@ -6,14 +6,17 @@
 */
 
 #include "IAControllableComponent.hpp"
-#include "lua.h"
 
 namespace BBM
 {
     IAControllableComponent::IAControllableComponent(WAL::Entity &entity, std::string scriptPath)
-    : Component(entity),
-     _scriptPath(scriptPath)
-    { }
+    : Component(entity), _scriptPath(scriptPath), state(luaL_newstate())
+    {
+        luaL_dofile(state, scriptPath.c_str());
+        lua_getglobal(state, "update");
+        if (!lua_isfunction(state, -1))
+            std::cout << "No update function in the script" << std::endl;
+    }
 
     WAL::Component *IAControllableComponent::clone(WAL::Entity &entity) const
 	{
