@@ -49,6 +49,7 @@ namespace BBM
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<AnimationsSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
 			.addSystem<MovableSystem>();
@@ -69,7 +70,7 @@ namespace BBM
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>();
 		scene->addEntity("cube")
@@ -88,7 +89,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		std::srand(std::time(NULL));
+		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
