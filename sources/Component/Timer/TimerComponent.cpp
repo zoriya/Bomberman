@@ -19,12 +19,6 @@ namespace BBM
 		callback(callback)
 	{}
 
-	TimerComponent::TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay, std::function<void(WAL::Entity &, WAL::Wal &)> callback)
-		: WAL::Component(entity),
-		ringIn(delay),
-		callback(std::move(callback))
-	{}
-
 	WAL::Component *TimerComponent::clone(WAL::Entity &entity) const
 	{
 		return new TimerComponent(entity, this->ringIn, this->callback);

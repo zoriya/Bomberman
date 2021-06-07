@@ -19,4 +19,10 @@ namespace BBM
 	{
 		this->_acceleration += force;
 	}
+
+	const Vector3f &MovableComponent::getVelocity(void) const
+	{
+		return _velocity;
+	}
+
 } // namespace WAL

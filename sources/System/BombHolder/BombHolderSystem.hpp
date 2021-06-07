@@ -7,15 +7,16 @@
 #include <System/System.hpp>
 #include <Wal.hpp>
 #include "Models/Vector3.hpp"
+#include "Component/Position/PositionComponent.hpp"
+#include "Component/BombHolder/BombHolderComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
 
 namespace BBM
 {
 	//! @brief The system that allow one to place bombs.
-	class BombHolderSystem : public WAL::System
+	class BombHolderSystem : public WAL::System<PositionComponent, BombHolderComponent, ControllableComponent>
 	{
 	private:
-		//! @brief A reference to the engine to spawn new entities.
-		WAL::Wal &_wal;
 		//! @brief Spawn a bomb at the specified position.
 		void _spawnBomb(Vector3f position);
 
@@ -28,7 +29,7 @@ namespace BBM
 		static float explosionRadius;
 
 		//! @inherit
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit BombHolderSystem(WAL::Wal &wal);

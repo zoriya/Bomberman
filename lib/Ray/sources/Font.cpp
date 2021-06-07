@@ -7,16 +7,14 @@
 
 #include "Font.hpp"
 
+RAY::Cache<::Font> RAY::Font::_fontsCache(LoadFont, UnloadFont);
+
 RAY::Font::Font(const std::string &filename):
-	_font(LoadFont(filename.c_str()))
+	_font(_fontsCache.fetch(filename))
 {
 }
 
-RAY::Font::Font()
+RAY::Font::Font():
+	_font(std::make_shared<::Font>())
 {
-}
-
-RAY::Font::~Font()
-{
-	UnloadFont(this->_font);
 }

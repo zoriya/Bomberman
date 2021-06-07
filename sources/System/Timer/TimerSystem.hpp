@@ -6,17 +6,15 @@
 
 #include <System/System.hpp>
 #include <Wal.hpp>
+#include <Component/Timer/TimerComponent.hpp>
 
 namespace BBM
 {
-	class TimerSystem : public WAL::System
+	class TimerSystem : public WAL::System<TimerComponent>
 	{
-	private:
-		//! @brief The wal engine
-		WAL::Wal &_wal;
 	public:
 		//! @inherit
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<TimerComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		TimerSystem(WAL::Wal &);

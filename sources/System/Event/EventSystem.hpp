@@ -10,7 +10,7 @@
 
 namespace BBM
 {
-	class EventSystem : public WAL::System
+	class EventSystem : public WAL::System<>
 	{
 	private:
 		//! @brief The list of events that occurred in the last update.
@@ -20,12 +20,12 @@ namespace BBM
 		void dispatchEvent(const std::function<void (WAL::Entity &)>& event);
 
 		//! @inherit
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<> &entity, std::chrono::nanoseconds dtime) override;
 		//! @inherit
 		void onSelfUpdate() override;
 
 		//! @brief A default constructor
-		EventSystem();
+		explicit EventSystem(WAL::Wal &wal);
 		//! @brief An event system is copy constructable.
 		EventSystem(const EventSystem &) = default;
 		//! @brief A default destructor

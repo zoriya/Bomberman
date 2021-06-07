@@ -6,8 +6,8 @@
 
 namespace BBM
 {
-	EventSystem::EventSystem()
-		: WAL::System({})
+	EventSystem::EventSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
 	void EventSystem::dispatchEvent(const std::function<void(WAL::Entity &)> &event)
@@ -15,7 +15,7 @@ namespace BBM
 		this->_events.emplace_back(event);
 	}
 
-	void EventSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds)
+	void EventSystem::onUpdate(WAL::ViewEntity<> &entity, std::chrono::nanoseconds)
 	{
 		for (auto &event : this->_events)
 			event(entity);

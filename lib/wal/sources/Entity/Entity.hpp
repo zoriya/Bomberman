@@ -5,14 +5,17 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <unordered_map>
 #include <typeinfo>
 #include <memory>
 #include "Component/Component.hpp"
 #include "Exception/WalError.hpp"
+#include "Models/TypeHolder.hpp"
 
 namespace WAL
 {
+	class Scene;
+
 	//! @brief An entity of the WAL's ECS.
 	class Entity
 	{
@@ -26,10 +29,20 @@ namespace WAL
 		//! @brief Has this entity been scheduled for deletion?
 		bool _shouldDelete;
 		//! @brief The list of the components of this entity
-		std::vector<std::unique_ptr<Component>> _components = {};
+		std::unordered_map<std::type_index, std::unique_ptr<Component>> _components = {};
 
 		//! @brief This ID will be the one of the next entity created.
 		static unsigned nextID;
+
+		//! @brief Callback called when a component is added
+		//! @param type The type of component
+		void _componentAdded(const std::type_index &type);
+		//! @brief Callback called when a component is removed
+		//! @param type The type of component
+		void _componentRemoved(const std::type_index &type);
+	protected:
+		//! @brief A reference to the ECS.
+		Scene &_scene;
 	public:
 		//! @brief Get the ID of the entity.
 		unsigned getUid() const;
@@ -47,17 +60,55 @@ namespace WAL
 		void scheduleDeletion();
 
 		//! @brief Get a component of a specific type
+		//! @tparam The type of the component
 		//! @throw NotFoundError if the component could not be found
+		//! @return The component of the requested type.
 		template<typename T>
 		T &getComponent()
 		{
-			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-				return typeid(*cmp) == type;
-			});
+			T *ret = this->tryGetComponent<T>();
+			if (ret == nullptr)
+				throw NotFoundError("No component could be found with the type \"" + std::string(typeid(T).name()) + "\".");
+			return *ret;
+		}
+
+		//! @brief Get a component of a specific type or null if not found.
+		//! @tparam The type of the component
+		//! @return The component or nullptr if not found.
+		template<typename T>
+		T *tryGetComponent()
+		{
+			const std::type_index &type = typeid(T);
+			auto existing = this->_components.find(type);
 			if (existing == this->_components.end())
-				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
-			return *static_cast<T *>(existing->get());
+				return nullptr;
+			return static_cast<T *>(existing->second.get());
+		}
+
+		//! @brief Get a component of a specific type
+		//! @tparam The type of the component
+		//! @throw NotFoundError if the component could not be found
+		//! @return The component of the requested type.
+		template<typename T>
+		const T &getComponent() const
+		{
+			const T *ret = this->tryGetComponent<T>();
+			if (ret == nullptr)
+				throw NotFoundError("No component could be found with the type \"" + std::string(typeid(T).name()) + "\".");
+			return *ret;
+		}
+
+		//! @brief Get a component of a specific type or null if not found.
+		//! @tparam The type of the component
+		//! @return The component or nullptr if not found.
+		template<typename T>
+		const T *tryGetComponent() const
+		{
+			const std::type_index &type = typeid(T);
+			auto existing = this->_components.find(type);
+			if (existing == this->_components.end())
+				return nullptr;
+			return static_cast<T *>(existing->second.get());
 		}
 
 		//! @brief Check if this entity has a component.
@@ -83,12 +134,14 @@ namespace WAL
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
 		//! @return This entity is returned
-		template<typename T, typename ...Types>
+		template<typename T, typename ...TNested, typename ...Types>
 		Entity &addComponent(Types &&...params)
 		{
-			if (this->hasComponent<T>(false))
-				throw DuplicateError("A component of the type \"" + std::string(typeid(T).name()) + "\" already exists.");
-			this->_components.push_back(std::make_unique<T>(*this, std::forward<Types>(params)...));
+			const std::type_index &type = typeid(T);
+			if (this->hasComponent(type))
+				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
+			this->_components[type] = std::make_unique<T>(*this, TypeHolder<TNested>()..., std::forward<Types>(params)...);
+			this->_componentAdded(type);
 			return *this;
 		}
 
@@ -103,17 +156,16 @@ namespace WAL
 		Entity &removeComponent()
 		{
 			const std::type_info &type = typeid(T);
-			auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-				return typeid(*cmp) == type;
-			});
+			auto existing = this->_components.find(type);
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
 			this->_components.erase(existing);
+			this->_componentRemoved(type);
 			return *this;
 		}
 
 		//! @brief A default constructor
-		explicit Entity(std::string name);
+		explicit Entity(Scene &wal, std::string name);
 		//! @brief An entity is copyable
 		Entity(const Entity &);
 		//! @brief An entity is movable.

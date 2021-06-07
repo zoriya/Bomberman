@@ -3,6 +3,7 @@
 //
 
 #include "Entity/Entity.hpp"
+#include "Scene/Scene.hpp"
 #include <string>
 #include <utility>
 
@@ -10,18 +11,20 @@ namespace WAL
 {
 	unsigned Entity::nextID = 0;
 
-	Entity::Entity(std::string name)
+	Entity::Entity(Scene &scene, std::string name)
 		: _uid(Entity::nextID++),
+		_scene(scene),
 		_name(std::move(name))
 	{ }
 
 	Entity::Entity(const Entity &other)
 		: _uid(Entity::nextID++),
+		_scene(other._scene),
 		_name(other._name),
 		_disabled(other._disabled)
 	{
 		for (const auto &cmp : other._components)
-			this->addComponent(*cmp);
+			this->addComponent(*cmp.second);
 	}
 
 	unsigned Entity::getUid() const
@@ -46,34 +49,35 @@ namespace WAL
 
 	Entity &Entity::addComponent(const Component &component)
 	{
-		if (this->hasComponent(typeid(component), false))
-			throw DuplicateError("A component of the type \"" + std::string(typeid(component).name()) + "\" already exists.");
-		this->_components.emplace_back(component.clone(*this));
+		const std::type_index &type = typeid(component);
+		if (this->hasComponent(type, false))
+			throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
+		this->_components.emplace(type, component.clone(*this));
+		this->_scene._componentAdded(*this, type);
 		return *this;
 	}
 
 	bool Entity::hasComponent(const std::type_info &type, bool skipDisabled) const
 	{
-		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-			return typeid(*cmp) == type;
-		});
-		if (existing == this->_components.end())
-			return false;
-		if (skipDisabled)
-			return !(*existing)->isDisabled();
-		return true;
+		return this->hasComponent(static_cast<const std::type_index &>(type), skipDisabled);
 	}
 
 	bool Entity::hasComponent(const std::type_index &type, bool skipDisabled) const
 	{
-		auto existing = std::find_if(this->_components.begin(), this->_components.end(), [&type] (const auto &cmp) {
-			return std::type_index(typeid(*cmp)) == type;
-		});
-		if (existing == this->_components.end())
+		auto cmp = this->_components.find(type);
+		if (cmp == this->_components.end())
 			return false;
-		if (skipDisabled)
-			return !(*existing)->isDisabled();
-		return true;
+		return !cmp->second->isDisabled();
+	}
+
+	void Entity::_componentAdded(const std::type_index &type)
+	{
+		this->_scene._componentAdded(*this, type);
+	}
+
+	void Entity::_componentRemoved(const std::type_index &type)
+	{
+		this->_scene._componentRemoved(*this, type);
 	}
 
 	bool Entity::shouldDelete() const

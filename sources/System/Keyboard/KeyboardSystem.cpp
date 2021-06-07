@@ -6,24 +6,20 @@
 #include "KeyboardSystem.hpp"
 #include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
-#include "Entity/Entity.hpp"
 #include "Controllers/Keyboard.hpp"
 
 using Keyboard = RAY::Controller::Keyboard;
 
 namespace BBM
 {
-	KeyboardSystem::KeyboardSystem()
-		: WAL::System({
-			typeid(KeyboardComponent),
-			typeid(ControllableComponent)
-		})
+	KeyboardSystem::KeyboardSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void KeyboardSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds)
+	void KeyboardSystem::onUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity, std::chrono::nanoseconds)
 	{
-		const auto &keyboard = entity.getComponent<KeyboardComponent>();
-		auto &controllable = entity.getComponent<ControllableComponent>();
+		const auto &keyboard = entity.get<KeyboardComponent>();
+		auto &controllable = entity.get<ControllableComponent>();
 
 		const std::map<KeyboardKey, bool &> keyPressedMap = {
 			{keyboard.keyJump, controllable.jump},

@@ -10,15 +10,12 @@ using namespace std::chrono_literals;
 namespace BBM
 {
 	TimerSystem::TimerSystem(WAL::Wal &wal)
-		: WAL::System({
-			typeid(TimerComponent)
-		}),
-		_wal(wal)
+		: System(wal)
 	{}
 
-	void TimerSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds dtime)
+	void TimerSystem::onUpdate(WAL::ViewEntity<TimerComponent> &entity, std::chrono::nanoseconds dtime)
 	{
-		auto &timer = entity.getComponent<TimerComponent>();
+		auto &timer = entity.get<TimerComponent>();
 		timer.ringIn -= dtime;
 		if (timer.ringIn <= 0ns) {
 			timer.setDisable(true);
