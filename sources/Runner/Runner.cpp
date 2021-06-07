@@ -70,7 +70,7 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(2)
+			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
