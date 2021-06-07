@@ -154,7 +154,7 @@ namespace BBM
 
 			static const std::string holePath;
 
-			static const std::string MapGenerator::secondFloorHolePath;
+			static const std::string secondFloorHolePath;
 
 		public:
 
