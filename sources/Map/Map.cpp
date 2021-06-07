@@ -3,9 +3,10 @@
 // Edited by Benjamin Henry on 5/26/21.
 //
 
+#include "Component/Tag/TagComponent.hpp"
 #include <Component/Collision/CollisionComponent.hpp>
-#include "Map.hpp"
 #include <iostream>
+#include "Map.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -54,7 +55,8 @@ namespace BBM
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(i, 0, j)
 						.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
-						.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePng));
+						.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, std::make_pair(MAP_DIFFUSE, unbreakablePng))
+						.addComponent<TagComponent>("UNBREAKABLE");;
 				}
 			}
 		}
@@ -101,8 +103,9 @@ namespace BBM
 				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
-							.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj,
-						                                                 std::make_pair(MAP_DIFFUSE, floorPng));
+						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj,
+						                                                 std::make_pair(MAP_DIFFUSE, floorPng))
+						.addComponent<TagComponent>("UNBREAKABLE");;
 			}
 		}
 	}
@@ -136,7 +139,8 @@ namespace BBM
 			.addComponent<PositionComponent>(coords)
 			.addComponent<HealthComponent>(1)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng))
+			.addComponent<TagComponent>("BREAKABLE");
 	}
 
 	void MapGenerator::createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -170,7 +174,8 @@ namespace BBM
 			.addComponent<PositionComponent>(coords)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
-			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng));
+			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng))
+			.addComponent<TagComponent>("UNBREAKABLE");;
 	}
 
 	void MapGenerator::createHole(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -182,7 +187,8 @@ namespace BBM
 
 		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
 
-		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
+			.addComponent<TagComponent>("HOLE");;
 
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
@@ -203,7 +209,8 @@ namespace BBM
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng))
+			.addComponent<TagComponent>("BUMPER");;
 		/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
 			if (other.hasComponent<MovableComponent>()) {
 				auto &movable = other.getComponent<MovableComponent>();
@@ -220,7 +227,8 @@ namespace BBM
 		scene->addEntity("Stairs Block")
 			.addComponent<PositionComponent>(coords)
 			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng))
+			.addComponent<TagComponent>("STAIRS");;
 	}
 
 	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z,

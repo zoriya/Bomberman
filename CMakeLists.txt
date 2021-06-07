@@ -87,7 +87,7 @@ add_executable(bomberman
                ${SOURCES}
                )
 target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
-target_link_libraries(bomberman PUBLIC wal ray lua)
+target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES})
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
 	${SOURCES}
@@ -100,7 +100,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/CollisionTest.cpp
 )
 target_include_directories(unit_tests PUBLIC sources)
-target_link_libraries(unit_tests PUBLIC wal ray)
+target_link_libraries(unit_tests PUBLIC wal ray lua)
 
 find_package(Catch2 QUIET)
 if (NOT Catch2_FOUND)
