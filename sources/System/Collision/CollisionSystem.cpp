@@ -37,7 +37,6 @@ namespace BBM
 			pointAx.x += vel.x;
 			pointAy.y += vel.y;
 			pointAz.z += vel.z;
-			pointA += vel;
 		}
 
 		Vector3f minAx = Vector3f::min(pointAx, pointAx + colA.bound);
