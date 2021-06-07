@@ -40,6 +40,7 @@ RAY::Window::Window(int width, int height, std::string title, unsigned flags, bo
 {
 	if (openNow)
 		this->open();
+	InitAudioDevice();
 }
 
 bool RAY::Window::open(void)
@@ -60,6 +61,7 @@ bool RAY::Window::shouldClose(void) const
 void RAY::Window::close(void)
 {
 	CloseWindow();
+	CloseAudioDevice();
 }
 
 bool RAY::Window::isFocused(void) const
