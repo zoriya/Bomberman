@@ -52,7 +52,6 @@ namespace WAL
 				}
 				for (auto &system : this->_systems)
 					system->update(dtime);
-				auto &entities = this->scene->getEntities();
 				this->scene->deleteMarkedEntities();
 				callback(*this, state);
 			}

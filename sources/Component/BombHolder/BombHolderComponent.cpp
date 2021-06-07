@@ -19,6 +19,6 @@ namespace BBM
 
 	WAL::Component *BombHolderComponent::clone(WAL::Entity &entity) const
 	{
-		return new BombHolderComponent(entity);
+		return new BombHolderComponent(entity, this->maxBombCount);
 	}
 }

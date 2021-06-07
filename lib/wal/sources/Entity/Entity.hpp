@@ -27,7 +27,7 @@ namespace WAL
 		//! @brief Is this entity enabled?
 		bool _disabled = false;
 		//! @brief Has this entity been scheduled for deletion?
-		bool _shouldDelete;
+		bool _shouldDelete = false;
 		//! @brief The list of the components of this entity
 		std::unordered_map<std::type_index, std::unique_ptr<Component>> _components = {};
 
@@ -174,7 +174,5 @@ namespace WAL
 		~Entity() = default;
 		//! @brief An entity is not assignable
 		Entity &operator=(const Entity &) = delete;
-		//! @brief An entity is move assignable.
-		Entity &operator=(Entity &&) = default;
 	};
 } // namespace WAL
