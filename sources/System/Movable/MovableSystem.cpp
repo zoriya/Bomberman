@@ -8,17 +8,14 @@
 
 namespace BBM
 {
-	MovableSystem::MovableSystem()
-		: WAL::System({
-			typeid(MovableComponent),
-			typeid(PositionComponent)
-		})
+	MovableSystem::MovableSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void MovableSystem::onFixedUpdate(WAL::Entity &entity)
+	void MovableSystem::onFixedUpdate(WAL::ViewEntity<MovableComponent, PositionComponent> &entity)
 	{
-		auto &movable = entity.getComponent<MovableComponent>();
-		auto &position = entity.getComponent<PositionComponent>();
+		auto &movable = entity.get<MovableComponent>();
+		auto &position = entity.get<PositionComponent>();
 
 		position.position += movable._velocity;
 		movable._velocity = movable._acceleration;

@@ -4,15 +4,12 @@
 
 #include <Wal.hpp>
 #include <iostream>
-#include <System/Movable/MovableSystem.hpp>
-#include <System/Renderer/RenderScreenSystem.hpp>
-#include <System/Renderer/Render2DScreenSystem.hpp>
-#include <System/Renderer/Renderer2DSystem.hpp>
+#include "System/Movable/MovableSystem.hpp"
+#include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
-#include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/3D/Cube.hpp>
+#include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
-#include <System/Renderer/Renderer3DSystem.hpp>
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
 #include <System/Collision/CollisionSystem.hpp>
@@ -22,14 +19,20 @@
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <System/Gamepad/GamepadSystem.hpp>
-#include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
+#include <Model/ModelAnimations.hpp>
+#include "Component/Animation/AnimationsComponent.hpp"
+#include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
+#include "System/MenuControllable/MenuControllableSystem.hpp"
+#include <Drawables/Image.hpp>
 
-namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -47,8 +50,9 @@ namespace BBM
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
-			.addSystem<CollisionSystem>(wal)
+			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -56,13 +60,8 @@ namespace BBM
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
-
-		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
-		wal.addSystem<Renderer3DSystem<RAY3D::Cube>>();
-
-		wal.addSystem<Render2DScreenSystem>(window)
-			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
-		wal.addSystem<RenderScreenSystem>(window);
+		wal.addSystem<AnimationsSystem>()
+			.addSystem<RenderSystem>(window);
 	}
 
 	std::shared_ptr<WAL::Scene> loadTitleScreenScene()
@@ -80,6 +79,40 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadMainMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		scene->addEntity("control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene->addEntity("first button")
+			.addComponent<PositionComponent>(10, 10, 10)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
+			.addComponent<ButtonComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
+			},
+			[](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
+			},
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback);
+		
+		scene->addEntity("snd button")
+			.addComponent<PositionComponent>(10, 50, 50)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
+			.addComponent<ButtonComponent>(
+			[](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
+			},
+			[](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
+			},
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback);
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/icon.png");
 		//needed material
 		//play button
 		//play button assets
@@ -136,41 +169,20 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("first button")
-			.addComponent<ButtonComponent>(
-			[]() {
-
-			},
-			[]() {
-				
-			},
-			[]() {
-				
-			}
-			)
-			.addComponent<PositionComponent>(40, 100, 0)
-			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(0, 0, 50, 50, RED);
-
-		scene->addEntity("second button")
-			.addComponent<ButtonComponent>(
-			[]() {
-				
-			},
-			[]() {
-				
-			},
-			[]() {
-				
-			}
-			)
-			.addComponent<PositionComponent>(40, 200, 0)
-			.addComponent<Drawable2DComponent<RAY2D::Rectangle>>(0, 0, 50, 50, RED);
-
+		scene->addEntity("player")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
+			.addComponent<CollisionComponent>(1)
+			.addComponent<MovableComponent>();
 
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		std::srand(std::time(NULL));
+		std::srand(std::time(nullptr));
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
 
@@ -179,7 +191,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadGameScene();
+		wal.scene = loadMainMenuScene();
 
 		try {
 			wal.run<GameState>(updateState);

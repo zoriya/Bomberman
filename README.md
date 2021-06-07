@@ -40,12 +40,13 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
+cd -
 ```
 
 Enjoy !
 
 ```bash
-./bomberman
+./build/bomberman
 ```
 
 

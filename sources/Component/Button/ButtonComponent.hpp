@@ -14,16 +14,16 @@ namespace BBM
 	{	
 		public:
 			//! @brief onIdle callback
-			WAL::Callback<> onIdle;
+			WAL::Callback<WAL::Entity &> onIdle;
 
 			//! @brief onHover callback
-			WAL::Callback<> onHover;
+			WAL::Callback<WAL::Entity &> onHover;
 
 			//! @brief onClick callback, when the mouse button is released
-			WAL::Callback<> onClick;
+			WAL::Callback<WAL::Entity &> onClick;
 
 			//! @brief onHold callback, when the mouse button is pressed
-			WAL::Callback<> onHold;
+			WAL::Callback<WAL::Entity &> onHold;
 			
 
 			//! @inherit
@@ -33,16 +33,17 @@ namespace BBM
 			explicit ButtonComponent(WAL::Entity &entity);
 
 			//! @brief Constructor with the 3 callback
-			ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback, WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback, WAL::Callback<> holdCallback);
-			
-			//! @brief Constructor with the 3 std functions
-			ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback, std::function<void()> hoverCallback, std::function<void()> clickCallback, std::function<void()> holdCallback);
-			
+			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &> idleCallback, WAL::Callback<WAL::Entity &> hoverCallback,
+			WAL::Callback<WAL::Entity &> clickCallback, WAL::Callback<WAL::Entity &> holdCallback);
+
 			//! @brief A Controllable component is copy constructable.
 			ButtonComponent(const ButtonComponent &) = default;
 			//! @brief default destructor
 			~ButtonComponent() override = default;
 			//! @brief A Button component default assign operator
 			ButtonComponent &operator=(const ButtonComponent &) = default;
+
+			//! @brief Empty button callback
+			static void emptyButtonCallback(WAL::Entity &);
 	};
 }

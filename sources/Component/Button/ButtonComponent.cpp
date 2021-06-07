@@ -12,11 +12,11 @@ namespace BBM
 
 	WAL::Component *ButtonComponent::clone(WAL::Entity &entity) const
 	{
-		return new ButtonComponent(entity, onIdle, onHover, onClick);
+		return new ButtonComponent(entity, onIdle, onHover, onClick, onHold);
 	}
 
-	ButtonComponent::ButtonComponent(WAL::Entity &entity, WAL::Callback<> idleCallback,
-	WAL::Callback<> hoverCallback, WAL::Callback<> clickCallback, WAL::Callback<> holdCallback)
+	ButtonComponent::ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &> idleCallback,
+	WAL::Callback<WAL::Entity &> hoverCallback, WAL::Callback<WAL::Entity &> clickCallback, WAL::Callback<WAL::Entity &> holdCallback)
 	:	WAL::Component(entity),
 		onIdle(idleCallback),
 		onHover(hoverCallback),
@@ -24,12 +24,6 @@ namespace BBM
 		onHold(holdCallback)
 	{ }
 
-	ButtonComponent::ButtonComponent(WAL::Entity &entity, std::function<void()> idleCallback,
-	std::function<void()> hoverCallback, std::function<void()> clickCallback, std::function<void()> holdCallback)
-	:	WAL::Component(entity),
-		onIdle(idleCallback),
-		onHover(hoverCallback),
-		onClick(clickCallback),
-		onHold(holdCallback)
+	void ButtonComponent::emptyButtonCallback(WAL::Entity &)
 	{ }
 }

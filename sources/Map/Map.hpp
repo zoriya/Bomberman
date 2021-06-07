@@ -14,7 +14,6 @@
 #include <tuple>
 #include <algorithm>
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "System/Renderer/Renderer3DSystem.hpp"
 #include "Scene/Scene.hpp"
 #include "Model/Model.hpp"
 #include "Component/Component.hpp"
@@ -120,6 +119,8 @@ namespace BBM
 
 
 		public:
+			static void wallCollide(WAL::Entity &entity, const WAL::Entity &wall);
+
 
 			//! @param width Width of the map
 			//! @param height Height of the map

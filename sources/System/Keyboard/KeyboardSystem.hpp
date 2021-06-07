@@ -7,23 +7,25 @@
 
 #include "System/System.hpp"
 #include <map>
+#include "Component/Keyboard/KeyboardComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle keyboard entities.
-	class KeyboardSystem : public WAL::System
+	class KeyboardSystem : public WAL::System<KeyboardComponent, ControllableComponent>
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity) override;
 
 		//! @brief A default constructor
-		KeyboardSystem();
+		explicit KeyboardSystem(WAL::Wal &wal);
 		//! @brief A keyboard system is copy constructable
 		KeyboardSystem(const KeyboardSystem &) = default;
 		//! @brief A default destructor
 		~KeyboardSystem() override = default;
-		//! @brief A keyboard system is assignable.
-		KeyboardSystem &operator=(const KeyboardSystem &) = default;
+		//! @brief A system is not assignable.
+		KeyboardSystem &operator=(const KeyboardSystem &) = delete;
 	};
 }
