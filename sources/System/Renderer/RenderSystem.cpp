@@ -8,16 +8,18 @@
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
-#include "Drawables/ADrawable2D.hpp"
 #include "Drawables/ADrawable3D.hpp"
 
 namespace BBM
 {
-	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window)
+	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode)
 		: System(wal),
 		_window(window),
-		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE)
-	{}
+		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
+		_debugMode(debugMode)
+	{
+		this->_window.setFPS(this->FPS);
+	}
 
 	void RenderSystem::onSelfUpdate()
 	{
@@ -37,6 +39,8 @@ namespace BBM
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 		}
+		if (this->_debugMode)
+			this->_window.drawFPS(Vector2f());
 		this->_window.endDrawing();
 	}
 
