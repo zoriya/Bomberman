@@ -51,7 +51,7 @@ namespace BBM
 			//  std::cout << "Bonus disappeared" << std::endl;
 			//  bonus.scheduleDeletion();
 			// })
-			.addComponent<Drawable3DComponent<RAY3D::Model>>(map.at(bonusType) + ".obj", std::make_pair(MAP_DIFFUSE, map.at(bonusType) + ".png"));
+			.addComponent<Drawable3DComponent<RAY3D::Model>>(map.at(bonusType) + ".obj", std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
 	void HealthSystem::onFixedUpdate(WAL::Entity &entity)
