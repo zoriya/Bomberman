@@ -13,7 +13,7 @@ namespace BBM
     : Component(entity), _scriptPath(scriptPath), state(luaL_newstate())
     {
         luaL_dofile(state, scriptPath.c_str());
-        lua_getglobal(state, "update");
+        lua_getglobal(state, "Update");
         if (!lua_isfunction(state, -1))
             std::cout << "No update function in the script" << std::endl;
     }

@@ -11,6 +11,11 @@ namespace BBM
 	//! @brief A system to handle keyboard entities.
 	class IAControllableSystem : public WAL::System
 	{
+	private:
+		//! @brief extract a number from the lua stack
+		float getReturnNumber(lua_State *state);
+		//! @brief extract a bool from the lua stack
+		bool getReturnBool(lua_State *state);
 	public:
 		//! @inherit
 		void onFixedUpdate(WAL::Entity &entity) override;

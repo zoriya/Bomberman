@@ -1,7 +1,7 @@
-function sum(a,b)
+function Sum(a,b)
 	return a + b;
 end
 
-function update()
-	return 1;
+function Update()
+	return 1, 1, false, false;
 end
