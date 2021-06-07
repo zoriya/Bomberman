@@ -28,9 +28,9 @@ namespace BBM
 		auto &posA = entity.get<PositionComponent>();
 		auto &colA = entity.get<CollisionComponent>();
 		Vector3f pointA = posA.position + colA.positionOffset;
-		Vector3f pointAx;
-		Vector3f pointAy;
-		Vector3f pointAz;
+		Vector3f pointAx = pointA;
+		Vector3f pointAy = pointA;
+		Vector3f pointAz = pointA;
 
 		if (auto *movable = entity->tryGetComponent<MovableComponent>()) {
 			auto vel = movable->getVelocity();
@@ -60,12 +60,6 @@ namespace BBM
 			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
 
 			if (boxesCollide(minAx, maxAx, minB, maxB)) {
-			/*	std::cout << "collided" << std::endl
-				<< "minA " << minA << std::endl
-				<< "maxA " << maxA << std::endl
-				<< "minB " << minB << std::endl
-				<< "maxB " << maxB << std::endl;*/
-				//return;
 				collidedAxis += CollisionComponent::CollidedAxis::X;
 			}
 			if (boxesCollide(minAy, maxAy, minB, maxB)) {
