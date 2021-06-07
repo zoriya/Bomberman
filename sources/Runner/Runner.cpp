@@ -70,7 +70,7 @@ namespace BBM
 		auto scene = std::make_shared<WAL::Scene>();
 		std::map<SoundComponent::soundIndex, std::string> soundPath= {
 			{SoundComponent::IDLE, ""},
-			{SoundComponent::JUMP, ""},
+			{SoundComponent::JUMP, "assets/sounds/death.ogg"},
 			{SoundComponent::BOMB, ""},
 			{SoundComponent::MOVE, "assets/sounds/jump.wav"},
 			{SoundComponent::HURT, ""},

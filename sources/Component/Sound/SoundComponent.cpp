@@ -14,16 +14,14 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
           _soundIndex(IDLE),
           _soundPath(soundPath)
     {
-        for (int i = 0; i <= DEATH; i++)
-            this->_isLoad[static_cast<soundIndex>(i)] = false;
-        /*for (int i = 0; i <= DEATH; i++) {
+        for (int i = 0; i <= DEATH; i++) {
             if (soundPath.at(static_cast<soundIndex>(i)).empty()) {
                 this->_isLoad[static_cast<soundIndex>(i)] = false;
             } else {
                 this->_isLoad[static_cast<soundIndex>(i)] = true;
-                this->_soundList[static_cast<soundIndex>(i)] = RAY::Audio::Sound(soundPath.at(static_cast<soundIndex>(i)));
+                this->_soundList[static_cast<soundIndex>(i)] = std::unique_ptr<RAY::Audio::Sound>(new RAY::Audio::Sound(soundPath.at(static_cast<soundIndex>(i))));
             }
-        }*/
+        }
     }
 
     SoundComponent::SoundComponent(WAL::Entity &entity)
@@ -40,24 +38,24 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
 	void SoundComponent::playSound(void)
     {   
         if (!this->_isLoad.at(this->_soundIndex))
-            this->_soundList[this->_soundIndex] = RAY::Audio::Sound(this->_soundPath.at(this->_soundIndex));
-        if (!this->_soundList[this->_soundIndex].isPlaying())
-            this->_soundList[this->_soundIndex].play();
+            return;
+        if (!this->_soundList[this->_soundIndex].get()->isPlaying())
+            this->_soundList[this->_soundIndex].get()->play();
     }
 
     void SoundComponent::stopSound(void)
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
-        if (this->_soundList[this->_soundIndex].isPlaying())
-            this->_soundList[this->_soundIndex].stop();
+        if (this->_soundList[this->_soundIndex].get()->isPlaying())
+            this->_soundList[this->_soundIndex].get()->stop();
     }
 
     void SoundComponent::pauseSound(void)
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
-        this->_soundList[this->_soundIndex].pause();
+        this->_soundList[this->_soundIndex].get()->pause();
     }
 
 	void SoundComponent::setVolume(float &volume)
@@ -65,21 +63,21 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
         if (!this->_isLoad.at(this->_soundIndex))
             return;
         if (volume >= 0)
-            this->_soundList[this->_soundIndex].setVolume(volume);
+            this->_soundList[this->_soundIndex].get()->setVolume(volume);
     }
 
 	void SoundComponent::setPitch(float &pitch)
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
-        this->_soundList[this->_soundIndex].setPitch(pitch);
+        this->_soundList[this->_soundIndex].get()->setPitch(pitch);
     }
 
 	bool SoundComponent::isPlaying(void)
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return (false);
-        return (this->_soundList[this->_soundIndex].isPlaying());
+        return (this->_soundList[this->_soundIndex].get()->isPlaying());
     }
     
     void SoundComponent::setIndex(soundIndex index)
