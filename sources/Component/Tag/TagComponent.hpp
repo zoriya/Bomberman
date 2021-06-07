@@ -13,20 +13,22 @@ namespace BBM
 	class TagComponent : public WAL::Component
 	{
 		public:
+			//! @brief tag held by the component
+			std::string tag;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
-			//! @brief Create a new keyboard component using default keys.
-			explicit KeyboardComponent(WAL::Entity &entity);
+			//! @brief Create a new tag Component with a tag
+			explicit TagComponent(WAL::Entity &entity, std::string tag);
 
-			//! @brief A Keyboard component is copy constructable.
-			KeyboardComponent(const KeyboardComponent &) = default;
+			//! @brief A Tag component is copy constructable.
+			TagComponent(const TagComponent &) = default;
 
 			//! @brief default destructor
-			~KeyboardComponent() override = default;
+			~TagComponent() override = default;
 
-			//! @brief A Keyboard component can't be assigned
-			KeyboardComponent &operator=(const KeyboardComponent &) = delete;
+			//! @brief A Tag component can't be assigned
+			TagComponent &operator=(const TagComponent &) = delete;
 	};
 }

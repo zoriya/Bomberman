@@ -78,6 +78,8 @@ set(SOURCES
 	sources/Component/IAControllable/IAControllableComponent.cpp
 	sources/System/IAControllable/IAControllableSystem.hpp
 	sources/System/IAControllable/IAControllableSystem.cpp
+	sources/Component/Tag/TagComponent.cpp
+	sources/Component/Tag/TagComponent.hpp
 )
 
 add_executable(bomberman
