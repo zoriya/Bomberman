@@ -80,16 +80,14 @@ namespace BBM
 		scene->addEntity("text_prompt")
 			.addComponent<PositionComponent>(1920 / 5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Press any button to continue", 70, RAY::Vector2(), WHITE)
-			.addComponent<ButtonComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(WHITE);
-			},
-			[](WAL::Entity &entity)
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
-			},
-			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback);
+			});
 		//needed material
 		//music
 		//sound
@@ -112,51 +110,24 @@ namespace BBM
 		scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
-			.addComponent<ButtonComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_new_game.png");
-			}, [](WAL::Entity &entity)
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_new_game_hovered.png");
-			},
-			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback);
+			});
 		scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
-			.addComponent<ButtonComponent>([](WAL::Entity &entity)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				
-				texture->use("assets/buttons/button_settings.png");
-			}, [](WAL::Entity &entity)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				
-				texture->use("assets/buttons/button_settings_hovered.png");
-			},
-			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback);
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png");
 		scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
-			.addComponent<ButtonComponent>([](WAL::Entity &entity)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				
-				texture->use("assets/buttons/button_exit.png");
-			}, [](WAL::Entity &entity)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				
-				texture->use("assets/buttons/button_exit_hovered.png");
-			},
-			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback);
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png");
 		//needed material
 		//music
 		//sound

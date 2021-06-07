@@ -10,40 +10,44 @@
 
 namespace BBM
 {
-	class ButtonComponent : public WAL::Component
+	enum ButtonComponentType { IDLE, CLICK, HOVER };
+
+	template<enum ButtonComponentType T>
+	class ButtonComponent: public WAL::Component
 	{	
 		public:
-			//! @brief onIdle callback
-			WAL::Callback<WAL::Entity &> onIdle;
-
-			//! @brief onHover callback
-			WAL::Callback<WAL::Entity &> onHover;
-
-			//! @brief onClick callback, when the mouse button is released
-			WAL::Callback<WAL::Entity &> onClick;
-
-			//! @brief onHold callback, when the mouse button is pressed
-			WAL::Callback<WAL::Entity &> onHold;
+			//! @brief onEvent callback
+			WAL::Callback<WAL::Entity &> onEvent;
 			
-
 			//! @inherit
-			WAL::Component *clone(WAL::Entity &entity) const override;
+			WAL::Component *clone(WAL::Entity &entity) const override
+			{
+				return new ButtonComponent(entity, onEvent);
+			}
 
 			//! @brief Initialize a new Button component.
-			explicit ButtonComponent(WAL::Entity &entity);
+			explicit ButtonComponent(WAL::Entity &entity)
+				: WAL::Component(entity), onEvent()
+			{ }
 
 			//! @brief Constructor with the 3 callback
-			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &> idleCallback, WAL::Callback<WAL::Entity &> hoverCallback,
-			WAL::Callback<WAL::Entity &> clickCallback, WAL::Callback<WAL::Entity &> holdCallback);
+			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &> callback)
+				:	WAL::Component(entity),
+					onEvent(callback)
+			{ }
 
 			//! @brief A Controllable component is copy constructable.
-			ButtonComponent(const ButtonComponent &) = default;
+			ButtonComponent(const ButtonComponent<T> &) = default;
 			//! @brief default destructor
 			~ButtonComponent() override = default;
 			//! @brief A Button component default assign operator
-			ButtonComponent &operator=(const ButtonComponent &) = default;
+			ButtonComponent<T> &operator=(const ButtonComponent<T> &) = default;
 
 			//! @brief Empty button callback
-			static void emptyButtonCallback(WAL::Entity &);
+			static void emptyButtonCallback(WAL::Entity &)
+			{ }
 	};
+	typedef ButtonComponent<IDLE> OnIdleComponent;
+	typedef ButtonComponent<CLICK> OnClickComponent;
+	typedef ButtonComponent<HOVER> OnHoverComponent;
 }

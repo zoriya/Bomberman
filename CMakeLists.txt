@@ -67,7 +67,6 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
-	sources/Component/Button/ButtonComponent.cpp
 	sources/Component/Button/ButtonComponent.hpp
 	sources/System/MenuControllable/MenuControllableSystem.cpp
 	sources/System/MenuControllable/MenuControllableSystem.hpp

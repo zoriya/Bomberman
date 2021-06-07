@@ -37,7 +37,7 @@ namespace BBM
 
 		move = controllable.move;
 		select = controllable.bomb;
-		auto &buttons = wal.scene->view<ButtonComponent>();
+		auto &buttons = wal.scene->view<OnClickComponent>();
 		ssize_t index = 0;
 		//std::sort(buttons.begin(), buttons.end(),
 		//[](WAL::Entity &first, WAL::Entity &second) {
@@ -48,13 +48,14 @@ namespace BBM
 		//});
 		updateButtonIndex(buttons.size());
 		for (auto &button : buttons) {
+			auto &buttonEntity = static_cast<WAL::Entity &>(button);
 			if (index++ == _buttonIndex) {
-				button.get<ButtonComponent>().onHover(button);
+				buttonEntity.getComponent<OnHoverComponent>().onEvent(button);
 				if (select)
-					button.get<ButtonComponent>().onClick(button);
+					button.get<OnClickComponent>().onEvent(button);
 				continue;
 			}
-			button.get<ButtonComponent>().onIdle(button);
+			buttonEntity.getComponent<OnIdleComponent>().onEvent(button);
 		}
 	}
 
