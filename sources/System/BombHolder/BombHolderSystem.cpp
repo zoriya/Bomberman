@@ -39,7 +39,7 @@ namespace BBM
 	void BombHolderSystem::_spawnBomb(Vector3f position)
 	{
 		std::cout << "Spawnned" << std::endl;
-		this->_wal.scene->addEntity("Bomb")
+		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",

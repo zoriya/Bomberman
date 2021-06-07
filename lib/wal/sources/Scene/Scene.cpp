@@ -24,6 +24,11 @@ namespace WAL
 		return this->_entities.emplace_back(*this, name);
 	}
 
+	Entity &Scene::scheduleNewEntity(const std::string &name)
+	{
+		return this->_newEntities.emplace_back(*this, name, false);
+	}
+
 	void Scene::_componentAdded(Entity &entity, const std::type_index &type)
 	{
 		for (auto &view : this->_views) {
@@ -52,7 +57,7 @@ namespace WAL
 			view->erase(entity);
 	}
 
-	void Scene::deleteMarkedEntities()
+	void Scene::applyChanges()
 	{
 		this->_entities.remove_if([this](auto &entity) {
 			if (!entity.shouldDelete())
@@ -60,5 +65,16 @@ namespace WAL
 			this->_entityRemoved(entity);
 			return true;
 		});
+		for (auto &entity : this->_newEntities) {
+			for (auto &view : this->_views) {
+				bool valid = std::all_of(view->getTypes().begin(), view->getTypes().end(), [&entity](const auto &type){
+					return entity.hasComponent(type);
+				});
+				if (valid)
+					view->emplace_back(entity);
+			}
+			entity._notifyScene = true;
+		}
+		this->_entities.splice(this->_entities.end(), this->_newEntities);
 	}
 } // namespace WAL

@@ -23,6 +23,8 @@ namespace WAL
 
 		//! @brief The list of registered entities
 		std::list<Entity> _entities = {};
+		//! @brief The list of entities to add on the next call to applyChanges.
+		std::list<Entity> _newEntities = {};
 		//! @brief The list of cached views to update.
 		std::vector<std::shared_ptr<IView>> _views = {};
 
@@ -46,6 +48,11 @@ namespace WAL
 		//! @return The created entity is returned.
 		Entity &addEntity(const std::string &name);
 
+		//! @brief Add a new entity to the scene, this entity will be added on the next call to applyChanges.
+		//! @param name The name of the created entity.
+		//! @return The created entity is returned.
+		Entity &scheduleNewEntity(const std::string &name);
+
 		template<typename ...Components>
 		View<Components...> &view()
 		{
@@ -59,8 +66,8 @@ namespace WAL
 			return *view;
 		}
 
-		//! @brief Delete entities marked as deleted.
-		void deleteMarkedEntities();
+		//! @brief Delete entities marked as deleted and create scheduled entities.
+		void applyChanges();
 
 		//! @brief A default constructor
 		Scene() = default;

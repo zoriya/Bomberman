@@ -52,7 +52,7 @@ namespace WAL
 				}
 				for (auto &system : this->_systems)
 					system->update(dtime);
-				this->scene->deleteMarkedEntities();
+				this->scene->applyChanges();
 				callback(*this, state);
 			}
 		}
@@ -76,7 +76,7 @@ namespace WAL
 			}
 			for (auto &system : wal._systems)
 				system->update(dtime);
-			wal.scene->deleteMarkedEntities();
+			wal.scene->applyChanges();
 			callback(wal, state);
 		}
 #endif

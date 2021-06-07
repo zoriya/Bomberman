@@ -20,14 +20,14 @@ namespace BBM
 		const auto &wallPos = wall.getComponent<PositionComponent>();
 		auto diff = pos.position + mov->getVelocity() - wallPos.position;
 //		mov->_velocity = Vector3f();
-		if (diff.x <= 0 && mov->_velocity.x < 0)
-			mov->_velocity.x = 0;
-		if (diff.x >= 0 && mov->_velocity.x > 0)
-			mov->_velocity.x = 0;
-		if (diff.z <= 0 && mov->_velocity.z < 0)
-			mov->_velocity.z = 0;
-		if (diff.z >= 0 && mov->_velocity.z > 0)
-			mov->_velocity.z = 0;
+//		if (diff.x <= 0 && mov->_velocity.x < 0)
+//			mov->_velocity.x = 0;
+//		if (diff.x >= 0 && mov->_velocity.x > 0)
+//			mov->_velocity.x = 0;
+//		if (diff.z <= 0 && mov->_velocity.z < 0)
+//			mov->_velocity.z = 0;
+//		if (diff.z >= 0 && mov->_velocity.z > 0)
+//			mov->_velocity.z = 0;
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";
