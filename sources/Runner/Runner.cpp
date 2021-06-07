@@ -80,11 +80,11 @@ namespace BBM
 			.addComponent<PositionComponent>(10, 20, 10)
 			.addComponent<CameraComponent>(Vector3f(2, 0, 2));
 		scene->addEntity("cube")
-			.addComponent<PositionComponent>(0, 0, 0)
+			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(0, 0, 0), Vector3f(3, 3, 3), RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, -1, 3);
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, int>(), &MapGenerator::wallCollide, -1, 3);
 		std::srand(std::time(nullptr));
 		//MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;

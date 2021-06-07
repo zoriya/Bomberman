@@ -14,10 +14,17 @@ namespace BBM
 	class CollisionComponent : public WAL::Component
 	{
 	public:
+		//! @brief Used to tell the collided axis
+		enum CollidedAxis {
+			X = 1,
+			Y = 2,
+			Z = 4
+		};
+
 		//! @brief onCollide functions to be called
-		WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide;
+		WAL::Callback<WAL::Entity &, const WAL::Entity &, int> onCollide;
 		//! @brief onCollided functions to be called
-		WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollided;
+		WAL::Callback<WAL::Entity &, const WAL::Entity &, int> onCollided;
 		//! @brief Bound size on all axis
 		Vector3f bound;
 		//! @brief Offset from the position component
@@ -31,15 +38,15 @@ namespace BBM
 
 		//! @brief Constructor with a WAL::Callback
 		CollisionComponent(WAL::Entity &entity,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollide,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollided,
 		                   Vector3f positionOffset,
 		                   Vector3f bound);
 
 		//! @brief Constructor with a WAL::Callback, same boundSize for all axis
 		CollisionComponent(WAL::Entity &entity,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollide,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollided,
 		                   float positionOffset,
 		                   float boundSize = 0);
 
