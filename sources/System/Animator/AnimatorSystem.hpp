@@ -8,7 +8,7 @@
 
 namespace BBM
 {
-	//! @brief A system to handle Health entities.
+	//! @brief A system to handle Animator entities.
 	class AnimatorSystem : public WAL::System
 	{
 	public:
@@ -17,11 +17,11 @@ namespace BBM
 
 		//! @brief A default constructor
 		AnimatorSystem();
-		//! @brief A Health system is copy constructable
+		//! @brief An Animator system is copy constructable
 		AnimatorSystem(const AnimatorSystem &) = default;
 		//! @brief A default destructor
 		~AnimatorSystem() override = default;
-		//! @brief A Health system is assignable.
+		//! @brief An Animator system is assignable.
 		AnimatorSystem &operator=(const AnimatorSystem &) = default;
 	};
 }
