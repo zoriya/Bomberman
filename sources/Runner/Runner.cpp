@@ -121,13 +121,40 @@ namespace BBM
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_new_game_hovered.png");
-			});
+			})
+			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
 		scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_settings.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_settings_hovered.png");
+			})
+			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
 		scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_exit.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_exit_hovered.png");
+			})
+			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
 		//needed material
 		//music
 		//sound
