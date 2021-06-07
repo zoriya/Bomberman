@@ -6,22 +6,14 @@
 
 #include "HealthComponent.hpp"
 
+#include <utility>
+
 namespace BBM
 {
-	HealthComponent::HealthComponent(WAL::Entity &entity)
-		: WAL::Component(entity),
-		  _healthPoint()
-	{}
-
-	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint)
-		: WAL::Component(entity),
-		  _healthPoint(healthPoint)
-	{}
-
 	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, std::function<void (WAL::Entity &)> callback)
 			: WAL::Component(entity),
 			  _healthPoint(healthPoint),
-			  onDeath(callback)
+			  onDeath(std::move(callback))
 	{}
 
 	WAL::Component *HealthComponent::clone(WAL::Entity &entity) const
