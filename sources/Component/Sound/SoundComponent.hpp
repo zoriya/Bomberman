@@ -30,10 +30,10 @@ namespace BBM
 		soundIndex getIndex();
 
 		//! @brief load Sound
-		void loadSound();
+		void playSound();
 
 		//! @brief unload Sound
-        void unloadSound();
+        void stopSound();
 
 		//! @brief put Sound on hold
 		void pauseSound();
@@ -47,11 +47,10 @@ namespace BBM
 		//! @brief is Sound playing
 		bool isPlaying(void);
 
-
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 		//! @brief Create a new SoundComponent at a certain Sound
-		SoundComponent(WAL::Entity &entity, std::map<soundIndex, std::string> &SoundPath);
+		SoundComponent(WAL::Entity &entity, std::map<soundIndex, std::string> &);
 		//! @brief A Sound component is copy constructable
 		SoundComponent(const SoundComponent &) = default;
 		//! @brief A default destructor
@@ -63,8 +62,13 @@ namespace BBM
 		std::map<soundIndex, RAY::Audio::Sound> _soundList;
 
 		std::map<soundIndex, bool> _isLoad;
+
+		std::map<soundIndex, std::string> _soundPath;
+
 		//! SoundIndex
 		soundIndex _soundIndex;
+
+	
 		//! @brief Create a new SoundComponent linked to a specific entity
 		explicit SoundComponent(WAL::Entity &entity);
 		

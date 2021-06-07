@@ -3,6 +3,7 @@
 //
 
 #include <iostream>
+#include <memory>
 #include "SoundComponent.hpp"
 
 namespace BBM
@@ -10,18 +11,18 @@ namespace BBM
     SoundComponent::SoundComponent(WAL::Entity &entity, \
 std::map<SoundComponent::soundIndex, std::string> &soundPath)
         : WAL::Component(entity),
-          _soundIndex(IDLE)
+          _soundIndex(IDLE),
+          _soundPath(soundPath)
     {
-        for (int i = 0; i < DEATH + 1; i++) {
+        for (int i = 0; i <= DEATH; i++)
+            this->_isLoad[static_cast<soundIndex>(i)] = false;
+        /*for (int i = 0; i <= DEATH; i++) {
             if (soundPath.at(static_cast<soundIndex>(i)).empty()) {
                 this->_isLoad[static_cast<soundIndex>(i)] = false;
             } else {
                 this->_isLoad[static_cast<soundIndex>(i)] = true;
                 this->_soundList[static_cast<soundIndex>(i)] = RAY::Audio::Sound(soundPath.at(static_cast<soundIndex>(i)));
             }
-        }
-        /*for (int i = 0; i < DEATH + 1; i++) {
-            std::cout << i << this->_isLoad.at(static_cast<soundIndex>(i)) << soundPath.at(static_cast<soundIndex>(i)) << std::endl; 
         }*/
     }
 
@@ -36,22 +37,19 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
 		return new SoundComponent(entity);
 	}
 
-	void SoundComponent::loadSound(void)
+	void SoundComponent::playSound(void)
     {   
-        std::cout << this->_soundIndex << std::endl;
         if (!this->_isLoad.at(this->_soundIndex))
-            return;
-        if (!this->_soundList[this->_soundIndex].isPlaying()) {
-            std::cout << this->_soundIndex << std::endl;
+            this->_soundList[this->_soundIndex] = RAY::Audio::Sound(this->_soundPath.at(this->_soundIndex));
+        if (!this->_soundList[this->_soundIndex].isPlaying())
             this->_soundList[this->_soundIndex].play();
-        }
     }
 
-    void SoundComponent::unloadSound(void)
+    void SoundComponent::stopSound(void)
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
-        if (!this->_soundList[this->_soundIndex].isPlaying())
+        if (this->_soundList[this->_soundIndex].isPlaying())
             this->_soundList[this->_soundIndex].stop();
     }
 

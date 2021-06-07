@@ -20,7 +20,7 @@ namespace BBM
 		void onFixedUpdate(WAL::Entity &entity) override;
 		
 		//! @brief ctor
-		SoundManagerSystem(WAL::Wal &wal, RAY::Window &window);
+		SoundManagerSystem();
 		//! @brief Default copy ctor
 		SoundManagerSystem(const SoundManagerSystem &) = default;
 		//! @brief Default dtor

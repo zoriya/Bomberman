@@ -6,6 +6,14 @@
 
 namespace BBM {
 
+    
+	SoundManagerSystem::SoundManagerSystem()
+		: WAL::System({
+			typeid(SoundComponent),
+            typeid(HealthComponent)
+		})
+	{}
+
     void SoundManagerSystem::onFixedUpdate(WAL::Entity &entity)
     {
         if (!entity.hasComponent<ControllableComponent>())
@@ -15,12 +23,13 @@ namespace BBM {
         auto &health = entity.getComponent<HealthComponent>();
 
         sound.setIndex(SoundComponent::BOMB);
-        controllable.bomb ? sound.loadSound() : sound.unloadSound();
+        if (controllable.bomb)
+            sound.playSound();
         sound.setIndex(SoundComponent::JUMP);
-        controllable.jump ? sound.loadSound() : sound.unloadSound();
+        if (controllable.jump)
+            sound.playSound();
         sound.setIndex(SoundComponent::MOVE);
-        (controllable.move.x != 0 || controllable.move.y != 0) ? sound.loadSound() : sound.unloadSound();
-        sound.setIndex(SoundComponent::DEATH);
-        health.getHealthPoint() == 0 ? sound.loadSound() : sound.unloadSound();
+        if (controllable.move.x != 0 || controllable.move.y != 0)
+            sound.playSound();
     }
 }

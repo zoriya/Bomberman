@@ -31,6 +31,7 @@
 #include "Map/Map.hpp"
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
+#include "System/Sound/PlayerSoundManagerSystem.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -53,12 +54,13 @@ namespace BBM
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
-			.addSystem<MovableSystem>();
+			.addSystem<MovableSystem>()
+			.addSystem<SoundManagerSystem>();
 	}
 
 	void enableRaylib(WAL::Wal &wal)
 	{
-		RAY::TraceLog::setLevel(LOG_WARNING);
+		//RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<RenderSystem>(wal, window);
 	}
@@ -70,7 +72,7 @@ namespace BBM
 			{SoundComponent::IDLE, ""},
 			{SoundComponent::JUMP, ""},
 			{SoundComponent::BOMB, ""},
-			{SoundComponent::MOVE, "assets/sounds/weird.wav"},
+			{SoundComponent::MOVE, "assets/sounds/jump.wav"},
 			{SoundComponent::HURT, ""},
 			{SoundComponent::THROW, ""},
 			{SoundComponent::DEATH, ""}
@@ -79,10 +81,12 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
+			.addComponent<HealthComponent>(1)
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>()
+			//.addComponent<MusicComponent>("assets/musics/music_win.ogg");
 			.addComponent<SoundComponent>(soundPath);
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
