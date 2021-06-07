@@ -48,7 +48,7 @@ namespace BBM
 		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollide,
 		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &, int> &onCollided,
 		                   float positionOffset,
-		                   float boundSize = 0);
+		                   float boundSize);
 
 		//! @brief Constructor of collider with no callback
 		CollisionComponent(WAL::Entity &entity, Vector3f positionOffset, Vector3f bound);
