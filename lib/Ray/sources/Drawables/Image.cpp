@@ -8,6 +8,7 @@
 #include "Drawables/Image.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/2D/Rectangle.hpp"
+#include "Exceptions/RayError.hpp"
 
 namespace RAY {
 	Cache<::Image> Image::_imagesCache(LoadImage, UnloadImage);
@@ -58,14 +59,7 @@ namespace RAY {
 
 	void Image::drawOn(RAY::Window &)
 	{
-		//Since the image is a shared object, when it is resized, it mush be resized after to its previous dimensions
-		//Vector2 oldDims = Vector2(this->_image->width, this->_image->height);
-
-		//ImageResize(*this, this->_dimensions.x, this->_dimensions.y);
-		Texture texture(*this);
-
-		DrawTexture(texture, this->_position.x, this->_position.y, this->_color); 
-		//ImageResize(*this, oldDims.x, oldDims.y);
+		throw RAY::Exception::NotSupportedError("An image cannot be drawn onto a window");
 	}
 
 	void Image::drawOn(RAY::Image &image)

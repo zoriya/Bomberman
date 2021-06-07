@@ -34,7 +34,7 @@ namespace BBM
 		void updateButtonIndex(int length);
 
 		//! @brief time (in mili second) since last check
-		std::chrono::milliseconds _now;
+		std::chrono::time_point<std::chrono::steady_clock> _now;
 	public:
 		//! @inherit
 		void onSelfUpdate(void) override;

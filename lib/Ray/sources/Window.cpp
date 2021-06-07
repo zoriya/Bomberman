@@ -158,11 +158,6 @@ void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
 	drawable.drawOn(*this);
 }
 
-void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint)
-{
-	DrawTexture(texture, position.x, position.y, tint);
-}
-
 void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix &transform)
 {
 	DrawMesh(mesh, material, transform);

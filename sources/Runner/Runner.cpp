@@ -30,7 +30,7 @@
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
-#include <Drawables/Image.hpp>
+#include <Drawables/Texture.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -73,10 +73,10 @@ namespace BBM
 			.addComponent<KeyboardComponent>();
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(320, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/logo_big.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_big.png");
 		scene->addEntity("text_prompt")
 			.addComponent<PositionComponent>(1920 / 5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Press any button to continue", 70, RAY::Vector2(), WHITE)
@@ -105,55 +105,55 @@ namespace BBM
 			.addComponent<KeyboardComponent>();
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/logo_small.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_new_game.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<ButtonComponent>([](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_new_game.png");
+				texture->use("assets/buttons/button_new_game.png");
 			}, [](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_new_game_hovered.png");
+				texture->use("assets/buttons/button_new_game_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback);
 		scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_settings.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<ButtonComponent>([](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_settings.png");
+				texture->use("assets/buttons/button_settings.png");
 			}, [](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_settings_hovered.png");
+				texture->use("assets/buttons/button_settings_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback);
 		scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_exit.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<ButtonComponent>([](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_exit.png");
+				texture->use("assets/buttons/button_exit.png");
 			}, [](WAL::Entity &entity)
 			{
-				RAY::Image *image = dynamic_cast<RAY::Image *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				image->use("assets/buttons/button_exit_hovered.png");
+				texture->use("assets/buttons/button_exit_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback);

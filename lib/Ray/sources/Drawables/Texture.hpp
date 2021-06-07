@@ -11,11 +11,12 @@
 #include <raylib.h>
 #include <string>
 #include "Utils/Cache.hpp"
+#include "Drawables/2D/Rectangle.hpp"
 
 namespace RAY
 {
 	//! @brief Object representation of a texture
-	class Texture {
+	class Texture: public Drawables::Drawables2D::Rectangle {
 		public:
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
@@ -32,6 +33,12 @@ namespace RAY
 			
 			//! @brief Texture destructor, will not unload ressources
 			~Texture() = default;
+
+			//! @brief draw texture on a window
+			void drawOn(RAY::Window &) override;
+	
+			//! @brief Load texture from file, lets one use one entity for multiple files
+			Texture &use(const std::string &filename);
 
 		protected:
 		private:
