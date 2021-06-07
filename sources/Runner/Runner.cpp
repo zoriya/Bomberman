@@ -181,6 +181,55 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadSettingsMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
+
+		WAL::Entity music(*scene, "music text");
+			music.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), ORANGE)
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
+
+		WAL::Entity sound(*scene, "sound text");
+			sound.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), ORANGE)
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
+
+		WAL::Entity debug(*scene, "debug text");
+			debug.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode", 70, RAY::Vector2(), ORANGE)
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
 		//needed material
 		// music logo
 		// sound logo
@@ -193,10 +242,11 @@ namespace BBM
 		// unticked box
 		// back button
 		// back button asset
-		//plain background
-		//logo
 		//music
 		//sound
+		scene->getEntities().push_back(music);
+		scene->getEntities().push_back(sound);
+		scene->getEntities().push_back(debug);
 		return scene;
 	}
 
@@ -225,7 +275,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadMainMenuScene();
+		wal.scene = loadSettingsMenuScene();
 
 		try {
 			wal.run<GameState>(updateState);
