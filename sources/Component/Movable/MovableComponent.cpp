@@ -20,11 +20,6 @@ namespace BBM
 		this->_acceleration += force;
 	}
 
-	void MovableComponent::resetVelocity(void)
-	{
-		this->_velocity = {0, 0, 0};
-	}
-
 	const Vector3f &MovableComponent::getVelocity(void) const
 	{
 		return _velocity;
