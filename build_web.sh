@@ -8,4 +8,4 @@ fi
 source ./emsdk/emsdk_env.sh
 mkdir -p build_web
 emcmake cmake -S . -B build_web -DPLATFORM=Web &&
-cmake --build build_web
+cd build_web && make -j $2

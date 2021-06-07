@@ -13,17 +13,14 @@ using Gamepad = RAY::Controller::GamePad;
 
 namespace BBM
 {
-	GamepadSystem::GamepadSystem()
-		: WAL::System({
-			typeid(GamepadComponent),
-			typeid(ControllableComponent)
-		})
+	GamepadSystem::GamepadSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void GamepadSystem::onFixedUpdate(WAL::Entity &entity)
+	void GamepadSystem::onFixedUpdate(WAL::ViewEntity<GamepadComponent, ControllableComponent> &entity)
 	{
-		const auto &gamepadComponent = entity.getComponent<GamepadComponent>();
-		auto &controllable = entity.getComponent<ControllableComponent>();
+		const auto &gamepadComponent = entity.get<GamepadComponent>();
+		auto &controllable = entity.get<ControllableComponent>();
 		Gamepad gamepad(gamepadComponent.getID());
 
 		const std::map<Button, bool &> keyPressedMap = {

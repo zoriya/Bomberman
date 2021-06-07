@@ -120,6 +120,14 @@ namespace BBM
 			return std::sqrt(std::pow(this->x - o.x, 2) + std::pow(this->y - o.y, 2));
 		}
 
+		double angle(const Vector2<T> &o) const
+		{
+			float dot = this->x * o.x + this->y * o.y;
+			float det = this->x * o.y - this->y * o.x;
+			return (std::atan2(det, dot) * (180.0f / M_PI));
+			//return (std::atan(std::abs(o.y - this->y) / std::abs(o.x - this->x)));
+		}
+
 		double magnitude() const
 		{
 			return std::sqrt(std::pow(this->x, 2) + std::pow(this->y, 2));

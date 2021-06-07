@@ -8,8 +8,6 @@
 #include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
-#include <Drawables/2D/Rectangle.hpp>
-#include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
@@ -19,9 +17,7 @@
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <System/Gamepad/GamepadSystem.hpp>
-#include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
@@ -32,7 +28,6 @@
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 
-namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
@@ -51,10 +46,8 @@ namespace BBM
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
-			.addSystem<AnimationsSystem>()
-			.addSystem<AnimatorSystem>()
 			.addSystem<ControllableSystem>()
-			.addSystem<CollisionSystem>(wal)
+			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -62,7 +55,9 @@ namespace BBM
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
-		wal.addSystem<RenderSystem>(wal, window);
+		wal.addSystem<AnimationsSystem>()
+			.addSystem<AnimatorSystem>()
+			.addSystem<RenderSystem>(window);
 	}
 
 	std::shared_ptr<WAL::Scene> loadGameScene()
@@ -81,22 +76,15 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
-		scene->addEntity("cube")
-			.addComponent<PositionComponent>(-5, 0, -5)
-			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
-			[](WAL::Entity &actual, const WAL::Entity &) {
-			try {
-				auto &mov = actual.getComponent<MovableComponent>();
-				mov.resetVelocity();
-			} catch (std::exception &e) { };
-			}, 3);
-
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+//		scene->addEntity("cube")
+//			.addComponent<PositionComponent>(5, 0, 5)
+//			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+//			.addComponent<ControllableComponent>()
+//			.addComponent<KeyboardComponent>()
+//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
 		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;

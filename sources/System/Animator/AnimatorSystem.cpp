@@ -17,30 +17,20 @@ using Key = RAY::Controller::Keyboard::Key;
 
 namespace BBM
 {
-	AnimatorSystem::AnimatorSystem()
-			: WAL::System({
-				typeid(AnimatorComponent),
-				typeid(ControllableComponent)
-			})
+	AnimatorSystem::AnimatorSystem(WAL::Wal &wal)
+			: System(wal)
 	{}
 
-	void AnimatorSystem::onFixedUpdate(WAL::Entity &entity)
+	void AnimatorSystem::onFixedUpdate(WAL::ViewEntity<AnimationsComponent, ControllableComponent, Drawable3DComponent> &entity)
 	{
-		if (!entity.hasComponent<ControllableComponent>())
-			return;
-		const std::vector<std::vector<float>> moveDiag = {{-1, 0}, {-1, 1}, {0, 1}, {1, 1}, {1, 0}, {1, -1}, {0, -1}, {-1, -1}};
-		const std::vector<float> rotationAngle = {0.0f, 45.0f, 90.0f, 135.0f, 180.0f, 225.0f, 270.0f, 315.0f};
-		const auto &controllable = entity.getComponent<ControllableComponent>();
-		auto drawable = entity.getComponent<Drawable3DComponent>().drawable.get();
-		auto &animation = entity.getComponent<AnimationsComponent>();
+		const auto &controllable = entity.get<ControllableComponent>();
+		auto drawable = entity.get<Drawable3DComponent>().drawable.get();
+		auto &animation = entity.get<AnimationsComponent>();
 		auto anim = dynamic_cast<RAY3D::Model *>(drawable);
-		for (int i = 0; i != moveDiag.size(); i++) {
-			if (controllable.move.x == moveDiag[i][0] && controllable.move.y == moveDiag[i][1]) {
-				if (anim)
-					anim->setRotationAngle(rotationAngle[i]);
-				animation.setAnimIndex(0);
-				return;
-			}
+		if (anim && controllable.move != Vector2f(0, 0)) {
+			anim->setRotationAngle(controllable.move.angle(Vector2f(-1, 0)));
+			animation.setAnimIndex(0);
+			return;
 		}
 		animation.setAnimIndex(1);
 	}
