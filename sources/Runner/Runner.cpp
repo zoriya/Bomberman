@@ -4,15 +4,13 @@
 
 #include <Wal.hpp>
 #include <iostream>
-#include <System/Movable/MovableSystem.hpp>
-#include <System/Renderer/RenderScreenSystem.hpp>
-#include <System/Renderer/Render2DScreenSystem.hpp>
-#include <System/Renderer/Renderer2DSystem.hpp>
+#include "System/Movable/MovableSystem.hpp"
+#include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
+#include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
-#include <System/Renderer/Renderer3DSystem.hpp>
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
 #include <System/Collision/CollisionSystem.hpp>
@@ -23,6 +21,8 @@
 #include <System/Gamepad/GamepadSystem.hpp>
 #include "Models/Vector2.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
@@ -51,6 +51,8 @@ namespace BBM
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<AnimationsSystem>()
+			.addSystem<AnimatorSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
 			.addSystem<MovableSystem>();
@@ -60,15 +62,7 @@ namespace BBM
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
-
-		wal.addSystem<Renderer3DSystem<RAY3D::Model>>();
-		wal.addSystem<Renderer3DSystem<RAY3D::Cube>>();
-		wal.addSystem<AnimationsSystem>();
-		wal.addSystem<AnimatorSystem>();
-
-		wal.addSystem<Render2DScreenSystem>(window)
-			.addSystem<Renderer2DSystem<RAY2D::Rectangle>>();
-		wal.addSystem<RenderScreenSystem>(window);
+		wal.addSystem<RenderSystem>(wal, window);
 	}
 
 	std::shared_ptr<WAL::Scene> loadGameScene()
@@ -76,11 +70,11 @@ namespace BBM
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent<RAY3D::Model>>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
@@ -89,7 +83,7 @@ namespace BBM
 			});
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
-			.addComponent<Drawable3DComponent<RAY3D::Cube>>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<CollisionComponent>([](WAL::Entity &, const WAL::Entity &){},
@@ -103,7 +97,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		std::srand(std::time(NULL));
+		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}

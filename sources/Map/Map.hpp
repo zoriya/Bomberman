@@ -14,12 +14,13 @@
 #include <tuple>
 #include <algorithm>
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "System/Renderer/Renderer3DSystem.hpp"
+#include "System/Renderer/RenderSystem.hpp"
 #include "Scene/Scene.hpp"
 #include "Model/Model.hpp"
 #include "Component/Component.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Health/HealthComponent.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 
 namespace BBM
@@ -33,6 +34,7 @@ namespace BBM
 				NOTHING,
 				BREAKABLE,
 				HOLE,
+				UPPERFLOOR,
 				FLOOR,
 				BUMPER,
 				STAIRS,
@@ -68,7 +70,7 @@ namespace BBM
 			//! @param height Height of the map
 			//! @param scene Scene where the map is instanced
 			//! @brief Generate the floor of the map
-			static void generateFloor(int width, int height, std::shared_ptr<WAL::Scene> scene);
+			static void generateFloor(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene);
 
 			//! @param coords coords of the element
 			//! @param scene Scene where the map is instanced
@@ -97,8 +99,13 @@ namespace BBM
 
 			//! @param coords coords of the element
 			//! @param scene Scene where the map is instanced
-			//! @brief Create bumper of the map
+			//! @brief Create floor of the map
 			static void createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
+
+			//! @param coords coords of the element
+			//! @param scene Scene where the map is instanced
+			//! @brief Create upper floor of the map
+			static void createUpperFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
 
 
 			//! @param coords coords of the element
@@ -118,6 +125,34 @@ namespace BBM
 			//! @brief Generate height for the map
 			static MapBlock createHeight(MapBlock map, int width, int height);
 
+			//! @param map Map to load with block declared inside
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @brief Clean breakable on stairs, bumpers, etc..
+			static MapBlock cleanBreakable(MapBlock map, int width, int height);
+
+			
+			static const std::string assetsPath;
+
+			static const std::string wallAssetsPath;
+
+			static const std::string imageExtension;
+
+			static const std::string objExtension;
+
+			static const std::string unbreakableWallPath;
+
+			static const std::string breakableWallPath;
+
+			static const std::string floorPath;
+
+			static const std::string stairsPath;
+
+			static const std::string bumperPath;
+
+			static const std::string secondFloorPath;
+
+			static const std::string holePath;
 
 		public:
 
