@@ -5,13 +5,16 @@
 #include "Entity/Entity.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include <catch2/catch.hpp>
+#include <Wal.hpp>
+#include <Scene/Scene.hpp>
 
 using namespace WAL;
 using namespace BBM;
 
 TEST_CASE("Component", "[Entity]")
 {
-	Entity entity("Bob");
+	Scene scene;
+	Entity entity(scene, "Bob");
 	entity.addComponent<PositionComponent>(2, 3, 4);
 
 	SECTION("Check value") {
@@ -31,13 +34,15 @@ TEST_CASE("Component", "[Entity]")
 
 TEST_CASE("ComponentNotFound", "[Entity]")
 {
-	Entity entity("Bob");
+	Scene scene;
+	Entity entity(scene, "Bob");
 	REQUIRE_THROWS_AS(entity.getComponent<PositionComponent>(), NotFoundError);
 }
 
 TEST_CASE("Add component by reference", "[Entity]")
 {
-	Entity entity("Bob");
+	Scene scene;
+	Entity entity(scene, "Bob");
 	PositionComponent component(entity, 4, 5, 6);
 
 	REQUIRE(&entity.addComponent(component) == &entity);

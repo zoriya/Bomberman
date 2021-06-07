@@ -23,9 +23,6 @@ namespace BBM
 		//! @param force The force to add to this entity's acceleration. The force is added instantly and in one go.
 		void addForce(Vector3f force);
 
-		//! @brief Set velocity to 0
-		void resetVelocity(void);
-
 		//! @brief Get velocity
 		const Vector3f &getVelocity(void) const;
 
@@ -42,5 +39,6 @@ namespace BBM
 		MovableComponent &operator=(const MovableComponent &) = delete;
 
 		friend class MovableSystem;
+		friend class MapGenerator;
 	};
 } // namespace WAL

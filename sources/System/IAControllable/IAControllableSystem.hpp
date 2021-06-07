@@ -9,7 +9,7 @@
 namespace BBM
 {
 	//! @brief A system to handle keyboard entities.
-	class IAControllableSystem : public WAL::System
+	class IAControllableSystem : public WAL::System<ControllableComponent, IAControllableComponent>
 	{
 	private:
 		//! @brief extract a number from the lua stack
@@ -18,10 +18,10 @@ namespace BBM
 		bool getReturnBool(lua_State *state);
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, IAControllableComponent> &entity) override;
 
 		//! @brief A default constructor
-		IAControllableSystem();
+		IAControllableSystem(WAL::Wal &wal);
 		//! @brief A keyboard system is copy constructable
 		IAControllableSystem(const IAControllableSystem &) = default;
 		//! @brief A default destructor

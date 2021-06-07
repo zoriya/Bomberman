@@ -8,9 +8,8 @@
 
 namespace BBM
 {
-	IAControllableSystem::IAControllableSystem()
-	: WAL::System({	typeid(IAControllableComponent),
-					typeid(ControllableComponent)})
+	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
+	: System(wal)
 	{ }
 
 	float IAControllableSystem::getReturnNumber(lua_State *state)
@@ -40,10 +39,10 @@ namespace BBM
 		return res;
 	}
 
-	void IAControllableSystem::onFixedUpdate(WAL::Entity &entity)
+	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent, IAControllableComponent> &entity)
 	{
-		auto &ia = entity.getComponent<IAControllableComponent>();
-		auto &controllable = entity.getComponent<ControllableComponent>();
+		auto &ia = entity.get<IAControllableComponent>();
+		auto &controllable = entity.get<ControllableComponent>();
 
 		lua_getglobal(ia.state, "Update");
 		//push parameters
