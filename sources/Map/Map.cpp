@@ -19,7 +19,7 @@ namespace BBM
 		auto &pos = entity.getComponent<PositionComponent>();
 		const auto &wallPos = wall.getComponent<PositionComponent>();
 		auto diff = pos.position + mov->getVelocity() - wallPos.position;
-		std::cout << diff << std::endl;
+//		mov->_velocity = Vector3f();
 		if (diff.x <= 0 && mov->_velocity.x < 0)
 			mov->_velocity.x = 0;
 		if (diff.x >= 0 && mov->_velocity.x > 0)

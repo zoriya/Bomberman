@@ -84,7 +84,7 @@ namespace WAL
 		//! @brief True if the engine should close after the end of the current tick.
 		bool shouldClose = false;
 		//! @brief The time between each fixed update.
-		static constexpr std::chrono::nanoseconds timestep = std::chrono::milliseconds(16);
+		static constexpr std::chrono::nanoseconds timestep = std::chrono::milliseconds(32);
 
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.
