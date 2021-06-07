@@ -77,8 +77,8 @@ namespace BBM
 				animation.setAnimIndex(5);
 			});
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(10, 20, 10)
-			.addComponent<CameraComponent>(Vector3f(2, 0, 2));
+			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		/*scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(0, 0, 0), Vector3f(3, 3, 3), RED)

@@ -32,26 +32,6 @@ namespace BBM
 
 		this->_window.useCamera(this->_camera);
 		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
-			if (_.getName() == "cube") {
-				auto col = _.getComponent<CollisionComponent>();
-				DrawCubeWires({pos.position.x, pos.position.y, pos.position.z},
-				              col.bound.x,
-				              col.bound.y,
-				              col.bound.z,
-				              WHITE);
-				DrawPoint3D({pos.position.x, pos.position.y, pos.position.z}, BLUE);
-				DrawPoint3D({pos.position.x + col.bound.x, pos.position.y + col.bound.y, pos.position.z + col.bound.z}, BLUE);
-			}
-			if (_.getName() == "player") {
-				auto col = _.getComponent<CollisionComponent>();
-				DrawCubeWires({pos.position.x, pos.position.y, pos.position.z},
-				              col.bound.x,
-				              col.bound.y,
-				              col.bound.z,
-				              WHITE);
-				DrawPoint3D({pos.position.x, pos.position.y, pos.position.z}, BLUE);
-				DrawPoint3D({pos.position.x + col.bound.x, pos.position.y + col.bound.y, pos.position.z + col.bound.z}, BLUE);
-			}
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
 		}
