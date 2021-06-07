@@ -20,6 +20,7 @@ namespace BBM
 	const std::string MapGenerator::stairsPath = MapGenerator::wallAssetsPath + "stairs";
 	const std::string MapGenerator::bumperPath = MapGenerator::wallAssetsPath + "bumper";
 	const std::string MapGenerator::holePath = MapGenerator::wallAssetsPath + "hole";
+	const std::string MapGenerator::secondFloorHolePath = MapGenerator::secondFloorPath + "_hole";
 
 	void MapGenerator::generateUnbreakableBlock(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
@@ -158,10 +159,17 @@ namespace BBM
 	{
 		static const std::string holeObj = holePath + objExtension;
 		static const std::string holePng = holePath + imageExtension;
+		static const std::string secondFloorObj = secondFloorHolePath + objExtension;
+		static const std::string secondFloorPng = secondFloorHolePath + imageExtension;
 
-		scene->addEntity("Hole Block")
-			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
+		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
+
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
+
+		if (coords.y == 0)
+			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
+		else
+			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(secondFloorObj, std::make_pair(MAP_DIFFUSE, secondFloorPng));
 		/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
 			if (other.hasComponent<HealthComponent>()) {
 				auto &health = other.getComponent<HealthComponent>();
