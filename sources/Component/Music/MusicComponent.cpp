@@ -7,25 +7,15 @@
 
 namespace BBM
 {
-    MusicComponent::MusicComponent(WAL::Entity &entity, \
-std::map<MusicComponent::musicIndex, std::string> &musicPath)
+    MusicComponent::MusicComponent(WAL::Entity &entity, std::string &musicPath)
         : WAL::Component(entity),
-          _musicIndex(IDLE)
+          _music(RAY::Audio::Music(musicPath))
     {
-        for (int i = 0; i < DEATH + 1; i++) {
-            if (musicPath.at(static_cast<musicIndex>(i)).empty()) {
-                this->_isLoad[static_cast<musicIndex>(i)] = false;
-            } else {
-                this->_isLoad[static_cast<musicIndex>(i)] = true;
-                this->_musicList[static_cast<musicIndex>(i)] = RAY::Audio::Music(musicPath.at(static_cast<musicIndex>(i)));
-            }
-        }
     }
 
     MusicComponent::MusicComponent(WAL::Entity &entity)
 		: Component(entity),
-		  _musicList(),
-		  _musicIndex()
+          _music()
 	{}
 
     WAL::Component *MusicComponent::clone(WAL::Entity &entity) const
@@ -35,59 +25,35 @@ std::map<MusicComponent::musicIndex, std::string> &musicPath)
 
 	void MusicComponent::loadMusic(void)
     {   
-        if (!this->_isLoad.at(this->_musicIndex))
-            return;
-        if (!this->_musicList[this->_musicIndex].isPlaying()) {
-            std::cout << this->_musicIndex << std::endl;
-            this->_musicList[this->_musicIndex].play();
-        }
+        if (!this->_music.isPlaying())
+            this->_music.play();
     }
 
     void MusicComponent::unloadMusic(void)
     {
-        if (!this->_isLoad.at(this->_musicIndex))
-            return;
-        if (!this->_musicList[this->_musicIndex].isPlaying())
-            this->_musicList[this->_musicIndex].stop();
+        if (!this->_music.isPlaying())
+            this->_music.stop();
     }
 
     void MusicComponent::pauseMusic(void)
     {
-        if (!this->_isLoad.at(this->_musicIndex))
-            return;
-        this->_musicList[this->_musicIndex].pause();
+        this->_music.pause();
     }
 
 	void MusicComponent::setVolume(float &volume)
     {
-        if (!this->_isLoad.at(this->_musicIndex))
-            return;
         if (volume >= 0)
-            this->_musicList[this->_musicIndex].setVolume(volume);
+            this->_music.setVolume(volume);
     }
 
 	void MusicComponent::setPitch(float &pitch)
     {
-        if (!this->_isLoad.at(this->_musicIndex))
-            return;
-        this->_musicList[this->_musicIndex].setPitch(pitch);
+        this->_music.setPitch(pitch);
     }
 
 	bool MusicComponent::isPlaying(void)
     {
-        if (!this->_isLoad.at(this->_musicIndex))
-            return (false);
-        return (this->_musicList[this->_musicIndex].isPlaying());
-    }
-    
-    void MusicComponent::setIndex(musicIndex index)
-    {
-        this->_musicIndex = index;
-    }
-
-    MusicComponent::musicIndex MusicComponent::getIndex(void)
-    {
-        return (this->_musicIndex);
+        return (this->_music.isPlaying());
     }
 
 } // namespace WAL

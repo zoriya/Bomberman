@@ -14,21 +14,6 @@ namespace BBM
 	class MusicComponent : public WAL::Component
 	{
 	public:
-
-		enum musicIndex {
-			IDLE,
-			JUMP,
-			BOMB,
-			MOVE,
-			HURT,
-			THROW,
-			DEATH,
-		};
-
-		void setIndex(musicIndex index);
-
-		musicIndex getIndex();
-
 		//! @brief load music
 		void loadMusic();
 
@@ -47,11 +32,10 @@ namespace BBM
 		//! @brief is music playing
 		bool isPlaying(void);
 
-
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 		//! @brief Create a new MusicComponent at a certain Music
-		MusicComponent(WAL::Entity &entity, std::map<musicIndex, std::string> &musicPath);
+		MusicComponent(WAL::Entity &entity, std::string &musicPath);
 		//! @brief A Music component is copy constructable
 		MusicComponent(const MusicComponent &) = default;
 		//! @brief A default destructor
@@ -60,11 +44,7 @@ namespace BBM
 		MusicComponent &operator=(const MusicComponent &) = delete;
 	private:
 		//! @brief music of this entity
-		std::map<musicIndex, RAY::Audio::Music> _musicList;
-
-		std::map<musicIndex, bool> _isLoad;
-		//! musicIndex
-		musicIndex _musicIndex;
+		RAY::Audio::Music _music;
 		//! @brief Create a new MusicComponent linked to a specific entity
 		explicit MusicComponent(WAL::Entity &entity);
 		
