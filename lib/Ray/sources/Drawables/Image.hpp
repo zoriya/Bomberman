@@ -44,7 +44,9 @@ namespace RAY
 
 			//! @brief Draw image on another image
 			void drawOn(RAY::Image &image) override;
-
+			
+			//! @brief Resize image;
+			void resize(const RAY::Vector2 &dimensions);
 
 		private:
 			//! @brief Image, really, that's just it...

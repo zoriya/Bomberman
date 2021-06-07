@@ -40,16 +40,22 @@ namespace RAY {
 		drawable.drawOn(*this);
 	}
 
+	void Image::resize(const RAY::Vector2 &dimensions)
+	{
+		ImageResize(*this, dimensions.x, dimensions.y);
+		this->setDimensions(dimensions);
+	}
+
 	void Image::drawOn(RAY::Window &)
 	{
 		//Since the image is a shared object, when it is resized, it mush be resized after to its previous dimensions
-		Vector2 oldDims = Vector2(this->_image->width, this->_image->height);
+		//Vector2 oldDims = Vector2(this->_image->width, this->_image->height);
 
-		ImageResize(*this, this->_dimensions.x, this->_dimensions.y);
+		//ImageResize(*this, this->_dimensions.x, this->_dimensions.y);
 		Texture texture(*this);
 
 		DrawTexture(texture, this->_position.x, this->_position.y, this->_color); 
-		ImageResize(*this, oldDims.x, oldDims.y);
+		//ImageResize(*this, oldDims.x, oldDims.y);
 	}
 
 	void Image::drawOn(RAY::Image &image)

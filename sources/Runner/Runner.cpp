@@ -9,6 +9,7 @@
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
+#include <Drawables/2D/Text.hpp>
 #include <TraceLog.hpp>
 #include <System/Keyboard/KeyboardSystem.hpp>
 #include <System/Controllable/ControllableSystem.hpp>
@@ -59,7 +60,7 @@ namespace BBM
 	void enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
+		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<RenderSystem>(window);
 	}
@@ -67,10 +68,29 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadTitleScreenScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		scene->addEntity("control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/plain_menu_background.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(320, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/logo_big.png");
+		scene->addEntity("text_prompt")
+			.addComponent<PositionComponent>(1920 / 5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Press any button to continue", 70, RAY::Vector2(), WHITE)
+			.addComponent<ButtonComponent>([](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(WHITE);
+			},
+			[](WAL::Entity &entity)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			},
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback);
 		//needed material
-		//game logo
-		//plain background
-		//text "press to play"
 		//music
 		//sound
 		return scene;
@@ -79,9 +99,6 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadMainMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("control")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
 		scene->addEntity("first button")
 			.addComponent<PositionComponent>(10, 10, 10)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
@@ -96,23 +113,20 @@ namespace BBM
 			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback);
 		
-		scene->addEntity("snd button")
-			.addComponent<PositionComponent>(10, 50, 50)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
-			.addComponent<ButtonComponent>(
-			[](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
-			},
-			[](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
-			},
-			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback);
-		scene->addEntity("background")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Image>("assets/icon.png");
+		//scene->addEntity("snd button")
+		//	.addComponent<PositionComponent>(10, 50, 50)
+		//	.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
+		//	.addComponent<ButtonComponent>(
+		//	[](WAL::Entity &entity)
+		//	{
+		//		entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
+		//	},
+		//	[](WAL::Entity &entity)
+		//	{
+		//		entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
+		//	},
+		//	ButtonComponent::emptyButtonCallback,
+		//	ButtonComponent::emptyButtonCallback);
 		//needed material
 		//play button
 		//play button assets
@@ -191,7 +205,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadMainMenuScene();
+		wal.scene = loadTitleScreenScene();
 
 		try {
 			wal.run<GameState>(updateState);
