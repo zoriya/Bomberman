@@ -70,6 +70,10 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/System/Levitate/LevitateSystem.hpp
+	sources/System/Levitate/LevitateSystem.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
 )
 
 add_executable(bomberman

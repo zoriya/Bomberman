@@ -6,6 +6,7 @@
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include <map>
+#include <Component/Levitate/LevitateComponent.hpp>
 #include "Component/Collision/CollisionComponent.hpp"
 #include "HealthSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
@@ -19,7 +20,8 @@ namespace BBM
 {
 	HealthSystem::HealthSystem(WAL::Wal &wal)
 		: WAL::System({
-			typeid(HealthComponent)
+			typeid(HealthComponent),
+			typeid(PositionComponent)
 		}),
 		_wal(wal)
 	{}
@@ -44,6 +46,7 @@ namespace BBM
 		this->_wal.scene->addEntity("Bonus")
 			.addComponent<PositionComponent>(position)
 			.addComponent<HealthComponent>(1)
+			.addComponent<LevitateComponent>(position.y)
 			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player) {
 					//bonus.scheduleDeletion(true);
 				}, func[bonusType - 1])
