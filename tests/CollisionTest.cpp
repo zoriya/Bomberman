@@ -26,10 +26,10 @@ TEST_CASE("Collision test", "[Component][System]")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &) {
 			try {
-			auto &pos = actual.getComponent<PositionComponent>();
-			pos.position.x = 1;
-			pos.position.y = 1;
-			pos.position.z = 1;
+				auto &pos = actual.getComponent<PositionComponent>();
+				pos.position.x = 1;
+				pos.position.y = 1;
+				pos.position.z = 1;
 			} catch (std::exception &e) {};
 		}, [](Entity &, const Entity &){}, 5.0);
 	Entity &entity = wal.scene->getEntities().front();
