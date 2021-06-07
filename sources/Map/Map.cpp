@@ -19,7 +19,8 @@ namespace BBM
 	const std::string MapGenerator::secondFloorPath = MapGenerator::wallAssetsPath + "upper_floor";
 	const std::string MapGenerator::stairsPath = MapGenerator::wallAssetsPath + "stairs";
 	const std::string MapGenerator::bumperPath = MapGenerator::wallAssetsPath + "bumper";
-	const std::string MapGenerator::holePath = MapGenerator::wallAssetsPath + "hole";
+	const std::string MapGenerator::secondFloorPath = MapGenerator::wallAssetsPath + "hole";
+	const std::string MapGenerator::secondFloorHolePath = secondFloorPath + "_hole";
 
 	void MapGenerator::generateUnbreakableBlock(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
@@ -158,6 +159,7 @@ namespace BBM
 	{
 		static const std::string holeObj = holePath + objExtension;
 		static const std::string holePng = holePath + imageExtension;
+		static const std::string secondFloor = secondFloorHolePath + imageExtension;
 
 		scene->addEntity("Hole Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
