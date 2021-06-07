@@ -9,9 +9,8 @@
 #define MUSIC_HPP_
 
 #include "Audio/IAudio.hpp"
-
 #include <raylib.h>
-
+#include "Utils/Cache.hpp"
 
 namespace RAY::Audio
 {
@@ -22,11 +21,8 @@ namespace RAY::Audio
 			//! @brief Load Music stream from file
 			Music(const std::string &path);
 
-			//! @brief Default constructor
-			Music();
-
 			//! @brief Default destructor
-			~Music();
+			~Music() = default;
 
 			//! @brief A copy constructor constructor
 			Music(const Music &Music) = default;
@@ -56,7 +52,9 @@ namespace RAY::Audio
 			Music &setPitch(float pitch) override;
 
 		private:
-			::Music _music;
+			std::shared_ptr<::Music> _music;
+
+			static RAY::Cache<::Music> _musicsCache;
 	};
 }
 
