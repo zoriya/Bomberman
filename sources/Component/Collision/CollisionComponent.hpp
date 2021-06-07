@@ -15,6 +15,7 @@ namespace BBM
 	{
 	public:
 		//! @brief Used to tell the collided axis
+		//! @note Usage: (collidedAxis (int given by callback)) & CollidedAxis::X
 		enum CollidedAxis {
 			X = 1,
 			Y = 2,
@@ -53,7 +54,7 @@ namespace BBM
 		//! @brief Constructor of collider with no callback
 		CollisionComponent(WAL::Entity &entity, Vector3f positionOffset, Vector3f bound);
 
-		//! @brief Constructor no callback, same boundSize for all axis
+		//! @brief Constructor no callback, same boundSize & positionOffset for all axis
 		CollisionComponent(WAL::Entity &entity, float positionOffset, float boundSize);
 
 		//! @brief Default copy constructor

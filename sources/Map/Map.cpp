@@ -15,17 +15,9 @@ namespace BBM
 	void MapGenerator::wallCollide(WAL::Entity &entity, const WAL::Entity &wall, int collidedAxis)
 	{
 		auto *mov = entity.tryGetComponent<MovableComponent>();
-		auto posspec = entity.getComponent<PositionComponent>();
-		auto posspecwall = wall.getComponent<PositionComponent>();
 
 		if (!mov)
 			return;
-
-		auto &pos = entity.getComponent<PositionComponent>();
-		const auto &wallPos = wall.getComponent<PositionComponent>();
-		auto diff = pos.position + mov->getVelocity() - wallPos.position;
-		//mov->_velocity = Vector3f();
-		//return;
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)
 			mov->_velocity.x = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Y)
