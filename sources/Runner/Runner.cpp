@@ -70,21 +70,21 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(0, 1)
 			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
-			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+			.addComponent<PositionComponent>(10, 20, 10)
+			.addComponent<CameraComponent>(Vector3f(2, 0, 2));
 		scene->addEntity("cube")
-			.addComponent<PositionComponent>(5, 0, 5)
-			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+			.addComponent<PositionComponent>(0, 0, 0)
+			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(0, 0, 0), Vector3f(3, 3, 3), RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, -1, 3);
 		std::srand(std::time(nullptr));
 		//MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;

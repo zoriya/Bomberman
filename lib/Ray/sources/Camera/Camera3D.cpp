@@ -10,6 +10,7 @@
 RAY::Camera::Camera3D::Camera3D(const RAY::Vector3 &position, const RAY::Vector3 &target, const RAY::Vector3 &up, float fovy, Projection projection):
 	_camera({position, target, up, fovy, projection})
 {
+	SetCameraMode(_camera, CAMERA_FREE);
 }
 
 void RAY::Camera::Camera3D::setPosition(const Vector3 &Position)

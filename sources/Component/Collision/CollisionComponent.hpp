@@ -20,6 +20,8 @@ namespace BBM
 		WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollided;
 		//! @brief Bound size on all axis
 		Vector3f bound;
+		//! @brief Offset from the position component
+		Vector3f positionOffset;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
@@ -29,21 +31,23 @@ namespace BBM
 
 		//! @brief Constructor with a WAL::Callback
 		CollisionComponent(WAL::Entity &entity,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &>& onCollide,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &>& onCollided,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+		                   Vector3f positionOffset,
 		                   Vector3f bound);
 
 		//! @brief Constructor with a WAL::Callback, same boundSize for all axis
 		CollisionComponent(WAL::Entity &entity,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &>& onCollide,
-		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &>& onCollided,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
+		                   const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+		                   float positionOffset,
 		                   float boundSize = 0);
 
 		//! @brief Constructor of collider with no callback
-		CollisionComponent(WAL::Entity &entity, Vector3f bound);
+		CollisionComponent(WAL::Entity &entity, Vector3f positionOffset, Vector3f bound);
 
 		//! @brief Constructor no callback, same boundSize for all axis
-		CollisionComponent(WAL::Entity &entity, float boundSize);
+		CollisionComponent(WAL::Entity &entity, float positionOffset, float boundSize);
 
 		//! @brief Default copy constructor
 		CollisionComponent(const CollisionComponent &) = default;

@@ -26,19 +26,33 @@ namespace BBM
 	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
 	{
 		auto &posA = entity.get<PositionComponent>();
-		auto &col = entity.get<CollisionComponent>();
-		Vector3f position = posA.position;
+		auto &colA = entity.get<CollisionComponent>();
+		Vector3f pointA = posA.position + colA.positionOffset;
+
 		if (auto *movable = entity->tryGetComponent<MovableComponent>())
-			position += movable->getVelocity();
-		Vector3f minA = Vector3f::min(position, position + col.bound);
-		Vector3f maxA = Vector3f::max(position, position + col.bound);
+			pointA += movable->getVelocity();
+
+		Vector3f minA = Vector3f::min(pointA, pointA + colA.bound);
+		Vector3f maxA = Vector3f::max(pointA, pointA + colA.bound);
+
 		for (auto &[other, posB, colB] : this->getView()) {
 			if (other.getUid() == entity->getUid())
 				continue;
-			Vector3f minB = Vector3f::min(posB.position, posB.position + colB.bound);
-			Vector3f maxB = Vector3f::max(posB.position, posB.position + colB.bound);
+
+			auto pointB = posB.position + colB.positionOffset;
+
+			// TODO if B is also a movable we don't check with it's changing position
+			Vector3f minB = Vector3f::min(pointB, pointB + colB.bound);
+			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
+
 			if (collide(minA, maxA, minB, maxB)) {
-				col.onCollide(entity, other);
+				std::cout << "collided" << std::endl
+				<< "minA " << minA << std::endl
+				<< "maxA " << maxA << std::endl
+				<< "minB " << minB << std::endl
+				<< "maxB " << maxB << std::endl;
+				return;
+				colA.onCollide(entity, other);
 				colB.onCollided(entity, other);
 			}
 		}

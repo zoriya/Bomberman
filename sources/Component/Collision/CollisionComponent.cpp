@@ -18,34 +18,40 @@ namespace BBM
 	CollisionComponent::CollisionComponent(WAL::Entity &entity,
 	                                       const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
 	                                       const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+	                                       Vector3f positionOffset,
 	                                       Vector3f bound)
 		: WAL::Component(entity),
 		onCollide(onCollide),
 		onCollided(onCollided),
-		bound(bound)
+		bound(bound),
+		positionOffset(positionOffset)
 	{}
 
 	CollisionComponent::CollisionComponent(WAL::Entity &entity,
 	                                       const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollide,
 	                                       const WAL::Callback<WAL::Entity &, const WAL::Entity &> &onCollided,
+	                                       float positionOffset,
 	                                       float boundSize)
 		: WAL::Component(entity),
 		onCollide(onCollide),
 		onCollided(onCollided),
-		bound({boundSize, boundSize, boundSize})
+		bound({boundSize, boundSize, boundSize}),
+		positionOffset({positionOffset, positionOffset, positionOffset})
 	{}
 
-	CollisionComponent::CollisionComponent(WAL::Entity &entity, Vector3f bound)
+	CollisionComponent::CollisionComponent(WAL::Entity &entity, Vector3f positionOffset, Vector3f bound)
 		: WAL::Component(entity),
 		onCollide(),
 		onCollided(),
-		bound(bound)
+		bound(bound),
+		positionOffset(positionOffset)
 	{}
 
-	CollisionComponent::CollisionComponent(WAL::Entity &entity, float boundSize)
+	CollisionComponent::CollisionComponent(WAL::Entity &entity, float positionOffset, float boundSize)
 		: WAL::Component(entity),
 		onCollide(),
 		onCollided(),
-		bound({boundSize, boundSize, boundSize})
+		bound({boundSize, boundSize, boundSize}),
+		positionOffset({positionOffset, positionOffset, positionOffset})
 	{}
 }
