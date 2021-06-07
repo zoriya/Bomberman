@@ -125,7 +125,6 @@ namespace BBM
 			float dot = this->x * o.x + this->y * o.y;
 			float det = this->x * o.y - this->y * o.x;
 			return (std::atan2(det, dot) * (180.0f / M_PI));
-			//return (std::atan(std::abs(o.y - this->y) / std::abs(o.x - this->x)));
 		}
 
 		double magnitude() const
