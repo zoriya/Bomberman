@@ -9,6 +9,8 @@
 #include <cmath>
 #include "Vector/Vector2.hpp"
 
+#define PI_NUMBER 3.14159265359
+
 namespace BBM
 {
 	//! @brief A Vector2 data type. (templated to allow any kind of vector2)
@@ -124,7 +126,7 @@ namespace BBM
 		{
 			float dot = this->x * o.x + this->y * o.y;
 			float det = this->x * o.y - this->y * o.x;
-			return (std::atan2(det, dot) * (180.0f / M_PI));
+			return (std::atan2(det, dot) * (180.0f / PI_NUMBER));
 		}
 
 		double magnitude() const
