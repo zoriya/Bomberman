@@ -30,6 +30,7 @@
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
+#include "System/IAControllable/IAControllableSystem.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -50,6 +51,7 @@ namespace BBM
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<IAControllableSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>(wal)
 			.addSystem<MovableSystem>();
