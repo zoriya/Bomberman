@@ -67,6 +67,10 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Music/MusicComponent.cpp
+	sources/Component/Music/MusicComponent.hpp
+	sources/System/Music/PlayerMusicManagerSystem.cpp
+	sources/System/Music/PlayerMusicManagerSystem.hpp
 )
 add_executable(bomberman
                sources/main.cpp

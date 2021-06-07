@@ -29,6 +29,7 @@
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
+#include "Component/Music/MusicComponent.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -64,6 +65,15 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		std::map<MusicComponent::musicIndex, std::string> musicPath= {
+			{MusicComponent::IDLE, ""},
+			{MusicComponent::JUMP, ""},
+			{MusicComponent::BOMB, ""},
+			{MusicComponent::MOVE, "assets/sounds/new_death.ogg"},
+			{MusicComponent::HURT, ""},
+			{MusicComponent::THROW, ""},
+			{MusicComponent::DEATH, ""}
+			};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
@@ -71,7 +81,8 @@ namespace BBM
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
 			.addComponent<CollisionComponent>(2)
-			.addComponent<MovableComponent>();
+			.addComponent<MovableComponent>()
+			.addComponent<MusicComponent>(musicPath);
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
