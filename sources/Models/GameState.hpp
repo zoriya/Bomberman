@@ -27,7 +27,7 @@ namespace BBM
 
 
 		//! @brief The currently loaded scene
-		SceneID currentScene = TitleScreenScene;
+		SceneID currentScene = MainMenuScene;
 
 		//! @brief The list of loaded scenes.
 		std::unordered_map<SceneID, WAL::Scene> _loadedScenes = {};

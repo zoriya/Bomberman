@@ -99,34 +99,37 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadMainMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("first button")
-			.addComponent<PositionComponent>(10, 10, 10)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
-			.addComponent<ButtonComponent>([](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
-			},
-			[](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
-			},
+
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/plain_menu_background.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/logo_small.png");
+		scene->addEntity("play button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_new_game.png")
+			.addComponent<ButtonComponent>(
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback,
 			ButtonComponent::emptyButtonCallback);
-		
-		//scene->addEntity("snd button")
-		//	.addComponent<PositionComponent>(10, 50, 50)
-		//	.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(0, 0), RAY::Vector2(100, 10), RED)
-		//	.addComponent<ButtonComponent>(
-		//	[](WAL::Entity &entity)
-		//	{
-		//		entity.getComponent<Drawable2DComponent>().drawable->setColor(RED);
-		//	},
-		//	[](WAL::Entity &entity)
-		//	{
-		//		entity.getComponent<Drawable2DComponent>().drawable->setColor(GREEN);
-		//	},
-		//	ButtonComponent::emptyButtonCallback,
-		//	ButtonComponent::emptyButtonCallback);
+		scene->addEntity("settings button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_settings.png")
+			.addComponent<ButtonComponent>(
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback);
+		scene->addEntity("exit button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_exit.png")
+			.addComponent<ButtonComponent>(
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback,
+			ButtonComponent::emptyButtonCallback);
 		//needed material
 		//play button
 		//play button assets
@@ -134,8 +137,6 @@ namespace BBM
 		//settings button assets
 		//quit button
 		//quit button assets
-		//plain background
-		//logo
 		//music
 		//sound
 		return scene;
@@ -205,7 +206,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadTitleScreenScene();
+		wal.scene = loadMainMenuScene();
 
 		try {
 			wal.run<GameState>(updateState);
