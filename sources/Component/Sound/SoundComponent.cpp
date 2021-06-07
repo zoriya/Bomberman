@@ -20,6 +20,9 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
                 this->_soundList[static_cast<soundIndex>(i)] = RAY::Audio::Sound(soundPath.at(static_cast<soundIndex>(i)));
             }
         }
+        /*for (int i = 0; i < DEATH + 1; i++) {
+            std::cout << i << this->_isLoad.at(static_cast<soundIndex>(i)) << soundPath.at(static_cast<soundIndex>(i)) << std::endl; 
+        }*/
     }
 
     SoundComponent::SoundComponent(WAL::Entity &entity)
@@ -35,6 +38,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
 
 	void SoundComponent::loadSound(void)
     {   
+        std::cout << this->_soundIndex << std::endl;
         if (!this->_isLoad.at(this->_soundIndex))
             return;
         if (!this->_soundList[this->_soundIndex].isPlaying()) {

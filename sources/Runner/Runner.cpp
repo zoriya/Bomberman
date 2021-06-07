@@ -66,11 +66,11 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		std::map<SoundComponent::soundIndex, std::string> musicPath= {
+		std::map<SoundComponent::soundIndex, std::string> soundPath= {
 			{SoundComponent::IDLE, ""},
 			{SoundComponent::JUMP, ""},
 			{SoundComponent::BOMB, ""},
-			{SoundComponent::MOVE, "assets/sounds/new_death.ogg"},
+			{SoundComponent::MOVE, "assets/sounds/weird.wav"},
 			{SoundComponent::HURT, ""},
 			{SoundComponent::THROW, ""},
 			{SoundComponent::DEATH, ""}
@@ -83,7 +83,7 @@ namespace BBM
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
 			.addComponent<CollisionComponent>(2)
 			.addComponent<MovableComponent>()
-			.addComponent<SoundComponent>(musicPath);
+			.addComponent<SoundComponent>(soundPath);
 		scene->addEntity("cube")
 			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
