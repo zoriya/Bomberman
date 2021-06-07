@@ -14,7 +14,8 @@ namespace RAY {
 
 	Image::Image(const std::string &filename):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
-		_image(_imagesCache.fetch(filename))
+		_image(_imagesCache.fetch(filename)),
+		_ressourcePath(filename)
 	{
 		this->_dimensions = Vector2(this->_image->width, this->_image->height);
 	}
@@ -28,6 +29,15 @@ namespace RAY {
 	Image::operator ::Image() const
 	{
 		return *this->_image;
+	}
+
+	Image &Image::use(const std::string &filename)
+	{
+		if (this->_ressourcePath == filename)
+			return *this;
+		this->_image = this->_imagesCache.fetch(filename);
+		this->_ressourcePath = filename;
+		return *this;
 	}
 
 	Image::operator ::Image *()
