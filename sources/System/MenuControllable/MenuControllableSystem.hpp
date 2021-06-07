@@ -32,6 +32,9 @@ namespace BBM
 		//! @brief update button index
 		//! @param length length of the button set
 		void updateButtonIndex(int length);
+
+		//! @brief time (in mili second) since last check
+		std::chrono::milliseconds _now;
 	public:
 		//! @inherit
 		void onSelfUpdate(void) override;

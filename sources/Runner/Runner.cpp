@@ -100,6 +100,9 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Image>("assets/plain_menu_background.png");
@@ -121,9 +124,7 @@ namespace BBM
 				image->use("assets/buttons/button_new_game_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			ButtonComponent::emptyButtonCallback);
 		scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_settings.png")
@@ -139,9 +140,7 @@ namespace BBM
 				image->use("assets/buttons/button_settings_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			ButtonComponent::emptyButtonCallback);
 		scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Image>("assets/buttons/button_exit.png")
@@ -157,16 +156,8 @@ namespace BBM
 				image->use("assets/buttons/button_exit_hovered.png");
 			},
 			ButtonComponent::emptyButtonCallback,
-			ButtonComponent::emptyButtonCallback)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			ButtonComponent::emptyButtonCallback);
 		//needed material
-		//play button
-		//play button assets
-		//settings button
-		//settings button assets
-		//quit button
-		//quit button assets
 		//music
 		//sound
 		return scene;

@@ -28,14 +28,15 @@ namespace BBM
 
 	void MenuControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entity)
 	{
+		auto lastTick = std::chrono::steady_clock::now(); 
+		
+		if (lastTick - this->_now < std::chrono::milliseconds(100))
+			return;
+		this->_now = lastTick;
 		auto &controllable = entity.get<ControllableComponent>();
 
 		move = controllable.move;
 		select = controllable.bomb;
-	}
-
-	void MenuControllableSystem::onSelfUpdate(void)
-	{
 		auto &buttons = wal.scene->view<ButtonComponent>();
 		ssize_t index = 0;
 		//std::sort(buttons.begin(), buttons.end(),
@@ -55,5 +56,10 @@ namespace BBM
 			}
 			button.get<ButtonComponent>().onIdle(button);
 		}
+	}
+
+	void MenuControllableSystem::onSelfUpdate(void)
+	{
+
 	}
 }
