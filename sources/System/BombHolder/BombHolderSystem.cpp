@@ -31,8 +31,10 @@ namespace BBM
 
 			if (!health || !pos)
 				return;
-			if (pos->position.distance(bombPosition.position) <= BombHolderSystem::explosionRadius)
-				health->takeDmg(1);
+			if (pos->position.distance(bombPosition.position) > BombHolderSystem::explosionRadius)
+				return;
+			// TODO do a raycast here to only remove health to entities that are not behind others.
+			health->takeDmg(1);
 		});
 	}
 

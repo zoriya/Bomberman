@@ -39,7 +39,7 @@ namespace BBM
 			explicit HealthComponent(WAL::Entity &entity);
 
 			//! @brief Constructor
-			HealthComponent(WAL::Entity &entity, unsigned int healthPoint);
+			HealthComponent(WAL::Entity &entity, unsigned int healthPoint, WAL::Callback<WAL::Entity &> onDeath = WAL::Callback<WAL::Entity &>());
 
 			//! @brief A Health component can't be instantiated, it should be derived.
 			HealthComponent(const HealthComponent &) = default;
