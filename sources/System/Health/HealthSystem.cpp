@@ -3,6 +3,7 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
+#include <Component/Animation/AnimationsComponent.hpp>
 #include "HealthSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -10,17 +11,16 @@
 
 namespace BBM
 {
-	HealthSystem::HealthSystem()
-		: WAL::System({
-			typeid(HealthComponent)
-		})
+	HealthSystem::HealthSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void HealthSystem::onFixedUpdate(WAL::Entity &entity)
+	void HealthSystem::onFixedUpdate(WAL::ViewEntity<HealthComponent> &entity)
 	{
-		auto &health = entity.getComponent<HealthComponent>();
+		auto &health = entity.get<HealthComponent>();
 
-		if (health.getHealthPoint() == 0)
+		if (health.getHealthPoint() == 0) {
 			health.onDeath(entity);
+		}
 	}
 }

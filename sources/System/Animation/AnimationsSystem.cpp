@@ -11,18 +11,14 @@
 namespace BBM
 {
 
-	AnimationsSystem::AnimationsSystem()
-		: WAL::System({
-			typeid(Drawable3DComponent),
-			typeid(AnimationsComponent)
-		})
-	{
-	}
+	AnimationsSystem::AnimationsSystem(WAL::Wal &wal)
+		: System(wal)
+	{}
 
-	void AnimationsSystem::onUpdate(WAL::Entity &entity, std::chrono::nanoseconds)
+	void AnimationsSystem::onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds)
 	{
-		auto &model = entity.getComponent<Drawable3DComponent>();
-		auto &anim = entity.getComponent<AnimationsComponent>();
+		auto &model = entity.get<Drawable3DComponent>();
+		auto &anim = entity.get<AnimationsComponent>();
 
 		if (anim.isDisabled())
 			return;

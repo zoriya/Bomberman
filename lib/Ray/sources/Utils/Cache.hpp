@@ -9,6 +9,7 @@
 #include <memory>
 #include <unordered_map>
 #include <functional>
+#include <raylib.h>
 
 namespace RAY {
 	//! @brief A templated class used to cache ressources, indexed with a string

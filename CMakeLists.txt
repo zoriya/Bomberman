@@ -10,6 +10,8 @@ include_directories(bomberman sources)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
+
 if (EMSCRIPTEN)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
@@ -67,6 +69,10 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Animator/AnimatorComponent.cpp
+	sources/Component/Animator/AnimatorComponent.hpp
+	sources/System/Animator/AnimatorSystem.cpp
+	sources/System/Animator/AnimatorSystem.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
@@ -77,7 +83,7 @@ set(SOURCES
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-               )
+		)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
@@ -89,8 +95,9 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/EngineTests.cpp
 	tests/CallbackTest.cpp
 	tests/MoveTests.cpp
+	tests/ViewTest.cpp
 	tests/CollisionTest.cpp
-   )
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

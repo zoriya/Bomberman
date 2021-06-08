@@ -133,6 +133,8 @@ namespace RAY {
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
 
+			//! @brief Draws current FPS on the frame
+			void drawFPS(const Vector2 &position);
 			//! @return true if the window's context has been correctly initialized
 			bool isReady() const;
 
