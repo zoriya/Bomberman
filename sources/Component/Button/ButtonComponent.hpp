@@ -51,8 +51,8 @@ namespace BBM
 			{
 				this->_up = up;
 				this->_down = down;
-				this->_right = right;
 				this->_left = left;
+				this->_right = right;
 				return *this;
 			}	
 

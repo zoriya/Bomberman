@@ -22,9 +22,9 @@ namespace BBM
 			this->currentButton = buttonComponent._up;
 		if (move.y < 0 && buttonComponent._down)
 			this->currentButton = buttonComponent._down;
-		if (move.x > 0 && buttonComponent._right)
+		if (move.x < 0 && buttonComponent._right)
 			this->currentButton = buttonComponent._right;
-		if (move.x < 0 && buttonComponent._left)
+		if (move.x > 0 && buttonComponent._left)
 			this->currentButton = buttonComponent._left;
 		
 	}
@@ -32,31 +32,26 @@ namespace BBM
 	void MenuControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entity)
 	{
 		auto lastTick = std::chrono::steady_clock::now(); 
+		auto &controllable = entity.get<ControllableComponent>();
+		auto &buttons = _wal.scene->view<OnClickComponent>();
 		
 		if (lastTick - this->_now < std::chrono::milliseconds(100))
 			return;
 		this->_now = lastTick;
-		auto &controllable = entity.get<ControllableComponent>();
 
 		move = controllable.move;
 		select = controllable.bomb;
-		auto &buttons = _wal.scene->view<OnClickComponent>();
-		if (currentButton == nullptr && buttons.size()) {
-			currentButton = &static_cast<WAL::Entity &>(buttons.front());
-			std::cout << currentButton->getName() << std::endl;
-			std::cout << currentButton->getUid() << std::endl;
-			printf("%p\n", currentButton);
-		}
+		if (currentButton == nullptr && buttons.size())
+			currentButton = &(**buttons.begin());
 		this->updateCurrentButton();
-		for (auto &button : buttons) {
-			auto &buttonEntity = static_cast<WAL::Entity &>(button);
+		for (auto &[buttonEntity, clickComponent]: buttons) {
 			if (buttonEntity == *currentButton) {
-				buttonEntity.getComponent<OnHoverComponent>().onEvent(button);
+				buttonEntity.getComponent<OnHoverComponent>().onEvent(buttonEntity);
 				if (select)
-					button.get<OnClickComponent>().onEvent(button);
+					clickComponent.onEvent(buttonEntity);
 				continue;
 			}
-			buttonEntity.getComponent<OnIdleComponent>().onEvent(button);
+			buttonEntity.getComponent<OnIdleComponent>().onEvent(buttonEntity);
 		}
 	}
 
