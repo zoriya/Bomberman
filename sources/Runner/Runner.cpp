@@ -252,7 +252,7 @@ namespace BBM
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 
-		auto &soundUp = scene->addEntity("music up button")
+		auto &soundUp = scene->addEntity("sound up button")
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<OnClickComponent>()
@@ -269,7 +269,7 @@ namespace BBM
 				texture->use("assets/buttons/button_plus_hovered.png");
 			});
 
-		auto &soundDown = scene->addEntity("music down button")
+		auto &soundDown = scene->addEntity("sound down button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<OnClickComponent>()
@@ -288,8 +288,16 @@ namespace BBM
 
 		auto &debug = scene->addEntity("debug text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode", 70, RAY::Vector2(), ORANGE)
-			.addComponent<OnClickComponent>()
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), ORANGE)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				if (text->getString().find("Off") != std::string::npos)
+					text->setText("Debug Mode: On");
+				else
+					text->setText("Debug Mode: Off");
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
@@ -298,21 +306,37 @@ namespace BBM
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
+		auto &back = scene->addEntity("back to menu")
+			.addComponent<PositionComponent>(10, 10, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back_hovered.png");
+			});
 		//needed material
-		// ticked box
-		// unticked box
 		// back button
 		// back button asset
 		//music
 		//sound
 
-		music.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &musicUp, &musicDown);
+		music.getComponent<OnClickComponent>().setButtonLinks(&back, &sound, &musicUp, &musicDown);
 		musicUp.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, nullptr, &music);
 		musicDown.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &music);
 		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundUp, &soundDown);
 		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
 		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
-		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &music);
+		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back);
+		back.getComponent<OnClickComponent>().setButtonLinks(&debug, &music);
+
 
 		return scene;
 	}
