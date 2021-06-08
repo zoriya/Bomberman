@@ -127,7 +127,10 @@ namespace BBM
 				
 				texture->use("assets/buttons/button_new_game_hovered.png");
 			})
-			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
@@ -143,7 +146,10 @@ namespace BBM
 				
 				texture->use("assets/buttons/button_settings_hovered.png");
 			})
-			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
+			});
 		auto &exit = scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
@@ -159,7 +165,10 @@ namespace BBM
 				
 				texture->use("assets/buttons/button_exit_hovered.png");
 			})
-			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			{
+				//close window
+			});
 
 		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
@@ -204,7 +213,7 @@ namespace BBM
 		auto &music = scene->addEntity("music text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), ORANGE)
-			.addComponent<OnClickComponent>()
+			.addComponent<OnClickComponent>() 
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
@@ -295,7 +304,7 @@ namespace BBM
 		auto &debug = scene->addEntity("debug text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), ORANGE)
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([this](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -303,6 +312,7 @@ namespace BBM
 					text->setText("Debug Mode: On");
 				else
 					text->setText("Debug Mode: Off");
+				wal.getSystem<RenderSystem>.
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
@@ -315,7 +325,10 @@ namespace BBM
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 10, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>()
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
