@@ -31,6 +31,6 @@ namespace BBM
 		CollisionSystem &operator=(const CollisionSystem &) = delete;
 
 		//! @brief check AABB collision
-		static bool collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB);
+		static bool boxesCollide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB);
 	};
 }

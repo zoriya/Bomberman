@@ -2,12 +2,13 @@
 // Created by HENRY Benjamin on 02/06/2021.
 //
 
+#include <Component/Collision/CollisionComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
 
 namespace BBM {
-	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus)
+	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();
@@ -15,7 +16,7 @@ namespace BBM {
 		}
 	}
 
-	void Bonus::DamageIncreasedBonus(WAL::Entity &player, const WAL::Entity &bonus)
+	void Bonus::DamageIncreasedBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();
@@ -24,7 +25,7 @@ namespace BBM {
 		}
 	}
 
-	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus)
+	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();
@@ -33,7 +34,7 @@ namespace BBM {
 		}
 	}
 
-	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus)
+	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
 		if (!player.hasComponent<MovableComponent>())
 			return;
@@ -41,7 +42,7 @@ namespace BBM {
 		movable.addForce(Vector3f(1, 0, 1));
 	}
 
-	void Bonus::IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus)
+	void Bonus::IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();

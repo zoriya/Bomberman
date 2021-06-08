@@ -33,7 +33,7 @@ namespace BBM
 				{BonusComponent::BonusType::DAMAGEINC, "assets/items/fireup"},
 				{BonusComponent::BonusType::IGNOREWALLS, "assets/items/wallpass"}
 		};
-		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &)>> func = {
+		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
 				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, //&Bonus::ExplosionRangeBonus,
 				&Bonus::DamageIncreasedBonus, &Bonus::IgnoreWallsBonus
 		};
@@ -42,18 +42,18 @@ namespace BBM
 			return;
 		try {
 			this->_wal.scene->scheduleNewEntity("Bonus")
-					.addComponent<PositionComponent>(position)
-					.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
-						entity.scheduleDeletion();
-					})
-					.addComponent<LevitateComponent>(position.y)
-					.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player) {
-						bonus.scheduleDeletion();
-					}, func[bonusType - 1])
-						.addComponent<TimerComponent>(timer, [](WAL::Entity &bonus, WAL::Wal &wal){
-						  bonus.scheduleDeletion();
-						})
-					.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
+				.addComponent<PositionComponent>(position)
+				.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+					entity.scheduleDeletion();
+				})
+				.addComponent<LevitateComponent>(position.y)
+				.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
+					bonus.scheduleDeletion();
+				}, func[bonusType - 1], 0.25, .75)
+				.addComponent<TimerComponent>(timer, [](WAL::Entity &bonus, WAL::Wal &wal){
+					bonus.scheduleDeletion();
+				})
+				.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 		} catch (std::out_of_range const &err) {}
 	}
 
