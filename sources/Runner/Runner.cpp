@@ -9,12 +9,6 @@
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
-#include <Component/Health/HealthComponent.hpp>
-#include "System/Event/EventSystem.hpp"
-#include "System/Health/HealthSystem.hpp"
-#include "System/Timer/TimerSystem.hpp"
-#include "Component/BombHolder/BombHolderComponent.hpp"
-#include "System/BombHolder/BombHolderSystem.hpp"
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
 #include "Component/Movable/MovableComponent.hpp"
@@ -28,6 +22,12 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
+#include <System/Timer/TimerSystem.hpp>
+#include <System/BombHolder/BombHolderSystem.hpp>
+#include <System/Event/EventSystem.hpp>
+#include <System/Health/HealthSystem.hpp>
+#include <System/Animator/AnimatorSystem.hpp>
+#include <Component/Animator/AnimatorComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -64,6 +64,7 @@ namespace BBM
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
+			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);
 	}
 
@@ -74,12 +75,16 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
+			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>()
 			.addComponent<BombHolderComponent>()
-			.addComponent<HealthComponent>(1);
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+				auto &animation = entity.getComponent<AnimationsComponent>();
+				animation.setAnimIndex(5);
+			});
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));

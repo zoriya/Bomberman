@@ -9,7 +9,7 @@
 #define SOUND_HPP_
 
 #include "Audio/IAudio.hpp"
-
+#include "Utils/Cache.hpp"
 #include <raylib.h>
 
 
@@ -22,11 +22,8 @@ namespace RAY::Audio
 			//! @brief Load Sound stream from file
 			Sound(const std::string &path);
 
-			//! @brief Default constructor
-			Sound();
-
 			//! @brief Default destructor
-			~Sound();
+			~Sound() = default;
 
 			//! @brief A copy constructor constructor
 			Sound(const Sound &sound) = default;
@@ -56,7 +53,9 @@ namespace RAY::Audio
 			Sound &setPitch(float pitch) override;
 
 		private:
-			::Sound _sound;
+			std::shared_ptr<::Sound> _sound;
+
+			static RAY::Cache<::Sound> _soundsCache;
 	};
 }
 

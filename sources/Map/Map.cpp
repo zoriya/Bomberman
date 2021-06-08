@@ -30,6 +30,11 @@ namespace BBM
 //			mov->_velocity.z = 0;
 	}
 
+	void MapGenerator::wallDestroyed(WAL::Entity &entity)
+	{
+		entity.scheduleDeletion();
+	}
+
 	const std::string MapGenerator::assetsPath = "./assets/";
 	const std::string MapGenerator::wallAssetsPath = MapGenerator::assetsPath + "map/";
 	const std::string MapGenerator::imageExtension = ".png";
@@ -41,6 +46,7 @@ namespace BBM
 	const std::string MapGenerator::stairsPath = MapGenerator::wallAssetsPath + "stairs";
 	const std::string MapGenerator::bumperPath = MapGenerator::wallAssetsPath + "bumper";
 	const std::string MapGenerator::holePath = MapGenerator::wallAssetsPath + "hole";
+	const std::string MapGenerator::secondFloorHolePath = MapGenerator::secondFloorPath + "_hole";
 
 	void MapGenerator::generateUnbreakableBlock(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
@@ -133,7 +139,7 @@ namespace BBM
 
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
-			.addComponent<HealthComponent>(1)
+			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
@@ -176,10 +182,17 @@ namespace BBM
 	{
 		static const std::string holeObj = holePath + objExtension;
 		static const std::string holePng = holePath + imageExtension;
+		static const std::string secondFloorObj = secondFloorHolePath + objExtension;
+		static const std::string secondFloorPng = secondFloorHolePath + imageExtension;
 
-		scene->addEntity("Hole Block")
-			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
+		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
+
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
+
+		if (coords.y == 0)
+			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
+		else
+			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(secondFloorObj, std::make_pair(MAP_DIFFUSE, secondFloorPng));
 		/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
 			if (other.hasComponent<HealthComponent>()) {
 				auto &health = other.getComponent<HealthComponent>();

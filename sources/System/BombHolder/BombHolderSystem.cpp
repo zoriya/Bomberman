@@ -22,7 +22,6 @@ namespace BBM
 
 	void BombHolderSystem::_bombExplosion(WAL::Entity &bomb, WAL::Wal &wal)
 	{
-		std::cout << "Boom" << std::endl;
 		bomb.scheduleDeletion();
 		auto &bombPosition = bomb.getComponent<PositionComponent>();
 		wal.getSystem<EventSystem>().dispatchEvent([&bombPosition](WAL::Entity &entity){
@@ -31,14 +30,15 @@ namespace BBM
 
 			if (!health || !pos)
 				return;
-			if (pos->position.distance(bombPosition.position) <= BombHolderSystem::explosionRadius)
-				health->takeDmg(1);
+			if (pos->position.distance(bombPosition.position) > BombHolderSystem::explosionRadius)
+				return;
+			// TODO do a raycast here to only remove health to entities that are not behind others.
+			health->takeDmg(1);
 		});
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position)
 	{
-		std::cout << "Spawnned" << std::endl;
 		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)

@@ -77,6 +77,10 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Animator/AnimatorComponent.cpp
+	sources/Component/Animator/AnimatorComponent.hpp
+	sources/System/Animator/AnimatorSystem.cpp
+	sources/System/Animator/AnimatorSystem.hpp
 )
 add_executable(bomberman
                sources/main.cpp
