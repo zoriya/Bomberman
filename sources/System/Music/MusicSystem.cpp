@@ -14,11 +14,11 @@ namespace BBM {
 	void MusicSystem::onFixedUpdate(WAL::ViewEntity<MusicComponent> &entity)
 	{
 		auto &music = entity.get<MusicComponent>();
-		
+
 		music.setVolume(music.volume);
-		if (!music.isPlaying())
+		if (!music.isPlaying()) {
 			music.playMusic();
+		}
 		music.updateMusicStream();
-		
 	}
 }
