@@ -11,23 +11,28 @@
 #include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/2D/Text.hpp>
 #include <TraceLog.hpp>
-#include <System/Keyboard/KeyboardSystem.hpp>
-#include <System/Controllable/ControllableSystem.hpp>
+#include "System/Keyboard/KeyboardSystem.hpp"
+#include "System/Controllable/ControllableSystem.hpp"
+#include "Component/Movable/MovableComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Component/Keyboard/KeyboardComponent.hpp"
+#include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
 #include "Component/Button/ButtonComponent.hpp"
 #include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
-#include <Component/Controllable/ControllableComponent.hpp>
-#include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
-#include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Timer/TimerSystem.hpp>
+#include <System/BombHolder/BombHolderSystem.hpp>
+#include <System/Event/EventSystem.hpp>
+#include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
+#include <Component/Animator/AnimatorComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -57,10 +62,14 @@ namespace BBM
 
 	void Runner::addSystems(WAL::Wal &wal)
 	{
-		wal.addSystem<KeyboardSystem>()
+		wal.addSystem<TimerSystem>()
+			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
+			.addSystem<BombHolderSystem>()
+			.addSystem<EventSystem>()
+			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>();
 	}
@@ -440,6 +449,7 @@ namespace BBM
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>()
+			.addComponent<BombHolderComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);

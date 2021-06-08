@@ -26,6 +26,10 @@ namespace WAL
 		std::string _name;
 		//! @brief Is this entity enabled?
 		bool _disabled = false;
+		//! @brief Has this entity been scheduled for deletion?
+		bool _shouldDelete = false;
+		//! @brief Should this entity notify the scene of component changes?
+		bool _notifyScene;
 		//! @brief The list of the components of this entity
 		std::unordered_map<std::type_index, std::unique_ptr<Component>> _components = {};
 
@@ -38,6 +42,8 @@ namespace WAL
 		//! @brief Callback called when a component is removed
 		//! @param type The type of component
 		void _componentRemoved(const std::type_index &type);
+
+		friend Scene;
 	protected:
 	public:
 		//! @brief A reference to the ECS.
@@ -49,9 +55,13 @@ namespace WAL
 
 		//! @brief Used if the entity is disabled
 		bool isDisable() const;
-
 		//! @brief Disable this entity.
 		void setDisable(bool disabled);
+
+		//! @brief Has this entity been scheduled for deletion?
+		bool shouldDelete() const;
+		//! @brief Schedule this entity for deletion
+		void scheduleDeletion();
 
 		//! @brief Get a component of a specific type
 		//! @tparam The type of the component
@@ -106,21 +116,24 @@ namespace WAL
 		}
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @tparam T The type of the component
 		template<typename T>
-		bool hasComponent() const
+		bool hasComponent(bool skipDisabled = true) const
 		{
 			const std::type_info &type = typeid(T);
-			return this->hasComponent(type);
+			return this->hasComponent(type, skipDisabled);
 		}
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_info &type) const;
+		bool hasComponent(const std::type_info &type, bool skipDisabled = true) const;
 
 		//! @brief Check if this entity has a component.
+		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_index &type) const;
+		bool hasComponent(const std::type_index &type, bool skipDisabled = true) const;
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.
@@ -132,7 +145,8 @@ namespace WAL
 			if (this->hasComponent(type))
 				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
 			this->_components[type] = std::make_unique<T>(*this, TypeHolder<TNested>()..., std::forward<Types>(params)...);
-			this->_componentAdded(type);
+			if (this->_notifyScene)
+				this->_componentAdded(type);
 			return *this;
 		}
 
@@ -151,12 +165,13 @@ namespace WAL
 			if (existing == this->_components.end())
 				throw NotFoundError("No component could be found with the type \"" + std::string(type.name()) + "\".");
 			this->_components.erase(existing);
-			this->_componentRemoved(type);
+			if (this->_notifyScene)
+				this->_componentRemoved(type);
 			return *this;
 		}
 
 		//! @brief A default constructor
-		explicit Entity(Scene &wal, std::string name);
+		explicit Entity(Scene &wal, std::string name, bool notifyScene = true);
 		//! @brief An entity is copyable
 		Entity(const Entity &);
 		//! @brief An entity is movable.

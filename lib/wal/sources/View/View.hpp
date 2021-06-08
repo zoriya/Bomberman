@@ -178,9 +178,9 @@ namespace WAL
 
 		void erase(const Entity &entity) override
 		{
-			this->_entities.erase(std::remove_if(this->_entities.begin(), this->_entities.end(), [&entity](const auto &ref){
-				return &std::get<0>(ref).get() == &entity;
-			}));
+			this->_entities.erase(std::remove_if(this->_entities.begin(), this->_entities.end(), [&entity](const auto &ref) {
+				return std::get<0>(ref).get().getUid() == entity.getUid();
+			}), this->_entities.end());
 		}
 
 		//! @brief Construct a view from a list of entities.

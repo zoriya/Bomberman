@@ -23,6 +23,8 @@ namespace WAL
 
 		//! @brief The list of registered entities
 		std::list<Entity> _entities = {};
+		//! @brief The list of entities to add on the next call to applyChanges.
+		std::list<Entity> _newEntities = {};
 		//! @brief The list of cached views to update.
 		std::vector<std::shared_ptr<IView>> _views = {};
 
@@ -34,6 +36,9 @@ namespace WAL
 		//! @param entity The entity with the removed component
 		//! @param type The type of the component removed.
 		void _componentRemoved(const Entity &entity, const std::type_index &type);
+		//! @brief Remove an entity from every views.
+		//! @param entity The entity to remove.
+		void _entityRemoved(const Entity &entity);
 	public:
 		//! @brief Get the list of entities.
 		std::list<Entity> &getEntities();
@@ -42,6 +47,11 @@ namespace WAL
 		//! @param name The name of the created entity.
 		//! @return The created entity is returned.
 		Entity &addEntity(const std::string &name);
+
+		//! @brief Add a new entity to the scene, this entity will be added on the next call to applyChanges.
+		//! @param name The name of the created entity.
+		//! @return The created entity is returned.
+		Entity &scheduleNewEntity(const std::string &name);
 
 		template<typename ...Components>
 		View<Components...> &view()
@@ -58,6 +68,8 @@ namespace WAL
 
 		//! @return ID of the scene
 		int getID() const;
+		//! @brief Delete entities marked as deleted and create scheduled entities.
+		void applyChanges();
 
 		//! @brief A default constructor
 		Scene() = default;
