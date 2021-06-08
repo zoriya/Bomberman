@@ -2,6 +2,8 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
+#include <Component/BombAnimator/BombAnimatorComponent.hpp>
+#include <Component/Animation/AnimationsComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -43,7 +45,9 @@ namespace BBM
 			.addComponent<PositionComponent>(position)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
-				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
+				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"))
+			.addComponent<BombAnimatorComponent>()
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/bombs/bomb.obj"), 0);
 	}
 
 	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime)
