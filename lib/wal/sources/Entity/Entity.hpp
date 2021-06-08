@@ -165,5 +165,8 @@ namespace WAL
 		~Entity() = default;
 		//! @brief An entity is not assignable
 		Entity &operator=(const Entity &) = delete;
+
+		//! @return true if the two entities hold the same uid
+		bool operator==(const Entity &) const;
 	};
 } // namespace WAL

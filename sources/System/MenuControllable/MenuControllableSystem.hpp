@@ -18,7 +18,7 @@ namespace BBM
 		WAL::Wal &wal;
 
 		//! @brief index of the current button selected
-		int _buttonIndex = 0;
+		WAL::Entity *currentButton;
 
 		//! @brief move vector
 		Vector2f move;
@@ -29,9 +29,8 @@ namespace BBM
 		//! @brief Cancel action
 		bool cancel = false;
 
-		//! @brief update button index
-		//! @param length length of the button set
-		void updateButtonIndex(int length);
+		//! @brief update current button reference
+		void updateCurrentButton();
 
 		//! @brief time (in mili second) since last check
 		std::chrono::time_point<std::chrono::steady_clock> _now;

@@ -182,15 +182,6 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
-		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
-		scene->addEntity("background")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
-		scene->addEntity("logo")
-			.addComponent<PositionComponent>(1920 / 3, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 
 		WAL::Entity music(*scene, "music text");
 			music.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
@@ -203,6 +194,40 @@ namespace BBM
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
+
+		WAL::Entity musicUp(*scene, "music up button");
+			musicUp.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_plus.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_plus_hovered.png");
+			});
+
+		WAL::Entity musicDown(*scene, "music down button");
+			musicDown.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
+			.addComponent<OnClickComponent>()
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_minus.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_minus_hovered.png");
 			});
 
 		WAL::Entity sound(*scene, "sound text");
@@ -244,9 +269,30 @@ namespace BBM
 		// back button asset
 		//music
 		//sound
+
+		music.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &musicUp, &musicDown);
+		musicUp.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, nullptr, &music);
+		musicDown.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &music, nullptr);
+		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &music);
+		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug);
+		std::cout << music.getName() << std::endl;
+		std::cout << music.getUid() << std::endl;
+		printf("%p\n", &music);
+
 		scene->getEntities().push_back(music);
+		scene->getEntities().push_back(musicUp);
+		scene->getEntities().push_back(musicDown);
 		scene->getEntities().push_back(sound);
 		scene->getEntities().push_back(debug);
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		return scene;
 	}
 
