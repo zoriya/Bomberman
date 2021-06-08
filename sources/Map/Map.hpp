@@ -14,7 +14,6 @@
 #include <tuple>
 #include <algorithm>
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "System/Renderer/RenderSystem.hpp"
 #include "Scene/Scene.hpp"
 #include "Model/Model.hpp"
 #include "Component/Component.hpp"
@@ -154,7 +153,12 @@ namespace BBM
 
 			static const std::string holePath;
 
+			static const std::string secondFloorHolePath;
+
 		public:
+			static void wallCollide(WAL::Entity &entity, const WAL::Entity &wall);
+			static void wallDestroyed(WAL::Entity &entity);
+
 
 			//! @param width Width of the map
 			//! @param height Height of the map

@@ -6,14 +6,13 @@
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
+#include "Scene/Scene.hpp"
 
 namespace BBM
 {
 	CollisionSystem::CollisionSystem(WAL::Wal &wal)
-	: WAL::System({typeid(PositionComponent), typeid(CollisionComponent)}), _wal(wal)
-	{
-
-	}
+		: System(wal)
+	{ }
 
 	bool CollisionSystem::collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB)
 	{
@@ -24,25 +23,20 @@ namespace BBM
 		return (overlapX && overlapY && overlapZ);
 	}
 
-	void CollisionSystem::onFixedUpdate(WAL::Entity &entity)
+	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
 	{
-		auto &posA = entity.getComponent<PositionComponent>();
-		auto &col = entity.getComponent<CollisionComponent>();
+		auto &posA = entity.get<PositionComponent>();
+		auto &col = entity.get<CollisionComponent>();
 		Vector3f position = posA.position;
-		if (entity.hasComponent(typeid(MovableComponent)))
-			position += entity.getComponent<MovableComponent>().getVelocity();
+		if (auto *movable = entity->tryGetComponent<MovableComponent>())
+			position += movable->getVelocity();
 		Vector3f minA = Vector3f::min(position, position + col.bound);
 		Vector3f maxA = Vector3f::max(position, position + col.bound);
-		for (auto &other : _wal.scene->getEntities()) {
-			if (&other == &entity)
+		for (auto &[other, posB, colB] : this->getView()) {
+			if (other.getUid() == entity->getUid())
 				continue;
-			if (!other.hasComponent<CollisionComponent>() ||
-				!other.hasComponent<PositionComponent>())
-				continue;
-			auto colB = other.getComponent<CollisionComponent>();
-			auto posB = other.getComponent<PositionComponent>().position;
-			Vector3f minB = Vector3f::min(posB, posB + colB.bound);
-			Vector3f maxB = Vector3f::max(posB, posB + colB.bound);
+			Vector3f minB = Vector3f::min(posB.position, posB.position + colB.bound);
+			Vector3f maxB = Vector3f::max(posB.position, posB.position + colB.bound);
 			if (collide(minA, maxA, minB, maxB)) {
 				col.onCollide(entity, other);
 				colB.onCollided(entity, other);

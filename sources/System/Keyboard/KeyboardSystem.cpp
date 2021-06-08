@@ -3,28 +3,23 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
-#include <iostream>
 #include "KeyboardSystem.hpp"
 #include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
-#include "Entity/Entity.hpp"
 #include "Controllers/Keyboard.hpp"
 
 using Keyboard = RAY::Controller::Keyboard;
 
 namespace BBM
 {
-	KeyboardSystem::KeyboardSystem()
-		: WAL::System({
-			typeid(KeyboardComponent),
-			typeid(ControllableComponent)
-		})
+	KeyboardSystem::KeyboardSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void KeyboardSystem::onFixedUpdate(WAL::Entity &entity)
+	void KeyboardSystem::onUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity, std::chrono::nanoseconds)
 	{
-		const auto &keyboard = entity.getComponent<KeyboardComponent>();
-		auto &controllable = entity.getComponent<ControllableComponent>();
+		const auto &keyboard = entity.get<KeyboardComponent>();
+		auto &controllable = entity.get<ControllableComponent>();
 
 		const std::map<KeyboardKey, bool &> keyPressedMap = {
 			{keyboard.keyJump, controllable.jump},
@@ -33,7 +28,7 @@ namespace BBM
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isDown(key.first);
+			key.second = Keyboard::isPressed(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
 			controllable.move.x += 1;

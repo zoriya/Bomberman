@@ -27,12 +27,6 @@ namespace BBM
 			//! @brief A component can't be instantiated, it should be derived.
 			explicit CollisionComponent(WAL::Entity &entity);
 
-			//! @brief Constructor with a callback function
-			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollide, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollided, Vector3f bound);
-
-			//! @brief Constructor with a callback function, same boundSize for all axis
-			CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollide, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollided, float boundSize = 0);
-
 			//! @brief Constructor with a WAL::Callback
 			CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide, WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollided,Vector3f bound);
 

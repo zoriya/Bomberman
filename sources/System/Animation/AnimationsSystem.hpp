@@ -5,22 +5,24 @@
 #pragma once
 
 #include <System/System.hpp>
+#include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Animation/AnimationsComponent.hpp"
 
 namespace BBM
 {
-	class AnimationsSystem : public WAL::System
+	class AnimationsSystem : public WAL::System<Drawable3DComponent, AnimationsComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::Entity &entity, std::chrono::nanoseconds) override;
+		void onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds) override;
 
 		//! @brief A default constructor
-		AnimationsSystem();
+		explicit AnimationsSystem(WAL::Wal &wal);
 		//! @brief A Controllable system is copy constructable
 		AnimationsSystem(const AnimationsSystem &) = default;
 		//! @brief A default destructor
 		~AnimationsSystem() override = default;
-		//! @brief A Controllable system is assignable.
-		AnimationsSystem &operator=(const AnimationsSystem &) = default;
+		//! @brief A system is not assignable.
+		AnimationsSystem &operator=(const AnimationsSystem &) = delete;
 	};
 }
