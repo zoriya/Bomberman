@@ -40,7 +40,6 @@ RAY::Window::Window(int width, int height, std::string title, unsigned flags, bo
 {
 	if (openNow)
 		this->open();
-	InitAudioDevice();
 }
 
 bool RAY::Window::open(void)
@@ -50,6 +49,7 @@ bool RAY::Window::open(void)
 	}
 	InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
 	this->_isOpen = true;
+	InitAudioDevice();
 	return true;
 }
 

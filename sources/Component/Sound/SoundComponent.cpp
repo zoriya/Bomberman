@@ -25,6 +25,8 @@ const std::map<SoundComponent::soundIndex, std::string> &soundPath)
 		}
 	}
 
+	float SoundComponent::volume;
+
 	WAL::Component *SoundComponent::clone(WAL::Entity &entity) const
 	{
 		return new SoundComponent(entity, this->_soundPath);

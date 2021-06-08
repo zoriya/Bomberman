@@ -15,6 +15,8 @@ namespace BBM
 		this->volume = 1;
 	}
 
+	float MusicComponent::volume;
+
 	WAL::Component *MusicComponent::clone(WAL::Entity &entity) const
 	{
 		return new MusicComponent(entity, this->_musicPath);
