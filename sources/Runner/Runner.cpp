@@ -30,6 +30,7 @@
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
+#include "System/Music/MusicSystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -52,7 +53,8 @@ namespace BBM
 			.addSystem<ControllableSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>()
-			.addSystem<SoundManagerSystem>();
+			.addSystem<SoundManagerSystem>()
+			.addSystem<MusicSystem>();
 	}
 
 	void enableRaylib(WAL::Wal &wal)
@@ -69,12 +71,12 @@ namespace BBM
 		auto scene = std::make_shared<WAL::Scene>();
 		std::map<SoundComponent::soundIndex, std::string> soundPath= {
 			{SoundComponent::IDLE, ""},
-			{SoundComponent::JUMP, "assets/sounds/death.ogg"},
-			{SoundComponent::BOMB, ""},
+			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
+			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			{SoundComponent::MOVE, "assets/sounds/jump.wav"},
 			{SoundComponent::HURT, ""},
 			{SoundComponent::THROW, ""},
-			{SoundComponent::DEATH, ""}
+			{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 			};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
@@ -85,7 +87,7 @@ namespace BBM
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>()
-			//.addComponent<MusicComponent>("assets/musics/music_win.ogg");
+			.addComponent<MusicComponent>("assets/musics/music_win.ogg")
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();

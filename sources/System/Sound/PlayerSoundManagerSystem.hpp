@@ -16,7 +16,7 @@ namespace BBM
 	class SoundManagerSystem : public WAL::System<SoundComponent, ControllableComponent, HealthComponent>
 	{
 	public:
-        //! @inherit
+		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity) override;
 		
 		//! @brief ctor

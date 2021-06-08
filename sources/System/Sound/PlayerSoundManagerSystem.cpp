@@ -16,7 +16,8 @@ namespace BBM {
 		const auto &controllable = entity.get<ControllableComponent>();
 		auto &sound = entity.get<SoundComponent>();
 		auto &health = entity.get<HealthComponent>();
-
+		
+		sound.setVolume(sound.volume);
 		std::map<bool, SoundComponent::soundIndex> soundIndex = {
 			{controllable.bomb, SoundComponent::BOMB},
 			{controllable.jump, SoundComponent::JUMP},

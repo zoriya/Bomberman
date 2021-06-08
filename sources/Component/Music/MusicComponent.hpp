@@ -14,11 +14,11 @@ namespace BBM
 	class MusicComponent : public WAL::Component
 	{
 	public:
-		//! @brief load music
-		void loadMusic();
+		//! @brief start music
+		void playMusic();
 
-		//! @brief unload music
-        void unloadMusic();
+		//! @brief stop music
+		void stopMusic();
 
 		//! @brief put music on hold
 		void pauseMusic();
@@ -31,7 +31,8 @@ namespace BBM
 
 		//! @brief is music playing
 		bool isPlaying(void);
-
+		
+		void updateMusicStream(void);
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 		//! @brief Create a new MusicComponent at a certain Music
@@ -42,7 +43,8 @@ namespace BBM
 		~MusicComponent() override = default;
 		//! @brief A Music component is not assignable
 		MusicComponent &operator=(const MusicComponent &) = delete;
-
+		//! @brief Volume of the muisc
+		float volume = 1;
 	private:
 		//! @brief music of this entity
 		RAY::Audio::Music _music;

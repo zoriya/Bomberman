@@ -15,6 +15,7 @@ namespace BBM
 	{
 	public:
 
+		//! @brief All sounds of the player
 		enum soundIndex {
 			IDLE,
 			JUMP,
@@ -25,15 +26,17 @@ namespace BBM
 			DEATH,
 		};
 
+		//! @brief to set what sound should be played
 		void setIndex(soundIndex index);
 
+		//! @brief to know which sound is selected
 		soundIndex getIndex();
 
-		//! @brief load Sound
+		//! @brief start sound
 		void playSound();
 
-		//! @brief unload Sound
-        void stopSound();
+		//! @brief stop sound
+		void stopSound();
 
 		//! @brief put Sound on hold
 		void pauseSound();
@@ -57,14 +60,16 @@ namespace BBM
 		~SoundComponent() override = default;
 		//! @brief A Sound component is not assignable
 		SoundComponent &operator=(const SoundComponent &) = delete;
+		//! @brief Volume of the sounds
+		float volume = 1;
+
 	private:
-		//! @brief Sound of this entity
+		//! @brief Sounds of this entity
 		std::map<soundIndex, std::unique_ptr<RAY::Audio::Sound>> _soundList;
-
+		//! @brief map to know if sound is loaded
 		std::map<soundIndex, bool> _isLoad;
-
+		//! @brief All sounds path
 		const std::map<soundIndex, std::string> _soundPath;
-
 		//! SoundIndex
 		soundIndex _soundIndex;
 

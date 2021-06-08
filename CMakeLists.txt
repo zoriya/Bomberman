@@ -79,6 +79,8 @@ set(SOURCES
 	sources/Component/Sound/SoundComponent.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
+	sources/System/Music/MusicSystem.hpp
+	sources/System/Music/MusicSystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp
