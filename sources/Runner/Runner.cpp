@@ -67,6 +67,7 @@ namespace BBM
 			return;
 		gameState._loadedScenes[gameState.currentScene] = engine.scene;
 		engine.scene = gameState._loadedScenes[gameState.nextScene];
+		gameState.currentScene = gameState.nextScene;
 	}
 
 	void Runner::addSystems(WAL::Wal &wal)
@@ -210,9 +211,9 @@ namespace BBM
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
-		scene->addEntity("logo")
+		scene->addEntity("pause text")
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
+			.addComponent<Drawable2DComponent, RAY2D::Text>("PAUSE", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")

@@ -49,7 +49,7 @@ bool RAY::Window::open(void)
 	}
 	InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
 	this->_isOpen = true;
-	//this->setExitKey(Controller::Keyboard::Key::KEY_M);
+	this->setExitKey(Controller::Keyboard::Key::KEY_DELETE);
 	return true;
 }
 
