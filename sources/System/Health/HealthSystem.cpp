@@ -63,7 +63,7 @@ namespace BBM
 		auto &position = entity.get<PositionComponent>();
 
 		if (health.getHealthPoint() == 0) {
-			if (entity->hasComponent<BonusComponent>()) {
+			if (entity->hasComponent<BonusComponent>() && !entity->shouldDelete()) {
 				auto &bonus = entity->getComponent<BonusComponent>();
 				auto bonusType = bonus.getRandomBonusType();
 				this->_createBonus(position.position, bonusType, bonus.disappearTimer);

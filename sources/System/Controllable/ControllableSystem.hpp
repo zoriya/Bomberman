@@ -15,9 +15,6 @@ namespace BBM
 	class ControllableSystem : public WAL::System<ControllableComponent, MovableComponent>
 	{
 	public:
-		//! @brief The speed applied to every controllable entities.
-		static constexpr const float speed = .25f;
-
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity) override;
 
