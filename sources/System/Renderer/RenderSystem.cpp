@@ -47,8 +47,8 @@ namespace BBM
 		this->_window.endDrawing();
 	}
 
-	void
-	RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime)
+	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
+	                            std::chrono::nanoseconds dtime)
 	{
 		const auto &pos = entity.get<PositionComponent>();
 		const auto &cam = entity.get<CameraComponent>();
