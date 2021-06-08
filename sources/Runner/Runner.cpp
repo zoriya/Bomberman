@@ -26,6 +26,7 @@
 #include <System/Animator/AnimatorSystem.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
+#include "Component/Shaders/ShaderComponent.hpp"
 #include "Map/Map.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -69,6 +70,7 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<ShaderComponent>("assets/shaders/glsl330/predator.fs")
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(1)
 			.addComponent<MovableComponent>()
