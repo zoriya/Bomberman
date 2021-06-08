@@ -20,14 +20,19 @@ namespace BBM
 		const auto &wallPos = wall.getComponent<PositionComponent>();
 		auto diff = pos.position + mov->getVelocity() - wallPos.position;
 //		mov->_velocity = Vector3f();
-		if (diff.x <= 0 && mov->_velocity.x < 0)
-			mov->_velocity.x = 0;
-		if (diff.x >= 0 && mov->_velocity.x > 0)
-			mov->_velocity.x = 0;
-		if (diff.z <= 0 && mov->_velocity.z < 0)
-			mov->_velocity.z = 0;
-		if (diff.z >= 0 && mov->_velocity.z > 0)
-			mov->_velocity.z = 0;
+//		if (diff.x <= 0 && mov->_velocity.x < 0)
+//			mov->_velocity.x = 0;
+//		if (diff.x >= 0 && mov->_velocity.x > 0)
+//			mov->_velocity.x = 0;
+//		if (diff.z <= 0 && mov->_velocity.z < 0)
+//			mov->_velocity.z = 0;
+//		if (diff.z >= 0 && mov->_velocity.z > 0)
+//			mov->_velocity.z = 0;
+	}
+
+	void MapGenerator::wallDestroyed(WAL::Entity &entity)
+	{
+		entity.scheduleDeletion();
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";
@@ -134,7 +139,7 @@ namespace BBM
 
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
-			.addComponent<HealthComponent>(1)
+			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}

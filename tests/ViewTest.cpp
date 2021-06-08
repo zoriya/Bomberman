@@ -50,6 +50,33 @@ TEST_CASE("View cache", "[View]")
 	REQUIRE(&view == &scene.view<PositionComponent>());
 }
 
+TEST_CASE("View add entity", "[View]")
+{
+	Scene scene;
+	auto &entity = scene.addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<ControllableComponent>();
+	REQUIRE(scene.view<PositionComponent>().size() == 1);
+	scene.scheduleNewEntity("test")
+		.addComponent<PositionComponent>();
+	scene.applyChanges();
+	REQUIRE(scene.view<PositionComponent>().size() == 2);
+}
+
+TEST_CASE("View remove entity", "[View]")
+{
+	Scene scene;
+	auto &entity = scene.addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<ControllableComponent>();
+	REQUIRE(scene.view<PositionComponent>().size() == 1);
+	entity.scheduleDeletion();
+	scene.applyChanges();
+	REQUIRE(scene.view<PositionComponent>().size() == 0);
+	for (auto &it : scene.view<PositionComponent>())
+		REQUIRE(false);
+}
+
 TEST_CASE("View cache switch", "[View]")
 {
 	Scene scene;
