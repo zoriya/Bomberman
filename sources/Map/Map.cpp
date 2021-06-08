@@ -13,7 +13,7 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace BBM
 {
 	void MapGenerator::wallCollide(WAL::Entity &entity,
-								   const WAL::Entity &wall,
+	                               const WAL::Entity &wall,
 	                               CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *mov = entity.tryGetComponent<MovableComponent>();
@@ -157,7 +157,7 @@ namespace BBM
 
 		scene->addEntity("Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-				//.addComponent<CollisionComponent>(1)
+			//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
 	}
 
@@ -233,7 +233,7 @@ namespace BBM
 
 		scene->addEntity("Stairs Block")
 			.addComponent<PositionComponent>(coords)
-				//.addComponent<CollisionComponent>(1)
+			//.addComponent<CollisionComponent>(1)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng));
 	}
 
