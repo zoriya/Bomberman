@@ -65,7 +65,7 @@ namespace BBM
 
 	private:
 		//! @brief Sounds of this entity
-		std::map<soundIndex, std::unique_ptr<RAY::Audio::Sound>> _soundList;
+		std::map<soundIndex, std::shared_ptr<RAY::Audio::Sound>> _soundList;
 		//! @brief map to know if sound is loaded
 		std::map<soundIndex, bool> _isLoad;
 		//! @brief All sounds path
