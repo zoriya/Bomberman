@@ -24,10 +24,14 @@ namespace WAL
 		//! @brief Add a method to be called when this callback is invoked.
 		//! @param callback The list of arguments of the callback method
 		//! @return A unique ID for this callback. That can be used to remove the callback later.
-		int addCallback(std::function<void (Types...)> callback)
+		template<typename Func>
+		int addCallback(Func callback)
 		{
 			int id = this->_nextID++;
-			this->_functions[id] = std::move(callback);
+			if constexpr(std::is_same_v<Func, std::function<void (Types...)>>)
+				this->_functions[id] = std::move(callback);
+			else
+				this->_functions[id] = std::function<void (Types...)>(callback);
 			return id;
 		}
 
@@ -53,8 +57,9 @@ namespace WAL
 		//! @brief A default assignment operator
 		Callback &operator=(const Callback &) = default;
 
-		//! @brief Implicitly transform a function into a callback.
-		Callback(std::function<void (Types...)> callback) // NOLINT(google-explicit-constructor)
+		//! @brief Implicitly transform a callable into a callback.
+		template<typename Func>
+		Callback(Func callback) // NOLINT(google-explicit-constructor)
 		{
 			this->addCallback(callback);
 		}

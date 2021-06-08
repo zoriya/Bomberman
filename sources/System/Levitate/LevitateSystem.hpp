@@ -10,15 +10,15 @@
 #include "System/System.hpp"
 
 namespace BBM {
-	class LevitateSystem : public WAL::System
+	class LevitateSystem : public WAL::System<LevitateComponent, PositionComponent>
 	{
 	private:
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<LevitateComponent, PositionComponent> &entity) override;
 
 		//! @brief A default constructor
-		LevitateSystem();
+		LevitateSystem(WAL::Wal &wal);
 		//! @brief A Levitate system is copy constructable
 		LevitateSystem(const LevitateSystem &) = default;
 		//! @brief A default destructor

@@ -25,7 +25,7 @@ namespace BBM
 				IGNOREWALLS
 			};
 
-			std::chrono::nanoseconds disappearTimer = 10s;
+			std::chrono::nanoseconds disappearTimer = 5s;
 
 			BonusType getRandomBonusType() const;
 

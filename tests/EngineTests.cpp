@@ -31,7 +31,7 @@ TEST_CASE("Create system", "[Engine][System]")
 TEST_CASE("Create system by reference", "[Engine][System]")
 {
 	Wal wal;
-	MovableSystem system;
+	MovableSystem system(wal);
 	wal.addSystem(system);
 	REQUIRE_THROWS_AS(wal.addSystem<MovableSystem>(), DuplicateError);
 }

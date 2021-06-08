@@ -3,6 +3,7 @@
 //
 
 #include "BonusComponent.hpp"
+#include <map>
 
 namespace BBM {
 	BonusComponent::BonusComponent(WAL::Entity &entity)
@@ -16,6 +17,10 @@ namespace BBM {
 
 	BonusComponent::BonusType BonusComponent::getRandomBonusType() const
 	{
-		return (static_cast<BonusType>(std::rand() % IGNOREWALLS));
+		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
+
+		if (rnd < 0.4)
+			return (static_cast<BonusType>(std::rand() % (IGNOREWALLS - 1) + 1));
+		return (NOTHING);
 	}
 }

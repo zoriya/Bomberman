@@ -5,16 +5,13 @@
 #include "LevitateSystem.hpp"
 
 namespace BBM {
-	LevitateSystem::LevitateSystem()
-		: WAL::System({
-			typeid(LevitateComponent),
-			typeid(PositionComponent)
-  		})
+	LevitateSystem::LevitateSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-	void LevitateSystem::onFixedUpdate(WAL::Entity &entity) {
-		auto &levitate = entity.getComponent<LevitateComponent>();
-		auto &position = entity.getComponent<PositionComponent>();
+	void LevitateSystem::onFixedUpdate(WAL::ViewEntity<LevitateComponent, PositionComponent> &entity) {
+		auto &levitate = entity.get<LevitateComponent>();
+		auto &position = entity.get<PositionComponent>();
 		float &y = position.position.y;
 
 		if (levitate.up) {

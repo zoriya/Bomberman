@@ -16,14 +16,6 @@ namespace BBM
 		return new CollisionComponent(entity);
 	}
 
-	CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollide, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollided, Vector3f bound)
-	: WAL::Component(entity), onCollide(onCollide), onCollided(onCollided), bound(bound)
-	{ }
-
-	CollisionComponent::CollisionComponent(WAL::Entity &entity, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollide, std::function<void (WAL::Entity &, const WAL::Entity &)> onCollided, float boundSize)
-	: WAL::Component(entity), onCollide(onCollide), onCollided(onCollided), bound({boundSize, boundSize, boundSize})
-	{ }
-
 	CollisionComponent::CollisionComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollide, WAL::Callback<WAL::Entity &, const WAL::Entity &> onCollided, Vector3f bound)
 	: WAL::Component(entity), onCollide(onCollide), onCollided(onCollided), bound(bound)
 	{ }

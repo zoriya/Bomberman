@@ -40,7 +40,7 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
-cd -
+cd ..
 ```
 
 Enjoy !

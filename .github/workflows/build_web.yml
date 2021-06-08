@@ -1,0 +1,20 @@
+name: Web Build (Emscripten)
+on: [push, pull_request]
+
+jobs:
+  Build:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        submodules: true
+    - name: Exec
+      shell: bash
+      run: ./build_web.sh
+    - name: Check files creation
+      run: |
+        test -f build_web/bomberman.html
+        test -f build_web/bomberman.js
+        test -f build_web/bomberman.wasm 
+        test -f build_web/bomberman.data
