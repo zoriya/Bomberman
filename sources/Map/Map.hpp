@@ -162,6 +162,7 @@ namespace BBM
 		static void wallCollide(WAL::Entity &entity,
 		                        const WAL::Entity &wall,
 		                        CollisionComponent::CollidedAxis collidedAxis);
+		static void wallDestroyed(WAL::Entity &entity);
 
 
 		//! @param width Width of the map

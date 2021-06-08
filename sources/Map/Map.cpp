@@ -28,6 +28,11 @@ namespace BBM
 			mov->_velocity.z = 0;
 	}
 
+	void MapGenerator::wallDestroyed(WAL::Entity &entity)
+	{
+		entity.scheduleDeletion();
+	}
+
 	const std::string MapGenerator::assetsPath = "./assets/";
 	const std::string MapGenerator::wallAssetsPath = MapGenerator::assetsPath + "map/";
 	const std::string MapGenerator::imageExtension = ".png";
@@ -143,7 +148,7 @@ namespace BBM
 
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
-			.addComponent<HealthComponent>(1)
+			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, 0.25, .75)
