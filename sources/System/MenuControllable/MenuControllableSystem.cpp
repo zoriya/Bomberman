@@ -40,7 +40,9 @@ namespace BBM
 		this->_now = lastTick;
 
 		move = controllable.move;
-		select = controllable.bomb;
+		select = controllable.jump;
+		if (currentButton && currentButton->_scene.getID() != wal.scene->getID())
+			currentButton = nullptr;
 		if (currentButton == nullptr && buttons.size())
 			currentButton = &(**buttons.begin());
 		this->updateCurrentButton();

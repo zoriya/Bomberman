@@ -45,4 +45,9 @@ namespace WAL
 			view->erase(entity);
 		}
 	}
+
+	int Scene::getID() const
+	{
+		return this->_id;
+	}
 } // namespace WAL

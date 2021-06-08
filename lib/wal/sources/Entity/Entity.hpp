@@ -39,9 +39,9 @@ namespace WAL
 		//! @param type The type of component
 		void _componentRemoved(const std::type_index &type);
 	protected:
+	public:
 		//! @brief A reference to the ECS.
 		Scene &_scene;
-	public:
 		//! @brief Get the ID of the entity.
 		unsigned getUid() const;
 		//! @brief Get the name fo the entity

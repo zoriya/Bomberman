@@ -37,7 +37,9 @@ namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
-	void updateState(WAL::Wal &engine, GameState &state)
+	GameState Runner::gameState;
+
+	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
 		// You can change the scene here or update the game state based on entities values.
 
@@ -45,9 +47,13 @@ namespace BBM
 		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
+		if (gameState.nextScene == gameState.currentScene)
+			return;
+		gameState._loadedScenes[gameState.currentScene] = engine.scene;
+		engine.scene = gameState._loadedScenes[gameState.nextScene];
 	}
 
-	void addSystems(WAL::Wal &wal)
+	void Runner::addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
@@ -57,7 +63,7 @@ namespace BBM
 			.addSystem<MovableSystem>();
 	}
 
-	void enableRaylib(WAL::Wal &wal)
+	void Runner::enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
@@ -65,7 +71,7 @@ namespace BBM
 			.addSystem<RenderSystem>(window);
 	}
 
-	std::shared_ptr<WAL::Scene> loadTitleScreenScene()
+	std::shared_ptr<WAL::Scene> Runner::loadTitleScreenScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("control")
@@ -78,23 +84,22 @@ namespace BBM
 			.addComponent<PositionComponent>(320, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_big.png");
 		scene->addEntity("text_prompt")
-			.addComponent<PositionComponent>(1920 / 5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Press any button to continue", 70, RAY::Vector2(), WHITE)
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 130, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), ORANGE)
+			.addComponent<OnIdleComponent>()
+			.addComponent<OnHoverComponent>()
+			.addComponent<OnClickComponent>([](WAL::Entity &entity)
 			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(WHITE);
-			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
+	
 		//needed material
 		//music
 		//sound
 		return scene;
 	}
 
-	std::shared_ptr<WAL::Scene> loadMainMenuScene()
+	std::shared_ptr<WAL::Scene> Runner::loadMainMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
@@ -107,7 +112,7 @@ namespace BBM
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
-		scene->addEntity("play button")
+		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
@@ -123,7 +128,7 @@ namespace BBM
 				texture->use("assets/buttons/button_new_game_hovered.png");
 			})
 			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
-		scene->addEntity("settings button")
+		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
@@ -139,7 +144,7 @@ namespace BBM
 				texture->use("assets/buttons/button_settings_hovered.png");
 			})
 			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
-		scene->addEntity("exit button")
+		auto &exit = scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
@@ -155,13 +160,17 @@ namespace BBM
 				texture->use("assets/buttons/button_exit_hovered.png");
 			})
 			.addComponent<OnClickComponent>(OnClickComponent::emptyButtonCallback);
+
+		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
+		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
+		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &play);
 		//needed material
 		//music
 		//sound
 		return scene;
 	}
 
-	std::shared_ptr<WAL::Scene> loadPauseMenuScene()
+	std::shared_ptr<WAL::Scene> Runner::loadPauseMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		//needed material
@@ -178,7 +187,7 @@ namespace BBM
 		return scene;
 	}
 
-	std::shared_ptr<WAL::Scene> loadSettingsMenuScene()
+	std::shared_ptr<WAL::Scene> Runner::loadSettingsMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
@@ -243,10 +252,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), ORANGE)
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
-			})
+			.addComponent<OnIdleComponent>()
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
@@ -336,12 +342,10 @@ namespace BBM
 		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
 		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back);
 		back.getComponent<OnClickComponent>().setButtonLinks(&debug, &music);
-
-
 		return scene;
 	}
 
-	std::shared_ptr<WAL::Scene> loadGameScene()
+	std::shared_ptr<WAL::Scene> Runner::loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("player")
@@ -361,15 +365,25 @@ namespace BBM
 		return scene;
 	}
 
-	int run()
+	void Runner::loadScenes()
+	{
+		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
+		gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
+		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
+		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
+		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
+	}
+
+	int Runner::run()
 	{
 		WAL::Wal wal;
-		addSystems(wal);
-		enableRaylib(wal);
-		wal.scene = loadSettingsMenuScene();
+		Runner::addSystems(wal);
+		Runner::enableRaylib(wal);
+		Runner::loadScenes();
+		wal.scene = Runner::gameState._loadedScenes[GameState::SceneID::TitleScreenScene];
 
 		try {
-			wal.run<GameState>(updateState);
+			wal.run<GameState>(Runner::updateState, Runner::gameState);
 			return 0;
 		} catch (const std::exception &ex) {
 			std::cerr << ex.what() << std::endl;

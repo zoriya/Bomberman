@@ -56,6 +56,9 @@ namespace WAL
 			return *view;
 		}
 
+		//! @return ID of the scene
+		int getID() const;
+
 		//! @brief A default constructor
 		Scene() = default;
 		//! @brief A scene is copy constructable
