@@ -14,6 +14,7 @@ const std::map<SoundComponent::soundIndex, std::string> &soundPath)
 		  _soundIndex(IDLE),
 		  _soundPath(soundPath)
 	{
+		this->volume = 1;
 		for (int i = 0; i <= DEATH; i++) {
 			if (soundPath.at(static_cast<soundIndex>(i)).empty()) {
 				this->_isLoad[static_cast<soundIndex>(i)] = false;

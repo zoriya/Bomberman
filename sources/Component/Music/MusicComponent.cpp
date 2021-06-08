@@ -12,6 +12,7 @@ namespace BBM
 		  _musicPath(musicPath),
 		  _music(RAY::Audio::Music(musicPath))
 	{
+		this->volume = 1;
 	}
 
 	WAL::Component *MusicComponent::clone(WAL::Entity &entity) const

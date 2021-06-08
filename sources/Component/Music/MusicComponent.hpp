@@ -44,7 +44,7 @@ namespace BBM
 		//! @brief A Music component is not assignable
 		MusicComponent &operator=(const MusicComponent &) = delete;
 		//! @brief Volume of the muisc
-		float volume = 1;
+		static float volume;
 	private:
 		//! @brief music of this entity
 		RAY::Audio::Music _music;

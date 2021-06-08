@@ -61,7 +61,7 @@ namespace BBM
 		//! @brief A Sound component is not assignable
 		SoundComponent &operator=(const SoundComponent &) = delete;
 		//! @brief Volume of the sounds
-		float volume = 1;
+		static float volume;
 
 	private:
 		//! @brief Sounds of this entity
