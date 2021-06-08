@@ -168,8 +168,9 @@ namespace BBM
 				
 				texture->use("assets/buttons/button_exit_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
+				wal.shouldClose = true;
 				//close window
 			});
 
@@ -331,7 +332,7 @@ namespace BBM
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 		auto &back = scene->addEntity("back to menu")
-			.addComponent<PositionComponent>(10, 10, 0)
+			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
