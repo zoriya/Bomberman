@@ -42,3 +42,8 @@ void RAY::Controller::GamePad::setID(int id)
 {
 	this->_id = id;
 }
+
+float RAY::Controller::GamePad::getAxisValue(int index)
+{
+	return GetGamepadAxisMovement(this->_id, index);
+}

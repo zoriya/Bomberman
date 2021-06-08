@@ -76,7 +76,8 @@ namespace BBM
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
-			.addComponent<KeyboardComponent>()
+			//.addComponent<KeyboardComponent>()
+			.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
@@ -96,6 +97,7 @@ namespace BBM
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, int>(), &MapGenerator::wallCollide, -1, 3);*/
 		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+
 		return scene;
 	}
 
