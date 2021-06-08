@@ -131,6 +131,11 @@ namespace RAY {
 			//! @return true if the window's context has been correctly initialized
 			bool isReady() const;
 
+			//! @param key if this key is pressed, the window will close
+			//! @info Default is ESC key
+			//! @info Calling this function override the previous closing key
+			void setExitKey(Controller::Keyboard::Key key);
+
 
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true

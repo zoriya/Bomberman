@@ -49,6 +49,7 @@ bool RAY::Window::open(void)
 	}
 	InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
 	this->_isOpen = true;
+	this->setExitKey(Controller::Keyboard::Key::KEY_NULL);
 	return true;
 }
 
@@ -176,4 +177,9 @@ void RAY::Window::drawFPS(const RAY::Vector2 &position)
 bool RAY::Window::isReady() const
 {
 	return IsWindowReady();
+}
+
+void RAY::Window::setExitKey(RAY::Controller::Keyboard::Key key)
+{
+	SetExitKey(key);
 }

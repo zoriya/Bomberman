@@ -171,7 +171,6 @@ namespace BBM
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				wal.shouldClose = true;
-				//close window
 			});
 
 		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
@@ -186,17 +185,79 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadPauseMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
+		auto &play = scene->addEntity("play button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+			});
+		auto &settings = scene->addEntity("settings button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_settings.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_settings_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
+			});
+		auto &exit = scene->addEntity("exit button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_exit.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_exit_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+			});
 		//needed material
-		//return button
-		//return button assets
-		//settings button
-		//settings button assets
-		//quit button
-		//quit button assets
-		//plain background
-		//logo
 		//music
 		//sound
+		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
+		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
+		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &play);
 		return scene;
 	}
 
