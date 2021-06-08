@@ -50,7 +50,7 @@ namespace BBM
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 		//! @brief Create a new SoundComponent at a certain Sound
-		SoundComponent(WAL::Entity &entity, std::map<soundIndex, std::string> &);
+		explicit SoundComponent(WAL::Entity &entity, const std::map<soundIndex, std::string> &);
 		//! @brief A Sound component is copy constructable
 		SoundComponent(const SoundComponent &) = default;
 		//! @brief A default destructor
@@ -63,15 +63,10 @@ namespace BBM
 
 		std::map<soundIndex, bool> _isLoad;
 
-		std::map<soundIndex, std::string> _soundPath;
+		const std::map<soundIndex, std::string> _soundPath;
 
 		//! SoundIndex
 		soundIndex _soundIndex;
-
-	
-		//! @brief Create a new SoundComponent linked to a specific entity
-		explicit SoundComponent(WAL::Entity &entity);
-		
 
 	};
 

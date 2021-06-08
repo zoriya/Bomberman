@@ -9,7 +9,7 @@
 namespace BBM
 {
     SoundComponent::SoundComponent(WAL::Entity &entity, \
-std::map<SoundComponent::soundIndex, std::string> &soundPath)
+const std::map<SoundComponent::soundIndex, std::string> &soundPath)
         : WAL::Component(entity),
           _soundIndex(IDLE),
           _soundPath(soundPath)
@@ -24,15 +24,9 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
         }
     }
 
-    SoundComponent::SoundComponent(WAL::Entity &entity)
-		: Component(entity),
-		  _soundList(),
-		  _soundIndex()
-	{}
-
     WAL::Component *SoundComponent::clone(WAL::Entity &entity) const
 	{
-		return new SoundComponent(entity);
+		return new SoundComponent(entity, this->_soundPath);
 	}
 
 	void SoundComponent::playSound()
