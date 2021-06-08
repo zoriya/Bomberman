@@ -107,7 +107,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_big.png");
 		scene->addEntity("text_prompt")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 130, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), ORANGE)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnIdleComponent>()
 			.addComponent<OnHoverComponent>()
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -296,7 +296,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &music = scene->addEntity("music text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), ORANGE)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>() 
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -343,7 +343,7 @@ namespace BBM
 
 		auto &sound = scene->addEntity("sound text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), ORANGE)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -390,7 +390,7 @@ namespace BBM
 
 		auto &debug = scene->addEntity("debug text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), ORANGE)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());

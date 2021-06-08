@@ -15,18 +15,26 @@ namespace BBM
 		: System(wal), wal(wal), currentButton()
 	{}
 
-	void MenuControllableSystem::updateCurrentButton()
+	void MenuControllableSystem::updateCurrentButton(bool selected)
 	{
 		auto buttonComponent = this->currentButton->getComponent<OnClickComponent>();
+		WAL::Entity *newButton = nullptr; 
+
 		if (move.y > 0 && buttonComponent._up)
-			this->currentButton = buttonComponent._up;
+			newButton = buttonComponent._up;
 		if (move.y < 0 && buttonComponent._down)
-			this->currentButton = buttonComponent._down;
+			newButton = buttonComponent._down;
 		if (move.x < 0 && buttonComponent._right)
-			this->currentButton = buttonComponent._right;
+			newButton = buttonComponent._right;
 		if (move.x > 0 && buttonComponent._left)
-			this->currentButton = buttonComponent._left;
-		
+			newButton = buttonComponent._left;
+		if (newButton) {
+			this->currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, wal);
+			this->currentButton = newButton;
+			this->currentButton->getComponent<OnHoverComponent>().onEvent(*this->currentButton, wal);
+		}
+		if (selected)
+		    this->currentButton->getComponent<OnClickComponent>().onEvent(*this->currentButton, wal);
 	}
 
 	void MenuControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entity)
@@ -41,22 +49,17 @@ namespace BBM
 
 		move = controllable.move;
 		select = controllable.jump;
-		if (currentButton && currentButton->_scene.getID() != wal.scene->getID())
+		if (currentButton && currentButton->_scene.getID() != wal.scene->getID()) {
+			currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, wal);
 			currentButton = nullptr;
-		if (currentButton == nullptr && buttons.size())
+		}
+		if (currentButton == nullptr && buttons.size()) {
 			currentButton = &(**buttons.begin());
+			currentButton->getComponent<OnHoverComponent>().onEvent(*this->currentButton, wal);
+		}
 		if (!currentButton)
 			return;
-		this->updateCurrentButton();
-		for (auto &[buttonEntity, clickComponent, hoverComponent, idleComponent]: buttons) {
-			if (buttonEntity == *currentButton) {
-				hoverComponent.onEvent(buttonEntity, wal);
-				if (select)
-					clickComponent.onEvent(buttonEntity, wal);
-				continue;
-			}
-			idleComponent.onEvent(buttonEntity, wal);
-		}
+		this->updateCurrentButton(select);
 	}
 
 	void MenuControllableSystem::onSelfUpdate(void)

@@ -30,7 +30,8 @@ namespace BBM
 		bool cancel = false;
 
 		//! @brief update current button reference
-		void updateCurrentButton();
+		//! @param selected lets know if te new selected button is 'pressed'
+		void updateCurrentButton(bool selected);
 
 		//! @brief time (in mili second) since last check
 		std::chrono::time_point<std::chrono::steady_clock> _now;
