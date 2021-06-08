@@ -10,15 +10,15 @@
 
 namespace BBM
 {
-	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, std::function<void (WAL::Entity &)> callback)
-			: WAL::Component(entity),
-			  _healthPoint(healthPoint),
-			  onDeath(std::move(callback))
+	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, const WAL::Callback<WAL::Entity &> &onDeath)
+		: WAL::Component(entity),
+		  _healthPoint(healthPoint),
+		  onDeath(onDeath)
 	{}
 
 	WAL::Component *HealthComponent::clone(WAL::Entity &entity) const
 	{
-		return new HealthComponent(entity);
+		return new HealthComponent(entity, this->_healthPoint, this->onDeath);
 	}
 
 	void HealthComponent::addHealthPoint(unsigned int healthPoint)
