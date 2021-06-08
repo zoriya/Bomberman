@@ -21,7 +21,7 @@ namespace BBM
 			//! @brief bomb key
 			Key keyBomb = KEY_E;
 			//! @brief pause key
-			Key keyPause = KEY_ESCAPE;
+			Key keyPause = KEY_M;
 			//! @brief move right key
 			Key keyRight = KEY_A;
 			//! @brief move left key

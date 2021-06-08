@@ -307,7 +307,7 @@ namespace BBM
 			});
 
 		auto &musicUp = scene->addEntity("music up button")
-			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -324,7 +324,7 @@ namespace BBM
 			});
 
 		auto &musicDown = scene->addEntity("music down button")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -354,7 +354,7 @@ namespace BBM
 			});
 
 		auto &soundUp = scene->addEntity("sound up button")
-			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -371,7 +371,7 @@ namespace BBM
 			});
 
 		auto &soundDown = scene->addEntity("sound down button")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -435,12 +435,12 @@ namespace BBM
 		//music
 		//sound
 
-		music.getComponent<OnClickComponent>().setButtonLinks(&back, &sound, &musicUp, &musicDown);
-		musicUp.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, nullptr, &music);
-		musicDown.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &music);
-		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundUp, &soundDown);
-		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
-		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
+		music.getComponent<OnClickComponent>().setButtonLinks(&back, &sound, &musicDown, &musicUp);
+		musicDown.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, nullptr, &music);
+		musicUp.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &music);
+		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundDown, &soundUp);
+		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
+		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
 		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back);
 		back.getComponent<OnClickComponent>().setButtonLinks(&debug, &music);
 		return scene;
@@ -449,6 +449,9 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		scene->addEntity("control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
