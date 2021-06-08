@@ -178,9 +178,7 @@ namespace WAL
 
 		void erase(const Entity &entity) override
 		{
-			this->_entities.erase(std::remove_if(this->_entities.begin(), this->_entities.end(), [&entity](const auto &ref){
-				if (std::get<0>(ref).get().getUid() == entity.getUid())
-					return true;
+			this->_entities.erase(std::remove_if(this->_entities.begin(), this->_entities.end(), [&entity](const auto &ref) {
 				return std::get<0>(ref).get().getUid() == entity.getUid();
 			}), this->_entities.end());
 		}
