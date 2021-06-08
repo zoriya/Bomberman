@@ -23,16 +23,13 @@ namespace BBM
 	{   
 		if (!this->_music.isPlaying()) {
 			this->_music.play();
-			this->_music.updateMusicStream();
 		}
 	}
 
 	void MusicComponent::stopMusic(void)
 	{
-		if (!this->_music.isPlaying()) {
+		if (this->_music.isPlaying())
 			this->_music.stop();
-			this->_music.updateMusicStream();
-		}
 	}
 
 	void MusicComponent::pauseMusic(void)
