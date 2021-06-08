@@ -59,6 +59,23 @@ namespace RAY::Exception {
 			//! @brief A default assignment operator
 			NotSupportedError &operator=(const NotSupportedError &) = default;
 	};
+
+
+	//! @brief exception used when an non-supported operation is done
+	class WrongInputError: public RayError {
+	public:
+		//! @brief Create a new exception instance
+		explicit WrongInputError(const std::string &what = "The input can't be proceed");
+
+		//! @brief A default destructor
+		~WrongInputError() override = default;
+
+		//! @brief An exception is copy constructable
+		WrongInputError(const WrongInputError &) = default;
+
+		//! @brief A default assignment operator
+		WrongInputError &operator=(const WrongInputError &) = default;
+	};
 }
 
 #endif /* !RAYERROR_HPP_ */
