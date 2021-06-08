@@ -24,6 +24,7 @@ namespace BBM
 			PauseMenuScene,
 			LobbyScene,
 			TitleScreenScene,
+			CreditScene,
 		};
 
 

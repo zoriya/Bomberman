@@ -191,10 +191,29 @@ namespace BBM
 			{
 				wal.shouldClose = true;
 			});
-
-		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
+		auto &credits = scene->addEntity("credit button")
+			.addComponent<PositionComponent>(1920 - 100, 1080 - 30, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Credits", 20, RAY::Vector2(), BLACK)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				text->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				text->setColor(ORANGE);
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::CreditScene;
+			});
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
-		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &play);
+		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &credits, nullptr, &credits);
+		credits.getComponent<OnClickComponent>().setButtonLinks(&exit, nullptr, &exit);
 		//needed material
 		//music
 		//sound
@@ -274,9 +293,9 @@ namespace BBM
 		//needed material
 		//music
 		//sound
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &exit, &settings);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &play, &exit);
-		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, &play);
+		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, nullptr);
 		return scene;
 	}
 
@@ -436,14 +455,14 @@ namespace BBM
 		//music
 		//sound
 
-		music.getComponent<OnClickComponent>().setButtonLinks(&back, &sound, &musicDown, &musicUp);
+		music.getComponent<OnClickComponent>().setButtonLinks(nullptr, &sound, &musicDown, &musicUp);
 		musicDown.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, nullptr, &music);
 		musicUp.getComponent<OnClickComponent>().setButtonLinks(&debug, &sound, &music);
 		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundDown, &soundUp);
 		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
 		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
-		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back);
-		back.getComponent<OnClickComponent>().setButtonLinks(&debug, &music);
+		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back, &back);
+		back.getComponent<OnClickComponent>().setButtonLinks(&debug, nullptr, nullptr, &debug);
 		return scene;
 	}
 
@@ -480,6 +499,54 @@ namespace BBM
 		return scene;
 	}
 
+	std::shared_ptr<WAL::Scene> Runner::loadCreditScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+
+		auto &raylibLogo = scene->addEntity("raylib logo")
+			.addComponent<PositionComponent>(1920 / 4, 1080 / 1.75, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/raylib.png");
+		auto &raylibText = scene->addEntity("raylib text")
+			.addComponent<PositionComponent>(1920 / 4, 1080 / 2, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Powered by:", 35, RAY::Vector2(), BLACK);
+		auto &otherRepoText = scene->addEntity("other repo text")
+			.addComponent<PositionComponent>(1920 / 4, 1080 / 4, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Many Thanks to:", 35, RAY::Vector2(), BLACK);
+		auto &BriansRepo = scene->addEntity("thx brian")
+			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 3.5, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Brian Guitteny (and his team)", 35, RAY::Vector2(), BLACK);
+		auto &team = scene->addEntity("team")
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 / 3.5, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Team:\n Zoe Roux\n Clément Le Bihan\n Arthur Jamet\n Louis Auzuret\n Benjamin Henry\n Tom Augier", 35, RAY::Vector2(), BLACK);
+		auto &back = scene->addEntity("back to menu")
+			.addComponent<PositionComponent>(10, 1080 - 85, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				
+				texture->use("assets/buttons/button_back_hovered.png");
+			});
+		return scene;
+	}
+
 	void Runner::loadScenes()
 	{
 		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
@@ -487,6 +554,7 @@ namespace BBM
 		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
 		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
 		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
+		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
 	}
 
 	int Runner::run()
