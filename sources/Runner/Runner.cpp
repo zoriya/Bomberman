@@ -9,21 +9,25 @@
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
 #include <TraceLog.hpp>
-#include <System/Keyboard/KeyboardSystem.hpp>
-#include <System/Controllable/ControllableSystem.hpp>
+#include "System/Keyboard/KeyboardSystem.hpp"
+#include "System/Controllable/ControllableSystem.hpp"
+#include "Component/Movable/MovableComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Component/Keyboard/KeyboardComponent.hpp"
+#include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
-#include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
-#include <Component/Controllable/ControllableComponent.hpp>
-#include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
-#include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Timer/TimerSystem.hpp>
+#include <System/BombHolder/BombHolderSystem.hpp>
+#include <System/Event/EventSystem.hpp>
+#include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
+#include <Component/Animator/AnimatorComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -48,9 +52,13 @@ namespace BBM
 
 	void addSystems(WAL::Wal &wal)
 	{
-		wal.addSystem<KeyboardSystem>()
+		wal.addSystem<TimerSystem>()
+			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
+			.addSystem<BombHolderSystem>()
+			.addSystem<EventSystem>()
+			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>()
 			.addSystem<SoundManagerSystem>()
@@ -84,11 +92,12 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
+			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
-			.addComponent<MusicComponent>("assets/musics/music_win.ogg")
 			.addComponent<SoundComponent>(soundPath)
+			.addComponent<BombHolderComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
@@ -96,14 +105,15 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-//		scene->addEntity("cube")
-//			.addComponent<PositionComponent>(5, 0, 5)
-//			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-//			.addComponent<ControllableComponent>()
-//			.addComponent<KeyboardComponent>()
-//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
+		/*scene->addEntity("cube")
+			.addComponent<PositionComponent>(-5, 0, -5)
+			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(0, 0, 0), Vector3f(3, 3, 3), RED)
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, int>(), &MapGenerator::wallCollide, -1, 3);*/
 		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+
 		return scene;
 	}
 
