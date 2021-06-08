@@ -45,6 +45,10 @@ namespace BBM
 		auto &controllable = entity.get<ControllableComponent>();
 
 		lua_getglobal(ia.state, "Update");
+		if (!lua_isfunction(ia.state, -1))
+			return;
+		//std::vector<> players;
+		//std::vector<> map;
 		//push parameters
 		int nbParams = 0;
 		int nbReturn = 4;

@@ -5,7 +5,7 @@
 ** IAControllableComponent
 */
 
-#include "IAControllableComponent.hpp"
+#include "Component/IAControllable/IAControllableComponent.hpp"
 
 namespace BBM
 {
