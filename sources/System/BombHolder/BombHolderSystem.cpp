@@ -7,6 +7,8 @@
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "BombHolderSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
+#include <functional>
+#include <iostream>
 
 using namespace std::chrono_literals;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -14,27 +16,39 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace BBM
 {
 	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 3s;
-	float BombHolderSystem::explosionRadius = 3;
 
 	BombHolderSystem::BombHolderSystem(WAL::Wal &wal)
 		: System(wal)
 	{}
 
-	void BombHolderSystem::_bombExplosion(WAL::Entity &bomb, WAL::Wal &wal)
+	void BombHolderSystem::_dispatchExplosion(Vector3f position, WAL::Wal &wal, int count)
 	{
-		bomb.scheduleDeletion();
-		auto &bombPosition = bomb.getComponent<PositionComponent>();
-		wal.getSystem<EventSystem>().dispatchEvent([&bombPosition](WAL::Entity &entity){
+		if (count <= 0)
+			return;
+		std::cout << position << " count: " << count << std::endl;
+		// TODO use it in a global context with a find and so on.
+		wal.getSystem<EventSystem>().dispatchEvent([position, &wal, count](WAL::Entity &entity) {
 			auto *health = entity.tryGetComponent<HealthComponent>();
 			auto *pos = entity.tryGetComponent<PositionComponent>();
 
-			if (!health || !pos)
-				return;
-			if (pos->position.distance(bombPosition.position) > BombHolderSystem::explosionRadius)
-				return;
-			// TODO do a raycast here to only remove health to entities that are not behind others.
-			health->takeDmg(1);
+			if (health && pos && pos->position.round() == position) {
+				std::cout << pos->position << std::endl;
+				health->takeDmg(1);
+			}
+			else {
+				_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
+				_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
+				_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
+				_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
+			}
 		});
+	}
+
+	void BombHolderSystem::_bombExplosion(WAL::Entity &bomb, WAL::Wal &wal)
+	{
+		bomb.scheduleDeletion();
+		auto position = bomb.getComponent<PositionComponent>().position.round();
+		_dispatchExplosion(position, wal, 2);
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position)
