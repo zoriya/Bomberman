@@ -83,7 +83,7 @@ namespace BBM
 			.addComponent<KeyboardComponent>()
 			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<BombHolderComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
