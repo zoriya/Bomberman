@@ -8,6 +8,7 @@
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 #include <optional>
+#include "Wal.hpp"
 
 namespace BBM
 {
@@ -18,7 +19,7 @@ namespace BBM
 	{	
 		public:
 			//! @brief onEvent callback
-			WAL::Callback<WAL::Entity &> onEvent;
+			WAL::Callback<WAL::Entity &, WAL::Wal &> onEvent;
 
 			//! @brief button which is at the top of this button
 			WAL::Entity *_up;
@@ -41,7 +42,7 @@ namespace BBM
 			{ }
 
 			//! @brief Constructor with the 3 callback
-			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &> callback)
+			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, WAL::Wal &> callback)
 				:	WAL::Component(entity),
 					onEvent(callback), _up(nullptr), _down(nullptr), _left(nullptr), _right(nullptr)
 			{ }

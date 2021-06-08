@@ -64,7 +64,4 @@ namespace WAL
 			this->addCallback(callback);
 		}
 	};
-
-	template<typename ...Types>
-	static constexpr Callback<Types...> EmptyCallback;
 } // namespace WAL

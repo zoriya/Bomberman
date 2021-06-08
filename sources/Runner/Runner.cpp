@@ -26,6 +26,8 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <Model/ModelAnimations.hpp>
+#include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Animator/AnimatorSystem.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -68,6 +70,7 @@ namespace BBM
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
 		wal.addSystem<AnimationsSystem>()
+			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);
 	}
 
@@ -88,7 +91,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), ORANGE)
 			.addComponent<OnIdleComponent>()
 			.addComponent<OnHoverComponent>()
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
@@ -115,57 +118,57 @@ namespace BBM
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_new_game.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_new_game_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_settings.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_settings_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
 		auto &exit = scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_exit.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_exit_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				//close window
 			});
@@ -214,11 +217,11 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), ORANGE)
 			.addComponent<OnClickComponent>() 
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
@@ -227,13 +230,13 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_plus.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -244,13 +247,13 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_minus.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -261,8 +264,11 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), ORANGE)
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>()
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
@@ -271,13 +277,13 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_plus.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -288,13 +294,13 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<OnClickComponent>()
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_minus.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -304,38 +310,40 @@ namespace BBM
 		auto &debug = scene->addEntity("debug text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), ORANGE)
-			.addComponent<OnClickComponent>([this](WAL::Entity &entity, WAL::Wal &wal)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
-				if (text->getString().find("Off") != std::string::npos)
+				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("Debug Mode: On");
-				else
+					wal.getSystem<RenderSystem>().setDebug(true);
+				} else {
 					text->setText("Debug Mode: Off");
-				wal.getSystem<RenderSystem>.
+					wal.getSystem<RenderSystem>().setDebug(false);
+				}
 			})
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 10, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>([](WAL::Entity &entity)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			})
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_back.png");
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
@@ -365,14 +373,24 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
+			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 1)
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(1)
-			.addComponent<MovableComponent>();
-
+			.addComponent<MovableComponent>()
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+				auto &animation = entity.getComponent<AnimationsComponent>();
+				animation.setAnimIndex(5);
+			});
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+//		scene->addEntity("cube")
+//			.addComponent<PositionComponent>(5, 0, 5)
+//			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+//			.addComponent<ControllableComponent>()
+//			.addComponent<KeyboardComponent>()
+//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
 		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;

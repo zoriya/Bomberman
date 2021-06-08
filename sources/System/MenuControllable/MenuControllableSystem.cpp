@@ -48,12 +48,12 @@ namespace BBM
 		this->updateCurrentButton();
 		for (auto &[buttonEntity, clickComponent]: buttons) {
 			if (buttonEntity == *currentButton) {
-				buttonEntity.getComponent<OnHoverComponent>().onEvent(buttonEntity);
+				buttonEntity.getComponent<OnHoverComponent>().onEvent(buttonEntity, wal);
 				if (select)
-					clickComponent.onEvent(buttonEntity);
+					clickComponent.onEvent(buttonEntity, wal);
 				continue;
 			}
-			buttonEntity.getComponent<OnIdleComponent>().onEvent(buttonEntity);
+			buttonEntity.getComponent<OnIdleComponent>().onEvent(buttonEntity, wal);
 		}
 	}
 

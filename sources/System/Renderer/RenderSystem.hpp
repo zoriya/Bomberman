@@ -21,6 +21,13 @@ namespace BBM
 
 		//! @brief The camera used to render.
 		RAY::Camera::Camera3D _camera;
+
+		//! @brief Defines if the debug informations must be displayed or not
+		bool _debugMode;
+
+		//! @brief Window framerate limit
+		static constexpr short FPS = 60;
+
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here
@@ -29,8 +36,11 @@ namespace BBM
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
 
+		//! @param debug true if debug mode should be enabled
+		void setDebug(bool debug);
+
 		//! @brief ctor
-		RenderSystem(WAL::Wal &wal, RAY::Window &window);
+		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = false);
 		//! @brief Default copy ctor
 		RenderSystem(const RenderSystem &) = default;
 		//! @brief Default dtor

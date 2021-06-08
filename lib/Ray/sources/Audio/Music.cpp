@@ -8,57 +8,50 @@
 #include "Audio/Music.hpp"
 #include <raylib.h>
 
+RAY::Cache<::Music> RAY::Audio::Music::_musicsCache(LoadMusicStream, UnloadMusicStream);
+
 RAY::Audio::Music::Music(const std::string &path):
-	_music(LoadMusicStream(path.c_str()))
+	_music(this->_musicsCache.fetch(path.c_str()))
 {
-}
-
-RAY::Audio::Music::Music()
-{
-}
-
-RAY::Audio::Music::~Music()
-{
-	UnloadMusicStream(_music);
 }
 
 bool RAY::Audio::Music::isPlaying(void)
 {
-	return IsMusicStreamPlaying(_music);
+	return IsMusicStreamPlaying(*_music);
 }
 
 RAY::Audio::Music &RAY::Audio::Music::play(void)
 {
-	PlayMusicStream(_music);
+	PlayMusicStream(*_music);
 	return *this;
 }
 
 RAY::Audio::Music &RAY::Audio::Music::stop(void)
 {
-	StopMusicStream(_music);
+	StopMusicStream(*_music);
 	return *this;
 }
 
 RAY::Audio::Music &RAY::Audio::Music::pause(void)
 {
-	PauseMusicStream(_music);
+	PauseMusicStream(*_music);
 	return *this;
 }
 
 RAY::Audio::Music &RAY::Audio::Music::resume(void)
 {
-	ResumeMusicStream(_music);
+	ResumeMusicStream(*_music);
 	return *this;
 }
 
 RAY::Audio::Music &RAY::Audio::Music::setVolume(float volume)
 {
-	SetMusicVolume(_music, volume);
+	SetMusicVolume(*_music, volume);
 	return *this;
 }
 
 RAY::Audio::Music &RAY::Audio::Music::setPitch(float pitch)
 {
-	SetMusicPitch(_music, pitch);
+	SetMusicPitch(*_music, pitch);
 	return *this;
 }
