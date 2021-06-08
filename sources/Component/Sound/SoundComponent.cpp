@@ -19,7 +19,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
                 this->_isLoad[static_cast<soundIndex>(i)] = false;
             } else {
                 this->_isLoad[static_cast<soundIndex>(i)] = true;
-                this->_soundList[static_cast<soundIndex>(i)] = std::unique_ptr<RAY::Audio::Sound>(new RAY::Audio::Sound(soundPath.at(static_cast<soundIndex>(i))));
+                this->_soundList[static_cast<soundIndex>(i)] = std::make_unique<RAY::Audio::Sound>(soundPath.at(static_cast<soundIndex>(i)));
             }
         }
     }
@@ -35,7 +35,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
 		return new SoundComponent(entity);
 	}
 
-	void SoundComponent::playSound(void)
+	void SoundComponent::playSound()
     {   
         if (!this->_isLoad.at(this->_soundIndex))
             return;
@@ -43,7 +43,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
             this->_soundList[this->_soundIndex].get()->play();
     }
 
-    void SoundComponent::stopSound(void)
+    void SoundComponent::stopSound()
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
@@ -51,7 +51,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
             this->_soundList[this->_soundIndex].get()->stop();
     }
 
-    void SoundComponent::pauseSound(void)
+    void SoundComponent::pauseSound()
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return;
@@ -73,7 +73,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
         this->_soundList[this->_soundIndex].get()->setPitch(pitch);
     }
 
-	bool SoundComponent::isPlaying(void)
+	bool SoundComponent::isPlaying()
     {
         if (!this->_isLoad.at(this->_soundIndex))
             return (false);
@@ -85,7 +85,7 @@ std::map<SoundComponent::soundIndex, std::string> &soundPath)
         this->_soundIndex = index;
     }
 
-    SoundComponent::soundIndex SoundComponent::getIndex(void)
+    SoundComponent::soundIndex SoundComponent::getIndex()
     {
         return (this->_soundIndex);
     }

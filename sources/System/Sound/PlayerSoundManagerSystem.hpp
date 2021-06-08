@@ -13,14 +13,14 @@
 
 namespace BBM
 {
-	class SoundManagerSystem : public WAL::System
+	class SoundManagerSystem : public WAL::System<SoundComponent, ControllableComponent, HealthComponent>
 	{
 	public:
         //! @inherit
-		void onFixedUpdate(WAL::Entity &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity) override;
 		
 		//! @brief ctor
-		SoundManagerSystem();
+		SoundManagerSystem(WAL::Wal &wal);
 		//! @brief Default copy ctor
 		SoundManagerSystem(const SoundManagerSystem &) = default;
 		//! @brief Default dtor

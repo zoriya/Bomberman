@@ -7,20 +7,16 @@
 
 namespace BBM
 {
-    MusicComponent::MusicComponent(WAL::Entity &entity, std::string &musicPath)
+    MusicComponent::MusicComponent(WAL::Entity &entity, const std::string &musicPath)
         : WAL::Component(entity),
+          _musicPath(musicPath),
           _music(RAY::Audio::Music(musicPath))
     {
     }
 
-    MusicComponent::MusicComponent(WAL::Entity &entity)
-		: Component(entity),
-          _music()
-	{}
-
     WAL::Component *MusicComponent::clone(WAL::Entity &entity) const
 	{
-		return new MusicComponent(entity);
+		return new MusicComponent(entity, this->_musicPath);
 	}
 
 	void MusicComponent::loadMusic(void)

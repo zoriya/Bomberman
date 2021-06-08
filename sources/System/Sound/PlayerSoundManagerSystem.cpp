@@ -3,33 +3,30 @@
 //
 
 #include "PlayerSoundManagerSystem.hpp"
+#include <map>
 
 namespace BBM {
 
-    
-	SoundManagerSystem::SoundManagerSystem()
-		: WAL::System({
-			typeid(SoundComponent),
-            typeid(HealthComponent)
-		})
+	SoundManagerSystem::SoundManagerSystem(WAL::Wal &wal)
+		: System(wal)
 	{}
 
-    void SoundManagerSystem::onFixedUpdate(WAL::Entity &entity)
-    {
-        if (!entity.hasComponent<ControllableComponent>())
-			return;
-        const auto &controllable = entity.getComponent<ControllableComponent>();
-        auto &sound = entity.getComponent<SoundComponent>();
-        auto &health = entity.getComponent<HealthComponent>();
+	void SoundManagerSystem::onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity)
+	{
+		const auto &controllable = entity.get<ControllableComponent>();
+		auto &sound = entity.get<SoundComponent>();
+		auto &health = entity.get<HealthComponent>();
 
-        sound.setIndex(SoundComponent::BOMB);
-        if (controllable.bomb)
-            sound.playSound();
-        sound.setIndex(SoundComponent::JUMP);
-        if (controllable.jump)
-            sound.playSound();
-        sound.setIndex(SoundComponent::MOVE);
-        if (controllable.move.x != 0 || controllable.move.y != 0)
-            sound.playSound();
-    }
+		std::map<bool, SoundComponent::soundIndex> soundIndex = {
+			{controllable.bomb, SoundComponent::BOMB},
+			{controllable.jump, SoundComponent::JUMP},
+			{controllable.move.x != 0 || controllable.move.y != 0, SoundComponent::MOVE}
+		};
+		for (auto &a : soundIndex) {
+			if (a.first) {
+				sound.setIndex(a.second);
+				sound.playSound();
+			}
+		}
+	}
 }

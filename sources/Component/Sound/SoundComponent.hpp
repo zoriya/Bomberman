@@ -45,7 +45,7 @@ namespace BBM
 		void setPitch(float &);
 
 		//! @brief is Sound playing
-		bool isPlaying(void);
+		bool isPlaying();
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
