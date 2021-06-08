@@ -45,6 +45,8 @@ namespace BBM
 			currentButton = nullptr;
 		if (currentButton == nullptr && buttons.size())
 			currentButton = &(**buttons.begin());
+		if (!currentButton)
+			return;
 		this->updateCurrentButton();
 		for (auto &[buttonEntity, clickComponent]: buttons) {
 			if (buttonEntity == *currentButton) {

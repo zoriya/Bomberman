@@ -392,7 +392,6 @@ namespace BBM
 //			.addComponent<ControllableComponent>()
 //			.addComponent<KeyboardComponent>()
 //			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
-		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
@@ -408,6 +407,7 @@ namespace BBM
 
 	int Runner::run()
 	{
+		std::srand(std::time(nullptr));
 		WAL::Wal wal;
 		Runner::addSystems(wal);
 		Runner::enableRaylib(wal);
