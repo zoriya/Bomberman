@@ -212,10 +212,10 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("pause text")
-			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("PAUSE", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 6.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -253,7 +253,7 @@ namespace BBM
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
 		auto &exit = scene->addEntity("exit button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -274,9 +274,9 @@ namespace BBM
 		//needed material
 		//music
 		//sound
-		play.getComponent<OnClickComponent>().setButtonLinks(&exit, &settings);
-		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
-		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &play);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &exit, &settings);
+		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &play, &exit);
+		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, &play);
 		return scene;
 	}
 
