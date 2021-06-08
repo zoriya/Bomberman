@@ -20,8 +20,7 @@ namespace BBM {
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();
-			std::cout << "Explosion is supposed to deal 1 more damage here" << std::endl;
-			//bombHolder.damage++;
+			bombHolder.damage++;
 		}
 	}
 
@@ -29,8 +28,7 @@ namespace BBM {
 	{
 		if (player.hasComponent<BombHolderComponent>()) {
 			auto &bombHolder = player.getComponent<BombHolderComponent>();
-			std::cout << "Explosion is supposed to be 1 range higher here" << std::endl;
-			//bombHolder.explosionRange++;
+			bombHolder.explosionRadius++;
 		}
 	}
 

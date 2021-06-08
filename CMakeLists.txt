@@ -91,6 +91,8 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Bomb/BasicBombComponent.cpp
+	sources/Component/Bomb/BasicBombComponent.hpp
 )
 add_executable(bomberman
                sources/main.cpp
