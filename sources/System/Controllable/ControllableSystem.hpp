@@ -9,14 +9,17 @@
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "System/System.hpp"
 
+using namespace std::chrono_literals;
+
 namespace BBM
 {
 	//! @brief A system to handle Controllable entities.
 	class ControllableSystem : public WAL::System<ControllableComponent, MovableComponent>
 	{
 	public:
+
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity) override;
+		void onUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit ControllableSystem(WAL::Wal &wal);

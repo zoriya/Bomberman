@@ -46,7 +46,8 @@ namespace BBM {
 		if (!player.hasComponent<MovableComponent>())
 			return;
 		auto &controllable = player.getComponent<ControllableComponent>();
-		controllable.speed += 0.02f;
+		controllable.speed = 0.35f;
+		controllable.nextSpeedBonusRate = controllable.speedBonusRate;
 	}
 
 	void Bonus::IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)

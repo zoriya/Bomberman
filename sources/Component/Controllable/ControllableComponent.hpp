@@ -8,6 +8,9 @@
 #include <Models/Vector2.hpp>
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace BBM
 {
@@ -24,6 +27,10 @@ namespace BBM
 			bool pause = false;
 			//! @brief The speed applied to every controllable entities.
 			float speed = .25f;
+			//! @brief The number of seconds before a speedbonus expire. This variable is used to reset the nextSpeedBonusRate value.
+			std::chrono::nanoseconds speedBonusRate = 15000ms;
+			//! @brief The number of nanosecond before the expiration of a speed bonus.
+			std::chrono::nanoseconds nextSpeedBonusRate = speedBonusRate;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
