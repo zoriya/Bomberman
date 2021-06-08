@@ -8,7 +8,9 @@
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
+#include <Model/Model.hpp>
 #include "Drawables/ADrawable3D.hpp"
+#include "Component/Shaders/ShaderComponent.hpp"
 
 namespace BBM
 {
@@ -29,8 +31,25 @@ namespace BBM
 
 		this->_window.useCamera(this->_camera);
 		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
+			auto *modelShader = _.tryGetComponent<ShaderComponentModel>();
+			auto *shader = _.tryGetComponent<ShaderComponentModel>();
+
+			if (modelShader) {
+				auto &model = dynamic_cast<RAY::Drawables::Drawables3D::Model &>(*drawable.drawable);
+				model.setShader(modelShader->getShader());
+			}
+			if (shader) {
+				RAY::Shader::BeginUsingCustomShader(shader->getShader());
+			}
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
+			if (modelShader) {
+				auto &model = dynamic_cast<RAY::Drawables::Drawables3D::Model &>(*drawable.drawable);
+				model.resetShader();
+			}
+			if (shader) {
+				RAY::Shader::EndUsingCustomShader();
+			}
 		}
 		this->_window.unuseCamera();
 

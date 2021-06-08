@@ -11,6 +11,7 @@
 #include "Drawables/Texture.hpp"
 #include "Drawables/ADrawable3D.hpp"
 #include "Model/ModelAnimation.hpp"
+#include "Shaders/Shaders.hpp"
 #include <raylib.h>
 #include <vector>
 #include <optional>
@@ -77,6 +78,12 @@ namespace RAY::Drawables::Drawables3D {
 			//! @return Scale
 			const RAY::Vector3 & getScale(void);
 
+			//! @brief Set a shader on the model
+			void setShader(const RAY::Shader &shader);
+
+			//! @brief Set the original shader (used to disable a shader)
+			void resetShader();
+
 			void drawOn(RAY::Window &) override;
 
 		private:
@@ -90,6 +97,8 @@ namespace RAY::Drawables::Drawables3D {
 			float _rotationAngle;
 			//! @brief Scale of the shape
 			RAY::Vector3 _scale;
+			//! @brief The original shaderId used to disable a shader effect
+			::Shader _originalShader = {};
 
 			static RAY::Cache<::Model> _modelsCache;
 

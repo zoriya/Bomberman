@@ -106,4 +106,15 @@ namespace RAY::Drawables::Drawables3D {
 	{
 		DrawModelEx(*this->_model, this->_position, this->_rotationAxis, this->_rotationAngle, this->_scale, this->_color);
 	}
+
+	void Model::setShader(const RAY::Shader &shader)
+	{
+		this->_originalShader = this->_model->materials[0].shader;
+		this->_model->materials[0].shader = *shader.getShaderPtr();
+	}
+
+	void Model::resetShader()
+	{
+		this->_model->materials[0].shader = this->_originalShader;
+	}
 }
