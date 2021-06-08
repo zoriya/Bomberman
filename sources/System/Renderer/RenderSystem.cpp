@@ -30,16 +30,12 @@ namespace BBM
 		this->_window.clear();
 
 		this->_window.useCamera(this->_camera);
-		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
-			auto *modelShader = _.tryGetComponent<ShaderComponentModel>();
-			auto *shader = _.tryGetComponent<ShaderComponentModel>();
+		for (auto &[entity, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
+			auto *modelShader = entity.tryGetComponent<ShaderComponentModel>();
 
 			if (modelShader) {
 				auto &model = dynamic_cast<RAY::Drawables::Drawables3D::Model &>(*drawable.drawable);
 				model.setShader(modelShader->getShader());
-			}
-			if (shader) {
-				RAY::Shader::BeginUsingCustomShader(shader->getShader());
 			}
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
@@ -47,16 +43,21 @@ namespace BBM
 				auto &model = dynamic_cast<RAY::Drawables::Drawables3D::Model &>(*drawable.drawable);
 				model.resetShader();
 			}
-			if (shader) {
-				RAY::Shader::EndUsingCustomShader();
-			}
 		}
 		this->_window.unuseCamera();
 
 		// TODO sort entities based on the Z axis
-		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable2DComponent>()) {
+		for (auto &[entity, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable2DComponent>()) {
+			auto *shader = entity.tryGetComponent<ShaderComponentDrawable2D>();
+
+			if (shader) {
+				RAY::Shader::BeginUsingCustomShader(shader->getShader());
+			}
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
+			if (shader) {
+				RAY::Shader::EndUsingCustomShader();
+			}
 		}
 		if (this->_debugMode)
 			this->_window.drawFPS(Vector2f());

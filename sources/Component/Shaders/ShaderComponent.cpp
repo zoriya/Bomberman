@@ -42,7 +42,7 @@ namespace BBM
 	{
 	}
 
-	ShaderComponentDrawable::ShaderComponentDrawable(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath)
+	ShaderComponentDrawable2D::ShaderComponentDrawable2D(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath)
 		: ShaderComponent(entity, std::move(fragmentFilePath), std::move(vertexFilePath))
 	{
 	}

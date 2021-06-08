@@ -62,17 +62,17 @@ namespace BBM
 		ShaderComponentModel &operator=(const ShaderComponentModel &) = delete;
 	};
 
-	class ShaderComponentDrawable : public ShaderComponent
+	class ShaderComponentDrawable2D : public ShaderComponent
 	{
 	public:
 		//! @brief ctor
 		//! @note use empty string to omit a file
-		ShaderComponentDrawable(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath = "");
+		ShaderComponentDrawable2D(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath = "");
 		//! @brief Default copy ctor
-		ShaderComponentDrawable(const ShaderComponentDrawable &) = default;
+		ShaderComponentDrawable2D(const ShaderComponentDrawable2D &) = default;
 		//! @brief Default dtor
-		~ShaderComponentDrawable() override = default;
+		~ShaderComponentDrawable2D() override = default;
 		//! @brief Default assignment operator
-		ShaderComponentDrawable &operator=(const ShaderComponentDrawable &) = delete;
+		ShaderComponentDrawable2D &operator=(const ShaderComponentDrawable2D &) = delete;
 	};
 }
