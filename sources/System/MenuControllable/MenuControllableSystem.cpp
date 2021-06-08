@@ -33,7 +33,7 @@ namespace BBM
 	{
 		auto lastTick = std::chrono::steady_clock::now(); 
 		auto &controllable = entity.get<ControllableComponent>();
-		auto &buttons = _wal.scene->view<OnClickComponent>();
+		auto &buttons = _wal.scene->view<OnClickComponent, OnHoverComponent, OnIdleComponent>();
 		
 		if (lastTick - this->_now < std::chrono::milliseconds(100))
 			return;
@@ -48,14 +48,14 @@ namespace BBM
 		if (!currentButton)
 			return;
 		this->updateCurrentButton();
-		for (auto &[buttonEntity, clickComponent]: buttons) {
+		for (auto &[buttonEntity, clickComponent, hoverComponent, idleComponent]: buttons) {
 			if (buttonEntity == *currentButton) {
-				buttonEntity.getComponent<OnHoverComponent>().onEvent(buttonEntity, wal);
+				hoverComponent.onEvent(buttonEntity, wal);
 				if (select)
 					clickComponent.onEvent(buttonEntity, wal);
 				continue;
 			}
-			buttonEntity.getComponent<OnIdleComponent>().onEvent(buttonEntity, wal);
+			idleComponent.onEvent(buttonEntity, wal);
 		}
 	}
 

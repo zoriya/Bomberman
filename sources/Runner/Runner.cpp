@@ -48,12 +48,21 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
+		auto &view = engine.scene->view<ControllableComponent>();
 		// You can change the scene here or update the game state based on entities values.
 
 		// If you want to keep a scene loaded but not running, store it in the state.loadedScenes.
 		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
+		if (gameState.currentScene == GameState::SceneID::GameScene) {
+			for (auto &[_, component]: view) {
+				if (component.pause) {
+					gameState.nextScene = GameState::SceneID::PauseMenuScene;
+					break;
+				}
+			}
+		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
 		gameState._loadedScenes[gameState.currentScene] = engine.scene;
