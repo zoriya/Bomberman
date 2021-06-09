@@ -80,7 +80,7 @@ namespace WAL
 			}
 			for (auto &system : wal._systems)
 				system->update(dtime);
-			wal.scene->applyChanges();
+			wal._scene->applyChanges();
 			callback(wal, state);
 		}
 #endif
