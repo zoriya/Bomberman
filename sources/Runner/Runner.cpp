@@ -29,6 +29,8 @@
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
+#include <System/Bonus/PlayerBonusSystem.hpp>
+#include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -58,6 +60,7 @@ namespace BBM
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<LevitateSystem>()
+			.addSystem<PlayerBonusSystem>()
 			.addSystem<MovableSystem>();
 	}
 
@@ -83,6 +86,7 @@ namespace BBM
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<BombHolderComponent>()
+			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);

@@ -21,12 +21,5 @@ namespace BBM
 		Vector2f move = controllable.move.normalized() * controllable.speed;
 
 		movable.addForce(Vector3f(move.x, controllable.jump, move.y));
-		if (controllable.speed == 0.25f)
-			return;
-		controllable.nextSpeedBonusRate -= dtime;
-		if (controllable.nextSpeedBonusRate <= 0ns) {
-			controllable.nextSpeedBonusRate = controllable.speedBonusRate;
-			controllable.speed = 0.25f;
-		}
 	}
 }
