@@ -20,7 +20,8 @@ namespace RAY::Audio
 		public:
 
 			//! @brief Load Sound stream from file
-			Sound(const std::string &path);
+			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			Sound(const std::string &path, bool lonely = false);
 
 			//! @brief Default destructor
 			~Sound() = default;

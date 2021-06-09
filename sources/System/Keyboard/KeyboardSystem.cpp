@@ -31,9 +31,9 @@ namespace BBM
 			key.second = Keyboard::isPressed(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
-			controllable.move.x += 1;
-		if (Keyboard::isDown(keyboard.keyLeft))
 			controllable.move.x -= 1;
+		if (Keyboard::isDown(keyboard.keyLeft))
+			controllable.move.x += 1;
 		if (Keyboard::isDown(keyboard.keyUp))
 			controllable.move.y += 1;
 		if (Keyboard::isDown(keyboard.keyDown))

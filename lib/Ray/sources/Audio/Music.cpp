@@ -10,8 +10,8 @@
 
 RAY::Cache<::Music> RAY::Audio::Music::_musicsCache(LoadMusicStream, UnloadMusicStream);
 
-RAY::Audio::Music::Music(const std::string &path):
-	_music(this->_musicsCache.fetch(path.c_str()))
+RAY::Audio::Music::Music(const std::string &path, bool lonely):
+	_music(this->_musicsCache.fetch(path, lonely))
 {
 }
 
@@ -53,5 +53,11 @@ RAY::Audio::Music &RAY::Audio::Music::setVolume(float volume)
 RAY::Audio::Music &RAY::Audio::Music::setPitch(float pitch)
 {
 	SetMusicPitch(*_music, pitch);
+	return *this;
+}
+
+RAY::Audio::Music &RAY::Audio::Music::updateMusicStream(void)
+{
+	UpdateMusicStream(*_music);
 	return *this;
 }

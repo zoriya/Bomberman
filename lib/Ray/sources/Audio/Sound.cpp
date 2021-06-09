@@ -9,8 +9,8 @@
 
 RAY::Cache<::Sound> RAY::Audio::Sound::_soundsCache(LoadSound, UnloadSound);
 
-RAY::Audio::Sound::Sound(const std::string &path):
-	_sound(_soundsCache.fetch(path.c_str()))
+RAY::Audio::Sound::Sound(const std::string &path, bool lonely):
+	_sound(_soundsCache.fetch(path, lonely))
 {
 
 }

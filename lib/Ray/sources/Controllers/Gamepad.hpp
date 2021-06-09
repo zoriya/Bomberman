@@ -17,6 +17,7 @@ namespace RAY::Controller {
 	class GamePad {
 		public:
 			typedef ::GamepadButton Button;
+			typedef ::GamepadAxis Axis;
 
 			//! @brief A default constructor
 			//! @param The id of the controller 
@@ -43,6 +44,9 @@ namespace RAY::Controller {
 			//! @brief Returns true if Button is released on the gamepad
 			//! @param Button The keycode of the button
 			bool isReleased(Button);
+
+			//! @brief Get the value of an axis
+			float getAxisValue(int index);
 
 			//! @brief Returns true if Button is up on the gamepad
 			//! @param Button The keycode of the button
