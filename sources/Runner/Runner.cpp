@@ -39,6 +39,8 @@
 #include "Component/Sound/SoundComponent.hpp"
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "Component/Gravity/GravityComponent.hpp"
+#include "System/Gravity/GravitySystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -66,6 +68,7 @@ namespace BBM
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>()
+			.addSystem<GravitySystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MusicSystem>();
 	}
@@ -101,6 +104,7 @@ namespace BBM
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<SoundComponent>(soundPath)
+			.addComponent<GravityComponent>()
 			.addComponent<BombHolderComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();

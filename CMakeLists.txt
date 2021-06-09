@@ -92,6 +92,8 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/Component/Gravity/GravityComponent.cpp
+	sources/System/Gravity/GravitySystem.cpp
 )
 
 add_executable(bomberman
