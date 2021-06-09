@@ -7,25 +7,24 @@
 #include "SoundComponent.hpp"
 
 namespace BBM
-{
+{	
+	float SoundComponent::volume = 0.75;
+
 	SoundComponent::SoundComponent(WAL::Entity &entity, \
 const std::map<SoundComponent::soundIndex, std::string> &soundPath)
 		: WAL::Component(entity),
 		  _soundIndex(IDLE),
 		  _soundPath(soundPath)
 	{
-		this->volume = 1;
 		for (int i = 0; i <= DEATH; i++) {
-			if (soundPath.at(static_cast<soundIndex>(i)).empty()) {
-				this->_isLoad[static_cast<soundIndex>(i)] = false;
-			} else {
-				this->_isLoad[static_cast<soundIndex>(i)] = true;
-				this->_soundList[static_cast<soundIndex>(i)] = std::make_unique<RAY::Audio::Sound>(soundPath.at(static_cast<soundIndex>(i)));
-			}
+			this->_isLoad[static_cast<soundIndex>(i)] = false;
+		}
+		for (auto &soundPath : soundPath)
+		{
+			this->_isLoad[soundPath.first] = true;
+			this->_soundList[soundPath.first] = std::make_unique<RAY::Audio::Sound>(soundPath.second);	
 		}
 	}
-
-	float SoundComponent::volume;
 
 	WAL::Component *SoundComponent::clone(WAL::Entity &entity) const
 	{

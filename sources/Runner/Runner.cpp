@@ -67,7 +67,7 @@ namespace BBM
 
 	void enableRaylib(WAL::Wal &wal)
 	{
-		//RAY::TraceLog::setLevel(LOG_WARNING);
+		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(600, 400, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
@@ -78,12 +78,8 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		std::map<SoundComponent::soundIndex, std::string> soundPath= {
-			{SoundComponent::IDLE, ""},
 			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-			{SoundComponent::MOVE, "assets/sounds/jump.wav"},
-			{SoundComponent::HURT, ""},
-			{SoundComponent::THROW, ""},
 			{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 			};
 		scene->addEntity("player")

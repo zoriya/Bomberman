@@ -7,15 +7,14 @@
 
 namespace BBM
 {
+	float MusicComponent::volume = 0.75;
+
 	MusicComponent::MusicComponent(WAL::Entity &entity, const std::string &musicPath)
 		: WAL::Component(entity),
 		  _musicPath(musicPath),
 		  _music(RAY::Audio::Music(musicPath))
 	{
-		this->volume = 1;
 	}
-
-	float MusicComponent::volume;
 
 	WAL::Component *MusicComponent::clone(WAL::Entity &entity) const
 	{
@@ -43,7 +42,8 @@ namespace BBM
 	void MusicComponent::setVolume(float &volumeUpdate)
 	{
 		if (volumeUpdate >= 0) {
-			this->_music.setVolume(volume);
+			this->volume = volumeUpdate;
+			this->_music.setVolume(this->volume);
 		}
 	}
 
