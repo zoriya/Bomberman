@@ -13,12 +13,12 @@
 namespace BBM
 {
 	//! @brief A system to handle Health entities.
-	class HealthSystem : public WAL::System<HealthComponent, PositionComponent>
+	class HealthSystem : public WAL::System<HealthComponent>
 	{
 	private:
     public:
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<HealthComponent, PositionComponent> &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<HealthComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit HealthSystem(WAL::Wal &wal);
