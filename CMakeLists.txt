@@ -95,15 +95,15 @@ target_link_libraries(bomberman PUBLIC wal ray)
 
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
-	${SOURCES}
-	tests/EntityTests.cpp
-	tests/MainTest.cpp
-	tests/EngineTests.cpp
-	tests/CallbackTest.cpp
-	tests/MoveTests.cpp
-	tests/ViewTest.cpp
-	tests/CollisionTest.cpp
-)
+               ${SOURCES}
+               tests/EntityTests.cpp
+               tests/MainTest.cpp
+               tests/EngineTests.cpp
+               tests/CallbackTest.cpp
+               tests/MoveTests.cpp
+               tests/ViewTest.cpp
+               tests/CollisionTest.cpp
+               )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 
