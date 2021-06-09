@@ -13,6 +13,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <iostream>
 
 namespace RAY {
 	//! @brief A templated class used to cache ressources, indexed with a string
@@ -42,13 +43,15 @@ namespace RAY {
 					this->_cache.emplace(path, std::vector<std::shared_ptr<T>>());
 				std::vector<std::shared_ptr<T>> &matchingDataVector = this->_cache.at(path);
 
-				for (std::shared_ptr<T> &i: matchingDataVector) {
-					if (!lonely)
-						return i;
-					if (lonely && i.use_count() == 1)
-						return i;
+				if (matchingDataVector.size()) {
+					for (std::shared_ptr<T> &i: matchingDataVector) {
+						if (!lonely)
+							return i;
+						if (lonely && i.use_count() == 1)
+							return i;
+					}
 				}
-				matchingDataVector.emplace_back(std::shared_ptr<T>(
+				matchingDataVector.push_back(std::shared_ptr<T>(
 				new T(this->_dataLoader(path.c_str())), [this](T *p) {
 					this->_dataUnloader(*p);
 					delete p;
