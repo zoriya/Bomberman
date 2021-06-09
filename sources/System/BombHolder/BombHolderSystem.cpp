@@ -38,7 +38,7 @@ namespace BBM
 				.addComponent<TimerComponent>(1s, [](WAL::Entity &explosion, WAL::Wal &wal) {
 					explosion.scheduleDeletion();
 				})
-				.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.obj",
+				.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb",
 					 std::make_pair(MAP_DIFFUSE, "assets/bombs/explosion/explosion.png"));
 			// TODO do a raycast here to only remove health to entities that are not behind others.
 			health->takeDmg(1);
