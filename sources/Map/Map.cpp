@@ -21,10 +21,6 @@ namespace BBM
 	                                const WAL::Entity &wall,
 	                                CollisionComponent::CollidedAxis collidedAxis)
 	{
-		auto name = entity.getName();
-		if (name == "Unbreakable Wall" || name == "Breakable Block") {
-			name = "salut";
-		}
 		auto *mov = entity.tryGetComponent<MovableComponent>();
 
 		if (!mov)

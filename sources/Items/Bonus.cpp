@@ -12,35 +12,35 @@
 namespace BBM {
 	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete())
+		if (bonus.shouldDelete() || axis != 7)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
-		if (bombHolder == nullptr)
+		if (!bombHolder)
 			return;
 		bombHolder->maxBombCount++;
 	}
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		static int test = 0;
-		if (bonus.shouldDelete())
+		if (bonus.shouldDelete() || axis != 7)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
-		if (bombHolder == nullptr || playerBonus == nullptr)
+		if (!bombHolder || !playerBonus)
 			return;
 		if (bombHolder->explosionRadius <= 6)
 			bombHolder->explosionRadius++;
-		std::cout << ++test << " Explosion radius : " << bombHolder->explosionRadius << std::endl;
 		playerBonus->nextRangeBonusRate = playerBonus->rangeBonusRate;
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete())
+		if (bonus.shouldDelete() || axis != 7)
 			return;
 		auto *controllable = player.tryGetComponent<ControllableComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
+		if (!controllable || !playerBonus)
+			return;
 		controllable->speed = 0.35f;
 		playerBonus->nextSpeedBonusRate = playerBonus->speedBonusRate;
 	}
@@ -50,7 +50,7 @@ namespace BBM {
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
 		if (rnd < 0.8)
-			return (static_cast<BonusType>(std::rand() % (DAMAGEINC - 1) + 1));
+			return (static_cast<BonusType>(std::rand() % (EXPLOSIONINC - 1) + 1));
 		return (NOTHING);
 	}
 }

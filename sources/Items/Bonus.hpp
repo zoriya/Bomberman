@@ -34,8 +34,7 @@ namespace BBM {
 			NOTHING,
 			BOMBSTOCK,
 			SPEEDUP,
-			EXPLOSIONINC,
-			DAMAGEINC
+			EXPLOSIONINC
 		};
 
 		static BonusType getRandomBonusType();
