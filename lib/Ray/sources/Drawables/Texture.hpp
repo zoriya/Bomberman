@@ -20,7 +20,8 @@ namespace RAY
 		public:
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
-			Texture(const std::string &filename);
+			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			Texture(const std::string &filename, bool lonely = false);
 
 			//! @brief A texture is copy constructable
 			Texture(const Texture &) = default;

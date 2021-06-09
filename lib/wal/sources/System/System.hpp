@@ -30,7 +30,7 @@ namespace WAL
 		//! @brief Get a view of all entities containing every dependencies of this system.
 		View<Dependencies...> &getView() override
 		{
-			return this->_wal.scene->template view<Dependencies...>();
+			return this->_wal.getScene()->template view<Dependencies...>();
 		}
 
 		//! @brief Update the corresponding component of the given entity

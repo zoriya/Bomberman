@@ -14,10 +14,15 @@ namespace BBM
 	{
 	private:
 		//! @brief The list of events that occurred in the last update.
-		std::vector<std::function<void (WAL::Entity &)>> _events;
+		std::list<std::function<void (WAL::Entity &)>> _events;
+		//! @brief The list of events that occurred in the last update.
+		std::list<std::function<void (WAL::Wal &)>> _globalEvents;
 	public:
 		//! @brief Inform the system that a new event has occurred and it should run the given method on every entities.
 		void dispatchEvent(const std::function<void (WAL::Entity &)>& event);
+
+		//! @brief Inform the system that a new event has occurred and it should run the given method on every entities.
+		void dispatchEvent(const std::function<void (WAL::Wal &)>& event);
 
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<> &entity, std::chrono::nanoseconds dtime) override;

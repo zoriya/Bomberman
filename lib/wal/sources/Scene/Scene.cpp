@@ -67,6 +67,8 @@ namespace WAL
 		this->_entities.remove_if([this](auto &entity) {
 			if (!entity.shouldDelete())
 				return false;
+			for (auto &cmp : entity._components)
+				cmp.second->onStop();
 			this->_entityRemoved(entity);
 			return true;
 		});
@@ -79,6 +81,8 @@ namespace WAL
 					view->emplace_back(entity);
 			}
 			entity._notifyScene = true;
+			for (auto &cmp : entity._components)
+				cmp.second->onStart();
 		}
 		this->_entities.splice(this->_entities.end(), this->_newEntities);
 	}

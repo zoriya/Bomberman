@@ -41,7 +41,7 @@ namespace BBM
 	{
 		auto lastTick = std::chrono::steady_clock::now(); 
 		auto &controllable = entity.get<ControllableComponent>();
-		auto &buttons = _wal.scene->view<OnClickComponent, OnHoverComponent, OnIdleComponent>();
+		auto &buttons = _wal.getScene()->view<OnClickComponent, OnHoverComponent, OnIdleComponent>();
 		
 		if (lastTick - this->_now < std::chrono::milliseconds(100))
 			return;
@@ -49,7 +49,7 @@ namespace BBM
 
 		move = controllable.move;
 		select = controllable.jump;
-		if (currentButton && currentButton->_scene.getID() != wal.scene->getID()) {
+		if (currentButton && currentButton->_scene.getID() != wal.getScene()->getID()) {
 			currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, wal);
 			currentButton = nullptr;
 		}

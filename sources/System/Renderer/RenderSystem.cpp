@@ -8,7 +8,9 @@
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
+#include <Model/Model.hpp>
 #include "Drawables/ADrawable3D.hpp"
+#include "Component/Shaders/ShaderComponent.hpp"
 
 
 #include "Component/Collision/CollisionComponent.hpp"
@@ -31,16 +33,30 @@ namespace BBM
 		this->_window.clear();
 
 		this->_window.useCamera(this->_camera);
-		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable3DComponent>()) {
+		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable3DComponent>()) {
+			auto *modelShader = entity.tryGetComponent<ShaderComponentModel>();
+
+			if (modelShader)
+				modelShader->model->setShader(modelShader->getShader());
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
+			if (modelShader)
+				modelShader->model->resetShader();
 		}
 		this->_window.unuseCamera();
 
 		// TODO sort entities based on the Z axis
-		for (auto &[_, pos, drawable] : this->_wal.scene->view<PositionComponent, Drawable2DComponent>()) {
+		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable2DComponent>()) {
+			auto *shader = entity.tryGetComponent<ShaderComponentDrawable2D>();
+
+			if (shader) {
+				RAY::Shader::BeginUsingCustomShader(shader->getShader());
+			}
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
+			if (shader) {
+				RAY::Shader::EndUsingCustomShader();
+			}
 		}
 		if (this->_debugMode)
 			this->_window.drawFPS(Vector2f());

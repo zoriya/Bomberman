@@ -13,9 +13,9 @@ namespace RAY {
 
 	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture); 
 
-	Texture::Texture(const std::string &filename):
+	Texture::Texture(const std::string &filename, bool lonely):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
-		_texture(_texturesCache.fetch(filename)),
+		_texture(_texturesCache.fetch(filename, lonely)),
 		_resourcePath(filename)
 	{
 		this->_dimensions = Vector2(this->_texture->width, this->_texture->height);
