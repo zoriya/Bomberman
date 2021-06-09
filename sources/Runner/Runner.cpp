@@ -10,6 +10,8 @@
 #include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/2D/Text.hpp>
+#include <Audio/Music.hpp>
+#include <Audio/Sound.hpp>
 #include <TraceLog.hpp>
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
@@ -348,12 +350,18 @@ namespace BBM
 		auto &musicUp = scene->addEntity("music up button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
-			.addComponent<OnClickComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_plus.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto &component = entity.getComponent<MusicComponent>();
+				
+				component.turnUpVolume();
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -365,12 +373,18 @@ namespace BBM
 		auto &musicDown = scene->addEntity("music down button")
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
-			.addComponent<OnClickComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_minus.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto &component = entity.getComponent<MusicComponent>();
+				
+				component.turnDownVolume();
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
