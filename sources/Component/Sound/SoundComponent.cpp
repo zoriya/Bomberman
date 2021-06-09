@@ -11,10 +11,12 @@ namespace BBM
 	float SoundComponent::volume = 0.75;
 
 	SoundComponent::SoundComponent(WAL::Entity &entity, 
-		                           const std::map<SoundComponent::SoundIndex, std::string> &soundPath)
+		                           const std::map<SoundComponent::SoundIndex, std::string> &soundPath,
+								   bool isLonely)
 		: WAL::Component(entity),
 		  _soundIndex(IDLE),
-		  _soundPath(soundPath)
+		  _soundPath(soundPath),
+		  _isLonely(isLonely)
 	{
 		for (int i = 0; i <= DEATH; i++) {
 			this->_isSoundLoad[static_cast<SoundIndex>(i)] = false;
@@ -22,7 +24,7 @@ namespace BBM
 		for (auto &soundPath : soundPath)
 		{
 			this->_isSoundLoad[soundPath.first] = true;
-			this->_soundList[soundPath.first] = std::make_unique<RAY::Audio::Sound>(soundPath.second);	
+			this->_soundList[soundPath.first] = std::make_unique<RAY::Audio::Sound>(soundPath.second, this->_isLonely);	
 		}
 	}
 
