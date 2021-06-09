@@ -29,5 +29,15 @@ namespace BBM {
 		//! @param player the entity on which the effect will be applied
 		//! @brief Apply bonus effect that allows to run faster
 		static void SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
+
+		enum BonusType {
+			NOTHING,
+			BOMBSTOCK,
+			SPEEDUP,
+			EXPLOSIONINC,
+			DAMAGEINC
+		};
+
+		static BonusType getRandomBonusType();
 	};
 }

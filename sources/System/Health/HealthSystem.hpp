@@ -5,7 +5,6 @@
 
 #pragma once
 
-#include <Component/Bonus/BonusComponent.hpp>
 #include "Models/Vector3.hpp"
 #include "Wal.hpp"
 #include "Component/Health/HealthComponent.hpp"
@@ -17,9 +16,7 @@ namespace BBM
 	class HealthSystem : public WAL::System<HealthComponent, PositionComponent>
 	{
 	private:
-        //! @brief Spawn a bonus at the specified position.
-		void _createBonus(Vector3f position, BonusComponent::BonusType bonusType, std::chrono::nanoseconds timer);
-	public:
+    public:
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<HealthComponent, PositionComponent> &entity) override;
 

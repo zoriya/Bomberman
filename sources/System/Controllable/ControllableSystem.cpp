@@ -14,7 +14,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void ControllableSystem::onUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity, std::chrono::nanoseconds dtime)
+	void ControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity)
 	{
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &movable = entity.get<MovableComponent>();

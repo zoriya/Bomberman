@@ -25,8 +25,6 @@ set(SOURCES
 	sources/Map/Map.hpp
 	sources/Items/Bonus.cpp
 	sources/Items/Bonus.hpp
-	sources/Component/Bonus/BonusComponent.cpp
-	sources/Component/Bonus/BonusComponent.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -41,8 +39,6 @@ set(SOURCES
 	sources/Component/Keyboard/KeyboardComponent.hpp
 	sources/Component/Health/HealthComponent.cpp
 	sources/Component/Health/HealthComponent.hpp
-	sources/Component/Bonus/BonusComponent.cpp
-	sources/Component/Bonus/BonusComponent.hpp
 	sources/System/Movable/MovableSystem.hpp
 	sources/System/Movable/MovableSystem.cpp
 	sources/System/Controllable/ControllableSystem.cpp

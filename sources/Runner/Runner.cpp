@@ -87,7 +87,7 @@ namespace BBM
 			.addComponent<MovableComponent>()
 			.addComponent<BombHolderComponent>()
 			.addComponent<PlayerBonusComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});

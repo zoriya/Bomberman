@@ -19,7 +19,7 @@ namespace BBM
 	public:
 
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit ControllableSystem(WAL::Wal &wal);
