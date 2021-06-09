@@ -31,10 +31,11 @@ namespace BBM
 
 		for (auto key : keyPressedMap)
 			key.second = gamepad.isPressed(key.first);
-		controllable.move = Vector2f();
-		controllable.move.x += gamepad.isPressed(gamepadComponent.keyRight);
-		controllable.move.x -= gamepad.isPressed(gamepadComponent.keyLeft);
-		controllable.move.y += gamepad.isPressed(gamepadComponent.keyUp);
-		controllable.move.y -= gamepad.isPressed(gamepadComponent.keyDown);
+		controllable.move.x = gamepad.getAxisValue(gamepadComponent.LeftStickX) * -1;
+		controllable.move.y = gamepad.getAxisValue(gamepadComponent.LeftStickY) * -1;
+		controllable.move.x -= gamepad.isDown(gamepadComponent.keyRight);
+		controllable.move.x += gamepad.isDown(gamepadComponent.keyLeft);
+		controllable.move.y += gamepad.isDown(gamepadComponent.keyUp);
+		controllable.move.y -= gamepad.isDown(gamepadComponent.keyDown);
 	}
 }

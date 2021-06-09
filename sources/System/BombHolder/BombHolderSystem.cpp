@@ -8,6 +8,10 @@
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "BombHolderSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
+#include <functional>
+#include <Map/Map.hpp>
+#include "Component/Collision/CollisionComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 
 using namespace std::chrono_literals;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -20,30 +24,41 @@ namespace BBM
 		: System(wal)
 	{}
 
+	void BombHolderSystem::_dispatchExplosion(Vector3f position, WAL::Wal &wal, int count)
+	{
+		if (count <= 0)
+			return;
+		wal.getSystem<EventSystem>().dispatchEvent([position, count](WAL::Wal &wal) {
+			for (auto &[entity, pos, _] : wal.scene->view<PositionComponent, TagComponent<Blowable>>()) {
+				if (pos.position.round() == position) {
+					if (auto *health = entity.tryGetComponent<HealthComponent>())
+						health->takeDmg(1);
+					return;
+				}
+			}
+			_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
+		});
+	}
+
 	void BombHolderSystem::_bombExplosion(WAL::Entity &bomb, WAL::Wal &wal)
 	{
 		bomb.scheduleDeletion();
-		auto &bombPosition = bomb.getComponent<PositionComponent>();
-		auto &basicBomb = bomb.getComponent<BasicBombComponent>();
-		wal.getSystem<EventSystem>().dispatchEvent([&bombPosition, &basicBomb](WAL::Entity &entity){
-			auto *health = entity.tryGetComponent<HealthComponent>();
-			auto *pos = entity.tryGetComponent<PositionComponent>();
-
-			if (!health || !pos)
-				return;
-			if (pos->position.distance(bombPosition.position) > basicBomb.explosionRadius)
-				return;
-			// TODO do a raycast here to only remove health to entities that are not behind others.
-			health->takeDmg(basicBomb.damage);
-		});
+		auto position = bomb.getComponent<PositionComponent>().position.round();
+		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
+		_dispatchExplosion(position, wal, 3 + (explosionRadius - 3));
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder)
 	{
 		this->_wal.scene->scheduleNewEntity("Bomb")
-			.addComponent<PositionComponent>(position)
+			.addComponent<PositionComponent>(position.round())
 			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
+//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+//			                                  &MapGenerator::wallCollide, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
 		holder.damage = 1;

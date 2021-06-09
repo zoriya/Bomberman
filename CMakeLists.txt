@@ -93,6 +93,15 @@ set(SOURCES
 	sources/Component/Bonus/PlayerBonusComponent.cpp
 	sources/System/Bonus/PlayerBonusSystem.hpp
 	sources/System/Bonus/PlayerBonusSystem.cpp
+	sources/Component/Tag/TagComponent.hpp
+	sources/Component/Music/MusicComponent.cpp
+	sources/Component/Music/MusicComponent.hpp
+	sources/Component/Sound/SoundComponent.hpp
+	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/PlayerSoundManagerSystem.cpp
+	sources/System/Sound/PlayerSoundManagerSystem.hpp
+	sources/System/Music/MusicSystem.hpp
+	sources/System/Music/MusicSystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp
@@ -104,6 +113,7 @@ target_link_libraries(bomberman PUBLIC wal ray)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
                ${SOURCES}
+			   tests/CacheTest.cpp
                tests/EntityTests.cpp
                tests/MainTest.cpp
                tests/EngineTests.cpp

@@ -19,9 +19,9 @@ namespace RAY::Drawables::Drawables3D {
 											  const RAY::Vector3 &scale,
 											  const RAY::Vector3 &position,
 											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle)
+											  float rotationAngle, bool lonely)
 		: ADrawable3D(position, WHITE),
-		_model(_modelsCache.fetch(filename)),
+		_model(_modelsCache.fetch(filename, lonely)),
 		_rotationAxis(rotationAxis),
 		_rotationAngle(rotationAngle),
 		_scale(scale)

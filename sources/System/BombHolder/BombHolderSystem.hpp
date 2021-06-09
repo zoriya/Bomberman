@@ -20,6 +20,9 @@ namespace BBM
 		//! @brief Spawn a bomb at the specified position.
 		void _spawnBomb(Vector3f position, BombHolderComponent &holder);
 
+		//! @brief Spawn a bomb at the specified position.
+		static void _dispatchExplosion(Vector3f position, WAL::Wal &, int count);
+
 		//! @brief The method triggered when the bomb explode.
 		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
 	public:

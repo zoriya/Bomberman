@@ -20,10 +20,6 @@ namespace BBM
 		std::chrono::nanoseconds speedBonusRate = 15s;
 		//! @brief The number of nanosecond before the expiration of a speed bonus.
 		std::chrono::nanoseconds nextSpeedBonusRate = speedBonusRate;
-		//! @brief The number of seconds before a damage bonus expire. This variable is used to reset the nextDamageBonusRate value.
-		std::chrono::nanoseconds damageBonusRate = 20s;
-		//! @brief The number of nanosecond before the expiration of a damage bonus.
-		std::chrono::nanoseconds nextDamageBonusRate = damageBonusRate;
 		//! @brief The number of seconds before a range bonus expire. This variable is used to reset the nextRangeBonusRate value.
 		std::chrono::nanoseconds rangeBonusRate = 10s;
 		//! @brief The number of nanosecond before the expiration of a range bonus.
