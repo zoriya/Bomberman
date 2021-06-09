@@ -3,6 +3,7 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
+#include <Component/Renderer/Drawable3DComponent.hpp>
 #include <Component/Timer/TimerComponent.hpp>
 #include "HealthSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
