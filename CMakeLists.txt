@@ -3,10 +3,7 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-
-# Find Lua
-find_package(Lua REQUIRED)                                                         #-> CHANGE
-
+find_package(Lua REQUIRED)
 include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
@@ -16,14 +13,12 @@ include_directories(bomberman sources)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2")
-
 if (EMSCRIPTEN)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s NO_DISABLE_EXCEPTION_CATCHING --shell-file ../sources/wasm/frontend.html --preload-file ../assets")
     set(CMAKE_EXECUTABLE_SUFFIX ".html")
-endif ()
+endif()
 
 set(SOURCES
 	sources/Models/GameState.hpp
@@ -37,6 +32,8 @@ set(SOURCES
 	sources/Component/Movable/MovableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.hpp
 	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.hpp
 	sources/Component/Gamepad/GamepadComponent.cpp
 	sources/Component/Gamepad/GamepadComponent.hpp
 	sources/Component/Keyboard/KeyboardComponent.cpp
@@ -67,6 +64,14 @@ set(SOURCES
 	sources/System/Renderer/RenderSystem.cpp
 	sources/Component/Renderer/CameraComponent.cpp
 	sources/Component/Renderer/CameraComponent.hpp
+	sources/System/BombHolder/BombHolderSystem.cpp
+	sources/System/BombHolder/BombHolderSystem.hpp
+	sources/Component/Timer/TimerComponent.cpp
+	sources/Component/Timer/TimerComponent.hpp
+	sources/System/Timer/TimerSystem.cpp
+	sources/System/Timer/TimerSystem.hpp
+	sources/System/Event/EventSystem.cpp
+	sources/System/Event/EventSystem.hpp
 	sources/Component/Animation/AnimationsComponent.cpp
 	sources/Component/Animation/AnimationsComponent.hpp
 	sources/System/Animation/AnimationsSystem.cpp
@@ -79,29 +84,42 @@ set(SOURCES
 	sources/Component/IAControllable/IAControllableComponent.cpp
 	sources/System/IAControllable/IAControllableSystem.hpp
 	sources/System/IAControllable/IAControllableSystem.cpp
-	sources/Component/Tag/TagComponent.cpp
-	sources/Component/Tag/TagComponent.hpp
 	sources/Map/MapInfo.hpp
 	sources/Map/MapInfo.cpp
+	sources/Component/Animator/AnimatorComponent.cpp
+	sources/Component/Animator/AnimatorComponent.hpp
+	sources/System/Animator/AnimatorSystem.cpp
+	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Tag/TagComponent.hpp
+	sources/Component/Music/MusicComponent.cpp
+	sources/Component/Music/MusicComponent.hpp
+	sources/Component/Sound/SoundComponent.hpp
+	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/PlayerSoundManagerSystem.cpp
+	sources/System/Sound/PlayerSoundManagerSystem.hpp
+	sources/System/Music/MusicSystem.hpp
+	sources/System/Music/MusicSystem.cpp
 )
 
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
                )
+
 target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR} lib/LuaBridge)
 target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES})
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
-	${SOURCES}
-	tests/EntityTests.cpp
-	tests/MainTest.cpp
-	tests/EngineTests.cpp
-	tests/CallbackTest.cpp
-	tests/MoveTests.cpp
-	tests/ViewTest.cpp
-	tests/CollisionTest.cpp
-)
+               ${SOURCES}
+			   tests/CacheTest.cpp
+               tests/EntityTests.cpp
+               tests/MainTest.cpp
+               tests/EngineTests.cpp
+               tests/CallbackTest.cpp
+               tests/MoveTests.cpp
+               tests/ViewTest.cpp
+               tests/CollisionTest.cpp
+               )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray lua)
 

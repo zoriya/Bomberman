@@ -7,58 +7,51 @@
 
 #include "Audio/Sound.hpp"
 
-RAY::Audio::Sound::Sound(const std::string &path):
-	_sound(LoadSound(path.c_str()))
+RAY::Cache<::Sound> RAY::Audio::Sound::_soundsCache(LoadSound, UnloadSound);
+
+RAY::Audio::Sound::Sound(const std::string &path, bool lonely):
+	_sound(_soundsCache.fetch(path, lonely))
 {
 
-}
-
-RAY::Audio::Sound::Sound()
-{
-}
-
-RAY::Audio::Sound::~Sound()
-{
-	UnloadSound(_sound);
 }
 
 bool RAY::Audio::Sound::isPlaying(void)
 {
-	return IsSoundPlaying(_sound);
+	return IsSoundPlaying(*_sound);
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::play(void)
 {
-	PlaySound(_sound);
+	PlaySound(*_sound);
 	return *this;
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::stop(void)
 {
-	StopSound(_sound);
+	StopSound(*_sound);
 	return *this;
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::pause(void)
 {
-	PauseSound(_sound);
+	PauseSound(*_sound);
 	return *this;
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::resume(void)
 {
-	ResumeSound(_sound);
+	ResumeSound(*_sound);
 	return *this;
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::setVolume(float volume)
 {
-	SetSoundVolume(_sound, volume);
+	SetSoundVolume(*_sound, volume);
 	return *this;
 }
 
 RAY::Audio::Sound &RAY::Audio::Sound::setPitch(float pitch)
 {
-	SetSoundPitch(_sound, pitch);
+	SetSoundPitch(*_sound, pitch);
 	return *this;
 }

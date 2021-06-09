@@ -10,13 +10,16 @@
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Drawables/ADrawable3D.hpp"
 
+
+#include "Component/Collision/CollisionComponent.hpp"
+
 namespace BBM
 {
 	RenderSystem::RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode)
 		: System(wal),
-		_window(window),
-		_camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
-		_debugMode(debugMode)
+		  _window(window),
+		  _camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
+		  _debugMode(debugMode)
 	{
 		this->_window.setFPS(this->FPS);
 	}
@@ -44,7 +47,8 @@ namespace BBM
 		this->_window.endDrawing();
 	}
 
-	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime)
+	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
+	                            std::chrono::nanoseconds dtime)
 	{
 		const auto &pos = entity.get<PositionComponent>();
 		const auto &cam = entity.get<CameraComponent>();

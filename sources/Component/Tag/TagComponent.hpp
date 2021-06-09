@@ -1,34 +1,54 @@
 //
-// Created by Tom Augier on 2021-05-20.
-// Edited by Benjamin Henry on 2021-05-20.
+// Created by Zoe Roux on 6/9/21.
 //
 
 #pragma once
 
-#include "Component/Component.hpp"
-#include "Entity/Entity.hpp"
+#include <Component/Component.hpp>
+#include <string_view>
 
 namespace BBM
 {
+	template<std::size_t I>
+	struct StringLiteral
+	{
+	public:
+		char value[I];
+
+		//! @brief Implicitly convert an array of char to a string literal.
+		constexpr StringLiteral(const char (&str)[I]) // NOLINT(google-explicit-constructor)
+			: value()
+		{
+			std::copy_n(str, I, value);
+		}
+		//! @brief A string literal is copy constructable.
+		constexpr StringLiteral(const StringLiteral &) = default;
+		//! @brief A default destructor
+		constexpr ~StringLiteral() = default;
+		//! @brief A string literal is assignable.
+		constexpr StringLiteral &operator=(const StringLiteral &) = default;
+	};
+
+	template <StringLiteral name>
 	class TagComponent : public WAL::Component
 	{
-		public:
-			//! @brief tag held by the component
-			std::string tag;
+	public:
+		Component *clone(WAL::Entity &entity) const override
+		{
+			return new TagComponent<name>(entity);
+		}
 
-			//! @inherit
-			WAL::Component *clone(WAL::Entity &entity) const override;
-
-			//! @brief Create a new tag Component with a tag
-			explicit TagComponent(WAL::Entity &entity, std::string tag);
-
-			//! @brief A Tag component is copy constructable.
-			TagComponent(const TagComponent &) = default;
-
-			//! @brief default destructor
-			~TagComponent() override = default;
-
-			//! @brief A Tag component can't be assigned
-			TagComponent &operator=(const TagComponent &) = delete;
+		//! @brief Create a new empty tag component.
+		explicit TagComponent(WAL::Entity &entity)
+			: WAL::Component(entity)
+		{}
+		//! @brief A default copy constructor.
+		TagComponent(const TagComponent &) = default;
+		//! @brief A default destructor
+		~TagComponent() override = default;
+		//! @brief A tag component is not assignable.
+		TagComponent &operator=(const TagComponent &) = delete;
 	};
+
+	constexpr const char Blowable[] = "Blowable";
 }

@@ -16,7 +16,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void KeyboardSystem::onFixedUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity)
+	void KeyboardSystem::onUpdate(WAL::ViewEntity<KeyboardComponent, ControllableComponent> &entity, std::chrono::nanoseconds)
 	{
 		const auto &keyboard = entity.get<KeyboardComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
@@ -28,12 +28,12 @@ namespace BBM
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isDown(key.first);
+			key.second = Keyboard::isPressed(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
-			controllable.move.x += 1;
-		if (Keyboard::isDown(keyboard.keyLeft))
 			controllable.move.x -= 1;
+		if (Keyboard::isDown(keyboard.keyLeft))
+			controllable.move.x += 1;
 		if (Keyboard::isDown(keyboard.keyUp))
 			controllable.move.y += 1;
 		if (Keyboard::isDown(keyboard.keyDown))

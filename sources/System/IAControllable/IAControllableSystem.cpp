@@ -55,13 +55,13 @@ namespace BBM
 
 		if (res.hasFailed() || res.size() != 4)
 			return;
-		if (res[3].isBool())
-			controllable.bomb = res[3];
-		if (res[2].isBool())
-			controllable.jump = res[2];
-		if (res[1].isNumber())
-			controllable.move.y = res[1];
 		if (res[0].isNumber())
 			controllable.move.x = res[0];
+		if (res[1].isNumber())
+			controllable.move.y = res[1];
+		if (res[2].isBool())
+			controllable.jump = res[2];
+		if (res[3].isBool())
+			controllable.bomb = res[3];
 	}
 }

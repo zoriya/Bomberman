@@ -11,17 +11,19 @@ namespace WAL
 {
 	unsigned Entity::nextID = 0;
 
-	Entity::Entity(Scene &scene, std::string name)
+	Entity::Entity(Scene &scene, std::string name, bool notifyScene)
 		: _uid(Entity::nextID++),
 		_scene(scene),
-		_name(std::move(name))
+		_name(std::move(name)),
+		_notifyScene(notifyScene)
 	{ }
 
 	Entity::Entity(const Entity &other)
 		: _uid(Entity::nextID++),
 		_scene(other._scene),
 		_name(other._name),
-		_disabled(other._disabled)
+		_disabled(other._disabled),
+		_notifyScene(other._notifyScene)
 	{
 		for (const auto &cmp : other._components)
 			this->addComponent(*cmp.second);
@@ -50,21 +52,27 @@ namespace WAL
 	Entity &Entity::addComponent(const Component &component)
 	{
 		const std::type_index &type = typeid(component);
-		if (this->hasComponent(type))
+		if (this->hasComponent(type, false))
 			throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
 		this->_components.emplace(type, component.clone(*this));
-		this->_scene._componentAdded(*this, type);
+		if (this->_notifyScene)
+			this->_scene._componentAdded(*this, type);
 		return *this;
 	}
 
-	bool Entity::hasComponent(const std::type_info &type) const
+	bool Entity::hasComponent(const std::type_info &type, bool skipDisabled) const
 	{
-		return this->hasComponent(static_cast<const std::type_index &>(type));
+		return this->hasComponent(static_cast<const std::type_index &>(type), skipDisabled);
 	}
 
-	bool Entity::hasComponent(const std::type_index &type) const
+	bool Entity::hasComponent(const std::type_index &type, bool skipDisabled) const
 	{
-		return this->_components.contains(type);
+		auto cmp = this->_components.find(type);
+		if (cmp == this->_components.end())
+			return false;
+		if (skipDisabled)
+			return !cmp->second->isDisabled();
+		return true;
 	}
 
 	void Entity::_componentAdded(const std::type_index &type)
@@ -75,5 +83,15 @@ namespace WAL
 	void Entity::_componentRemoved(const std::type_index &type)
 	{
 		this->_scene._componentRemoved(*this, type);
+	}
+
+	bool Entity::shouldDelete() const
+	{
+		return this->_shouldDelete;
+	}
+
+	void Entity::scheduleDeletion()
+	{
+		this->_shouldDelete = true;
 	}
 } // namespace WAL
