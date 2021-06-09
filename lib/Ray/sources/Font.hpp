@@ -19,7 +19,8 @@ namespace RAY
 		public:
 			//! @brief Create an font, loading a file
 			//! @param filename: path to file to load
-			Font(const std::string &filename);
+			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			Font(const std::string &filename, bool lonely = false);
 
 			//! @brief A default copy constructor
 			Font(const Font &) = default;

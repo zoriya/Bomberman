@@ -10,8 +10,8 @@
 
 RAY::Cache<::Music> RAY::Audio::Music::_musicsCache(LoadMusicStream, UnloadMusicStream);
 
-RAY::Audio::Music::Music(const std::string &path):
-	_music(this->_musicsCache.fetch(path.c_str()))
+RAY::Audio::Music::Music(const std::string &path, bool lonely):
+	_music(this->_musicsCache.fetch(path, lonely))
 {
 }
 
