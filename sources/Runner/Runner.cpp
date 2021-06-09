@@ -77,12 +77,12 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		std::map<SoundComponent::SoundIndex, std::string> soundPath= {
-			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
-			{SoundComponent::MOVE, "assets/sounds/move.ogg"},
-			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-			{SoundComponent::DEATH, "assets/sounds/death.ogg"}
-			};
+		std::map<SoundComponent::SoundIndex, std::string> soundPath ={
+		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
+		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
+		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
+		    {SoundComponent::DEATH, "assets/sounds/death.ogg"}
+		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
