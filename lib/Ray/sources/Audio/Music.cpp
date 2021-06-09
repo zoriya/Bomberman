@@ -55,3 +55,9 @@ RAY::Audio::Music &RAY::Audio::Music::setPitch(float pitch)
 	SetMusicPitch(*_music, pitch);
 	return *this;
 }
+
+RAY::Audio::Music &RAY::Audio::Music::updateMusicStream(void)
+{
+	UpdateMusicStream(*_music);
+	return *this;
+}

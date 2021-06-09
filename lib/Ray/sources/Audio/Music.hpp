@@ -51,6 +51,8 @@ namespace RAY::Audio
 			// Set pitch for a Music (1.0 is base level)
 			Music &setPitch(float pitch) override;
 
+			Music &updateMusicStream(void);
+
 		private:
 			std::shared_ptr<::Music> _music;
 

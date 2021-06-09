@@ -49,6 +49,7 @@ bool RAY::Window::open(void)
 	}
 	InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
 	this->_isOpen = true;
+	InitAudioDevice();
 	return true;
 }
 
@@ -60,6 +61,7 @@ bool RAY::Window::shouldClose(void) const
 void RAY::Window::close(void)
 {
 	CloseWindow();
+	CloseAudioDevice();
 }
 
 bool RAY::Window::isFocused(void) const
