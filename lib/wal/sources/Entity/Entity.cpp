@@ -70,7 +70,9 @@ namespace WAL
 		auto cmp = this->_components.find(type);
 		if (cmp == this->_components.end())
 			return false;
-		return !cmp->second->isDisabled();
+		if (skipDisabled)
+			return !cmp->second->isDisabled();
+		return true;
 	}
 
 	void Entity::_componentAdded(const std::type_index &type)

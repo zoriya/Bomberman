@@ -14,7 +14,7 @@ namespace BBM
 		: System(wal)
 	{ }
 
-	bool CollisionSystem::collide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB)
+	bool CollisionSystem::boxesCollide(Vector3f minA, Vector3f maxA, Vector3f minB, Vector3f maxB)
 	{
 		bool overlapX = (minA.x <= maxB.x && maxA.x >= minB.x) || (minB.x <= maxA.x && maxB.x >= minA.x);
 		bool overlapY = (minA.y <= maxB.y && maxA.y >= minB.y) || (minB.y <= maxA.y && maxB.y >= minA.y);
@@ -26,20 +26,51 @@ namespace BBM
 	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
 	{
 		auto &posA = entity.get<PositionComponent>();
-		auto &col = entity.get<CollisionComponent>();
-		Vector3f position = posA.position;
-		if (auto *movable = entity->tryGetComponent<MovableComponent>())
-			position += movable->getVelocity();
-		Vector3f minA = Vector3f::min(position, position + col.bound);
-		Vector3f maxA = Vector3f::max(position, position + col.bound);
+		auto &colA = entity.get<CollisionComponent>();
+		Vector3f pointA = posA.position + colA.positionOffset;
+		Vector3f pointAx = pointA;
+		Vector3f pointAy = pointA;
+		Vector3f pointAz = pointA;
+
+		if (auto *movable = entity->tryGetComponent<MovableComponent>()) {
+			auto vel = movable->getVelocity();
+			pointAx.x += vel.x;
+			pointAy.y += vel.y;
+			pointAz.z += vel.z;
+		}
+
+		Vector3f minAx = Vector3f::min(pointAx, pointAx + colA.bound);
+		Vector3f maxAx = Vector3f::max(pointAx, pointAx + colA.bound);
+
+		Vector3f minAy = Vector3f::min(pointAy, pointAy + colA.bound);
+		Vector3f maxAy = Vector3f::max(pointAy, pointAy + colA.bound);
+
+		Vector3f minAz = Vector3f::min(pointAz, pointAz + colA.bound);
+		Vector3f maxAz = Vector3f::max(pointAz, pointAz + colA.bound);
+
 		for (auto &[other, posB, colB] : this->getView()) {
 			if (other.getUid() == entity->getUid())
 				continue;
-			Vector3f minB = Vector3f::min(posB.position, posB.position + colB.bound);
-			Vector3f maxB = Vector3f::max(posB.position, posB.position + colB.bound);
-			if (collide(minA, maxA, minB, maxB)) {
-				col.onCollide(entity, other);
-				colB.onCollided(entity, other);
+
+			auto pointB = posB.position + colB.positionOffset;
+			int collidedAxis = 0;
+
+			// TODO if B is also a movable we don't check with it's changing position
+			Vector3f minB = Vector3f::min(pointB, pointB + colB.bound);
+			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
+
+			if (boxesCollide(minAx, maxAx, minB, maxB)) {
+				collidedAxis += CollisionComponent::CollidedAxis::X;
+			}
+			if (boxesCollide(minAy, maxAy, minB, maxB)) {
+				collidedAxis += CollisionComponent::CollidedAxis::Y;
+			}
+			if (boxesCollide(minAz, maxAz, minB, maxB)) {
+				collidedAxis += CollisionComponent::CollidedAxis::Z;
+			}
+			if (collidedAxis) {
+				colA.onCollide(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
+				colB.onCollided(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
 			}
 		}
 	}

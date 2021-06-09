@@ -10,6 +10,7 @@
 #include "Entity/Entity.hpp"
 
 using Button = RAY::Controller::GamePad::Button;
+using Axis = RAY::Controller::GamePad::Axis;
 using Gamepad = RAY::Controller::GamePad;
 
 namespace BBM
@@ -34,6 +35,11 @@ namespace BBM
 			Button keyUp = GAMEPAD_BUTTON_LEFT_FACE_UP;
 			//! @brief move down key
 			Button keyDown = GAMEPAD_BUTTON_LEFT_FACE_DOWN;
+
+			Axis LeftStickX = GAMEPAD_AXIS_LEFT_X;
+			Axis LeftStickY = GAMEPAD_AXIS_LEFT_Y;
+			Axis RightStickX = GAMEPAD_AXIS_RIGHT_X;
+			Axis RightStickY = GAMEPAD_AXIS_RIGHT_Y;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
