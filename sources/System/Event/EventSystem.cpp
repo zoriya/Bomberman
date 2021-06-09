@@ -15,6 +15,11 @@ namespace BBM
 		this->_events.emplace_back(event);
 	}
 
+	void EventSystem::dispatchEvent(const std::function<void(WAL::Wal &)> &event)
+	{
+		this->_globalEvents.emplace_back(event);
+	}
+
 	void EventSystem::onUpdate(WAL::ViewEntity<> &entity, std::chrono::nanoseconds)
 	{
 		for (auto &event : this->_events)
@@ -23,6 +28,9 @@ namespace BBM
 
 	void EventSystem::onSelfUpdate()
 	{
+		for (auto &event : this->_globalEvents)
+			event(this->_wal);
 		this->_events.clear();
+		this->_globalEvents.clear();
 	}
 }

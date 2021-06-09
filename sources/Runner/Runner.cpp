@@ -30,6 +30,7 @@
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Renderer/Drawable2DComponent.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
+#include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
@@ -85,7 +86,7 @@ namespace BBM
 		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
 		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-		    {SoundComponent::DEATH, "assets/sounds/death.ogg"}
+		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
@@ -94,6 +95,7 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
+			.addComponent<TagComponent<Blowable>>()
 			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})

@@ -98,3 +98,9 @@ TEST_CASE("Collsion test with movable", "[Component][System]")
 	REQUIRE(entity.getComponent<PositionComponent>().position.y == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.z == 0.0);
 }
+
+TEST_CASE("Vector round", "[Vector]")
+{
+	Vector3f v(1.3, 1.5, 1.7);
+	REQUIRE(v.round() == Vector3f(1, 2, 2));
+}

@@ -6,7 +6,7 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Map.hpp"
-#include <iostream>
+#include <Component/Tag/TagComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -23,7 +23,7 @@ namespace BBM
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)
 			mov->_velocity.x = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Y)
-			mov->_velocity.x = 0;
+			mov->_velocity.y = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Z)
 			mov->_velocity.z = 0;
 	}
@@ -56,6 +56,7 @@ namespace BBM
 				if (!(i % 2) && !(j % 2)) {
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(i, 0, j)
+						.addComponent<TagComponent<Blowable>>()
 						.addComponent<CollisionComponent>(
 							WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 							&MapGenerator::wallCollide, 0.25, .75)
@@ -73,6 +74,7 @@ namespace BBM
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
@@ -81,6 +83,7 @@ namespace BBM
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
@@ -89,6 +92,7 @@ namespace BBM
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
@@ -145,6 +149,7 @@ namespace BBM
 
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
@@ -181,6 +186,7 @@ namespace BBM
 
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, 0.25, .75)

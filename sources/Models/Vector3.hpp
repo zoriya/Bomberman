@@ -168,6 +168,11 @@ namespace BBM
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
 		}
 
+		Vector3<T> round() const requires(std::is_floating_point_v<T>)
+		{
+			return Vector3<T>(std::round(this->x), std::round(this->y), std::round(this->z));
+		}
+
 		operator RAY::Vector3() const requires(std::is_same_v<T, float>)
 		{
 			return RAY::Vector3(this->x, this->y, this->z);
