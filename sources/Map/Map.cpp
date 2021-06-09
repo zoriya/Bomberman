@@ -12,6 +12,28 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
+	void MapGenerator::bumperCollide(WAL::Entity &entity,
+	                                 const WAL::Entity &wall,
+	                                 CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto *movable = entity.tryGetComponent<MovableComponent>();
+
+		if (!movable)
+			return;
+		movable->_velocity.y = 0.5;
+	}
+
+	void MapGenerator::holeCollide(WAL::Entity &entity,
+	                               const WAL::Entity &wall,
+	                               CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto *health = entity.tryGetComponent<HealthComponent>();
+
+		if (!health)
+			return;
+		health->takeDmg(health->getHealthPoint());
+	}
+
 	void MapGenerator::wallCollide(WAL::Entity &entity,
 	                               const WAL::Entity &wall,
 	                               CollisionComponent::CollidedAxis collidedAxis)
@@ -23,7 +45,7 @@ namespace BBM
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)
 			mov->_velocity.x = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Y)
-			mov->_velocity.x = 0;
+			mov->_velocity.y = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Z)
 			mov->_velocity.z = 0;
 	}
@@ -200,19 +222,16 @@ namespace BBM
 
 		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
 
-		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
-
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
+	              .addComponent<CollisionComponent>(
+		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::holeCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 1.75, 0.75));
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
 		else
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(secondFloorObj,
 			                                                           std::make_pair(MAP_DIFFUSE, secondFloorPng));
-		/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
-			if (other.hasComponent<HealthComponent>()) {
-				auto &health = other.getComponent<HealthComponent>();
-				health.takeDmg(health.getHealthPoint());
-			}
-		}, [](WAL::Entity &other, const WAL::Entity &entity){}); */
+		
 	}
 
 	void MapGenerator::createBumper(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -222,13 +241,10 @@ namespace BBM
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng));
-		/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
-			if (other.hasComponent<MovableComponent>()) {
-				auto &movable = other.getComponent<MovableComponent>();
-				movable.addForce(Vector3f(0, 5, 0));
-			}
-		}); */
+			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng))
+			.addComponent<CollisionComponent>(
+		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::bumperCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 0.75, 0.75));
 	}
 
 	void MapGenerator::createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
