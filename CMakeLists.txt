@@ -84,6 +84,16 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Music/MusicComponent.cpp
+	sources/Component/Music/MusicComponent.hpp
+	sources/Component/Sound/SoundComponent.hpp
+	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/MenuSoundManagerSystem.cpp
+	sources/System/Sound/MenuSoundManagerSystem.hpp
+	sources/System/Sound/PlayerSoundManagerSystem.cpp
+	sources/System/Sound/PlayerSoundManagerSystem.hpp
+	sources/System/Music/MusicSystem.hpp
+	sources/System/Music/MusicSystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp
@@ -94,15 +104,15 @@ target_link_libraries(bomberman PUBLIC wal ray)
 
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
-	${SOURCES}
-	tests/EntityTests.cpp
-	tests/MainTest.cpp
-	tests/EngineTests.cpp
-	tests/CallbackTest.cpp
-	tests/MoveTests.cpp
-	tests/ViewTest.cpp
-	tests/CollisionTest.cpp
-)
+               ${SOURCES}
+               tests/EntityTests.cpp
+               tests/MainTest.cpp
+               tests/EngineTests.cpp
+               tests/CallbackTest.cpp
+               tests/MoveTests.cpp
+               tests/ViewTest.cpp
+               tests/CollisionTest.cpp
+               )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

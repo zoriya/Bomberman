@@ -38,6 +38,11 @@
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <Drawables/Texture.hpp>
+#include "Component/Music/MusicComponent.hpp"
+#include "Component/Sound/SoundComponent.hpp"
+#include "System/Sound/PlayerSoundManagerSystem.hpp"
+#include "System/Sound/MenuSoundManagerSystem.hpp"
+#include "System/Music/MusicSystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -81,7 +86,10 @@ namespace BBM
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
-			.addSystem<MovableSystem>();
+			.addSystem<MovableSystem>()
+			.addSystem<PlayerSoundManagerSystem>()
+			.addSystem<MenuSoundManagerSystem>()
+			.addSystem<MusicSystem>();
 	}
 
 	void Runner::enableRaylib(WAL::Wal &wal)
@@ -95,10 +103,15 @@ namespace BBM
 
 	std::shared_ptr<WAL::Scene> Runner::loadTitleScreenScene()
 	{
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("control")
 			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<KeyboardComponent>()
+			.addComponent<SoundComponent>(sounds)
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg");
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
@@ -114,20 +127,21 @@ namespace BBM
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
-	
-		//needed material
-		//music
-		//sound
 		return scene;
 	}
 
 	std::shared_ptr<WAL::Scene> Runner::loadMainMenuScene()
 	{
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
 		auto scene = std::make_shared<WAL::Scene>();
 
 		scene->addEntity("Control entity")
 			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<KeyboardComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
+			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
@@ -214,19 +228,21 @@ namespace BBM
 		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
 		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &credits, nullptr, &credits);
 		credits.getComponent<OnClickComponent>().setButtonLinks(&exit, nullptr, &exit);
-		//needed material
-		//music
-		//sound
 		return scene;
 	}
 
 	std::shared_ptr<WAL::Scene> Runner::loadPauseMenuScene()
 	{
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
 		auto scene = std::make_shared<WAL::Scene>();
 
 		scene->addEntity("Control entity")
 			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<KeyboardComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
+			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
@@ -292,7 +308,6 @@ namespace BBM
 			});
 		//needed material
 		//music
-		//sound
 		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &play, &exit);
 		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, nullptr);
@@ -302,11 +317,15 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadSettingsMenuScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
 
 		scene->addEntity("Control entity")
 			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<KeyboardComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
+			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
@@ -450,8 +469,6 @@ namespace BBM
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
 		//needed material
-		// back button
-		// back button asset
 		//music
 		//sound
 
@@ -472,6 +489,12 @@ namespace BBM
 		scene->addEntity("control")
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>();
+		std::map<SoundComponent::SoundIndex, std::string> soundPath ={
+		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
+		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
+		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
+		    {SoundComponent::DEATH, "assets/sounds/death.ogg"}
+		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
@@ -479,8 +502,10 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(1)
+			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
+			.addComponent<SoundComponent>(soundPath)
+			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
 			.addComponent<BombHolderComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
@@ -489,26 +514,27 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-//		scene->addEntity("cube")
-//			.addComponent<PositionComponent>(5, 0, 5)
-//			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-//			.addComponent<ControllableComponent>()
-//			.addComponent<KeyboardComponent>()
-//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+
 		return scene;
 	}
 
 	std::shared_ptr<WAL::Scene> Runner::loadCreditScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
 
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+
 		scene->addEntity("Control entity")
 			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<KeyboardComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
+			.addComponent<SoundComponent>(sounds);
 
 		auto &raylibLogo = scene->addEntity("raylib logo")
 			.addComponent<PositionComponent>(1920 / 4, 1080 / 1.75, 0)

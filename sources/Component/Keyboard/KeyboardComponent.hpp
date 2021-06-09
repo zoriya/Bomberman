@@ -23,9 +23,9 @@ namespace BBM
 			//! @brief pause key
 			Key keyPause = RAY::Controller::Keyboard::Key::KEY_ESCAPE;
 			//! @brief move right key
-			Key keyRight = KEY_A;
+			Key keyRight = KEY_D;
 			//! @brief move left key
-			Key keyLeft = KEY_D;
+			Key keyLeft = KEY_A;
 			//! @brief move up key
 			Key keyUp = KEY_W;
 			//! @brief move down key
