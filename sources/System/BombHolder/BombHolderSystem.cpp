@@ -19,6 +19,17 @@ namespace BBM
 {
 	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 3s;
 
+	void BombHolderSystem::_bombCollide(WAL::Entity &entity,
+	                                   const WAL::Entity &bomb,
+	                                   CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto &bombInfo = bomb.getComponent<BasicBombComponent>();
+		if (bombInfo.skipOwner && bombInfo.owner == entity)
+			return;
+		return MapGenerator::wallCollide(entity, bomb, collidedAxis);
+	}
+
+
 	BombHolderSystem::BombHolderSystem(WAL::Wal &wal)
 		: System(wal)
 	{}
@@ -54,8 +65,8 @@ namespace BBM
 		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
-//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-//			                                  &MapGenerator::wallCollide, 0.25, .75)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			                                  &BombHolderSystem::_bombCollide, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
 	}

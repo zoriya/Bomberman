@@ -6,6 +6,7 @@
 
 #include <System/System.hpp>
 #include <Wal.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
 #include "Models/Vector3.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
@@ -25,6 +26,9 @@ namespace BBM
 
 		//! @brief The method triggered when the bomb explode.
 		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
+
+		//! @brief The method called when a player collide with a bomb.
+		static void _bombCollide(WAL::Entity &entity, const WAL::Entity &wall, BBM::CollisionComponent::CollidedAxis collidedAxis);
 	public:
 		//! @brief The explosion time of new bombs.
 		static std::chrono::nanoseconds explosionTimer;
