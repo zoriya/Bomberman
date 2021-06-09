@@ -3,17 +3,9 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
-#include <Component/Position/PositionComponent.hpp>
-#include <Component/Renderer/Drawable3DComponent.hpp>
-#include <map>
-#include <Component/Levitate/LevitateComponent.hpp>
-#include "Component/Collision/CollisionComponent.hpp"
-#include <Component/Animation/AnimationsComponent.hpp>
 #include <Component/Timer/TimerComponent.hpp>
 #include "HealthSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
-#include "Entity/Entity.hpp"
-#include "Items/Bonus.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
