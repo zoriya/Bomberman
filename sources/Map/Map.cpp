@@ -97,7 +97,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -105,7 +105,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -113,7 +113,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
@@ -121,7 +121,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
@@ -151,7 +151,6 @@ namespace BBM
 			{HOLE,        &createHole},
 			{FLOOR,       &createFloor},
 			{BUMPER,      &createBumper},
-			{STAIRS,      &createStairs},
 			{UPPERFLOOR,  &createUpperFloor},
 		};
 
@@ -247,17 +246,6 @@ namespace BBM
 		            &MapGenerator::bumperCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 0.75, 0.75));
 	}
 
-	void MapGenerator::createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
-	{
-		static const std::string stairsObj = stairsPath + objExtension;
-		static const std::string stairsPng = stairsPath + imageExtension;
-
-		scene->addEntity("Stairs Block")
-			.addComponent<PositionComponent>(coords)
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng));
-	}
-
 	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z,
 	                                      BlockType blockType)
 	{
@@ -289,10 +277,10 @@ namespace BBM
 				map[std::make_tuple(i, 1, 0)] = map[std::make_tuple(i, 0, 0)];
 				map[std::make_tuple(i, 0, 0)] = UPPERFLOOR;
 			}
-			map[std::make_tuple(0, 0, height - 1)] = STAIRS;
-			map[std::make_tuple(0, 0, 1)] = STAIRS;
-			map[std::make_tuple(width, 0, height - 1)] = STAIRS;
-			map[std::make_tuple(width, 0, 1)] = STAIRS;
+			map[std::make_tuple(0, -1, height - 1)] = BUMPER;
+			map[std::make_tuple(0, -1, 1)] = BUMPER;
+			map[std::make_tuple(width, -1, height - 1)] = BUMPER;
+			map[std::make_tuple(width, -1, 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, height - 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, 1)] = BUMPER;
 		}
@@ -305,10 +293,10 @@ namespace BBM
 					map[std::make_tuple(i, 0, j)] = UPPERFLOOR;
 				}
 			}
-			map[std::make_tuple(width / 2 - width / 8, 0, height / 2 + height / 4 + 1)] = STAIRS;
-			map[std::make_tuple(width / 2 + width / 8, 0, height / 2 - height / 4 - 1)] = STAIRS;
-			map[std::make_tuple(width / 2 - width / 4 - 1, 0, height / 2 - height / 8)] = STAIRS;
-			map[std::make_tuple(width / 2 + width / 4 + 1, 0, height / 2 + height / 8)] = STAIRS;
+			map[std::make_tuple(width / 2 - width / 8, -1, height / 2 + height / 4 + 1)] = BUMPER;
+			map[std::make_tuple(width / 2 + width / 8, -1, height / 2 - height / 4 - 1)] = BUMPER;
+			map[std::make_tuple(width / 2 - width / 4 - 1, -1, height / 2 - height / 8)] = BUMPER;
+			map[std::make_tuple(width / 2 + width / 4 + 1, -1, height / 2 + height / 8)] = BUMPER;
 		}
 		return map;
 	}
@@ -327,8 +315,6 @@ namespace BBM
 	{
 		for (int i = 0; i < width + 1; i++)
 			for (int j = 0; j < height; j++) {
-				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && isCloseToBlockType(map, i, 0, j, STAIRS))
-					map[std::make_tuple(i, 0, j)] = NOTHING;
 				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && map[std::make_tuple(i, -1, j)] == BUMPER)
 					map[std::make_tuple(i, 0, j)] = NOTHING;
 			}

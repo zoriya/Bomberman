@@ -37,7 +37,6 @@ namespace BBM
 			UPPERFLOOR,
 			FLOOR,
 			BUMPER,
-			STAIRS,
 			SPAWNER,
 			UNBREAKABLE
 		};
@@ -108,12 +107,6 @@ namespace BBM
 		//! @param scene Scene where the map is instanced
 		//! @brief Create upper floor of the map
 		static void createUpperFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
-
-
-		//! @param coords coords of the element
-		//! @param scene Scene where the map is instanced
-		//! @brief Create stair of the map
-		static void createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
 
 		//! @param map Map to load with block declared inside
 		//! @param width Width of the map
