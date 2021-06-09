@@ -9,16 +9,14 @@
 namespace BBM
 {
 	//! @brief A system to handle keyboard entities.
-	class IAControllableSystem : public WAL::System<ControllableComponent, IAControllableComponent>
+	class IAControllableSystem : public WAL::System<PositionComponent, ControllableComponent, IAControllableComponent>
 	{
 	private:
-		//! @brief extract a number from the lua stack
-		float getReturnNumber(lua_State *state);
-		//! @brief extract a bool from the lua stack
-		bool getReturnBool(lua_State *state);
+		//! @brief Reference to wal to get Views
+		WAL::Wal &_wal;
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ControllableComponent, IAControllableComponent> &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity) override;
 
 		//! @brief A default constructor
 		IAControllableSystem(WAL::Wal &wal);

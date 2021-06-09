@@ -96,6 +96,7 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<IAControllableComponent>("./ai_scripts/john.lua")
 			.addComponent<TagComponent<Blowable>>()
 			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)

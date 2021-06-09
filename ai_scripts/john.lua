@@ -1,14 +1,16 @@
-function Sum(a,b)
-	return a + b;
-end
-
-function Update(infos)
+function Update(player, infos, players)
+	print(player.x);
+	print(player.y);
+	print(player.z);
 	for i, info in ipairs(infos) do
-		print (info.x);
-		print (info.y);
-		print (info.z);
-		print (info.type);
+		--print("x");
+		--print (info.x);
+		--print("y");
+		--print (info.y);
+		--print("z");
+		--print (info.z);
+		--print("type");
+		--print (info.type);
 	  end
 	return 1, 1, false, false;
-	--return info.x, info.y, (info.z ~= 1), (info.type ~= 0);
 end

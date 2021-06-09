@@ -3,6 +3,7 @@
 //
 
 #include "Map/MapInfo.hpp"
+#include "Component/Tag/TagComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
@@ -12,46 +13,40 @@
 namespace BBM
 {
 	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
-	: System(wal)
+	: System(wal), _wal(wal)
 	{ }
 
-	float IAControllableSystem::getReturnNumber(lua_State *state)
-	{
-		float res = 0;
-
-		if (lua_isnil(state, -1))
-			return res;
-		if (!lua_isnumber(state, -1))
-			return res;
-		res = lua_tonumber(state, -1);
-		lua_pop(state, 1);
-
-		return res;
-	}
-
-	bool IAControllableSystem::getReturnBool(lua_State *state)
-	{
-		bool res = false;
-
-		if (lua_isnil(state, -1))
-			return res;
-		if (!lua_isboolean(state, -1))
-			return res;
-		res = lua_toboolean(state, -1);
-		lua_pop(state, 1);
-		return res;
-	}
-
-	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent, IAControllableComponent> &entity)
+	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
 	{
 		auto &ia = entity.get<IAControllableComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
+		auto &pos = entity.get<PositionComponent>();
+		MapInfo player(pos.position, MapGenerator::NOTHING);
 		std::vector<MapInfo> infos;
+		std::vector<MapInfo> players;
+
+		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Breakable>>())
+			infos.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
+
+		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Unbreakable>>())
+			infos.push_back(MapInfo(pos.position, MapGenerator::UNBREAKABLE));
+
+		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Bumper>>())
+			infos.push_back(MapInfo(pos.position, MapGenerator::BUMPER));
+
+		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Hole>>())
+			infos.push_back(MapInfo(pos.position, MapGenerator::HOLE));
+		
+		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Player>>()) {
+			if (static_cast<WAL::Entity>(entity).getUid() == other.getUid())
+				continue;
+			players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
+		}
 
 		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
 			return;
-		luabridge::LuaResult res = updateFunc(infos);
+		luabridge::LuaResult res = updateFunc(player, infos, players);
 
 		if (res.hasFailed() || res.size() != 4)
 			return;
