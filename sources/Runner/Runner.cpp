@@ -28,6 +28,7 @@
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
+#include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -89,6 +90,7 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<TagComponent<Blowable>>()
 			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})

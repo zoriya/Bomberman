@@ -81,6 +81,7 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
