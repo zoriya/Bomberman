@@ -102,7 +102,7 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
-)
+	sources/System/Bomb/BombSystem.cpp sources/System/Bomb/BombSystem.hpp)
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}

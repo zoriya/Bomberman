@@ -25,7 +25,7 @@ namespace BBM
 	                                   CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto &bombInfo = bomb.getComponent<BasicBombComponent>();
-		if (bombInfo.skipOwner && bombInfo.owner == entity)
+		if (bombInfo.ignoreOwner && bombInfo.ownerID == entity.getUid())
 			return;
 		return MapGenerator::wallCollide(entity, bomb, collidedAxis);
 	}
@@ -62,11 +62,11 @@ namespace BBM
 		_dispatchExplosion(position, wal, 3 + (explosionRadius - 3));
 	}
 
-	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder)
+	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, int id)
 	{
 		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
-			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius)
+			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 			                                  &BombHolderSystem::_bombCollide, 0.25, .75)
@@ -84,7 +84,7 @@ namespace BBM
 
 		if (controllable.bomb && holder.bombCount > 0) {
 			holder.bombCount--;
-			this->_spawnBomb(position.position, holder);
+			this->_spawnBomb(position.position, holder, entity->getUid());
 		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;

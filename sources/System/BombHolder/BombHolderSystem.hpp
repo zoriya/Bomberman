@@ -19,7 +19,7 @@ namespace BBM
 	{
 	private:
 		//! @brief Spawn a bomb at the specified position.
-		void _spawnBomb(Vector3f position, BombHolderComponent &holder);
+		void _spawnBomb(Vector3f position, BombHolderComponent &holder, int id);
 
 		//! @brief Spawn a bomb at the specified position.
 		static void _dispatchExplosion(Vector3f position, WAL::Wal &, int count);
