@@ -7,9 +7,10 @@ set(CMAKE_CXX_STANDARD 20)
 # Find Lua
 find_package(Lua REQUIRED)                                                         #-> CHANGE
 
-include_directories(bomberman ${LUA_INCLUDE_DIR})    #-> ADDED '{LUA_INCLUDE_DIR}'
+include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
+include_directories(bomberman lib/LuaBridge)
 include_directories(bomberman sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
@@ -80,13 +81,15 @@ set(SOURCES
 	sources/System/IAControllable/IAControllableSystem.cpp
 	sources/Component/Tag/TagComponent.cpp
 	sources/Component/Tag/TagComponent.hpp
+	sources/Map/MapInfo.hpp
+	sources/Map/MapInfo.cpp
 )
 
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
                )
-target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
+target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR} lib/LuaBridge)
 target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES})
 
 add_executable(unit_tests EXCLUDE_FROM_ALL

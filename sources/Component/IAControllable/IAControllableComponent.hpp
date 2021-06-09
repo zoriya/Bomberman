@@ -12,6 +12,7 @@
 #include "Entity/Entity.hpp"
 #include "Models/Vector3.hpp"
 #include "lua.hpp"
+#include "LuaBridge.hpp"
 
 namespace BBM
 {

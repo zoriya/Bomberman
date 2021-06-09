@@ -2,6 +2,7 @@
 // Created by Louis Auzuret on 06/07/21
 //
 
+#include "Map/MapInfo.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
@@ -43,19 +44,18 @@ namespace BBM
 	{
 		auto &ia = entity.get<IAControllableComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
+		MapInfo info({1, 2, 3}, MapGenerator::NOTHING);
 
-		lua_getglobal(ia.state, "Update");
-		if (!lua_isfunction(ia.state, -1))
+		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
+		if (!updateFunc.isFunction())
+			return;	
+		luabridge::LuaResult res = updateFunc(info);
+
+		if (res.hasFailed() || res.size() != 4)
 			return;
-		//std::vector<> players;
-		//std::vector<> map;
-		//push parameters
-		int nbParams = 0;
-		int nbReturn = 4;
-		lua_pcall(ia.state, nbParams, nbReturn, 0);
-		controllable.bomb = getReturnBool(ia.state);
-		controllable.jump = getReturnBool(ia.state);
-		controllable.move.y = getReturnNumber(ia.state);
-		controllable.move.x = getReturnNumber(ia.state);
+		controllable.bomb = res[3];
+		controllable.jump = res[2];
+		controllable.move.y = res[1];
+		controllable.move.x = res[0];
 	}
 }

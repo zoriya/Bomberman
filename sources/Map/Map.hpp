@@ -27,7 +27,7 @@ namespace BBM
 
 	class MapGenerator
 	{
-		private:
+		public:
 			//! @brief Enum of the block available.
 			enum BlockType {
 				NOTHING,
@@ -40,9 +40,25 @@ namespace BBM
 				SPAWNER,
 				UNBREAKABLE
 			};
-
 			using MapElem = std::function<void (Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 			using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
+
+			static void wallCollide(WAL::Entity &entity, const WAL::Entity &wall);
+
+
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @brief Generate map of block to be loaded
+			static MapBlock createMap(int width, int height);
+
+			//! @param width Width of the map
+			//! @param height Height of the map
+			//! @param map Map to load with block declared inside
+			//! @param scene Scene where the map is instanced
+			//! @brief Generate the map
+			static void loadMap(int width, int height, MapBlock map, std::shared_ptr<WAL::Scene> scene);
+			
+		private:
 
 			//! @brief Generate random block type
 			static BlockType getRandomBlockType();
@@ -155,21 +171,5 @@ namespace BBM
 
 			static const std::string secondFloorHolePath;
 
-		public:
-			static void wallCollide(WAL::Entity &entity, const WAL::Entity &wall);
-
-
-			//! @param width Width of the map
-			//! @param height Height of the map
-			//! @brief Generate map of block to be loaded
-			static MapBlock createMap(int width, int height);
-
-			//! @param width Width of the map
-			//! @param height Height of the map
-			//! @param map Map to load with block declared inside
-			//! @param scene Scene where the map is instanced
-			//! @brief Generate the map
-			static void loadMap(int width, int height, MapBlock map, std::shared_ptr<WAL::Scene> scene);
-			
 	};
 } // namespace BBM
