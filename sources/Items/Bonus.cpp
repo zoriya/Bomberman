@@ -37,7 +37,6 @@ namespace BBM {
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		std::cout << "soeed" << std::endl;
 		if (bonus.shouldDelete())
 			return;
 		auto *controllable = player.tryGetComponent<ControllableComponent>();
