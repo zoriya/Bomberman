@@ -8,15 +8,13 @@
 #include <Component/Component.hpp>
 #include <Entity/Entity.hpp>
 #include <Shaders/Shaders.hpp>
+#include <Model/Model.hpp>
 
 namespace BBM
 {
 	class ShaderComponent : public WAL::Component
 	{
 	private:
-		//! @brief efefefefez
-		WAL::Entity &_refEntity;
-
 		//! @brief The shader to be applied
 		RAY::Shader _shader;
 		//! @brief The path to the fragment file
@@ -51,6 +49,10 @@ namespace BBM
 	class ShaderComponentModel : public ShaderComponent
 	{
 	public:
+		RAY::Drawables::Drawables3D::Model *model = nullptr;
+
+		void onStart() override;
+
 		//! @brief ctor
 		//! @note use empty string to omit a file
 		ShaderComponentModel(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath = "");

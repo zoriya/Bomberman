@@ -5,6 +5,7 @@
 
 #pragma once
 
+#include <utility>
 #include <vector>
 #include <string>
 #include <memory>
@@ -29,6 +30,9 @@ namespace WAL
 		//! @brief The list of registered systems
 		std::vector<std::unique_ptr<ISystem>> _systems = {};
 
+		//! @brief The scene that contains entities.
+		std::shared_ptr<Scene> _scene;
+
 		//! @brief Start the game loop
 		//! @param callback A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here)
 		//! @param state An initial game state. If not specified, it will be defaulted.
@@ -52,7 +56,7 @@ namespace WAL
 				}
 				for (auto &system : this->_systems)
 					system->update(dtime);
-				this->scene->applyChanges();
+				this->_scene->applyChanges();
 				callback(*this, state);
 			}
 		}
@@ -81,12 +85,32 @@ namespace WAL
 		}
 #endif
 	public:
-		//! @brief The scene that contains entities.
-		std::shared_ptr<Scene> scene;
 		//! @brief True if the engine should close after the end of the current tick.
 		bool shouldClose = false;
 		//! @brief The time between each fixed update.
 		static constexpr std::chrono::nanoseconds timestep = std::chrono::milliseconds(32);
+
+		//! @brief Retrieve the current scene
+		std::shared_ptr<Scene> getScene() const
+		{
+			return this->_scene;
+		}
+
+		//! @brief Change the current scene
+		void changeScene(std::shared_ptr<Scene> newScene)
+		{
+			if (this->_scene) {
+				for (auto &entity : this->_scene->getEntities()) {
+					for (auto &cmp : entity._components)
+						cmp.second->onStop();
+				}
+			}
+			this->_scene = std::move(newScene);
+			for (auto &entity : this->_scene->getEntities()) {
+				for (auto &cmp : entity._components)
+					cmp.second->onStart();
+			}
+		}
 
 		//! @brief Create a new system in place.
 		//! @return The wal instance used to call this function is returned. This allow method chaining.

@@ -126,7 +126,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadGameScene();
+		wal.changeScene(loadGameScene());
 
 		try {
 			wal.run<GameState>(updateState);

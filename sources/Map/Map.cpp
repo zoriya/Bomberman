@@ -132,12 +132,10 @@ namespace BBM
 			{UPPERFLOOR,  &createUpperFloor},
 		};
 
-		try {
-			auto element = elements.at(blockType);
-			element(coords, scene);
-		} catch (std::exception const &err) {
+		if (blockType == NOTHING || blockType == SPAWNER)
 			return;
-		}
+		auto element = elements.at(blockType);
+		element(coords, std::move(scene));
 	}
 
 	void MapGenerator::createBreakable(Vector3f coords, std::shared_ptr<WAL::Scene> scene)

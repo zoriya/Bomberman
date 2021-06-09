@@ -44,6 +44,7 @@ namespace WAL
 		void _componentRemoved(const std::type_index &type);
 
 		friend Scene;
+		friend class Wal;
 	protected:
 		//! @brief A reference to the ECS.
 		Scene &_scene;
