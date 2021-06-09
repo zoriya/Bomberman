@@ -409,7 +409,13 @@ namespace BBM
 		auto &soundUp = scene->addEntity("sound up button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
-			.addComponent<OnClickComponent>()
+			.addComponent<SoundComponent>(sounds)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto &component = entity.getComponent<SoundComponent>();
+				
+				component.turnUpVolume();
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -426,12 +432,18 @@ namespace BBM
 		auto &soundDown = scene->addEntity("sound down button")
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
-			.addComponent<OnClickComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				
 				texture->use("assets/buttons/button_minus.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto &component = entity.getComponent<SoundComponent>();
+				
+				component.turnDownVolume();
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{

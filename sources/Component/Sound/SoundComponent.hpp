@@ -42,10 +42,16 @@ namespace BBM
 		void pauseSound();
 
 		//! @brief set Sound volume
-		void setVolume(float &);
+		void setVolume(float);
+
+		//! @brief volume -= 0.1
+		void turnDownVolume();
+
+		//! @brief volume += 0.1
+		void turnUpVolume();
 
 		//! @brief set pitch volume
-		void setPitch(float &);
+		void setPitch(float);
 
 		//! @brief is Sound playing
 		bool isPlaying();
