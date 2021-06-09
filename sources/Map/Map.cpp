@@ -24,7 +24,7 @@ namespace BBM
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)
 			mov->_velocity.x = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Y)
-			mov->_velocity.x = 0;
+			mov->_velocity.y = 0;
 		if (collidedAxis & CollisionComponent::CollidedAxis::Z)
 			mov->_velocity.z = 0;
 	}
