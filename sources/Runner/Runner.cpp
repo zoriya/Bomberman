@@ -28,7 +28,6 @@
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
-#include <System/BombAnimator/BombAnimatorSystem.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
@@ -53,7 +52,6 @@ namespace BBM
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<ControllableSystem>()
-			.addSystem<BombAnimatorSystem>()
 			.addSystem<BombHolderSystem>()
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()

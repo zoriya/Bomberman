@@ -2,7 +2,6 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
-#include <Component/BombAnimator/BombAnimatorComponent.hpp>
 #include <Component/Animation/AnimationsComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
@@ -26,7 +25,7 @@ namespace BBM
 	{
 		bomb.scheduleDeletion();
 		auto &bombPosition = bomb.getComponent<PositionComponent>();
-		wal.getSystem<EventSystem>().dispatchEvent([&bombPosition](WAL::Entity &entity){
+		wal.getSystem<EventSystem>().dispatchEvent([&bombPosition, &wal](WAL::Entity &entity){
 			auto *health = entity.tryGetComponent<HealthComponent>();
 			auto *pos = entity.tryGetComponent<PositionComponent>();
 
@@ -34,6 +33,13 @@ namespace BBM
 				return;
 			if (pos->position.distance(bombPosition.position) > BombHolderSystem::explosionRadius)
 				return;
+			wal.scene->scheduleNewEntity("explosion")
+				.addComponent<PositionComponent>(pos->position)
+				.addComponent<TimerComponent>(1s, [](WAL::Entity &explosion, WAL::Wal &wal) {
+					explosion.scheduleDeletion();
+				})
+				.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.obj",
+					 std::make_pair(MAP_DIFFUSE, "assets/bombs/explosion/explosion.png"));
 			// TODO do a raycast here to only remove health to entities that are not behind others.
 			health->takeDmg(1);
 		});
@@ -45,9 +51,7 @@ namespace BBM
 			.addComponent<PositionComponent>(position)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
-				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"))
-			.addComponent<BombAnimatorComponent>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/bombs/bomb.obj"), 0);
+				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
 	}
 
 	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime)
