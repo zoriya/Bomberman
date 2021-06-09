@@ -299,8 +299,6 @@ namespace BBM
 	{
 		for (int i = 0; i < width + 1; i++)
 			for (int j = 0; j < height; j++) {
-				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && isCloseToBlockType(map, i, 0, j, STAIRS))
-					map[std::make_tuple(i, 0, j)] = NOTHING;
 				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && map[std::make_tuple(i, -1, j)] == BUMPER)
 					map[std::make_tuple(i, 0, j)] = NOTHING;
 			}
