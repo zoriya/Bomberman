@@ -18,50 +18,50 @@ if (EMSCRIPTEN)
 endif ()
 
 set(SOURCES
-    sources/Models/GameState.hpp
-    sources/Runner/Runner.cpp
-    sources/Runner/Runner.hpp
-    sources/Map/Map.cpp
-    sources/Map/Map.hpp
-    sources/Component/Position/PositionComponent.cpp
-    sources/Component/Position/PositionComponent.hpp
-    sources/Component/Movable/MovableComponent.cpp
-    sources/Component/Movable/MovableComponent.hpp
-    sources/Component/Controllable/ControllableComponent.hpp
-    sources/Component/Controllable/ControllableComponent.cpp
-    sources/Component/BombHolder/BombHolderComponent.cpp
+	sources/Models/GameState.hpp
+	sources/Runner/Runner.cpp
+	sources/Runner/Runner.hpp
+	sources/Map/Map.cpp
+	sources/Map/Map.hpp
+	sources/Component/Position/PositionComponent.cpp
+	sources/Component/Position/PositionComponent.hpp
+	sources/Component/Movable/MovableComponent.cpp
+	sources/Component/Movable/MovableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.hpp
+	sources/Component/Controllable/ControllableComponent.cpp
+	sources/Component/BombHolder/BombHolderComponent.cpp
 	sources/Component/BombHolder/BombHolderComponent.hpp
 	sources/Component/Gamepad/GamepadComponent.cpp
-    sources/Component/Gamepad/GamepadComponent.hpp
-    sources/Component/Keyboard/KeyboardComponent.cpp
-    sources/Component/Keyboard/KeyboardComponent.hpp
-    sources/Component/Health/HealthComponent.cpp
-    sources/Component/Health/HealthComponent.hpp
-    sources/System/Movable/MovableSystem.hpp
-    sources/System/Movable/MovableSystem.cpp
-    sources/System/Controllable/ControllableSystem.cpp
-    sources/System/Controllable/ControllableSystem.hpp
-    sources/System/Gamepad/GamepadSystem.cpp
-    sources/System/Gamepad/GamepadSystem.hpp
-    sources/System/Health/HealthSystem.cpp
-    sources/System/Health/HealthSystem.hpp
-    sources/System/Keyboard/KeyboardSystem.cpp
-    sources/System/Keyboard/KeyboardSystem.hpp
-    sources/System/Movable/MovableSystem.cpp
-    sources/System/Movable/MovableSystem.hpp
-    sources/Models/Vector3.hpp
-    sources/Component/GridCentered/GridCenteredComponent.cpp
-    sources/Component/GridCentered/GridCenteredComponent.hpp
-    sources/System/GridCentered/GridCenteredSystem.cpp
-    sources/System/GridCentered/GridCenteredSystem.hpp
-    sources/Models/Vector2.hpp
-    sources/Component/Renderer/Drawable2DComponent.hpp
-    sources/Component/Renderer/Drawable3DComponent.hpp
-    sources/System/Renderer/RenderSystem.hpp
-    sources/System/Renderer/RenderSystem.cpp
-    sources/Component/Renderer/CameraComponent.cpp
-    sources/Component/Renderer/CameraComponent.hpp
-    sources/System/BombHolder/BombHolderSystem.cpp
+	sources/Component/Gamepad/GamepadComponent.hpp
+	sources/Component/Keyboard/KeyboardComponent.cpp
+	sources/Component/Keyboard/KeyboardComponent.hpp
+	sources/Component/Health/HealthComponent.cpp
+	sources/Component/Health/HealthComponent.hpp
+	sources/System/Movable/MovableSystem.hpp
+	sources/System/Movable/MovableSystem.cpp
+	sources/System/Controllable/ControllableSystem.cpp
+	sources/System/Controllable/ControllableSystem.hpp
+	sources/System/Gamepad/GamepadSystem.cpp
+	sources/System/Gamepad/GamepadSystem.hpp
+	sources/System/Health/HealthSystem.cpp
+	sources/System/Health/HealthSystem.hpp
+	sources/System/Keyboard/KeyboardSystem.cpp
+	sources/System/Keyboard/KeyboardSystem.hpp
+	sources/System/Movable/MovableSystem.cpp
+	sources/System/Movable/MovableSystem.hpp
+	sources/Models/Vector3.hpp
+	sources/Component/GridCentered/GridCenteredComponent.cpp
+	sources/Component/GridCentered/GridCenteredComponent.hpp
+	sources/System/GridCentered/GridCenteredSystem.cpp
+	sources/System/GridCentered/GridCenteredSystem.hpp
+	sources/Models/Vector2.hpp
+	sources/Component/Renderer/Drawable2DComponent.hpp
+	sources/Component/Renderer/Drawable3DComponent.hpp
+	sources/System/Renderer/RenderSystem.hpp
+	sources/System/Renderer/RenderSystem.cpp
+	sources/Component/Renderer/CameraComponent.cpp
+	sources/Component/Renderer/CameraComponent.hpp
+	sources/System/BombHolder/BombHolderSystem.cpp
 	sources/System/BombHolder/BombHolderSystem.hpp
 	sources/Component/Timer/TimerComponent.cpp
 	sources/Component/Timer/TimerComponent.hpp
@@ -69,20 +69,20 @@ set(SOURCES
 	sources/System/Timer/TimerSystem.hpp
 	sources/System/Event/EventSystem.cpp
 	sources/System/Event/EventSystem.hpp
-    sources/Component/Animation/AnimationsComponent.cpp
-    sources/Component/Animation/AnimationsComponent.hpp
-    sources/System/Animation/AnimationsSystem.cpp
-    sources/System/Animation/AnimationsSystem.hpp
-    sources/Component/Collision/CollisionComponent.cpp
-    sources/Component/Collision/CollisionComponent.hpp
-    sources/System/Collision/CollisionSystem.hpp
-    sources/System/Collision/CollisionSystem.cpp
-    sources/Component/Animator/AnimatorComponent.cpp
-    sources/Component/Animator/AnimatorComponent.hpp
-    sources/System/Animator/AnimatorSystem.cpp
-    sources/System/Animator/AnimatorSystem.hpp
-    sources/Component/Shaders/ShaderComponent.cpp
-    sources/Component/Shaders/ShaderComponent.hpp
+	sources/Component/Animation/AnimationsComponent.cpp
+	sources/Component/Animation/AnimationsComponent.hpp
+	sources/System/Animation/AnimationsSystem.cpp
+	sources/System/Animation/AnimationsSystem.hpp
+	sources/Component/Collision/CollisionComponent.cpp
+	sources/Component/Collision/CollisionComponent.hpp
+	sources/System/Collision/CollisionSystem.hpp
+	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Animator/AnimatorComponent.cpp
+	sources/Component/Animator/AnimatorComponent.hpp
+	sources/System/Animator/AnimatorSystem.cpp
+	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Shaders/ShaderComponent.cpp
+	sources/Component/Shaders/ShaderComponent.hpp
 )
 
 add_executable(bomberman
@@ -102,7 +102,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/MoveTests.cpp
                tests/ViewTest.cpp
                tests/CollisionTest.cpp
-               )
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 
