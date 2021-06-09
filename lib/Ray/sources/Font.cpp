@@ -9,8 +9,8 @@
 
 RAY::Cache<::Font> RAY::Font::_fontsCache(LoadFont, UnloadFont);
 
-RAY::Font::Font(const std::string &filename):
-	_font(_fontsCache.fetch(filename))
+RAY::Font::Font(const std::string &filename, bool lonely):
+	_font(_fontsCache.fetch(filename, lonely))
 {
 }
 

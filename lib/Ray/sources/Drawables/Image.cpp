@@ -12,9 +12,9 @@
 namespace RAY {
 	Cache<::Image> Image::_imagesCache(LoadImage, UnloadImage);
 
-	Image::Image(const std::string &filename):
+	Image::Image(const std::string &filename, bool lonely):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
-		_image(_imagesCache.fetch(filename))
+		_image(_imagesCache.fetch(filename, lonely))
 	{
 		this->_dimensions = Vector2(this->_image->width, this->_image->height);
 	}

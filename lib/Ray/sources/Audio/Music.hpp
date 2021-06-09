@@ -19,7 +19,8 @@ namespace RAY::Audio
 		public:
 
 			//! @brief Load Music stream from file
-			Music(const std::string &path);
+			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			Music(const std::string &path, bool lonely = false);
 
 			//! @brief Default destructor
 			~Music() = default;
@@ -50,6 +51,8 @@ namespace RAY::Audio
 
 			// Set pitch for a Music (1.0 is base level)
 			Music &setPitch(float pitch) override;
+
+			Music &updateMusicStream(void);
 
 		private:
 			std::shared_ptr<::Music> _music;
