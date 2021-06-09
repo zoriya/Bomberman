@@ -57,6 +57,7 @@ namespace BBM
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(i, 0, j)
 						.addComponent<TagComponent<Blowable>>()
+						.addComponent<TagComponent<Unbreakable>>()
 						.addComponent<CollisionComponent>(
 							WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 							&MapGenerator::wallCollide, 0.25, .75)
@@ -152,6 +153,7 @@ namespace BBM
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<Breakable>>()
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
@@ -189,6 +191,7 @@ namespace BBM
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<Unbreakable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, 0.25, .75)
@@ -205,7 +208,8 @@ namespace BBM
 
 		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
 
-		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
+					.addComponent<TagComponent<Hole>>();
 
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, std::make_pair(MAP_DIFFUSE, holePng));
@@ -227,6 +231,7 @@ namespace BBM
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
+			.addComponent<TagComponent<Bumper>>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, std::make_pair(MAP_DIFFUSE, bumperPng));
 		/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
 			if (other.hasComponent<MovableComponent>()) {

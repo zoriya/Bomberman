@@ -52,5 +52,7 @@ namespace BBM
 
 	constexpr const char Blowable[] = "Blowable";
 	constexpr const char Unbreakable[] = "Unbreakable";
-
+	constexpr const char Breakable[] = "Breakable";
+	constexpr const char Hole[] = "Hole";
+	constexpr const char Bumper[] = "Bumper";
 }
