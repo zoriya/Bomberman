@@ -25,7 +25,7 @@ namespace BBM
 		MusicSystem(const MusicSystem &) = default;
 		//! @brief Default dtor
 		~MusicSystem() override = default;
-		//! @brief A SoundManager screen system can't be assigned.
+		//! @brief A MusicManager screen system can't be assigned.
 		MusicSystem &operator=(const MusicSystem &) = delete;
 	};
 }

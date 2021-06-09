@@ -31,7 +31,7 @@ namespace BBM
 
 		//! @brief is music playing
 		bool isPlaying(void);
-		
+		//! @brief update music stream
 		void updateMusicStream(void);
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;

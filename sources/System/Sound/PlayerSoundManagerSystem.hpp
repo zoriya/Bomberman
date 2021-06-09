@@ -13,19 +13,19 @@
 
 namespace BBM
 {
-	class SoundManagerSystem : public WAL::System<SoundComponent, ControllableComponent, HealthComponent>
+	class PlayerSoundManagerSystem : public WAL::System<SoundComponent, ControllableComponent, HealthComponent>
 	{
 	public:
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity) override;
 		
 		//! @brief ctor
-		SoundManagerSystem(WAL::Wal &wal);
+		PlayerSoundManagerSystem(WAL::Wal &wal);
 		//! @brief Default copy ctor
-		SoundManagerSystem(const SoundManagerSystem &) = default;
+		PlayerSoundManagerSystem(const PlayerSoundManagerSystem &) = default;
 		//! @brief Default dtor
-		~SoundManagerSystem() override = default;
+		~PlayerSoundManagerSystem() override = default;
 		//! @brief A SoundManager screen system can't be assigned.
-		SoundManagerSystem &operator=(const SoundManagerSystem &) = delete;
+		PlayerSoundManagerSystem &operator=(const PlayerSoundManagerSystem &) = delete;
 	};
 }

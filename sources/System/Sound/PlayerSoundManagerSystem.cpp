@@ -7,18 +7,18 @@
 
 namespace BBM {
 
-	SoundManagerSystem::SoundManagerSystem(WAL::Wal &wal)
+	PlayerSoundManagerSystem::PlayerSoundManagerSystem(WAL::Wal &wal)
 		: System(wal)
 	{}
 
-	void SoundManagerSystem::onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity)
+	void PlayerSoundManagerSystem::onFixedUpdate(WAL::ViewEntity<SoundComponent, ControllableComponent, HealthComponent> &entity)
 	{
 		const auto &controllable = entity.get<ControllableComponent>();
 		auto &sound = entity.get<SoundComponent>();
 		auto &health = entity.get<HealthComponent>();
 		
 		sound.setVolume(sound.volume);
-		std::map<bool, SoundComponent::soundIndex> soundIndex = {
+		std::map<bool, SoundComponent::SoundIndex> soundIndex = {
 			{controllable.bomb, SoundComponent::BOMB},
 			{controllable.jump, SoundComponent::JUMP},
 			{controllable.move.x != 0 || controllable.move.y != 0, SoundComponent::MOVE}
