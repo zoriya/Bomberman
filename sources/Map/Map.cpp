@@ -129,7 +129,6 @@ namespace BBM
 			{HOLE,        &createHole},
 			{FLOOR,       &createFloor},
 			{BUMPER,      &createBumper},
-			{STAIRS,      &createStairs},
 			{UPPERFLOOR,  &createUpperFloor},
 		};
 
@@ -229,17 +228,6 @@ namespace BBM
 				movable.addForce(Vector3f(0, 5, 0));
 			}
 		}); */
-	}
-
-	void MapGenerator::createStairs(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
-	{
-		static const std::string stairsObj = stairsPath + objExtension;
-		static const std::string stairsPng = stairsPath + imageExtension;
-
-		scene->addEntity("Stairs Block")
-			.addComponent<PositionComponent>(coords)
-			//.addComponent<CollisionComponent>(1)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(stairsObj, std::make_pair(MAP_DIFFUSE, stairsPng));
 	}
 
 	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z,
