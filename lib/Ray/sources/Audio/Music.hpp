@@ -19,7 +19,8 @@ namespace RAY::Audio
 		public:
 
 			//! @brief Load Music stream from file
-			Music(const std::string &path);
+			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			Music(const std::string &path, bool lonely = false);
 
 			//! @brief Default destructor
 			~Music() = default;

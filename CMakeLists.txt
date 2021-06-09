@@ -100,6 +100,7 @@ target_link_libraries(bomberman PUBLIC wal ray)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
                ${SOURCES}
+			   tests/CacheTest.cpp
                tests/EntityTests.cpp
                tests/MainTest.cpp
                tests/EngineTests.cpp
