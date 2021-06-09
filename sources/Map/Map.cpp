@@ -72,9 +72,25 @@ namespace BBM
 		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
 		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
 
+		for (int i = 0; i < height; i++) {
+			scene->addEntity("Bomb stopper")
+				.addComponent<PositionComponent>(-1, 0, i)
+				.addComponent<TagComponent<Blowable>>();
+			scene->addEntity("Bomb stopper")
+				.addComponent<PositionComponent>(width + 1, 0, i)
+				.addComponent<TagComponent<Blowable>>();
+		}
+		for (int i = 0; i < width; i++) {
+			scene->addEntity("Bomb stopper")
+				.addComponent<PositionComponent>(i, 0, -1)
+				.addComponent<TagComponent<Blowable>>();
+			scene->addEntity("Bomb stopper")
+				.addComponent<PositionComponent>(i, 0, height + 1)
+				.addComponent<TagComponent<Blowable>>();
+		}
+
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
-			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
@@ -83,7 +99,6 @@ namespace BBM
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
-			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
@@ -92,7 +107,6 @@ namespace BBM
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
-			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
