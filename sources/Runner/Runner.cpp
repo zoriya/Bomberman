@@ -61,7 +61,7 @@ namespace BBM
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>()
-			.addSystem<SoundManagerSystem>()
+			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -77,7 +77,7 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		std::map<SoundComponent::soundIndex, std::string> soundPath= {
+		std::map<SoundComponent::SoundIndex, std::string> soundPath= {
 			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			{SoundComponent::DEATH, "assets/sounds/death.ogg"}
