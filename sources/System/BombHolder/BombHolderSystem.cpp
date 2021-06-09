@@ -8,7 +8,8 @@
 #include "BombHolderSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
 #include <functional>
-#include <iostream>
+#include "Component/Collision/CollisionComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 
 using namespace std::chrono_literals;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -25,22 +26,18 @@ namespace BBM
 	{
 		if (count <= 0)
 			return;
-		std::cout << position << " count: " << count << std::endl;
-		// TODO use it in a global context with a find and so on.
-		wal.getSystem<EventSystem>().dispatchEvent([position, &wal, count](WAL::Entity &entity) {
-			auto *health = entity.tryGetComponent<HealthComponent>();
-			auto *pos = entity.tryGetComponent<PositionComponent>();
-
-			if (health && pos && pos->position.round() == position) {
-				std::cout << pos->position << std::endl;
-				health->takeDmg(1);
+		wal.getSystem<EventSystem>().dispatchEvent([position, count](WAL::Wal &wal) {
+			for (auto &[entity, pos, _] : wal.scene->view<PositionComponent, TagComponent<Blowable>>()) {
+				if (pos.position.round() == position) {
+					if (auto *health = entity.tryGetComponent<HealthComponent>())
+						health->takeDmg(1);
+					return;
+				}
 			}
-			else {
-				_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
-				_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
-				_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
-				_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
-			}
+			_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
+			_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
 		});
 	}
 
@@ -48,13 +45,13 @@ namespace BBM
 	{
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
-		_dispatchExplosion(position, wal, 2);
+		_dispatchExplosion(position, wal, 3);
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position)
 	{
 		this->_wal.scene->scheduleNewEntity("Bomb")
-			.addComponent<PositionComponent>(position)
+			.addComponent<PositionComponent>(position.round())
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));

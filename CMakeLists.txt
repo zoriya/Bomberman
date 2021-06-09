@@ -81,6 +81,7 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Tag/TagComponent.hpp
 )
 add_executable(bomberman
                sources/main.cpp
