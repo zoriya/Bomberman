@@ -82,7 +82,7 @@ namespace BBM
 		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
 		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-		    {SoundComponent::DEATH, "assets/sounds/death.ogg"}
+		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
