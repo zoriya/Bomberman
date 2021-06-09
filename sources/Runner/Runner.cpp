@@ -28,6 +28,9 @@
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Levitate/LevitateSystem.hpp>
+#include <System/Bonus/PlayerBonusSystem.hpp>
+#include <Component/Bonus/PlayerBonusComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
@@ -61,6 +64,8 @@ namespace BBM
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
+			.addSystem<LevitateSystem>()
+			.addSystem<PlayerBonusSystem>()
 			.addSystem<MovableSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MusicSystem>();
@@ -97,7 +102,8 @@ namespace BBM
 			.addComponent<MovableComponent>()
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<BombHolderComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+			.addComponent<PlayerBonusComponent>()
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});

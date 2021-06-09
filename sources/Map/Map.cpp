@@ -6,9 +6,14 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Map.hpp"
+#include <iostream>
+#include <Items/Bonus.hpp>
+#include <Component/Levitate/LevitateComponent.hpp>
+#include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+using namespace std::chrono_literals;
 
 namespace BBM
 {
@@ -28,9 +33,38 @@ namespace BBM
 			mov->_velocity.z = 0;
 	}
 
-	void MapGenerator::wallDestroyed(WAL::Entity &entity)
+	void MapGenerator::wallDestroyed(WAL::Entity &entity, WAL::Wal &wal)
 	{
 		entity.scheduleDeletion();
+		auto &position = entity.getComponent<PositionComponent>().position;
+		static std::map<Bonus::BonusType, std::string> map = {
+				{Bonus::BonusType::BOMBSTOCK, "assets/items/bombup"},
+				{Bonus::BonusType::SPEEDUP, "assets/items/speedup"},
+				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"}
+		};
+		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+		};
+		auto bonusType = Bonus::getRandomBonusType();
+
+		if (bonusType == Bonus::BonusType::NOTHING)
+			return;
+		if (!map.contains(bonusType))
+			return;
+		wal.scene->scheduleNewEntity("Bonus")
+			.addComponent<PositionComponent>(position)
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
+				entity.scheduleDeletion();
+			})
+			.addComponent<LevitateComponent>(position.y)
+			.addComponent<CollisionComponent>(func[bonusType - 1], [](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
+				bonus.scheduleDeletion();
+				std::cout << "called" << std::endl;
+			}, 0.5, .5)
+			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
+				bonus.scheduleDeletion();
+			})
+			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";

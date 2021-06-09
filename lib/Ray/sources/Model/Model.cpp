@@ -19,9 +19,9 @@ namespace RAY::Drawables::Drawables3D {
 											  const RAY::Vector3 &scale,
 											  const RAY::Vector3 &position,
 											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle)
+											  float rotationAngle, bool lonely)
 		: ADrawable3D(position, WHITE),
-		_model(_modelsCache.fetch(filename)),
+		_model(_modelsCache.fetch(filename, lonely)),
 		_rotationAxis(rotationAxis),
 		_rotationAngle(rotationAngle),
 		_scale(scale)
@@ -80,9 +80,9 @@ namespace RAY::Drawables::Drawables3D {
 		return this->_rotationAngle;
 	}
 
-	Model &Model::setRotationAxis(const RAY::Vector3 &scale)
+	Model &Model::setRotationAxis(const RAY::Vector3 &rotationAxis)
 	{
-		this->_scale = scale;
+		this->_rotationAxis = rotationAxis;
 		return *this;
 	}
 

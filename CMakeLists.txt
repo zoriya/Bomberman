@@ -23,6 +23,8 @@ set(SOURCES
 	sources/Runner/Runner.hpp
 	sources/Map/Map.cpp
 	sources/Map/Map.hpp
+	sources/Items/Bonus.cpp
+	sources/Items/Bonus.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -77,10 +79,20 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/System/Levitate/LevitateSystem.hpp
+	sources/System/Levitate/LevitateSystem.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
 	sources/Component/Animator/AnimatorComponent.cpp
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Bomb/BasicBombComponent.cpp
+	sources/Component/Bomb/BasicBombComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.cpp
+	sources/System/Bonus/PlayerBonusSystem.hpp
+	sources/System/Bonus/PlayerBonusSystem.cpp
 	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
@@ -101,6 +113,7 @@ target_link_libraries(bomberman PUBLIC wal ray)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
                ${SOURCES}
+			   tests/CacheTest.cpp
                tests/EntityTests.cpp
                tests/MainTest.cpp
                tests/EngineTests.cpp

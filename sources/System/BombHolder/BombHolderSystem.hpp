@@ -19,7 +19,7 @@ namespace BBM
 	{
 	private:
 		//! @brief Spawn a bomb at the specified position.
-		void _spawnBomb(Vector3f position);
+		void _spawnBomb(Vector3f position, BombHolderComponent &holder);
 
 		//! @brief Spawn a bomb at the specified position.
 		static void _dispatchExplosion(Vector3f position, WAL::Wal &, int count);
@@ -32,8 +32,6 @@ namespace BBM
 	public:
 		//! @brief The explosion time of new bombs.
 		static std::chrono::nanoseconds explosionTimer;
-		//! @brief The radius of the explosion.
-		static float explosionRadius;
 
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime) override;

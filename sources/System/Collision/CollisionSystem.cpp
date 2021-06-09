@@ -69,7 +69,7 @@ namespace BBM
 				collidedAxis += CollisionComponent::CollidedAxis::Z;
 			}
 			if (collidedAxis) {
-				colA.onCollide(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
+				colA.onCollide(other, entity, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
 				colB.onCollided(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
 			}
 		}

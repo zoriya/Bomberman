@@ -2,6 +2,7 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
+#include <Component/Bomb/BasicBombComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -57,18 +58,22 @@ namespace BBM
 	{
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
-		_dispatchExplosion(position, wal, 3);
+		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
+		_dispatchExplosion(position, wal, 3 + (explosionRadius - 3));
 	}
 
-	void BombHolderSystem::_spawnBomb(Vector3f position)
+	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder)
 	{
 		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
+			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 			                                  &BombHolderSystem::_bombCollide, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
+		holder.damage = 1;
+		holder.explosionRadius = 3;
 	}
 
 	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime)
@@ -79,7 +84,7 @@ namespace BBM
 
 		if (controllable.bomb && holder.bombCount > 0) {
 			holder.bombCount--;
-			this->_spawnBomb(position.position);
+			this->_spawnBomb(position.position, holder);
 		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;

@@ -11,8 +11,8 @@ namespace RAY {
 
 	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture); 
 
-	Texture::Texture(const std::string &filename):
-		_texture(_texturesCache.fetch(filename)),
+	Texture::Texture(const std::string &filename, bool lonely):
+		_texture(_texturesCache.fetch(filename, lonely)),
 		_resourcePath(filename)
 	{
 	}
