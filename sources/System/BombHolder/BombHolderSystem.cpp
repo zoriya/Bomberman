@@ -54,8 +54,8 @@ namespace BBM
 		this->_wal.scene->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-			                                  &MapGenerator::wallCollide, 0.25, .75)
+//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+//			                                  &MapGenerator::wallCollide, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
 	}

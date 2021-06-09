@@ -6,7 +6,6 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Map.hpp"
-#include <iostream>
 #include <Component/Tag/TagComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
