@@ -20,7 +20,7 @@ namespace BBM
 			float z;
 			
 			//! @brief Type of the block
-			MapGenerator::BlockType type;
+			int type;
 
 			//! @brief Constructor
 			MapInfo(Vector3f pos, MapGenerator::BlockType type);
@@ -29,7 +29,7 @@ namespace BBM
 			~MapInfo() = default;
 
 			//! @brief Default copy constructor
-			MapInfo(MapInfo &) = default;
+			MapInfo(const MapInfo &);
 
 			//! @brief Assignment operator
 			MapInfo &operator=(MapInfo &);

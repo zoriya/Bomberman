@@ -6,6 +6,8 @@
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
+#include <vector>
+#include <string>
 
 namespace BBM
 {
@@ -44,18 +46,22 @@ namespace BBM
 	{
 		auto &ia = entity.get<IAControllableComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
-		MapInfo info({1, 2, 3}, MapGenerator::NOTHING);
+		std::vector<MapInfo> infos;
 
 		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
-			return;	
-		luabridge::LuaResult res = updateFunc(info);
+			return;
+		luabridge::LuaResult res = updateFunc(infos);
 
 		if (res.hasFailed() || res.size() != 4)
 			return;
-		controllable.bomb = res[3];
-		controllable.jump = res[2];
-		controllable.move.y = res[1];
-		controllable.move.x = res[0];
+		if (res[3].isBool())
+			controllable.bomb = res[3];
+		if (res[2].isBool())
+			controllable.jump = res[2];
+		if (res[1].isNumber())
+			controllable.move.y = res[1];
+		if (res[0].isNumber())
+			controllable.move.x = res[0];
 	}
 }

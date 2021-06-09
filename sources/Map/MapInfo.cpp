@@ -10,6 +10,10 @@ namespace BBM
 	: x(pos.x), y(pos.y), z(pos.z), type(type)
 	{ }
 
+	MapInfo::MapInfo(const MapInfo &other)
+	: x(other.x), y(other.y), z(other.z), type(other.type)
+	{ }
+
 	MapInfo &MapInfo::operator=(MapInfo &other)
 	{
 		this->x = other.x;
