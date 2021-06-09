@@ -16,21 +16,21 @@ namespace BBM
 	public:
 
 		//! @brief All sounds of the player
-		enum soundIndex {
+		enum SoundIndex {
 			IDLE,
 			JUMP,
 			BOMB,
 			MOVE,
 			HURT,
 			THROW,
-			DEATH,
+			DEATH
 		};
 
 		//! @brief to set what sound should be played
-		void setIndex(soundIndex index);
+		void setIndex(SoundIndex index);
 
 		//! @brief to know which sound is selected
-		soundIndex getIndex();
+		SoundIndex getIndex();
 
 		//! @brief start sound
 		void playSound();
@@ -53,7 +53,7 @@ namespace BBM
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 		//! @brief Create a new SoundComponent at a certain Sound
-		explicit SoundComponent(WAL::Entity &entity, const std::map<soundIndex, std::string> &);
+		explicit SoundComponent(WAL::Entity &entity, const std::map<SoundIndex, std::string> &);
 		//! @brief A Sound component is copy constructable
 		SoundComponent(const SoundComponent &) = default;
 		//! @brief A default destructor
@@ -65,13 +65,13 @@ namespace BBM
 
 	private:
 		//! @brief Sounds of this entity
-		std::map<soundIndex, std::shared_ptr<RAY::Audio::Sound>> _soundList;
+		std::map<SoundIndex, std::shared_ptr<RAY::Audio::Sound>> _soundList;
 		//! @brief map to know if sound is loaded
-		std::map<soundIndex, bool> _isLoad;
+		std::map<SoundIndex, bool> _isSoundLoad;
 		//! @brief All sounds path
-		const std::map<soundIndex, std::string> _soundPath;
+		const std::map<SoundIndex, std::string> _soundPath;
 		//! SoundIndex
-		soundIndex _soundIndex;
+		SoundIndex _soundIndex;
 
 	};
 
