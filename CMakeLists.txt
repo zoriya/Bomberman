@@ -81,6 +81,8 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Shaders/ShaderComponent.cpp
+	sources/Component/Shaders/ShaderComponent.hpp
 	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
@@ -91,6 +93,7 @@ set(SOURCES
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
 )
+
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
@@ -109,7 +112,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/MoveTests.cpp
                tests/ViewTest.cpp
                tests/CollisionTest.cpp
-               )
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

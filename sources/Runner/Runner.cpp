@@ -8,6 +8,7 @@
 #include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
 #include <Drawables/3D/Cube.hpp>
+#include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
@@ -27,10 +28,12 @@
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
+#include <Component/Renderer/Drawable2DComponent.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
+#include "Component/Shaders/ShaderComponent.hpp"
 #include "Map/Map.hpp"
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
@@ -38,6 +41,7 @@
 #include "System/Music/MusicSystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -90,6 +94,7 @@ namespace BBM
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
+			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<Blowable>>()
 			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
@@ -105,11 +110,13 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		/*scene->addEntity("cube")
-			.addComponent<PositionComponent>(-5, 0, -5)
-			.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(0, 0, 0), Vector3f(3, 3, 3), RED)
+			.addComponent<PositionComponent>(5, 0, 5)
+			.addComponent<ShaderComponentDrawable2D>("assets/shaders/glsl330/grayscale.fs")
+			//.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(BBM::Vector2f{200,200}, BBM::Vector2f{200, 200}, RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, int>(), &MapGenerator::wallCollide, -1, 3);*/
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3); */
 		std::srand(std::time(nullptr));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 
@@ -121,7 +128,7 @@ namespace BBM
 		WAL::Wal wal;
 		addSystems(wal);
 		enableRaylib(wal);
-		wal.scene = loadGameScene();
+		wal.changeScene(loadGameScene());
 
 		try {
 			wal.run<GameState>(updateState);
