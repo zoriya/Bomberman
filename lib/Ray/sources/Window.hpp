@@ -17,7 +17,6 @@
 #include "Camera/Camera2D.hpp"
 #include "Camera/Camera3D.hpp"
 #include "Color.hpp"
-#include "Drawables/Texture.hpp"
 
 namespace RAY {
 	//! @brief Window manager
@@ -124,12 +123,6 @@ namespace RAY {
 			//! @param drawable The drawable to render on screen
 			void draw(RAY::Drawables::IDrawable &drawable);
 
-			//! @brief draw texture at position
-			//! @param texture The object to render
-			//! @param position The position of the texture relative to the top left window corner
-			//! @param tint
-			void draw(const Texture &texture, const Vector2 &position, const Color &tint);
-
 			//! @brief Draw a 3d mesh with material and transform
 			void draw(const Mesh &mesh, const Material &material, const Matrix &transform);
 
@@ -137,6 +130,11 @@ namespace RAY {
 			void drawFPS(const Vector2 &position);
 			//! @return true if the window's context has been correctly initialized
 			bool isReady() const;
+
+			//! @param key if this key is pressed, the window will close
+			//! @info Default is ESC key
+			//! @info Calling this function override the previous closing key
+			void setExitKey(Controller::Keyboard::Key key);
 
 
 		private:

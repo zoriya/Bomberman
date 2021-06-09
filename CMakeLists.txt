@@ -77,6 +77,9 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Button/ButtonComponent.hpp
+	sources/System/MenuControllable/MenuControllableSystem.cpp
+	sources/System/MenuControllable/MenuControllableSystem.hpp
 	sources/Component/Animator/AnimatorComponent.cpp
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
@@ -88,6 +91,8 @@ set(SOURCES
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
 	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/MenuSoundManagerSystem.cpp
+	sources/System/Sound/MenuSoundManagerSystem.hpp
 	sources/System/Sound/PlayerSoundManagerSystem.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp

@@ -51,6 +51,11 @@ namespace WAL
 		}
 	}
 
+	int Scene::getID() const
+	{
+		return this->_id;
+	}
+
 	void Scene::_entityRemoved(const Entity &entity)
 	{
 		for (auto &view : this->_views)
@@ -80,10 +85,5 @@ namespace WAL
 				cmp.second->onStart();
 		}
 		this->_entities.splice(this->_entities.end(), this->_newEntities);
-	}
-
-	int Scene::getID() const
-	{
-		return this->_id;
 	}
 } // namespace WAL

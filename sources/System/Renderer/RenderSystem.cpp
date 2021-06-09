@@ -71,4 +71,9 @@ namespace BBM
 		_camera.setPosition(pos.position);
 		_camera.setTarget(cam.target);
 	}
+
+	void RenderSystem::setDebug(bool debug)
+	{
+		this->_debugMode = debug;
+	}
 }

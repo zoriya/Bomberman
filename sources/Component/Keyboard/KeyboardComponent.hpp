@@ -21,7 +21,7 @@ namespace BBM
 			//! @brief bomb key
 			Key keyBomb = KEY_E;
 			//! @brief pause key
-			Key keyPause = KEY_ESCAPE;
+			Key keyPause = RAY::Controller::Keyboard::Key::KEY_ESCAPE;
 			//! @brief move right key
 			Key keyRight = KEY_D;
 			//! @brief move left key

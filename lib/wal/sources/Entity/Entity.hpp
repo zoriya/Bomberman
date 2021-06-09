@@ -46,9 +46,9 @@ namespace WAL
 		friend Scene;
 		friend class Wal;
 	protected:
+	public:
 		//! @brief A reference to the ECS.
 		Scene &_scene;
-	public:
 		//! @brief Get the ID of the entity.
 		unsigned getUid() const;
 		//! @brief Get the name fo the entity
@@ -181,5 +181,8 @@ namespace WAL
 		~Entity() = default;
 		//! @brief An entity is not assignable
 		Entity &operator=(const Entity &) = delete;
+
+		//! @return true if the two entities hold the same uid
+		bool operator==(const Entity &) const;
 	};
 } // namespace WAL

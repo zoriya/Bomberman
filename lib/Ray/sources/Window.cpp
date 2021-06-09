@@ -49,6 +49,7 @@ bool RAY::Window::open(void)
 	}
 	InitWindow(this->_dimensions.x, this->_dimensions.y, this->_title.c_str());
 	this->_isOpen = true;
+	this->setExitKey(Controller::Keyboard::Key::KEY_DELETE);
 	InitAudioDevice();
 	return true;
 }
@@ -160,11 +161,6 @@ void RAY::Window::draw(RAY::Drawables::IDrawable &drawable)
 	drawable.drawOn(*this);
 }
 
-void RAY::Window::draw(const RAY::Texture &texture, const Vector2 &position, const Color &tint)
-{
-	DrawTexture(texture, position.x, position.y, tint);
-}
-
 void RAY::Window::draw(const Mesh &mesh, const Material &material, const Matrix &transform)
 {
 	DrawMesh(mesh, material, transform);
@@ -183,4 +179,9 @@ void RAY::Window::drawFPS(const RAY::Vector2 &position)
 bool RAY::Window::isReady() const
 {
 	return IsWindowReady();
+}
+
+void RAY::Window::setExitKey(RAY::Controller::Keyboard::Key key)
+{
+	SetExitKey(key);
 }
