@@ -56,17 +56,4 @@ namespace BBM {
 		controllable.speed = 0.35f;
 		playerBonus.nextSpeedBonusRate = playerBonus.speedBonusRate;
 	}
-
-	void Bonus::IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
-	{
-		if (bonus.shouldDelete())
-			return;
-		if (player.hasComponent<BombHolderComponent>()) {
-			auto &playerBonus = player.getComponent<PlayerBonusComponent>();
-			auto &bombHolder = player.getComponent<BombHolderComponent>();
-			playerBonus.nextIgnoreWallsBonusRate = playerBonus.ignoreWallsBonusRate;
-			std::cout << "Explosion is supposed to pass through walls here" << std::endl;
-			//bombHolder.ignoreWalls = true;
-		}
-	}
 }

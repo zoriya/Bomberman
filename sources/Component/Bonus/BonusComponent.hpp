@@ -21,8 +21,7 @@ namespace BBM
 				BOMBSTOCK,
 				SPEEDUP,
 				EXPLOSIONINC,
-				DAMAGEINC,
-				IGNOREWALLS
+				DAMAGEINC
 			};
 
 			std::chrono::nanoseconds disappearTimer = 5s;

@@ -28,10 +28,6 @@ namespace BBM
 		std::chrono::nanoseconds rangeBonusRate = 10s;
 		//! @brief The number of nanosecond before the expiration of a range bonus.
 		std::chrono::nanoseconds nextRangeBonusRate = rangeBonusRate;
-		//! @brief The number of seconds before a ignoreWalls expire. This variable is used to reset the nextSpeedBonusRate value.
-		std::chrono::nanoseconds ignoreWallsBonusRate = 15s;
-		//! @brief The number of nanosecond before the expiration of a ignoreWalls bonus.
-		std::chrono::nanoseconds nextIgnoreWallsBonusRate = ignoreWallsBonusRate;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;

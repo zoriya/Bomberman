@@ -29,10 +29,5 @@ namespace BBM {
 		//! @param player the entity on which the effect will be applied
 		//! @brief Apply bonus effect that allows to run faster
 		static void SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
-
-		//! @param bonus bonus
-		//! @param player the entity on which the effect will be applied
-		//! @brief Apply bonus effect that allows bomb explosion to pass through walls
-		static void IgnoreWallsBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
 	};
 }

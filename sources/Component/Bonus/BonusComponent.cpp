@@ -20,7 +20,7 @@ namespace BBM {
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
 		if (rnd < 0.4)
-			return (static_cast<BonusType>(std::rand() % (IGNOREWALLS - 1) + 1));
+			return (static_cast<BonusType>(std::rand() % (DAMAGEINC - 1) + 1));
 		return (NOTHING);
 	}
 }

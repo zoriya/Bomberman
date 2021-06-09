@@ -30,12 +30,11 @@ namespace BBM
 				{BonusComponent::BonusType::BOMBSTOCK, "assets/items/bombup"},
 				{BonusComponent::BonusType::SPEEDUP, "assets/items/speedup"},
 				//{BonusComponent::BonusType::EXPLOSIONINC, "assets/items/explosion"},
-				{BonusComponent::BonusType::DAMAGEINC, "assets/items/fireup"},
-				{BonusComponent::BonusType::IGNOREWALLS, "assets/items/wallpass"}
+				{BonusComponent::BonusType::DAMAGEINC, "assets/items/fireup"}
 		};
 		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
 				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, //&Bonus::ExplosionRangeBonus,
-				&Bonus::DamageIncreasedBonus, &Bonus::IgnoreWallsBonus
+				&Bonus::DamageIncreasedBonus
 		};
 
 		if (bonusType == BonusComponent::BonusType::NOTHING)

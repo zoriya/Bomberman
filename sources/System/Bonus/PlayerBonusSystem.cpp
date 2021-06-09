@@ -23,11 +23,6 @@ namespace BBM
 			playerBonus.nextSpeedBonusRate = playerBonus.speedBonusRate;
 			controllable.speed = 0.25f;
 		}
-		playerBonus.nextIgnoreWallsBonusRate -= dtime;
-		if (playerBonus.nextIgnoreWallsBonusRate <= 0ns) {
-			playerBonus.nextIgnoreWallsBonusRate = playerBonus.ignoreWallsBonusRate;
-			//holder.ignoreWalls = false;
-		}
 		playerBonus.nextDamageBonusRate -= dtime;
 		if (playerBonus.nextDamageBonusRate <= 0ns) {
 			playerBonus.nextDamageBonusRate = playerBonus.damageBonusRate;
