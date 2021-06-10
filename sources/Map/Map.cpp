@@ -180,7 +180,7 @@ namespace BBM
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25), Vector3f(0.75, 1.5, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 
@@ -219,7 +219,7 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25), Vector3f(0.75, 1.5, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng));
 	}
