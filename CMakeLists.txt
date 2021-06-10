@@ -79,6 +79,9 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Button/ButtonComponent.hpp
+	sources/System/MenuControllable/MenuControllableSystem.cpp
+	sources/System/MenuControllable/MenuControllableSystem.hpp
 	sources/System/Levitate/LevitateSystem.hpp
 	sources/System/Levitate/LevitateSystem.cpp
 	sources/Component/Levitate/LevitateComponent.cpp
@@ -93,16 +96,21 @@ set(SOURCES
 	sources/Component/Bonus/PlayerBonusComponent.cpp
 	sources/System/Bonus/PlayerBonusSystem.hpp
 	sources/System/Bonus/PlayerBonusSystem.cpp
+	sources/Component/Shaders/ShaderComponent.cpp
+	sources/Component/Shaders/ShaderComponent.hpp
 	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
 	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/MenuSoundManagerSystem.cpp
+	sources/System/Sound/MenuSoundManagerSystem.hpp
 	sources/System/Sound/PlayerSoundManagerSystem.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
 )
+
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
@@ -121,7 +129,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/MoveTests.cpp
                tests/ViewTest.cpp
                tests/CollisionTest.cpp
-               )
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

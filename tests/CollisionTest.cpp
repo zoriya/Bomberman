@@ -22,8 +22,8 @@ TEST_CASE("Collision test", "[Component][System]")
 {
 	Wal wal;
 	CollisionSystem collision(wal);
-	wal.scene = std::make_shared<Scene>();
-	wal.scene->addEntity("player")
+	wal.changeScene(std::make_shared<Scene>());
+	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &, int _) {
 			try {
@@ -33,7 +33,7 @@ TEST_CASE("Collision test", "[Component][System]")
 				pos.position.z = 1;
 			} catch (std::exception &e) {};
 		}, [](Entity &, const Entity &, int) {}, 0, 5.0);
-	Entity &entity = wal.scene->getEntities().front();
+	Entity &entity = wal.getScene()->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;
@@ -46,14 +46,14 @@ TEST_CASE("Collision test", "[Component][System]")
 	REQUIRE(entity.getComponent<PositionComponent>().position.y == 0.0);
 	REQUIRE(entity.getComponent<PositionComponent>().position.z == 0.0);
 
-	wal.scene->addEntity("block")
+	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(2, 2, 2)
 		.addComponent<CollisionComponent>(0, 1);
-	Entity &player = wal.scene->getEntities().front();
+	Entity &player = wal.getScene()->getEntities().front();
 	collision.update(std::chrono::nanoseconds(1));
 	REQUIRE(player.hasComponent(typeid(PositionComponent)));
 	collision.fixedUpdate();
-	REQUIRE(wal.scene->getEntities().size() == 2);
+	REQUIRE(wal.getScene()->getEntities().size() == 2);
 	REQUIRE(player.hasComponent(typeid(PositionComponent)));
 	REQUIRE(player.getComponent<PositionComponent>().position.x == 1.0);
 	REQUIRE(player.getComponent<PositionComponent>().position.y == 1);
@@ -66,14 +66,14 @@ TEST_CASE("Collision test with movable", "[Component][System]")
 	Wal wal;
 	CollisionSystem collision(wal);
 	MovableSystem movable(wal);
-	wal.scene = std::make_shared<Scene>();
-	wal.scene->addEntity("player")
+	wal.changeScene(std::make_shared<Scene>());
+	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &, int) {},
 		                                  [](Entity &actual, const Entity &, int) {}, 0, 5.0)
 		.addComponent<MovableComponent>();
 
-	wal.scene->addEntity("block")
+	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(0, 0, 0)
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &, int) {},
 		                                  [](Entity &actual, const Entity &, int) {
@@ -82,7 +82,7 @@ TEST_CASE("Collision test with movable", "[Component][System]")
 				                                  mov._velocity = Vector3f();
 			                                  } catch (std::exception &e) {};
 		                                  }, 0, 1);
-	Entity &entity = wal.scene->getEntities().front();
+	Entity &entity = wal.getScene()->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;

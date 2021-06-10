@@ -39,15 +39,15 @@ namespace BBM
 		this->_music.pause();
 	}
 
-	void MusicComponent::setVolume(float &volumeUpdate)
+	void MusicComponent::setVolume(float volumeUpdate)
 	{
-		if (volumeUpdate >= 0) {
+		if (volumeUpdate >= 0 && volumeUpdate <= 1) {
 			this->volume = volumeUpdate;
 			this->_music.setVolume(this->volume);
 		}
 	}
 
-	void MusicComponent::setPitch(float &pitch)
+	void MusicComponent::setPitch(float pitch)
 	{
 		this->_music.setPitch(pitch);
 	}
@@ -60,6 +60,16 @@ namespace BBM
 	void MusicComponent::updateMusicStream(void)
 	{
 		this->_music.updateMusicStream();
+	}
+
+	void MusicComponent::turnDownVolume()
+	{
+		this->setVolume(MusicComponent::volume - 0.1);
+	}
+
+	void MusicComponent::turnUpVolume()
+	{
+		this->setVolume(MusicComponent::volume + 0.1);
 	}
 
 } // namespace WAL
