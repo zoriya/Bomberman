@@ -6,7 +6,7 @@
 
 namespace BBM
 {
-	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, float explosionRadius, int ownerID)
+	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, unsigned ownerID)
 			: WAL::Component(entity),
 			damage(damage),
 			explosionRadius(explosionRadius),

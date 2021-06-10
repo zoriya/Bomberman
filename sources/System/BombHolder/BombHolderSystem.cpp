@@ -18,7 +18,7 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
-	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 3s;
+	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 2s;
 
 	void BombHolderSystem::_bombCollide(WAL::Entity &entity,
 	                                   const WAL::Entity &bomb,
@@ -62,7 +62,7 @@ namespace BBM
 		_dispatchExplosion(position, wal, 3 + (explosionRadius - 3));
 	}
 
-	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, int id)
+	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)
 	{
 		this->_wal.getScene()->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
@@ -76,7 +76,8 @@ namespace BBM
 		holder.explosionRadius = 3;
 	}
 
-	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime)
+	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity,
+	                                std::chrono::nanoseconds dtime)
 	{
 		auto &holder = entity.get<BombHolderComponent>();
 		auto &position = entity.get<PositionComponent>();

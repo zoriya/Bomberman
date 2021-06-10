@@ -5,15 +5,16 @@
 #pragma once
 
 #include <System/System.hpp>
+#include "Component/Position/PositionComponent.hpp"
 #include "Component/Bomb/BasicBombComponent.hpp"
 
 namespace BBM
 {
-	class BombSystem : public WAL::System<BasicBombComponent>
+	class BombSystem : public WAL::System<BasicBombComponent, PositionComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<BasicBombComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<BasicBombComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief Construct a new bomb system.
 		explicit BombSystem(WAL::Wal &wal);
