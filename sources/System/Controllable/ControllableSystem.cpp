@@ -18,8 +18,8 @@ namespace BBM
 	{
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &movable = entity.get<MovableComponent>();
-		Vector2f move = controllable.move.normalized() * ControllableSystem::speed;
+		Vector2f move = controllable.move.normalized() * controllable.speed;
 
-		movable.addForce(Vector3f(move.x, controllable.jump, move.y));
+		movable.addForce(Vector3f(move.x, 0, move.y));
 	}
 }
