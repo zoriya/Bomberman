@@ -92,8 +92,14 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/Component/Gravity/GravityComponent.hpp
 	sources/Component/Gravity/GravityComponent.cpp
+	sources/System/Gravity/GravitySystem.hpp
 	sources/System/Gravity/GravitySystem.cpp
+	sources/Component/BumperTimer/BumperTimerComponent.hpp
+	sources/Component/BumperTimer/BumperTimerComponent.cpp
+	sources/System/BumperTimer/BumperTimerSystem.hpp
+	sources/System/BumperTimer/BumperTimerSystem.cpp
 )
 
 add_executable(bomberman

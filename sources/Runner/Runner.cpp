@@ -41,6 +41,8 @@
 #include "System/Music/MusicSystem.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "System/Gravity/GravitySystem.hpp"
+#include "Component/BumperTimer/BumperTimerComponent.hpp"
+#include "System/BumperTimer/BumperTimerSystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -69,6 +71,7 @@ namespace BBM
 			.addSystem<CollisionSystem>()
 			.addSystem<MovableSystem>()
 			.addSystem<GravitySystem>()
+			.addSystem<BumperTimerSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MusicSystem>();
 	}
@@ -92,7 +95,7 @@ namespace BBM
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 		scene->addEntity("player")
-			.addComponent<PositionComponent>()
+			.addComponent<PositionComponent>(0, 1.01, 0)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
@@ -106,6 +109,7 @@ namespace BBM
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<GravityComponent>()
 			.addComponent<BombHolderComponent>()
+			.addComponent<BumperTimerComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);

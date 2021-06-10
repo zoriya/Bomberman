@@ -7,6 +7,7 @@
 #include "System/Collision/CollisionSystem.hpp"
 #include "Map.hpp"
 #include <Component/Tag/TagComponent.hpp>
+#include <Component/BumperTimer/BumperTimerComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -17,10 +18,14 @@ namespace BBM
 	                                 CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *movable = entity.tryGetComponent<MovableComponent>();
+		auto *bumperTimer = entity.tryGetComponent<BumperTimerComponent>();
 
-		if (!movable)
+		if (!movable || !bumperTimer)
 			return;
-		movable->_velocity.y = 0.5;
+		if (!bumperTimer->_isReseting) {
+			movable->_velocity.y = 1.5;
+			bumperTimer->_isReseting = true;
+		}
 	}
 
 	void MapGenerator::holeCollide(WAL::Entity &entity,
@@ -197,7 +202,10 @@ namespace BBM
 
 		scene->addEntity("Upper Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng))
+			.addComponent<CollisionComponent>(
+				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+				&MapGenerator::wallCollide, 0.25, 0.75);
 	}
 
 
@@ -308,9 +316,25 @@ namespace BBM
 	MapGenerator::MapBlock MapGenerator::createSpawner(MapBlock map, int width, int height)
 	{
 		map[std::make_tuple(0, 0, 0)] = SPAWNER;
+		map[std::make_tuple(0, 0, 1)] = SPAWNER;
+		map[std::make_tuple(0, 0, 2)] = SPAWNER;
+		map[std::make_tuple(1, 0, 0)] = SPAWNER;
+		map[std::make_tuple(2, 0, 0)] = SPAWNER;
 		map[std::make_tuple(width, 0, 0)] = SPAWNER;
+		map[std::make_tuple(width - 1, 0, 0)] = SPAWNER;
+		map[std::make_tuple(width - 2, 0, 0)] = SPAWNER;
+		map[std::make_tuple(width, 0, 1)] = SPAWNER;
+		map[std::make_tuple(width, 0, 2)] = SPAWNER;
 		map[std::make_tuple(0, 0, height)] = SPAWNER;
+		map[std::make_tuple(1, 0, height)] = SPAWNER;
+		map[std::make_tuple(2, 0, height)] = SPAWNER;
+		map[std::make_tuple(0, 0, height - 1)] = SPAWNER;
+		map[std::make_tuple(0, 0, height - 2)] = SPAWNER;
 		map[std::make_tuple(width, 0, height)] = SPAWNER;
+		map[std::make_tuple(width, 0, height - 1)] = SPAWNER;
+		map[std::make_tuple(width, 0, height - 2)] = SPAWNER;
+		map[std::make_tuple(width - 1, 0, height)] = SPAWNER;
+		map[std::make_tuple(width - 2, 0, height)] = SPAWNER;
 
 		return map;
 	}
@@ -321,6 +345,8 @@ namespace BBM
 			for (int j = 0; j < height; j++) {
 				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && map[std::make_tuple(i, -1, j)] == BUMPER)
 					map[std::make_tuple(i, 0, j)] = NOTHING;
+				if (map[std::make_tuple(i, 1, j)] == BREAKABLE && isCloseToBlockType(map, i, -1, j, BUMPER))
+					map[std::make_tuple(i, 1, j)] = NOTHING;
 			}
 		return (map);
 	}
