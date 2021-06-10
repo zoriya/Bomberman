@@ -10,21 +10,23 @@
 #include <unordered_map>
 
 
-namespace RAY::Drawables::Drawables3D {
+namespace RAY::Drawables::Drawables3D
+{
 
 	RAY::Cache<::Model> Model::_modelsCache(LoadModel, UnloadModel);
 
-	Model::Model(const std::string &filename, bool lonely,
-	                                          std::optional<std::pair<MaterialType, std::string>> texture,
-											  const RAY::Vector3 &scale,
-											  const RAY::Vector3 &position,
-											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle)
+	Model::Model(const std::string &filename,
+	             bool lonely,
+	             std::optional<std::pair<MaterialType, std::string>> texture,
+	             const RAY::Vector3 &scale,
+	             const RAY::Vector3 &position,
+	             const RAY::Vector3 &rotationAxis,
+	             float rotationAngle)
 		: ADrawable3D(position, WHITE),
-		_model(_modelsCache.fetch(filename, lonely)),
-		_rotationAxis(rotationAxis),
-		_rotationAngle(rotationAngle),
-		_scale(scale)
+		  _model(_modelsCache.fetch(filename, lonely)),
+		  _rotationAxis(rotationAxis),
+		  _rotationAngle(rotationAngle),
+		  _scale(scale)
 	{
 		if (texture.has_value())
 			this->setTextureToMaterial(texture->first, texture->second);
@@ -32,7 +34,7 @@ namespace RAY::Drawables::Drawables3D {
 
 	Model::Model(const Mesh &mesh)
 		: ADrawable3D({0, 0, 0}, WHITE),
-		_model(std::make_shared<::Model>(LoadModelFromMesh(mesh)))
+		  _model(std::make_shared<::Model>(LoadModelFromMesh(mesh)))
 	{
 	}
 
@@ -54,8 +56,8 @@ namespace RAY::Drawables::Drawables3D {
 	{
 		this->_textureList.emplace(materialType, texturePath);
 		SetMaterialTexture(&this->_model->materials[materialType],
-						   materialType,
-						   this->_textureList.at(materialType));
+		                   materialType,
+		                   this->_textureList.at(materialType));
 		return true;
 	}
 
@@ -104,7 +106,12 @@ namespace RAY::Drawables::Drawables3D {
 
 	void Model::drawOn(RAY::Window &)
 	{
-		DrawModelEx(*this->_model, this->_position, this->_rotationAxis, this->_rotationAngle, this->_scale, this->_color);
+		DrawModelEx(*this->_model,
+		            this->_position,
+		            this->_rotationAxis,
+		            this->_rotationAngle,
+		            this->_scale,
+		            this->_color);
 	}
 
 	void Model::setShader(const RAY::Shader &shader)

@@ -8,15 +8,15 @@
 namespace BBM
 {
 	KeyboardComponent::KeyboardComponent(WAL::Entity &entity,
-							  Key up,
-							  Key down,
-							  Key left,
-							  Key right,
-							  Key jump,
-							  Key bomb,
-							  Key pause)
+	                                     Key up,
+	                                     Key down,
+	                                     Key left,
+	                                     Key right,
+	                                     Key jump,
+	                                     Key bomb,
+	                                     Key pause)
 		: WAL::Component(entity), keyJump(jump), keyBomb(bomb), keyPause(pause),
-								  keyRight(right), keyLeft(left), keyUp(up), keyDown(down)
+		  keyRight(right), keyLeft(left), keyUp(up), keyDown(down)
 	{}
 
 	WAL::Component *KeyboardComponent::clone(WAL::Entity &entity) const
