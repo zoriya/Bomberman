@@ -6,14 +6,15 @@
 
 namespace BBM
 {
-	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, float explosionRadius)
+	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, unsigned ownerID)
 			: WAL::Component(entity),
 			damage(damage),
-			explosionRadius(explosionRadius)
+			explosionRadius(explosionRadius),
+			ownerID(ownerID)
 	{}
 
 	WAL::Component *BasicBombComponent::clone(WAL::Entity &entity) const
 	{
-		return new BasicBombComponent(entity, this->damage, this->explosionRadius);
+		return new BasicBombComponent(entity, this->damage, this->explosionRadius, this->ownerID);
 	}
 }

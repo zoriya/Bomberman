@@ -63,7 +63,8 @@ namespace BBM
 			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
 				bonus.scheduleDeletion();
 			})
-			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false, std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false,
+															 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";

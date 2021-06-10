@@ -16,15 +16,19 @@ namespace BBM
 	{
 	public:
 		//! @brief The radius of the explosion.
-		const float explosionRadius = 3;
+		const int explosionRadius = 3;
 		//! @brief The damage made by the explosion on an entity
 		const int damage = 1;
+		//! @brief The ID of the owner.
+		unsigned ownerID;
+		//! @brief Should collisions with the owner be disabled.²
+		bool ignoreOwner = true;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief A component can't be instantiated, it should be derived.
-		explicit BasicBombComponent(WAL::Entity &entity, int damage, float explosionRadius);
+		explicit BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, unsigned ownerID);
 
 		//! @brief A component can't be instantiated, it should be derived.
 		BasicBombComponent(const BasicBombComponent &) = default;

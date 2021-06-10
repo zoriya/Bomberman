@@ -107,16 +107,16 @@ TEST_CASE("Collision test callbacks calls", "[Component][System]")
 	CollisionSystem collision(wal);
 	MovableSystem movable(wal);
 
-	wal.scene = std::make_shared<Scene>();
+	wal.changeScene(std::make_shared<Scene>());
 
-	wal.scene->addEntity("player")
+	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &, int) { nbCallbacksCalled++; },
 			[&nbCallbacksCalled](Entity &actual, const Entity &, int) { nbCallbacksCalled++; }, 0, 5.0)
 		.addComponent<MovableComponent>();
 
-	wal.scene->addEntity("block")
+	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(0, 0, 0)
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &, int) { nbCallbacksCalled++; },
@@ -127,7 +127,7 @@ TEST_CASE("Collision test callbacks calls", "[Component][System]")
 					mov._velocity = Vector3f();
 				} catch (std::exception &e) {};
 			}, 0, 1);
-	Entity &entity = wal.scene->getEntities().front();
+	Entity &entity = wal.getScene()->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;
@@ -152,9 +152,9 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 	CollisionSystem collision(wal);
 	MovableSystem movable(wal);
 
-	wal.scene = std::make_shared<Scene>();
+	wal.changeScene(std::make_shared<Scene>());
 
-	wal.scene->addEntity("player")
+	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
@@ -168,7 +168,7 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 				REQUIRE(actual.getName() == "block");
 			}, 0, 5.0);
 
-	wal.scene->addEntity("block")
+	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(0, 0, 0)
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
@@ -181,7 +181,7 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 				REQUIRE(actual.getName() == "player");
 				REQUIRE(other.getName() == "block");
 			}, 0, 1);
-	Entity &entity = wal.scene->getEntities().front();
+	Entity &entity = wal.getScene()->getEntities().front();
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
 	entity.getComponent<CollisionComponent>().bound.x = 5;
