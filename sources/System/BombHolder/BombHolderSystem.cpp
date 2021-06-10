@@ -30,16 +30,16 @@ namespace BBM
 		return MapGenerator::wallCollided( entity, bomb, collidedAxis);
 	}
 
-
 	BombHolderSystem::BombHolderSystem(WAL::Wal &wal)
 		: System(wal)
 	{}
 
-	void BombHolderSystem::_dispatchExplosion(Vector3f position, WAL::Wal &wal, int count)
+	void BombHolderSystem::_dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, const Vector3f &posFrom)
 	{
-		if (count <= 0)
+		if (radiusToDo <= 0)
 			return;
-		wal.getSystem<EventSystem>().dispatchEvent([position, count](WAL::Wal &wal) {
+		std::cout << "exploding at " << position << std::endl;
+		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, posFrom](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
@@ -47,10 +47,23 @@ namespace BBM
 					return;
 				}
 			}
-			_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
+			const Vector3f expandVectors[] = {
+				{1, 0, 0},
+				{-1, 0, 0},
+				{0, 0, 1},
+				{0, 0, -1},
+			};
+
+			// should be true only at the first iteration
+			bool alwaysDispatch = position == posFrom;
+
+			for (const auto &expandVector : expandVectors) {
+				Vector3f newPos = position + expandVector;
+				if (!alwaysDispatch && newPos == posFrom) {
+					continue;
+				}
+				_dispatchExplosion(newPos, wal, radiusToDo - 1, position);
+			}
 		});
 	}
 
@@ -59,7 +72,7 @@ namespace BBM
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
 		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
-		_dispatchExplosion(position, wal, 3 + (explosionRadius - 3));
+		_dispatchExplosion(position, wal, explosionRadius);
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)

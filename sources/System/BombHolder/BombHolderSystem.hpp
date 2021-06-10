@@ -22,7 +22,12 @@ namespace BBM
 		void _spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id);
 
 		//! @brief Spawn a bomb at the specified position.
-		static void _dispatchExplosion(Vector3f position, WAL::Wal &, int count);
+		static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, const Vector3f &posFrom);
+
+		//! @brief Wrapped call to specify default arg value
+		inline static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo) {
+			return _dispatchExplosion(position, wal, radiusToDo, position);
+		};
 
 		//! @brief The method triggered when the bomb explode.
 		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
