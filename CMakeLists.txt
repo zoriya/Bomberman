@@ -97,6 +97,8 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/System/Lobby/LobbySystem.cpp
+	sources/System/Lobby/LobbySystem.hpp
 )
 
 add_executable(bomberman

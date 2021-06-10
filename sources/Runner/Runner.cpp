@@ -49,6 +49,7 @@
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Sound/MenuSoundManagerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "System/Lobby/LobbySystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -95,6 +96,7 @@ namespace BBM
 			.addSystem<MovableSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MenuSoundManagerSystem>()
+			.addSystem<LobbySystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -171,7 +173,7 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+				gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
@@ -234,6 +236,47 @@ namespace BBM
 		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
 		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &credits, nullptr, &credits);
 		credits.getComponent<OnClickComponent>().setButtonLinks(&exit, nullptr, &exit);
+		return scene;
+	}
+
+	std::shared_ptr<WAL::Scene> Runner::loadLobbyScene()
+	{
+		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
+			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+		};
+		auto scene = std::make_shared<WAL::Scene>();
+
+		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
+			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
+			.addComponent<SoundComponent>(sounds);
+		scene->addEntity("background")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		auto &play = scene->addEntity("play button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_new_game.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_new_game_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+			});
+		
+		auto &p1 = scene->addEntity("player1")
+			.addComponent<PositionComponent>(0, 0, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>();
 		return scene;
 	}
 
@@ -310,10 +353,9 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
+				//empty scene
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
-		//needed material
-		//music
 		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &play, &exit);
 		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, nullptr);
@@ -620,6 +662,7 @@ namespace BBM
 		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
 		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
 		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
+		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
 	}
 
 	int Runner::run()
