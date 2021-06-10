@@ -155,9 +155,9 @@ namespace BBM
 		static const std::string secondFloorHolePath;
 
 	public:
-		static void wallCollide(WAL::Entity &entity,
-		                        const WAL::Entity &wall,
-		                        CollisionComponent::CollidedAxis collidedAxis);
+		static void wallCollided(WAL::Entity &entity,
+		                         const WAL::Entity &wall,
+		                         CollisionComponent::CollidedAxis collidedAxis);
 		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
 
 

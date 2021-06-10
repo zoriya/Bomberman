@@ -27,7 +27,7 @@ namespace BBM
 		auto &bombInfo = bomb.getComponent<BasicBombComponent>();
 		if (bombInfo.ignoreOwner && bombInfo.ownerID == entity.getUid())
 			return;
-		return MapGenerator::wallCollide(entity, bomb, collidedAxis);
+		return MapGenerator::wallCollided( entity, bomb, collidedAxis);
 	}
 
 

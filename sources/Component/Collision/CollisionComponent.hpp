@@ -23,8 +23,14 @@ namespace BBM
 		};
 
 		//! @brief onCollide functions to be called
+		//! @param first self
+		//! @param second the entity you collided
+		//! @param third the collision axis (to know which axis collided)
 		WAL::Callback<WAL::Entity &, const WAL::Entity &, CollidedAxis> onCollide;
 		//! @brief onCollided functions to be called
+		//! @param first the entity that collided you
+		//! @param second self
+		//! @param third the collision axis (to know which axis collided)
 		WAL::Callback<WAL::Entity &, const WAL::Entity &, CollidedAxis> onCollided;
 		//! @brief Bound size on all axis
 		Vector3f bound;
