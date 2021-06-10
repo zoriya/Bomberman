@@ -6,15 +6,20 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Map.hpp"
+#include <iostream>
+#include <Items/Bonus.hpp>
+#include <Component/Levitate/LevitateComponent.hpp>
+#include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+using namespace std::chrono_literals;
 
 namespace BBM
 {
-	void MapGenerator::wallCollide(WAL::Entity &entity,
-	                               const WAL::Entity &wall,
-	                               CollisionComponent::CollidedAxis collidedAxis)
+	void MapGenerator::wallCollided(WAL::Entity &entity,
+	                                const WAL::Entity &wall,
+	                                CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *mov = entity.tryGetComponent<MovableComponent>();
 
@@ -28,9 +33,38 @@ namespace BBM
 			mov->_velocity.z = 0;
 	}
 
-	void MapGenerator::wallDestroyed(WAL::Entity &entity)
+	void MapGenerator::wallDestroyed(WAL::Entity &entity, WAL::Wal &wal)
 	{
 		entity.scheduleDeletion();
+		auto &position = entity.getComponent<PositionComponent>().position;
+		static std::map<Bonus::BonusType, std::string> map = {
+				{Bonus::BonusType::BOMBSTOCK, "assets/items/bombup"},
+				{Bonus::BonusType::SPEEDUP, "assets/items/speedup"},
+				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"}
+		};
+		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+		};
+		auto bonusType = Bonus::getRandomBonusType();
+
+		if (bonusType == Bonus::BonusType::NOTHING)
+			return;
+		if (!map.contains(bonusType))
+			return;
+		wal.getScene()->scheduleNewEntity("Bonus")
+			.addComponent<PositionComponent>(position)
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
+				entity.scheduleDeletion();
+			})
+			.addComponent<LevitateComponent>(position.y)
+			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
+				bonus.scheduleDeletion();
+			}, func[bonusType - 1], 0.5, .5)
+			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
+				bonus.scheduleDeletion();
+			})
+			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false,
+															 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";
@@ -59,7 +93,7 @@ namespace BBM
 						.addComponent<TagComponent<Blowable>>()
 						.addComponent<CollisionComponent>(
 							WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-							&MapGenerator::wallCollide, 0.25, .75)
+							&MapGenerator::wallCollided, 0.25, .75)
 						.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 						                                                 std::make_pair(MAP_DIFFUSE, unbreakablePng));
 				}
@@ -77,7 +111,7 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
+				&MapGenerator::wallCollided, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -86,8 +120,8 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false, 
+				&MapGenerator::wallCollided, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
 		scene->addEntity("Left Wall")
@@ -95,16 +129,16 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false, 
+				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false, 
+				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
+			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
 	}
@@ -153,7 +187,7 @@ namespace BBM
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollided, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, false, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 
@@ -189,7 +223,7 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, .75)
+				&MapGenerator::wallCollided, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(UnbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, UnbreakablePng));
 	}

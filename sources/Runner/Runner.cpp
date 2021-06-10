@@ -7,12 +7,7 @@
 #include "System/Movable/MovableSystem.hpp"
 #include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
-#include <Drawables/3D/Cube.hpp>
-#include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/2D/Text.hpp>
-#include <Audio/Music.hpp>
-#include <Audio/Sound.hpp>
-#include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
@@ -22,7 +17,6 @@
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
 #include "Component/Button/ButtonComponent.hpp"
-#include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -35,8 +29,10 @@
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
-#include <Component/Renderer/Drawable2DComponent.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
+#include <System/Levitate/LevitateSystem.hpp>
+#include <System/Bonus/PlayerBonusSystem.hpp>
+#include <Component/Bonus/PlayerBonusComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
@@ -44,6 +40,7 @@
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <Drawables/Texture.hpp>
+#include <System/Bomb/BombSystem.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
@@ -59,15 +56,10 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		auto &view = engine.getScene()->view<ControllableComponent>();
-		// You can change the scene here or update the game state based on entities values.
-
-		// If you want to keep a scene loaded but not running, store it in the state.loadedScenes.
-		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
-			for (auto &[_, component]: view) {
+			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
@@ -92,7 +84,10 @@ namespace BBM
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
 			.addSystem<CollisionSystem>()
+			.addSystem<LevitateSystem>()
+			.addSystem<PlayerBonusSystem>()
 			.addSystem<MovableSystem>()
+			.addSystem<BombSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MenuSoundManagerSystem>()
 			.addSystem<MusicSystem>();
@@ -540,7 +535,8 @@ namespace BBM
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
 			.addComponent<BombHolderComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity) {
+			.addComponent<PlayerBonusComponent>()
+			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
