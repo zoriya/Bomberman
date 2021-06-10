@@ -33,9 +33,16 @@ namespace BBM
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
-
-			//! @brief Create a new keyboard component using default keys.
-			explicit KeyboardComponent(WAL::Entity &entity);
+		
+			//! @brief Create a new keyboard component using custom keys.
+			KeyboardComponent(WAL::Entity &entity,
+							  Key up = KEY_W,
+							  Key down = KEY_S,
+							  Key left = KEY_A,
+							  Key right = KEY_D,
+							  Key jump = KEY_SPACE,
+							  Key bomb = KEY_E,
+							  Key pause = RAY::Controller::Keyboard::Key::KEY_ESCAPE);
 
 			//! @brief A Keyboard component is copy constructable.
 			KeyboardComponent(const KeyboardComponent &) = default;
