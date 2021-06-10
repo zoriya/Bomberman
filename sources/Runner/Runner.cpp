@@ -254,6 +254,9 @@ namespace BBM
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+		scene->addEntity("lobby text")
+			.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
@@ -275,8 +278,17 @@ namespace BBM
 			});
 		
 		auto &p1 = scene->addEntity("player1")
-			.addComponent<PositionComponent>(0, 0, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>();
+			.addComponent<PositionComponent>(224, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p2 = scene->addEntity("player2")
+			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p3 = scene->addEntity("player3")
+			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p4 = scene->addEntity("player4")
+			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
 		return scene;
 	}
 
