@@ -520,7 +520,7 @@ namespace BBM
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		scene->addEntity("player")
+		scene->addEntity("Player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()

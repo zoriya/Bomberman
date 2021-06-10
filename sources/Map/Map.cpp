@@ -37,10 +37,10 @@ namespace BBM
 	{
 		entity.scheduleDeletion();
 		auto &position = entity.getComponent<PositionComponent>().position;
-		static std::map<Bonus::BonusType, std::string> map = {
-				{Bonus::BonusType::BOMBSTOCK, "assets/items/bombup"},
-				{Bonus::BonusType::SPEEDUP, "assets/items/speedup"},
-				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"}
+		static std::map<Bonus::BonusType, std::vector<std::string>> map = {
+				{Bonus::BonusType::BOMBSTOCK, {"Bonus Bomb Up", "assets/items/bombup"}},
+				{Bonus::BonusType::SPEEDUP, {"Bonus Speed Up", "assets/items/speedup"}},
+				{Bonus::BonusType::EXPLOSIONINC, {"Bonus Fire Up", "assets/items/fireup"}}
 		};
 		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
 				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
@@ -51,7 +51,7 @@ namespace BBM
 			return;
 		if (!map.contains(bonusType))
 			return;
-		wal.getScene()->scheduleNewEntity("Bonus")
+		wal.getScene()->scheduleNewEntity(map.at(bonusType)[0])
 			.addComponent<PositionComponent>(position)
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
@@ -63,7 +63,7 @@ namespace BBM
 			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
 				bonus.scheduleDeletion();
 			})
-			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false,
+			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType)[1] + ".obj", false,
 															 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
