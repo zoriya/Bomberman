@@ -305,12 +305,14 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		//when a player is ready:
-		//tiles go green
-		auto &p1model = scene->addEntity("player1 model")
-			.addComponent<AnimatorComponent>()
-			.addComponent<PositionComponent>(224, 1080 / 3, 0)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3);
+		//p1tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(BLUE);
+		//p2tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(RED);
+		//p3tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(GREEN);
+		//p4tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(YELLOW);
+
+		//pX
+		//RAY::Texture *txt = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+		//txt->use("assets/player/valid_selection_icon.png")
 
 		return scene;
 	}
