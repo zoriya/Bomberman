@@ -79,6 +79,9 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Button/ButtonComponent.hpp
+	sources/System/MenuControllable/MenuControllableSystem.cpp
+	sources/System/MenuControllable/MenuControllableSystem.hpp
 	sources/System/Levitate/LevitateSystem.hpp
 	sources/System/Levitate/LevitateSystem.cpp
 	sources/Component/Levitate/LevitateComponent.cpp
@@ -87,6 +90,8 @@ set(SOURCES
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
+	sources/Component/Shaders/ShaderComponent.cpp
+	sources/Component/Shaders/ShaderComponent.hpp
 	sources/Component/Bomb/BasicBombComponent.cpp
 	sources/Component/Bomb/BasicBombComponent.hpp
 	sources/Component/Bonus/PlayerBonusComponent.hpp
@@ -98,11 +103,15 @@ set(SOURCES
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
 	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/MenuSoundManagerSystem.cpp
+	sources/System/Sound/MenuSoundManagerSystem.hpp
 	sources/System/Sound/PlayerSoundManagerSystem.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
-	sources/System/Bomb/BombSystem.cpp sources/System/Bomb/BombSystem.hpp)
+	sources/System/Bomb/BombSystem.cpp
+	sources/System/Bomb/BombSystem.hpp
+)
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
@@ -121,7 +130,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/MoveTests.cpp
                tests/ViewTest.cpp
                tests/CollisionTest.cpp
-               )
+)
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 

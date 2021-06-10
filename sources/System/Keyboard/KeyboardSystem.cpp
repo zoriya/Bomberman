@@ -28,7 +28,7 @@ namespace BBM
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isPressed(key.first);
+			key.second = Keyboard::isDown(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
 			controllable.move.x -= 1;

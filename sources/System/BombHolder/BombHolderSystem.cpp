@@ -40,7 +40,7 @@ namespace BBM
 		if (count <= 0)
 			return;
 		wal.getSystem<EventSystem>().dispatchEvent([position, count](WAL::Wal &wal) {
-			for (auto &[entity, pos, _] : wal.scene->view<PositionComponent, TagComponent<Blowable>>()) {
+			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
 						health->takeDmg(1);
@@ -64,13 +64,13 @@ namespace BBM
 
 	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, int id)
 	{
-		this->_wal.scene->scheduleNewEntity("Bomb")
+		this->_wal.getScene()->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
 			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 			                                  &BombHolderSystem::_bombCollide, 0.25, .75)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj", false,
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
 		holder.damage = 1;
 		holder.explosionRadius = 3;

@@ -20,12 +20,12 @@ using namespace BBM;
 TEST_CASE("Move test", "[Component][System]")
 {
 	Wal wal;
-	wal.scene = std::make_shared<Scene>();
-	wal.scene->addEntity("player")
+	wal.changeScene(std::make_shared<Scene>());
+	wal.getScene()->addEntity("player")
 		.addComponent<ControllableComponent>()
 		.addComponent<MovableComponent>()
 		.addComponent<PositionComponent>();
-	Entity &entity = wal.scene->getEntities().front();
+	Entity &entity = wal.getScene()->getEntities().front();
 
 	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
 
