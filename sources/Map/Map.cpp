@@ -53,6 +53,7 @@ namespace BBM
 			return;
 		wal.getScene()->scheduleNewEntity("Bonus")
 			.addComponent<PositionComponent>(position)
+			.addComponent<TagComponent<Blowable>>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
 			})
