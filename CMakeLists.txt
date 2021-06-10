@@ -111,6 +111,8 @@ set(SOURCES
 	sources/System/Music/MusicSystem.cpp
 	sources/System/Bomb/BombSystem.cpp
 	sources/System/Bomb/BombSystem.hpp
+	sources/Parser/ParserYaml.hpp
+	sources/Parser/ParserYaml.cpp
 )
 add_executable(bomberman
                sources/main.cpp
