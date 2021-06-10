@@ -277,18 +277,41 @@ namespace BBM
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
 		
+		auto &p1tile = scene->addEntity("player1 tile")
+			.addComponent<PositionComponent>(224, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p1 = scene->addEntity("player1")
 			.addComponent<PositionComponent>(224, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p2tile = scene->addEntity("player2 tile")
+			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p2 = scene->addEntity("player2")
 			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p3tile = scene->addEntity("player3 tile")
+			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p3 = scene->addEntity("player3")
 			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		auto &p4tile = scene->addEntity("player4 tile")
+			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p4 = scene->addEntity("player4")
 			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+		scene->addEntity("camera")
+			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+		//when a player is ready:
+		//tiles go green
+		auto &p1model = scene->addEntity("player1 model")
+			.addComponent<AnimatorComponent>()
+			.addComponent<PositionComponent>(224, 1080 / 3, 0)
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3);
+
 		return scene;
 	}
 
