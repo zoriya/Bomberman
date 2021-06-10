@@ -314,6 +314,10 @@ namespace BBM
 		//RAY::Texture *txt = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 		//txt->use("assets/player/valid_selection_icon.png")
 
+		//to do
+		// quand no player is reaydy, the play button should be diasbled
+
+		//The other non-ready players shoudl be IAs
 		return scene;
 	}
 
