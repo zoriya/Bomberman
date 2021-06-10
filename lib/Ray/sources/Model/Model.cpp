@@ -14,12 +14,12 @@ namespace RAY::Drawables::Drawables3D {
 
 	RAY::Cache<::Model> Model::_modelsCache(LoadModel, UnloadModel);
 
-	Model::Model(const std::string &filename,
+	Model::Model(const std::string &filename, bool lonely,
 	                                          std::optional<std::pair<MaterialType, std::string>> texture,
 											  const RAY::Vector3 &scale,
 											  const RAY::Vector3 &position,
 											  const RAY::Vector3 &rotationAxis,
-											  float rotationAngle, bool lonely)
+											  float rotationAngle)
 		: ADrawable3D(position, WHITE),
 		_model(_modelsCache.fetch(filename, lonely)),
 		_rotationAxis(rotationAxis),

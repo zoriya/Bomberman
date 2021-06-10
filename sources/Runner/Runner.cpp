@@ -527,7 +527,7 @@ namespace BBM
 		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()
