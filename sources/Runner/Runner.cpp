@@ -564,14 +564,8 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 
 		scene->addEntity("Control entity")
-		/*scene->addEntity("cube")
-			.addComponent<PositionComponent>(5, 0, 5)
-			.addComponent<ShaderComponentDrawable2D>("assets/shaders/glsl330/grayscale.fs")
-			//.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(BBM::Vector2f{200,200}, BBM::Vector2f{200, 200}, RED)
 			.addComponent<ControllableComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3); */
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 
