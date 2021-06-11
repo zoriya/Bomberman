@@ -41,7 +41,7 @@ namespace BBM
 		return res;
 	}*/
 
-	void IAControllableSystem::UpdateMapInfos(WAL::Entity entity)
+	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
 	{
 		if (_cached)
 			return;
@@ -56,7 +56,7 @@ namespace BBM
 		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Hole>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::HOLE));
 		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Player>>()) {
-			if (entity.getUid() == other.getUid())
+			if (static_cast<WAL::Entity>(entity).getUid() == other.getUid())
 				continue;
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
 		}
@@ -73,7 +73,7 @@ namespace BBM
 		auto &pos = entity.get<PositionComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
-		//UpdateMapInfos(static_cast<WAL::Entity>(entity));
+		UpdateMapInfos(entity);
 		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
 			return;

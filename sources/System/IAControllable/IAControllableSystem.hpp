@@ -29,7 +29,7 @@ namespace BBM
 		std::vector<std::pair<Vector3f, int>> _bombs;
 
 		//! @brief
-		void UpdateMapInfos(WAL::Entity entity);
+		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity);
 	public:
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity) override;
