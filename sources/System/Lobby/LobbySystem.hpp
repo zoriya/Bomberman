@@ -1,15 +1,16 @@
 #pragma once
 
 #include "System/System.hpp"
+#include "Component/Lobby/LobbyComponent.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle Health entities.
-	class LobbySystem : public WAL::System<>
+	class LobbySystem : public WAL::System<LobbyComponent>
 	{
 	public:
 		//! @inherit
-		void onSelfUpdate() override;
+		void onUpdate(WAL::ViewEntity<LobbyComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);

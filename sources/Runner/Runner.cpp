@@ -50,6 +50,7 @@
 #include "System/Sound/MenuSoundManagerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
+#include "Component/Lobby/LobbyComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -299,25 +300,29 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p1 = scene->addEntity("player1")
 			.addComponent<PositionComponent>(224, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png")
+			.addComponent<LobbyComponent>(0);
 		auto &p2tile = scene->addEntity("player2 tile")
 			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p2 = scene->addEntity("player2")
 			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png")
+			.addComponent<LobbyComponent>(1);
 		auto &p3tile = scene->addEntity("player3 tile")
 			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p3 = scene->addEntity("player3")
 			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png")
+			.addComponent<LobbyComponent>(2);
 		auto &p4tile = scene->addEntity("player4 tile")
 			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p4 = scene->addEntity("player4")
 			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png")
+			.addComponent<LobbyComponent>(3);
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
