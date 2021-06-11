@@ -700,6 +700,8 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 
 		scene->addEntity("Control entity")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 
