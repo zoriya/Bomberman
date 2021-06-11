@@ -31,23 +31,30 @@ namespace BBM
 		Vector3f pointAx = pointA;
 		Vector3f pointAy = pointA;
 		Vector3f pointAz = pointA;
+		bool isMovable = false;
+		Vector3f minAy;
+		Vector3f maxAy;
+		Vector3f minAz;
+		Vector3f maxAz;
 
 		if (auto *movable = entity->tryGetComponent<MovableComponent>()) {
 			auto vel = movable->getVelocity();
 			pointAx.x += vel.x;
 			pointAy.y += vel.y;
 			pointAz.z += vel.z;
+			isMovable = true;
 		}
 
 		Vector3f minAx = Vector3f::min(pointAx, pointAx + colA.bound);
 		Vector3f maxAx = Vector3f::max(pointAx, pointAx + colA.bound);
 
-		Vector3f minAy = Vector3f::min(pointAy, pointAy + colA.bound);
-		Vector3f maxAy = Vector3f::max(pointAy, pointAy + colA.bound);
+		if (isMovable) {
+			minAy = Vector3f::min(pointAy, pointAy + colA.bound);
+			maxAy = Vector3f::max(pointAy, pointAy + colA.bound);
 
-		Vector3f minAz = Vector3f::min(pointAz, pointAz + colA.bound);
-		Vector3f maxAz = Vector3f::max(pointAz, pointAz + colA.bound);
-
+			minAz = Vector3f::min(pointAz, pointAz + colA.bound);
+			maxAz = Vector3f::max(pointAz, pointAz + colA.bound);
+		}
 		for (auto &[other, posB, colB] : this->getView()) {
 			if (other.getUid() == entity->getUid())
 				continue;
@@ -60,13 +67,15 @@ namespace BBM
 			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
 
 			if (boxesCollide(minAx, maxAx, minB, maxB)) {
-				collidedAxis += CollisionComponent::CollidedAxis::X;
+				collidedAxis += isMovable ? CollisionComponent::CollidedAxis::X : 7;
 			}
-			if (boxesCollide(minAy, maxAy, minB, maxB)) {
-				collidedAxis += CollisionComponent::CollidedAxis::Y;
-			}
-			if (boxesCollide(minAz, maxAz, minB, maxB)) {
-				collidedAxis += CollisionComponent::CollidedAxis::Z;
+			if (isMovable) {
+				if (boxesCollide(minAy, maxAy, minB, maxB)) {
+					collidedAxis += CollisionComponent::CollidedAxis::Y;
+				}
+				if (boxesCollide(minAz, maxAz, minB, maxB)) {
+					collidedAxis += CollisionComponent::CollidedAxis::Z;
+				}
 			}
 			if (collidedAxis) {
 				colA.onCollide(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));

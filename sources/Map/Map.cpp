@@ -282,7 +282,7 @@ namespace BBM
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd > 0.60) {
+		if (rnd > 0.01) {
 			for (int i = 0; i < width + 1; i++) {
 				map[std::make_tuple(i, 1, height)] = map[std::make_tuple(i, 0, height)];
 				map[std::make_tuple(i, 0, height)] = UPPERFLOOR;
@@ -295,12 +295,10 @@ namespace BBM
 			map[std::make_tuple(width, -1, 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, height - 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, 1)] = BUMPER;
-		}
-		if (rnd > 0.30) {
+		} 
+		if (rnd > 0.01) {
 			for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 				for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
-					if (map[std::make_tuple(i, 0, j)] == FLOOR)
-						continue;
 					map[std::make_tuple(i, 1, j)] = map[std::make_tuple(i, 0, j)];
 					map[std::make_tuple(i, 0, j)] = UPPERFLOOR;
 				}
