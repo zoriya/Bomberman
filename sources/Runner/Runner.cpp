@@ -347,25 +347,25 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p1 = scene->addEntity("player1")
 			.addComponent<PositionComponent>(224, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 		auto &p2tile = scene->addEntity("player2 tile")
 			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p2 = scene->addEntity("player2")
 			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 		auto &p3tile = scene->addEntity("player3 tile")
 			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p3 = scene->addEntity("player3")
 			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 		auto &p4tile = scene->addEntity("player4 tile")
 			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
 		auto &p4 = scene->addEntity("player4")
 			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/none_icon.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
@@ -376,7 +376,7 @@ namespace BBM
 		//p4tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(YELLOW);
 
 		//pX
-		p1.getComponent<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/valid_selection_icon.png");
+		//p1.getComponent<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icvalid_selection_icon.png");
 
 		//to do
 		// quand no player is reaydy, the play button should be diasbled
@@ -674,7 +674,7 @@ namespace BBM
 		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/textures/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 			.addComponent<KeyboardComponent>()

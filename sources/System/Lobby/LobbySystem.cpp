@@ -16,6 +16,6 @@ namespace BBM
 	//void LobbySystem::updateEntityConnectedUser(WAL::Entity &entity)
 	//{
 	//	RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-	//	texture->use("assets/player/blue.png");
+	//	texture->use("assets/player/icons/blue.png");
 	//}
 }
