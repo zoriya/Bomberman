@@ -271,6 +271,7 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
+				gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
 		
@@ -461,7 +462,7 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				//empty scene
+				gameState._loadedScenes[GameState::SceneID::GameScene].reset();
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
 		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &settings);
@@ -769,7 +770,6 @@ namespace BBM
 	void Runner::loadScenes()
 	{
 		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
-		gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
 		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
 		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
 		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
