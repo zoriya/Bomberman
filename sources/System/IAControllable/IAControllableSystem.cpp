@@ -11,7 +11,7 @@
 namespace BBM
 {
 	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
-	: System(wal), _wal(wal)
+	: System(wal), _wal(wal), _map(), _players(), _cached(false)
 	{ }
 /*
 	float IAControllableSystem::getReturnNumber(lua_State *state)
@@ -45,6 +45,8 @@ namespace BBM
 	{
 		if (_cached)
 			return;
+		if (!_wal.scene.get())
+			return;
 		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Breakable>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
 		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Unbreakable>>())
@@ -58,6 +60,8 @@ namespace BBM
 				continue;
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
 		}
+		//for (auto &[other, pos, bomb] : _wal.getScene()->view<PositionComponent, BasicBombComponent>())
+		//	_bombs.push_back(std::make_pair(pos.position, bomb.explosionRadius));
 		_cached = true;
 
 	}
@@ -69,7 +73,7 @@ namespace BBM
 		auto &pos = entity.get<PositionComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
-		UpdateMapInfos(static_cast<WAL::Entity>(entity));
+		//UpdateMapInfos(static_cast<WAL::Entity>(entity));
 		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
 			return;
@@ -91,6 +95,7 @@ namespace BBM
 	{
 		_cached = false;
 		_map.clear();
+		_bombs.clear();
 		_players.clear();
 	}
 

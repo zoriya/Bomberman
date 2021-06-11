@@ -26,6 +26,8 @@ namespace BBM
 		//! @brief All players in the map
 		std::vector<MapInfo> _players;
 
+		std::vector<std::pair<Vector3f, int>> _bombs;
+
 		//! @brief
 		void UpdateMapInfos(WAL::Entity entity);
 	public:

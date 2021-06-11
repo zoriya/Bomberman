@@ -5,6 +5,10 @@ local debug = true
 --local debug = false
 if not debug then
     log = function() end
+else
+	log = function(a)
+		print(a)
+	end
 end
 
 function PrintMap(map, maxX, maxZ)
@@ -45,10 +49,10 @@ function Update(player, infos, players)
 		end
 	end
 	local myMap = CreateMyMap(infos, maxX, maxZ);
-	if (isInExplosionRange()) then
-		--play defensive RUN
-	else
-		--play offensive
-	end
+	--if (isInExplosionRange()) then
+	--	--play defensive RUN
+	--else
+	--	--play offensive
+	--end
 	return 1, 1, false, false;
 end
