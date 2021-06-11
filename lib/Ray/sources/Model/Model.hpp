@@ -68,7 +68,7 @@ namespace RAY::Drawables::Drawables3D {
 			float getRotationAngle(void);
 	
 			//! @brief Set Rotation Axis
-			Model &setRotationAxis(const RAY::Vector3 &scale);
+			Model &setRotationAxis(const RAY::Vector3 &rotationAxis);
 
 			//! @return rotation axis
 			const RAY::Vector3 & getRotationAxis(void);

@@ -82,9 +82,9 @@ namespace RAY::Drawables::Drawables3D
 		return this->_rotationAngle;
 	}
 
-	Model &Model::setRotationAxis(const RAY::Vector3 &scale)
+	Model &Model::setRotationAxis(const RAY::Vector3 &rotationAxis)
 	{
-		this->_scale = scale;
+		this->_rotationAxis = rotationAxis;
 		return *this;
 	}
 
