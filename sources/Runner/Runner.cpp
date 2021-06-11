@@ -258,20 +258,35 @@ namespace BBM
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_new_game.png");
+				auto &lobby = wal.getScene()->view<LobbyComponent>();
+				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
+					return !entity.get<LobbyComponent>().ready;
+				}))
+					texture->setColor(GRAY);
 			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_new_game_hovered.png");
+				auto &lobby = wal.getScene()->view<LobbyComponent>();
+				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
+					return !entity.get<LobbyComponent>().ready;
+				}))
+					texture->setColor(GRAY);
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
+				auto &lobby = wal.getScene()->view<LobbyComponent>();
+				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
+					return !entity.get<LobbyComponent>().ready;
+				}))
+					return;
 				gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
@@ -344,45 +359,18 @@ namespace BBM
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 		
-//		auto &p1tile = scene->addEntity("player1 tile")
-//			.addComponent<PositionComponent>(224, 1080 / 3, 0)
-//			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
-		auto &p1 = scene->addEntity("player1")
-			.addComponent<PositionComponent>(224, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png")
-			.addComponent<LobbyComponent>(0);
-//		auto &p2tile = scene->addEntity("player2 tile")
-//			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
-//			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
-		auto &p2 = scene->addEntity("player2")
-			.addComponent<PositionComponent>(2 * 224 + 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png")
-			.addComponent<LobbyComponent>(1);
-//		auto &p3tile = scene->addEntity("player3 tile")
-//			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
-//			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
-		auto &p3 = scene->addEntity("player3")
-			.addComponent<PositionComponent>(3 * 224 + 2 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png")
-			.addComponent<LobbyComponent>(2);
-//		auto &p4tile = scene->addEntity("player4 tile")
-//			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
-//			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(200, 200), WHITE);
-		auto &p4 = scene->addEntity("player4")
-			.addComponent<PositionComponent>(4 * 224 + 3 * 200, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png")
-			.addComponent<LobbyComponent>(3);
+		for (int i = 0; i < 4; i++) {
+			auto &player = scene->addEntity("player")
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
+			auto &ready = scene->addEntity("ready")
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				.addComponent<Drawable2DComponent, RAY::Texture>();
+			player.addComponent<LobbyComponent>(i, ready);
+		}
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-
-		//pX
-		//p1.getComponent<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icvalid_selection_icon.png");
-
-		//to do
-		// quand no player is reaydy, the play button should be diasbled
-
-		//The other non-ready players shoudl be IAs
 		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, nullptr);
 		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
 		lavaOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &play, nullptr, &heightOption);

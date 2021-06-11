@@ -22,11 +22,13 @@ namespace BBM
 		RAY::Color color = RED;
 		//! @brief Is this player ready
 		bool ready = false;
+		//! @brief The entity containing the ready display.
+		WAL::Entity &readyButton;
 
 		Component * clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new lobby component.
-		explicit LobbyComponent(WAL::Entity &entity, int playerID);
+		explicit LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton);
 		//! @brief A lobby component is copyable.
 		LobbyComponent(const LobbyComponent &) = default;
 		//! @brief A default destructor

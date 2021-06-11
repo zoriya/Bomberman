@@ -33,8 +33,11 @@ namespace BBM
 		}
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout == lobby.layout && controller.jump) {
-				lobby.ready = !lobby.ready;
+				lobby.ready = true;
 				if (lobby.ready) {
+					auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+					if (texture)
+						texture->use("assets/player/icons/ready.png");
 				}
 			}
 		}
