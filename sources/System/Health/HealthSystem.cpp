@@ -3,11 +3,12 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
-#include <Component/Animation/AnimationsComponent.hpp>
+#include <Component/Renderer/Drawable3DComponent.hpp>
+#include <Component/Timer/TimerComponent.hpp>
 #include "HealthSystem.hpp"
 #include "Component/Health/HealthComponent.hpp"
-#include "Component/Controllable/ControllableComponent.hpp"
-#include "Entity/Entity.hpp"
+
+namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
@@ -20,7 +21,7 @@ namespace BBM
 		auto &health = entity.get<HealthComponent>();
 
 		if (health.getHealthPoint() == 0) {
-			health.onDeath(entity);
+			health.onDeath(entity, this->_wal);
 		}
 	}
 }

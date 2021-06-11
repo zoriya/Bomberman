@@ -21,6 +21,9 @@
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
+#include <chrono>
+
+
 
 namespace BBM
 {
@@ -43,10 +46,10 @@ namespace BBM
 
 		using MapElem = std::function<void(Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 		using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
-		static void wallCollide(WAL::Entity &entity,
+		static void wallCollided(WAL::Entity &entity,
 		                        const WAL::Entity &wall,
 		                        CollisionComponent::CollidedAxis collidedAxis);
-		static void wallDestroyed(WAL::Entity &entity);
+		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
 
 
 		//! @param width Width of the map

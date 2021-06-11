@@ -22,9 +22,13 @@ namespace BBM
 			//! @brief The max number of  bomb that this entity can have.
 			unsigned int maxBombCount = 3;
 			//! @brief The number of seconds of each refill. This variable is used to reset the nextBombRefill value.
-			std::chrono::nanoseconds refillRate = 5000ms;
+			std::chrono::nanoseconds refillRate = 1s;
 			//! @brief The number of nanosecond before the next bomb refill.
 			std::chrono::nanoseconds nextBombRefill = refillRate;
+			//! @brief The radius of the explosion.
+			float explosionRadius = 3;
+			//! @brief The damage made by the explosion on an entity
+			int damage = 1;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;

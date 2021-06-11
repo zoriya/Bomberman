@@ -9,7 +9,9 @@
 #include <memory>
 #include <unordered_map>
 #include <functional>
+#include <utility>
 #include <raylib.h>
+#include "Exceptions/RayError.hpp"
 #include <vector>
 #include <algorithm>
 #include <string>
@@ -36,7 +38,7 @@ namespace RAY {
 
 			//! @param path path of the file
 			//! @param lonely: should be set to true if the loaded data must be held by no other active entites
-			//! @return a newly loaded ressource if it hasn't be previously loaded, or one from cache            
+			//! @return a newly loaded ressource if it hasn't be previously loaded, or one from cache
 			std::shared_ptr<T>fetch(const std::string &path, bool lonely = false)
 			{
 				if (!this->_cache.contains(path))
@@ -73,7 +75,7 @@ namespace RAY {
 	class Cache<::ModelAnimation> {
 		public:
 			Cache(std::function<::ModelAnimation *(const char *, int *)> dataLoader, std::function<void(::ModelAnimation *, unsigned int)>dataUnloader):
-				_dataLoader(dataLoader), _dataUnloader(dataUnloader)
+				_dataLoader(std::move(dataLoader)), _dataUnloader(std::move(dataUnloader))
 			{};
 			std::shared_ptr<::ModelAnimation> fetch(const std::string &path, int *counter)
 			{
@@ -98,5 +100,43 @@ namespace RAY {
 
 			//! @brief map storing shared ptr of caches
 			std::unordered_map<std::string, std::shared_ptr<::ModelAnimation>> _cache;
+	};
+
+	template<>
+	class Cache<::Shader>
+	{
+	public:
+		Cache(std::function<::Shader(const char *, const char *)> dataLoader,
+		      std::function<void(::Shader)> dataUnloader) :
+			_dataLoader(std::move(dataLoader)), _dataUnloader(std::move(dataUnloader))
+		{};
+
+		std::shared_ptr<::Shader> fetch(const std::string &vertexFile, const std::string &fragmentFile)
+		{
+			const std::string index = vertexFile + fragmentFile;
+
+			if (vertexFile.empty() && fragmentFile.empty()) {
+				throw RAY::Exception::WrongInputError();
+			}
+			if (this->_cache.find(index) != this->_cache.end())
+				return this->_cache[index];
+
+			this->_cache.emplace(index, std::shared_ptr<::Shader>(
+				new ::Shader(
+					this->_dataLoader(vertexFile.empty() ? nullptr : vertexFile.c_str(), fragmentFile.c_str())),
+				[this](::Shader *p) {
+					this->_dataUnloader(*p);
+				}));
+			return this->_cache[index];
+		};
+	private:
+		//! @brief function to call to load data
+		std::function<::Shader(const char *, const char *)> _dataLoader;
+
+		//! @brief function to call when the ray data will be unloaded
+		std::function<void(::Shader)> _dataUnloader;
+
+		//! @brief map storing shared ptr of caches
+		std::unordered_map<std::string, std::shared_ptr<::Shader>> _cache;
 	};
 }

@@ -45,13 +45,20 @@ namespace RAY
 
 			//! @brief Draw image on another image
 			void drawOn(RAY::Image &image) override;
+			
+			//! @brief Resize image;
+			void resize(const RAY::Vector2 &dimensions);
 
+			//! @brief Load image from file, lets one use one entity for multiple files
+			Image &use(const std::string &filename);
 
 		private:
 			//! @brief Image, really, that's just it...
 			std::shared_ptr<::Image> _image;
 
 			static Cache<::Image> _imagesCache;
+
+			std::string _ressourcePath;
 
 		
 		INTERNAL:

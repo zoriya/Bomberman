@@ -56,17 +56,16 @@ namespace BBM
 		this->_soundList[this->_soundIndex].get()->pause();
 	}
 
-	void SoundComponent::setVolume(float &volumeUpdate)
+	void SoundComponent::setVolume(float volumeUpdate)
 	{
-		if (!this->_isSoundLoad.at(this->_soundIndex))
-			return;
-		if (volumeUpdate >= 0) {
+		if (volumeUpdate >= 0 && volumeUpdate <= 1) {
 			this->volume = volumeUpdate;
-			this->_soundList[this->_soundIndex].get()->setVolume(this->volume);
+			for (auto &sound : _soundList)
+				sound.second->setVolume(volume);
 		}
 	}
 
-	void SoundComponent::setPitch(float &pitch)
+	void SoundComponent::setPitch(float pitch)
 	{
 		if (!this->_isSoundLoad.at(this->_soundIndex))
 			return;
@@ -88,6 +87,16 @@ namespace BBM
 	SoundComponent::SoundIndex SoundComponent::getIndex()
 	{
 		return (this->_soundIndex);
+	}
+
+	void SoundComponent::turnDownVolume()
+	{
+		this->setVolume(SoundComponent::volume - 0.1);
+	}
+
+	void SoundComponent::turnUpVolume()
+	{
+		this->setVolume(SoundComponent::volume + 0.1);
 	}
 
 } // namespace WAL

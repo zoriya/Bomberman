@@ -45,17 +45,17 @@ namespace BBM
 	{
 		if (_cached)
 			return;
-		if (!_wal.scene.get())
+		if (!_wal.getScene())
 			return;
-		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Breakable>>())
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Breakable>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
-		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Unbreakable>>())
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Unbreakable>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::UNBREAKABLE));
-		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Bumper>>())
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Bumper>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::BUMPER));
-		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Hole>>())
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Hole>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::HOLE));
-		for (auto &[other, pos, _] : _wal.scene->view<PositionComponent, TagComponent<Player>>()) {
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
 			if (static_cast<WAL::Entity>(entity).getUid() == other.getUid())
 				continue;
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));

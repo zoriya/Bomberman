@@ -24,6 +24,7 @@ namespace BBM
 
 	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
 	{
+		unsigned int entityUid = entity->getUid();
 		auto &posA = entity.get<PositionComponent>();
 		auto &colA = entity.get<CollisionComponent>();
 		Vector3f pointA = posA.position + colA.positionOffset;
@@ -48,12 +49,11 @@ namespace BBM
 		Vector3f maxAz = Vector3f::max(pointAz, pointAz + colA.bound);
 
 		for (auto &[other, posB, colB] : this->getView()) {
-			if (other.getUid() == entity->getUid())
+			if (other.getUid() == entityUid)
 				continue;
 
 			auto pointB = posB.position + colB.positionOffset;
 			int collidedAxis = 0;
-
 			// TODO if B is also a movable we don't check with it's changing position
 			Vector3f minB = Vector3f::min(pointB, pointB + colB.bound);
 			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);

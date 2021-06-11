@@ -85,6 +85,11 @@ namespace WAL
 		this->_scene._componentRemoved(*this, type);
 	}
 
+	bool Entity::operator==(const Entity &other) const
+	{
+		return other.getUid() == this->_uid;
+	}
+
 	bool Entity::shouldDelete() const
 	{
 		return this->_shouldDelete;
