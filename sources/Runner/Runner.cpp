@@ -254,6 +254,26 @@ namespace BBM
 		scene->addEntity("lobby text")
 			.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
+		auto &play = scene->addEntity("play button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_new_game.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_new_game_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+			});
+		
 
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
@@ -274,24 +294,52 @@ namespace BBM
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
-		auto &play = scene->addEntity("play button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+		auto &lavaOption = scene->addEntity("lava option text")
+			.addComponent<PositionComponent>(1920 / 6, 2 * 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				if (text->getString().find("Off") != std::string::npos) {
+					text->setText("Lava: On");
+					//do
+				} else {
+					text->setText("Lava: Off");
+					//do
+				}
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-				texture->use("assets/buttons/button_new_game.png");
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
 
-				texture->use("assets/buttons/button_new_game_hovered.png");
-			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+		auto &heightOption = scene->addEntity("Height option text")
+			.addComponent<PositionComponent>(1920 / 1.75, 2 * 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				if (text->getString().find("Off") != std::string::npos) {
+					text->setText("2nd Level: On");
+					//do
+				} else {
+					text->setText("2nd Level: Off");
+					//do
+				}
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 		
 		auto &p1tile = scene->addEntity("player1 tile")
@@ -334,8 +382,10 @@ namespace BBM
 		// quand no player is reaydy, the play button should be diasbled
 
 		//The other non-ready players shoudl be IAs
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &back, nullptr);
-		back.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &play);
+		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, nullptr);
+		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
+		lavaOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &play, nullptr, &heightOption);
+		heightOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &play, &lavaOption, nullptr);
 		return scene;
 	}
 
@@ -434,11 +484,11 @@ namespace BBM
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
-		//scene->addEntity("logo")
-		//	.addComponent<PositionComponent>(180, 180, 0)
-		//	.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
+		scene->addEntity("logo")
+			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &music = scene->addEntity("music text")
-			.addComponent<PositionComponent>(1920 / 2.5, 180, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -451,7 +501,7 @@ namespace BBM
 			});
 
 		auto &musicUp = scene->addEntity("music up button")
-			.addComponent<PositionComponent>(1920 / 1.5, 180, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -474,7 +524,7 @@ namespace BBM
 			});
 
 		auto &musicDown = scene->addEntity("music down button")
-			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -497,7 +547,7 @@ namespace BBM
 			});
 
 		auto &sound = scene->addEntity("sound text")
-			.addComponent<PositionComponent>(1920 / 2.5, 360, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -510,7 +560,7 @@ namespace BBM
 			});
 
 		auto &soundUp = scene->addEntity("sound up button")
-			.addComponent<PositionComponent>(1920 / 1.5, 360, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -533,7 +583,7 @@ namespace BBM
 			});
 
 		auto &soundDown = scene->addEntity("sound down button")
-			.addComponent<PositionComponent>(1920 / 3, 360, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -556,7 +606,7 @@ namespace BBM
 			});
 
 		auto &debug = scene->addEntity("debug text")
-			.addComponent<PositionComponent>(1920 / 2.5, 540, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -579,53 +629,6 @@ namespace BBM
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 
-		auto &lavaOption = scene->addEntity("lava option text")
-			.addComponent<PositionComponent>(1920 / 2.5, 720, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			{
-				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-				if (text->getString().find("Off") != std::string::npos) {
-					text->setText("Lava: On");
-					//do
-				} else {
-					text->setText("Lava: Off");
-					//do
-				}
-			})
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
-			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
-			});
-
-		auto &heightOption = scene->addEntity("Height option text")
-			.addComponent<PositionComponent>(1920 / 2.5, 900, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			{
-				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-				if (text->getString().find("Off") != std::string::npos) {
-					text->setText("2nd Level: On");
-					//do
-				} else {
-					text->setText("2nd Level: Off");
-					//do
-				}
-			})
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
-			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
-			});
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
@@ -655,10 +658,8 @@ namespace BBM
 		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundDown, &soundUp);
 		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
 		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
-		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &lavaOption);
-		lavaOption.getComponent<OnClickComponent>().setButtonLinks(&debug, &heightOption);
-		heightOption.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back);
-		back.getComponent<OnClickComponent>().setButtonLinks(&heightOption, nullptr, nullptr, &debug);
+		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back, &back);
+		back.getComponent<OnClickComponent>().setButtonLinks(&debug, nullptr, nullptr, &debug);
 		return scene;
 	}
 
