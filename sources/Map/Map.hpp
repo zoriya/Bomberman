@@ -41,7 +41,8 @@ namespace BBM
 			FLOOR,
 			BUMPER,
 			SPAWNER,
-			UNBREAKABLE
+			UNBREAKABLE,
+			INVISIBLE
 		};
 
 		using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;

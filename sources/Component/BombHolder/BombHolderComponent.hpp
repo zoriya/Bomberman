@@ -37,7 +37,7 @@ namespace BBM
 			explicit BombHolderComponent(WAL::Entity &entity);
 
 			//! @brief Constructor
-			BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount);
+			BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount, float explosionRadius = 3);
 
 			//! @brief A component can't be instantiated, it should be derived.
 			BombHolderComponent(const BombHolderComponent &) = default;
