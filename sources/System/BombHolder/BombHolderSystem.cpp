@@ -38,7 +38,6 @@ namespace BBM
 	{
 		if (radiusToDo <= 0)
 			return;
-		std::cout << "exploding at " << position << std::endl;
 		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, posFrom](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
