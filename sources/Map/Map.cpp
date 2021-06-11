@@ -38,12 +38,12 @@ namespace BBM
 		entity.scheduleDeletion();
 		auto &position = entity.getComponent<PositionComponent>().position;
 		static std::map<Bonus::BonusType, std::vector<std::string>> map = {
-				{Bonus::BonusType::BOMBSTOCK, {"Bonus Bomb Up", "assets/items/bombup"}},
-				{Bonus::BonusType::SPEEDUP, {"Bonus Speed Up", "assets/items/speedup"}},
-				{Bonus::BonusType::EXPLOSIONINC, {"Bonus Fire Up", "assets/items/fireup"}}
+			{Bonus::BonusType::BOMBSTOCK, {"Bonus Bomb Up", "assets/items/bombup"}},
+			{Bonus::BonusType::SPEEDUP, {"Bonus Speed Up", "assets/items/speedup"}},
+			{Bonus::BonusType::EXPLOSIONINC, {"Bonus Fire Up", "assets/items/fireup"}}
 		};
 		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
-				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+			&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
 		};
 		auto bonusType = Bonus::getRandomBonusType();
 

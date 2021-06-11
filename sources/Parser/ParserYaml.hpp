@@ -16,17 +16,22 @@ namespace BBM {
 		static void _saveBlock(const WAL::Entity &entity);
 		static void _saveBonus(const WAL::Entity &entity);
 		static void _savePlayer(const WAL::Entity &entity);
-		static const char *_getBlockType(std::string blockName);
-		static Vector3f getPosition(std::string &filename);
-		static unsigned int getMaxBomb(std::string &filename);
-		static float getExplosionRadius(std::string &filename);
+		static std::string _getBlockType(std::string blockName);
+		static std::string _getBonusType(std::string bonusName);
 
-		static void loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
-		static void loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename);
-		static void loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static WAL::Entity &_parseEntityName(std::string line, WAL::Entity &entity);
+		static WAL::Entity &_parseMaxBomb(std::string &filename, WAL::Entity &entity);
+		static WAL::Entity &_parseExplosionRadius(std::string &filename, WAL::Entity &entity);
+		static WAL::Entity &_parsePosition(std::string &filename, WAL::Entity &entity);
+		static MapGenerator::BlockType _parseBlockType(std::string blockType, WAL::Entity &entity);
+		static Bonus::BonusType _parseBonusType(std::string bonusType, WAL::Entity &entity);
+
+		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename);
 	public:
-		static void save(std::shared_ptr<WAL::Scene> scene, std::string &filename);
-		static void load(std::shared_ptr<WAL::Scene> scene, std::string &filename);
+		static void save(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void load(std::shared_ptr<WAL::Scene> scene, std::string filename);
 
 	};
 }

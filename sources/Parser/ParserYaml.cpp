@@ -18,17 +18,20 @@
 #include <Component/Sound/SoundComponent.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include <Component/Music/MusicComponent.hpp>
+#include <Items/Bonus.hpp>
+#include <Exception/Error.hpp>
 #include "ParserYaml.hpp"
+#include <algorithm>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM {
 
-	std::string ParserYAML::_block = "\nblocks:";
-	std::string ParserYAML::_bonus = "\nbonuses:";
+	std::string ParserYAML::_block = "blocks:";
+	std::string ParserYAML::_bonus = "bonuses:";
 	std::string ParserYAML::_player = "players:";
 
-	const char *ParserYAML::_getBlockType(std::string blockName)
+	std::string ParserYAML::_getBlockType(std::string blockName)
 	{
 		static std::map<std::string, MapGenerator::BlockType> map {
 			{"Upper Floor", MapGenerator::BlockType::UPPERFLOOR},
@@ -43,7 +46,18 @@ namespace BBM {
 			{"Hole Block", MapGenerator::BlockType::HOLE}
 		};
 
-		return (std::to_string(map.at(blockName)).c_str());
+		return (std::to_string(map.at(blockName)));
+	}
+
+	std::string ParserYAML::_getBonusType(std::string bonusName)
+	{
+		static std::map<std::string, Bonus::BonusType> map {
+			{"Bonus Bomb Up", Bonus::BonusType::BOMBSTOCK},
+			{"Bonus Speed Up", Bonus::BonusType::SPEEDUP},
+			{"Bonus Fire Up", Bonus::BonusType::EXPLOSIONINC}
+		};
+
+		return (std::to_string(map.at(bonusName)));
 	}
 
 	void ParserYAML::_saveBonus(const WAL::Entity &entity)
@@ -54,11 +68,9 @@ namespace BBM {
 		if (!position)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
-		_bonus.append("\n\t" + name + ":\n\t\t");
-		_bonus.append("position:\n\t\t\t");
-		_bonus.append("x: " + std::to_string(position->getX()) + "\n\t\t\t");
-		_bonus.append("y: " + std::to_string(position->getY()) + "\n\t\t\t");
-		_bonus.append("z: " + std::to_string(position->getZ()));
+		_bonus.append("\n  " + name + ":\n    ");
+		_bonus.append(std::string("bonus_type: ") + _getBonusType(entity.getName()) + "\n    ");
+		_bonus.append("position: [" + std::to_string(position->getX()) + " " + std::to_string(position->getY()) + " " + std::to_string(position->getZ()) + "]");
 	}
 
 	void ParserYAML::_savePlayer(const WAL::Entity &entity)
@@ -70,13 +82,10 @@ namespace BBM {
 		if (!position || !bombHolder)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
-		_player.append("\n\t" + name + ":\n\t\t");
-		_player.append("max_bomb: " + std::to_string(bombHolder->maxBombCount) + "\n\t\t");
-		_player.append("explosion_radius: " + std::to_string(bombHolder->explosionRadius) + "\n\t\t");
-		_player.append("position:\n\t\t\t");
-		_player.append("x: " + std::to_string(position->getX()) + "\n\t\t\t");
-		_player.append("y: " + std::to_string(position->getY()) + "\n\t\t\t");
-		_player.append("z: " + std::to_string(position->getZ()));
+		_player.append("\n  " + name + ":\n    ");
+		_player.append("max_bomb: " + std::to_string(bombHolder->maxBombCount) + "\n        ");
+		_player.append("explosion_radius: " + std::to_string(bombHolder->explosionRadius) + "\n        ");
+		_player.append("position: [" + std::to_string(position->getX()) + " " + std::to_string(position->getY()) + " " + std::to_string(position->getZ()) + "]");
 	}
 
 	void ParserYAML::_saveBlock(const WAL::Entity &entity)
@@ -87,17 +96,16 @@ namespace BBM {
 		if (!position)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
-		_block.append("\n\t" + name + ":\n\t\t");
-		_block.append(std::string("block_type: ") + _getBlockType(entity.getName()) + "\n\t\t");
-		_block.append("position:\n\t\t\t");
-		_block.append("x: " + std::to_string(position->getX()) + "\n\t\t\t");
-		_block.append("y: " + std::to_string(position->getY()) + "\n\t\t\t");
-		_block.append("z: " + std::to_string(position->getZ()));
+		_block.append("\n  " + name + ":\n    ");
+		_block.append(std::string("block_type: ") + _getBlockType(entity.getName()) + "\n    ");
+		_block.append("position: [" + std::to_string(position->getX()) + " " + std::to_string(position->getY()) + " " + std::to_string(position->getZ()) + "]");
 	}
 
-	void ParserYAML::save(std::shared_ptr<WAL::Scene> scene, std::string &filename)
+	void ParserYAML::save(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-		std::string path = std::string("save/" + filename);
+		std::string block = std::string("save/" + filename + "_block.yml");
+		std::string player = std::string("save/" + filename + "_player.yml");
+		std::string bonus = std::string("save/" + filename + "_bonus.yml");
 		std::map<std::string, std::function<void (const WAL::Entity &)>> savingGame = {
 				{"Bonus", &_saveBonus},
 				{"Block", &_saveBlock},
@@ -105,7 +113,9 @@ namespace BBM {
 				{"Wall", &_saveBlock},
 				{"Player", &_savePlayer}
 		};
-		std::ofstream file(path.c_str());
+		std::ofstream blockFile(block.c_str());
+		std::ofstream playerFile(player.c_str());
+		std::ofstream bonusFile(bonus.c_str());
 		for (const auto &entity : scene->getEntities()) {
 			for (const auto& type : savingGame) {
 				if (entity.getName().find(type.first) != std::string::npos) {
@@ -113,32 +123,53 @@ namespace BBM {
 				}
 			}
 		}
-		file << _player << _block << _bonus << std::endl;
+		blockFile << _block << std::endl;
+		playerFile << _player << std::endl;
+		bonusFile << _bonus << std::endl;
+		_block.clear();
+		_player.clear();
+		_bonus.clear();
 	}
 
-	void ParserYAML::loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	std::string ParserYAML::_parseEntityName(std::string line)
 	{
-
+		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
+		return (line.substr(0, line.find(':')));
 	}
 
-	void ParserYAML::loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-
+		std::ifstream file("save/" + filename + "_player.yml");
+		if (file.good()) {
+			std::string line;
+			while (std::getline(file, line)) {
+			}
+		}
 	}
 
-	void ParserYAML::loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-
+		std::ifstream file("save/" + filename + "_player.yml");
+		if (file.good()) {
+			std::string line;
+			while (std::getline(file, line)) {
+			}
+		}
 	}
 
-	void ParserYAML::load(std::shared_ptr<WAL::Scene> scene, std::string &filename)
+	void ParserYAML::_loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-		std::map<std::string, std::vector<std::string>> parser = {
-			{"players", {}},
-			{"blocks", {}},
-			{"bonuses", {}}
+		static std::map<Bonus::BonusType, std::vector<std::string>> map = {
+				{Bonus::BonusType::BOMBSTOCK, {"Bonus Bomb Up", "assets/items/bombup"}},
+				{Bonus::BonusType::SPEEDUP, {"Bonus Speed Up", "assets/items/speedup"}},
+				{Bonus::BonusType::EXPLOSIONINC, {"Bonus Fire Up", "assets/items/fireup"}}
 		};
-		std::ifstream file("save/" + filename);
+		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+		};
+		WAL::Entity entity(*scene, "");
+
+		std::ifstream file("save/" + filename + "_bonus.yml");
 		if (file.good()) {
 			std::string line;
 			while (std::getline(file, line)) {
@@ -147,19 +178,67 @@ namespace BBM {
 		}
 	}
 
-	Vector3f ParserYAML::getPosition(std::string &filename)
+	void ParserYAML::load(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-
-		return Vector3f();
+		_loadBlocks(scene, filename);
+		_loadBonuses(scene, filename);
+		_loadPlayers(scene, filename);
 	}
 
-	unsigned int ParserYAML::getMaxBomb(std::string &filename)
-	{
-		return 0;
+	WAL::Entity &ParserYAML::_parsePosition(std::string &line, WAL::Entity &entity) {
+		std::string x;
+		std::string y;
+		std::string z;
+		std::string subStr;
+
+		try {
+			subStr = line.substr(line.find("position: [", 0), line.length());
+			x = subStr.substr(0, subStr.find(' '));
+			y = subStr.substr(x.length() + 1, subStr.find(' '));
+			z = subStr.substr(x.length() + y.length() + 2, subStr.find(']'));
+		} catch (const std::out_of_range &err) {
+			throw (ParserError("Error parsing position"));
+		}
+		return entity.addComponent<PositionComponent>(Vector3f(std::atof(x.c_str()), std::atof(y.c_str()), std::atof(z.c_str())));
 	}
 
-	float ParserYAML::getExplosionRadius(std::string &filename)
+	WAL::Entity &ParserYAML::_parseMaxBomb(std::string &line, WAL::Entity &entity)
 	{
-		return 0;
+		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
+
+		if (line.find(": ") == std::string::npos)
+			throw (ParserError("Couldn't parse max bomb"));
+		if (bombHolder) {
+			bombHolder->maxBombCount = std::atoi(line.substr(line.find(": ")).c_str());
+			return (entity);
+		}
+		return (entity.addComponent<BombHolderComponent>(std::atoi(line.substr(line.find(": ")).c_str())));
+	}
+
+	WAL::Entity &ParserYAML::_parseExplosionRadius(std::string &line, WAL::Entity &entity)
+	{
+		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
+
+		if (line.find(": ") == std::string::npos)
+			throw (ParserError("Couldn't parse explosion radius"));
+		if (bombHolder) {
+			bombHolder->explosionRadius = std::atoi(line.substr(line.find(": ")).c_str());
+			return (entity);
+		}
+		return (entity.addComponent<BombHolderComponent>(3, bombHolder->explosionRadius = std::atoi(line.substr(line.find(": ")).c_str())));
+	}
+
+	MapGenerator::BlockType _parseBlockType(std::string blockType)
+	{
+		if (blockType.find(": ") == std::string::npos)
+			throw (ParserError("Couldn't parse block type"));
+		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ")).c_str())));
+	}
+
+	static Bonus::BonusType _parseBonusType(std::string bonusType)
+	{
+		if (bonusType.find(": ") == std::string::npos)
+			throw (ParserError("Couldn't parse bonus type"));
+		return (static_cast<MapGenerator::BlockType>(std::atoi(bonusType.substr(bonusType.find(": ")).c_str())));
 	}
 }

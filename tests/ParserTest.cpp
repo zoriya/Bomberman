@@ -33,5 +33,5 @@ TEST_CASE("Parser Test", "[PARSER]")
 		.addComponent<PositionComponent>(1, 0, 1);
 	wal.getScene()->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(1, 5, 1);
-	ParserYAML::save(wal.getScene(), "test_filename.yml");
+	ParserYAML::save(wal.getScene(), "test");
 }
