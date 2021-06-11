@@ -113,7 +113,7 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
+				&MapGenerator::wallCollide, Vector3f(-(width) / 2 , 0.25, 0.25), Vector3f(width, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -130,7 +130,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height - 1))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
@@ -180,7 +180,7 @@ namespace BBM
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25), Vector3f(0.75, 1.5, 0.75))
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25), Vector3f(0.75, 0.75, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 
@@ -202,10 +202,10 @@ namespace BBM
 
 		scene->addEntity("Upper Floor")
 			.addComponent<PositionComponent>(Vector3f(coords))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng))
-			.addComponent<CollisionComponent>(
+			.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, std::make_pair(MAP_DIFFUSE, floorPng));
+			/*.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollide, 0.25, 0.75);
+				&MapGenerator::wallCollide, 0.25, 0.75);*/
 	}
 
 
@@ -381,8 +381,49 @@ namespace BBM
 		return (map);
 	}
 
+	void MapGenerator::generateHeightCollision(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
+	{	
+		int floor = 2;
+
+		for (int i = 0; i < width + 1; i++) {
+			if (map[std::make_tuple(i, 1, height)] != UPPERFLOOR && map[std::make_tuple(i, 1, height)] != UPPERFLOOR) {
+				floor -= 1;
+				break;
+			}
+		}
+		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
+			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
+				if (map[std::make_tuple(i, 1, i)] != UPPERFLOOR) {
+					floor -= -1;
+					break;
+				}
+			}
+			if (floor <= -1)
+				break;
+		}
+		if (floor >= 1) {
+			scene->addEntity("FloorBot Hitbox")
+			.addComponent<PositionComponent>(Vector3f(0, 0, 0))
+			.addComponent<CollisionComponent>(
+				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+				&MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25), Vector3f(width, 0.75, 0.75));
+			scene->addEntity("FloorUp Hitbox")
+				.addComponent<PositionComponent>(Vector3f(0, 0, height))
+				.addComponent<CollisionComponent>(
+					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, 0.75));
+		}
+		if (floor >= 2)
+			scene->addEntity("Middle Hitbox")
+				.addComponent<PositionComponent>(Vector3f(width / 2 - width / 4, 0, height / 2 - height / 4))
+				.addComponent<CollisionComponent>(
+					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::wallCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, height / 2 + height / 4));
+	}
+
 	void MapGenerator::loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene)
-	{
+	{	
+		generateHeightCollision(map, width, height, scene);
 		generateWall(width, height, scene);
 		generateFloor(map, width, height, scene);
 		for (int x = 0; x < width + 1; x++)

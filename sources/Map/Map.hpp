@@ -28,6 +28,7 @@ namespace BBM
 	class MapGenerator
 	{
 	private:
+
 		//! @brief Enum of the block available.
 		enum BlockType
 		{
@@ -108,6 +109,13 @@ namespace BBM
 		//! @brief Create upper floor of the map
 		static void createUpperFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
 
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @param scene Scene where the map is instanced
+		//! @brief Generate the height hitbox of the map
+		static void generateHeightCollision(MapBlock map, int width, int height, 
+		                                    std::shared_ptr<WAL::Scene> scene);
+
 		//! @param map Map to load with block declared inside
 		//! @param width Width of the map
 		//! @param height Height of the map
@@ -180,6 +188,5 @@ namespace BBM
 		//! @param scene Scene where the map is instanced
 		//! @brief Generate the map
 		static void loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene);
-
 	};
 } // namespace BBM

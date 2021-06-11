@@ -115,7 +115,7 @@ namespace BBM
 				animation.setAnimIndex(5);
 			});
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<PositionComponent>(8, 25, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		/*scene->addEntity("cube")
 			.addComponent<PositionComponent>(5, 0, 5)
