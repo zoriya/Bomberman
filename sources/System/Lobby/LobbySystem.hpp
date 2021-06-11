@@ -1,3 +1,7 @@
+//
+// Created by Zoe Roux on 6/11/21.
+//
+
 #pragma once
 
 #include "System/System.hpp"
@@ -6,11 +10,11 @@
 namespace BBM
 {
 	//! @brief A system to handle Health entities.
-	class LobbySystem : public WAL::System<LobbyComponent>
+	class LobbySystem : public WAL::System<LobbyComponent, Drawable2DComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<LobbyComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);
