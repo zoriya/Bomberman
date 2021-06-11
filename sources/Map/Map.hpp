@@ -181,7 +181,7 @@ namespace BBM
 		//! @param width Width of the map
 		//! @param height Height of the map
 		//! @brief Generate map of block to be loaded
-		static MapBlock createMap(int width, int height);
+		static MapBlock createMap(int width, int height, bool isHeight = false);
 
 		//! @param width Width of the map
 		//! @param height Height of the map

@@ -381,7 +381,7 @@ namespace BBM
 		return (map);
 	}
 
-	MapGenerator::MapBlock MapGenerator::createMap(int width, int height)
+	MapGenerator::MapBlock MapGenerator::createMap(int width, int height, bool isHeight)
 	{
 		MapBlock map;
 
@@ -408,7 +408,8 @@ namespace BBM
 			for (int j = 0; j < height + 1; j++)
 				if (!((i + 1) % 2) && !((j + 1) % 2))
 					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
-		map = createHeight(map, width, height);
+		if (isHeight)
+			map = createHeight(map, width, height);
 		map = cleanBreakable(map, width, height);
 		return (map);
 	}
@@ -426,11 +427,11 @@ namespace BBM
 		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
 				if (map[std::make_tuple(i, 1, i)] != UPPERFLOOR) {
-					floor -= -1;
+					floor -= 1;
 					break;
 				}
 			}
-			if (floor <= -1)
+			if (floor <= 0)
 				break;
 		}
 		if (floor >= 1) {
