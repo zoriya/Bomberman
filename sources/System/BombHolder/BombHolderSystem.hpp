@@ -14,6 +14,15 @@
 
 namespace BBM
 {
+	enum ExpansionDirection {
+		UP = 1,
+		DOWN = 2,
+		LEFT = 4,
+		RIGHT = 8,
+		FRONT = 16,
+		BACK = 32
+	};
+
 	//! @brief The system that allow one to place bombs.
 	class BombHolderSystem : public WAL::System<PositionComponent, BombHolderComponent, ControllableComponent>
 	{
@@ -22,11 +31,19 @@ namespace BBM
 		void _spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id);
 
 		//! @brief Spawn a bomb at the specified position.
-		static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, const Vector3f &posFrom);
+		static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, ExpansionDirection expansionDirections);
 
 		//! @brief Wrapped call to specify default arg value
 		inline static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo) {
-			return _dispatchExplosion(position, wal, radiusToDo, position);
+			return _dispatchExplosion(position,
+									  wal,
+									  radiusToDo,
+									  static_cast<ExpansionDirection>(ExpansionDirection::DOWN
+									  | ExpansionDirection::UP
+									  | ExpansionDirection::FRONT
+									  | ExpansionDirection::BACK
+									  | ExpansionDirection::LEFT
+									  | ExpansionDirection::RIGHT));
 		};
 
 		//! @brief The method triggered when the bomb explode.

@@ -34,12 +34,12 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void BombHolderSystem::_dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, const Vector3f &posFrom)
+	void BombHolderSystem::_dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, ExpansionDirection expansionDirections)
 	{
 		if (radiusToDo <= 0)
 			return;
 		std::cout << "exploding at " << position << std::endl;
-		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, posFrom](WAL::Wal &wal) {
+		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
@@ -47,22 +47,17 @@ namespace BBM
 					return;
 				}
 			}
-			const Vector3f expandVectors[] = {
-				{1, 0, 0},
-				{-1, 0, 0},
-				{0, 0, 1},
-				{0, 0, -1},
-			};
-
-			// should be true only at the first iteration
-			bool alwaysDispatch = position == posFrom;
-
-			for (const auto &expandVector : expandVectors) {
-				Vector3f newPos = position + expandVector;
-				if (!alwaysDispatch && newPos == posFrom) {
-					continue;
-				}
-				_dispatchExplosion(newPos, wal, radiusToDo - 1, position);
+			if (expansionDirections & ExpansionDirection::FRONT) {
+				_dispatchExplosion(position + Vector3f{1, 0, 0}, wal, radiusToDo - 1, ExpansionDirection::FRONT);
+			}
+			if (expansionDirections & ExpansionDirection::BACK) {
+				_dispatchExplosion(position + Vector3f{-1, 0, 0}, wal, radiusToDo - 1, ExpansionDirection::BACK);
+			}
+			if (expansionDirections & ExpansionDirection::LEFT) {
+				_dispatchExplosion(position + Vector3f{0, 0, 1}, wal, radiusToDo - 1, ExpansionDirection::LEFT);
+			}
+			if (expansionDirections & ExpansionDirection::RIGHT) {
+				_dispatchExplosion(position + Vector3f{0, 0, -1}, wal, radiusToDo - 1, ExpansionDirection::RIGHT);
 			}
 		});
 	}
@@ -72,7 +67,7 @@ namespace BBM
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
 		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
-		_dispatchExplosion(position, wal, explosionRadius);
+		_dispatchExplosion(position, wal, 2);
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)
