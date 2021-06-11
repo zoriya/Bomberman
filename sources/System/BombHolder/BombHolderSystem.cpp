@@ -38,7 +38,6 @@ namespace BBM
 	{
 		if (radiusToDo <= 0)
 			return;
-		std::cout << "exploding at " << position << std::endl;
 		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
@@ -67,7 +66,7 @@ namespace BBM
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
 		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
-		_dispatchExplosion(position, wal, 2);
+		_dispatchExplosion(position, wal, explosionRadius);
 	}
 
 	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)

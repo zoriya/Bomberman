@@ -9,6 +9,7 @@
 #include <iostream>
 #include <Items/Bonus.hpp>
 #include <Component/Levitate/LevitateComponent.hpp>
+#include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 
@@ -54,6 +55,7 @@ namespace BBM
 		wal.getScene()->scheduleNewEntity("Bonus")
 			.addComponent<PositionComponent>(position)
 			.addComponent<TagComponent<Blowable>>()
+			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
 			})
