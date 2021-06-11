@@ -46,6 +46,9 @@ namespace BBM
 		//! @brief load all data related to credit screen
 		static std::shared_ptr<WAL::Scene> loadCreditScene();
 
+		//! @brief load all data related to splash screen
+		static std::shared_ptr<WAL::Scene> loadSplashScreenScene();
+
 		//! @brief loads all scenes in the game state
 		static void loadScenes();
 	};

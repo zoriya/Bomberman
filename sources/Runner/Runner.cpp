@@ -602,6 +602,15 @@ namespace BBM
 		return scene;
 	}
 
+	std::shared_ptr<WAL::Scene> Runner::loadSplashScreenScene()
+	{
+		auto scene = std::make_shared<WAL::Scene>();
+
+		auto &background = scene->addEntity("background")
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle(RAY::Vector2(), RAY::Vector2(1920, 1080));
+		return scene;
+	}
+
 	void Runner::loadScenes()
 	{
 		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
@@ -610,6 +619,7 @@ namespace BBM
 		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
 		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
 		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
+		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
 	}
 
 	int Runner::run()
@@ -619,7 +629,7 @@ namespace BBM
 		Runner::addSystems(wal);
 		Runner::enableRaylib(wal);
 		Runner::loadScenes();
-		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::TitleScreenScene]);
+		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
 
 		try {
 			wal.run<GameState>(Runner::updateState, Runner::gameState);
