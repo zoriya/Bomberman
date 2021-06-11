@@ -115,9 +115,8 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 		auto scene = std::make_shared<WAL::Scene>();
+		addMenuControl(*scene);
 		scene->addEntity("control")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg");
 		scene->addEntity("background")
@@ -145,9 +144,8 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
+		addMenuControl(*scene);
 		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -246,9 +244,8 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
+		addMenuControl(*scene);
 		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -325,14 +322,13 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		//when a player is ready:
-		//p1tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(BLUE);
+		p1tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(BLUE);
 		//p2tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(RED);
 		//p3tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(GREEN);
 		//p4tile.getComponent<Drawable2DComponent>().drawable.get()->setColor(YELLOW);
 
 		//pX
-		//RAY::Texture *txt = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-		//txt->use("assets/player/valid_selection_icon.png")
+		p1.getComponent<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/valid_selection_icon.png");
 
 		//to do
 		// quand no player is reaydy, the play button should be diasbled
@@ -350,9 +346,8 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
+		addMenuControl(*scene);
 		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -432,9 +427,8 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 
+		addMenuControl(*scene);
 		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -621,9 +615,6 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("control")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
 		std::map<SoundComponent::SoundIndex, std::string> soundPath ={
 		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
 		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
@@ -669,14 +660,6 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 
 		scene->addEntity("Control entity")
-		/*scene->addEntity("cube")
-			.addComponent<PositionComponent>(5, 0, 5)
-			.addComponent<ShaderComponentDrawable2D>("assets/shaders/glsl330/grayscale.fs")
-			//.addComponent<Drawable3DComponent, RAY3D::Cube>(Vector3f(-5, 0, -5), Vector3f(3, 3, 3), RED)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(BBM::Vector2f{200,200}, BBM::Vector2f{200, 200}, RED)
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &>(), &MapGenerator::wallCollide, 3); */
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 
@@ -715,6 +698,21 @@ namespace BBM
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
 		return scene;
+	}
+
+	void Runner::addMenuControl(WAL::Scene &scene)
+	{
+		scene.addEntity("Keyboard default control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene.addEntity("Keyboard second control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>(KEY_UP, KEY_DOWN, KEY_LEFT, KEY_RIGHT, KEY_RIGHT_CONTROL, KEY_ENTER, KEY_BACKSPACE);
+		for (int i = 0; i < 4; i++) {
+			scene.addEntity("Gamepad controller")
+				.addComponent<ControllableComponent>()
+				.addComponent<GamepadComponent>(i);
+		}
 	}
 
 	void Runner::loadScenes()

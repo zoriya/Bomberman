@@ -28,6 +28,8 @@ namespace BBM
 		//! @brief init all raylib-related data & context
 		static void enableRaylib(WAL::Wal &wal);
 
+		static void addMenuControl(WAL::Scene &scene);
+
 		//! @brief load all data related to title screen
 		static std::shared_ptr<WAL::Scene> loadTitleScreenScene();
 
