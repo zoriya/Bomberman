@@ -8,13 +8,15 @@
 #include "Drawables/Image.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Drawables/2D/Rectangle.hpp"
+#include "Exceptions/RayError.hpp"
 
 namespace RAY {
 	Cache<::Image> Image::_imagesCache(LoadImage, UnloadImage);
 
 	Image::Image(const std::string &filename, bool lonely):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
-		_image(_imagesCache.fetch(filename, lonely))
+		_image(_imagesCache.fetch(filename, lonely)),
+		_ressourcePath(filename)
 	{
 		this->_dimensions = Vector2(this->_image->width, this->_image->height);
 	}
@@ -30,6 +32,15 @@ namespace RAY {
 		return *this->_image;
 	}
 
+	Image &Image::use(const std::string &filename)
+	{
+		if (this->_ressourcePath == filename)
+			return *this;
+		this->_image = this->_imagesCache.fetch(filename);
+		this->_ressourcePath = filename;
+		return *this;
+	}
+
 	Image::operator ::Image *()
 	{
 		return this->_image.get();
@@ -40,16 +51,15 @@ namespace RAY {
 		drawable.drawOn(*this);
 	}
 
+	void Image::resize(const RAY::Vector2 &dimensions)
+	{
+		ImageResize(*this, dimensions.x, dimensions.y);
+		this->setDimensions(dimensions);
+	}
+
 	void Image::drawOn(RAY::Window &)
 	{
-		//Since the image is a shared object, when it is resized, it mush be resized after to its previous dimensions
-		Vector2 oldDims = Vector2(this->_image->width, this->_image->height);
-
-		ImageResize(*this, this->_dimensions.x, this->_dimensions.y);
-		Texture texture(*this);
-
-		DrawTexture(texture, this->_position.x, this->_position.y, this->_color); 
-		ImageResize(*this, oldDims.x, oldDims.y);
+		throw RAY::Exception::NotSupportedError("An image cannot be drawn onto a window");
 	}
 
 	void Image::drawOn(RAY::Image &image)

@@ -27,12 +27,12 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Create an model, loading a file
 			//! @param filePath: path to file to load
 			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
-			Model(const std::string &filePath,
+			Model(const std::string &filePath, bool lonely = false,
 			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
 				  const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1),
 			      const RAY::Vector3 &position = {0, 0, 0},
 			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0),
-			      float rotationAngle = 0, bool lonely = false);
+			      float rotationAngle = 0);
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
@@ -68,7 +68,7 @@ namespace RAY::Drawables::Drawables3D {
 			float getRotationAngle(void);
 	
 			//! @brief Set Rotation Axis
-			Model &setRotationAxis(const RAY::Vector3 &scale);
+			Model &setRotationAxis(const RAY::Vector3 &rotationAxis);
 
 			//! @return rotation axis
 			const RAY::Vector3 & getRotationAxis(void);

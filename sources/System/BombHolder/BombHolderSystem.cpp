@@ -2,6 +2,7 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
+#include <Component/Bomb/BasicBombComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -17,17 +18,28 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
-	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 3s;
+	std::chrono::nanoseconds BombHolderSystem::explosionTimer = 2s;
+
+	void BombHolderSystem::_bombCollide(WAL::Entity &entity,
+	                                   const WAL::Entity &bomb,
+	                                   CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto &bombInfo = bomb.getComponent<BasicBombComponent>();
+		if (bombInfo.ignoreOwner && bombInfo.ownerID == entity.getUid())
+			return;
+		return MapGenerator::wallCollided( entity, bomb, collidedAxis);
+	}
 
 	BombHolderSystem::BombHolderSystem(WAL::Wal &wal)
 		: System(wal)
 	{}
 
-	void BombHolderSystem::_dispatchExplosion(Vector3f position, WAL::Wal &wal, int count)
+	void BombHolderSystem::_dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo, const Vector3f &posFrom)
 	{
-		if (count <= 0)
+		if (radiusToDo <= 0)
 			return;
-		wal.getSystem<EventSystem>().dispatchEvent([position, count](WAL::Wal &wal) {
+		std::cout << "exploding at " << position << std::endl;
+		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, posFrom](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
@@ -35,10 +47,23 @@ namespace BBM
 					return;
 				}
 			}
-			_dispatchExplosion(position + Vector3f(1, 0, 0), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(-1, 0, 0), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(0, 0, 1), wal, count - 1);
-			_dispatchExplosion(position + Vector3f(0, 0, -1), wal, count - 1);
+			const Vector3f expandVectors[] = {
+				{1, 0, 0},
+				{-1, 0, 0},
+				{0, 0, 1},
+				{0, 0, -1},
+			};
+
+			// should be true only at the first iteration
+			bool alwaysDispatch = position == posFrom;
+
+			for (const auto &expandVector : expandVectors) {
+				Vector3f newPos = position + expandVector;
+				if (!alwaysDispatch && newPos == posFrom) {
+					continue;
+				}
+				_dispatchExplosion(newPos, wal, radiusToDo - 1, position);
+			}
 		});
 	}
 
@@ -46,21 +71,26 @@ namespace BBM
 	{
 		bomb.scheduleDeletion();
 		auto position = bomb.getComponent<PositionComponent>().position.round();
-		_dispatchExplosion(position, wal, 3);
+		auto explosionRadius = bomb.getComponent<BasicBombComponent>().explosionRadius;
+		_dispatchExplosion(position, wal, explosionRadius);
 	}
 
-	void BombHolderSystem::_spawnBomb(Vector3f position)
+	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)
 	{
 		this->_wal.getScene()->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
+			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
-//			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-//			                                  &MapGenerator::wallCollide, 0.25, .75)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj",
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			                                  &BombHolderSystem::_bombCollide, 0.25, .75)
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj", false,
 				std::make_pair(MAP_DIFFUSE, "assets/bombs/bomb_normal.png"));
+		holder.damage = 1;
+		holder.explosionRadius = 3;
 	}
 
-	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity, std::chrono::nanoseconds dtime)
+	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity,
+	                                std::chrono::nanoseconds dtime)
 	{
 		auto &holder = entity.get<BombHolderComponent>();
 		auto &position = entity.get<PositionComponent>();
@@ -68,7 +98,7 @@ namespace BBM
 
 		if (controllable.bomb && holder.bombCount > 0) {
 			holder.bombCount--;
-			this->_spawnBomb(position.position);
+			this->_spawnBomb(position.position, holder, entity->getUid());
 		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;

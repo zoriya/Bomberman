@@ -14,7 +14,7 @@ namespace BBM
 	{
 		auto &movable = entity.get<MovableComponent>();
 		auto &position = entity.get<PositionComponent>();
-
+		
 		if (position.getY() > 0)
 			movable.addForce(Vector3f(0, -0.1, 0));
 	}

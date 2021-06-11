@@ -23,6 +23,8 @@ set(SOURCES
 	sources/Runner/Runner.hpp
 	sources/Map/Map.cpp
 	sources/Map/Map.hpp
+	sources/Items/Bonus.cpp
+	sources/Items/Bonus.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -77,17 +79,32 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/Button/ButtonComponent.hpp
+	sources/System/MenuControllable/MenuControllableSystem.cpp
+	sources/System/MenuControllable/MenuControllableSystem.hpp
+	sources/System/Levitate/LevitateSystem.hpp
+	sources/System/Levitate/LevitateSystem.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
 	sources/Component/Animator/AnimatorComponent.cpp
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
 	sources/Component/Shaders/ShaderComponent.cpp
 	sources/Component/Shaders/ShaderComponent.hpp
+	sources/Component/Bomb/BasicBombComponent.cpp
+	sources/Component/Bomb/BasicBombComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.cpp
+	sources/System/Bonus/PlayerBonusSystem.hpp
+	sources/System/Bonus/PlayerBonusSystem.cpp
 	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
 	sources/Component/Sound/SoundComponent.hpp
 	sources/Component/Sound/SoundComponent.cpp
+	sources/System/Sound/MenuSoundManagerSystem.cpp
+	sources/System/Sound/MenuSoundManagerSystem.hpp
 	sources/System/Sound/PlayerSoundManagerSystem.cpp
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
@@ -100,8 +117,9 @@ set(SOURCES
 	sources/Component/BumperTimer/BumperTimerComponent.cpp
 	sources/System/BumperTimer/BumperTimerSystem.hpp
 	sources/System/BumperTimer/BumperTimerSystem.cpp
+	sources/System/Bomb/BombSystem.cpp
+	sources/System/Bomb/BombSystem.hpp
 )
-
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}

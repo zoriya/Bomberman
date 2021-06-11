@@ -36,8 +36,11 @@ namespace BBM
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
 
+		//! @param debug true if debug mode should be enabled
+		void setDebug(bool debug);
+
 		//! @brief ctor
-		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = true);
+		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = false);
 		//! @brief Default copy ctor
 		RenderSystem(const RenderSystem &) = default;
 		//! @brief Default dtor

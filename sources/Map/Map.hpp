@@ -21,6 +21,9 @@
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
+#include <chrono>
+
+
 
 namespace BBM
 {
@@ -160,12 +163,10 @@ namespace BBM
 		static const std::string secondFloorHolePath;
 
 	public:
-
-		static void wallCollide(WAL::Entity &entity,
-		                        const WAL::Entity &wall,
-		                        CollisionComponent::CollidedAxis collidedAxis);
-
-		static void wallDestroyed(WAL::Entity &entity);
+		static void wallCollided(WAL::Entity &entity,
+		                         const WAL::Entity &wall,
+		                         CollisionComponent::CollidedAxis collidedAxis);
+		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
 
 		static void holeCollide(WAL::Entity &entity,
 		                        const WAL::Entity &wall,
