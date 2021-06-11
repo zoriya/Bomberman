@@ -2,6 +2,7 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
+#include <Component/Animation/AnimationsComponent.hpp>
 #include <Component/Bomb/BasicBombComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
@@ -38,6 +39,13 @@ namespace BBM
 	{
 		if (radiusToDo <= 0)
 			return;
+		wal.getScene()->scheduleNewEntity("explosion")
+			.addComponent<PositionComponent>(position)
+			.addComponent<TimerComponent>(1s, [](WAL::Entity &explosion, WAL::Wal &wal) {
+				explosion.scheduleDeletion();
+			})
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb", false,
+			                                                 std::make_pair(MAP_DIFFUSE, "assets/bombs/explosion/blast.png"));
 		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
