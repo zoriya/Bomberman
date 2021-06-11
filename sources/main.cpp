@@ -23,5 +23,5 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
-	return BBM::run();
+	return BBM::Runner::run();
 }

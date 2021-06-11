@@ -5,6 +5,8 @@
 
 #pragma once
 
+#include "Models/Vector3.hpp"
+#include "Wal.hpp"
 #include "Component/Health/HealthComponent.hpp"
 #include "System/System.hpp"
 
@@ -13,7 +15,8 @@ namespace BBM
 	//! @brief A system to handle Health entities.
 	class HealthSystem : public WAL::System<HealthComponent>
 	{
-	public:
+	private:
+    public:
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<HealthComponent> &entity) override;
 

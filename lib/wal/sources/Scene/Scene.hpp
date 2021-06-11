@@ -40,6 +40,9 @@ namespace WAL
 		//! @param entity The entity to remove.
 		void _entityRemoved(const Entity &entity);
 	public:
+		//! @brief Get the ID of this scene.
+		int getID() const;
+
 		//! @brief Get the list of entities.
 		std::list<Entity> &getEntities();
 

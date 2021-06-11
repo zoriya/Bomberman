@@ -21,3 +21,8 @@ RAY::Exception::NotCompatibleError::NotCompatibleError(const std::string &expect
 	RayError(expectionMessage)
 {
 }
+
+RAY::Exception::WrongInputError::WrongInputError(const std::string &what):
+	RayError(what)
+{
+}
