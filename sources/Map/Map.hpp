@@ -122,6 +122,18 @@ namespace BBM
 		//! @param map Map to load with block declared inside
 		//! @param width Width of the map
 		//! @param height Height of the map
+		//! @brief Generate unbreakable block on the map
+		static MapBlock createClassicUnbreakable(MapBlock map, int width, int height);
+		
+		//! @param map Map to load with block declared inside
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @brief Generate unbreakable block on map
+		static MapBlock createLongClassicUnbreakable(MapBlock map, int width, int height);
+		
+		//! @param map Map to load with block declared inside
+		//! @param width Width of the map
+		//! @param height Height of the map
 		//! @brief Generate map of block to be loaded
 		static MapBlock createSpawner(MapBlock map, int width, int height);
 
@@ -181,7 +193,7 @@ namespace BBM
 		//! @param width Width of the map
 		//! @param height Height of the map
 		//! @brief Generate map of block to be loaded
-		static MapBlock createMap(int width, int height, bool isHeight = false);
+		static MapBlock createMap(int width, int height, bool isHeight = false, bool isNotClassic = false);
 
 		//! @param width Width of the map
 		//! @param height Height of the map

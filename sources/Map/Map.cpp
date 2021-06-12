@@ -346,25 +346,9 @@ namespace BBM
 	MapGenerator::MapBlock MapGenerator::createSpawner(MapBlock map, int width, int height)
 	{
 		map[std::make_tuple(0, 0, 0)] = SPAWNER;
-		map[std::make_tuple(0, 0, 1)] = SPAWNER;
-		map[std::make_tuple(0, 0, 2)] = SPAWNER;
-		map[std::make_tuple(1, 0, 0)] = SPAWNER;
-		map[std::make_tuple(2, 0, 0)] = SPAWNER;
 		map[std::make_tuple(width, 0, 0)] = SPAWNER;
-		map[std::make_tuple(width - 1, 0, 0)] = SPAWNER;
-		map[std::make_tuple(width - 2, 0, 0)] = SPAWNER;
-		map[std::make_tuple(width, 0, 1)] = SPAWNER;
-		map[std::make_tuple(width, 0, 2)] = SPAWNER;
 		map[std::make_tuple(0, 0, height)] = SPAWNER;
-		map[std::make_tuple(1, 0, height)] = SPAWNER;
-		map[std::make_tuple(2, 0, height)] = SPAWNER;
-		map[std::make_tuple(0, 0, height - 1)] = SPAWNER;
-		map[std::make_tuple(0, 0, height - 2)] = SPAWNER;
 		map[std::make_tuple(width, 0, height)] = SPAWNER;
-		map[std::make_tuple(width, 0, height - 1)] = SPAWNER;
-		map[std::make_tuple(width, 0, height - 2)] = SPAWNER;
-		map[std::make_tuple(width - 1, 0, height)] = SPAWNER;
-		map[std::make_tuple(width - 2, 0, height)] = SPAWNER;
 
 		return map;
 	}
@@ -381,7 +365,26 @@ namespace BBM
 		return (map);
 	}
 
-	MapGenerator::MapBlock MapGenerator::createMap(int width, int height, bool isHeight)
+	MapGenerator::MapBlock MapGenerator::createClassicUnbreakable(MapBlock map, int width, int height)
+	{
+		for (int i = 0; i < width + 1; i++)
+			for (int j = 0; j < height + 1; j++)
+				if (!((i + 1) % 2) && !((j + 1) % 2))
+					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+		return (map);
+	}
+
+	MapGenerator::MapBlock MapGenerator::createLongClassicUnbreakable(MapBlock map, int width, int height)
+	{
+		for (int i = 0; i < width + 1; i++)
+			for (int j = 0; j < height + 1; j++)
+				if ((i % 3) && !((j + 1) % 2))
+					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+		return (map);
+	}
+
+
+	MapGenerator::MapBlock MapGenerator::createMap(int width, int height, bool isHeight, bool isNotClassic)
 	{
 		MapBlock map;
 
@@ -404,10 +407,10 @@ namespace BBM
 					map[std::make_tuple(i, 0, j)] = BREAKABLE;
 			}
 		}
-		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
-				if (!((i + 1) % 2) && !((j + 1) % 2))
-					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+		if (!isNotClassic)
+			map = createClassicUnbreakable(map, width, height);
+		else
+			map = createLongClassicUnbreakable(map, width, height);
 		if (isHeight)
 			map = createHeight(map, width, height);
 		map = cleanBreakable(map, width, height);
