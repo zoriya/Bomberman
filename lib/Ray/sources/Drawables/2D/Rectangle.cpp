@@ -33,10 +33,44 @@ namespace RAY::Drawables::Drawables2D
 		return *this;
 	}
 
-	Rectangle &Rectangle::setDimensions(int x, int y)
+	Rectangle &Rectangle::setDimensions(float x, float y)
 	{
 		this->_dimensions.x = x;
 		this->_dimensions.y = y;
+		return *this;
+	}
+
+	float Rectangle::getHeight(void) const
+	{
+		return this->_dimensions.y;
+	}
+
+	float Rectangle::getWidth(void) const
+	{
+		return this->_dimensions.x;
+	}
+
+	Rectangle &Rectangle::incrementWidth(float width)
+	{
+		this->_dimensions.x += width;
+		return *this;
+	}
+
+	Rectangle &Rectangle::incrementHeight(float height)
+	{
+		this->_dimensions.y += height;
+		return *this;
+	}
+
+	Rectangle &Rectangle::setWidth(float width)
+	{
+		this->_dimensions.x = width;
+		return *this;
+	}
+
+	Rectangle &Rectangle::setHeight(float height)
+	{
+		this->_dimensions.y = height;
 		return *this;
 	}
 

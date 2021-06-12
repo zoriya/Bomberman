@@ -111,6 +111,10 @@ set(SOURCES
 	sources/System/Music/MusicSystem.cpp
 	sources/System/Bomb/BombSystem.cpp
 	sources/System/Bomb/BombSystem.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
+	sources/System/IntroAnimation/IntroAnimationSystem.hpp
+	sources/System/IntroAnimation/IntroAnimationSystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp

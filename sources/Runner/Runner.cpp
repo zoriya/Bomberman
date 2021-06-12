@@ -30,6 +30,8 @@
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
+#include <Component/IntroAnimation/IntroAnimationComponent.hpp>
+#include <System/IntroAnimation/IntroAnimationSystem.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
 #include <System/Bonus/PlayerBonusSystem.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
@@ -90,6 +92,7 @@ namespace BBM
 			.addSystem<BombSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MenuSoundManagerSystem>()
+			.addSystem<IntroAnimationSystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -606,8 +609,12 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
+
+		auto &splashComponent = scene->addEntity("animation component")
+			.addComponent<IntroAnimationComponent>();
 		auto &background = scene->addEntity("background")
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle(RAY::Vector2(), RAY::Vector2(1920, 1080));
+			.addComponent<PositionComponent>(0, 0, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(1920, 1080));
 		return scene;
 	}
 

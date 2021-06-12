@@ -9,10 +9,9 @@ namespace BBM
 	class IntroAnimationComponent : public WAL::Component
 	{
 	public:
-        unsigned int frame = 0;
+        unsigned int frameCounter = 0;
 
 		enum animationSteps {
-			init,
             boxBlinking,
             topLeftgrowing,
             bottomRightGrowing,
@@ -21,7 +20,7 @@ namespace BBM
 			prompt,
         };
 
-        enum animationSteps currentStep = init;
+        enum animationSteps currentStep = boxBlinking;
 
 		//! @inherit
 		Component *clone(WAL::Entity &entity) const override;
