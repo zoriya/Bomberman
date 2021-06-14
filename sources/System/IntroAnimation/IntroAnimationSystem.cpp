@@ -49,7 +49,7 @@ namespace BBM
                 topRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
             else
                 topRectangle.getComponent<Drawable2DComponent>().drawable->setColor(WHITE);
-            if (component.frameCounter == 60) {
+            if (component.frameCounter >= 60) {
                 component.currentStep = IntroAnimationComponent::animationSteps::topLeftgrowing;
                 component.frameCounter = -1;
                 topRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
@@ -58,10 +58,10 @@ namespace BBM
             break;
         case IntroAnimationComponent::animationSteps::topLeftgrowing:
             rectangle = dynamic_cast<RAY2D::Rectangle *>(leftRectangle.getComponent<Drawable2DComponent>().drawable.get());
-            rectangle->incrementHeight(4);
+            rectangle->incrementHeight(8);
             rectangle = dynamic_cast<RAY2D::Rectangle *>(topRectangle.getComponent<Drawable2DComponent>().drawable.get());
-			rectangle->incrementWidth(4);
-            if (rectangle->getWidth() == 256) {
+			rectangle->incrementWidth(8);
+            if (rectangle->getWidth() >= 256) {
                 component.currentStep = IntroAnimationComponent::animationSteps::bottomRightGrowing;
                 bottomRectangle.getComponent<PositionComponent>().position = Vector3f(1920 / 2 - 128, 1080 / 2 - 128 + 240, 0);
                 rightRectangle.getComponent<PositionComponent>().position = Vector3f(1920 / 2 - 128 + 240, 1080 / 2 - 128, 0);
@@ -69,16 +69,16 @@ namespace BBM
             break;
         case IntroAnimationComponent::animationSteps::bottomRightGrowing:
             rectangle = dynamic_cast<RAY2D::Rectangle *>(bottomRectangle.getComponent<Drawable2DComponent>().drawable.get());
-            rectangle->incrementWidth(4);
+            rectangle->incrementWidth(8);
             rectangle = dynamic_cast<RAY2D::Rectangle *>(rightRectangle.getComponent<Drawable2DComponent>().drawable.get());
-			rectangle->incrementHeight(4);
-            if (rectangle->getHeight() == 256) {
+			rectangle->incrementHeight(8);
+            if (rectangle->getHeight() >= 256) {
                 component.currentStep = IntroAnimationComponent::animationSteps::lettersTyping;
                 component.frameCounter = 0;
             }
             break;
         case IntroAnimationComponent::animationSteps::lettersTyping:
-            if ((component.frameCounter / 15) % 2) {
+            if ((component.frameCounter / 10) % 2) {
                 letterCounter++;
                 text = dynamic_cast<RAY2D::Text *>(rayText.getComponent<Drawable2DComponent>().drawable.get());
                 if (letterCounter == 2) {
