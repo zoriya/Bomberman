@@ -52,6 +52,9 @@ namespace RAY::Drawables {
 			//! @brief Color of the ADrawable
 			Color _color;
 
+			//! @brief Color of the ADrawable's Debug
+			Color _debugColor = GREEN;
+
 	};
 };
 

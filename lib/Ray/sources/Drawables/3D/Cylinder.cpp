@@ -55,6 +55,6 @@ namespace RAY::Drawables::Drawables3D
 
 	void Cylinder::drawWiresOn(RAY::Window &)
 	{
-		DrawCylinderWires(this->_position, this->_topRadius, this->_bottomRadius, this->_height, 0, GREEN);
+		DrawCylinderWires(this->_position, this->_topRadius, this->_bottomRadius, this->_height, 0, this->_debugColor);
 	}
 }

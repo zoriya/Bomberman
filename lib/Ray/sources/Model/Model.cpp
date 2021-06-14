@@ -124,7 +124,7 @@ namespace RAY::Drawables::Drawables3D
 			box.max.x += this->_position.x;
 			box.max.y += this->_position.y;
 			box.max.z += this->_position.z;
-			DrawBoundingBox(box, GREEN);
+			DrawBoundingBox(box, this->_debugColor);
 		}
 	}
 
