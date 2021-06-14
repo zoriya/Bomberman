@@ -34,7 +34,7 @@ namespace BBM
 		size_t getCurrentAnimFrameCounter() const;
 
 		//! @brief get the current
-		RAY::ModelAnimation &getCurrentModelAnim();
+		RAY::ModelAnimation getCurrentModelAnim();
 
 		//! @brief set the anim frame counter
 		void setCurrentAnimFrameCounter(size_t animFrameCounter);
@@ -52,7 +52,7 @@ namespace BBM
 		bool isAnimDisabled() const;
 
 		//! @brief ctor entity and the path of the animation file
-		AnimationsComponent(WAL::Entity &entity, int animIndex, bool play = true);
+		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play = true);
 		//! @brief copy ctor
 		AnimationsComponent(const AnimationsComponent &) = default;
 		//! @brief dtor

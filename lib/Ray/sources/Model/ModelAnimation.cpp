@@ -43,8 +43,3 @@ RAY::ModelAnimation::operator ::ModelAnimation() const
 {
 	return *this->_animation;
 }
-
-RAY::ModelAnimation::operator ::ModelAnimation *()
-{
-	return this->_animation;
-}
