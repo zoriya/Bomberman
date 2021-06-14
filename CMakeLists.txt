@@ -7,11 +7,13 @@ find_package(Lua REQUIRED)
 include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
+include_directories(bomberman lib/LuaGate/sources)
 include_directories(bomberman lib/LuaBridge)
 include_directories(bomberman sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/LuaGate)
 
 if (EMSCRIPTEN)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
@@ -128,7 +130,7 @@ add_executable(bomberman
                )
 
 target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR} lib/LuaBridge)
-target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES})
+target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES} LuaGate)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
                ${SOURCES}

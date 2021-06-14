@@ -41,18 +41,18 @@ function isInExplosionRange()
 	return true
 end
 
-function Update(player, infos, players)
-	local maxX = 0
-	local maxZ = 0
-	for i, info in ipairs(infos) do
-		if info.x > maxX then
-			maxX = info.x
-		end
-		if info.z > maxZ then
-			maxZ = info.z
-		end
-	end
-	local myMap = CreateMyMap(infos, maxX, maxZ)
+function Update()
+	--local maxX = 0
+	--local maxZ = 0
+	--for i, info in ipairs(infos) do
+	--	if info.x > maxX then
+	--		maxX = info.x
+	--	end
+	--	if info.z > maxZ then
+	--		maxZ = info.z
+	--	end
+	--end
+	--local myMap = CreateMyMap(infos, maxX, maxZ)
 	local x = math.random()
 	local y = math.random()
 	if (math.random() < 0.5) then

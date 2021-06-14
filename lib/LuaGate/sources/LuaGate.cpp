@@ -17,7 +17,7 @@ namespace LuaG
 		lua_close(_state);
 	}
 
-	LuaState *State::getState(void)
+	lua_State *State::getState(void)
 	{
 		return _state;
 	}

@@ -48,12 +48,13 @@ namespace BBM
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
 		UpdateMapInfos(entity);
-
-        luabridge::getGlobalNamespace(ia.state)
-            .beginNamespace ("luaBBM")
-				.addFunction("isInExplosionRange", IAControllableSystem::isInExplosionRange)
-			.endNamespace();
-		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
+		ia._state.callFunction("Update", 0, 4);
+		controllable.bomb = ia._state.getReturnBool();
+		controllable.jump = ia._state.getReturnBool();
+		controllable.move.y = ia._state.getReturnNumber();
+		controllable.move.x = ia._state.getReturnNumber();
+		/*
+        luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
 			return;
 		luabridge::LuaResult res = updateFunc(player, _map, _players);
@@ -68,6 +69,7 @@ namespace BBM
 			controllable.jump = res[2];
 		if (res[3].isBool())
 			controllable.bomb = res[3];
+		*/
 	}
 
 	void IAControllableSystem::onSelfUpdate()

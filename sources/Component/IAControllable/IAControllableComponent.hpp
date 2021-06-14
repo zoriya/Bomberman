@@ -12,7 +12,7 @@
 #include "Entity/Entity.hpp"
 #include "Models/Vector3.hpp"
 #include "lua.hpp"
-#include "LuaBridge.hpp"
+#include "LuaGate.hpp"
 
 namespace BBM
 {
@@ -24,6 +24,9 @@ namespace BBM
         public:
             //! @brief Lua executing state
             lua_State *state;
+
+            //! @brief LuaGate state
+            LuaG::State _state;
 
             //! @inherit
             WAL::Component *clone(WAL::Entity &entity) const override;

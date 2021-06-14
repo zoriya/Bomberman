@@ -12,10 +12,12 @@
 namespace BBM
 {
     IAControllableComponent::IAControllableComponent(WAL::Entity &entity, std::string scriptPath)
-    : Component(entity), _scriptPath(scriptPath), state(luaL_newstate())
+    : Component(entity), _scriptPath(scriptPath), state(luaL_newstate()), _state()
     {
         luaL_openlibs(state);
         
+        _state.dofile(scriptPath);
+        /*
         luabridge::getGlobalNamespace(state)
             .beginNamespace ("luaBBM")
                 .beginClass<MapInfo>("MapInfo")
@@ -27,6 +29,7 @@ namespace BBM
             .endNamespace();
         
         luaL_dofile(state, scriptPath.c_str());
+        */
     }
 
     WAL::Component *IAControllableComponent::clone(WAL::Entity &entity) const
