@@ -160,8 +160,8 @@ namespace BBM
 				continue;
 			auto &player = Runner::createPlayer(*scene);
 			_addController(player, lobby.layout);
-			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * playerCount % 2, 0,
-																		 static_cast<int>(mapHeight * playerCount / 2));
+			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2), 0,
+																		 mapHeight * ((playerCount + 1) % 2));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
 			playerCount++;
