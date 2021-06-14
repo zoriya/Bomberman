@@ -23,7 +23,7 @@ namespace BBM
 		return (overlapX && overlapY && overlapZ);
 	}
 
-	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity)
+	void CollisionSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent, MovableComponent> &entity)
 	{
 		unsigned int entityUid = entity->getUid();
 		auto &posA = entity.get<PositionComponent>();
@@ -32,31 +32,34 @@ namespace BBM
 		Vector3f pointAx = pointA;
 		Vector3f pointAy = pointA;
 		Vector3f pointAz = pointA;
-		bool isMovable = false;
-		Vector3f minAy;
-		Vector3f maxAy;
-		Vector3f minAz;
-		Vector3f maxAz;
 
-		if (auto *movable = entity->tryGetComponent<MovableComponent>()) {
-			auto vel = movable->getVelocity();
+		auto &movable = entity.get<MovableComponent>();
+		const auto &vel = movable.getVelocity();
+
+		if (!vel.isNull()) {
 			pointAx.x += vel.x;
 			pointAy.y += vel.y;
 			pointAz.z += vel.z;
-			isMovable = true;
 		}
 
 		Vector3f minAx = Vector3f::min(pointAx, pointAx + colA.bound);
 		Vector3f maxAx = Vector3f::max(pointAx, pointAx + colA.bound);
 
-		if (isMovable) {
+		Vector3f minAy;
+		Vector3f maxAy;
+
+		Vector3f minAz;
+		Vector3f maxAz;
+
+		if (!vel.isNull()) {
 			minAy = Vector3f::min(pointAy, pointAy + colA.bound);
 			maxAy = Vector3f::max(pointAy, pointAy + colA.bound);
 
 			minAz = Vector3f::min(pointAz, pointAz + colA.bound);
 			maxAz = Vector3f::max(pointAz, pointAz + colA.bound);
 		}
-		for (auto &[other, posB, colB] : this->getView()) {
+
+		for (auto &[other, posB, colB] : this->_wal.getScene()->view<PositionComponent, CollisionComponent>()) {
 			if (other.getUid() == entityUid)
 				continue;
 
@@ -67,9 +70,9 @@ namespace BBM
 			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
 
 			if (boxesCollide(minAx, maxAx, minB, maxB)) {
-				collidedAxis += isMovable ? CollisionComponent::CollidedAxis::X : 7;
+				collidedAxis += vel.isNull() ? 7 : CollisionComponent::CollidedAxis::X;
 			}
-			if (isMovable) {
+			if (!vel.isNull()) {
 				if (boxesCollide(minAy, maxAy, minB, maxB)) {
 					collidedAxis += CollisionComponent::CollidedAxis::Y;
 				}

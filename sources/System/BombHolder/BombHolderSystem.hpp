@@ -14,6 +14,22 @@
 
 namespace BBM
 {
+	enum ExpansionDirection
+	{
+		UP = 1,
+		DOWN = 2,
+		LEFT = 4,
+		RIGHT = 8,
+		FRONT = 16,
+		BACK = 32
+	};
+
+	//! @brief Ta avoid explicit casting
+	inline ExpansionDirection operator|(ExpansionDirection a, ExpansionDirection b)
+	{
+		return static_cast<ExpansionDirection>(static_cast<int>(a) | static_cast<int>(b));
+	}
+
 	//! @brief The system that allow one to place bombs.
 	class BombHolderSystem : public WAL::System<PositionComponent, BombHolderComponent, ControllableComponent>
 	{
@@ -22,13 +38,23 @@ namespace BBM
 		void _spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id);
 
 		//! @brief Spawn a bomb at the specified position.
-		static void _dispatchExplosion(Vector3f position, WAL::Wal &, int count);
+		static void _dispatchExplosion(const Vector3f &position,
+		                               WAL::Wal &wal,
+		                               int size,
+		                               ExpansionDirection expansionDirections = ExpansionDirection::DOWN
+		                                                                        | ExpansionDirection::UP
+		                                                                        | ExpansionDirection::FRONT
+		                                                                        | ExpansionDirection::BACK
+		                                                                        | ExpansionDirection::LEFT
+		                                                                        | ExpansionDirection::RIGHT);
 
 		//! @brief The method triggered when the bomb explode.
 		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
 
 		//! @brief The method called when a player collide with a bomb.
-		static void _bombCollide(WAL::Entity &entity, const WAL::Entity &wall, BBM::CollisionComponent::CollidedAxis collidedAxis);
+		static void
+		_bombCollide(WAL::Entity &entity, const WAL::Entity &wall, BBM::CollisionComponent::CollidedAxis collidedAxis);
+
 	public:
 		//! @brief The explosion time of new bombs.
 		static std::chrono::nanoseconds explosionTimer;
@@ -39,10 +65,13 @@ namespace BBM
 
 		//! @brief A default constructor
 		explicit BombHolderSystem(WAL::Wal &wal);
+
 		//! @brief A bomb holder system is copy constructable
 		BombHolderSystem(const BombHolderSystem &) = default;
+
 		//! @brief A default destructor
 		~BombHolderSystem() override = default;
+
 		//! @brief A bomb holder system is not assignable.
 		BombHolderSystem &operator=(const BombHolderSystem &) = delete;
 	};
