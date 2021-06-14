@@ -20,9 +20,13 @@ namespace BBM
 		//! @brief Add a controller for the player.
 		static void _addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
-		static void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
+		void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
 
-		static std::vector<std::string> _colors;
+		static std::array<std::string, 4> _colors;
+
+		static std::array<RAY::Color, 4> _rayColors;
+
+		std::array<bool, 4> _colorTaken = {};
 	public:
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
