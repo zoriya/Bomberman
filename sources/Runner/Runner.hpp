@@ -56,6 +56,9 @@ namespace BBM
 		//! @return A reference to the created player.
 		static WAL::Entity &createPlayer(WAL::Scene &scene);
 
+		//! @brief load all data related to splash screen
+		static std::shared_ptr<WAL::Scene> loadSplashScreenScene();
+
 		//! @brief loads all scenes in the game state
 		static void loadScenes();
 	};

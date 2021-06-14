@@ -8,6 +8,9 @@
 #include <Models/Vector2.hpp>
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace BBM
 {
@@ -33,6 +36,8 @@ namespace BBM
 			bool bomb = false;
 			//! @brief input value for pause
 			bool pause = false;
+			//! @brief The speed applied to every controllable entities.
+			float speed = .25f;
 			//! @brief The layout used for this controllable.
 			Layout layout = NONE;
 

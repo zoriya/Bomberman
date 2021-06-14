@@ -23,6 +23,8 @@ set(SOURCES
 	sources/Runner/Runner.hpp
 	sources/Map/Map.cpp
 	sources/Map/Map.hpp
+	sources/Items/Bonus.cpp
+	sources/Items/Bonus.hpp
 	sources/Component/Position/PositionComponent.cpp
 	sources/Component/Position/PositionComponent.hpp
 	sources/Component/Movable/MovableComponent.cpp
@@ -80,12 +82,22 @@ set(SOURCES
 	sources/Component/Button/ButtonComponent.hpp
 	sources/System/MenuControllable/MenuControllableSystem.cpp
 	sources/System/MenuControllable/MenuControllableSystem.hpp
+	sources/System/Levitate/LevitateSystem.hpp
+	sources/System/Levitate/LevitateSystem.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
+	sources/Component/Levitate/LevitateComponent.cpp
 	sources/Component/Animator/AnimatorComponent.cpp
 	sources/Component/Animator/AnimatorComponent.hpp
 	sources/System/Animator/AnimatorSystem.cpp
 	sources/System/Animator/AnimatorSystem.hpp
 	sources/Component/Shaders/ShaderComponent.cpp
 	sources/Component/Shaders/ShaderComponent.hpp
+	sources/Component/Bomb/BasicBombComponent.cpp
+	sources/Component/Bomb/BasicBombComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.hpp
+	sources/Component/Bonus/PlayerBonusComponent.cpp
+	sources/System/Bonus/PlayerBonusSystem.hpp
+	sources/System/Bonus/PlayerBonusSystem.cpp
 	sources/Component/Tag/TagComponent.hpp
 	sources/Component/Music/MusicComponent.cpp
 	sources/Component/Music/MusicComponent.hpp
@@ -101,8 +113,20 @@ set(SOURCES
 	sources/System/Lobby/LobbySystem.hpp
 	sources/Component/Lobby/LobbyComponent.cpp
 	sources/Component/Lobby/LobbyComponent.hpp
-)
-
+	sources/System/Bomb/BombSystem.cpp
+	sources/System/Bomb/BombSystem.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
+	sources/System/IntroAnimation/IntroAnimationSystem.hpp
+	sources/System/IntroAnimation/IntroAnimationSystem.cpp
+	sources/Runner/SplashScreenScene.cpp
+	sources/Runner/TitleScreenScene.cpp
+	sources/Runner/MainMenuScene.cpp
+	sources/Runner/GameScene.cpp
+	sources/Runner/PauseMenuScene.cpp
+	sources/Runner/SettingsMenuScene.cpp
+	sources/Runner/CreditScene.cpp
+	sources/Runner/LobbyScene.cpp)
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}

@@ -42,11 +42,33 @@ namespace RAY::Drawables::Drawables2D {
 			//! @return the dimensions of the rectangle
 			const Vector2 &getDimensions(void);
 
+			//! @return the width of the rectangle
+			float getWidth(void) const;
+
+			//! @return the height of the rectangle
+			float getHeight(void) const;
+
 			//! @brief set dimensions
 			Rectangle &setDimensions(const Vector2 &dimensions);
 
+			//! @brief increment width of the rectangle
+			//! @param width incrementer
+			Rectangle &incrementWidth(float width);
+
+			//! @brief increment height of the rectangle
+			//! @param height incrementer
+			Rectangle &incrementHeight(float height);
+
+			//! @brief set rectangle's height
+			//! @param height height of the rectangle
+			Rectangle &setHeight(float height);
+
+			//! @brief set rectangle's width
+			//! @param width width of the rectangle
+			Rectangle &setWidth(float width);
+
 			//! @brief set dimensions
-			Rectangle &setDimensions(int x, int y);
+			Rectangle &setDimensions(float x, float y);
 
 			//! @brief Draw point on window
 			virtual void drawOn(RAY::Window &) override;
