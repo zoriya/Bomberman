@@ -35,9 +35,15 @@ namespace RAY::Drawables {
 
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;
-			
+
 			//! @brief set color
 			ADrawable3D &setColor(const RAY::Color &color);
+
+			//! @return the debug color of the ADrawable
+			const RAY::Color &getDebugColor(void) const;
+
+			//! @brief set the debug color
+			ADrawable3D &setDebugColor(const RAY::Color &debugColor);
 
 			//! @return the position of the ADrawable
 			virtual const RAY::Vector3 &getPosition(void) const;

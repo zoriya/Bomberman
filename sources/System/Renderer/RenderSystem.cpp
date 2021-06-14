@@ -33,6 +33,7 @@ namespace BBM
 		//draws hitbox
 		if (dimsComponent) {
 			RAY::Drawables::Drawables3D::Cube boundingBox(posComponent.position, dimsComponent->bound, WHITE);
+			boundingBox.setDebugColor(RED);
 			boundingBox.drawWiresOn(this->_window);
 		}
 		//draws models contours
@@ -52,11 +53,11 @@ namespace BBM
 			if (modelShader)
 				modelShader->model->setShader(modelShader->getShader());
 			drawable.drawable->setPosition(pos.position);
-			if (this->_debugMode)
-				this->drawBoundingBox(entity, pos, drawable);
 			drawable.drawable->drawOn(this->_window);
 			if (modelShader)
 				modelShader->model->resetShader();
+			if (this->_debugMode)
+				this->drawBoundingBox(entity, pos, drawable);
 		}
 		this->_window.unuseCamera();
 
