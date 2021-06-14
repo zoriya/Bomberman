@@ -37,10 +37,10 @@ namespace BBM
 
 	void BombHolderSystem::_dispatchExplosion(const Vector3f &position,
 	                                          WAL::Wal &wal,
-	                                          int radiusToDo,
+	                                          int size,
 	                                          ExpansionDirection expansionDirections)
 	{
-		if (radiusToDo <= 0)
+		if (size <= 0)
 			return;
 		wal.getScene()->scheduleNewEntity("explosion")
 			.addComponent<PositionComponent>(position)
@@ -52,7 +52,7 @@ namespace BBM
 				                                                 MAP_DIFFUSE,
 				                                                 "assets/bombs/explosion/blast.png"
 			                                                 ));
-		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, expansionDirections](WAL::Wal &wal) {
+		wal.getSystem<EventSystem>().dispatchEvent([position, size, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
@@ -61,16 +61,16 @@ namespace BBM
 				}
 			}
 			if (expansionDirections & ExpansionDirection::FRONT) {
-				_dispatchExplosion(position + Vector3f{1, 0, 0}, wal, radiusToDo - 1, ExpansionDirection::FRONT);
+				_dispatchExplosion(position + Vector3f{1, 0, 0}, wal, size - 1, ExpansionDirection::FRONT);
 			}
 			if (expansionDirections & ExpansionDirection::BACK) {
-				_dispatchExplosion(position + Vector3f{-1, 0, 0}, wal, radiusToDo - 1, ExpansionDirection::BACK);
+				_dispatchExplosion(position + Vector3f{-1, 0, 0}, wal, size - 1, ExpansionDirection::BACK);
 			}
 			if (expansionDirections & ExpansionDirection::LEFT) {
-				_dispatchExplosion(position + Vector3f{0, 0, 1}, wal, radiusToDo - 1, ExpansionDirection::LEFT);
+				_dispatchExplosion(position + Vector3f{0, 0, 1}, wal, size - 1, ExpansionDirection::LEFT);
 			}
 			if (expansionDirections & ExpansionDirection::RIGHT) {
-				_dispatchExplosion(position + Vector3f{0, 0, -1}, wal, radiusToDo - 1, ExpansionDirection::RIGHT);
+				_dispatchExplosion(position + Vector3f{0, 0, -1}, wal, size - 1, ExpansionDirection::RIGHT);
 			}
 		});
 	}

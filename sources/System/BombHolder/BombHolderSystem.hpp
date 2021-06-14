@@ -24,6 +24,12 @@ namespace BBM
 		BACK = 32
 	};
 
+	//! @brief Ta avoid explicit casting
+	inline ExpansionDirection operator|(ExpansionDirection a, ExpansionDirection b)
+	{
+		return static_cast<ExpansionDirection>(static_cast<int>(a) | static_cast<int>(b));
+	}
+
 	//! @brief The system that allow one to place bombs.
 	class BombHolderSystem : public WAL::System<PositionComponent, BombHolderComponent, ControllableComponent>
 	{
@@ -32,25 +38,15 @@ namespace BBM
 		void _spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id);
 
 		//! @brief Spawn a bomb at the specified position.
-		static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo,
-		                               ExpansionDirection expansionDirections);
-
-		//! @brief Wrapped call to specify default arg value
-		inline static void _dispatchExplosion(const Vector3f &position, WAL::Wal &wal, int radiusToDo)
-		{
-			return _dispatchExplosion(position,
-			                          wal,
-			                          radiusToDo,
-			                          static_cast<ExpansionDirection>(
-				                          ExpansionDirection::DOWN
-				                          | ExpansionDirection::UP
-				                          | ExpansionDirection::FRONT
-				                          | ExpansionDirection::BACK
-				                          | ExpansionDirection::LEFT
-				                          | ExpansionDirection::RIGHT
-			                          )
-			);
-		};
+		static void _dispatchExplosion(const Vector3f &position,
+		                               WAL::Wal &wal,
+		                               int size,
+		                               ExpansionDirection expansionDirections = ExpansionDirection::DOWN
+		                                                                        | ExpansionDirection::UP
+		                                                                        | ExpansionDirection::FRONT
+		                                                                        | ExpansionDirection::BACK
+		                                                                        | ExpansionDirection::LEFT
+		                                                                        | ExpansionDirection::RIGHT);
 
 		//! @brief The method triggered when the bomb explode.
 		static void _bombExplosion(WAL::Entity &bomb, WAL::Wal &);
