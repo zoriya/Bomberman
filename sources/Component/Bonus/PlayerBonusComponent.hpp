@@ -24,6 +24,8 @@ namespace BBM
 		std::chrono::nanoseconds rangeBonusRate = 10s;
 		//! @brief The number of nanosecond before the expiration of a range bonus.
 		std::chrono::nanoseconds nextRangeBonusRate = rangeBonusRate;
+		//! @brief Tell if the bonus no clip is on
+		bool isNoClipOn = false;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;

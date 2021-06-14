@@ -45,6 +45,18 @@ namespace BBM {
 		playerBonus->nextSpeedBonusRate = playerBonus->speedBonusRate;
 	}
 
+	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
+	{
+		if (bonus.shouldDelete() || axis != 7)
+			return;
+		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
+		if (!playerBonus)
+			return;
+		static void SpeedUSpeedUpBonuspBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
+		static void SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
+		playerBonus->isNoClipOn = true
+	}
+
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
