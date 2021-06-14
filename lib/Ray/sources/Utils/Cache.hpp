@@ -98,12 +98,12 @@ namespace RAY {
 				} else {
 					::ModelAnimation *animations = this->_dataLoader(path.c_str(), counter);
 					int animCount = *counter;
-
-					this->_cache.emplace(path, (AnimationsHolder){
-						std::shared_ptr<::ModelAnimation>(
+					AnimationsHolder holder = {std::shared_ptr<::ModelAnimation>(
 						animations, [this, animCount](::ModelAnimation *p) {
 			    	    this->_dataUnloader(p, animCount);
-					}), animCount});
+					}),animCount};
+
+					this->_cache.emplace(path, holder);
 				}
 				return this->_cache[path].animations;
 			};
