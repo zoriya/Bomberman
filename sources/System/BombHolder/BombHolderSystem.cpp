@@ -48,8 +48,10 @@ namespace BBM
 				explosion.scheduleDeletion();
 			})
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb", false,
-			                                                 std::make_pair(MAP_DIFFUSE,
-			                                                                "assets/bombs/explosion/blast.png"));
+			                                                 std::make_pair(
+				                                                 MAP_DIFFUSE,
+				                                                 "assets/bombs/explosion/blast.png"
+			                                                 ));
 		wal.getSystem<EventSystem>().dispatchEvent([position, radiusToDo, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
@@ -91,8 +93,10 @@ namespace BBM
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&BombHolderSystem::_bombCollide, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/bomb.obj", false,
-			                                                 std::make_pair(MAP_DIFFUSE,
-			                                                                "assets/bombs/bomb_normal.png"));
+			                                                 std::make_pair(
+				                                                 MAP_DIFFUSE,
+				                                                 "assets/bombs/bomb_normal.png"
+			                                                 ));
 		holder.damage = 1;
 		holder.explosionRadius = 3;
 	}
