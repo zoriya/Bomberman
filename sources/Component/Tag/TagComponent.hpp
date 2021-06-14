@@ -50,5 +50,8 @@ namespace BBM
 		TagComponent &operator=(const TagComponent &) = delete;
 	};
 
+	// interact with bombs & stop the explosion
 	constexpr const char Blowable[] = "Blowable";
+	// interact with bombs (getting damage etc) but doesn't stop explosion
+	constexpr const char BlowablePass[] = "BlowablePass";
 }

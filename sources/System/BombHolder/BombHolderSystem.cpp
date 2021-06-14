@@ -44,7 +44,7 @@ namespace BBM
 			return;
 		wal.getScene()->scheduleNewEntity("explosion")
 			.addComponent<PositionComponent>(position)
-			.addComponent<TimerComponent>(1s, [](WAL::Entity &explosion, WAL::Wal &wal) {
+			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();
 			})
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb", false,
@@ -58,6 +58,12 @@ namespace BBM
 					if (auto *health = entity.tryGetComponent<HealthComponent>())
 						health->takeDmg(1);
 					return;
+				}
+			}
+			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<BlowablePass>>()) {
+				if (pos.position.round() == position) {
+					if (auto *health = entity.tryGetComponent<HealthComponent>())
+						health->takeDmg(1);
 				}
 			}
 			if (expansionDirections & ExpansionDirection::FRONT) {
@@ -87,6 +93,14 @@ namespace BBM
 	{
 		this->_wal.getScene()->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
+		    .addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
+		    	// the bomb explode when hit
+		    	entity.scheduleDeletion();
+			    auto &pos = entity.getComponent<PositionComponent>();
+			    auto &bombDetails = entity.getComponent<BasicBombComponent>();
+			    BombHolderSystem::_dispatchExplosion(pos.position, wal, bombDetails.explosionRadius);
+		    })
+		    .addComponent<TagComponent<BlowablePass>>()
 			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<CollisionComponent>(
