@@ -26,11 +26,13 @@ namespace BBM
 		//! @brief All players in the map
 		std::vector<MapInfo> _players;
 
+		//! @brief All bombs on the map
 		std::vector<std::pair<Vector3f, int>> _bombs;
 
 		//! @brief
 		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity);
 	public:
+
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity) override;
 

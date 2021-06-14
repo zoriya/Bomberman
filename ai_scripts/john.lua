@@ -1,7 +1,7 @@
 ------------ JOHN AI
 
 
-local debug = true
+local debug = false
 --local debug = false
 if not debug then
     log = function() end
@@ -37,6 +37,10 @@ function CreateMyMap(infos, maxX, maxZ)
 	return map
 end
 
+function isInExplosionRange()
+	return true
+end
+
 function Update(player, infos, players)
 	local maxX = 0
 	local maxZ = 0
@@ -48,11 +52,21 @@ function Update(player, infos, players)
 			maxZ = info.z
 		end
 	end
-	local myMap = CreateMyMap(infos, maxX, maxZ);
+	local myMap = CreateMyMap(infos, maxX, maxZ)
+	local x = math.random()
+	local y = math.random()
+	if (math.random() < 0.5) then
+		x = x * -1
+	end
+	if (math.random() < 0.5) then
+		y = y * -1
+	end
+	return x, y, false, true;
 	--if (isInExplosionRange()) then
+	--	return 0, , false, true
 	--	--play defensive RUN
 	--else
+	--	return 1, 1, false, false;
 	--	--play offensive
 	--end
-	return 1, 1, false, false;
 end

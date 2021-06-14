@@ -531,7 +531,7 @@ namespace BBM
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
-			.addComponent<KeyboardComponent>()
+			//.addComponent<KeyboardComponent>()
 			.addComponent<IAControllableComponent>("./ai_scripts/john.lua")
 			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<Blowable>>()

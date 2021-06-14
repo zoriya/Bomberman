@@ -7,6 +7,7 @@
 
 #include "Map/MapInfo.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
+//#include "System/IAControllable/IAControllableSystem.hpp"
 
 namespace BBM
 {
@@ -14,6 +15,7 @@ namespace BBM
     : Component(entity), _scriptPath(scriptPath), state(luaL_newstate())
     {
         luaL_openlibs(state);
+        
         luabridge::getGlobalNamespace(state)
             .beginNamespace ("luaBBM")
                 .beginClass<MapInfo>("MapInfo")
@@ -23,6 +25,7 @@ namespace BBM
                     .addProperty("type", &MapInfo::type)
                 .endClass()
             .endNamespace();
+        
         luaL_dofile(state, scriptPath.c_str());
     }
 

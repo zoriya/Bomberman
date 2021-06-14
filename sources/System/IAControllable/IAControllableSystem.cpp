@@ -2,6 +2,7 @@
 // Created by Louis Auzuret on 06/07/21
 //
 
+#include "Component/Bomb/BasicBombComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
@@ -11,35 +12,8 @@
 namespace BBM
 {
 	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
-	: System(wal), _wal(wal), _map(), _players(), _cached(false)
+	: System(wal), _wal(wal), _cached(false)
 	{ }
-/*
-	float IAControllableSystem::getReturnNumber(lua_State *state)
-	{
-		float res = 0;
-
-		if (lua_isnil(state, -1))
-			return res;
-		if (!lua_isnumber(state, -1))
-			return res;
-		res = lua_tonumber(state, -1);
-		lua_pop(state, 1);
-
-		return res;
-	}
-
-	bool IAControllableSystem::getReturnBool(lua_State *state)
-	{
-		bool res = false;
-
-		if (lua_isnil(state, -1))
-			return res;
-		if (!lua_isboolean(state, -1))
-			return res;
-		res = lua_toboolean(state, -1);
-		lua_pop(state, 1);
-		return res;
-	}*/
 
 	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
 	{
@@ -60,8 +34,8 @@ namespace BBM
 				continue;
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
 		}
-		//for (auto &[other, pos, bomb] : _wal.getScene()->view<PositionComponent, BasicBombComponent>())
-		//	_bombs.push_back(std::make_pair(pos.position, bomb.explosionRadius));
+		for (auto &[other, pos, bomb] : _wal.getScene()->view<PositionComponent, BasicBombComponent>())
+			_bombs.push_back(std::make_pair(pos.position, bomb.explosionRadius));
 		_cached = true;
 
 	}
@@ -74,6 +48,11 @@ namespace BBM
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
 		UpdateMapInfos(entity);
+
+        luabridge::getGlobalNamespace(ia.state)
+            .beginNamespace ("luaBBM")
+				.addFunction("isInExplosionRange", IAControllableSystem::isInExplosionRange)
+			.endNamespace();
 		luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())
 			return;
@@ -101,9 +80,22 @@ namespace BBM
 
 	bool IAControllableSystem::isInExplosionRange(float x, float y, float z)
 	{
-		return false;
-		//for (auto &bomb : bombs) {
-		//	 
+		Vector3f pos(x, y, z);
+		//pos = pos.round();
+		//for (auto &bomb : _bombs) {
+		//	Vector3f bombPos = std::get<0>(bomb);
+		//	int bombRadius = std::get<1>(bomb);
+		//	for (int i = 1; i < bombRadius; i++) {
+		//		if (pos == bombPos - Vector3f(i, 0, 0))
+		//			return true;
+		//		if (pos == bombPos - Vector3f(-i, 0, 0))
+		//			return true;
+		//		if (pos == bombPos - Vector3f(0, 0, i))
+		//			return true;
+		//		if (pos == bombPos - Vector3f(0, 0, -i))
+		//			return true;	
+		//	}
 		//}
+		return true;
 	}
 }

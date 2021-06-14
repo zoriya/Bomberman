@@ -10,7 +10,7 @@ namespace LuaG
 	class State
 	{
 		private:
-			LuaState *_state;
+			lua_State *_state;
 		public:
 		//! @brief ctor
 		State();
@@ -19,19 +19,27 @@ namespace LuaG
 		~State();
 
 		//! @brief No copy constrructor
-		State &State(State &) = delete;
+		State(State &) = delete;
 
 		//! @brief No assign operator
-		State &operator() = delete;
+		State &operator=(State &) = delete;
 
 		//! @brief Get Lua state
-		LuaState *getState(void);
+		lua_State *getState(void);
 
 		//! @brief Execute a file in this state
 		void dofile(std::string filepath);
 	
 		//! @brief Execute a string in this state
 		void dostring(std::string str);
-	
+
+		//! @brief Get return Number
+		float getReturnNumber(void);
+
+		//! @brief Get return Number
+		bool getReturnBool(void);
+
+		//! @brief call a lua function
+		bool callFunction(std::string funcName, int nbParams, int nbReturns);
 	}
 }
