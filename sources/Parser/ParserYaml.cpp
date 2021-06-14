@@ -131,28 +131,50 @@ namespace BBM {
 		_bonus.clear();
 	}
 
-	std::string ParserYAML::_parseEntityName(std::string line)
+	WAL::Entity &ParserYAML::_parseEntityName(std::string line, WAL::Entity &entity)
 	{
 		line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-		return (line.substr(0, line.find(':')));
+		auto name = line.substr(0, line.find(':'));
+		entity.setName(name);
+		return (entity);
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
 		std::ifstream file("save/" + filename + "_player.yml");
+		std::string line;
+		WAL::Entity entity;
+
 		if (file.good()) {
-			std::string line;
 			while (std::getline(file, line)) {
+				if (line.find("max_bomb") != std::string::npos)
+					_parseMaxBomb(line, entity);
+				else if (line.find("explosion_radius") != std::string::npos)
+					_parseExplosionRadius(line, entity);
+				else if (line.find("position") != std::string::npos)
+					_parsePosition(line, entity);
+				else
+					_parseEntityName(line, entity);
 			}
 		}
 	}
 
 	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-		std::ifstream file("save/" + filename + "_player.yml");
+		std::ifstream file("save/" + filename + "block.yml");
+		WAL::Entity entity(*scene, "");
+		std::string line;
+
 		if (file.good()) {
-			std::string line;
 			while (std::getline(file, line)) {
+				if (line.find("max_bomb") != std::string::npos)
+					_parseMaxBomb(line, entity);
+				else if (line.find("explosion_radius") != std::string::npos)
+					_parseExplosionRadius(line, entity);
+				else if (line.find("position") != std::string::npos)
+					_parsePosition(line, entity);
+				else
+					_parseEntityName(line, entity);
 			}
 		}
 	}
@@ -168,10 +190,10 @@ namespace BBM {
 				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
 		};
 		WAL::Entity entity(*scene, "");
-
+		std::string line;
 		std::ifstream file("save/" + filename + "_bonus.yml");
+
 		if (file.good()) {
-			std::string line;
 			while (std::getline(file, line)) {
 
 			}
@@ -228,17 +250,17 @@ namespace BBM {
 		return (entity.addComponent<BombHolderComponent>(3, bombHolder->explosionRadius = std::atoi(line.substr(line.find(": ")).c_str())));
 	}
 
-	MapGenerator::BlockType _parseBlockType(std::string blockType)
+	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string blockType)
 	{
 		if (blockType.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse block type"));
 		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ")).c_str())));
 	}
 
-	static Bonus::BonusType _parseBonusType(std::string bonusType)
+	Bonus::BonusType ParserYAML::_parseBonusType(std::string bonusType)
 	{
 		if (bonusType.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse bonus type"));
-		return (static_cast<MapGenerator::BlockType>(std::atoi(bonusType.substr(bonusType.find(": ")).c_str())));
+		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ")).c_str())));
 	}
 }

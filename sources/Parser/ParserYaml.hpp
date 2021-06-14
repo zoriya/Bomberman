@@ -23,8 +23,8 @@ namespace BBM {
 		static WAL::Entity &_parseMaxBomb(std::string &filename, WAL::Entity &entity);
 		static WAL::Entity &_parseExplosionRadius(std::string &filename, WAL::Entity &entity);
 		static WAL::Entity &_parsePosition(std::string &filename, WAL::Entity &entity);
-		static MapGenerator::BlockType _parseBlockType(std::string blockType, WAL::Entity &entity);
-		static Bonus::BonusType _parseBonusType(std::string bonusType, WAL::Entity &entity);
+		static MapGenerator::BlockType _parseBlockType(std::string blockType);
+		static Bonus::BonusType _parseBonusType(std::string bonusType);
 
 		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
 		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename);
