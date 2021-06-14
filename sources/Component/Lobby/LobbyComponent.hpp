@@ -25,13 +25,15 @@ namespace BBM
 		bool ready = false;
 		//! @brief The entity containing the ready display.
 		WAL::Entity &readyButton;
+		//! @brief The colored rectangle behind the player.
+		WAL::Entity &coloredTile;
 		//! @brief The time of last input that this lobby player has made.
 		std::chrono::time_point<std::chrono::steady_clock> lastInput;
 
 		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new lobby component.
-		explicit LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton);
+		explicit LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton, WAL::Entity &coloredTile);
 		//! @brief A lobby component is copyable.
 		LobbyComponent(const LobbyComponent &) = default;
 		//! @brief A default destructor

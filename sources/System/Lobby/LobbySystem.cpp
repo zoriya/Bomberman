@@ -19,13 +19,22 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
-	std::vector<std::string> LobbySystem::_colors = {
+	std::array<std::string, 4> LobbySystem::_colors = {
 		"blue",
 		"red",
 		"green",
 //		"purple", TODO MISSING ICONS
 //		"cyan",
 		"yellow"
+	};
+
+	std::array<RAY::Color, 4> LobbySystem::_rayColors = {
+		BLUE,
+		RED,
+		GREEN,
+		// PURPLE,
+		// SKYBLUE,
+		YELLOW
 	};
 
 	LobbySystem::LobbySystem(WAL::Wal &wal)
@@ -35,7 +44,16 @@ namespace BBM
 	void LobbySystem::_nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity)
 	{
 		auto &lobby = entity.get<LobbyComponent>();
+		if (lobby.color != -1)
+			this->_colorTaken[lobby.color] = false;
+		do {
+			lobby.color++;
+			if (lobby.color >= this->_colorTaken.size())
+				lobby.color = 0;
+		} while (this->_colorTaken[lobby.color]);
+		this->_colorTaken[lobby.color] = true;
 		entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + _colors[lobby.color] + ".png");
+		lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(_rayColors[lobby.color]);
 	}
 
 	void LobbySystem::onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime)
@@ -55,21 +73,19 @@ namespace BBM
 					}))
 						return;
 					lobby.lastInput = lastTick;
-					lobby.color = 0;
-					entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + _colors[lobby.color] + ".png");
-
-					//					this->_nextColor(entity);
+					lobby.color = -1;
+					this->_nextColor(entity);
 					lobby.layout = controller.layout;
 					controller.jump = false;
 					return;
 				}
-//				if (controller.bomb)
-//					this->_nextColor(entity);
 			}
 		}
 
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
-			if (controller.layout == lobby.layout && controller.jump && !lobby.ready) {
+			if (controller.layout != lobby.layout)
+				continue;
+			if (controller.jump && !lobby.ready) {
 				lobby.ready = true;
 				lobby.lastInput = lastTick;
 				controller.jump = false;
@@ -78,10 +94,12 @@ namespace BBM
 				if (texture)
 					texture->use("assets/player/icons/ready.png");
 			}
+			if (controller.bomb && !lobby.ready) {
+				lobby.lastInput = lastTick;
+				this->_nextColor(entity);
+			}
 		}
 	}
-
-
 
 	void LobbySystem::onSelfUpdate()
 	{

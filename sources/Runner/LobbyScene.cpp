@@ -133,18 +133,17 @@ namespace BBM
 				                                entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			                                });
 
-		static const std::vector<RAY::Color> colors = { BLUE, RED, GREEN, YELLOW };
 		for (int i = 0; i < 4; i++) {
 			auto &playerTile = scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), colors[i]);
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
 			auto &player = scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>();
-			player.addComponent<LobbyComponent>(i, ready);
+			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)

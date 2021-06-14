@@ -30,4 +30,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawSphere(this->_position, this->_radius, this->_color);
 	}
+
+	void Sphere::drawWiresOn(RAY::Window &)
+	{
+		DrawSphereWires(this->_position, this->_radius, 10, 10, this->_debugColor);
+	}
 }

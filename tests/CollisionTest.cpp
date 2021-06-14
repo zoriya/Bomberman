@@ -17,6 +17,8 @@
 using namespace WAL;
 using namespace BBM;
 
+// WARN THE COLLISION SYSTEM IS ONLY CHECKING/LOOPING ON MOVABLE ENTITIES
+
 
 TEST_CASE("Collision test", "[Component][System]")
 {
@@ -25,6 +27,7 @@ TEST_CASE("Collision test", "[Component][System]")
 	wal.changeScene(std::make_shared<Scene>());
 	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
+	    .addComponent<MovableComponent>()
 		.addComponent<CollisionComponent>([](Entity &actual, const Entity &, int _) {
 			try {
 				auto &pos = actual.getComponent<PositionComponent>();
@@ -118,6 +121,7 @@ TEST_CASE("Collision test callbacks calls", "[Component][System]")
 
 	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(0, 0, 0)
+	    .addComponent<MovableComponent>()
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &, int) { nbCallbacksCalled++; },
 			[&nbCallbacksCalled](Entity &actual, const Entity &, int) {
@@ -156,6 +160,7 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 
 	wal.getScene()->addEntity("player")
 		.addComponent<PositionComponent>()
+	    .addComponent<MovableComponent>()
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
 				nbCallbacksCalled++;
@@ -170,6 +175,7 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 
 	wal.getScene()->addEntity("block")
 		.addComponent<PositionComponent>(0, 0, 0)
+	    .addComponent<MovableComponent>()
 		.addComponent<CollisionComponent>(
 			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
 				nbCallbacksCalled++;
@@ -191,6 +197,57 @@ TEST_CASE("Collision test callbacks args", "[Component][System]")
 	collision.update(std::chrono::nanoseconds(1));
 	collision.fixedUpdate();
 	REQUIRE(nbCallbacksCalled == 4);
+}
+
+TEST_CASE("Collision test callbacks args with only one movable entity", "[Component][System]")
+{
+	int nbCallbacksCalled = 0;
+	Wal wal;
+	CollisionSystem collision(wal);
+	MovableSystem movable(wal);
+
+	wal.changeScene(std::make_shared<Scene>());
+
+	wal.getScene()->addEntity("player")
+		.addComponent<PositionComponent>()
+		.addComponent<MovableComponent>()
+		.addComponent<CollisionComponent>(
+			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
+				nbCallbacksCalled++;
+				REQUIRE(actual.getName() == "player");
+				REQUIRE(other.getName() == "block");
+			},
+			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
+				// lambda should not be called
+				nbCallbacksCalled++;
+				REQUIRE(other.getName() == "plfayer");
+				REQUIRE(actual.getName() == "blofck");
+			}, 0, 5.0);
+
+	wal.getScene()->addEntity("block")
+		.addComponent<PositionComponent>(0, 0, 0)
+		.addComponent<CollisionComponent>(
+			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
+				// lambda should not be called
+				nbCallbacksCalled++;
+				REQUIRE(other.getName() == "playefr");
+				REQUIRE(actual.getName() == "blocfk");
+			},
+			[&nbCallbacksCalled](Entity &actual, const Entity &other, int) {
+				nbCallbacksCalled++;
+				REQUIRE(actual.getName() == "player");
+				REQUIRE(other.getName() == "block");
+			}, 0, 1);
+	Entity &entity = wal.getScene()->getEntities().front();
+	REQUIRE(entity.getComponent<PositionComponent>().position == Vector3f());
+
+	entity.getComponent<CollisionComponent>().bound.x = 5;
+	entity.getComponent<CollisionComponent>().bound.y = 5;
+	entity.getComponent<CollisionComponent>().bound.z = 5;
+
+	collision.update(std::chrono::nanoseconds(1));
+	collision.fixedUpdate();
+	REQUIRE(nbCallbacksCalled == 2);
 }
 
 TEST_CASE("Vector round", "[Vector]")
