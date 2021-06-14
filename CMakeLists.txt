@@ -99,7 +99,9 @@ set(SOURCES
 	sources/System/Music/MusicSystem.cpp
 	sources/System/Lobby/LobbySystem.cpp
 	sources/System/Lobby/LobbySystem.hpp
-	sources/Component/Lobby/LobbyComponent.cpp sources/Component/Lobby/LobbyComponent.hpp)
+	sources/Component/Lobby/LobbyComponent.cpp
+	sources/Component/Lobby/LobbyComponent.hpp
+)
 
 add_executable(bomberman
                sources/main.cpp
