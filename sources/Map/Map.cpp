@@ -320,7 +320,7 @@ namespace BBM
 		if (rnd > 0.98)
 			return HOLE;
 		if (rnd > 0.25)
-			return NOTHING;
+			return BREAKABLE;
 		return NOTHING;
 	}
 
