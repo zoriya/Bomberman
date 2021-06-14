@@ -381,10 +381,12 @@ namespace BBM
 
 	MapGenerator::MapBlock MapGenerator::createClassicUnbreakable(MapBlock map, int width, int height)
 	{
-		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
+		for (int i = 0; i < width + 1; i++) {
+			for (int j = 0; j < height + 1; j++) {
 				if (!((i + 1) % 2) && !((j + 1) % 2))
 					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+			}
+		}
 		return (map);
 	}
 
