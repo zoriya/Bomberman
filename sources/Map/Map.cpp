@@ -328,9 +328,6 @@ namespace BBM
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
-				map[std::make_tuple(i, 1, j)] == -1;
 		if (rnd > 0.01) {
 			for (int i = 0; i < width + 1; i++) {
 				map[std::make_tuple(i, 1, height)] = map[std::make_tuple(i, 0, height)];
@@ -421,6 +418,9 @@ namespace BBM
 		for (int i = 0; i < width; i++)
 			for (int j = 0; j < height; j++)
 				map[std::make_tuple(i, 0, j)] = NOTHING;
+		for (int i = 0; i < width + 1; i++)
+			for (int j = 0; j < height + 1; j++)
+				map[std::make_tuple(i, 1, j)] == -1;
 		map = createSpawner(map, width, height);
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
@@ -450,7 +450,7 @@ namespace BBM
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
-			if (map[std::make_tuple(i, 1, height)] == -1) {
+			if (map[std::make_tuple(i, 1, height)] == -1 && map[std::make_tuple(i, 1, 0)] == -1) {
 				floor -= 1;
 				break;
 			}
@@ -465,7 +465,6 @@ namespace BBM
 			if (floor <= 0)
 				break;
 		}
-		std::cout << floor << std::endl;
 		if (floor >= 1) {
 			scene->addEntity("FloorBot Hitbox")
 			.addComponent<PositionComponent>(Vector3f(0, 0, 0))
