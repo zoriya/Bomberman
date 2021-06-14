@@ -2,6 +2,7 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -16,6 +17,10 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Button/ButtonComponent.hpp"
+#include "Drawables/2D/Text.hpp"
+#include "Component/Gravity/GravityComponent.hpp"
+#include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 
@@ -47,6 +52,8 @@ namespace BBM
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
+		    .addComponent<GravityComponent>()
+	        .addComponent<BumperTimerComponent>()
 //			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
@@ -55,6 +62,7 @@ namespace BBM
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
 			.addComponent<BombHolderComponent>()
+			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
