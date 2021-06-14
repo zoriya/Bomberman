@@ -117,7 +117,10 @@ set(SOURCES
 	sources/System/IntroAnimation/IntroAnimationSystem.cpp
 	sources/Runner/SplashScreenScene.cpp
 	sources/Runner/TitleScreenScene.cpp
+	sources/Runner/MainMenuScene.cpp
 	sources/Runner/GameScene.cpp
+	sources/Runner/PauseMenuScene.cpp
+	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
 )
 add_executable(bomberman
