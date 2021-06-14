@@ -18,9 +18,9 @@ namespace BBM
 
 
 			bool _isReseting = false;
-			//! @brief The number of seconds of each refill. This variable is used to reset the nextBombRefill value.
+			//! @brief The number of seconds of each rest. This variable is used to reset the nextReset value.
 			std::chrono::nanoseconds resetRate = 1500ms;
-			//! @brief The number of nanosecond before the next bomb refill.
+			//! @brief The number of nanosecond before the next bumper reset for the player.
 			std::chrono::nanoseconds nextReset = resetRate;
 
 			//! @inherit
