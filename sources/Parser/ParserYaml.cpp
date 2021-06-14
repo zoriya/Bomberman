@@ -24,6 +24,7 @@
 #include <algorithm>
 #include <Component/Levitate/LevitateComponent.hpp>
 #include <Runner/Runner.hpp>
+#include <cstring>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
