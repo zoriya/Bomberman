@@ -30,6 +30,9 @@ namespace RAY::Drawables {
 			//! @brief Draw drawble on window
 			void drawOn(RAY::Window &) override = 0;
 
+			//! @brief Draw drawble's wires on window
+			virtual void drawWiresOn(RAY::Window &);
+
 			//! @return the color of the ADrawable
 			const RAY::Color &getColor(void) const;
 			

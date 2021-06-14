@@ -40,6 +40,8 @@ namespace BBM
 				modelShader->model->setShader(modelShader->getShader());
 			drawable.drawable->setPosition(pos.position);
 			drawable.drawable->drawOn(this->_window);
+			if (this->_debugMode)
+				drawable.drawable->drawWiresOn(this->_window);
 			if (modelShader)
 				modelShader->model->resetShader();
 		}
@@ -59,7 +61,7 @@ namespace BBM
 			}
 		}
 		if (this->_debugMode)
-			this->_window.drawFPS(Vector2f());
+			this->_window.drawFPS(Vector2f(10, 10));
 		this->_window.endDrawing();
 	}
 

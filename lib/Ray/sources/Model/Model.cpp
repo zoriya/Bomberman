@@ -114,6 +114,20 @@ namespace RAY::Drawables::Drawables3D
 		            this->_color);
 	}
 
+	void Model::drawWiresOn(RAY::Window &)
+	{
+		if (this->_model->meshCount) {
+			::BoundingBox box = GetMeshBoundingBox(*this->_model->meshes);
+			box.min.x += this->_position.x;
+			box.min.y += this->_position.y;
+			box.min.z += this->_position.z;
+			box.max.x += this->_position.x;
+			box.max.y += this->_position.y;
+			box.max.z += this->_position.z;
+			DrawBoundingBox(box, GREEN);
+		}
+	}
+
 	void Model::setShader(const RAY::Shader &shader)
 	{
 		this->_originalShader = this->_model->materials[0].shader;

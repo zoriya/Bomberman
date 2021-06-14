@@ -36,4 +36,7 @@ namespace RAY::Drawables
 		this->_position = position;
 		return *this;
 	}
+
+	void ADrawable3D::drawWiresOn(RAY::Window &)
+	{}
 }
