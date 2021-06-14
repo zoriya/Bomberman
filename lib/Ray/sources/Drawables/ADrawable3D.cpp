@@ -36,4 +36,18 @@ namespace RAY::Drawables
 		this->_position = position;
 		return *this;
 	}
+
+	void ADrawable3D::drawWiresOn(RAY::Window &)
+	{}
+
+	const RAY::Color &ADrawable3D::getDebugColor(void) const
+	{
+		return this->_debugColor;
+	}
+
+	ADrawable3D &ADrawable3D::setDebugColor(const Color &debugColor)
+	{
+		this->_debugColor = debugColor;
+		return *this;
+	}
 }

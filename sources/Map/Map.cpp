@@ -9,6 +9,7 @@
 #include <iostream>
 #include <Items/Bonus.hpp>
 #include <Component/Levitate/LevitateComponent.hpp>
+#include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 
@@ -53,6 +54,8 @@ namespace BBM
 			return;
 		wal.getScene()->scheduleNewEntity(map.at(bonusType)[0])
 			.addComponent<PositionComponent>(position)
+			.addComponent<TagComponent<Blowable>>()
+			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
 			})
@@ -165,7 +168,7 @@ namespace BBM
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
 				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
-					scene->addEntity("Unbreakable Wall")
+					scene->addEntity("Floor")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
 						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, false,
 						                                                 std::make_pair(MAP_DIFFUSE, floorPng));

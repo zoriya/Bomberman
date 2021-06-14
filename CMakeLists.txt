@@ -115,6 +115,17 @@ set(SOURCES
 	sources/Exception/Error.cpp
 	sources/System/Bomb/BombSystem.cpp
 	sources/System/Bomb/BombSystem.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
+	sources/System/IntroAnimation/IntroAnimationSystem.hpp
+	sources/System/IntroAnimation/IntroAnimationSystem.cpp
+	sources/Runner/SplashScreenScene.cpp
+	sources/Runner/TitleScreenScene.cpp
+	sources/Runner/MainMenuScene.cpp
+	sources/Runner/GameScene.cpp
+	sources/Runner/PauseMenuScene.cpp
+	sources/Runner/SettingsMenuScene.cpp
+	sources/Runner/CreditScene.cpp
 )
 add_executable(bomberman
                sources/main.cpp
