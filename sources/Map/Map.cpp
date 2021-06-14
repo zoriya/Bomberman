@@ -9,7 +9,6 @@
 #include <iostream>
 #include <Items/Bonus.hpp>
 #include <Component/Levitate/LevitateComponent.hpp>
-#include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include <Component/BumperTimer/BumperTimerComponent.hpp>
@@ -82,7 +81,6 @@ namespace BBM
 		wal.getScene()->scheduleNewEntity("Bonus")
 			.addComponent<PositionComponent>(position)
 			.addComponent<TagComponent<Blowable>>()
-			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
 			})
@@ -195,7 +193,7 @@ namespace BBM
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
 				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
-					scene->addEntity("Floor")
+					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
 						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, false,
 						                                                 std::make_pair(MAP_DIFFUSE, floorPng));
@@ -417,12 +415,11 @@ namespace BBM
 
 		width = width % 2 ? width + 1 : width;
 		height = height % 2 ? height + 1 : height;
-		for (int i = 0; i < width; i++)
-			for (int j = 0; j < height; j++)
-				map[std::make_tuple(i, 0, j)] = NOTHING;
 		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
-				map[std::make_tuple(i, 1, j)] == -1;
+			for (int j = 0; j < height + 1; j++) {
+				map[std::make_tuple(i, 0, j)] = NOTHING;
+				map[std::make_tuple(i, 1, j)] = NOTHING;
+			}
 		map = createSpawner(map, width, height);
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
@@ -452,14 +449,14 @@ namespace BBM
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
-			if (map[std::make_tuple(i, 1, height)] == -1 && map[std::make_tuple(i, 1, 0)] == -1) {
+			if (map[std::make_tuple(i, 0, height)] == NOTHING && map[std::make_tuple(i, 0, 0)] == NOTHING) {
 				floor -= 1;
 				break;
 			}
 		}
 		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
-				if (map[std::make_tuple(i, 1, i)] == -1) {
+				if (map[std::make_tuple(i, 0, i)] == NOTHING) {
 					floor -= 1;
 					break;
 				}
