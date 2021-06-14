@@ -16,7 +16,7 @@ RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
 	::ModelAnimation *ptr = this->_animationsPtr.get();
 
 	for (int i = 0; i < this->_animationCount; i++)
-		this->_animations.emplace_back(ptr[i]);
+		this->_animations.emplace_back(ptr + i);
 }
 
 RAY::ModelAnimation &RAY::ModelAnimations::operator[](int index)

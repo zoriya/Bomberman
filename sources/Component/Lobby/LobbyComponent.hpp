@@ -19,8 +19,8 @@ namespace BBM
 		ControllableComponent::Layout layout = ControllableComponent::NONE;
 		//! @brief The ID of the lobby player (from 0 to 3)
 		int playerID;
-		//! @brief The color of the player
-		RAY::Color color = RED;
+		//! @brief The color of the player (as an index)
+		int color;
 		//! @brief Is this player ready
 		bool ready = false;
 		//! @brief The entity containing the ready display.

@@ -2,7 +2,6 @@
 // Created by Zoe Roux on 6/11/21.
 //
 
-#include "Component/Animation/AnimationsComponent.hpp"
 #include "System/Event/EventSystem.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "System/Lobby/LobbySystem.hpp"
@@ -14,12 +13,30 @@
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Gamepad/GamepadComponent.hpp>
 #include <Component/Position/PositionComponent.hpp>
+#include <Component/Renderer/Drawable3DComponent.hpp>
+
+namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
 {
+	std::vector<std::string> LobbySystem::_colors = {
+		"blue",
+		"red",
+		"green",
+//		"purple", TODO MISSING ICONS
+//		"cyan",
+		"yellow"
+	};
+
 	LobbySystem::LobbySystem(WAL::Wal &wal)
 		: System(wal)
 	{}
+
+	void LobbySystem::_nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity)
+	{
+		auto &lobby = entity.get<LobbyComponent>();
+		entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + _colors[lobby.color] + ".png");
+	}
 
 	void LobbySystem::onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime)
 	{
@@ -30,18 +47,24 @@ namespace BBM
 			return;
 
 		if (lobby.layout == ControllableComponent::NONE) {
-			for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
+			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
+				auto &controller = ctrl;
 				if (controller.jump) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &view) {
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
 						return;
 					lobby.lastInput = lastTick;
+					lobby.color = 0;
+					entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + _colors[lobby.color] + ".png");
+
+					//					this->_nextColor(entity);
 					lobby.layout = controller.layout;
 					controller.jump = false;
-					entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/blue.png");
 					return;
 				}
+//				if (controller.bomb)
+//					this->_nextColor(entity);
 			}
 		}
 
@@ -121,6 +144,8 @@ namespace BBM
 			_addController(player, lobby.layout);
 			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * playerCount % 2, 0,
 																		 static_cast<int>(mapHeight * playerCount / 2));
+			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
+			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;

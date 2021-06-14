@@ -8,6 +8,8 @@
 #include "Component/Lobby/LobbyComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Entity/Entity.hpp"
+#include <vector>
+#include <string>
 
 namespace BBM
 {
@@ -17,6 +19,10 @@ namespace BBM
 	private:
 		//! @brief Add a controller for the player.
 		static void _addController(WAL::Entity &player, ControllableComponent::Layout layout);
+
+		static void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
+
+		static std::vector<std::string> _colors;
 	public:
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;

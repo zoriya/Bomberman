@@ -8,9 +8,9 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, const RAY::ModelAnimations &modelAnimation, int animIndex, bool play)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, int animIndex, bool play)
 		: WAL::Component(entity),
-		  _modelAnimation(modelAnimation),
+		  _modelAnimation("assets/player/player.iqm"),
 		  _currentAnimIndex(animIndex),
 		  _animDisabled(play)
 	{
@@ -20,7 +20,6 @@ namespace BBM
 	WAL::Component *AnimationsComponent::clone(WAL::Entity &entity) const
 	{
 		return new AnimationsComponent(entity,
-		                               RAY::ModelAnimations(this->_modelAnimation.getFilePath()),
 		                               this->_currentAnimIndex);
 	}
 
@@ -29,7 +28,7 @@ namespace BBM
 		return this->_modelAnimation.at(this->_currentAnimIndex).getFrameCounter();
 	}
 
-	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim()
+	RAY::ModelAnimation &AnimationsComponent::getCurrentModelAnim()
 	{
 		return this->_modelAnimation[this->_currentAnimIndex];
 	}

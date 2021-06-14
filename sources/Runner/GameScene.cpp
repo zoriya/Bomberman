@@ -16,7 +16,6 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Drawables/2D/Text.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 
@@ -45,12 +44,12 @@ namespace BBM
 
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/textures/blue.png"))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
+//			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<Blowable>>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
+			.addComponent<AnimationsComponent>(3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<SoundComponent>(soundPath)
