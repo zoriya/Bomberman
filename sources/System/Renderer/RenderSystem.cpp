@@ -11,8 +11,8 @@
 #include <Model/Model.hpp>
 #include "Drawables/ADrawable3D.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
-
-
+#include <Drawables/3D/Cube.hpp>
+#include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 
 namespace BBM
@@ -24,6 +24,19 @@ namespace BBM
 		  _debugMode(debugMode)
 	{
 		this->_window.setFPS(this->FPS);
+	}
+
+	void RenderSystem::drawBoundingBox(const WAL::Entity &entity, const PositionComponent &posComponent, const Drawable3DComponent &drawable) const
+	{
+		auto *dimsComponent = entity.tryGetComponent<CollisionComponent>();
+
+		//draws hitbox
+		if (dimsComponent) {
+			RAY::Drawables::Drawables3D::Cube boundingBox(posComponent.position, dimsComponent->bound, WHITE);
+			boundingBox.drawWiresOn(this->_window);
+		}
+		//draws models contours
+		drawable.drawable->drawWiresOn(this->_window);
 	}
 
 	void RenderSystem::onSelfUpdate()
@@ -39,9 +52,9 @@ namespace BBM
 			if (modelShader)
 				modelShader->model->setShader(modelShader->getShader());
 			drawable.drawable->setPosition(pos.position);
-			drawable.drawable->drawOn(this->_window);
 			if (this->_debugMode)
-				drawable.drawable->drawWiresOn(this->_window);
+				this->drawBoundingBox(entity, pos, drawable);
+			drawable.drawable->drawOn(this->_window);
 			if (modelShader)
 				modelShader->model->resetShader();
 		}
