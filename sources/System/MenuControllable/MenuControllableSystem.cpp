@@ -4,7 +4,6 @@
 
 #include <algorithm>
 #include "Component/Button/ButtonComponent.hpp"
-#include "Component/Position/PositionComponent.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Entity/Entity.hpp"
@@ -32,9 +31,9 @@ namespace BBM
 
 		if (newButton || selected) {
 			auto lastTick = std::chrono::steady_clock::now();
-			if (lastTick - this->_now < std::chrono::milliseconds(150))
+			if (lastTick - this->now < std::chrono::milliseconds(150))
 				return;
-			this->_now = lastTick;
+			this->now = lastTick;
 		}
 
 		if (newButton) {

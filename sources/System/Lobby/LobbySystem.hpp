@@ -16,6 +16,13 @@ namespace BBM
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 
+		//! @inherit
+		void onSelfUpdate() override;
+
+		//! @brief Check if every player is ready.
+		//! @param scene The lobby scene containing lobby players.
+		static bool playersAreReady(WAL::Scene &scene);
+
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);
 		//! @brief A Lobby system is copy constructable

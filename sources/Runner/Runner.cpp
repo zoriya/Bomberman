@@ -7,12 +7,8 @@
 #include "System/Movable/MovableSystem.hpp"
 #include "System/Renderer/RenderSystem.hpp"
 #include <Model/Model.hpp>
-#include <Drawables/3D/Cube.hpp>
 #include <Drawables/2D/Rectangle.hpp>
 #include <Drawables/2D/Text.hpp>
-#include <Audio/Music.hpp>
-#include <Audio/Sound.hpp>
-#include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
@@ -22,7 +18,6 @@
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
 #include "Component/Button/ButtonComponent.hpp"
-#include <Component/Movable/MovableComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
@@ -35,7 +30,6 @@
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
-#include <Component/Renderer/Drawable2DComponent.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include "Component/Animation/AnimationsComponent.hpp"
@@ -62,10 +56,6 @@ namespace BBM
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
 		auto &view = engine.getScene()->view<ControllableComponent>();
-		// You can change the scene here or update the game state based on entities values.
-
-		// If you want to keep a scene loaded but not running, store it in the state.loadedScenes.
-		//      If you don't need the scene anymore, remember to remove it from the loadedScene array.
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
@@ -88,6 +78,7 @@ namespace BBM
 		wal.addSystem<TimerSystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<LobbySystem>()
 			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<BombHolderSystem>()
@@ -97,7 +88,6 @@ namespace BBM
 			.addSystem<MovableSystem>()
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MenuSoundManagerSystem>()
-			.addSystem<LobbySystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -260,36 +250,24 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				texture->use("assets/buttons/button_new_game.png");
-				auto &lobby = wal.getScene()->view<LobbyComponent>();
-				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
-					return !entity.get<LobbyComponent>().ready;
-				}))
-					texture->setColor(GRAY);
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				texture->use("assets/buttons/button_new_game_hovered.png");
-				auto &lobby = wal.getScene()->view<LobbyComponent>();
-				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
-					return !entity.get<LobbyComponent>().ready;
-				}))
-					texture->setColor(GRAY);
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				auto &lobby = wal.getScene()->view<LobbyComponent>();
-				if (std::any_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
-					return !entity.get<LobbyComponent>().ready;
-				}))
+				if (gameState.currentScene != GameState::LobbyScene)
+					return;
+				if (!LobbySystem::playersAreReady(*wal.getScene()))
 					return;
 				gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
-			});
+			})
+			.addComponent<TagComponent<"PlayButton">>();
 
 
 		auto &back = scene->addEntity("back to menu")

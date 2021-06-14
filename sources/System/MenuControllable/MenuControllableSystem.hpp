@@ -21,9 +21,9 @@ namespace BBM
 		//! @param selected lets know if te new selected button is 'pressed'
 		void _updateCurrentButton(bool selected, Vector2f move);
 
-		//! @brief time (in millisecond) since last check
-		std::chrono::time_point<std::chrono::steady_clock> _now;
 	public:
+		//! @brief time (in millisecond) since last check
+		std::chrono::time_point<std::chrono::steady_clock> now;
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entities) override;
 
