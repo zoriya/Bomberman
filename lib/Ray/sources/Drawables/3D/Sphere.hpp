@@ -40,6 +40,9 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Draw point on window
 			void drawOn(RAY::Window &) override;
 
+			//! @brief Draw sphere's wires on window
+			void drawWiresOn(RAY::Window &) override;
+
 		private:
 			//! @brief Radius of the sphere 
 			int _radius;
