@@ -303,10 +303,10 @@ namespace BBM
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd > 0.95)
+		if (rnd > 0.98)
 			return HOLE;
 		if (rnd > 0.25)
-			return BREAKABLE;
+			return NOTHING;
 		return NOTHING;
 	}
 
@@ -376,10 +376,19 @@ namespace BBM
 
 	MapGenerator::MapBlock MapGenerator::createLongClassicUnbreakable(MapBlock map, int width, int height)
 	{
-		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
-				if ((i % 3) && !((j + 1) % 2))
+		int placedSpace = 0;
+
+		for (int i = 1; i < width; i++) {
+			placedSpace = 0;
+			for (int j = 1; j < height; j++) {
+				if (!(j % 2))
+					continue;
+				if (i < (width / 2 - width / 10) || i > (width / 2 + width / 10))
 					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+				else
+					placedSpace++;
+			}
+		}
 		return (map);
 	}
 
@@ -399,7 +408,7 @@ namespace BBM
 				if (map[std::make_tuple(i, 0, j)] == SPAWNER)
 					continue;
 				if (isCloseToBlockType(map, i, 0, j, SPAWNER)) {
-					map[std::make_tuple(i, 0, j)] = NOTHING;
+					map[std::make_tuple(i, isNotClassic ? -1 : 0, j)] = isNotClassic ? BUMPER : NOTHING;
 				} else {
 					map[std::make_tuple(i, 0, j)] = getRandomBlockType();
 				}
