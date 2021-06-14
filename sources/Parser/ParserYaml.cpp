@@ -23,12 +23,13 @@
 #include "ParserYaml.hpp"
 #include <algorithm>
 #include <Component/Levitate/LevitateComponent.hpp>
+#include <Runner/Runner.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM {
 
-	std::string ParserYAML::_block = "blocks:";
+	std::string ParserYAML::_block = "";
 	std::string ParserYAML::_bonus = "bonuses:";
 	std::string ParserYAML::_player = "players:";
 
@@ -36,14 +37,9 @@ namespace BBM {
 	{
 		static std::map<std::string, MapGenerator::BlockType> map {
 			{"Upper Floor", MapGenerator::BlockType::UPPERFLOOR},
-			{"Bottom Wall", MapGenerator::BlockType::UNBREAKABLE},
-			{"Upper Wall", MapGenerator::BlockType::UNBREAKABLE},
-			{"Left Wall", MapGenerator::BlockType::UNBREAKABLE},
-			{"Right Wall", MapGenerator::BlockType::UNBREAKABLE},
 			{"Bumper Block", MapGenerator::BlockType::BUMPER},
 			{"Breakable Block", MapGenerator::BlockType::BREAKABLE},
 			{"Unbreakable Block", MapGenerator::BlockType::UNBREAKABLE},
-			{"Unbreakable Wall", MapGenerator::BlockType::FLOOR},
 			{"Hole Block", MapGenerator::BlockType::HOLE}
 		};
 
@@ -110,13 +106,16 @@ namespace BBM {
 		std::map<std::string, std::function<void (const WAL::Entity &)>> savingGame = {
 				{"Bonus", &_saveBonus},
 				{"Block", &_saveBlock},
-				{"Floor", &_saveBlock},
-				{"Wall", &_saveBlock},
+				{"Upper Floor", &_saveBlock},
 				{"Player", &_savePlayer}
 		};
 		std::ofstream blockFile(block.c_str());
 		std::ofstream playerFile(player.c_str());
 		std::ofstream bonusFile(bonus.c_str());
+
+		_block.append("width: " + std::to_string(Runner::width));
+		_block.append("\nheight: " + std::to_string(Runner::height));
+		_block.append("\nblocks:");
 		for (const auto &entity : scene->getEntities()) {
 			for (const auto& type : savingGame) {
 				if (entity.getName().find(type.first) != std::string::npos) {
@@ -188,8 +187,6 @@ namespace BBM {
 		if (!file.good())
 			return;
 		while (std::getline(file, line)) {
-			line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-			line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
 			if (line.empty() || !line.compare("players:"))
 				continue;
 			lines.push_back(line);
@@ -200,7 +197,7 @@ namespace BBM {
 		}
 	}
 
-	void ParserYAML::_loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
+	void ParserYAML::_loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, MapGenerator::MapBlock &map)
 	{
 		std::string tmpName = "";
 		Vector3f pos;
@@ -218,28 +215,41 @@ namespace BBM {
 				tmpName = lines[index];
 			}
 		}
-		MapGenerator::createElement(pos, scene, blockType);
+		if (blockType == MapGenerator::HOLE)
+			pos.y += 1.0f;
+		map[std::make_tuple(pos.x, pos.y, pos.z)] = blockType;
 	}
 
 	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-		std::ifstream file("save/" + filename + "block.yml");
+		std::ifstream file("save/" + filename + "_block.yml");
 		std::string line;
 		std::vector<std::string> lines;
+		MapGenerator::MapBlock map;
 
 		if (!file.good())
 			return;
+		for (int i = 0; i < Runner::width; i++)
+			for (int j = 0; j < Runner::height; j++)
+				map[std::make_tuple(i, 0, j)] = MapGenerator::NOTHING;
 		while (std::getline(file, line)) {
-			line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-			line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
-			if (line.empty() || !line.compare("blocks:"))
+			if (line.find("width:") != std::string::npos) {
+				Runner::width = std::atoi(line.substr(line.find(": ", 0) + 2, line.length()).c_str());
+				continue;
+			}
+			if (line.find("height:") != std::string::npos) {
+				Runner::height = std::atoi(line.substr(line.find(": ", 0) + 2, line.length()).c_str());
+				continue;
+			}
+			if (line.empty() || line.find("blocks:") != std::string::npos)
 				continue;
 			lines.push_back(line);
 		}
 		for (int index = 0; lines.size() != index; index++) {
-			_loadBlock(scene, lines, index);
+			_loadBlock(scene, lines, index, map);
 			index--;
 		}
+		MapGenerator::loadMap(Runner::width, Runner::height, map, scene);
 	}
 
 	void ParserYAML::_loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
@@ -260,7 +270,7 @@ namespace BBM {
 		for (; index != lines.size(); index++) {
 			if (lines[index].find("position") != std::string::npos) {
 				pos = _parsePosition(lines[index]);
-			} else if (lines[index].find("block_type") != std::string::npos) {
+			} else if (lines[index].find("bonus_type") != std::string::npos) {
 				bonusType = _parseBonusType(lines[index]);
 			} else {
 				if (!tmpName.empty()) {
@@ -286,15 +296,13 @@ namespace BBM {
 
 	void ParserYAML::_loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename)
 	{
-		std::ifstream file("save/" + filename + "bonus.yml");
+		std::ifstream file("save/" + filename + "_bonus.yml");
 		std::string line;
 		std::vector<std::string> lines;
 
 		if (!file.good())
 			return;
 		while (std::getline(file, line)) {
-			line.erase(std::remove(line.begin(), line.end(), ' '), line.end());
-			line.erase(std::remove(line.begin(), line.end(), '\t'), line.end());
 			if (line.empty() || !line.compare("bonuses:"))
 				continue;
 			lines.push_back(line);
@@ -328,10 +336,11 @@ namespace BBM {
 		std::string subStr;
 
 		try {
-			subStr = line.substr(line.find("position: [", 0), line.length());
+			subStr = line.substr(line.find("position: [", 0) + std::strlen("position: ["), line.length());
 			x = subStr.substr(0, subStr.find(' '));
-			y = subStr.substr(x.length() + 1, subStr.find(' '));
-			z = subStr.substr(x.length() + y.length() + 2, subStr.find(']'));
+			y = subStr.substr(x.length(), subStr.find(' '));
+			z = subStr.substr(subStr.find_last_of(' '), subStr.find(']') - 1);
+
 		} catch (const std::out_of_range &err) {
 			throw (ParserError("Error parsing position"));
 		}
@@ -342,27 +351,27 @@ namespace BBM {
 	{
 		if (line.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse max bomb"));
-		return (std::atoi(line.substr(line.find(": ")).c_str()));
+		return (std::atoi(line.substr(line.find(": ") + 2).c_str()));
 	}
 
 	float ParserYAML::_parseExplosionRadius(std::string &line)
 	{
 		if (line.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse explosion radius"));
-		return (std::atof(line.substr(line.find(": ")).c_str()));
+		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
 	}
 
 	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string blockType)
 	{
 		if (blockType.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse block type"));
-		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ")).c_str())));
+		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ") + 2).c_str())));
 	}
 
 	Bonus::BonusType ParserYAML::_parseBonusType(std::string bonusType)
 	{
 		if (bonusType.find(": ") == std::string::npos)
 			throw (ParserError("Couldn't parse bonus type"));
-		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ")).c_str())));
+		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ") + 2).c_str())));
 	}
 }

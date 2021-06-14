@@ -11,6 +11,9 @@ namespace BBM
 	class Runner {
 		public:
 
+		static int width;
+		static int height;
+
 		//! @brief store current scenes informations
 		static GameState gameState;
 		//! @brief Start the game and run a Bomberman.

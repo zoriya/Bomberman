@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Entity/Entity.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 
 namespace BBM {
 	class Bonus {

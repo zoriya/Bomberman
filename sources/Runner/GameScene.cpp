@@ -2,6 +2,7 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include <Parser/ParserYaml.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -39,7 +40,7 @@ namespace BBM
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		scene->addEntity("player")
+		/*scene->addEntity("Player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
@@ -58,11 +59,12 @@ namespace BBM
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
-			});
+			});*/
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		//MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		ParserYAML::load(scene, "test");
 
 		return scene;
 	}

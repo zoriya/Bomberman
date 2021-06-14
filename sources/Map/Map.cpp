@@ -182,7 +182,6 @@ namespace BBM
 			{BREAKABLE,   &createBreakable},
 			{UNBREAKABLE, &createUnbreakable},
 			{HOLE,        &createHole},
-			{FLOOR,       &createFloor},
 			{BUMPER,      &createBumper},
 			{UPPERFLOOR,  &createUpperFloor},
 		};

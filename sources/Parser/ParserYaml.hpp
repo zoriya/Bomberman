@@ -6,6 +6,7 @@
 
 #include <Wal.hpp>
 #include "Items/Bonus.hpp"
+#include "Map/Map.hpp"
 
 namespace BBM {
 	class ParserYAML {
@@ -28,7 +29,7 @@ namespace BBM {
 		static Bonus::BonusType _parseBonusType(std::string bonusType);
 
 		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
-		static void _loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
+		static void _loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, MapGenerator::MapBlock &map);
 		static void _loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
 
 		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
