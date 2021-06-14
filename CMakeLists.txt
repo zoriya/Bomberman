@@ -153,8 +153,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/MoveTests.cpp
                tests/ViewTest.cpp
                tests/CollisionTest.cpp
-			   tests/ParserTest.cpp
-)
+        )
 target_include_directories(unit_tests PUBLIC sources)
 target_link_libraries(unit_tests PUBLIC wal ray)
 
