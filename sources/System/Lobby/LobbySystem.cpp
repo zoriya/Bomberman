@@ -18,6 +18,11 @@ namespace BBM
 	void LobbySystem::onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime)
 	{
 		auto &lobby = entity.get<LobbyComponent>();
+
+		auto lastTick = std::chrono::steady_clock::now();
+		if (lastTick - lobby.lastInput < std::chrono::milliseconds(150))
+			return;
+
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 				if (controller.jump) {
@@ -25,27 +30,22 @@ namespace BBM
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
 						return;
+					lobby.lastInput = lastTick;
 					lobby.layout = controller.layout;
 					entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/blue.png");
 					return;
 				}
 			}
 		}
+
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout == lobby.layout && controller.jump) {
 				lobby.ready = true;
-				if (lobby.ready) {
-					auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
-					if (texture)
-						texture->use("assets/player/icons/ready.png");
-				}
+				lobby.lastInput = lastTick;
+				auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+				if (texture)
+					texture->use("assets/player/icons/ready.png");
 			}
 		}
 	}
-
-	//void LobbySystem::updateEntityConnectedUser(WAL::Entity &entity)
-	//{
-	//	RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-	//	texture->use("assets/player/icons/blue.png");
-	//}
 }

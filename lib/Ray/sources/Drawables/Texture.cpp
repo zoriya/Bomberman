@@ -38,6 +38,7 @@ namespace RAY {
 			return *this;
 		this->_texture = this->_texturesCache.fetch(filename);
 		this->_resourcePath = filename;
+		this->_dimensions = Vector2(this->_texture->width, this->_texture->height);
 		return *this;
 	}
 

@@ -8,6 +8,7 @@
 #include <Entity/Entity.hpp>
 #include <Color.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
+#include <chrono>
 
 namespace BBM
 {
@@ -24,8 +25,10 @@ namespace BBM
 		bool ready = false;
 		//! @brief The entity containing the ready display.
 		WAL::Entity &readyButton;
+		//! @brief The time of last input that this lobby player has made.
+		std::chrono::time_point<std::chrono::steady_clock> lastInput;
 
-		Component * clone(WAL::Entity &entity) const override;
+		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new lobby component.
 		explicit LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton);
