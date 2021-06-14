@@ -113,6 +113,14 @@ set(SOURCES
 	sources/Parser/ParserYaml.cpp
 	sources/Exception/Error.hpp
 	sources/Exception/Error.cpp
+	sources/Component/Gravity/GravityComponent.hpp
+	sources/Component/Gravity/GravityComponent.cpp
+	sources/System/Gravity/GravitySystem.hpp
+	sources/System/Gravity/GravitySystem.cpp
+	sources/Component/BumperTimer/BumperTimerComponent.hpp
+	sources/Component/BumperTimer/BumperTimerComponent.cpp
+	sources/System/BumperTimer/BumperTimerSystem.hpp
+	sources/System/BumperTimer/BumperTimerSystem.cpp
 	sources/System/Bomb/BombSystem.cpp
 	sources/System/Bomb/BombSystem.hpp
 	sources/Component/IntroAnimation/IntroAnimationComponent.hpp

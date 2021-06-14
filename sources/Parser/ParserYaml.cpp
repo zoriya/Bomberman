@@ -249,6 +249,7 @@ namespace BBM {
 			_loadBlock(scene, lines, index, map);
 			index--;
 		}
+		std::cout << "Test LoadMap" << std::endl;
 		MapGenerator::loadMap(Runner::width, Runner::height, map, scene);
 	}
 

@@ -38,7 +38,6 @@ namespace BBM
 			BREAKABLE,
 			HOLE,
 			UPPERFLOOR,
-			FLOOR,
 			BUMPER,
 			SPAWNER,
 			UNBREAKABLE,
@@ -52,11 +51,20 @@ namespace BBM
 		                         CollisionComponent::CollidedAxis collidedAxis);
 		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
 
+		static void holeCollide(WAL::Entity &entity,
+		                        const WAL::Entity &wall,
+		                        CollisionComponent::CollidedAxis collidedAxis);
+
+		static void bumperCollide(WAL::Entity &entity,
+		                          const WAL::Entity &wall,
+		                          CollisionComponent::CollidedAxis collidedAxis);
+
+
 
 		//! @param width Width of the map
 		//! @param height Height of the map
 		//! @brief Generate map of block to be loaded
-		static MapBlock createMap(int width, int height);
+		static MapBlock createMap(int width, int height, bool isHeight = false, bool isNotClassic = false);
 
 		//! @param width Width of the map
 		//! @param height Height of the map
@@ -124,14 +132,28 @@ namespace BBM
 
 		//! @param coords coords of the element
 		//! @param scene Scene where the map is instanced
-		//! @brief Create floor of the map
-		static void createFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
-
-		//! @param coords coords of the element
-		//! @param scene Scene where the map is instanced
 		//! @brief Create upper floor of the map
 		static void createUpperFloor(Vector3f coords, std::shared_ptr<WAL::Scene> scene);
 
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @param scene Scene where the map is instanced
+		//! @brief Generate the height hitbox of the map
+		static void generateHeightCollision(MapBlock map, int width, int height, 
+		                                    std::shared_ptr<WAL::Scene> scene);
+
+		//! @param map Map to load with block declared inside
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @brief Generate unbreakable block on the map
+		static MapBlock createClassicUnbreakable(MapBlock map, int width, int height);
+		
+		//! @param map Map to load with block declared inside
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @brief Generate unbreakable block on map
+		static MapBlock createLongClassicUnbreakable(MapBlock map, int width, int height);
+		
 		//! @param map Map to load with block declared inside
 		//! @param width Width of the map
 		//! @param height Height of the map

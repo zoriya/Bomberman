@@ -32,6 +32,8 @@
 #include <Parser/ParserYaml.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Sound/MenuSoundManagerSystem.hpp"
+#include "System/Gravity/GravitySystem.hpp"
+#include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -85,6 +87,8 @@ namespace BBM
 			.addSystem<PlayerSoundManagerSystem>()
 			.addSystem<MenuSoundManagerSystem>()
 			.addSystem<IntroAnimationSystem>()
+			.addSystem<GravitySystem>()
+			.addSystem<BumperTimerSystem>()
 			.addSystem<MusicSystem>();
 	}
 
