@@ -11,6 +11,6 @@ namespace BBM
 	{}
 
 	ParserError::ParserError(const std::string &what)
-			: WalError(what)
+			: Error(what)
 	{}
 } // namespace BBM

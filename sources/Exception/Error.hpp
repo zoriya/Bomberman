@@ -2,7 +2,7 @@
 // Created by hbenjamin on 11/06/2021.
 //
 
-#pramga once
+#pragma once
 
 #include <exception>
 #include <stdexcept>

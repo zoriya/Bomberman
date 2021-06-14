@@ -109,10 +109,12 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
-	sources/System/Bomb/BombSystem.cpp
-	sources/System/Bomb/BombSystem.hpp
 	sources/Parser/ParserYaml.hpp
 	sources/Parser/ParserYaml.cpp
+	sources/Exception/Error.hpp
+	sources/Exception/Error.cpp
+	sources/System/Bomb/BombSystem.cpp
+	sources/System/Bomb/BombSystem.hpp
 )
 add_executable(bomberman
                sources/main.cpp

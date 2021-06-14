@@ -64,6 +64,11 @@ namespace BBM
 		//! @param scene Scene where the map is instanced
 		//! @brief Generate the map
 		static void loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene);
+
+		//! @param coords coords of the element
+		//! @param scene Scene where the map is instanced
+		//! @brief Create element of the map
+		static void createElement(Vector3f coords, std::shared_ptr<WAL::Scene> scene, BlockType blockType);
 	private:
 
 		using MapElem = std::function<void(Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
@@ -96,11 +101,6 @@ namespace BBM
 		//! @param scene Scene where the map is instanced
 		//! @brief Generate the floor of the map
 		static void generateFloor(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene);
-
-		//! @param coords coords of the element
-		//! @param scene Scene where the map is instanced
-		//! @brief Create element of the map
-		static void createElement(Vector3f coords, std::shared_ptr<WAL::Scene> scene, BlockType blockType);
 
 		//! @param coords coords of the element
 		//! @param scene Scene where the map is instanced

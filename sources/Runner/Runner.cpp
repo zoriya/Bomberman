@@ -41,6 +41,7 @@
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <Drawables/Texture.hpp>
 #include <System/Bomb/BombSystem.hpp>
+#include <Parser/ParserYaml.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
@@ -56,11 +57,13 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		if (RAY::Window::getInstance().shouldClose())
+		if (RAY::Window::getInstance().shouldClose()) {
 			engine.shouldClose = true;
+		}
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause) {
+					ParserYAML::save(engine.getScene(), "test");
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
 				}
@@ -544,7 +547,7 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
-
+		//ParserYAML::load(scene, "test");
 		return scene;
 	}
 

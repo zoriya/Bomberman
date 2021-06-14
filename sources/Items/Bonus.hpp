@@ -17,11 +17,6 @@ namespace BBM {
 
 		//! @param bonus bonus
 		//! @param player the entity on which the effect will be applied
-		//! @brief Apply bonus effect who increased the bomb damage
-		static void DamageIncreasedBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
-
-		//! @param bonus bonus
-		//! @param player the entity on which the effect will be applied
 		//! @brief Apply bonus effect that expend the explosion range of the bomb
 		static void ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
 

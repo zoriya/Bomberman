@@ -5,6 +5,7 @@
 #pragma once
 
 #include <Wal.hpp>
+#include "Items/Bonus.hpp"
 
 namespace BBM {
 	class ParserYAML {
@@ -20,11 +21,15 @@ namespace BBM {
 		static std::string _getBonusType(std::string bonusName);
 
 		static WAL::Entity &_parseEntityName(std::string line, WAL::Entity &entity);
-		static WAL::Entity &_parseMaxBomb(std::string &filename, WAL::Entity &entity);
-		static WAL::Entity &_parseExplosionRadius(std::string &filename, WAL::Entity &entity);
-		static WAL::Entity &_parsePosition(std::string &filename, WAL::Entity &entity);
+		static int _parseMaxBomb(std::string &filename);
+		static float _parseExplosionRadius(std::string &filename);
+		static Vector3f _parsePosition(std::string &filename);
 		static MapGenerator::BlockType _parseBlockType(std::string blockType);
 		static Bonus::BonusType _parseBonusType(std::string bonusType);
+
+		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
+		static void _loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
+		static void _loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
 
 		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
 		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename);
