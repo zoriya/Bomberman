@@ -467,7 +467,6 @@ namespace BBM
 			if (floor <= 0)
 				break;
 		}
-		std::cout << floor << std::endl;
 		if (floor >= 1) {
 			scene->addEntity("FloorBot Hitbox")
 			.addComponent<PositionComponent>(Vector3f(0, 0, 0))

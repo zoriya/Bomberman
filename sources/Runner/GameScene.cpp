@@ -42,7 +42,7 @@ namespace BBM
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 		scene->addEntity("player")
-			.addComponent<PositionComponent>()
+			.addComponent<PositionComponent>(0, 1.01, 0)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
