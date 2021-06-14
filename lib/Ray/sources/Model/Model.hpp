@@ -87,6 +87,9 @@ namespace RAY::Drawables::Drawables3D {
 
 			void drawOn(RAY::Window &) override;
 
+			//! @brief Draw model's wires on window
+			void drawWiresOn(RAY::Window &) override;
+
 		private:
 			//! @brief Raw data from raylib
 			std::shared_ptr<::Model> _model;

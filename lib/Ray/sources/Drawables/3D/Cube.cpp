@@ -30,4 +30,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		DrawCubeV(this->_position, this->_dimensions, this->_color);
 	}
+
+	void Cube::drawWiresOn(RAY::Window &)
+	{
+		DrawCubeWiresV(this->_position, this->_dimensions, this->_debugColor);
+	}
 }
