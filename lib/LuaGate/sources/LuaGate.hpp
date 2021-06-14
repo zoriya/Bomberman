@@ -42,5 +42,17 @@ namespace LuaG
 
 		//! @brief call a lua function
 		bool callFunction(std::string funcName, int nbParams, int nbReturns);
+
+		//! @brief setTable
+		void setTable(void);
+
+		//! @brief push a number onto the lua stack
+		void push(float val);
+
+		//! @brief push a string onto the lua stack
+		void push(std::string str);
+
+		//! @brief Creates a new table at the top of the stack
+		void newTable(void);
 	};
 }

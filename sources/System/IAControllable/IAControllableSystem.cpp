@@ -40,6 +40,54 @@ namespace BBM
 
 	}
 
+	void IAControllableSystem::pushInfoPlayer(LuaG::State &state, MapInfo &player)
+	{
+		state.push("player");
+		state.newTable();
+		state.push("x");
+		state.push(player.x);
+		state.setTable();
+		state.push("y");
+		state.push(player.y);
+		state.setTable();
+		state.push("z");
+		state.push(player.z);
+		state.setTable();
+		state.setTable();
+	}
+
+	void IAControllableSystem::pushInfoRaw(LuaG::State &state)
+	{
+		state.push("raw");
+		state.newTable();
+		int index = 0;
+		for (auto &info : _map) {
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(info.x);
+			state.setTable();
+			state.push("y");
+			state.push(info.y);
+			state.setTable();
+			state.push("z");
+			state.push(info.z);
+			state.setTable();
+			state.push("type");
+			state.push(info.type);
+			state.setTable();
+			state.setTable();
+		}
+		state.setTable();
+	}
+
+	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player)
+	{
+		state.newTable();
+		pushInfoPlayer(state, player);
+		pushInfoRaw(state);
+	}
+
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
 	{
 		auto &ia = entity.get<IAControllableComponent>();
@@ -48,11 +96,17 @@ namespace BBM
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
 		UpdateMapInfos(entity);
-		ia._state.callFunction("Update", 0, 4);
+
+		lua_getglobal(ia._state.getState(), "Update");
+		if (!lua_isfunction(ia._state.getState(), -1))
+			return;
+		pushInfo(ia._state, player);
+		ia._state.callFunction("Update", 1, 4);
 		controllable.bomb = ia._state.getReturnBool();
 		controllable.jump = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
 		controllable.move.x = ia._state.getReturnNumber();
+		lua_pop(state, -1);
 		/*
         luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
 		if (!updateFunc.isFunction())

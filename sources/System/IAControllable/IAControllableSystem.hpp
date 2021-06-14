@@ -29,8 +29,17 @@ namespace BBM
 		//! @brief All bombs on the map
 		std::vector<std::pair<Vector3f, int>> _bombs;
 
-		//! @brief
+		//! @brief update the raw info of the map
 		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity);
+	
+		//! @brief push player info
+		void pushInfoPlayer(LuaG::State &state, MapInfo &player);
+
+		//! @brief push raw map info
+		void pushInfoRaw(LuaG::State &state);
+
+		//! @brief push all the infos to the ai stack
+		void pushInfo(LuaG::State &state, MapInfo &player);
 	public:
 
 		//! @inherit

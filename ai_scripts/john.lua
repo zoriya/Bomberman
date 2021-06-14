@@ -1,8 +1,16 @@
 ------------ JOHN AI
 
+--[[
+Info available to the ai
+mapinfo.player { x, y, z }
+mapinfo.raw { {x, y, z, type }, ...}
+mapinfo.dist { }
+]]
+------------
+
 
 local debug = false
---local debug = false
+
 if not debug then
     log = function() end
 else
@@ -41,7 +49,10 @@ function isInExplosionRange()
 	return true
 end
 
-function Update()
+function Update(mapinfo)
+	print(mapinfo.raw[0].x)
+	print(mapinfo.raw[0].y)
+	print(mapinfo.raw[0].z)
 	--local maxX = 0
 	--local maxZ = 0
 	--for i, info in ipairs(infos) do
@@ -53,15 +64,7 @@ function Update()
 	--	end
 	--end
 	--local myMap = CreateMyMap(infos, maxX, maxZ)
-	local x = math.random()
-	local y = math.random()
-	if (math.random() < 0.5) then
-		x = x * -1
-	end
-	if (math.random() < 0.5) then
-		y = y * -1
-	end
-	return x, y, false, true;
+	return 1, 1, false, false;
 	--if (isInExplosionRange()) then
 	--	return 0, , false, true
 	--	--play defensive RUN

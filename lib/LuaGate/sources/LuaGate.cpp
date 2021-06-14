@@ -59,12 +59,29 @@ namespace LuaG
 		return res;
 	}
 
-	bool State::callFunction(std::string funcName, int nbParams, int nbReturns)
+	bool State::callFunction(std::string , int nbParams, int nbReturns)
 	{
-		lua_getglobal(_state, funcName.c_str());
-		if (!lua_isfunction(_state, -1))
-			return false;
 		lua_pcall(_state, nbParams, nbReturns, 0);
 		return true;
+	}
+
+	void State::setTable(void)
+	{
+		lua_settable(_state, -3);
+	}
+
+	void State::push(float val)
+	{
+		lua_pushnumber(_state, val);
+	}
+
+	void State::push(std::string str)
+	{
+		lua_pushstring(_state, str.c_str());
+	}
+
+	void State::newTable(void)
+	{
+		lua_newtable(_state);
 	}
 }
