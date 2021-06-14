@@ -135,7 +135,7 @@ namespace BBM
 		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
 		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
 
-		for (int i = 0; i < height; i++) {
+		for (int i = 0; i < height + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(-1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
@@ -143,7 +143,7 @@ namespace BBM
 				.addComponent<PositionComponent>(width + 1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
 		}
-		for (int i = 0; i < width; i++) {
+		for (int i = 0; i < width + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(i, 0, -1)
 				.addComponent<TagComponent<Blowable>>();
