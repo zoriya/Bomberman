@@ -10,6 +10,10 @@
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include <algorithm>
+#include <Runner/Runner.hpp>
+#include <Component/Keyboard/KeyboardComponent.hpp>
+#include <Component/Gamepad/GamepadComponent.hpp>
+#include <Component/Position/PositionComponent.hpp>
 
 namespace BBM
 {
@@ -77,5 +81,49 @@ namespace BBM
 			auto &lobbyPlayer = entity.get<LobbyComponent>();
 			return lobbyPlayer.ready || lobbyPlayer.layout == ControllableComponent::NONE;
 		});
+	}
+
+	void LobbySystem::_addController(WAL::Entity &player, ControllableComponent::Layout layout)
+	{
+		switch (layout) {
+		case ControllableComponent::KEYBOARD_0:
+		case ControllableComponent::KEYBOARD_1:
+			player.addComponent<KeyboardComponent>(layout);
+			break;
+		case ControllableComponent::GAMEPAD_0:
+			player.addComponent<GamepadComponent>(0);
+			break;
+		case ControllableComponent::GAMEPAD_1:
+			player.addComponent<GamepadComponent>(1);
+			break;
+		case ControllableComponent::GAMEPAD_2:
+			player.addComponent<GamepadComponent>(2);
+			break;
+		case ControllableComponent::GAMEPAD_3:
+			player.addComponent<GamepadComponent>(3);
+			break;
+		default:
+			throw std::runtime_error("Invalid controller for a player.");
+		}
+	}
+
+	void LobbySystem::switchToGame(WAL::Wal &wal)
+	{
+		auto scene = Runner::loadGameScene();
+		int mapWidth = 16;
+		int mapHeight = 16;
+		int playerCount = 0;
+
+		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
+			if (lobby.layout == ControllableComponent::NONE)
+				continue;
+			auto &player = Runner::createPlayer(*scene);
+			_addController(player, lobby.layout);
+			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * playerCount % 2, 0,
+																		 static_cast<int>(mapHeight * playerCount / 2));
+			playerCount++;
+		}
+		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
+		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 	}
 }

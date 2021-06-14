@@ -6,12 +6,17 @@
 
 #include "System/System.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
+#include "Entity/Entity.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle Health entities.
 	class LobbySystem : public WAL::System<LobbyComponent, Drawable2DComponent>
 	{
+	private:
+		//! @brief Add a controller for the player.
+		static void _addController(WAL::Entity &player, ControllableComponent::Layout layout);
 	public:
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
@@ -22,6 +27,10 @@ namespace BBM
 		//! @brief Check if every player is ready.
 		//! @param scene The lobby scene containing lobby players.
 		static bool playersAreReady(WAL::Scene &scene);
+
+		//! @brief Inform the engine that the next scene should be the game scene and load it.
+		//! @param wal The engine.
+		static void switchToGame(WAL::Wal &wal);
 
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);

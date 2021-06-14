@@ -8,9 +8,9 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, const RAY::ModelAnimations &modelAnimation, int animIndex, bool play)
 		: WAL::Component(entity),
-		  _modelAnimation(std::move(modelAnimation)),
+		  _modelAnimation(modelAnimation),
 		  _currentAnimIndex(animIndex),
 		  _animDisabled(play)
 	{

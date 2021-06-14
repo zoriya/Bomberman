@@ -260,12 +260,10 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				if (gameState.currentScene != GameState::LobbyScene)
+				if (Runner::gameState.currentScene != GameState::LobbyScene
+				|| !LobbySystem::playersAreReady(*wal.getScene()))
 					return;
-				if (!LobbySystem::playersAreReady(*wal.getScene()))
-					return;
-				gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
-				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+				LobbySystem::switchToGame(wal);
 			})
 			.addComponent<TagComponent<"PlayButton">>();
 
@@ -637,21 +635,30 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadGameScene()
 	{
 		auto scene = std::make_shared<WAL::Scene>();
+		scene->addEntity("camera")
+			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+
+		return scene;
+	}
+
+	WAL::Entity &Runner::createPlayer(WAL::Scene &scene)
+	{
 		std::map<SoundComponent::SoundIndex, std::string> soundPath ={
-		    {SoundComponent::JUMP, "assets/sounds/jump.wav"},
-		    {SoundComponent::MOVE, "assets/sounds/move.ogg"},
-		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
+			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
+			{SoundComponent::MOVE, "assets/sounds/move.ogg"},
+			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
+			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		scene->addEntity("player")
+
+		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/textures/blue.png"))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<Blowable>>()
-			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
@@ -662,12 +669,6 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
-		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
-			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
-
-		return scene;
 	}
 
 	std::shared_ptr<WAL::Scene> Runner::loadCreditScene()
