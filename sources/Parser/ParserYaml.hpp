@@ -73,26 +73,23 @@ namespace BBM {
 		static void _loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
 
 		//!@param scene Scene to update
-		//!@param filename filename of the file to read
 		//!@brief load all players into scene
-		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene);
 		//!@param scene Scene to update
-		//!@param filename filename of the file to read
 		//!@brief load all blocks into scene
-		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene);
 		//!@param scene Scene to update
-		//!@param filename filename of the file to read
 		//!@brief load all blocks into scene
-		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene);
 	public:
 		//!@param scene Scene to update
-		//!@param filename filename of the file to read
 		//!@brief save yaml
-		static void save(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void save(std::shared_ptr<WAL::Scene> scene);
 		//!@param scene Scene to update
-		//!@param filename filename of the file to read
 		//!@brief load yaml
-		static void load(std::shared_ptr<WAL::Scene> scene, std::string filename);
+		static void load(std::shared_ptr<WAL::Scene> scene);
+
+		static const std::string fileName;
 
 	};
 }

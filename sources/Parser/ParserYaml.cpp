@@ -29,6 +29,7 @@ namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM {
 
+	const std::string ParserYAML::fileName = "save";
 	std::string ParserYAML::_block = "";
 	std::string ParserYAML::_bonus = "bonuses:";
 	std::string ParserYAML::_player = "players:";
@@ -98,11 +99,11 @@ namespace BBM {
 		_block.append("position: [" + std::to_string(position->getX()) + " " + std::to_string(position->getY()) + " " + std::to_string(position->getZ()) + "]");
 	}
 
-	void ParserYAML::save(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::save(std::shared_ptr<WAL::Scene> scene)
 	{
-		std::string block = std::string("save/" + filename + "_block.yml");
-		std::string player = std::string("save/" + filename + "_player.yml");
-		std::string bonus = std::string("save/" + filename + "_bonus.yml");
+		std::string block = std::string("save/" + fileName + "_block.yml");
+		std::string player = std::string("save/" + fileName + "_player.yml");
+		std::string bonus = std::string("save/" + fileName + "_bonus.yml");
 		std::map<std::string, std::function<void (const WAL::Entity &)>> savingGame = {
 				{"Bonus", &_saveBonus},
 				{"Block", &_saveBlock},
@@ -140,8 +141,8 @@ namespace BBM {
 				{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 				//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		int maxBomb = 0;
-		float explosionRadius = 0;
+		int maxBomb = 3;
+		float explosionRadius = 3;
 		Vector3f pos;
 
 		for (; index != lines.size(); index++) {
@@ -178,14 +179,14 @@ namespace BBM {
 			});
 	}
 
-	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene)
 	{
-		std::ifstream file("save/" + filename + "_player.yml");
+		std::ifstream file("save/" + fileName + "_player.yml");
 		std::string line;
 		std::vector<std::string> lines;
 
 		if (!file.good())
-			return;
+			throw (ParserError("File error"));
 		while (std::getline(file, line)) {
 			if (line.empty() || !line.compare("players:"))
 				continue;
@@ -201,7 +202,7 @@ namespace BBM {
 	{
 		std::string tmpName = "";
 		Vector3f pos;
-		MapGenerator::BlockType blockType;
+		MapGenerator::BlockType blockType = MapGenerator::NOTHING;
 
 		for (; index != lines.size(); index++) {
 			if (lines[index].find("position") != std::string::npos) {
@@ -215,20 +216,22 @@ namespace BBM {
 				tmpName = lines[index];
 			}
 		}
+		if (blockType == MapGenerator::NOTHING)
+			throw (ParserError("Invalid block_type field."));
 		if (blockType == MapGenerator::HOLE)
 			pos.y += 1.0f;
 		map[std::make_tuple(pos.x, pos.y, pos.z)] = blockType;
 	}
 
-	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene)
 	{
-		std::ifstream file("save/" + filename + "_block.yml");
+		std::ifstream file("save/" + fileName + "_block.yml");
 		std::string line;
 		std::vector<std::string> lines;
 		MapGenerator::MapBlock map;
 
 		if (!file.good())
-			return;
+			throw (ParserError("File error"));
 		for (int i = 0; i < Runner::width; i++)
 			for (int j = 0; j < Runner::height; j++)
 				map[std::make_tuple(i, 0, j)] = MapGenerator::NOTHING;
@@ -249,7 +252,6 @@ namespace BBM {
 			_loadBlock(scene, lines, index, map);
 			index--;
 		}
-		std::cout << "Test LoadMap" << std::endl;
 		MapGenerator::loadMap(Runner::width, Runner::height, map, scene);
 	}
 
@@ -295,14 +297,14 @@ namespace BBM {
 				                                                 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
 	}
 
-	void ParserYAML::_loadBonuses(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::_loadBonuses(std::shared_ptr<WAL::Scene> scene)
 	{
-		std::ifstream file("save/" + filename + "_bonus.yml");
+		std::ifstream file("save/" + fileName + "_bonus.yml");
 		std::string line;
 		std::vector<std::string> lines;
 
 		if (!file.good())
-			return;
+			throw (ParserError("File error"));
 		while (std::getline(file, line)) {
 			if (line.empty() || !line.compare("bonuses:"))
 				continue;
@@ -314,11 +316,11 @@ namespace BBM {
 		}
 	}
 
-	void ParserYAML::load(std::shared_ptr<WAL::Scene> scene, std::string filename)
+	void ParserYAML::load(std::shared_ptr<WAL::Scene> scene)
 	{
-		_loadBlocks(scene, filename);
-		_loadBonuses(scene, filename);
-		_loadPlayers(scene, filename);
+		_loadBlocks(scene);
+		_loadBonuses(scene);
+		_loadPlayers(scene);
 	}
 
 	WAL::Entity &ParserYAML::_parseEntityName(std::string line, WAL::Entity &entity)

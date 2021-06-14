@@ -211,7 +211,6 @@ namespace BBM
 			{UPPERFLOOR,  &createUpperFloor},
 		};
 
-		std::cout << "blockType: " << blockType << std::endl;
 		if (blockType == NOTHING || blockType == SPAWNER)
 			return;
 		auto element = elements.at(blockType);
@@ -475,7 +474,7 @@ namespace BBM
 
 	void MapGenerator::loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene)
 	{	
-		//generateHeightCollision(map, width, height, scene);
+		generateHeightCollision(map, width, height, scene);
 		generateWall(width, height, scene);
 		generateFloor(map, width, height, scene);
 		for (int x = 0; x < width + 1; x++)

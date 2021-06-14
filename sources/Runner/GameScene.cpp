@@ -42,33 +42,36 @@ namespace BBM
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		/*scene->addEntity("Player")
-			.addComponent<PositionComponent>(0, 1.01, 0)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
-			.addComponent<ControllableComponent>()
-			.addComponent<AnimatorComponent>()
-		    .addComponent<GravityComponent>()
-	        .addComponent<BumperTimerComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
-			.addComponent<TagComponent<Blowable>>()
-			//.addComponent<GamepadComponent>(0)
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
-			.addComponent<MovableComponent>()
-			.addComponent<SoundComponent>(soundPath)
-			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
-			.addComponent<BombHolderComponent>()
-			.addComponent<PlayerBonusComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				auto &animation = entity.getComponent<AnimationsComponent>();
-				animation.setAnimIndex(5);
-			});*/
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		//MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
-		ParserYAML::load(scene, "test");
+		try {
+			ParserYAML::load(scene);
+		} catch (std::exception const &err) {
+			scene->addEntity("Player")
+				.addComponent<PositionComponent>(0, 1.01, 0)
+				.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+				.addComponent<ControllableComponent>()
+				.addComponent<AnimatorComponent>()
+				.addComponent<GravityComponent>()
+				.addComponent<BumperTimerComponent>()
+				.addComponent<KeyboardComponent>()
+				.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
+				.addComponent<TagComponent<Blowable>>()
+						//.addComponent<GamepadComponent>(0)
+				.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
+				.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
+				.addComponent<MovableComponent>()
+				.addComponent<SoundComponent>(soundPath)
+				.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
+				.addComponent<BombHolderComponent>()
+				.addComponent<PlayerBonusComponent>()
+				.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
+					auto &animation = entity.getComponent<AnimationsComponent>();
+					animation.setAnimIndex(5);
+				});
+			MapGenerator::loadMap(Runner::width, Runner::height, MapGenerator::createMap(Runner::width, Runner::height), scene);
+		}
 
 		return scene;
 	}
