@@ -6,6 +6,7 @@
 
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
 #include "System/System.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Window.hpp"
@@ -38,6 +39,9 @@ namespace BBM
 
 		//! @param debug true if debug mode should be enabled
 		void setDebug(bool debug);
+
+		//! @param entity entity to draw bounding box of
+		void drawBoundingBox(const WAL::Entity &entity, const PositionComponent &posComponent, const Drawable3DComponent &drawable) const;
 
 		//! @brief ctor
 		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = false);
