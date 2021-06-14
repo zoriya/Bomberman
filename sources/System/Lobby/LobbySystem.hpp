@@ -8,7 +8,7 @@
 #include "Component/Lobby/LobbyComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Entity/Entity.hpp"
-#include <vector>
+#include <array>
 #include <string>
 
 namespace BBM
