@@ -551,7 +551,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 25, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, false, false), scene);
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, true, false), scene);
 
 		return scene;
 	}
