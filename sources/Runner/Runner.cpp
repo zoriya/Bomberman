@@ -108,35 +108,6 @@ namespace BBM
 			.addSystem<RenderSystem>(window);
 	}
 
-	std::shared_ptr<WAL::Scene> Runner::loadTitleScreenScene()
-	{
-		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
-			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
-		};
-		auto scene = std::make_shared<WAL::Scene>();
-		scene->addEntity("control")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<SoundComponent>(sounds)
-			.addComponent<MusicComponent>("assets/musics/music_title.ogg");
-		scene->addEntity("background")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
-		scene->addEntity("logo")
-			.addComponent<PositionComponent>(320, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_big.png");
-		scene->addEntity("text_prompt")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 130, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), BLACK)
-			.addComponent<OnIdleComponent>()
-			.addComponent<OnHoverComponent>()
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
-			});
-		return scene;
-	}
-
 	std::shared_ptr<WAL::Scene> Runner::loadMainMenuScene()
 	{
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
@@ -551,80 +522,6 @@ namespace BBM
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 
-		return scene;
-	}
-
-	std::shared_ptr<WAL::Scene> Runner::loadCreditScene()
-	{
-		auto scene = std::make_shared<WAL::Scene>();
-		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
-			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
-		};
-
-		scene->addEntity("background")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
-
-		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
-			.addComponent<SoundComponent>(sounds);
-
-		auto &raylibLogo = scene->addEntity("raylib logo")
-			.addComponent<PositionComponent>(1920 / 4, 1080 / 1.75, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/raylib.png");
-		auto &raylibText = scene->addEntity("raylib text")
-			.addComponent<PositionComponent>(1920 / 4, 1080 / 2, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Powered by:", 35, RAY::Vector2(), BLACK);
-		auto &otherRepoText = scene->addEntity("other repo text")
-			.addComponent<PositionComponent>(1920 / 4, 1080 / 4, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Many Thanks to:", 35, RAY::Vector2(), BLACK);
-		auto &BriansRepo = scene->addEntity("thx brian")
-			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 3.5, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Brian Guitteny (and his team)", 35, RAY::Vector2(), BLACK);
-		auto &team = scene->addEntity("team")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 / 3.5, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Team:\n Zoe Roux\n Clément Le Bihan\n Arthur Jamet\n Louis Auzuret\n Benjamin Henry\n Tom Augier", 35, RAY::Vector2(), BLACK);
-		auto &back = scene->addEntity("back to menu")
-			.addComponent<PositionComponent>(10, 1080 - 85, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
-			})
-			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-				texture->use("assets/buttons/button_back.png");
-			})
-			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-				texture->use("assets/buttons/button_back_hovered.png");
-			});
-		return scene;
-	}
-
-	std::shared_ptr<WAL::Scene> Runner::loadSplashScreenScene()
-	{
-		auto scene = std::make_shared<WAL::Scene>();
-
-		auto &splashComponent = scene->addEntity("animation component")
-			.addComponent<IntroAnimationComponent>()
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
-		auto &background = scene->addEntity("background")
-			.addComponent<PositionComponent>(0, 0, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(1920, 1080));
-		auto &text = scene->addEntity("powered by text")
-			.addComponent<PositionComponent>(1920 / 2 - 200, 1080 / 2 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("powered by", 30, RAY::Vector2(), BLACK);
-		auto &skipText = scene->addEntity("Press space to skip")
-			.addComponent<PositionComponent>(1920 - 250, 1080 - 30, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space to skip", 20, RAY::Vector2(), BLACK);
 		return scene;
 	}
 
