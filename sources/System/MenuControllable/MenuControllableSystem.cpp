@@ -60,6 +60,6 @@ namespace BBM
 		}
 		if (!this->_currentButton)
 			return;
-		this->_updateCurrentButton(controllable.jump, controllable.move);
+		this->_updateCurrentButton(controllable.select, controllable.move);
 	}
 }

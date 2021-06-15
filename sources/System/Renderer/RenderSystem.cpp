@@ -80,12 +80,11 @@ namespace BBM
 		this->_window.endDrawing();
 	}
 
-	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, MovableComponent, PositionComponent> &entity,
+	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
 		auto &pos = entity.get<PositionComponent>();
 		auto &cam = entity.get<CameraComponent>();
-		auto &mov = entity.get<MovableComponent>();
 		Vector3f newCameraPos = Vector3f(-1, -1, -1);
 		std::vector<Vector3f> playerPos;
 		float maxDist = 0;
@@ -94,16 +93,12 @@ namespace BBM
 
 		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>())
 			playerPos.emplace_back(pos.position);
-		for (int i = 0; i < playerPos.size(); i++) {
-			if (i == 0)
-				newCameraPos = playerPos[i].abs();
-			else
-				newCameraPos = (newCameraPos + playerPos[i]) / 2;
-		}
 		for (int i = 0; i < playerPos.size(); i++)
 			for (int j = 0; j < playerPos.size(); j++) {
-				if (maxDist < playerPos[i].distance(playerPos[j]))
+				if (maxDist < playerPos[i].distance(playerPos[j])) {
 					maxDist = playerPos[i].distance(playerPos[j]);
+					newCameraPos = (playerPos[i] + playerPos[j]) / 2;
+				}
 				if (lowerXDist < std::abs((playerPos[i].x - playerPos[j].x)))
 					lowerXDist = std::abs((playerPos[i].x - playerPos[j].x));
 				if (lowerZDist < std::abs((playerPos[i].z - playerPos[j].z)))

@@ -15,7 +15,7 @@
 
 namespace BBM
 {
-	class RenderSystem : public WAL::System<CameraComponent, MovableComponent, PositionComponent>
+	class RenderSystem : public WAL::System<CameraComponent, PositionComponent>
 	{
 
 		//! @brief The window to render on
@@ -36,7 +36,7 @@ namespace BBM
 		void onSelfUpdate() override;
 
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<CameraComponent, MovableComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @param debug true if debug mode should be enabled
 		void setDebug(bool debug);
