@@ -5,9 +5,10 @@
 ** ModelAnimation
 */
 
+#include <iostream>
 #include "Model/ModelAnimation.hpp"
 
-RAY::ModelAnimation::ModelAnimation(::ModelAnimation &animation):
+RAY::ModelAnimation::ModelAnimation(::ModelAnimation animation):
 	_animation(animation), _frameCounter(0)
 {
 }
@@ -38,9 +39,4 @@ RAY::ModelAnimation &RAY::ModelAnimation::incrementFrameCounter()
 RAY::ModelAnimation::operator ::ModelAnimation() const
 {
 	return this->_animation;
-}
-
-RAY::ModelAnimation::operator ::ModelAnimation *()
-{
-	return &this->_animation;
 }

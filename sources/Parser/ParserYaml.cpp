@@ -9,7 +9,6 @@
 #include <Map/Map.hpp>
 #include <Component/BombHolder/BombHolderComponent.hpp>
 #include <sstream>
-#include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Shaders/ShaderComponent.hpp>
 #include <Component/Animator/AnimatorComponent.hpp>
@@ -26,6 +25,7 @@
 #include <Runner/Runner.hpp>
 #include <cstring>
 #include <sstream>
+#include <Component/Gamepad/GamepadComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -33,8 +33,8 @@ namespace BBM {
 
 	const std::string ParserYAML::fileName = "save";
 	std::stringstream ParserYAML::_block("");
-	std::stringstream ParserYAML::_bonus("bonuses:");
-	std::stringstream ParserYAML::_player("players:");
+	std::stringstream ParserYAML::_bonus("");
+	std::stringstream ParserYAML::_player("");
 
 	std::string ParserYAML::_getBlockType(std::string blockName)
 	{
@@ -77,14 +77,16 @@ namespace BBM {
 	{
 		auto *position = entity.tryGetComponent<PositionComponent>();
 		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
+		auto *model = entity.tryGetComponent<Drawable3DComponent>();
 		auto name = entity.getName();
 
-		if (!position || !bombHolder)
+		if (!position || !bombHolder || !model)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_player << std::endl << "  " << name << ":" << std::endl << "    ";
-		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "        ";
-		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "        ";
+		_player << "texture_path: " << dynamic_cast<RAY3D::Model *>(model->drawable.get())->getModelTexture().getResourcePath() << std::endl << "    ";
+		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
+		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
 		_player << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";
 	}
 
@@ -116,6 +118,8 @@ namespace BBM {
 		std::ofstream playerFile(player);
 		std::ofstream bonusFile(bonus);
 
+		_player << "players:";
+		_bonus << "bonuses:";
 		_block << "width: " << std::to_string(Runner::mapWidth);
 		_block << std::endl << "height: " + std::to_string(Runner::mapHeight);
 		_block << std::endl << "blocks:";
@@ -136,49 +140,39 @@ namespace BBM {
 
 	void ParserYAML::_loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
 	{
-		auto &entity = scene->addEntity("");
-		static std::map<SoundComponent::SoundIndex, std::string> soundPath ={
-				{SoundComponent::JUMP, "assets/sounds/jump.wav"},
-				{SoundComponent::MOVE, "assets/sounds/move.ogg"},
-				{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
-				//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
-		};
 		int maxBomb = 3;
 		float explosionRadius = 3;
+		std::string name;
 		Vector3f pos;
+		std::string assets;
 
 		for (; index != lines.size(); index++) {
-			if (lines[index].find("max_bomb") != std::string::npos) {
+			if (lines[index].find("max_bomb") != std::string::npos && !name.empty()) {
 				maxBomb = _parseMaxBomb(lines[index]);
-			} else if (lines[index].find("explosion_radius") != std::string::npos) {
+			} else if (lines[index].find("explosion_radius") != std::string::npos && !name.empty()) {
 				explosionRadius = _parseExplosionRadius(lines[index]);
-			} else if (lines[index].find("position") != std::string::npos) {
+			} else if (lines[index].find("position") != std::string::npos && !name.empty()) {
 				pos = _parsePosition(lines[index]);
+			} else if (lines[index].find("texture_path") != std::string::npos && !name.empty()) {
+				assets = _parseAssets(lines[index]);
 			} else {
-				if (!entity.getName().empty()) {
+				if (!name.empty()) {
 					break;
 				}
-				_parseEntityName(lines[index], entity);
+				name = lines[index];
 			}
 		}
-		entity.addComponent<PositionComponent>(pos)
-			.addComponent<BombHolderComponent>(maxBomb, explosionRadius)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
-			.addComponent<ControllableComponent>()
-			.addComponent<AnimatorComponent>()
-			.addComponent<KeyboardComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
-			.addComponent<TagComponent<Blowable>>()
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
-			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
-			.addComponent<MovableComponent>()
-			.addComponent<SoundComponent>(soundPath)
-			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
-			.addComponent<PlayerBonusComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				auto &animation = entity.getComponent<AnimationsComponent>();
-				animation.setAnimIndex(5);
-			});
+		auto &player = Runner::createPlayer(*scene);
+		_parseEntityName(name, player);
+		auto *position = player.tryGetComponent<PositionComponent>();
+		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
+		auto *model = player.tryGetComponent<Drawable3DComponent>();
+		if (position && bombHolder && model && !assets.empty()) {
+			dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE, assets);
+			position->position = pos;
+			bombHolder->explosionRadius = explosionRadius;
+			bombHolder->maxBombCount = maxBomb;
+		}
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene)
@@ -207,9 +201,9 @@ namespace BBM {
 		MapGenerator::BlockType blockType = MapGenerator::NOTHING;
 
 		for (; index != lines.size(); index++) {
-			if (lines[index].find("position") != std::string::npos) {
+			if (lines[index].find("position") != std::string::npos && !tmpName.empty()) {
 				pos = _parsePosition(lines[index]);
-			} else if (lines[index].find("block_type") != std::string::npos) {
+			} else if (lines[index].find("block_type") != std::string::npos && !tmpName.empty()) {
 				blockType = _parseBlockType(lines[index]);
 			} else {
 				if (!tmpName.empty()) {
@@ -260,17 +254,16 @@ namespace BBM {
 	void ParserYAML::_loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
 	{
 		auto &entity = scene->addEntity("");
-		std::string tmpName = "";
 		Vector3f pos;
 		Bonus::BonusType bonusType;
 
 		for (; index != lines.size(); index++) {
-			if (lines[index].find("position") != std::string::npos) {
+			if (lines[index].find("position") != std::string::npos && !entity.getName().empty()) {
 				pos = _parsePosition(lines[index]);
-			} else if (lines[index].find("bonus_type") != std::string::npos) {
+			} else if (lines[index].find("bonus_type") != std::string::npos && !entity.getName().empty()) {
 				bonusType = _parseBonusType(lines[index]);
 			} else {
-				if (!tmpName.empty()) {
+				if (!entity.getName().empty()) {
 					break;
 				}
 				_parseEntityName(lines[index], entity);
@@ -314,7 +307,16 @@ namespace BBM {
 		return (entity);
 	}
 
-	Vector3f ParserYAML::_parsePosition(std::string &line) {
+	std::string ParserYAML::_parseAssets(std::string &line)
+	{
+		if (line.find(":", 0) == std::string::npos)
+			throw (ParserError("Error with saved map: Error parsing assets.\n                Loading default maps..."));
+		auto start = line.find(":", 0) + 2;
+		return (line.substr(start, line.length() - start));
+	}
+
+	Vector3f ParserYAML::_parsePosition(std::string &line)
+	{
 		std::string x;
 		std::string y;
 		std::string z;
@@ -325,43 +327,43 @@ namespace BBM {
 			subStr = line.substr(start, line.find("]", 0) - 1 - start);
 			auto pos = _splitStr(subStr, ' ');
 			if (pos.size() != 3)
-				throw (ParserError("Error parsing position"));
+				throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 			x = pos[0];
 			y = pos[1];
 			z = pos[2];
 		} catch (const std::out_of_range &err) {
-			throw (ParserError("Error parsing position"));
+			throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 		}
 		if (!_isFloat(x) || !_isFloat(y) || !_isFloat(z))
-			throw (ParserError("Error parsing position"));
+			throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 		return Vector3f(std::atof(x.c_str()), std::atof(y.c_str()), std::atof(z.c_str()));
 	}
 
 	int ParserYAML::_parseMaxBomb(std::string &line)
 	{
 		if (line.find(": ") == std::string::npos || !_isInteger(line.substr(line.find(": ") + 2)))
-			throw (ParserError("Couldn't parse max bomb"));
+			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
 		return (std::atoi(line.substr(line.find(": ") + 2).c_str()));
 	}
 
 	float ParserYAML::_parseExplosionRadius(std::string &line)
 	{
 		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
-			throw (ParserError("Couldn't parse explosion radius"));
+			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
 	}
 
-	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string blockType)
+	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string &blockType)
 	{
 		if (blockType.find(": ") == std::string::npos || !_isInteger(blockType.substr(blockType.find(": ") + 2)))
-			throw (ParserError("Couldn't parse block type"));
+			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
 		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ") + 2).c_str())));
 	}
 
-	Bonus::BonusType ParserYAML::_parseBonusType(std::string bonusType)
+	Bonus::BonusType ParserYAML::_parseBonusType(std::string &bonusType)
 	{
 		if (bonusType.find(": ") == std::string::npos || !_isInteger(bonusType.substr(bonusType.find(": ") + 2)))
-			throw (ParserError("Couldn't parse bonus type"));
+			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
 		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ") + 2).c_str())));
 	}
 

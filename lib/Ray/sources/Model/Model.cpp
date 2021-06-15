@@ -138,4 +138,9 @@ namespace RAY::Drawables::Drawables3D
 	{
 		this->_model->materials[0].shader = this->_originalShader;
 	}
+
+	Texture Model::getModelTexture() const
+	{
+		return (this->_textureList.at(MAP_DIFFUSE));
+	}
 }

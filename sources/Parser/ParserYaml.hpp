@@ -7,6 +7,7 @@
 #include <Wal.hpp>
 #include "Items/Bonus.hpp"
 #include "Map/Map.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
 
 namespace BBM {
 	class ParserYAML {
@@ -41,19 +42,22 @@ namespace BBM {
 		static WAL::Entity &_parseEntityName(std::string line, WAL::Entity &entity);
 		//!@param line to parse
 		//!@brief return max bomb parsed
-		static int _parseMaxBomb(std::string &filename);
+		static int _parseMaxBomb(std::string &line);
 		//!@param line to parse
 		//!@brief return explosion radius parsed
-		static float _parseExplosionRadius(std::string &filename);
+		static float _parseExplosionRadius(std::string &line);
 		//!@param line to parse
 		//!@brief return vector3f of position parsed
-		static Vector3f _parsePosition(std::string &filename);
+		static Vector3f _parsePosition(std::string &line);
 		//!@param blockType to parse
 		//!@brief return BlockType of type parsed
-		static MapGenerator::BlockType _parseBlockType(std::string blockType);
+		static MapGenerator::BlockType _parseBlockType(std::string &blockType);
 		//!@param bonusType to parse
 		//!@brief return bonusType of type parsed
-		static Bonus::BonusType _parseBonusType(std::string bonusType);
+		static Bonus::BonusType _parseBonusType(std::string &bonusType);
+		//!@param assets to parse
+		//!@brief return assets parsed
+		static std::string _parseAssets(std::string &line);
 
 		//!@param scene Scene to update
 		//!@param lines Lines of the file

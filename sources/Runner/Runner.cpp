@@ -6,28 +6,27 @@
 #include <iostream>
 #include "System/Movable/MovableSystem.hpp"
 #include "System/Renderer/RenderSystem.hpp"
-#include <Model/Model.hpp>
-#include <Drawables/2D/Text.hpp>
+#include <Drawables/2D/Rectangle.hpp>
 #include <TraceLog.hpp>
 #include "System/Keyboard/KeyboardSystem.hpp"
 #include "System/Controllable/ControllableSystem.hpp"
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
+#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
-#include <Model/ModelAnimations.hpp>
 #include <System/Timer/TimerSystem.hpp>
 #include <System/BombHolder/BombHolderSystem.hpp>
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
 #include <System/Animator/AnimatorSystem.hpp>
+#include <Component/Tag/TagComponent.hpp>
 #include <System/IntroAnimation/IntroAnimationSystem.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
 #include <System/Bonus/PlayerBonusSystem.hpp>
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
-#include <Drawables/Texture.hpp>
 #include <System/Bomb/BombSystem.hpp>
 #include <Parser/ParserYaml.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
@@ -35,9 +34,8 @@
 #include "System/Gravity/GravitySystem.hpp"
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
-
-namespace RAY3D = RAY::Drawables::Drawables3D;
-namespace RAY2D = RAY::Drawables::Drawables2D;
+#include "System/Lobby/LobbySystem.hpp"
+#include "Component/Lobby/LobbyComponent.hpp"
 
 namespace BBM
 {
@@ -47,9 +45,9 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		if (RAY::Window::getInstance().shouldClose()) {
+		auto &view = engine.getScene()->view<ControllableComponent>();
+		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
-		}
 		if (gameState.currentScene == GameState::SceneID::GameScene || gameState.currentScene == GameState::SceneID::SplashScreen) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
@@ -74,6 +72,7 @@ namespace BBM
 		wal.addSystem<TimerSystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<LobbySystem>()
 			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
 			.addSystem<BombHolderSystem>()
@@ -101,15 +100,30 @@ namespace BBM
 			.addSystem<RenderSystem>(window);
 	}
 
+	void Runner::addMenuControl(WAL::Scene &scene)
+	{
+		scene.addEntity("Keyboard default control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>();
+		scene.addEntity("Keyboard second control")
+			.addComponent<ControllableComponent>()
+			.addComponent<KeyboardComponent>(ControllableComponent::Layout::KEYBOARD_1);
+		for (int i = 0; i < 4; i++) {
+			scene.addEntity("Gamepad controller")
+				.addComponent<ControllableComponent>()
+				.addComponent<GamepadComponent>(i);
+		}
+	}
+
 	void Runner::loadScenes()
 	{
 		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
-		gameState._loadedScenes[GameState::SceneID::GameScene] = loadGameScene();
 		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
 		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
 		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
 		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
 		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
+		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
 	}
 
 	int Runner::run()

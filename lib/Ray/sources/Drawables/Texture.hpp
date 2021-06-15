@@ -21,7 +21,10 @@ namespace RAY
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
 			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
-			Texture(const std::string &filename, bool lonely = false);
+			explicit Texture(const std::string &filename, bool lonely = false);
+
+			//! @brief Create an empty texture
+			Texture();
 
 			//! @brief A texture is copy constructable
 			Texture(const Texture &) = default;
@@ -33,13 +36,15 @@ namespace RAY
 			Texture &operator=(const Texture &) = default;
 			
 			//! @brief Texture destructor, will not unload ressources
-			~Texture() = default;
+			~Texture() override = default;
 
 			//! @brief draw texture on a window
 			void drawOn(RAY::Window &) override;
 	
 			//! @brief Load texture from file, lets one use one entity for multiple files
 			Texture &use(const std::string &filename);
+
+			std::string getResourcePath() const;
 
 		protected:
 		private:

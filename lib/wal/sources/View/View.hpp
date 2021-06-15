@@ -61,14 +61,20 @@ namespace WAL
 		std::optional<ViewEntity<Components...>> _entity;
 
 	public:
-		ViewEntity<Components...> &operator*()
+		using iterator_category = std::forward_iterator_tag;
+		using difference_type   = std::ptrdiff_t;
+		using value_type        = ViewEntity<Components...>;
+		using pointer           = value_type *;
+		using reference         = value_type &;
+
+		reference operator*()
 		{
 			if (!this->_entity)
 				this->_entity.emplace(*this->_it);
 			return *this->_entity;
 		}
 
-		ViewEntity<Components...> *operator->()
+		pointer operator->()
 		{
 			if (!this->_entity)
 				this->_entity =(*this->_it);
