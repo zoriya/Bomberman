@@ -485,12 +485,12 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(0, 0, 0))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25), Vector3f(width, 0.75, 0.75));
+				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25), Vector3f(width + 1, 0.75, 0.75));
 			scene->addEntity("FloorUp Hitbox")
 				.addComponent<PositionComponent>(Vector3f(0, 0, height))
 				.addComponent<CollisionComponent>(
 					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, 0.75));
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width + 1, 0.75, 0.75));
 		}
 		if (floor >= 2)
 			scene->addEntity("Middle Hitbox")
