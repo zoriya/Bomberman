@@ -75,9 +75,9 @@ namespace BBM
 				//animation.setAnimIndex(5);
 			});
 
-		scene->addEntity("background image")
-		.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false, 2, 0)
-	    .addComponent<PositionComponent>();
+	/*	scene->addEntity("background image")
+		.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false, 3, 0)
+	    .addComponent<PositionComponent>();*/
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));

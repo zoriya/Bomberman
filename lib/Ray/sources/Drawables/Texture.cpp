@@ -44,6 +44,6 @@ namespace RAY {
 
 	void Texture::drawOn(RAY::Window &)
 	{
-		DrawTextureEx(*this, this->_position, 0, this->_scale, this->_color);
+		DrawTextureEx(*this, this->_position, this->_rotation, this->_scale, this->_color);
 	}
 }
