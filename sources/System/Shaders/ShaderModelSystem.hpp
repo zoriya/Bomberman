@@ -15,7 +15,7 @@ namespace BBM
 	public:
 
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ShaderComponentModel> &entity) override;
+		void onUpdate(WAL::ViewEntity<ShaderComponentModel> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief ctor
 		explicit ShaderModelSystem(WAL::Wal &wal);

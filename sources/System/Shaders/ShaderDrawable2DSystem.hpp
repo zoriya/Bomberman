@@ -15,7 +15,7 @@ namespace BBM
 	public:
 
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ShaderComponentDrawable2D> &entity) override;
+		void onUpdate(WAL::ViewEntity<ShaderComponentDrawable2D> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief ctor
 		explicit ShaderDrawable2DSystem(WAL::Wal &wal);

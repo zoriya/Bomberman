@@ -11,10 +11,10 @@ namespace BBM
 	{
 	}
 
-	void ShaderDrawable2DSystem::onFixedUpdate(WAL::ViewEntity<ShaderComponentDrawable2D> &entity)
+	void ShaderDrawable2DSystem::onUpdate(WAL::ViewEntity<ShaderComponentDrawable2D> &entity, std::chrono::nanoseconds dtime)
 	{
 		auto &shader = entity->getComponent<ShaderComponentDrawable2D>();
 
-		shader.onFixedUpdate(entity, this->_wal);
+		shader.update(entity, this->_wal, dtime);
 	}
 }

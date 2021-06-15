@@ -29,8 +29,6 @@
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
 
-int glob = 0;
-
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
 namespace BBM
@@ -63,22 +61,16 @@ namespace BBM
 
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
-			//.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
-			.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(1, 16, 16))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
+			//.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(1, 16, 16))
 			.addComponent<ControllableComponent>()
 			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/mask.fs", "assets/shaders/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal) {
-				/*auto &shader = entity.getComponent<ShaderComponentModel>();
-				shader.shader.setShaderUniformVar("frame", glob);
-				glob++;
-				glob %= 10;*/
-			})
 	        .addComponent<BumperTimerComponent>()
 //			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
-			//.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
+			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<SoundComponent>(soundPath)
@@ -86,8 +78,8 @@ namespace BBM
 			.addComponent<BombHolderComponent>()
 			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
-				//auto &animation = entity.getComponent<AnimationsComponent>();
-				//animation.setAnimIndex(5);
+				auto &animation = entity.getComponent<AnimationsComponent>();
+				animation.setAnimIndex(5);
 			});
 	}
 }

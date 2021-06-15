@@ -10,6 +10,7 @@
 #include <Entity/Entity.hpp>
 #include <Shaders/Shaders.hpp>
 #include <Model/Model.hpp>
+#include <chrono>
 #include <Wal.hpp>
 
 namespace BBM
@@ -25,7 +26,7 @@ namespace BBM
 		std::string vertexFilePath;
 
 		//! @brief the function called to update shaders vars
-		WAL::Callback<WAL::Entity &, WAL::Wal &> onFixedUpdate;
+		WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> update;
 
 		//! @brief getter for _shader
 		RAY::Shader &getShader();
@@ -45,7 +46,7 @@ namespace BBM
 		ShaderComponent(WAL::Entity &entity,
 		                const std::string &fragmentFilePath,
 		                const std::string &vertexFilePath = "",
-		                const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &>());
+		                const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
 
 		//! @brief Default copy ctor
 		ShaderComponent(const ShaderComponent &) = default;
@@ -69,7 +70,7 @@ namespace BBM
 		ShaderComponentModel(WAL::Entity &entity,
 		                     const std::string &fragmentFilePath,
 		                     const std::string &vertexFilePath = "",
-		                     const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &>());
+		                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
 
 		//! @brief Default copy ctor
 		ShaderComponentModel(const ShaderComponentModel &) = default;
@@ -89,7 +90,7 @@ namespace BBM
 		ShaderComponentDrawable2D(WAL::Entity &entity,
 		                          const std::string &fragmentFilePath,
 		                          const std::string &vertexFilePath = "",
-		                          const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &>());
+		                          const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
 
 		//! @brief Default copy ctor
 		ShaderComponentDrawable2D(const ShaderComponentDrawable2D &) = default;

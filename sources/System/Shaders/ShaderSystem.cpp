@@ -12,10 +12,10 @@ namespace BBM
 	{
 	}
 
-	void ShaderSystem::onFixedUpdate(WAL::ViewEntity<ShaderComponent> &entity)
+	void ShaderSystem::onUpdate(WAL::ViewEntity<ShaderComponent> &entity, std::chrono::nanoseconds dtime)
 	{
 		auto &shader = entity->getComponent<ShaderComponent>();
 
-		shader.onFixedUpdate(entity, this->_wal);
+		shader.update(entity, this->_wal, dtime);
 	}
 }

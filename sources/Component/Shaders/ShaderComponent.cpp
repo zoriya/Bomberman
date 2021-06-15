@@ -22,12 +22,12 @@ namespace BBM
 	ShaderComponent::ShaderComponent(WAL::Entity &entity,
 	                                 const std::string &fragmentFilePath,
 	                                 const std::string &vertexFilePath,
-	                                 const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
+	                                 const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate)
 		: WAL::Component(entity),
 		  shader(vertexFilePath, fragmentFilePath),
 		  fragmentFilePath(fragmentFilePath),
 		  vertexFilePath(vertexFilePath),
-		  onFixedUpdate(onFixedUpdate)
+		  update(onFixedUpdate)
 	{
 	}
 
@@ -44,7 +44,7 @@ namespace BBM
 	ShaderComponentModel::ShaderComponentModel(WAL::Entity &entity,
 	                                           const std::string &fragmentFilePath,
 	                                           const std::string &vertexFilePath,
-	                                           const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
+	                                           const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate)
 		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate)
 	{
 	}
@@ -60,7 +60,7 @@ namespace BBM
 	ShaderComponentDrawable2D::ShaderComponentDrawable2D(WAL::Entity &entity,
 	                                                     const std::string &fragmentFilePath,
 	                                                     const std::string &vertexFilePath,
-	                                                     const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
+	                                                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate)
 		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate)
 	{
 	}
