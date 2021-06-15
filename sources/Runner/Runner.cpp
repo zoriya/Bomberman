@@ -34,6 +34,7 @@
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
+#include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
 
@@ -88,6 +89,7 @@ namespace BBM
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
 			.addSystem<EndConditionSystem>()
+			.addSystem<ScoreSystem>()
 			.addSystem<MusicSystem>();
 	}
 
