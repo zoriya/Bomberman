@@ -142,7 +142,8 @@ namespace BBM
 				.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>(false);
+				    // todo check why it does this | hacky way to fix ready texture
+				.addComponent<Drawable2DComponent, RAY::Texture>(false, "");
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
