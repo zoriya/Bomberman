@@ -48,13 +48,10 @@ namespace BBM
 		auto &view = engine.getScene()->view<ControllableComponent>();
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
-		if (gameState.currentScene == GameState::SceneID::GameScene || gameState.currentScene == GameState::SceneID::SplashScreen) {
+		if (gameState.currentScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
-					break;
-				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.jump) {
-					gameState.nextScene = GameState::SceneID::TitleScreenScene;
 					break;
 				}
 			}
@@ -91,7 +88,6 @@ namespace BBM
 			.addSystem<BumperTimerSystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
-			.addSystem<MenuControllableMouseSystem>()
 			.addSystem<MusicSystem>();
 	}
 
