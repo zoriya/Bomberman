@@ -24,6 +24,7 @@
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
+#include "Component/Score/ScoreComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -45,6 +46,7 @@ namespace BBM
 			.addComponent<PositionComponent>(0, 1.01, 0)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
 			.addComponent<ControllableComponent>()
+			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()

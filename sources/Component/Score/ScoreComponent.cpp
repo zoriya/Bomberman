@@ -5,7 +5,7 @@ namespace BBM
 {
 	ScoreComponent::ScoreComponent(WAL::Entity &entity)
 		: Component(entity),
-		  position()
+		  score(PLAYING)
 	{}
 
 	WAL::Component *ScoreComponent::clone(WAL::Entity &entity) const
