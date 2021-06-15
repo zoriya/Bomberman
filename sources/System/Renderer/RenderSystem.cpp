@@ -80,23 +80,28 @@ namespace BBM
 		this->_window.endDrawing();
 	}
 
-	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
+	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, MovableComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
 		auto &pos = entity.get<PositionComponent>();
 		auto &cam = entity.get<CameraComponent>();
+		auto &mov = entity.get<MovableComponent>();
 		Vector3f newCameraPos = Vector3f(-1, -1, -1);
 		std::vector<Vector3f> playerPos;
 		float maxDist = 0;
 
 		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
+			std::cout << "Player pos" << pos.position << std::endl;
 			playerPos.emplace_back(pos.position);
 		}
 		for (int i = 0; i < playerPos.size(); i++) {
-			if (i == 0)
+			if (i == 0) {
 				newCameraPos = playerPos[i];
-			else
+				std::cout << "First Camera Pos" << newCameraPos << std::endl;
+			} else {
+				std::cout << "Other Player pos" << playerPos[i] << std::endl;
 				newCameraPos = (newCameraPos + playerPos[i]) / 2;
+			}
 		}
 		for (int i = 0; i < playerPos.size(); i++)
 			for (int j = 0; j < playerPos.size(); j++) {
@@ -105,13 +110,10 @@ namespace BBM
 			}
 		if (maxDist < 14)
 			maxDist = 14;
+		newCameraPos.y = maxDist;
+		newCameraPos.z -= 1;
+		mov.addForce((newCameraPos - pos.position.abs()) / 10);
 		cam.target = newCameraPos;
-		pos.position = newCameraPos;
-		
-		pos.position.y = maxDist;
-		pos.position.z -= 1;
-		std::cout << pos.position << std::endl;
-		std::cout << cam.target << std::endl;
 		_camera.setPosition(pos.position);
 		_camera.setTarget(cam.target);
 	}
