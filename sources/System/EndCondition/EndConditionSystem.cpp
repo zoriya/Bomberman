@@ -4,7 +4,8 @@
 #include "Runner/Runner.hpp"
 #include "Component/Score/ScoreComponent.hpp"
 
-namespace BBM {
+namespace BBM
+{
 
 	EndConditionSystem::EndConditionSystem(WAL::Wal &wal)
 		: System(wal)
@@ -17,9 +18,9 @@ namespace BBM {
 
 		if (!view.size())
 			return;
-        for (auto & [_ , scoreComponent, healthComponent]: view)
-            alivePlayersCount += (healthComponent.getHealthPoint() != 0);
-        if (alivePlayersCount <= 1)
-            Runner::gameState.nextScene = Runner::gameState.ScoreScene;
+		for (auto &[_, scoreComponent, healthComponent]: view)
+			alivePlayersCount += (healthComponent.getHealthPoint() != 0);
+		if (alivePlayersCount <= 1)
+			Runner::gameState.nextScene = Runner::gameState.ScoreScene;
 	}
 }
