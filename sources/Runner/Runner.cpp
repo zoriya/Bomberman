@@ -37,6 +37,7 @@
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
+#include "System/MenuControllable/MenuControllableMouseSystem.hpp"
 
 namespace BBM
 {
@@ -90,6 +91,7 @@ namespace BBM
 			.addSystem<BumperTimerSystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
+			.addSystem<MenuControllableMouseSystem>()
 			.addSystem<MusicSystem>();
 	}
 
