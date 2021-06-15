@@ -176,9 +176,9 @@ namespace BBM
 
 	public:
 
-		static void wallYouShouldNotPass(WAL::Entity &entity,
-		                         const WAL::Entity &wall,
-		                         CollisionComponent::CollidedAxis collidedAxis);
+		static void wallCollision(WAL::Entity &entity,
+	                            const WAL::Entity &wall,
+	                            CollisionComponent::CollidedAxis collidedAxis);
 		static void wallCollided(WAL::Entity &entity,
 		                         const WAL::Entity &wall,
 		                         CollisionComponent::CollidedAxis collidedAxis);

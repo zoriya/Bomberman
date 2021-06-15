@@ -7,6 +7,8 @@
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
+#include <map>
+#include <random>
 #include "Component/BombHolder/BombHolderComponent.hpp"
 
 namespace BBM {
@@ -55,10 +57,21 @@ namespace BBM {
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
-		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
+		static std::default_random_engine generator(time(nullptr));
+		std::map<BonusType, float> chanceValue = {
+			{NOTHING, 100.0f},
+			{SPEEDUP, 45.0f},
+			{BOMBSTOCK, 30.0f},
+			{EXPLOSIONINC, 15.0f},
+			{NOCLIP, 1.5f},
+		};
+		std::uniform_int_distribution<int> distribution(1,1000);
+		float value = (distribution(generator) / 10);
+		BonusType bonus = NOTHING;
 
-		if (rnd <= 0.8)
-			return (static_cast<BonusType>((std::rand() % NOCLIP) + 1));
-		return (NOTHING);
+		for (auto &chance : chanceValue)
+			if (chance.second > value)
+				bonus = chance.first;
+		return (bonus);
 	}
 }
