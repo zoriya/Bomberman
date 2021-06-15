@@ -20,7 +20,8 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 
-        scene->addEntity("Control entity")
+        addMenuControl(*scene);
+        scene->addEntity("Audio ressources")
 			.addComponent<MusicComponent>("assets/musics/music_result.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
