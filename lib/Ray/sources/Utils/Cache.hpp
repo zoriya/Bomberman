@@ -73,24 +73,6 @@ namespace RAY {
 
 	template<>
 	class Cache<::ModelAnimation> {
-		public:
-			Cache(std::function<::ModelAnimation *(const char *, int *)> dataLoader, std::function<void(::ModelAnimation *, unsigned int)>dataUnloader):
-				_dataLoader(std::move(dataLoader)), _dataUnloader(std::move(dataUnloader))
-			{};
-			std::shared_ptr<::ModelAnimation> fetch(const std::string &path, int *counter)
-			{
-				if (this->_cache.find(path) != this->_cache.end())
-					return this->_cache[path];
-
-				::ModelAnimation *animations = this->_dataLoader(path.c_str(), counter);
-				unsigned int animCount = *counter;
-
-				this->_cache.emplace(path, std::shared_ptr<::ModelAnimation>(
-				animations, [this, animCount](::ModelAnimation *p) {
-			        this->_dataUnloader(p, animCount);
-				}));
-				return this->_cache[path];
-			};
 		private:
 			//! @brief function to call to load data
 			std::function<::ModelAnimation *(const char *, int *)> _dataLoader;
@@ -98,10 +80,34 @@ namespace RAY {
 			//! @brief function to call when the ray data will be unloaded
 			std::function<void(::ModelAnimation *, unsigned int)> _dataUnloader;
 
-			//! @brief map storing shared ptr of caches
-			std::unordered_map<std::string, std::shared_ptr<::ModelAnimation>> _cache;
-	};
+			typedef struct {
+				std::shared_ptr<::ModelAnimation> animations;
+				int animationsCount;
+			} AnimationsHolder;
 
+			//! @brief map storing shared ptr of caches
+			std::unordered_map<std::string, AnimationsHolder> _cache;
+		public:
+			Cache(std::function<::ModelAnimation *(const char *, int *)> dataLoader, std::function<void(::ModelAnimation *, unsigned int)>dataUnloader):
+				_dataLoader(std::move(dataLoader)), _dataUnloader(std::move(dataUnloader))
+			{};
+			std::shared_ptr<::ModelAnimation> fetch(const std::string &path, int *counter)
+			{
+				if (this->_cache.find(path) != this->_cache.end()) {
+					*counter = this->_cache[path].animationsCount;
+				} else {
+					::ModelAnimation *animations = this->_dataLoader(path.c_str(), counter);
+					int animCount = *counter;
+					AnimationsHolder holder = {std::shared_ptr<::ModelAnimation>(
+						animations, [this, animCount](::ModelAnimation *p) {
+			    	    this->_dataUnloader(p, animCount);
+					}),animCount};
+
+					this->_cache.emplace(path, holder);
+				}
+				return this->_cache[path].animations;
+			};
+	};
 	template<>
 	class Cache<::Shader>
 	{

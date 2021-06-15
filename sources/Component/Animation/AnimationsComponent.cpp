@@ -8,9 +8,9 @@
 
 namespace BBM
 {
-	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play)
+	AnimationsComponent::AnimationsComponent(WAL::Entity &entity, const std::string &path, int animIndex, bool play)
 		: WAL::Component(entity),
-		  _modelAnimation(std::move(modelAnimation)),
+		  _modelAnimation(path),
 		  _currentAnimIndex(animIndex),
 		  _animDisabled(play)
 	{
@@ -20,7 +20,7 @@ namespace BBM
 	WAL::Component *AnimationsComponent::clone(WAL::Entity &entity) const
 	{
 		return new AnimationsComponent(entity,
-		                               RAY::ModelAnimations(this->_modelAnimation.getFilePath()),
+		                               this->_modelAnimation.getFilePath(),
 		                               this->_currentAnimIndex);
 	}
 
