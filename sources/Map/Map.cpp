@@ -450,14 +450,16 @@ namespace BBM
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
-			if (map[std::make_tuple(i, 0, height)] == NOTHING && map[std::make_tuple(i, 0, 0)] == NOTHING) {
+			if (map[std::make_tuple(i, 0, 0)] != UPPERFLOOR && map[std::make_tuple(i, 0, 0)] != HOLE
+			    && map[std::make_tuple(i, 0, 0)] != BUMPER) {
 				floor -= 1;
 				break;
 			}
 		}
 		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
-				if (map[std::make_tuple(i, 0, i)] == NOTHING) {
+				if (map[std::make_tuple(i, 0, j)] != UPPERFLOOR && map[std::make_tuple(i, 0, j)] != HOLE
+			        && map[std::make_tuple(i, 0, j)] != BUMPER) {
 					floor -= 1;
 					break;
 				}

@@ -44,6 +44,8 @@ namespace BBM
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
+			void onStart() override;
+
 			//! @brief Create a new gampad component using default keys.
 			explicit GamepadComponent(WAL::Entity &entity);
 
