@@ -12,7 +12,7 @@
 #include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
-#include <Component/P/TagComponent.hpp>
+#include "Component/Bonus/PlayerBonusComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 using namespace std::chrono_literals;
@@ -24,8 +24,11 @@ namespace BBM
 	                                CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *mov = entity.tryGetComponent<MovableComponent>();
-		auto *playerBonus = entity.tryGetComponent<Pl
+		auto *playerBonus = entity.tryGetComponent<PlayerBonusComponent>();
+
 		if (!mov)
+			return;
+		if (playerBonus && playerBonus->isNoClipOn)
 			return;
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)
 			mov->_velocity.x = 0;
@@ -42,10 +45,11 @@ namespace BBM
 		static std::map<Bonus::BonusType, std::string> map = {
 				{Bonus::BonusType::BOMBSTOCK, "assets/items/bombup"},
 				{Bonus::BonusType::SPEEDUP, "assets/items/speedup"},
-				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"}
+				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"},
+				{Bonus::BonusType::NOCLIP, "assets/items/wallpass"}
 		};
 		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
-				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus, &Bonus::NoClipBonus
 		};
 		auto bonusType = Bonus::getRandomBonusType();
 

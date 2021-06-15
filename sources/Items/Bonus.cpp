@@ -28,9 +28,7 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!bombHolder || !playerBonus)
 			return;
-		if (bombHolder->explosionRadius <= 6)
-			bombHolder->explosionRadius++;
-		playerBonus->nextRangeBonusRate = playerBonus->rangeBonusRate;
+		bombHolder->explosionRadius++;
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -53,6 +51,7 @@ namespace BBM {
 		if (!playerBonus)
 			return;
 		playerBonus->nextNoClipRate = playerBonus->nextSpeedBonusRate;
+		playerBonus->isNoClipOn = true;
 	}
 
 	Bonus::BonusType Bonus::getRandomBonusType()

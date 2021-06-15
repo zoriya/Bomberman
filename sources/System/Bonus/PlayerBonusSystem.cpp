@@ -23,13 +23,10 @@ namespace BBM
 			playerBonus.nextSpeedBonusRate = playerBonus.speedBonusRate;
 			controllable.speed = 0.25f;
 		}
-		playerBonus.nextRangeBonusRate -= dtime;
-		if (playerBonus.nextRangeBonusRate <= 0ns) {
-			playerBonus.nextRangeBonusRate = playerBonus.rangeBonusRate;
-			holder.explosionRadius = 3;
-		}
 		playerBonus.nextNoClipRate -= dtime;
-		if (playerBonus.nextNoClipRate <= 0ns)
+		if (playerBonus.nextNoClipRate <= 0ns) {
 			playerBonus.nextNoClipRate = playerBonus.noClipBonusRate;
+			playerBonus.isNoClipOn = false;
+		}
 	}
 }
