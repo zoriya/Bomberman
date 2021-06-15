@@ -14,11 +14,8 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Button/ButtonComponent.hpp"
-#include "Drawables/2D/Text.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Model/Model.hpp"
@@ -34,7 +31,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
 
