@@ -3,7 +3,13 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-find_package(Lua REQUIRED)
+
+find_package(Lua QUIET)
+if (NOT LUA_FOUND)
+	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/../lua)
+	find_package(Lua REQUIRED)
+endif()
+
 include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
