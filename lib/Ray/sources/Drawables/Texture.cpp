@@ -13,8 +13,8 @@ namespace RAY {
 
 	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture); 
 
-	Texture::Texture(const std::string &filename, bool lonely):
-		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
+	Texture::Texture(const std::string &filename, bool lonely, float scale, float rotation):
+		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, scale, rotation),
 		_texture(_texturesCache.fetch(filename, lonely)),
 		_resourcePath(filename)
 	{
@@ -44,8 +44,6 @@ namespace RAY {
 
 	void Texture::drawOn(RAY::Window &)
 	{
-		float scale = this->_dimensions.x / this->_texture->width;
-
-		DrawTextureEx(*this, this->_position, 0, scale, this->_color);
+		DrawTextureEx(*this, this->_position, 0, this->_scale, this->_color);
 	}
 }
