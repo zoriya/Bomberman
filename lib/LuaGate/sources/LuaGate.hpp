@@ -10,7 +10,7 @@ namespace LuaG
 	class State
 	{
 		private:
-			//! @”rief Lua state
+			//! @brief Lua state
 			lua_State *_state;
 		public:
 		//! @brief ctor
