@@ -19,10 +19,9 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 
+		addMenuControl(*scene);
 		auto &splashComponent = scene->addEntity("animation component")
-			.addComponent<IntroAnimationComponent>()
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>();
+			.addComponent<IntroAnimationComponent>();
 		auto &background = scene->addEntity("background")
 			.addComponent<PositionComponent>(0, 0, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(1920, 1080));
