@@ -18,6 +18,8 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include <Drawables/Image.hpp>
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
@@ -63,6 +65,10 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
+
+		scene->addEntity("background image")
+		.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+	    .addComponent<PositionComponent>();
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));

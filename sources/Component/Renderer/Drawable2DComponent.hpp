@@ -14,27 +14,32 @@ namespace BBM
 	class Drawable2DComponent : public WAL::Component
 	{
 	public:
+		//! @brief Tells the renderer to draw in a particular order
+		bool drawBefore3D = false;
+
 		//! @brief The type of the component
 		std::shared_ptr<RAY::Drawables::ADrawable2D> drawable;
 
 		//! @brief ctor
-		Drawable2DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable2D> drawable)
+		Drawable2DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable2D> drawable, bool drawBefore3D = false)
 			: WAL::Component(entity),
-			  drawable(std::move(drawable))
+			  drawable(std::move(drawable)),
+			  drawBefore3D(drawBefore3D)
 		{}
 
 		//! ctor
 		template<typename T, typename ...Params>
-		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, Params &&...params)
+		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, bool drawBefore3D, Params &&...params)
 			: WAL::Component(entity),
-			 drawable(new T(std::forward<Params>(params)...))
+			 drawable(new T(std::forward<Params>(params)...)),
+			 drawBefore3D(drawBefore3D)
 		{}
 
 		//! @brief Clone a component for another or the same entity.
 		//! @param entity The entity that owns the ne component.
 		WAL::Component *clone(WAL::Entity &entity) const override
 		{
-			return new Drawable2DComponent(entity, this->drawable);
+			return new Drawable2DComponent(entity, this->drawable, this->drawBefore3D);
 		}
 
 		//! @brief Default copy ctor

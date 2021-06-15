@@ -27,19 +27,19 @@ namespace BBM
         RAY2D::Text *text = nullptr;
         static auto &rayText = scene->addEntity("raylibtext Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 44, 1080 / 2 + 48, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Text>("", 50, RAY::Vector2(), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Text>(false, "", 50, RAY::Vector2(), BLACK);
         static auto &bottomRectangle = scene->addEntity("bottom Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, logoPos, RAY::Vector2(16, 16), BLACK);
         static auto &leftRectangle = scene->addEntity("left Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, logoPos, RAY::Vector2(16, 16), BLACK);
         static auto &rightRectangle = scene->addEntity("right Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, logoPos, RAY::Vector2(16, 16), BLACK);
         static auto &topRectangle = scene->addEntity("top Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, logoPos, RAY::Vector2(16, 16), BLACK);
         static short letterCounter = 0;
 
         switch (component.currentStep)
