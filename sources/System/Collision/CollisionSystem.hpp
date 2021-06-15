@@ -10,16 +10,17 @@
 #include "System/System.hpp"
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle collisions.
-	class CollisionSystem : public WAL::System<PositionComponent, CollisionComponent>
+	class CollisionSystem : public WAL::System<PositionComponent, CollisionComponent, MovableComponent>
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent> &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<PositionComponent, CollisionComponent, MovableComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit CollisionSystem(WAL::Wal &wal);

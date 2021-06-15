@@ -41,6 +41,9 @@ namespace RAY::Drawables::Drawables3D {
 		
 			//! @brief Draw circle on window
 			void drawOn(RAY::Window &) override;
+
+			//! @brief Draw cube's wires on window
+			void drawWiresOn(RAY::Window &) override;
 		private:
 			//! @brief Dimensions of the cube
 			Vector3 _dimensions;

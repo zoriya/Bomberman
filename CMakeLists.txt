@@ -119,8 +119,32 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/System/Lobby/LobbySystem.cpp
+	sources/System/Lobby/LobbySystem.hpp
+	sources/Component/Lobby/LobbyComponent.cpp
+	sources/Component/Lobby/LobbyComponent.hpp
+	sources/Component/Gravity/GravityComponent.hpp
+	sources/Component/Gravity/GravityComponent.cpp
+	sources/System/Gravity/GravitySystem.hpp
+	sources/System/Gravity/GravitySystem.cpp
+	sources/Component/BumperTimer/BumperTimerComponent.hpp
+	sources/Component/BumperTimer/BumperTimerComponent.cpp
+	sources/System/BumperTimer/BumperTimerSystem.hpp
+	sources/System/BumperTimer/BumperTimerSystem.cpp
 	sources/System/Bomb/BombSystem.cpp
 	sources/System/Bomb/BombSystem.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.hpp
+	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
+	sources/System/IntroAnimation/IntroAnimationSystem.hpp
+	sources/System/IntroAnimation/IntroAnimationSystem.cpp
+	sources/Runner/SplashScreenScene.cpp
+	sources/Runner/TitleScreenScene.cpp
+	sources/Runner/MainMenuScene.cpp
+	sources/Runner/GameScene.cpp
+	sources/Runner/PauseMenuScene.cpp
+	sources/Runner/SettingsMenuScene.cpp
+	sources/Runner/CreditScene.cpp
+	sources/Runner/LobbyScene.cpp
 )
 
 add_executable(bomberman

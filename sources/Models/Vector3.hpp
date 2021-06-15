@@ -173,6 +173,11 @@ namespace BBM
 			return Vector3<T>(std::round(this->x), std::round(this->y), std::round(this->z));
 		}
 
+		[[nodiscard]] bool isNull() const
+		{
+			return this->x == 0 && this->y == 0 && this->z == 0;
+		}
+
 		operator RAY::Vector3() const requires(std::is_same_v<T, float>)
 		{
 			return RAY::Vector3(this->x, this->y, this->z);

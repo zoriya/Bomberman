@@ -18,6 +18,7 @@ namespace BBM
 		//! @brief The list of scenes available.
 		enum SceneID
 		{
+			SplashScreen,
 			MainMenuScene,
 			GameScene,
 			SettingsScene,
@@ -29,10 +30,10 @@ namespace BBM
 
 
 		//! @brief The currently loaded scene
-		SceneID currentScene = TitleScreenScene;
+		SceneID currentScene = SplashScreen;
 
 		//! @brief The next scene to load (if smae as currentScene, nothing to do)
-		SceneID nextScene = TitleScreenScene;
+		SceneID nextScene = SplashScreen;
 
 		//! @brief The list of loaded scenes.
 		std::unordered_map<SceneID, std::shared_ptr<WAL::Scene>> _loadedScenes = {};

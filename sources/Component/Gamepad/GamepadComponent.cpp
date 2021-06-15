@@ -3,6 +3,7 @@
 // Edited by Benjamin Henry on 2021-05-20.
 //
 
+#include <Component/Controllable/ControllableComponent.hpp>
 #include "GamepadComponent.hpp"
 
 namespace BBM
@@ -29,6 +30,29 @@ namespace BBM
 	int GamepadComponent::getID() const
 	{
 		return this->_ID;
+	}
+
+	void GamepadComponent::onStart()
+	{
+		auto *controller = this->_entity.tryGetComponent<ControllableComponent>();
+		if (!controller)
+			return;
+		switch (this->_ID) {
+		case 0:
+			controller->layout = ControllableComponent::GAMEPAD_0;
+			break;
+		case 1:
+			controller->layout = ControllableComponent::GAMEPAD_1;
+			break;
+		case 2:
+			controller->layout = ControllableComponent::GAMEPAD_2;
+			break;
+		case 3:
+			controller->layout = ControllableComponent::GAMEPAD_3;
+			break;
+		default:
+			return;
+		}
 	}
 
 } // namespace BMM
