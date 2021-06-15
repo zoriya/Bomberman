@@ -31,8 +31,8 @@ namespace BBM
 
 			//! @brief The X and Z abscis of the movement.
 			Vector2f move;
-			//! @brief input value for jump
-			bool jump = false;
+			//! @brief input value to select
+			bool select = false;
 			//! @brief input value for bomb
 			bool bomb = false;
 			//! @brief input value for pause

@@ -67,7 +67,7 @@ namespace BBM
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
 				auto &controller = ctrl;
-				if (controller.jump) {
+				if (controller.select) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &view) {
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
@@ -76,7 +76,7 @@ namespace BBM
 					lobby.color = -1;
 					this->_nextColor(entity);
 					lobby.layout = controller.layout;
-					controller.jump = false;
+					controller.select = false;
 					return;
 				}
 			}
@@ -85,10 +85,10 @@ namespace BBM
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout != lobby.layout)
 				continue;
-			if (controller.jump && !lobby.ready) {
+			if (controller.select && !lobby.ready) {
 				lobby.ready = true;
 				lobby.lastInput = lastTick;
-				controller.jump = false;
+				controller.select = false;
 				this->_wal.getSystem<MenuControllableSystem>().now = lastTick;
 				auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 				if (texture)
