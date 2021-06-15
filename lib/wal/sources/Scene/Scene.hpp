@@ -74,13 +74,12 @@ namespace WAL
 
 		//! @brief A default constructor
 		Scene() = default;
-		//! @brief A scene is copy constructable
-		Scene(const Scene &) = default;
+		//! @brief A scene is not copy constructable
+		Scene(const Scene &) = delete;
 		//! @brief A default destructor
 		~Scene() = default;
 		//! @brief A scene is assignable
 		Scene &operator=(const Scene &);
-		Scene(Scene &&) = default;
 
 		friend Entity;
 	};
