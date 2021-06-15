@@ -15,11 +15,6 @@ namespace BBM
 	class PlayerBonusComponent : public WAL::Component
 	{
 	public:
-
-		//! @brief The number of seconds before a speed bonus expire. This variable is used to reset the nextSpeedBonusRate value.
-		std::chrono::nanoseconds speedBonusRate = 15s;
-		//! @brief The number of nanosecond before the expiration of a speed bonus.
-		std::chrono::nanoseconds nextSpeedBonusRate = speedBonusRate;
 		//! @brief The number of seconds before a range bonus expire. This variable is used to reset the nextNoClipBonusRate value.
 		std::chrono::nanoseconds noClipBonusRate = 5s;
 		//! @brief The number of nanosecond before the expiration of a no clip bonus

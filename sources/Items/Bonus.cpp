@@ -18,6 +18,7 @@ namespace BBM {
 		if (!bombHolder)
 			return;
 		bombHolder->maxBombCount++;
+		std::cout << "BombHolder : " << bombHolder->maxBombCount << std::endl;
 	}
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -29,6 +30,7 @@ namespace BBM {
 		if (!bombHolder || !playerBonus)
 			return;
 		bombHolder->explosionRadius++;
+		std::cout << "BombRadius : " << bombHolder->explosionRadius << std::endl;
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -39,8 +41,8 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!controllable || !playerBonus)
 			return;
-		controllable->speed = 0.35f;
-		playerBonus->nextSpeedBonusRate = playerBonus->speedBonusRate;
+		controllable->speed += 0.05f;
+		std::cout << "Speed : " << controllable->speed << std::endl;
 	}
 
 	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -50,7 +52,7 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!playerBonus)
 			return;
-		playerBonus->nextNoClipRate = playerBonus->nextSpeedBonusRate;
+		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
 		playerBonus->isNoClipOn = true;
 	}
 
@@ -58,7 +60,8 @@ namespace BBM {
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd <= 0.8)
+		std::cout << "Random" << rnd << std::endl;
+		if (rnd <= 1)
 			return (static_cast<BonusType>((std::rand() % NOCLIP) + 1));
 		return (NOTHING);
 	}

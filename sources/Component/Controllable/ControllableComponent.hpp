@@ -26,7 +26,7 @@ namespace BBM
 			//! @brief input value for pause
 			bool pause = false;
 			//! @brief The speed applied to every controllable entities.
-			float speed = .25f;
+			float speed = .15f;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
