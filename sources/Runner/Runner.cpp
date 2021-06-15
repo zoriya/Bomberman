@@ -59,7 +59,7 @@ namespace BBM
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
-				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.jump) {
+				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.select) {
 					gameState.nextScene = GameState::SceneID::TitleScreenScene;
 					break;
 				}

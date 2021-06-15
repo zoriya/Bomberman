@@ -67,7 +67,7 @@ namespace BBM
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
 				auto &controller = ctrl;
-				if (controller.jump) {
+				if (controller.select) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &view) {
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
@@ -76,7 +76,7 @@ namespace BBM
 					lobby.color = -1;
 					this->_nextColor(entity);
 					lobby.layout = controller.layout;
-					controller.jump = false;
+					controller.select = false;
 					return;
 				}
 			}
@@ -85,10 +85,10 @@ namespace BBM
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout != lobby.layout)
 				continue;
-			if (controller.jump && !lobby.ready) {
+			if (controller.select && !lobby.ready) {
 				lobby.ready = true;
 				lobby.lastInput = lastTick;
-				controller.jump = false;
+				controller.select = false;
 				this->_wal.getSystem<MenuControllableSystem>().now = lastTick;
 				auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 				if (texture)
@@ -99,6 +99,47 @@ namespace BBM
 				this->_nextColor(entity);
 			}
 		}
+	}
+
+	void LobbySystem::addAI()
+	{
+		for (auto entity : this->getView()) {
+			auto &lobby = entity.get<LobbyComponent>();
+			if (lobby.layout != ControllableComponent::NONE)
+				continue;
+			lobby.color = -1;
+			this->_nextColor(entity);
+			lobby.layout = ControllableComponent::AI;
+			lobby.ready = true;
+			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+			if (texture)
+				texture->use("assets/player/icons/ready.png");
+			return;
+		}
+	}
+
+	void LobbySystem::removeAI()
+	{
+		std::optional<WAL::ViewEntity<LobbyComponent, Drawable2DComponent>> last;
+		for (auto &entity : this->getView()) {
+			auto &lobby = entity.get<LobbyComponent>();
+			if (lobby.layout == ControllableComponent::AI)
+				last.emplace(entity);
+		}
+		if (!last)
+			return;
+		auto &entity = *last;
+		auto &lobby = entity.get<LobbyComponent>();
+		auto &drawable = entity.get<Drawable2DComponent>();
+		this->_colorTaken[lobby.color] = false;
+		lobby.color = -1;
+		lobby.layout = ControllableComponent::NONE;
+		lobby.ready = false;
+		drawable.drawable = std::make_shared<RAY::Texture>("assets/player/icons/none.png");
+		lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(RAY::Color(0, 0, 0, 0));
+		auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+		if (texture)
+			texture->unload();
 	}
 
 	void LobbySystem::onSelfUpdate()
@@ -143,6 +184,9 @@ namespace BBM
 		case ControllableComponent::GAMEPAD_3:
 			player.addComponent<GamepadComponent>(3);
 			break;
+		case ControllableComponent::AI:
+			throw std::runtime_error("Not implemented error");
+			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
 		}
@@ -169,5 +213,21 @@ namespace BBM
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
+		wal.getSystem<LobbySystem>().unloadLobby();
+	}
+
+	void LobbySystem::unloadLobby()
+	{
+		this->_colorTaken.fill(false);
+		for (auto &[_, lobby, drawable] : this->getView()) {
+			lobby.layout = ControllableComponent::NONE;
+			lobby.ready = false;
+			lobby.color = -1;
+			drawable.drawable = std::make_shared<RAY::Texture>("assets/player/icons/none.png");
+			lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(RAY::Color(0, 0, 0, 0));
+			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+			if (texture)
+				texture->unload();
+		}
 	}
 }
