@@ -55,7 +55,7 @@ namespace BBM
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<ShaderComponentModel>("/home/cbihan/Downloads/mask.fs", "/home/cbihan/Downloads/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal) {
+			.addComponent<ShaderComponentModel>("assets/shaders/mask.fs", "assets/shaders/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal) {
 				auto &shader = entity.getComponent<ShaderComponentModel>();
 				shader.shader.setShaderUniformVar("frame", glob);
 				glob++;
