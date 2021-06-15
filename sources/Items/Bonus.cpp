@@ -39,7 +39,7 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!controllable || !playerBonus)
 			return;
-		controllable->speed += 0.05f;
+		controllable->speed += 0.025f;
 	}
 
 	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
