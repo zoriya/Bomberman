@@ -14,8 +14,10 @@
 #include <Component/Gamepad/GamepadComponent.hpp>
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
+#include <Drawables/2D/Rectangle.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -170,6 +172,9 @@ namespace BBM
 			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
 			int x = (playerID % 2 == 0) ? 1920 - 10 - 320 : 10;
 			int y = playerID > 2 ? 1080 - 10 - 248 : 10;
+			scene->addEntity("player tile2")
+				.addComponent<PositionComponent>(x, y - 2, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);
 			scene->addEntity("player tile")
 				.addComponent<PositionComponent>(x, y, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
