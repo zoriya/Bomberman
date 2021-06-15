@@ -22,8 +22,6 @@ namespace BBM
             //! @brief path to the lua script
             const std::string _scriptPath;
         public:
-            //! @brief Lua executing state
-            lua_State *state;
 
             //! @brief LuaGate state
             LuaG::State _state;

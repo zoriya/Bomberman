@@ -9,7 +9,7 @@ mapinfo.dist { }
 ------------
 
 
-local debug = false
+local debug = true
 
 if not debug then
     log = function() end
@@ -45,25 +45,21 @@ function CreateMyMap(infos, maxX, maxZ)
 	return map
 end
 
-function isInExplosionRange()
-	return true
-end
-
 function Update(mapinfo)
-	print(mapinfo.raw[0].x)
-	print(mapinfo.raw[0].y)
-	print(mapinfo.raw[0].z)
-	--local maxX = 0
-	--local maxZ = 0
-	--for i, info in ipairs(infos) do
-	--	if info.x > maxX then
-	--		maxX = info.x
-	--	end
-	--	if info.z > maxZ then
-	--		maxZ = info.z
-	--	end
-	--end
-	--local myMap = CreateMyMap(infos, maxX, maxZ)
+	--print(mapinfo.raw[0].x)
+	--print(mapinfo.raw[0].y)
+	--print(mapinfo.raw[0].z)
+	local maxX = 0
+	local maxZ = 0
+	for i, info in ipairs(mapinfo.raw) do
+		if info.x > maxX then
+			maxX = info.x
+		end
+		if info.z > maxZ then
+			maxZ = info.z
+		end
+	end
+	local myMap = CreateMyMap(mapinfo.raw, maxX, maxZ)
 	return 1, 1, false, false;
 	--if (isInExplosionRange()) then
 	--	return 0, , false, true

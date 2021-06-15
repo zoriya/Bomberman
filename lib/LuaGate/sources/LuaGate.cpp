@@ -22,6 +22,11 @@ namespace LuaG
 		return _state;
 	}
 
+	void State::getGlobal(std::string str)
+	{
+		lua_getglobal(_state, str.c_str());
+	}
+
 	void State::dofile(std::string filepath)
 	{
         luaL_dofile(_state, filepath.c_str());
@@ -59,7 +64,7 @@ namespace LuaG
 		return res;
 	}
 
-	bool State::callFunction(std::string , int nbParams, int nbReturns)
+	bool State::callFunction(int nbParams, int nbReturns)
 	{
 		lua_pcall(_state, nbParams, nbReturns, 0);
 		return true;
@@ -83,5 +88,10 @@ namespace LuaG
 	void State::newTable(void)
 	{
 		lua_newtable(_state);
+	}
+
+	void State::popLast(void)
+	{
+		lua_pop(_state, -1);
 	}
 }

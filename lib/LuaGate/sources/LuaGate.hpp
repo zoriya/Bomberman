@@ -28,6 +28,9 @@ namespace LuaG
 		//! @brief Get Lua state
 		lua_State *getState(void);
 
+		//! @brief Get global value on top of the stack
+		void getGlobal(std::string str);
+
 		//! @brief Execute a file in this state
 		void dofile(std::string filepath);
 	
@@ -41,7 +44,7 @@ namespace LuaG
 		bool getReturnBool(void);
 
 		//! @brief call a lua function
-		bool callFunction(std::string funcName, int nbParams, int nbReturns);
+		bool callFunction(int nbParams, int nbReturns);
 
 		//! @brief setTable
 		void setTable(void);
@@ -54,5 +57,8 @@ namespace LuaG
 
 		//! @brief Creates a new table at the top of the stack
 		void newTable(void);
+
+		//! @brief Pop last value on the stack
+		void popLast(void);
 	};
 }

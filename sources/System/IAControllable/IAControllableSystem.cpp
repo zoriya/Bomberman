@@ -59,9 +59,9 @@ namespace BBM
 
 	void IAControllableSystem::pushInfoRaw(LuaG::State &state)
 	{
+		int index = 0;
 		state.push("raw");
 		state.newTable();
-		int index = 0;
 		for (auto &info : _map) {
 			state.push(index++);
 			state.newTable();
@@ -98,33 +98,16 @@ namespace BBM
 
 		UpdateMapInfos(entity);
 
-		lua_getglobal(ia._state.getState(), "Update");
+		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
 			return;
 		pushInfo(ia._state, player);
-		ia._state.callFunction("Update", 1, 4);
+		ia._state.callFunction(1, 4);
 		controllable.bomb = ia._state.getReturnBool();
 		controllable.jump = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
 		controllable.move.x = ia._state.getReturnNumber();
-		lua_pop(state, -1);
-		/*
-        luabridge::LuaRef updateFunc = luabridge::getGlobal(ia.state, "Update");
-		if (!updateFunc.isFunction())
-			return;
-		luabridge::LuaResult res = updateFunc(player, _map, _players);
-
-		if (res.hasFailed() || res.size() != 4)
-			return;
-		if (res[0].isNumber())
-			controllable.move.x = res[0];
-		if (res[1].isNumber())
-			controllable.move.y = res[1];
-		if (res[2].isBool())
-			controllable.jump = res[2];
-		if (res[3].isBool())
-			controllable.bomb = res[3];
-		*/
+		ia._state.popLast();
 	}
 
 	void IAControllableSystem::onSelfUpdate()
