@@ -11,6 +11,7 @@
 #include <Model/Model.hpp>
 #include "Drawables/ADrawable3D.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 #include <Drawables/3D/Cube.hpp>
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
@@ -82,8 +83,35 @@ namespace BBM
 	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
-		const auto &pos = entity.get<PositionComponent>();
-		const auto &cam = entity.get<CameraComponent>();
+		auto &pos = entity.get<PositionComponent>();
+		auto &cam = entity.get<CameraComponent>();
+		Vector3f newCameraPos = Vector3f(-1, -1, -1);
+		std::vector<Vector3f> playerPos;
+		float maxDist = 0;
+
+		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
+			playerPos.emplace_back(pos.position);
+		}
+		for (int i = 0; i < playerPos.size(); i++) {
+			if (i == 0)
+				newCameraPos = playerPos[i];
+			else
+				newCameraPos = (newCameraPos + playerPos[i]) / 2;
+		}
+		for (int i = 0; i < playerPos.size(); i++)
+			for (int j = 0; j < playerPos.size(); j++) {
+				if (maxDist < playerPos[i].distance(playerPos[j]))
+					maxDist = playerPos[i].distance(playerPos[j]);
+			}
+		if (maxDist < 14)
+			maxDist = 14;
+		cam.target = newCameraPos;
+		pos.position = newCameraPos;
+		
+		pos.position.y = maxDist;
+		pos.position.z -= 1;
+		std::cout << pos.position << std::endl;
+		std::cout << cam.target << std::endl;
 		_camera.setPosition(pos.position);
 		_camera.setTarget(cam.target);
 	}

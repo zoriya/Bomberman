@@ -51,4 +51,5 @@ namespace BBM
 	};
 
 	constexpr const char Blowable[] = "Blowable";
+	constexpr const char Player[] = "Player";
 }
