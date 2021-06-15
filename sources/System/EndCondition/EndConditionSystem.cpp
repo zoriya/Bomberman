@@ -16,6 +16,6 @@ namespace BBM {
         for (auto & [_ , healthComponent]: this->_wal.getScene()->view<HealthComponent>())
             alivePlayersCount += (healthComponent.getHealthPoint() != 0);
         if (alivePlayersCount <= 1)
-            Runner::gameState.nextScene = Runner::gameState.MainMenuScene;
+            Runner::gameState.nextScene = Runner::gameState.ScoreScene;
 	}
 }

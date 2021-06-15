@@ -22,6 +22,7 @@
 #include "Drawables/2D/Text.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
@@ -42,6 +43,10 @@ namespace BBM
 		    {SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 		    //{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
+		scene->addEntity("Timer")
+			.addComponent<TimerComponent>(std::chrono::seconds(60), [](WAL::Entity &, WAL::Wal &) {
+				Runner::gameState.nextScene = GameState::ScoreScene;
+			});
 		scene->addEntity("player")
 			.addComponent<PositionComponent>(0, 1.01, 0)
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
