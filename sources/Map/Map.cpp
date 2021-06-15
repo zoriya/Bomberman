@@ -80,7 +80,7 @@ namespace BBM
 			return;
 		wal.getScene()->scheduleNewEntity("Bonus")
 			.addComponent<PositionComponent>(position)
-			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<MovableComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				entity.scheduleDeletion();
@@ -135,7 +135,7 @@ namespace BBM
 		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
 		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
 
-		for (int i = 0; i < height; i++) {
+		for (int i = 0; i < height + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(-1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
@@ -143,7 +143,7 @@ namespace BBM
 				.addComponent<PositionComponent>(width + 1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
 		}
-		for (int i = 0; i < width; i++) {
+		for (int i = 0; i < width + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(i, 0, -1)
 				.addComponent<TagComponent<Blowable>>();
@@ -450,14 +450,16 @@ namespace BBM
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
-			if (map[std::make_tuple(i, 0, height)] == NOTHING && map[std::make_tuple(i, 0, 0)] == NOTHING) {
+			if (map[std::make_tuple(i, 0, 0)] != UPPERFLOOR && map[std::make_tuple(i, 0, 0)] != HOLE
+			    && map[std::make_tuple(i, 0, 0)] != BUMPER) {
 				floor -= 1;
 				break;
 			}
 		}
 		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
-				if (map[std::make_tuple(i, 0, i)] == NOTHING) {
+				if (map[std::make_tuple(i, 0, j)] != UPPERFLOOR && map[std::make_tuple(i, 0, j)] != HOLE
+			        && map[std::make_tuple(i, 0, j)] != BUMPER) {
 					floor -= 1;
 					break;
 				}
