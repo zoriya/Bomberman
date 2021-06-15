@@ -51,7 +51,7 @@ namespace BBM
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
+			.addComponent<ShaderComponentModel>("/home/cbihan/Downloads/mask.fs", "/home/cbihan/Downloads/mask.vs")
 			.addComponent<TagComponent<BlowablePass>>()
 			//.addComponent<GamepadComponent>(0)
 			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)

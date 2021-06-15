@@ -16,29 +16,36 @@ namespace BBM
 
 	RAY::Shader &ShaderComponent::getShader()
 	{
-		return this->_shader;
+		return this->shader;
 	}
 
-	ShaderComponent::ShaderComponent(WAL::Entity &entity, const std::string &fragmentFilePath, const std::string &vertexFilePath)
+	ShaderComponent::ShaderComponent(WAL::Entity &entity,
+	                                 const std::string &fragmentFilePath,
+	                                 const std::string &vertexFilePath,
+	                                 const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
 		: WAL::Component(entity),
-		  _shader(vertexFilePath, fragmentFilePath),
-		  _fragmentFilePath(fragmentFilePath),
-		  _vertexFilePath(vertexFilePath)
+		  shader(vertexFilePath, fragmentFilePath),
+		  fragmentFilePath(fragmentFilePath),
+		  vertexFilePath(vertexFilePath),
+		  onFixedUpdate(onFixedUpdate)
 	{
 	}
 
 	std::string ShaderComponent::getFragmentFilePath() const
 	{
-		return this->_fragmentFilePath;
+		return this->fragmentFilePath;
 	}
 
 	std::string ShaderComponent::getVertexFilePath() const
 	{
-		return this->_vertexFilePath;
+		return this->vertexFilePath;
 	}
 
-	ShaderComponentModel::ShaderComponentModel(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath)
-		: ShaderComponent(entity, std::move(fragmentFilePath), std::move(vertexFilePath))
+	ShaderComponentModel::ShaderComponentModel(WAL::Entity &entity,
+	                                           const std::string &fragmentFilePath,
+	                                           const std::string &vertexFilePath,
+	                                           const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
+		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate)
 	{
 	}
 
@@ -50,8 +57,11 @@ namespace BBM
 			throw std::runtime_error("No model available with a shader model component. This is unsupported.");
 	}
 
-	ShaderComponentDrawable2D::ShaderComponentDrawable2D(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath)
-		: ShaderComponent(entity, std::move(fragmentFilePath), std::move(vertexFilePath))
+	ShaderComponentDrawable2D::ShaderComponentDrawable2D(WAL::Entity &entity,
+	                                                     const std::string &fragmentFilePath,
+	                                                     const std::string &vertexFilePath,
+	                                                     const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate)
+		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate)
 	{
 	}
 }
