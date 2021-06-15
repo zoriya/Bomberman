@@ -13,11 +13,11 @@ namespace BBM {
 	private:
 
 		//!@brief file block of the parser
-		static std::string _block;
+		static std::stringstream _block;
 		//!@brief file bonus of the parser
-		static std::string _bonus;
+		static std::stringstream _bonus;
 		//!@brief file player of the parser
-		static std::string _player;
+		static std::stringstream _player;
 
 		//!@param entity entity to save
 		//!@brief save block in _block
@@ -81,6 +81,11 @@ namespace BBM {
 		//!@param scene Scene to update
 		//!@brief load all blocks into scene
 		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene);
+
+		static bool _isInteger(const std::string &s);
+		static bool _isFloat(const std::string &s);
+		static std::vector<std::string> _splitStr(const std::string &str, char delim);
+
 	public:
 		//!@param scene Scene to update
 		//!@brief save yaml

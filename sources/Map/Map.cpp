@@ -18,6 +18,33 @@ using namespace std::chrono_literals;
 
 namespace BBM
 {
+	void MapGenerator::createBonus(WAL::Entity &entity, Vector3f position, Bonus::BonusType bonusType) {
+		static std::map<Bonus::BonusType, std::vector<std::string>> map = {
+				{Bonus::BonusType::BOMBSTOCK, {"Bonus Bomb Up", "assets/items/bombup"}},
+				{Bonus::BonusType::SPEEDUP, {"Bonus Speed Up", "assets/items/speedup"}},
+				{Bonus::BonusType::EXPLOSIONINC, {"Bonus Fire Up", "assets/items/fireup"}}
+		};
+		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+		};
+
+		entity.addComponent<PositionComponent>(position)
+				.addComponent<TagComponent<Blowable>>()
+				.addComponent<MovableComponent>()
+				.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
+					entity.scheduleDeletion();
+				})
+				.addComponent<LevitateComponent>(position.y)
+				.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
+					bonus.scheduleDeletion();
+				}, func[bonusType - 1], 0.5, .5)
+				.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
+					bonus.scheduleDeletion();
+				})
+				.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType)[1] + ".obj", false,
+																 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
+	}
+
 	void MapGenerator::bumperCollide(WAL::Entity &entity,
 	                                 const WAL::Entity &wall,
 	                                 CollisionComponent::CollidedAxis collidedAxis)
@@ -78,22 +105,7 @@ namespace BBM
 			return;
 		if (!map.contains(bonusType))
 			return;
-		wal.getScene()->scheduleNewEntity(map.at(bonusType)[0])
-			.addComponent<PositionComponent>(position)
-			.addComponent<TagComponent<Blowable>>()
-			.addComponent<MovableComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				entity.scheduleDeletion();
-			})
-			.addComponent<LevitateComponent>(position.y)
-			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
-				bonus.scheduleDeletion();
-			}, func[bonusType - 1], 0.5, .5)
-			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
-				bonus.scheduleDeletion();
-			})
-			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType)[1] + ".obj", false,
-															 std::make_pair(MAP_DIFFUSE, "assets/items/items.png"));
+		createBonus(wal.getScene()->scheduleNewEntity(map.at(bonusType)[0]), position, bonusType);
 	}
 
 	const std::string MapGenerator::assetsPath = "./assets/";

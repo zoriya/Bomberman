@@ -7,7 +7,7 @@
 
 namespace BBM
 {
-	float MusicComponent::volume = 0.10;
+	float MusicComponent::volume = 0.75;
 
 	MusicComponent::MusicComponent(WAL::Entity &entity, const std::string &musicPath)
 		: WAL::Component(entity),

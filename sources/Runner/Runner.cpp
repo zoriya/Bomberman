@@ -42,8 +42,8 @@ namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace BBM
 {
 	GameState Runner::gameState;
-	int Runner::width = 16;
-	int Runner::height = 16;
+	int Runner::mapWidth = 16;
+	int Runner::mapHeight = 16;
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
@@ -53,7 +53,7 @@ namespace BBM
 		if (gameState.currentScene == GameState::SceneID::GameScene || gameState.currentScene == GameState::SceneID::SplashScreen) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
-					//ParserYAML::save(engine.getScene(), "test");
+					ParserYAML::save(engine.getScene());
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
 				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.jump) {

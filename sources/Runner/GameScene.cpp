@@ -70,7 +70,7 @@ namespace BBM
 					auto &animation = entity.getComponent<AnimationsComponent>();
 					animation.setAnimIndex(5);
 				});
-			MapGenerator::loadMap(Runner::width, Runner::height, MapGenerator::createMap(Runner::width, Runner::height), scene);
+			MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight), scene);
 		}
 
 		return scene;

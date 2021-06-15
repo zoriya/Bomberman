@@ -11,8 +11,10 @@ namespace BBM
 	class Runner {
 		public:
 
-		static int width;
-		static int height;
+		//! @brief the width of the map
+		static int mapWidth;
+		//! @brief the height of the map
+		static int mapHeight;
 
 		//! @brief store current scenes informations
 		static GameState gameState;

@@ -22,7 +22,7 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include <chrono>
-
+#include <Items/Bonus.hpp>
 
 
 namespace BBM
@@ -45,6 +45,8 @@ namespace BBM
 		};
 
 		using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
+
+		static void createBonus(WAL::Entity &entity, Vector3f position, Bonus::BonusType bonusType);
 
 		static void wallCollided(WAL::Entity &entity,
 		                         const WAL::Entity &wall,
