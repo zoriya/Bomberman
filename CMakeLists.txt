@@ -135,6 +135,7 @@ set(SOURCES
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
 	sources/Runner/LobbyScene.cpp
+	sources/Runner/HowToPlayScene.cpp
 )
 add_executable(bomberman
                sources/main.cpp
