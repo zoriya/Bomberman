@@ -19,6 +19,9 @@ namespace BBM
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
+        static const std::vector<RAY::Color> tilesColor = {
+            GOLD, GRAY, BROWN, PURPLE
+        };
 
         addMenuControl(*scene);
         scene->addEntity("Audio ressources")
@@ -27,6 +30,14 @@ namespace BBM
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+        for (int i = 0; i < 4; i++) {
+			auto &playerTile = scene->addEntity("player tile")
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200),tilesColor[i]);
+			auto &player = scene->addEntity("player")
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
+				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
+        }
         scene->addEntity("back to main menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
