@@ -154,8 +154,10 @@ namespace BBM
 		int mapWidth = 16;
 		int mapHeight = 16;
 		int playerCount = 0;
+		int playerID = 0;
 
 		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
+			playerID++;
 			if (lobby.layout == ControllableComponent::NONE)
 				continue;
 			auto &player = Runner::createPlayer(*scene);
@@ -165,6 +167,12 @@ namespace BBM
 																		 mapHeight * ((playerCount + 1) % 2));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
+			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
+			int x = (playerID % 2 == 0) ? 1920 - 10 - 320 : 10;
+			int y = playerID > 2 ? 1080 - 10 - 248 : 10;
+			scene->addEntity("player tile")
+				.addComponent<PositionComponent>(x, y, 0)
+				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;

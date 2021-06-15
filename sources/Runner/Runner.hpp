@@ -61,6 +61,10 @@ namespace BBM
 
 		//! @brief load how to play screen
 		static std::shared_ptr<WAL::Scene> loadHowToPlayScene();
+		//! @brief load all data related to score scene screen
+		//! @param gameScene scene containing players (to know the scores)
+		static std::shared_ptr<WAL::Scene> loadScoreScene(WAL::Scene &gameScene);
+
 
 		//! @brief loads all scenes in the game state
 		static void loadScenes();

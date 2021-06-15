@@ -17,14 +17,18 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
-#include "Drawables/2D/Text.hpp"
+#include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
+#include "Component/Score/ScoreComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -34,6 +38,10 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
+		scene->addEntity("Timer")
+			.addComponent<TimerComponent>(std::chrono::seconds(60), [](WAL::Entity &, WAL::Wal &) {
+				Runner::gameState.nextScene = GameState::ScoreScene;
+			});
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
@@ -47,10 +55,11 @@ namespace BBM
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 
-		auto &player = scene.addEntity("player")
+		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
 			.addComponent<ControllableComponent>()
+			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
@@ -67,11 +76,5 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
-		RAY3D::Model *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
-		//std::string texturePath = model->get
-		auto &player = scene.addEntity("player")
-			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
-		return player;
 	}
 }

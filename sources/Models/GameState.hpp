@@ -27,6 +27,7 @@ namespace BBM
 			TitleScreenScene,
 			CreditScene,
 			HowToPlayScene,
+			ScoreScene,
 		};
 
 
