@@ -21,7 +21,7 @@ namespace BBM
 		//! @brief The number of nanosecond before the expiration of a speed bonus.
 		std::chrono::nanoseconds nextSpeedBonusRate = speedBonusRate;
 		//! @brief The number of seconds before a range bonus expire. This variable is used to reset the nextNoClipBonusRate value.
-		std::chrono::nanoseconds noClipBonusRate = 10s;
+		std::chrono::nanoseconds noClipBonusRate = 5s;
 		//! @brief The number of nanosecond before the expiration of a no clip bonus
 		std::chrono::nanoseconds nextNoClipRate = noClipBonusRate;
 		//! @brief To know if the player can clip through block

@@ -9,16 +9,42 @@
 #include <iostream>
 #include <Items/Bonus.hpp>
 #include <Component/Levitate/LevitateComponent.hpp>
-#include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include "Component/Bonus/PlayerBonusComponent.hpp"
+#include <Component/BumperTimer/BumperTimerComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 using namespace std::chrono_literals;
 
 namespace BBM
 {
+	void MapGenerator::bumperCollide(WAL::Entity &entity,
+	                                 const WAL::Entity &wall,
+	                                 CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto *movable = entity.tryGetComponent<MovableComponent>();
+		auto *bumperTimer = entity.tryGetComponent<BumperTimerComponent>();
+
+		if (!movable || !bumperTimer)
+			return;
+		if (!bumperTimer->_isReseting) {
+			movable->_velocity.y = 1.5;
+			bumperTimer->_isReseting = true;
+		}
+	}
+
+	void MapGenerator::holeCollide(WAL::Entity &entity,
+	                               const WAL::Entity &wall,
+	                               CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto *health = entity.tryGetComponent<HealthComponent>();
+
+		if (!health)
+			return;
+		health->takeDmg(health->getHealthPoint());
+	}
+
 	void MapGenerator::wallCollided(WAL::Entity &entity,
 	                                const WAL::Entity &wall,
 	                                CollisionComponent::CollidedAxis collidedAxis)
@@ -114,7 +140,7 @@ namespace BBM
 		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
 		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
 
-		for (int i = 0; i < height; i++) {
+		for (int i = 0; i < height + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(-1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
@@ -122,7 +148,7 @@ namespace BBM
 				.addComponent<PositionComponent>(width + 1, 0, i)
 				.addComponent<TagComponent<Blowable>>();
 		}
-		for (int i = 0; i < width; i++) {
+		for (int i = 0; i < width + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(i, 0, -1)
 				.addComponent<TagComponent<Blowable>>();
@@ -173,7 +199,7 @@ namespace BBM
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
 				if (map[std::make_tuple(i, 0, j)] != HOLE && map[std::make_tuple(i, -1, j)] != BUMPER)
-					scene->addEntity("Floor")
+					scene->addEntity("Ground")
 						.addComponent<PositionComponent>(Vector3f(i, -1, j))
 						.addComponent<Drawable3DComponent, RAY3D::Model>(floorObj, false,
 						                                                 std::make_pair(MAP_DIFFUSE, floorPng));
@@ -259,19 +285,16 @@ namespace BBM
 
 		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
 
-		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z));
-
+		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
+	              .addComponent<CollisionComponent>(
+		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::holeCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 1.75, 0.75));
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, false, std::make_pair(MAP_DIFFUSE, holePng));
 		else
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(secondFloorObj, false,
 			                                                           std::make_pair(MAP_DIFFUSE, secondFloorPng));
-		/*.addComponent<CollisionComponent>([](WAL::Entity &other, const WAL::Entity &entity) {
-			if (other.hasComponent<HealthComponent>()) {
-				auto &health = other.getComponent<HealthComponent>();
-				health.takeDmg(health.getHealthPoint());
-			}
-		}, [](WAL::Entity &other, const WAL::Entity &entity){}); */
+		
 	}
 
 	void MapGenerator::createBumper(Vector3f coords, std::shared_ptr<WAL::Scene> scene)
@@ -281,13 +304,10 @@ namespace BBM
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, false, std::make_pair(MAP_DIFFUSE, bumperPng));
-		/* .addComponent<CollisionComponent>([](const WAL::Entity &entity, WAL::Entity &other) {
-			if (other.hasComponent<MovableComponent>()) {
-				auto &movable = other.getComponent<MovableComponent>();
-				movable.addForce(Vector3f(0, 5, 0));
-			}
-		}); */
+			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, false,std::make_pair(MAP_DIFFUSE, bumperPng))
+			.addComponent<CollisionComponent>(
+		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::bumperCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 0.75, 0.75));
 	}
 
 	bool MapGenerator::isCloseToBlockType(std::map<std::tuple<int, int, int>, BlockType> map, int x, int y, int z,
@@ -303,7 +323,7 @@ namespace BBM
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd > 0.95)
+		if (rnd > 0.98)
 			return HOLE;
 		if (rnd > 0.25)
 			return BREAKABLE;
@@ -314,7 +334,7 @@ namespace BBM
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd > 0.60) {
+		if (rnd > 0.01) {
 			for (int i = 0; i < width + 1; i++) {
 				map[std::make_tuple(i, 1, height)] = map[std::make_tuple(i, 0, height)];
 				map[std::make_tuple(i, 0, height)] = UPPERFLOOR;
@@ -327,12 +347,10 @@ namespace BBM
 			map[std::make_tuple(width, -1, 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, height - 1)] = BUMPER;
 			map[std::make_tuple(width / 2, -1, 1)] = BUMPER;
-		}
-		if (rnd > 0.30) {
+		} 
+		if (rnd > 0.01) {
 			for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
 				for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
-					if (map[std::make_tuple(i, 0, j)] == FLOOR)
-						continue;
 					map[std::make_tuple(i, 1, j)] = map[std::make_tuple(i, 0, j)];
 					map[std::make_tuple(i, 0, j)] = UPPERFLOOR;
 				}
@@ -361,26 +379,60 @@ namespace BBM
 			for (int j = 0; j < height; j++) {
 				if (map[std::make_tuple(i, 0, j)] == BREAKABLE && map[std::make_tuple(i, -1, j)] == BUMPER)
 					map[std::make_tuple(i, 0, j)] = NOTHING;
+				if (map[std::make_tuple(i, 1, j)] == BREAKABLE && isCloseToBlockType(map, i, -1, j, BUMPER))
+					map[std::make_tuple(i, 1, j)] = NOTHING;
 			}
 		return (map);
 	}
 
-	MapGenerator::MapBlock MapGenerator::createMap(int width, int height)
+	MapGenerator::MapBlock MapGenerator::createClassicUnbreakable(MapBlock map, int width, int height)
+	{
+		for (int i = 0; i < width + 1; i++) {
+			for (int j = 0; j < height + 1; j++) {
+				if (!((i + 1) % 2) && !((j + 1) % 2))
+					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+			}
+		}
+		return (map);
+	}
+
+	MapGenerator::MapBlock MapGenerator::createLongClassicUnbreakable(MapBlock map, int width, int height)
+	{
+		int placedSpace = 0;
+
+		for (int i = 1; i < width; i++) {
+			placedSpace = 0;
+			for (int j = 1; j < height; j++) {
+				if (!(j % 2))
+					continue;
+				if (i < (width / 2 - width / 10) || i > (width / 2 + width / 10))
+					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
+				else
+					placedSpace++;
+			}
+		}
+		return (map);
+	}
+
+
+	MapGenerator::MapBlock MapGenerator::createMap(int width, int height, bool isHeight, bool isNotClassic)
 	{
 		MapBlock map;
 
 		width = width % 2 ? width + 1 : width;
 		height = height % 2 ? height + 1 : height;
-		for (int i = 0; i < width; i++)
-			for (int j = 0; j < height; j++)
+		for (int i = 0; i < width + 1; i++)
+			for (int j = 0; j < height + 1; j++) {
 				map[std::make_tuple(i, 0, j)] = NOTHING;
+				map[std::make_tuple(i, 1, j)] = NOTHING;
+			}
 		map = createSpawner(map, width, height);
 		for (int i = 0; i < width + 1; i++) {
 			for (int j = 0; j < height + 1; j++) {
 				if (map[std::make_tuple(i, 0, j)] == SPAWNER)
 					continue;
 				if (isCloseToBlockType(map, i, 0, j, SPAWNER)) {
-					map[std::make_tuple(i, 0, j)] = NOTHING;
+					map[std::make_tuple(i, isNotClassic ? -1 : 0, j)] = isNotClassic ? BUMPER : NOTHING;
 				} else {
 					map[std::make_tuple(i, 0, j)] = getRandomBlockType();
 				}
@@ -388,17 +440,61 @@ namespace BBM
 					map[std::make_tuple(i, 0, j)] = BREAKABLE;
 			}
 		}
-		for (int i = 0; i < width + 1; i++)
-			for (int j = 0; j < height + 1; j++)
-				if (!((i + 1) % 2) && !((j + 1) % 2))
-					map[std::make_tuple(i, 0, j)] = UNBREAKABLE;
-		map = createHeight(map, width, height);
+		if (!isNotClassic)
+			map = createClassicUnbreakable(map, width, height);
+		else
+			map = createLongClassicUnbreakable(map, width, height);
+		if (isHeight)
+			map = createHeight(map, width, height);
 		map = cleanBreakable(map, width, height);
 		return (map);
 	}
 
+	void MapGenerator::generateHeightCollision(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
+	{	
+		int floor = 2;
+
+		for (int i = 0; i < width + 1; i++) {
+			if (map[std::make_tuple(i, 0, 0)] != UPPERFLOOR && map[std::make_tuple(i, 0, 0)] != HOLE
+			    && map[std::make_tuple(i, 0, 0)] != BUMPER) {
+				floor -= 1;
+				break;
+			}
+		}
+		for (int i = width / 2 - width / 4; i < width / 2 + width / 4 + 1; i++) {
+			for (int j = height / 2 - height / 4; j < height / 2 + height / 4 + 1; j++) {
+				if (map[std::make_tuple(i, 0, j)] != UPPERFLOOR && map[std::make_tuple(i, 0, j)] != HOLE
+			        && map[std::make_tuple(i, 0, j)] != BUMPER) {
+					floor -= 1;
+					break;
+				}
+			}
+			if (floor <= 0)
+				break;
+		}
+		if (floor >= 1) {
+			scene->addEntity("FloorBot Hitbox")
+			.addComponent<PositionComponent>(Vector3f(0, 0, 0))
+			.addComponent<CollisionComponent>(
+				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25), Vector3f(width, 0.75, 0.75));
+			scene->addEntity("FloorUp Hitbox")
+				.addComponent<PositionComponent>(Vector3f(0, 0, height))
+				.addComponent<CollisionComponent>(
+					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, 0.75));
+		}
+		if (floor >= 2)
+			scene->addEntity("Middle Hitbox")
+				.addComponent<PositionComponent>(Vector3f(width / 2 - width / 4, 0, height / 2 - height / 4))
+				.addComponent<CollisionComponent>(
+					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, height / 2 + height / 4));
+	}
+
 	void MapGenerator::loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene)
-	{
+	{	
+		generateHeightCollision(map, width, height, scene);
 		generateWall(width, height, scene);
 		generateFloor(map, width, height, scene);
 		for (int x = 0; x < width + 1; x++)

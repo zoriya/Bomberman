@@ -58,8 +58,8 @@ namespace BBM {
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd < 0.8)
-			return (static_cast<BonusType>(std::rand() % (NOCLIP - 1) + 1));
+		if (rnd <= 1)
+			return (static_cast<BonusType>((std::rand() % NOCLIP) + 1));
 		return (NOTHING);
 	}
 }
