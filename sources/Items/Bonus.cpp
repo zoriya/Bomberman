@@ -29,7 +29,6 @@ namespace BBM {
 		if (!bombHolder || !playerBonus)
 			return;
 		bombHolder->explosionRadius++;
-		std::cout << "BombRadius : " << bombHolder->explosionRadius << std::endl;
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
