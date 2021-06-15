@@ -139,6 +139,7 @@ set(SOURCES
 	sources/System/EndCondition/EndConditionSystem.hpp
 	sources/System/EndCondition/EndConditionSystem.cpp
 	sources/Runner/LobbyScene.cpp
+	sources/Runner/ScoreScene.cpp
 )
 add_executable(bomberman
                sources/main.cpp
