@@ -47,7 +47,7 @@ namespace BBM
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 
-		return scene.addEntity("player")
+		auto &player = scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
 			.addComponent<ControllableComponent>()
@@ -67,5 +67,11 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
 			});
+		RAY3D::Model *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
+		//std::string texturePath = model->get
+		auto &player = scene.addEntity("player")
+			.addComponent<PositionComponent>()
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
+		return player;
 	}
 }
