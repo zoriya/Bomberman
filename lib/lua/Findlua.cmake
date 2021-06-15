@@ -40,6 +40,18 @@ This is because, the lua location is not standardized and may exist in
 locations other than lua/
 #]=======================================================================]
 
+if (NOT LUA_FOUND)
+	INCLUDE(FetchContent)
+
+	FetchContent_Declare(lua URL https://www.lua.org/ftp/lua-5.4.3.tar.gz)
+	FetchContent_GetProperties(lua)
+	if (NOT lua_POPULATED)
+		SET(FETCHCONTENT_QUIET NO)
+		FetchContent_Populate(lua)
+		ADD_SUBDIRECTORY(${lua_SOURCE_DIR})
+	endif()
+endif()
+
 cmake_policy(PUSH)  # Policies apply to functions at definition-time
 cmake_policy(SET CMP0012 NEW)  # For while(TRUE)
 
