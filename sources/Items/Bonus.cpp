@@ -12,7 +12,7 @@
 namespace BBM {
 	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 		if (!bombHolder)
@@ -22,7 +22,7 @@ namespace BBM {
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
@@ -33,7 +33,7 @@ namespace BBM {
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *controllable = player.tryGetComponent<ControllableComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
@@ -45,7 +45,7 @@ namespace BBM {
 
 	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!playerBonus)
