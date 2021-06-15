@@ -57,6 +57,7 @@ namespace BBM
 	        .addComponent<BumperTimerComponent>()
 			//.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
+			.addComponent<TagComponent<Player>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()

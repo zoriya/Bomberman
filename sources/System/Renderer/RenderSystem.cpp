@@ -89,33 +89,37 @@ namespace BBM
 		Vector3f newCameraPos = Vector3f(-1, -1, -1);
 		std::vector<Vector3f> playerPos;
 		float maxDist = 0;
+		float lowerXDist = 0;
+		float lowerZDist = 0;
 
-		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			std::cout << "Player pos" << pos.position << std::endl;
+		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>())
 			playerPos.emplace_back(pos.position);
-		}
 		for (int i = 0; i < playerPos.size(); i++) {
-			if (i == 0) {
-				newCameraPos = playerPos[i];
-				std::cout << "First Camera Pos" << newCameraPos << std::endl;
-			} else {
-				std::cout << "Other Player pos" << playerPos[i] << std::endl;
+			if (i == 0)
+				newCameraPos = playerPos[i].abs();
+			else
 				newCameraPos = (newCameraPos + playerPos[i]) / 2;
-			}
 		}
 		for (int i = 0; i < playerPos.size(); i++)
 			for (int j = 0; j < playerPos.size(); j++) {
 				if (maxDist < playerPos[i].distance(playerPos[j]))
 					maxDist = playerPos[i].distance(playerPos[j]);
+				if (lowerXDist < std::abs((playerPos[i].x - playerPos[j].x)))
+					lowerXDist = std::abs((playerPos[i].x - playerPos[j].x));
+				if (lowerZDist < std::abs((playerPos[i].z - playerPos[j].z)))
+					lowerZDist = std::abs((playerPos[i].z - playerPos[j].z));
 			}
+		maxDist += (lowerXDist  + lowerZDist) / 2;
 		if (maxDist < 14)
 			maxDist = 14;
+		if (maxDist > 25)
+			maxDist = 25;
+		cam.target += (newCameraPos.abs() - pos.position.abs()) / 5;
 		newCameraPos.y = maxDist;
 		newCameraPos.z -= 1;
-		mov.addForce((newCameraPos - pos.position.abs()) / 10);
-		cam.target = newCameraPos;
-		_camera.setPosition(pos.position);
+		pos.position += (newCameraPos.abs() - pos.position.abs()) / 5;
 		_camera.setTarget(cam.target);
+		_camera.setPosition(pos.position);
 	}
 
 	void RenderSystem::setDebug(bool debug)
