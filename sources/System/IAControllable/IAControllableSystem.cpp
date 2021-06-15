@@ -4,6 +4,7 @@
 
 #include "Component/Bomb/BasicBombComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/IAControllable/IAControllableComponent.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
@@ -15,7 +16,7 @@ namespace BBM
 	: System(wal), _wal(wal), _cached(false)
 	{ }
 
-	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
+	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
 		_players.clear();
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
@@ -35,13 +36,13 @@ namespace BBM
 			_map.push_back(MapInfo(pos.position, MapGenerator::BUMPER));
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Hole>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::HOLE));
-		for (auto &[other, pos, bomb] : _wal.getScene()->view<PositionComponent, BasicBombComponent>())
-			_bombs.push_back(std::make_pair(pos.position, bomb.explosionRadius));
+		for (auto &[other, pos, bomb, timer] : _wal.getScene()->view<PositionComponent, BasicBombComponent, TimerComponent>())
+			_bombs.push_back(std::make_tuple(pos.position, bomb.explosionRadius, timer.ringIn));
 		_cached = true;
 
 	}
 
-	void IAControllableSystem::pushInfoPlayer(LuaG::State &state, MapInfo &player)
+	void IAControllableSystem::pushInfoPlayer(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
 	{
 		state.push("player");
 		state.newTable();
@@ -50,6 +51,12 @@ namespace BBM
 		state.setTable();
 		state.push("y");
 		state.push(player.z);
+		state.setTable();
+		state.push("bombCount");
+		state.push(bombHolder.bombCount);
+		state.setTable();
+		state.push("radius");
+		state.push(bombHolder.explosionRadius);
 		state.setTable();
 		state.setTable();
 	}
@@ -76,7 +83,7 @@ namespace BBM
 		state.setTable();
 	}
 
-	void IAControllableSystem::pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos)
+	void IAControllableSystem::pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos, int dangerLevel)
 	{
 		state.push(index++);
 		state.newTable();
@@ -85,6 +92,9 @@ namespace BBM
 		state.setTable();
 		state.push("y");
 		state.push(ypos);
+		state.setTable();
+		state.push("level");
+		state.push(dangerLevel);
 		state.setTable();
 		state.setTable();
 	}
@@ -97,34 +107,39 @@ namespace BBM
 		for (auto &bomb : _bombs) {
 			Vector3f bombPos = std::get<0>(bomb);
 			int bombRadius = std::get<1>(bomb);
-			pushInfoDangerPos(state, index, bombPos.x, bombPos.z);
+			std::chrono::nanoseconds timeleft = std::get<2>(bomb);
+			int dangerLevel = timeleft.count() / 1000000000;
+			if (dangerLevel == 0)
+				dangerLevel = 1;
+			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
 			for (int i = 1; i < bombRadius; i++) {
 				Vector3f pos = bombPos - Vector3f(i, 0, 0);
-				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
 				pos = bombPos - Vector3f(-i, 0, 0);
-				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
 				pos = bombPos - Vector3f(0, 0, i);
-				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
 				pos = bombPos - Vector3f(0, 0, -i);
-				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
 			}
 		}
 		state.setTable();
 	}
 
-	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player)
+	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
 	{
 		state.newTable();
-		pushInfoPlayer(state, player);
+		pushInfoPlayer(state, player, bombHolder);
 		pushInfoRaw(state);
 		pushInfoDanger(state);
 	}
 
-	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
+	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
 		auto &ia = entity.get<IAControllableComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &pos = entity.get<PositionComponent>();
+		auto &bombHolder = entity.get<BombHolderComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
 		UpdateMapInfos(entity);
@@ -132,10 +147,10 @@ namespace BBM
 		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
 			return;
-		pushInfo(ia._state, player);
+		pushInfo(ia._state, player, bombHolder);
 		ia._state.callFunction(1, 4);
 		controllable.bomb = ia._state.getReturnBool();
-		controllable.jump = ia._state.getReturnBool();
+		controllable.select = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
 		controllable.move.x = ia._state.getReturnNumber();
 		ia._state.popLast();

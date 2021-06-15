@@ -12,6 +12,7 @@
 #include <Runner/Runner.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Gamepad/GamepadComponent.hpp>
+#include "Component/IAControllable/IAControllableComponent.hpp"
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
 
@@ -185,7 +186,7 @@ namespace BBM
 			player.addComponent<GamepadComponent>(3);
 			break;
 		case ControllableComponent::AI:
-			throw std::runtime_error("Not implemented error");
+			player.addComponent<IAControllableComponent>("./ai_scripts/john.lua");
 			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");

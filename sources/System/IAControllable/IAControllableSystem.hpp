@@ -5,13 +5,14 @@
 #pragma once
 
 #include <vector>
+#include "Component/BombHolder/BombHolderComponent.hpp"
 #include "Map/MapInfo.hpp"
 #include "System/System.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle keyboard entities.
-	class IAControllableSystem : public WAL::System<PositionComponent, ControllableComponent, IAControllableComponent>
+	class IAControllableSystem : public WAL::System<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent>
 	{
 	private:
 		//! @brief Reference to wal to get Views
@@ -27,16 +28,16 @@ namespace BBM
 		std::vector<MapInfo> _players;
 
 		//! @brief All bombs on the map
-		std::vector<std::pair<Vector3f, int>> _bombs;
+		std::vector<std::tuple<Vector3f, int, std::chrono::nanoseconds>> _bombs;
 
 		//! @brief update the raw info of the map
-		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity);
+		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity);
 
 		//! @brief push danger info position
-		void pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos);
+		void pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos, int dangerLevel);
 
 		//! @brief push player info
-		void pushInfoPlayer(LuaG::State &state, MapInfo &player);
+		void pushInfoPlayer(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder);
 
 		//! @brief push raw map info
 		void pushInfoRaw(LuaG::State &state);
@@ -44,12 +45,12 @@ namespace BBM
 		//! @brief push danger map info
 		void pushInfoDanger(LuaG::State &state);
 
-		//! @brief push all the infos to the ai stack
-		void pushInfo(LuaG::State &state, MapInfo &player);
+		//! @brief push all the infos to the lua stack
+		void pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder);
 	public:
 
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity) override;
+		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity) override;
 
 		//! @inherit
 		void onSelfUpdate() override;
