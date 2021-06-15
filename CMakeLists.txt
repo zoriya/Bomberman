@@ -132,6 +132,8 @@ set(SOURCES
 	sources/Runner/CreditScene.cpp
 	sources/Component/Score/ScoreComponent.cpp
 	sources/Component/Score/ScoreComponent.hpp
+	sources/System/EndCondition/EndConditionSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp
