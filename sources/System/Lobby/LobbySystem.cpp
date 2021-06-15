@@ -113,7 +113,7 @@ namespace BBM
 			lobby.ready = true;
 			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 			if (texture)
-				texture->use("assets/player/icons/ready.png");
+				texture->use("assets/player/icons/ai.png");
 			return;
 		}
 	}
