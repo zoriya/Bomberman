@@ -17,7 +17,7 @@ namespace RAY {
 		public:
 			//! @brief A Model animation constructor
 			//! @param animationPtr an animation pointer, returned by the nimation-loading function
-			ModelAnimation(::ModelAnimation &animationPtr);
+			explicit ModelAnimation(::ModelAnimation animation);
 
 			//! @brief A default copy-constructor
 			ModelAnimation(const ModelAnimation &) = default;
@@ -41,13 +41,10 @@ namespace RAY {
 			~ModelAnimation() = default;
 
 		private:
-			::ModelAnimation &_animation;
+			::ModelAnimation _animation;
 
 			size_t _frameCounter;
 		INTERNAL:
-			//! @brief Castin Object to raw model animation pointer
-			operator ::ModelAnimation *();
-
 			//! @brief Castin Object to raw model animation pointer
 			operator ::ModelAnimation() const;
 	};

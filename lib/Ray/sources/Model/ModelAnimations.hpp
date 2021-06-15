@@ -19,7 +19,7 @@ namespace RAY {
 		public:
 			//! @brief A Model animation constructor
 			//! @param filePath Path to the file containing animations
-			ModelAnimations(const std::string &filePath);
+			explicit ModelAnimations(const std::string &filePath);
 
 			//! @brief default copy ctor
 			ModelAnimations(const ModelAnimations &) = default;
@@ -59,7 +59,7 @@ namespace RAY {
 			int _animationCount;
 
 			//! @brief The file where the animations were loaded (used to create a copy of this class)
-			const std::string _filePath;
+			std::string _filePath;
 
 			static Cache<::ModelAnimation> _animationsCache;
 	};

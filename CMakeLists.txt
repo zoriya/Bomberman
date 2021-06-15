@@ -109,6 +109,10 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/System/Lobby/LobbySystem.cpp
+	sources/System/Lobby/LobbySystem.hpp
+	sources/Component/Lobby/LobbyComponent.cpp
+	sources/Component/Lobby/LobbyComponent.hpp
 	sources/Component/Gravity/GravityComponent.hpp
 	sources/Component/Gravity/GravityComponent.cpp
 	sources/System/Gravity/GravitySystem.hpp
@@ -130,6 +134,7 @@ set(SOURCES
 	sources/Runner/PauseMenuScene.cpp
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
+	sources/Runner/LobbyScene.cpp
 )
 add_executable(bomberman
                sources/main.cpp
