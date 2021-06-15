@@ -33,7 +33,7 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 
 		auto &raylibLogo = scene->addEntity("raylib logo")
-			.addComponent<PositionComponent>(1920 / 4, 1080 / 1.75, 0)
+			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 1.75, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/raylib.png");
 		auto &raylibText = scene->addEntity("raylib text")
 			.addComponent<PositionComponent>(1920 / 4, 1080 / 2, 0)
@@ -42,8 +42,8 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 4, 1080 / 4, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Many Thanks to:", 35, RAY::Vector2(), BLACK);
 		auto &BriansRepo = scene->addEntity("thx brian")
-			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 3.5, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Brian Guitteny (and his team)", 35, RAY::Vector2(), BLACK);
+			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 3.25, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Brian Guitteny (and his team)\nAssets used by their permission", 35, RAY::Vector2(), BLACK);
 		auto &team = scene->addEntity("team")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 / 3.5, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Team:\n Zoe Roux\n Clément Le Bihan\n Arthur Jamet\n Louis Auzuret\n Benjamin Henry\n Tom Augier", 35, RAY::Vector2(), BLACK);
