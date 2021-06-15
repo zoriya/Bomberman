@@ -49,9 +49,6 @@ namespace BBM
 		state.push(player.x);
 		state.setTable();
 		state.push("y");
-		state.push(player.y);
-		state.setTable();
-		state.push("z");
 		state.push(player.z);
 		state.setTable();
 		state.setTable();
@@ -69,9 +66,6 @@ namespace BBM
 			state.push(info.x);
 			state.setTable();
 			state.push("y");
-			state.push(info.y);
-			state.setTable();
-			state.push("z");
 			state.push(info.z);
 			state.setTable();
 			state.push("type");
@@ -82,11 +76,48 @@ namespace BBM
 		state.setTable();
 	}
 
+	void IAControllableSystem::pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos)
+	{
+		state.push(index++);
+		state.newTable();
+		state.push("x");
+		state.push(xpos);
+		state.setTable();
+		state.push("y");
+		state.push(ypos);
+		state.setTable();
+		state.setTable();
+	}
+
+	void IAControllableSystem::pushInfoDanger(LuaG::State &state)
+	{
+		int index = 0;
+		state.push("danger");
+		state.newTable();
+		for (auto &bomb : _bombs) {
+			Vector3f bombPos = std::get<0>(bomb);
+			int bombRadius = std::get<1>(bomb);
+			pushInfoDangerPos(state, index, bombPos.x, bombPos.z);
+			for (int i = 1; i < bombRadius; i++) {
+				Vector3f pos = bombPos - Vector3f(i, 0, 0);
+				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pos = bombPos - Vector3f(-i, 0, 0);
+				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pos = bombPos - Vector3f(0, 0, i);
+				pushInfoDangerPos(state, index, pos.x, pos.z);
+				pos = bombPos - Vector3f(0, 0, -i);
+				pushInfoDangerPos(state, index, pos.x, pos.z);
+			}
+		}
+		state.setTable();
+	}
+
 	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player)
 	{
 		state.newTable();
 		pushInfoPlayer(state, player);
 		pushInfoRaw(state);
+		pushInfoDanger(state);
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity)
@@ -115,26 +146,5 @@ namespace BBM
 		_cached = false;
 		_map.clear();
 		_bombs.clear();
-	}
-
-	bool IAControllableSystem::isInExplosionRange(float x, float y, float z)
-	{
-		Vector3f pos(x, y, z);
-		//pos = pos.round();
-		//for (auto &bomb : _bombs) {
-		//	Vector3f bombPos = std::get<0>(bomb);
-		//	int bombRadius = std::get<1>(bomb);
-		//	for (int i = 1; i < bombRadius; i++) {
-		//		if (pos == bombPos - Vector3f(i, 0, 0))
-		//			return true;
-		//		if (pos == bombPos - Vector3f(-i, 0, 0))
-		//			return true;
-		//		if (pos == bombPos - Vector3f(0, 0, i))
-		//			return true;
-		//		if (pos == bombPos - Vector3f(0, 0, -i))
-		//			return true;	
-		//	}
-		//}
-		return true;
 	}
 }

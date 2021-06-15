@@ -8,7 +8,6 @@ include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
 include_directories(bomberman lib/LuaGate/sources)
-include_directories(bomberman lib/LuaBridge)
 include_directories(bomberman sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
@@ -129,7 +128,7 @@ add_executable(bomberman
                ${SOURCES}
                )
 
-target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR} lib/LuaBridge)
+target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
 target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES} LuaGate)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL

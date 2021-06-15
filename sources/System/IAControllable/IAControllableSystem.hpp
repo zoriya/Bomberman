@@ -31,12 +31,18 @@ namespace BBM
 
 		//! @brief update the raw info of the map
 		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent> &entity);
-	
+
+		//! @brief push danger info position
+		void pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos);
+
 		//! @brief push player info
 		void pushInfoPlayer(LuaG::State &state, MapInfo &player);
 
 		//! @brief push raw map info
 		void pushInfoRaw(LuaG::State &state);
+
+		//! @brief push danger map info
+		void pushInfoDanger(LuaG::State &state);
 
 		//! @brief push all the infos to the ai stack
 		void pushInfo(LuaG::State &state, MapInfo &player);
@@ -56,7 +62,5 @@ namespace BBM
 		~IAControllableSystem() override = default;
 		//! @brief A keyboard system is assignable.
 		IAControllableSystem &operator=(const IAControllableSystem &) = default;
-
-		static bool isInExplosionRange(float x, float y, float z);
 	};
 }
