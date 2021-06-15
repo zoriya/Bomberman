@@ -95,6 +95,10 @@ namespace RAY::Drawables::Drawables3D {
 			//! @brief Draw model's wires on window
 			void drawWiresOn(RAY::Window &) override;
 
+			//! @param materialType type of material
+			//! @return texture
+			Texture &getTextureByMaterial(MaterialType materialType);
+
 		private:
 			//! @brief Raw data from raylib
 			std::shared_ptr<::Model> _model;

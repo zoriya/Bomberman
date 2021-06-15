@@ -71,6 +71,11 @@ namespace RAY::Drawables::Drawables3D
 		return true;
 	}
 
+	Texture &Model::getTextureByMaterial(MaterialType materialType)
+	{
+		return this->_textureList[materialType];
+	}
+
 	Model::operator ::Model() const
 	{
 		return *this->_model;

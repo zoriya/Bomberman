@@ -7,6 +7,7 @@
 
 #include <Controllers/Keyboard.hpp>
 #include "Component/Component.hpp"
+#include "Component/Controllable/ControllableComponent.hpp"
 #include "Entity/Entity.hpp"
 
 using Key = RAY::Controller::Keyboard::Key;
@@ -30,19 +31,16 @@ namespace BBM
 		Key keyUp = KEY_W;
 		//! @brief move down key
 		Key keyDown = KEY_S;
+		//! @brief Layout
+		ControllableComponent::Layout layout;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
+		void onStart() override;
+
 		//! @brief Create a new keyboard component using custom keys.
-		explicit KeyboardComponent(WAL::Entity &entity,
-		                  Key up = KEY_W,
-		                  Key down = KEY_S,
-		                  Key left = KEY_A,
-		                  Key right = KEY_D,
-		                  Key jump = KEY_SPACE,
-		                  Key bomb = KEY_E,
-		                  Key pause = KEY_ESCAPE);
+		explicit KeyboardComponent(WAL::Entity &entity, ControllableComponent::Layout layout = ControllableComponent::Layout::KEYBOARD_0);
 
 		//! @brief A Keyboard component is copy constructable.
 		KeyboardComponent(const KeyboardComponent &) = default;

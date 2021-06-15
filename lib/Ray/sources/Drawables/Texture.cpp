@@ -11,7 +11,11 @@
 
 namespace RAY {
 
-	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture); 
+	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture);
+
+	Texture::Texture()
+		: Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, 0, 0)
+	{}
 
 	Texture::Texture(const std::string &filename, bool lonely, float scale, float rotation):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, scale, rotation),
@@ -34,7 +38,13 @@ namespace RAY {
 			return *this;
 		this->_texture = this->_texturesCache.fetch(filename);
 		this->_resourcePath = filename;
+		this->_dimensions = Vector2(this->_texture->width, this->_texture->height);
 		return *this;
+	}
+
+	const std::string &Texture::getResourcePath() const
+	{
+		return this->_resourcePath;
 	}
 
 	Texture::operator ::Texture() const
@@ -44,6 +54,8 @@ namespace RAY {
 
 	void Texture::drawOn(RAY::Window &)
 	{
+		if (!this->_texture)
+			return;
 		DrawTextureEx(*this, this->_position, this->_rotation, this->_scale, this->_color);
 	}
 }

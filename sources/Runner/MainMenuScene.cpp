@@ -23,9 +23,8 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
+		addMenuControl(*scene);
 		scene->addEntity("Control entity")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -51,7 +50,7 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+				gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)

@@ -17,6 +17,17 @@ namespace BBM
 	class ControllableComponent : public WAL::Component
 	{	
 		public:
+			enum Layout
+			{
+				NONE,
+				KEYBOARD_0,
+				KEYBOARD_1,
+				GAMEPAD_0,
+				GAMEPAD_1,
+				GAMEPAD_2,
+				GAMEPAD_3
+			};
+
 			//! @brief The X and Z abscis of the movement.
 			Vector2f move;
 			//! @brief input value for jump
@@ -26,7 +37,9 @@ namespace BBM
 			//! @brief input value for pause
 			bool pause = false;
 			//! @brief The speed applied to every controllable entities.
-			float speed = .25f;
+			float speed = .15f;
+			//! @brief The layout used for this controllable.
+			Layout layout = NONE;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;

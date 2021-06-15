@@ -22,9 +22,8 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 		auto scene = std::make_shared<WAL::Scene>();
+		addMenuControl(*scene);
 		scene->addEntity("control")
-			.addComponent<ControllableComponent>()
-			.addComponent<KeyboardComponent>()
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg");
 		scene->addEntity("background")

@@ -109,6 +109,10 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/System/Lobby/LobbySystem.cpp
+	sources/System/Lobby/LobbySystem.hpp
+	sources/Component/Lobby/LobbyComponent.cpp
+	sources/Component/Lobby/LobbyComponent.hpp
 	sources/Component/Gravity/GravityComponent.hpp
 	sources/Component/Gravity/GravityComponent.cpp
 	sources/System/Gravity/GravitySystem.hpp
@@ -130,6 +134,14 @@ set(SOURCES
 	sources/Runner/PauseMenuScene.cpp
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
+	sources/Component/Score/ScoreComponent.cpp
+	sources/Component/Score/ScoreComponent.hpp
+	sources/System/Score/ScoreSystem.cpp
+	sources/System/Score/ScoreSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.cpp
+	sources/Runner/LobbyScene.cpp
+	sources/Runner/ScoreScene.cpp
 	sources/System/Shaders/ShaderSystem.cpp
 	sources/System/Shaders/ShaderSystem.hpp
 	sources/System/Shaders/ShaderModelSystem.cpp
@@ -140,7 +152,7 @@ set(SOURCES
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-               )
+)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 

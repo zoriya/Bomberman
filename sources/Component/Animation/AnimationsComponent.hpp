@@ -52,7 +52,7 @@ namespace BBM
 		bool isAnimDisabled() const;
 
 		//! @brief ctor entity and the path of the animation file
-		explicit AnimationsComponent(WAL::Entity &entity, RAY::ModelAnimations modelAnimation, int animIndex, bool play = true);
+		explicit AnimationsComponent(WAL::Entity &entity, const std::string &path, int animIndex, bool play = true);
 		//! @brief copy ctor
 		AnimationsComponent(const AnimationsComponent &) = default;
 		//! @brief dtor
