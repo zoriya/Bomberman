@@ -28,5 +28,8 @@ namespace BBM
 			playerBonus.nextRangeBonusRate = playerBonus.rangeBonusRate;
 			holder.explosionRadius = 3;
 		}
+		playerBonus.nextNoClipRate -= dtime;
+		if (playerBonus.nextNoClipRate <= 0ns)
+			playerBonus.nextNoClipRate = playerBonus.noClipBonusRate;
 	}
 }

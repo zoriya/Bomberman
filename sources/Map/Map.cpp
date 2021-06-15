@@ -12,6 +12,7 @@
 #include "Component/Movable/MovableComponent.hpp"
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
+#include <Component/P/TagComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 using namespace std::chrono_literals;
@@ -23,7 +24,7 @@ namespace BBM
 	                                CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *mov = entity.tryGetComponent<MovableComponent>();
-
+		auto *playerBonus = entity.tryGetComponent<Pl
 		if (!mov)
 			return;
 		if (collidedAxis & CollisionComponent::CollidedAxis::X)

@@ -52,9 +52,7 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!playerBonus)
 			return;
-		static void SpeedUSpeedUpBonuspBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
-		static void SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
-		playerBonus->isNoClipOn = true
+		playerBonus->nextNoClipRate = playerBonus->nextSpeedBonusRate;
 	}
 
 	Bonus::BonusType Bonus::getRandomBonusType()
@@ -62,7 +60,7 @@ namespace BBM {
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
 		if (rnd < 0.8)
-			return (static_cast<BonusType>(std::rand() % (EXPLOSIONINC - 1) + 1));
+			return (static_cast<BonusType>(std::rand() % (NOCLIP - 1) + 1));
 		return (NOTHING);
 	}
 }
