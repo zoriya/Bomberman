@@ -101,6 +101,47 @@ namespace BBM
 		}
 	}
 
+	void LobbySystem::addAI()
+	{
+		for (auto entity : this->getView()) {
+			auto &lobby = entity.get<LobbyComponent>();
+			if (lobby.layout != ControllableComponent::NONE)
+				continue;
+			lobby.color = -1;
+			this->_nextColor(entity);
+			lobby.layout = ControllableComponent::AI;
+			lobby.ready = true;
+			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+			if (texture)
+				texture->use("assets/player/icons/ready.png");
+			return;
+		}
+	}
+
+	void LobbySystem::removeAI()
+	{
+		std::optional<WAL::ViewEntity<LobbyComponent, Drawable2DComponent>> last;
+		for (auto &entity : this->getView()) {
+			auto &lobby = entity.get<LobbyComponent>();
+			if (lobby.layout == ControllableComponent::AI)
+				last.emplace(entity);
+		}
+		if (!last)
+			return;
+		auto &entity = *last;
+		auto &lobby = entity.get<LobbyComponent>();
+		auto &drawable = entity.get<Drawable2DComponent>();
+		this->_colorTaken[lobby.color] = false;
+		lobby.color = -1;
+		lobby.layout = ControllableComponent::NONE;
+		lobby.ready = false;
+		drawable.drawable = std::make_shared<RAY::Texture>("assets/player/icons/none.png");
+		lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(RAY::Color(0, 0, 0, 0));
+		auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+		if (texture)
+			texture->unload();
+	}
+
 	void LobbySystem::onSelfUpdate()
 	{
 		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();

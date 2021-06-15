@@ -87,7 +87,7 @@ namespace BBM
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
 		auto &lavaOption = scene->addEntity("lava option text")
-			.addComponent<PositionComponent>(1920 / 6, 2 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 6, 1.85 * 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -111,7 +111,7 @@ namespace BBM
 			});
 
 		auto &heightOption = scene->addEntity("Height option text")
-			.addComponent<PositionComponent>(1920 / 1.75, 2 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 6, 2.1 * 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -134,6 +134,42 @@ namespace BBM
 				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
 			});
 
+		auto &aiMore = scene->addEntity("AI+")
+			.addComponent<PositionComponent>(1920 / 1.75, 1.85 * 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_add.png")
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				wal.getSystem<LobbySystem>().addAI();
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/cpu_add.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/cpu_add_hovered.png");
+			});
+
+		auto &aiLess = scene->addEntity("AI-")
+			.addComponent<PositionComponent>(1920 / 1.75, 2.10 * 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_remove.png")
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				wal.getSystem<LobbySystem>().removeAI();
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/cpu_remove.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/cpu_remove_hovered.png");
+			});
+
 		for (int i = 0; i < 4; i++) {
 			auto &playerTile = scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
@@ -149,10 +185,12 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, nullptr);
+		play.getComponent<OnClickComponent>().setButtonLinks(&heightOption, &back, &back, nullptr);
 		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
-		lavaOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &play, nullptr, &heightOption);
-		heightOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &play, &lavaOption, nullptr);
+		lavaOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &heightOption, nullptr, &aiMore);
+		heightOption.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &play, nullptr, &aiLess);
+		aiMore.getComponent<OnClickComponent>().setButtonLinks(nullptr, &aiLess, &lavaOption, nullptr);
+		aiLess.getComponent<OnClickComponent>().setButtonLinks(&aiMore, &play, &heightOption, nullptr);
 		return scene;
 	}
 }

@@ -45,6 +45,12 @@ namespace BBM
 		//! @brief Reset the lobby scene to it's default state.
 		void unloadLobby();
 
+		//! @brief Add an AI to the game.
+		void addAI();
+
+		//! @brief Remove an AI from the game.
+		void removeAI();
+
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);
 		//! @brief A Lobby system is copy constructable
