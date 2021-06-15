@@ -37,7 +37,7 @@ namespace BBM
 			//! @brief input value for pause
 			bool pause = false;
 			//! @brief The speed applied to every controllable entities.
-			float speed = .25f;
+			float speed = .15f;
 			//! @brief The layout used for this controllable.
 			Layout layout = NONE;
 

@@ -168,6 +168,21 @@ namespace BBM
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
 		}
 
+		Vector3<T> trunc() const requires(std::is_floating_point_v<T>)
+		{
+			return Vector3<T>(std::trunc(this->x), std::trunc(this->y), std::trunc(this->z));
+		}
+
+		Vector3<T> ceil() const requires(std::is_floating_point_v<T>)
+		{
+			return Vector3<T>(std::ceil(this->x), std::ceil(this->y), std::ceil(this->z));
+		}
+
+		Vector3<T> floor() const requires(std::is_floating_point_v<T>)
+		{
+			return Vector3<T>(std::floor(this->x), std::floor(this->y), std::floor(this->z));
+		}
+
 		Vector3<T> round() const requires(std::is_floating_point_v<T>)
 		{
 			return Vector3<T>(std::round(this->x), std::round(this->y), std::round(this->z));
