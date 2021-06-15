@@ -24,6 +24,9 @@
 #include <System/IntroAnimation/IntroAnimationSystem.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
 #include <System/Bonus/PlayerBonusSystem.hpp>
+#include "System/Shaders/ShaderSystem.hpp"
+#include "System/Shaders/ShaderDrawable2DSystem.hpp"
+#include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
@@ -84,11 +87,13 @@ namespace BBM
 			.addSystem<IntroAnimationSystem>()
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
+			.addSystem<ShaderSystem>()
+			.addSystem<ShaderModelSystem>()
+			.addSystem<ShaderDrawable2DSystem>()
 			.addSystem<MusicSystem>();
 	}
 
-	void Runner::enableRaylib(WAL::Wal &wal)
-	{
+	void Runner::enableRaylib(WAL::Wal &wal)	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
 		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
 		wal.addSystem<AnimationsSystem>()

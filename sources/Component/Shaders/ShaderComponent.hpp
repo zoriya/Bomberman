@@ -25,7 +25,7 @@ namespace BBM
 		std::string vertexFilePath;
 
 		//! @brief the function called to update shaders vars
-		const WAL::Callback<WAL::Entity &, WAL::Wal &> &onFixedUpdate;
+		WAL::Callback<WAL::Entity &, WAL::Wal &> onFixedUpdate;
 
 		//! @brief getter for _shader
 		RAY::Shader &getShader();

@@ -42,6 +42,12 @@ namespace RAY
 		//! @note Throw if the var is not found
 		void setShaderUniformVar(const std::string &varName, float value);
 
+		//! @brief The set var for float values
+		//! @note Throw if the var is not found
+		void setShaderUniformVar(const std::string &varName, int value);
+
+		void setLocation(::ShaderLocationIndex, const std::string &name);
+
 		//! @brief ctor if no vertexfile in needed set it to nullptr
 		Shader(const std::string &vertexFile, const std::string &fragmentFile);
 		//! @brief Default copy ctor

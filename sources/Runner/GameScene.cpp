@@ -9,6 +9,7 @@
 #include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Animator/AnimatorComponent.hpp"
 #include "Component/Animation/AnimationsComponent.hpp"
+#include <Drawables/3D/Sphere.hpp>
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
@@ -26,6 +27,8 @@
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
+
+int glob = 0;
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -45,16 +48,22 @@ namespace BBM
 		};
 		scene->addEntity("player")
 			.addComponent<PositionComponent>(0, 1.01, 0)
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			//.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::make_pair(MAP_DIFFUSE, "assets/player/blue.png"))
+			.addComponent<Drawable3DComponent, RAY3D::Model>(::GenMeshSphere(1, 16, 16))
 			.addComponent<ControllableComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
 			.addComponent<KeyboardComponent>()
-			.addComponent<ShaderComponentModel>("/home/cbihan/Downloads/mask.fs", "/home/cbihan/Downloads/mask.vs")
+			.addComponent<ShaderComponentModel>("/home/cbihan/Downloads/mask.fs", "/home/cbihan/Downloads/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal) {
+				auto &shader = entity.getComponent<ShaderComponentModel>();
+				shader.shader.setShaderUniformVar("frame", glob);
+				glob++;
+				glob %= 10;
+			})
 			.addComponent<TagComponent<BlowablePass>>()
 			//.addComponent<GamepadComponent>(0)
-			.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
+			//.addComponent<AnimationsComponent>(RAY::ModelAnimations("assets/player/player.iqm"), 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
 			.addComponent<SoundComponent>(soundPath)
@@ -62,8 +71,8 @@ namespace BBM
 			.addComponent<BombHolderComponent>()
 			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				auto &animation = entity.getComponent<AnimationsComponent>();
-				animation.setAnimIndex(5);
+				//auto &animation = entity.getComponent<AnimationsComponent>();
+				//animation.setAnimIndex(5);
 			});
 
 		scene->addEntity("background image")
@@ -72,7 +81,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		//MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 
 		return scene;
 	}

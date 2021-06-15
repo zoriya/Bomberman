@@ -130,11 +130,17 @@ set(SOURCES
 	sources/Runner/PauseMenuScene.cpp
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
+	sources/System/Shaders/ShaderSystem.cpp
+	sources/System/Shaders/ShaderSystem.hpp
+	sources/System/Shaders/ShaderModelSystem.cpp
+	sources/System/Shaders/ShaderModelSystem.hpp
+	sources/System/Shaders/ShaderDrawable2DSystem.cpp
+	sources/System/Shaders/ShaderDrawable2DSystem.hpp
 )
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-)
+               )
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
