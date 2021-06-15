@@ -12,7 +12,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ScoreComponent, HealthComponent> &entity) override;
+		void onUpdate(WAL::ViewEntity<ScoreComponent, HealthComponent> &entity, std::chrono::nanoseconds dtime) override;
 		
 		//! @brief ctor
 		ScoreSystem(WAL::Wal &wal);

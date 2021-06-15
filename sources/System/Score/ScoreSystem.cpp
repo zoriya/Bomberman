@@ -11,10 +11,9 @@ namespace BBM {
 		: System(wal)
 	{}
 
-	void ScoreSystem::onSelfUpdate()
+	void ScoreSystem::onUpdate(WAL::ViewEntity<ScoreComponent, HealthComponent> &entity, std::chrono::nanoseconds dtime)
 	{
-		ScoreComponent::Score maxScore = ScoreComponent::Score::PLAYING;
-
-		for (auto &[_, score, _], this->_wal.getScene()->view<PositionComponent, CollisionComponent>())
+		if (entity.get<HealthComponent>().getHealthPoint())
+			entity.get<ScoreComponent>().aliveTime += dtime;
 	}
 }

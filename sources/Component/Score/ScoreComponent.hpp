@@ -2,6 +2,7 @@
 #pragma once
 
 #include "Component/Component.hpp"
+#include <chrono>
 
 namespace BBM
 {
@@ -9,10 +10,8 @@ namespace BBM
 	class ScoreComponent : public WAL::Component
 	{
 	public:
-        //! @brief score of player (4 is the looser, 1 is the winner)
-        enum Score {FIRST = 1, SECOND = 2, THIRD = 3, FOURTH = 4, PLAYING = -1};
 		//! @brief the score of the player
-		enum Score score;
+		std::chrono::nanoseconds aliveTime;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;

@@ -5,7 +5,7 @@ namespace BBM
 {
 	ScoreComponent::ScoreComponent(WAL::Entity &entity)
 		: Component(entity),
-		  score(PLAYING)
+		  aliveTime(std::chrono::nanoseconds::zero())
 	{}
 
 	WAL::Component *ScoreComponent::clone(WAL::Entity &entity) const
