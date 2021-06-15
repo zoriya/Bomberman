@@ -42,6 +42,9 @@ namespace BBM
 		//! @param wal The engine.
 		static void switchToGame(WAL::Wal &wal);
 
+		//! @brief Reset the lobby scene to it's default state.
+		void unloadLobby();
+
 		//! @brief A default constructor
 		explicit LobbySystem(WAL::Wal &wal);
 		//! @brief A Lobby system is copy constructable

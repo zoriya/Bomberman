@@ -143,6 +143,9 @@ namespace BBM
 		case ControllableComponent::GAMEPAD_3:
 			player.addComponent<GamepadComponent>(3);
 			break;
+		case ControllableComponent::AI:
+			throw std::runtime_error("Not implemented error");
+			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
 		}
@@ -169,5 +172,21 @@ namespace BBM
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
+		wal.getSystem<LobbySystem>().unloadLobby();
+	}
+
+	void LobbySystem::unloadLobby()
+	{
+		this->_colorTaken.fill(false);
+		for (auto &[_, lobby, drawable] : this->getView()) {
+			lobby.layout = ControllableComponent::NONE;
+			lobby.ready = false;
+			lobby.color = -1;
+			drawable.drawable = std::make_shared<RAY::Texture>("assets/player/icons/none.png");
+			lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(RAY::Color(0, 0, 0, 0));
+			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
+			if (texture)
+				texture->unload();
+		}
 	}
 }

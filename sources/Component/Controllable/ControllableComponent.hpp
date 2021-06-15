@@ -25,7 +25,8 @@ namespace BBM
 				GAMEPAD_0,
 				GAMEPAD_1,
 				GAMEPAD_2,
-				GAMEPAD_3
+				GAMEPAD_3,
+				AI
 			};
 
 			//! @brief The X and Z abscis of the movement.
