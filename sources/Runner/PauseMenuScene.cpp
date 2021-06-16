@@ -54,25 +54,25 @@ namespace BBM
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
 		auto &save = scene->addEntity("save & quit button")
-				.addComponent<PositionComponent>(1920 / 2.5, 1080 - 240, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_save.png")
-				.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-				{
-				   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 240, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_save.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				   texture->use("assets/buttons/button_save.png");
-				})
-				.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-	            {
-	                RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/button_save.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-	                texture->use("assets/buttons/button_save_hovered.png");
-	            })
-				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-                {
-	                ParserYAML::save(Runner::gameState._loadedScenes[GameState::SceneID::GameScene]);
-	                gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
-                });
+				texture->use("assets/buttons/button_save_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				ParserYAML::save(Runner::gameState._loadedScenes[GameState::SceneID::GameScene]);
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
