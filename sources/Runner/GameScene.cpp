@@ -43,6 +43,9 @@ namespace BBM
 			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 				Runner::gameState.nextScene = GameState::ScoreScene;
 			});
+		scene->addEntity("background image")
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+			.addComponent<PositionComponent>();
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
@@ -55,9 +58,6 @@ namespace BBM
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		/*	scene->addEntity("background image")
-	.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false, 3, 0)
-	.addComponent<PositionComponent>();*/
 
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
