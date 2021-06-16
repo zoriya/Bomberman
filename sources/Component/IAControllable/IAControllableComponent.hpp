@@ -11,7 +11,6 @@
 #include "Component/Component.hpp"
 #include "Entity/Entity.hpp"
 #include "Models/Vector3.hpp"
-#include "lua.hpp"
 #include "LuaGate.hpp"
 
 namespace BBM
