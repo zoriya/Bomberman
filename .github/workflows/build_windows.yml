@@ -38,5 +38,5 @@ jobs:
       - name: Archive production artifact for Windows binary
         uses: actions/upload-artifact@v1
         with:
-          name: BombermanWindow
+          name: BombermanWindows.exe
           path: build/Debug/bomberman.exe

@@ -71,9 +71,11 @@ namespace WAL
 		explicit System(Wal &wal)
 			: _wal(wal)
 		{}
+
+	public:
 		//! @brief A system can't be instantiated, it should be derived.
-		System(const System &) = default;
+		System(const System &) = delete;
 		//! @brief A system can't be instantiated, it should be derived.
-		System &operator=(const System &) = default;
+		System &operator=(const System &) = delete;
 	};
 } // namespace WAL
