@@ -93,6 +93,8 @@ namespace BBM {
 		static bool _isFloat(const std::string &s);
 		static std::vector<std::string> _splitStr(const std::string &str, char delim);
 
+		static std::string getHeader(const std::string &line);
+
 	public:
 		//! @brief All name that was into the file
 		static std::vector<std::string> playerName;

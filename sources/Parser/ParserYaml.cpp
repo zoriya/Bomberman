@@ -441,4 +441,19 @@ namespace BBM {
 		}
 		return strings;
 	}
+
+	std::string ParserYAML::getHeader(const std::string &line)
+	{
+		std::stringstream ss(line);
+		std::string headerName;
+		std::string garbage;
+
+		ss >> headerName >> garbage;
+
+
+		if (!garbage.empty()) {
+			throw ParserError("error on getHeader line: ");
+		}
+		return headerName;
+	}
 }
