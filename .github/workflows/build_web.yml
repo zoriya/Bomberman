@@ -10,7 +10,7 @@ jobs:
       with:
         submodules: true
     - name: Install lua
-      run: sudo apt install -y lua-devel
+      run: sudo apt install -y liblua5.3-dev
     - name: Exec
       shell: bash
       run: ./build_web.sh

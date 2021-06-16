@@ -22,7 +22,7 @@ jobs:
       - name: Install Xorg lib
         if: matrix.name == 'Linux'
         run: |
-            sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev lua-devel
+            sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev liblua5.3-dev
       - name: Update G++
         if: matrix.name == 'Linux'
         run: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
