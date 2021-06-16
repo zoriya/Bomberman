@@ -172,12 +172,24 @@ namespace BBM
 			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
 			int x = (playerID % 2 == 0) ? 1920 - 10 - 320 : 10;
 			int y = playerID > 2 ? 1080 - 10 - 248 : 10;
-			scene->addEntity("player tile2")
+			scene->addEntity("player color tile")
 				.addComponent<PositionComponent>(x, y - 2, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);
-			scene->addEntity("player tile")
+			scene->addEntity("player ui tile")
 				.addComponent<PositionComponent>(x, y, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
+			scene->addEntity("player hide fireup")
+				.addComponent<PositionComponent>(x + 172, y + 35, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+			scene->addEntity("player hide bombup")
+				.addComponent<PositionComponent>(x + 172, y + 77, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+			scene->addEntity("player hide speedup")
+				.addComponent<PositionComponent>(x + 172, y + 122, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+			scene->addEntity("player hide speedup")
+				.addComponent<PositionComponent>(x + 172, y + 161, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
