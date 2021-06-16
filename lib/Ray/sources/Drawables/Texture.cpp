@@ -58,4 +58,10 @@ namespace RAY {
 			return;
 		DrawTextureEx(*this, this->_position, this->_rotation, this->_scale, this->_color);
 	}
+
+	void Texture::unload()
+	{
+		this->_texture = nullptr;
+		this->_resourcePath = "";
+	}
 }

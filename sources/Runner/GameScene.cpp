@@ -9,13 +9,11 @@
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Animator/AnimatorComponent.hpp"
 #include "Component/Animation/AnimationsComponent.hpp"
-#include <Drawables/3D/Sphere.hpp>
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
@@ -46,7 +44,7 @@ namespace BBM
 		scene->addEntity("background image")
 			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
 			.addComponent<PositionComponent>();
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
 
@@ -62,13 +60,11 @@ namespace BBM
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
-			//.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(1, 16, 16))
 			.addComponent<ControllableComponent>()
 			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
-//			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
