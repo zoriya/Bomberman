@@ -71,10 +71,8 @@ namespace BBM
 			dimensions.x = text->getString().size() * (text->getLetterSpacing() + text->getFontSize());
 		} else
 			return false;
-		if ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
-		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y))
-			return true;
-		return false;
+		return ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
+		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
 	void MenuControllableSystem::onSelfUpdate()
