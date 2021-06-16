@@ -97,7 +97,7 @@ set(SRC
     sources/Model/ModelAnimations.cpp
     sources/Vector/Vector2.cpp
     sources/Vector/Vector3.cpp
-    sources/Shaders/Shaders.cpp sources/Shaders/Shaders.hpp)
+    sources/Shaders/Shaders.cpp sources/Shaders/Shaders.hpp sources/Meshes/MeshSphere.cpp sources/Meshes/MeshSphere.hpp sources/Meshes/AMesh.cpp sources/Meshes/AMesh.hpp)
 
 find_package(raylib QUIET)
 if (NOT raylib_FOUND)

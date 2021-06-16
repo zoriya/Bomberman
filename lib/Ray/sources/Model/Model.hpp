@@ -13,6 +13,7 @@
 #include "Model/ModelAnimation.hpp"
 #include "Shaders/Shaders.hpp"
 #include <raylib.h>
+#include "Meshes/AMesh.hpp"
 #include <vector>
 #include <optional>
 #include "Utils/Cache.hpp"
@@ -36,7 +37,7 @@ namespace RAY::Drawables::Drawables3D {
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
-			Model(const Mesh &mesh,
+			Model(const Mesh::AMesh &mesh,
 			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
 			      const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1),
 			      const RAY::Vector3 &position = {0, 0, 0},

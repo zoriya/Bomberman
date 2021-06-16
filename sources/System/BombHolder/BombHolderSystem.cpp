@@ -11,6 +11,7 @@
 #include "Component/Health/HealthComponent.hpp"
 #include <functional>
 #include <Map/Map.hpp>
+#include <Meshes/MeshSphere.hpp>
 #include "Component/Shaders/Items/BombExplosionShaderComponent.hpp"
 #include <chrono>
 #include "Component/Shaders/ShaderComponent.hpp"
@@ -72,7 +73,7 @@ namespace BBM
 			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();
 			})
-			.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(0.5, 16, 16),
+			.addComponent<Drawable3DComponent, RAY3D::Model>(RAY::Mesh::MeshSphere(0.5, 16, 16),
 			                                                 std::make_pair(
 				                                                 MAP_DIFFUSE,
 				                                                 "assets/bombs/explosion/blast.png"
