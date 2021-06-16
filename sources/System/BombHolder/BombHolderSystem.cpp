@@ -77,11 +77,6 @@ namespace BBM
 				                                                 MAP_DIFFUSE,
 				                                                 "assets/bombs/explosion/blast.png"
 			                                                 ));
-			/*.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb", false,
-			                                                 std::make_pair(
-				                                                 MAP_DIFFUSE,
-				                                                 "assets/bombs/explosion/blast.png"
-			                                                 ));*/
 		wal.getSystem<EventSystem>().dispatchEvent([position, size, expansionDirections](WAL::Wal &wal) {
 			for (auto &[entity, pos, _] : wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
 				if (pos.position.round() == position) {
