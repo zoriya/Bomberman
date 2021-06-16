@@ -18,8 +18,6 @@
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Shaders/Items/WhiteShaderComponent.hpp"
 
-float glob = 0;
-
 using namespace std::chrono_literals;
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
