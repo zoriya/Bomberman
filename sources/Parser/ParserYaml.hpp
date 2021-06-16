@@ -100,13 +100,16 @@ namespace BBM {
 
 		static bool isHeader(const std::string &line);
 
-		static Node parseFile(const std::string &path);
+		static Node parseNode(std::ifstream &file, const std::string &nodeName, int indentLevel = 0);
 
-		static Node parseNode(std::ifstream &file, const std::string &nodeName);
+		static bool isCorrectIndentLevel(const std::string &line, int indentLevel);
 
 		static constexpr const char* indent = "  ";
 
 	public:
+
+		static Node parseFile(const std::string &path);
+
 		//! @brief All name that was into the file
 		static std::vector<std::string> playerName;
 		//! @brief Player position

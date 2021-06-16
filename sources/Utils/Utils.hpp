@@ -9,22 +9,25 @@ namespace BBM
 	struct Utils
 	{
 		//! @brief trim left end
-		static inline void lTrim(std::string &s);
+		static void lTrim(std::string &s);
 
 		//! @brief trim right end
-		static inline void rTrim(std::string &s);
+		static void rTrim(std::string &s);
 
 		//! @brief trim from both ends
-		static inline void trim(std::string &s);
+		static void trim(std::string &s);
 
 		//! @brief trim left end (copying)
-		static inline std::string lTrimCopy(std::string s);
+		static std::string lTrimCopy(std::string s);
 
 		//! @brief trim right end (copying)
-		static inline std::string rTrimCopy(std::string s);
+		static std::string rTrimCopy(std::string s);
 
 		//! @brief trim from both ends (copying)
-		static inline std::string trimCopy(std::string s);
+		static std::string trimCopy(std::string s);
+
+		//! @brief find the frequency of a substring in a string
+		static int findFrequency(const std::string &s, const std::string &pattern);
 	};
 
 

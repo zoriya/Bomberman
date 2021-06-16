@@ -147,7 +147,12 @@ set(SOURCES
 	sources/Runner/LobbyScene.cpp
 	sources/Runner/ResumeLobbyScene.cpp
 	sources/Runner/ScoreScene.cpp
-	sources/Parser/Node.cpp sources/Parser/Node.hpp sources/Utils/Utils.cpp sources/Utils/Utils.hpp)
+	sources/Parser/Node.cpp
+	sources/Parser/Node.hpp
+	sources/Utils/Utils.cpp
+	sources/Utils/Utils.hpp
+	)
+
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}

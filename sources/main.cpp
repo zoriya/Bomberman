@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Runner/Runner.hpp"
+#include "Parser/ParserYaml.hpp"
 
 void usage(const std::string &bin)
 {
@@ -23,5 +24,8 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
+	BBM::Node node = BBM::ParserYAML::parseFile("test.yml");
+
+	return 0;
 	return BBM::Runner::run();
 }

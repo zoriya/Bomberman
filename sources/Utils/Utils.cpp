@@ -6,46 +6,56 @@
 #include <cctype>
 #include <locale>
 #include <string>
+#include <regex>
 #include "Utils.hpp"
 
 namespace BBM
 {
-	inline void Utils::lTrim(std::string &s)
+	void Utils::lTrim(std::string &s)
 	{
 		s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
 			return !std::isspace(ch);
 		}));
 	}
 
-	inline void Utils::rTrim(std::string &s)
+	void Utils::rTrim(std::string &s)
 	{
 		s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
 			return !std::isspace(ch);
 		}).base(), s.end());
 	}
 
-	inline void Utils::trim(std::string &s)
+	void Utils::trim(std::string &s)
 	{
 		lTrim(s);
 		rTrim(s);
 	}
 
-	inline std::string Utils::lTrimCopy(std::string s)
+	std::string Utils::lTrimCopy(std::string s)
 	{
 		lTrim(s);
 		return s;
 	}
 
-	inline std::string Utils::rTrimCopy(std::string s)
+	std::string Utils::rTrimCopy(std::string s)
 	{
 		rTrim(s);
 		return s;
 	}
 
-	inline std::string Utils::trimCopy(std::string s)
+	std::string Utils::trimCopy(std::string s)
 	{
 		trim(s);
 		return s;
+	}
+
+	int Utils::findFrequency(const std::string &s, const std::string &pattern)
+	{
+		std::regex c(pattern);
+		std::smatch m;
+
+		ptrdiff_t numberOfMatches = std::distance(std::sregex_iterator(s.begin(), s.end(), c), std::sregex_iterator());
+		return static_cast<int>(numberOfMatches);
 	}
 
 }

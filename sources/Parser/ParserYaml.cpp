@@ -458,6 +458,7 @@ namespace BBM {
 		if (headerName.back() != ':') {
 			throw ParserError("header not ended with ':' , line: " + Utils::trimCopy(line));
 		}
+		headerName.pop_back();
 		return headerName;
 	}
 
@@ -476,13 +477,13 @@ namespace BBM {
 		if (propertyName.back() != ':') {
 			throw ParserError("property name not ended with ':' , line: " + Utils::trimCopy(line));
 		}
-
+		propertyName.pop_back();
 		return std::make_pair(propertyName, propertyValue);
 	}
 
 	bool ParserYAML::isHeader(const std::string &line)
 	{
-		return line.find(':') == line.back();
+		return line.back() == ':';
 	}
 
 	Node ParserYAML::parseFile(const std::string &path)
@@ -492,7 +493,7 @@ namespace BBM {
 		return parseNode(file, "root");
 	}
 
-	Node ParserYAML::parseNode(std::ifstream &file, const std::string &nodeName)
+	Node ParserYAML::parseNode(std::ifstream &file, const std::string &nodeName, int indentLevel)
 	{
 		std::string line;
 		Node node(nodeName);
@@ -500,12 +501,25 @@ namespace BBM {
 		while(std::getline(file, line)) {
 			if (line.empty())
 				continue;
+			if (!isCorrectIndentLevel(line, indentLevel))
+				return node;
 			if (isHeader(line)) {
-				node.addChildNode(parseNode(file, parseHeader(line)));
+				node.addChildNode(parseNode(file, parseHeader(line), indentLevel + 1));
 			} else {
 				node.setProperty(parseProperty(line));
 			}
 		}
 		return node;
+	}
+
+	bool ParserYAML::isCorrectIndentLevel(const std::string &line, int indentLevel)
+	{
+		int nb = 0;
+		for (const auto &c : line) {
+			if (!std::isspace(c))
+				break;
+			nb++;
+		}
+		return nb == indentLevel;
 	}
 }
