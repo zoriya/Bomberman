@@ -371,12 +371,16 @@ namespace BBM {
 	{
 		if (line.find(": ") == std::string::npos || !_isInteger(line.substr(line.find(": ") + 2)))
 			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
+		if (line.find("-") != std::string::npos)
+			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
 		return (std::atoi(line.substr(line.find(": ") + 2).c_str()));
 	}
 
 	float ParserYAML::_parseExplosionRadius(std::string &line)
 	{
 		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
+			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
+		if (line.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
 	}
@@ -385,6 +389,8 @@ namespace BBM {
 	{
 		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
 			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
+		if (line.find("-") != std::string::npos)
+			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
 	}
 
@@ -392,12 +398,16 @@ namespace BBM {
 	{
 		if (blockType.find(": ") == std::string::npos || !_isInteger(blockType.substr(blockType.find(": ") + 2)))
 			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
+		if (blockType.find("-") != std::string::npos)
+			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
 		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ") + 2).c_str())));
 	}
 
 	Bonus::BonusType ParserYAML::_parseBonusType(std::string &bonusType)
 	{
 		if (bonusType.find(": ") == std::string::npos || !_isInteger(bonusType.substr(bonusType.find(": ") + 2)))
+			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
+		if (bonusType.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
 		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ") + 2).c_str())));
 	}
