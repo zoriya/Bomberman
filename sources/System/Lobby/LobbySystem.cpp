@@ -186,7 +186,7 @@ namespace BBM
 			scene->addEntity("player hide fireup")
 				.addComponent<PositionComponent>(x + 220, y + 35, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
 					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
 
 					if (!bonus)
@@ -199,7 +199,7 @@ namespace BBM
 			scene->addEntity("player hide bombup")
 				.addComponent<PositionComponent>(x + 220, y + 77, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
 					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
 
 					if (!bonus)
@@ -212,7 +212,7 @@ namespace BBM
 			scene->addEntity("player hide speedup")
 				.addComponent<PositionComponent>(x + 220, y + 122, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
 					const ControllableComponent *bonus = player.tryGetComponent<ControllableComponent>();
 
 					if (!bonus)
