@@ -7,7 +7,6 @@
 #include "Drawables/2D/Text.hpp"
 
 using namespace std::chrono_literals;
-namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
