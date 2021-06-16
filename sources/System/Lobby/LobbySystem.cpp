@@ -186,7 +186,7 @@ namespace BBM
 			player.addComponent<GamepadComponent>(3);
 			break;
 		case ControllableComponent::AI:
-			player.addComponent<IAControllableComponent>("./ai_scripts/john.lua");
+			player.addComponent<IAControllableComponent>("./assets/ai_scripts/john.lua");
 			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
