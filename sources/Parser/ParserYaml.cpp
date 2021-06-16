@@ -28,6 +28,7 @@
 #include <Component/Gamepad/GamepadComponent.hpp>
 #include <Component/Renderer/Drawable2DComponent.hpp>
 #include <System/Lobby/LobbySystem.hpp>
+#include <filesystem>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -177,6 +178,11 @@ namespace BBM {
 				std::replace(name.begin(), name.end(), '_', ' ');
 				playerName.push_back(name);
 			}
+		}
+		if ((tmpAssets.find("red.png") == std::string::npos && tmpAssets.find("blue.png") == std::string::npos &&
+		tmpAssets.find("green.png") == std::string::npos && tmpAssets.find("yellow.png") == std::string::npos &&
+		tmpAssets.find("ai.png") == std::string::npos) || !std::filesystem::exists(tmpAssets)) {
+			throw (ParserError("Error with saved map: One asset is invalid.\n                Loading default maps..."));
 		}
 		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
 		auto &playerTile = resumeScene->addEntity("player tile")

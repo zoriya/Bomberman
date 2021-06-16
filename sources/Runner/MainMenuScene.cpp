@@ -76,7 +76,7 @@ namespace BBM
 				try {
 					ParserYAML::load(scene);
 				} catch (std::exception const &err) {
-					scene->addEntity("Error message parser")
+					Runner::gameState._loadedScenes[GameState::SceneID::LobbyScene]->addEntity("Error message parser")
 							.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
 							.addComponent<Drawable2DComponent, RAY2D::Text>(err.what(), 50, RAY::Vector2(), RED)
 							.addComponent<TimerComponent>(3s, [](WAL::Entity &entity, WAL::Wal &wal) {
