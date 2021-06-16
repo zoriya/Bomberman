@@ -16,7 +16,7 @@ ExternalProject_Add(lua
 )
 ExternalProject_Get_property(lua SOURCE_DIR)
 
-set(LUA_LIBRARIES ./lua-prefix/src/lua/src/lua ./lua-prefix/src/lua/src/lualib.a)
+set(LUA_LIBRARIES ${PROJECT}/lua-prefix/src/lua/src/lua ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lualib.a)
 set(LUA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src)
 
 find_package(Lua QUIET)
