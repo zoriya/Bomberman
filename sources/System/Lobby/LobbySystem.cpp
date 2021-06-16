@@ -207,7 +207,7 @@ namespace BBM
 					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 					if (!text)
 						return;
-					text->setText(std::to_string(bonus->maxBombCount));
+					text->setText(std::to_string(bonus->bombCount) + " / " + std::to_string(bonus->maxBombCount));
 				});
 			scene->addEntity("player hide speedup")
 				.addComponent<PositionComponent>(x + 220, y + 122, 0)
@@ -220,7 +220,7 @@ namespace BBM
 					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 					if (!text)
 						return;
-					text->setText(std::to_string(bonus->speed));
+					text->setText(std::to_string(static_cast<int>(bonus->speed * 100)));
 				});
 			scene->addEntity("player hide wall")
 				.addComponent<PositionComponent>(x + 220, y + 161, 0)
