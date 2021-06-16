@@ -141,6 +141,7 @@ set(SOURCES
 	sources/System/EndCondition/EndConditionSystem.hpp
 	sources/System/EndCondition/EndConditionSystem.cpp
 	sources/Runner/LobbyScene.cpp
+	sources/Runner/HowToPlayScene.cpp
 	sources/Runner/ScoreScene.cpp
 	sources/System/Shaders/ShaderSystem.cpp
 	sources/System/Shaders/ShaderSystem.hpp
@@ -152,6 +153,14 @@ set(SOURCES
 	sources/Component/Shaders/Items/BombExplosionShaderComponent.hpp
 	sources/Component/Shaders/Items/WhiteShaderComponent.cpp
 	sources/Component/Shaders/Items/WhiteShaderComponent.hpp
+	sources/System/Timer/TimerUISystem.hpp
+	sources/System/Timer/TimerUISystem.cpp
+	sources/System/Bonus/BonusUISystem.hpp
+	sources/System/Bonus/BonusUISystem.cpp
+	sources/Component/Color/ColorComponent.hpp
+	sources/Component/Color/ColorComponent.cpp
+	sources/Component/Stat/StatComponent.cpp
+	sources/Component/Stat/StatComponent.hpp
 	)
 
 add_executable(bomberman
