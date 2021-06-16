@@ -136,7 +136,7 @@ namespace BBM
 
 		auto &aiMore = scene->addEntity("AI+")
 			.addComponent<PositionComponent>(1920 / 1.75, 1.85 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_add.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/cpu_add.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				wal.getSystem<LobbySystem>().addAI();
@@ -154,7 +154,7 @@ namespace BBM
 
 		auto &aiLess = scene->addEntity("AI-")
 			.addComponent<PositionComponent>(1920 / 1.75, 2.10 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_remove.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/cpu_remove.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				wal.getSystem<LobbySystem>().removeAI();
