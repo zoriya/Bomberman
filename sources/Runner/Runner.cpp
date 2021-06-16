@@ -16,6 +16,7 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <System/Timer/TimerSystem.hpp>
+#include <System/Timer/TimerUISystem.hpp>
 #include <System/BombHolder/BombHolderSystem.hpp>
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
@@ -24,6 +25,9 @@
 #include <System/IntroAnimation/IntroAnimationSystem.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
 #include <System/Bonus/PlayerBonusSystem.hpp>
+#include "System/Shaders/ShaderSystem.hpp"
+#include "System/Shaders/ShaderDrawable2DSystem.hpp"
+#include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
@@ -37,10 +41,12 @@
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
+#include "System/Bonus/BonusUISystem.hpp"
 
 namespace BBM
 {
 	GameState Runner::gameState;
+	bool Runner::hasHeights = false;
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
@@ -67,6 +73,7 @@ namespace BBM
 	void Runner::addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<TimerSystem>()
+			.addSystem<TimerUISystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<LobbySystem>()
@@ -75,6 +82,7 @@ namespace BBM
 			.addSystem<BombHolderSystem>()
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
+			.addSystem<BonusUISystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<LevitateSystem>()
 			.addSystem<PlayerBonusSystem>()
@@ -85,6 +93,9 @@ namespace BBM
 			.addSystem<IntroAnimationSystem>()
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
+			.addSystem<ShaderSystem>()
+			.addSystem<ShaderModelSystem>()
+			.addSystem<ShaderDrawable2DSystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<MusicSystem>();

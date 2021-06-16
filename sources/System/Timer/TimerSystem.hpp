@@ -11,11 +11,11 @@
 
 namespace BBM
 {
-	class TimerSystem : public WAL::System<TimerComponent, Drawable2DComponent>
+	class TimerSystem : public WAL::System<TimerComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<TimerComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<TimerComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		TimerSystem(WAL::Wal &);

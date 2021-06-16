@@ -71,10 +71,8 @@ namespace BBM
 			dimensions.x = text->getString().size() * (text->getLetterSpacing() + text->getFontSize());
 		} else
 			return false;
-		if ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
-		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y))
-			return true;
-		return false;
+		return ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
+		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
 	void MenuControllableSystem::onSelfUpdate()
@@ -96,8 +94,8 @@ namespace BBM
 		if (!this->_currentButton)
 			return;
 		for (auto &[_, controllable]: controllableView)
-			if (controllable.move.x || controllable.move.y || controllable.jump) {
-				this->_updateCurrentButton(controllable.jump, controllable.move);
+			if (controllable.move.x || controllable.move.y || controllable.select) {
+				this->_updateCurrentButton(controllable.select, controllable.move);
 				return;
 			}
 		for (auto &entity:  buttons) {

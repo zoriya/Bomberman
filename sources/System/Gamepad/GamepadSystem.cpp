@@ -24,7 +24,7 @@ namespace BBM
 		Gamepad gamepad(gamepadComponent.getID());
 
 		const std::map<Button, bool &> keyPressedMap = {
-			{gamepadComponent.keyJump, controllable.jump},
+			{gamepadComponent.keyJump, controllable.select},
 			{gamepadComponent.keyBomb, controllable.bomb},
 			{gamepadComponent.keyPause, controllable.pause}
 		};

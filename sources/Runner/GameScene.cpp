@@ -14,9 +14,11 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include <Drawables/Image.hpp>
+#include "Drawables/2D/Text.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/Texture.hpp"
@@ -45,7 +47,10 @@ namespace BBM
 			})
 			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		scene->addEntity("background image")
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+			.addComponent<PositionComponent>();
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
 
@@ -66,7 +71,6 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
-//			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})

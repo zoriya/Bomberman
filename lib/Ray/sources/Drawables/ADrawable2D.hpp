@@ -24,12 +24,12 @@ namespace RAY::Drawables {
 			//! @brief ADrawable constructor
 			//! @param poition position of top-left point 
 			//! @param Color Color of the color  
-			ADrawable2D(const Vector2 &position, const RAY::Color &color);
+			ADrawable2D(const Vector2 &position, const RAY::Color &color, float scale = 1, float rotation = 0);
 			//! @brief ADrawable constructor
 			//! @param x x-position of top-left point  
 			//! @param y y-position of top-left point 
 			//! @param Color Color of the color  
-			ADrawable2D(int x, int y, const RAY::Color &color);
+			ADrawable2D(int x, int y, const RAY::Color &color, float scale = 1, float rotation = 0);
 
 			//! @brief A default copy constructor
 			ADrawable2D(const ADrawable2D &) = default;
@@ -58,7 +58,16 @@ namespace RAY::Drawables {
 			//! @brief Draw drawble on image
 			virtual void drawOn(RAY::Image &image) = 0;
 
+			//! @brief scale getter
+			float getScale() const;
+			//! @brief scale setters
+			void setScale(float scale);
+
 		protected:
+			//! @brief rotation
+			float _rotation = 0;
+			//! @brief scale
+			float _scale = 1;
 			//! @brief Top-left position 
 			Vector2 _position;
 			//! @brief Color of the ADrawable
