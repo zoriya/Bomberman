@@ -5,13 +5,6 @@ set(CMAKE_CXX_STANDARD 20)
 
 cmake_minimum_required(VERSION 3.10)
 
-find_package(Lua QUIET)
-if (NOT LUA_FOUND)
-	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/lua)
-	find_package(Lua REQUIRED)
-endif()
-
-include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
 include_directories(bomberman lib/LuaGate/sources)
@@ -157,7 +150,7 @@ set(SOURCES
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}
-               )
+)
 
 target_include_directories(bomberman PUBLIC sources ${LUA_INCLUDE_DIR})
 target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES} LuaGate)
