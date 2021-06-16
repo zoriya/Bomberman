@@ -22,5 +22,6 @@ add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
 
 
 include(FindLua)
+message(LUA INCLUDE PATH: ${LUA_INCLUDE_DIR})
 include_directories(${LIB_NAME} ${LUA_INCLUDE_DIR})
 target_link_libraries(${LIB_NAME} ${LUA_LIBRARIES})
