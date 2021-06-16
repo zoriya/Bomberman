@@ -1,9 +1,8 @@
 cmake_minimum_required(VERSION 3.11)
 set(CMAKE_CXX_STANDARD 20)
-set(LIB_NAME "LuaGate")
+project(LuaGate)
 
-project("${LIB_NAME}")
-include_directories(${LIB_NAME} ./sources)
+include_directories(sources)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
 	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
@@ -18,10 +17,8 @@ set(SRC
 	sources/LuaGate.cpp
 )
 
-add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
-
-
 include(FindLua)
-message(LUA INCLUDE PATH: ${LUA_INCLUDE_DIR})
-include_directories(${LIB_NAME} ${LUA_INCLUDE_DIR})
-target_link_libraries(${LIB_NAME} ${LUA_LIBRARIES})
+include_directories(${LUA_INCLUDE_DIR})
+
+add_library(LuaGate STATIC ${SRC} ${HEADERS})
+target_link_libraries(LuaGate ${LUA_LIBRARIES})
