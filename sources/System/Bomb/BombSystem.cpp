@@ -20,7 +20,7 @@ namespace BBM
 		for (auto &[owner, ownerPos, _] : this->_wal.getScene()->view<PositionComponent, BombHolderComponent>()) {
 			if (owner.getUid() != bomb.ownerID)
 				continue;
-			if (pos.position != ownerPos.position.round()) {
+			if (pos.position.distance(ownerPos.position) >= 1.1) {
 				bomb.ignoreOwner = false;
 				return;
 			}

@@ -34,6 +34,8 @@
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
+#include "System/Score/ScoreSystem.hpp"
+#include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
 
 namespace BBM
@@ -59,6 +61,8 @@ namespace BBM
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
+		if (gameState.nextScene == GameState::SceneID::ScoreScene)
+			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
@@ -85,6 +89,8 @@ namespace BBM
 			.addSystem<IntroAnimationSystem>()
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
+			.addSystem<EndConditionSystem>()
+			.addSystem<ScoreSystem>()
 			.addSystem<MusicSystem>();
 	}
 

@@ -42,6 +42,11 @@ namespace RAY {
 		return *this;
 	}
 
+	const std::string &Texture::getResourcePath() const
+	{
+		return this->_resourcePath;
+	}
+
 	Texture::operator ::Texture() const
 	{
 		return *this->_texture;

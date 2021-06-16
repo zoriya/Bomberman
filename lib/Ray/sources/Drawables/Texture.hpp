@@ -47,6 +47,9 @@ namespace RAY
 			//! @brief Unload the current texture (calls to drawOn will no-op).
 			void unload();
 
+			//! @return path of loaded texture
+			const std::string &getResourcePath() const;
+
 		protected:
 		private:
 			//! @brief Texture, really, that's just it...
