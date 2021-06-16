@@ -143,8 +143,6 @@ set(SOURCES
 	sources/Runner/LobbyScene.cpp
 	sources/Runner/HowToPlayScene.cpp
 	sources/Runner/ScoreScene.cpp
-	sources/System/MenuControllable/MenuControllableMouseSystem.cpp
-	sources/System/MenuControllable/MenuControllableMouseSystem.hpp
 )
 add_executable(bomberman
                sources/main.cpp
