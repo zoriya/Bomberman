@@ -44,63 +44,63 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
-			             .addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			             .addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
-			             .addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			                                            {
-				                                            auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				                                            texture->use("assets/buttons/button_new_game.png");
-			                                            })
-			             .addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			                                             {
-				                                             auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-				                                             texture->use("assets/buttons/button_new_game_hovered.png");
-			                                             })
-			             .addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			                                             {
-				                                             if (Runner::gameState.currentScene != GameState::LobbyScene
-				                                                 || !LobbySystem::playersAreReady(*wal.getScene()))
-					                                             return;
-				                                             LobbySystem::switchToGame(wal);
-			                                             })
-			             .addComponent<TagComponent<"PlayButton">>();
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/button_new_game.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/button_new_game_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				if (Runner::gameState.currentScene != GameState::LobbyScene
+					|| !LobbySystem::playersAreReady(*wal.getScene()))
+					return;
+				LobbySystem::switchToGame(wal);
+			})
+			.addComponent<TagComponent<"PlayButton">>();
 
 
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                                {
-				                                gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
-			                                })
+			{
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                               {
-				                               RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			{
+			   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				                               texture->use("assets/buttons/button_back.png");
-			                               })
+			   texture->use("assets/buttons/button_back.png");
+			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                                {
-				                                RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				                                texture->use("assets/buttons/button_back_hovered.png");
-			                                });
+				texture->use("assets/buttons/button_back_hovered.png");
+			});
 		auto &howToPlay = scene->addEntity("to to play")
 			.addComponent<PositionComponent>(1920 - 10 - 75, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_htp.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-	    	{
-	            gameState.nextScene = BBM::GameState::SceneID::HowToPlayScene;
-	        })
+			{
+				gameState.nextScene = BBM::GameState::SceneID::HowToPlayScene;
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-			    texture->use("assets/buttons/button_htp.png");
+				texture->use("assets/buttons/button_htp.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-			    RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 			 texture->use("assets/buttons/button_htp_hovered.png");
 			});
@@ -108,49 +108,49 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 6, 2 * 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			                                {
-				                                RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				                                if (text->getString().find("Off") != std::string::npos) {
-					                                text->setText("Lava: On");
-					                                //do
-				                                } else {
-					                                text->setText("Lava: Off");
-					                                //do
-				                                }
-			                                })
+				if (text->getString().find("Off") != std::string::npos) {
+					text->setText("Lava: On");
+					//do
+				} else {
+					text->setText("Lava: Off");
+					//do
+				}
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                               {
-				                               entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
-			                               })
+										   {
+			   entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+										   })
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                                {
-				                                entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
-			                                });
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
 
 		auto &heightOption = scene->addEntity("Height option text")
 			.addComponent<PositionComponent>(1920 / 1.75, 2 * 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
-			                                {
-				                                RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				                                if (text->getString().find("Off") != std::string::npos) {
-					                                text->setText("2nd Level: On");
-					                                //do
-				                                } else {
-					                                text->setText("2nd Level: Off");
-					                                //do
-				                                }
-			                                })
+				if (text->getString().find("Off") != std::string::npos) {
+					text->setText("2nd Level: On");
+					//do
+				} else {
+					text->setText("2nd Level: Off");
+					//do
+				}
+			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                               {
-				                               entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
-			                               })
+										   {
+			   entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+										   })
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-			                                {
-				                                entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
-			                                });
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
 
 		for (int i = 0; i < 4; i++) {
 			auto &playerTile = scene->addEntity("player tile")
