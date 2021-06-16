@@ -3,6 +3,19 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
+cmake_minimum_required(VERSION 3.10)
+include(ExternalProject)
+
+ExternalProject_Add(lua
+   URL "https://www.lua.org/ftp/lua-5.4.3.tar.gz"
+   CONFIGURE_COMMAND ""
+   BUILD_COMMAND make generic
+   BUILD_ALWAYS true
+   BUILD_IN_SOURCE true
+   INSTALL_COMMAND ""
+)
+ExternalProject_Get_property(lua SOURCE_DIR)
+
 find_package(Lua QUIET)
 if (NOT LUA_FOUND)
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/lua)
@@ -172,7 +185,7 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
                tests/CollisionTest.cpp
 )
 target_include_directories(unit_tests PUBLIC sources)
-target_link_libraries(unit_tests PUBLIC wal ray lua)
+target_link_libraries(unit_tests PUBLIC wal ray ${LUA_LIBRARIES})
 
 find_package(Catch2 QUIET)
 if (NOT Catch2_FOUND)
