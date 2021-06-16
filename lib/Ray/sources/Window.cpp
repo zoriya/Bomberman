@@ -70,9 +70,18 @@ bool RAY::Window::isFocused(void) const
 	return IsWindowFocused();
 }
 
-const RAY::Vector2 &RAY::Window::getDimensions(void) const
+const RAY::Vector2 &RAY::Window::getDimensions(void)
 {
+	this->_dimensions.x = GetScreenWidth();
+	this->_dimensions.y = GetScreenHeight();
 	return this->_dimensions;
+}
+
+RAY::Window &RAY::Window::setDimensions(const Vector2 &dims)
+{
+	this->_dimensions = dims;
+	SetWindowSize(dims.x, dims.y);
+	return *this;
 }
 
 void RAY::Window::setVisibleCursor(bool visible)

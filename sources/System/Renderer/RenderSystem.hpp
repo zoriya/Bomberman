@@ -11,6 +11,7 @@
 #include "Camera/Camera2D.hpp"
 #include "Window.hpp"
 #include "Wal.hpp"
+#include "Models/Vector2.hpp"
 
 namespace BBM
 {
@@ -26,8 +27,22 @@ namespace BBM
 		//! @brief Defines if the debug informations must be displayed or not
 		bool _debugMode;
 
+		Vector2f _previousDims = {1920, 1080};
+
 		//! @brief Window framerate limit
 		static constexpr short FPS = 60;
+
+		//! @brief rescale the drawables dimensions according to new window dimensions
+		//! @param drawable  the drawable to rescale
+		//! @param newDims  the new window's dimensions
+		void rescaleDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
+
+				//! @brief rescale the drawables position according to new window dimensions
+		//! @param drawable  the drawable to rescale position of
+		//! @param newDims  the new window's dimensions
+		void rescaleDrawablePosition(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
+
+		void resizeWindow(Vector2f &newDims);
 
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.

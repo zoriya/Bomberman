@@ -38,7 +38,7 @@ namespace RAY {
 			static Window &getInstance();
 
 			//! @return A widow insta,ce. Only one window can be open at a time
-			static Window &getInstance(int width, int height, const std::string &title, unsigned flags = 0, bool openNow = true) noexcept;
+			static Window &getInstance(int width, int height, const std::string &title, unsigned flags = FLAG_WINDOW_RESIZABLE, bool openNow = true) noexcept;
 			
 			//! @brief A window is movable.
 			Window(Window &&) = default;
@@ -64,8 +64,11 @@ namespace RAY {
 			//! @brief Check if window is currently focused
 			bool isFocused(void) const;
 
+			//! @brief Get window dimensions
+			const RAY::Vector2 &getDimensions(void);
+
 			//! @brief Set window dimensions
-			const RAY::Vector2 &getDimensions(void) const;
+			RAY::Window &setDimensions(const Vector2 &dims);
 
 			//! @brief Set the cursor visibility
 			//! @param visible True if the cursor is visible

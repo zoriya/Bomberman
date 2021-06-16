@@ -10,10 +10,15 @@
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Model/Model.hpp>
 #include "Drawables/ADrawable3D.hpp"
+#include "Drawables/ADrawable2D.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
 #include <Drawables/3D/Cube.hpp>
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
+#include <Drawables/2D/Text.hpp>
+#include <Drawables/2D/Rectangle.hpp>
+
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -40,11 +45,60 @@ namespace BBM
 		drawable.drawable->drawWiresOn(this->_window);
 	}
 
+	void RenderSystem::rescaleDrawablePosition(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims)
+	{
+		RAY::Vector2 newPosition;
+		RAY::Vector2 oldPosition(drawable.getPosition());
+
+		newPosition.x = (oldPosition.x * newDims.x) / this->_previousDims.x;
+		newPosition.y = (oldPosition.y * newDims.y) / this->_previousDims.y;
+
+		drawable.setPosition(newPosition);
+	}
+
+	void RenderSystem::rescaleDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims)
+	{
+		this->rescaleDrawablePosition(drawable, newDims);
+		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(&drawable);
+
+		if (text) {
+			float oldHeightSize = text->getFontSize();
+			float oldWidthSize = text->getFontSize() + text->getLetterSpacing();
+			float newHeightSize = oldHeightSize * newDims.y / this->_previousDims.y;
+			float newWidthSize = oldWidthSize * newDims.x / this->_previousDims.x;
+			text->setFontSize((newWidthSize + newHeightSize) / 2);
+			return;
+		}
+		RAY2D::Rectangle *rect = dynamic_cast<RAY2D::Rectangle *>(&drawable);
+
+		if (rect) {
+			float oldHeightSize = rect->getHeight();
+			float oldWidthSize = rect->getWidth();
+			rect->setHeight(oldHeightSize * newDims.y / this->_previousDims.y);
+			rect->setWidth(oldWidthSize * newDims.x / this->_previousDims.x);
+			return;
+		}
+		throw std::runtime_error(std::string("No rescaling avalable for this drawable: ") + std::string(typeid(drawable).name()));
+	}
+
+	void RenderSystem::resizeWindow(Vector2f &newDims)
+	{
+		if (newDims == this->_previousDims)
+			return;
+		newDims.y = (newDims.x * 720) / 1280;
+		std::cout << newDims.x << " " << newDims.y << std::endl;
+		this->_window.setDimensions(newDims);
+	}
+
 	void RenderSystem::onSelfUpdate()
 	{
 		this->_camera.update();
 		this->_window.beginDrawing();
 		this->_window.clear();
+		RAY::Vector2 rayWinDims = this->_window.getDimensions();
+		Vector2f windowDimensions(rayWinDims.x, rayWinDims.y);
+
+		this->resizeWindow(windowDimensions);
 
 		this->_window.useCamera(this->_camera);
 		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable3DComponent>()) {
@@ -68,6 +122,8 @@ namespace BBM
 			if (shader) {
 				RAY::Shader::BeginUsingCustomShader(shader->getShader());
 			}
+			if (windowDimensions != this->_previousDims)
+				this->rescaleDrawable(*drawable.drawable, windowDimensions);
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 			if (shader) {
@@ -77,6 +133,8 @@ namespace BBM
 		if (this->_debugMode)
 			this->_window.drawFPS(Vector2f(10, 10));
 		this->_window.endDrawing();
+		if (windowDimensions != this->_previousDims)
+			this->_previousDims = windowDimensions;
 	}
 
 	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
