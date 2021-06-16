@@ -18,9 +18,14 @@ set(SRC
 )
 
 include(FindLua)
-if (NOT LUA_FOUND AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/lua.hpp)
-	set(LUA_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/)
-	set(LUA_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR})
+if (NOT LUA_FOUND)
+	if (EXISTS ${CMAKE_SOURCE_DIR}/include/lua.hpp)
+		message("Using local lua")
+		set(LUA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/)
+		set(LUA_LIBRARIES ${CMAKE_SOURCE_DIR})
+	else()
+		message(FATAL_ERROR "Lua could not be found.")
+	endif()
 endif()
 
 add_library(LuaGate STATIC ${SRC} ${HEADERS})
