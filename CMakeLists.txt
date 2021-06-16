@@ -5,11 +5,12 @@ set(CMAKE_CXX_STANDARD 20)
 
 cmake_minimum_required(VERSION 3.10)
 
+find_package(Lua REQUIRED)
 
-if (NOT LUA_FOUND)
-	set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/lib/lua/")
-	find_package(Lua REQUIRED)
-endif()
+#if (NOT LUA_FOUND)
+#	set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/lib/lua/")
+#	find_package(Lua REQUIRED)
+#endif()
 
 include_directories(bomberman ${LUA_INCLUDE_DIR})
 include_directories(bomberman lib/Ray/sources)

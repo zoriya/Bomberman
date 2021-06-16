@@ -108,7 +108,7 @@ namespace BBM
 			Vector3f bombPos = std::get<0>(bomb);
 			int bombRadius = std::get<1>(bomb);
 			std::chrono::nanoseconds timeleft = std::get<2>(bomb);
-			int dangerLevel = timeleft.count() / 1000000000;
+			int dangerLevel = std::chrono::duration_cast<std::chrono::seconds>(timeleft).count();
 			if (dangerLevel == 0)
 				dangerLevel = 1;
 			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
