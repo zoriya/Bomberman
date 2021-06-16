@@ -53,9 +53,6 @@ ExternalProject_Add(lua
 ExternalProject_Get_property(lua SOURCE_DIR)
 message("wow")
 
-set(LUA_LIBRARIES ${SOURCE_DIR}/src/lua ${SOURCE_DIR}/src/lualib.a)
-set(LUA_INCLUDE_DIR ${SOURCE_DIR}/src)
-
 
 cmake_policy(PUSH)  # Policies apply to functions at definition-time
 cmake_policy(SET CMP0012 NEW)  # For while(TRUE)
@@ -244,7 +241,11 @@ if (LUA_LIBRARY)
   endif ()
 endif ()
 
-include(${CMAKE_SOURCE_DIR}/cmake/Modules/FindPackageHandleStandardArgs.cmake)
+
+set(LUA_LIBRARIES ${SOURCE_DIR}/src/lua ${SOURCE_DIR}/src/lualib.a)
+set(LUA_INCLUDE_DIR ${SOURCE_DIR}/src)
+
+include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LUA_FOUND to TRUE if
 # all listed variables are TRUE
 FIND_PACKAGE_HANDLE_STANDARD_ARGS(Lua

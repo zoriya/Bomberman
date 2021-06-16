@@ -12,7 +12,6 @@ if (CMAKE_COMPILER_IS_GNUCXX)
 endif ()
 
 
-find_package(Lua REQUIRED)
 include_directories(${LIB_NAME} ${LUA_INCLUDE_DIR})
 
 set(HEADERS
