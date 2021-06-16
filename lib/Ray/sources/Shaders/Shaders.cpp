@@ -12,10 +12,10 @@ namespace RAY
 	Cache<::Shader> Shader::_shadersCache(LoadShader, UnloadShader);
 
 
-	Shader::Shader(const std::string &vertexFile, const std::string &fragmentFile)
+	Shader::Shader(const std::string &vertexFile, const std::string &fragmentFile, bool lonely)
 		: _vertexFile(vertexFile),
 		  _fragmentFile(fragmentFile),
-		  _rayLibShader(_shadersCache.fetch(vertexFile, fragmentFile))
+		  _rayLibShader(_shadersCache.fetch(vertexFile, fragmentFile, lonely))
 	{
 		this->_rayLibShader->locs[SHADER_LOC_MAP_EMISSION] = GetShaderLocation(*this->_rayLibShader, "mask");
 	}

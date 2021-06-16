@@ -49,7 +49,7 @@ namespace RAY
 		void setLocation(::ShaderLocationIndex, const std::string &name);
 
 		//! @brief ctor if no vertexfile in needed set it to nullptr
-		Shader(const std::string &vertexFile, const std::string &fragmentFile);
+		Shader(const std::string &vertexFile, const std::string &fragmentFile, bool lonely = false);
 		//! @brief Default copy ctor
 		Shader(const Shader &) = default;
 		//! @brief dtor

@@ -11,12 +11,13 @@
 #include "Component/Health/HealthComponent.hpp"
 #include <functional>
 #include <Map/Map.hpp>
+#include "Component/Shaders/Items/BombExplosionShaderComponent.hpp"
 #include <chrono>
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 
-int glob = 0;
+float glob = 0;
 
 using namespace std::chrono_literals;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -48,17 +49,22 @@ namespace BBM
 			return;
 		wal.getScene()->scheduleNewEntity("explosion")
 			.addComponent<PositionComponent>(position)
+		    .addComponent<BombExplosionShaderComponent>()
 			.addComponent<ShaderComponentModel>("assets/shaders/mask.fs", "assets/shaders/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
-				static std::chrono::nanoseconds nanoseconds {};
+				auto &ctx = entity.getComponent<BombExplosionShaderComponent>();
 				auto &shader = entity.getComponent<ShaderComponentModel>();
 
-				nanoseconds += dtime;
-				if (duration_cast<std::chrono::milliseconds>(nanoseconds).count() <= 400)
+				ctx.clock += dtime;
+				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
 					return;
-				std::cout << "test" << std::endl;
-				shader.shader.setShaderUniformVar("frame", glob);
-				glob++;
-				glob %= 40;
+				ctx.clock = 0ns;
+				ctx.explosionRadius -= 0.3;
+				if (ctx.explosionRadius < 1.2) {
+					ctx.explosionRadius = 1.2;
+				}
+				shader.shader.setShaderUniformVar("frame", ctx.frameCounter);
+				shader.shader.setShaderUniformVar("radius", ctx.explosionRadius);
+				ctx.frameCounter += 0.1;
 			})
 			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();

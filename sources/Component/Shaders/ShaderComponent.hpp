@@ -46,7 +46,8 @@ namespace BBM
 		ShaderComponent(WAL::Entity &entity,
 		                const std::string &fragmentFilePath,
 		                const std::string &vertexFilePath = "",
-		                const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
+		                const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+	                    bool lonely = false);
 
 		//! @brief Default copy ctor
 		ShaderComponent(const ShaderComponent &) = default;
@@ -70,7 +71,8 @@ namespace BBM
 		ShaderComponentModel(WAL::Entity &entity,
 		                     const std::string &fragmentFilePath,
 		                     const std::string &vertexFilePath = "",
-		                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
+		                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+		                     bool lonely = false);
 
 		//! @brief Default copy ctor
 		ShaderComponentModel(const ShaderComponentModel &) = default;
@@ -90,7 +92,8 @@ namespace BBM
 		ShaderComponentDrawable2D(WAL::Entity &entity,
 		                          const std::string &fragmentFilePath,
 		                          const std::string &vertexFilePath = "",
-		                          const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>());
+		                          const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+		                          bool lonely = false);
 
 		//! @brief Default copy ctor
 		ShaderComponentDrawable2D(const ShaderComponentDrawable2D &) = default;

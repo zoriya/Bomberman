@@ -89,8 +89,10 @@ attribute vec4 vertexColor;
 
 // Input uniform values
 uniform mat4 mvp;
-uniform int frame;
+uniform float frame;
 uniform vec3 center;
+
+uniform float radius;
 
 // Output vertex attributes (to fragment shader)
 varying vec3 fragPosition;
@@ -101,6 +103,6 @@ void main() {
     // Send vertex attributes to fragment shader
     fragPosition = vertexPosition + vertexPosition * vec3(cnoise(vec3(vertexNormal + vec3(frame))) * 0.5);
     // Calculate final vertex position
-    gl_Position = mvp * vec4(fragPosition , 1.0);
+    gl_Position = mvp * vec4(fragPosition , radius);
     //gl_Position = vec4(vertexNormal, 1.0);
 }
