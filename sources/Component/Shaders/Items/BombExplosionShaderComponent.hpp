@@ -19,6 +19,11 @@ namespace BBM
 		float explosionRadius = 4;
 		//! @brief to have the shader move by the time
 		float frameCounter = 0;
+		//! @brief Transparency
+		float alpha = 1;
+
+		//! @brief max explosion radius
+		static constexpr float maxRadius = 1.2;
 
 		//! @brief The clock to use
 		std::chrono::nanoseconds clock = 0ns;

@@ -58,13 +58,17 @@ namespace BBM
 				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
 					return;
 				ctx.clock = 0ns;
-				ctx.explosionRadius -= 0.3;
-				if (ctx.explosionRadius < 1.2) {
-					ctx.explosionRadius = 1.2;
+				ctx.explosionRadius -= 1;
+				if (ctx.explosionRadius < BombExplosionShaderComponent::maxRadius) {
+					ctx.explosionRadius = BombExplosionShaderComponent::maxRadius;
+					ctx.alpha -= 0.1;
+					// slow the explosion movement
+					ctx.frameCounter -= 0.1;
 				}
+				ctx.frameCounter += 0.2;
 				shader.shader.setShaderUniformVar("frame", ctx.frameCounter);
+				shader.shader.setShaderUniformVar("alpha", ctx.alpha);
 				shader.shader.setShaderUniformVar("radius", ctx.explosionRadius);
-				ctx.frameCounter += 0.1;
 			})
 			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();
