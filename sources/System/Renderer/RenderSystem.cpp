@@ -91,8 +91,10 @@ namespace BBM
 		float lowerXDist = 0;
 		float lowerZDist = 0;
 
-		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>())
+		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
 			playerPos.emplace_back(pos.position);
+		if (playerPos.size() == 1)
+			newCameraPos = playerPos[0];
 		for (int i = 0; i < playerPos.size(); i++)
 			for (int j = 0; j < playerPos.size(); j++) {
 				if (maxDist < playerPos[i].distance(playerPos[j])) {
