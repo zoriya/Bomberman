@@ -148,7 +148,7 @@ set(SOURCES
     sources/System/Shaders/ShaderModelSystem.hpp
     sources/System/Shaders/ShaderDrawable2DSystem.cpp
     sources/System/Shaders/ShaderDrawable2DSystem.hpp
-    sources/Component/Shaders/Items/BombExplosionShaderComponent.cpp sources/Component/Shaders/Items/BombExplosionShaderComponent.hpp)
+    sources/Component/Shaders/Items/BombExplosionShaderComponent.cpp sources/Component/Shaders/Items/BombExplosionShaderComponent.hpp sources/Component/Shaders/Items/WhiteShaderComponent.cpp sources/Component/Shaders/Items/WhiteShaderComponent.hpp)
 add_executable(bomberman
                sources/main.cpp
                ${SOURCES}

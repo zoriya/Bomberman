@@ -16,6 +16,7 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
+#include "Component/Shaders/Items/WhiteShaderComponent.hpp"
 
 float glob = 0;
 
@@ -50,7 +51,7 @@ namespace BBM
 		wal.getScene()->scheduleNewEntity("explosion")
 			.addComponent<PositionComponent>(position)
 		    .addComponent<BombExplosionShaderComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/mask.fs", "assets/shaders/mask.vs", [](WAL::Entity &entity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
+			.addComponent<ShaderComponentModel>("assets/shaders/explosion.fs", "assets/shaders/explosion.vs", [](WAL::Entity &entity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
 				auto &ctx = entity.getComponent<BombExplosionShaderComponent>();
 				auto &shader = entity.getComponent<ShaderComponentModel>();
 
@@ -131,6 +132,33 @@ namespace BBM
 				auto &bombDetails = entity.getComponent<BasicBombComponent>();
 				BombHolderSystem::_dispatchExplosion(pos.position, wal, bombDetails.explosionRadius);
 			})
+			.addComponent<ShaderComponentModel>("assets/shaders/white.fs", "", [](WAL::Entity &entity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
+				auto &ctx = entity.getComponent<WhiteShaderComponent>();
+				auto &shader = entity.getComponent<ShaderComponentModel>();
+				auto &timer = entity.getComponent<TimerComponent>();
+
+				if (ctx.whiteValue >= 1)
+					ctx.balance = -1;
+				if (ctx.whiteValue <= 0)
+					ctx.balance = 1;
+				auto nbMilliSec = duration_cast<std::chrono::milliseconds>(timer.ringIn).count();
+
+				float step;
+
+				if (nbMilliSec > 1000) {
+					step = 0.07;
+				} else if (nbMilliSec > 500) {
+					step = 0.15;
+				} else if (nbMilliSec > 100) {
+					step = 0.26;
+				} else {
+					step = 0.5;
+				}
+
+				ctx.whiteValue += static_cast<float>(step * ctx.balance);
+				shader.shader.setShaderUniformVar("white", ctx.whiteValue);
+			})
+			.addComponent<WhiteShaderComponent>()
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)

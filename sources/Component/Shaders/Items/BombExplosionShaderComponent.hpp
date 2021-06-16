@@ -32,7 +32,6 @@ namespace BBM
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
-
 		//! @brief ctor
 		explicit BombExplosionShaderComponent(WAL::Entity &entity);
 
