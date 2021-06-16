@@ -19,7 +19,8 @@ namespace BBM
 		enum CollidedAxis {
 			X = 1,
 			Y = 2,
-			Z = 4
+			Z = 4,
+			ALL = 7
 		};
 
 		//! @brief onCollide functions to be called

@@ -111,8 +111,6 @@ namespace BBM
 				                                                 MAP_DIFFUSE,
 				                                                 "assets/bombs/bomb_normal.png"
 			                                                 ));
-		holder.damage = 1;
-		holder.explosionRadius = 3;
 	}
 
 	void

@@ -114,7 +114,7 @@ namespace BBM
 			lobby.ready = true;
 			auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 			if (texture)
-				texture->use("assets/player/icons/ready.png");
+				texture->use("assets/player/icons/ai.png");
 			return;
 		}
 	}
@@ -207,7 +207,7 @@ namespace BBM
 			_addController(player, lobby.layout);
 			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
 																		 0,
-																		 mapHeight * ((playerCount + 1) % 2));
+																		 mapHeight * (!(playerCount % 3)));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
 			playerCount++;

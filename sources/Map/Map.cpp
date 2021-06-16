@@ -11,6 +11,7 @@
 #include <Component/Levitate/LevitateComponent.hpp>
 #include <Component/Timer/TimerComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
+#include "Component/Bonus/PlayerBonusComponent.hpp"
 #include <Component/BumperTimer/BumperTimerComponent.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -43,8 +44,8 @@ namespace BBM
 			return;
 		health->takeDmg(health->getHealthPoint());
 	}
-
-	void MapGenerator::wallCollided(WAL::Entity &entity,
+	
+	void MapGenerator::wallCollision(WAL::Entity &entity,
 	                                const WAL::Entity &wall,
 	                                CollisionComponent::CollidedAxis collidedAxis)
 	{
@@ -60,6 +61,17 @@ namespace BBM
 			mov->_velocity.z = 0;
 	}
 
+	void MapGenerator::wallCollided(WAL::Entity &entity,
+	                                const WAL::Entity &wall,
+	                                CollisionComponent::CollidedAxis collidedAxis)
+	{
+		auto *playerBonus = entity.tryGetComponent<PlayerBonusComponent>();
+
+		if (playerBonus && playerBonus->isNoClipOn)
+			return;
+		wallCollision(entity, wall, collidedAxis);
+	}
+
 	void MapGenerator::wallDestroyed(WAL::Entity &entity, WAL::Wal &wal)
 	{
 		entity.scheduleDeletion();
@@ -67,10 +79,11 @@ namespace BBM
 		static std::map<Bonus::BonusType, std::string> map = {
 				{Bonus::BonusType::BOMBSTOCK, "assets/items/bombup"},
 				{Bonus::BonusType::SPEEDUP, "assets/items/speedup"},
-				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"}
+				{Bonus::BonusType::EXPLOSIONINC, "assets/items/fireup"},
+				{Bonus::BonusType::NOCLIP, "assets/items/wallpass"}
 		};
 		static std::vector<std::function<void (WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis)>> func = {
-				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus
+				&Bonus::BombUpBonus, &Bonus::SpeedUpBonus, &Bonus::ExplosionRangeBonus, &Bonus::NoClipBonus
 		};
 		auto bonusType = Bonus::getRandomBonusType();
 
@@ -157,7 +170,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
+				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -165,7 +178,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
+				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(width + 3, 1, 1));
@@ -173,7 +186,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
+				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
@@ -181,7 +194,7 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
+				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
 			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
 			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
 			                                                 RAY::Vector3(1, 1, height + 1));
@@ -477,12 +490,12 @@ namespace BBM
 			.addComponent<PositionComponent>(Vector3f(0, 0, 0))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25), Vector3f(width, 0.75, 0.75));
+				&MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25), Vector3f(width + 1, 0.75, 0.75));
 			scene->addEntity("FloorUp Hitbox")
 				.addComponent<PositionComponent>(Vector3f(0, 0, height))
 				.addComponent<CollisionComponent>(
 					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, 0.75));
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width + 1, 0.75, 0.75));
 		}
 		if (floor >= 2)
 			scene->addEntity("Middle Hitbox")

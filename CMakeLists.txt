@@ -142,7 +142,14 @@ set(SOURCES
 	sources/Runner/PauseMenuScene.cpp
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
+	sources/Component/Score/ScoreComponent.cpp
+	sources/Component/Score/ScoreComponent.hpp
+	sources/System/Score/ScoreSystem.cpp
+	sources/System/Score/ScoreSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.cpp
 	sources/Runner/LobbyScene.cpp
+	sources/Runner/ScoreScene.cpp
 )
 
 add_executable(bomberman

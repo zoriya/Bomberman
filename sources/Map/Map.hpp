@@ -44,37 +44,9 @@ namespace BBM
 			UNBREAKABLE
 		};
 
-
+	private:
 		using MapElem = std::function<void(Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 		using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
-
-		static void wallCollided(WAL::Entity &entity,
-		                         const WAL::Entity &wall,
-		                         CollisionComponent::CollidedAxis collidedAxis);
-		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
-
-		static void holeCollide(WAL::Entity &entity,
-		                        const WAL::Entity &wall,
-		                        CollisionComponent::CollidedAxis collidedAxis);
-
-		static void bumperCollide(WAL::Entity &entity,
-		                        const WAL::Entity &wall,
-		                        CollisionComponent::CollidedAxis collidedAxis);
-
-
-
-		//! @param width Width of the map
-		//! @param height Height of the map
-		//! @brief Generate map of block to be loaded
-		static MapBlock createMap(int width, int height, bool isHeight = false, bool isNotClassic = false);
-
-		//! @param width Width of the map
-		//! @param height Height of the map
-		//! @param map Map to load with block declared inside
-		//! @param scene Scene where the map is instanced
-		//! @brief Generate the map
-		static void loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene);
-	private:
 
 		//! @brief Generate random block type
 		static BlockType getRandomBlockType();
@@ -202,6 +174,36 @@ namespace BBM
 
 		static const std::string secondFloorHolePath;
 
-	};
+	public:
 
+		static void wallCollision(WAL::Entity &entity,
+	                            const WAL::Entity &wall,
+	                            CollisionComponent::CollidedAxis collidedAxis);
+		static void wallCollided(WAL::Entity &entity,
+		                         const WAL::Entity &wall,
+		                         CollisionComponent::CollidedAxis collidedAxis);
+		static void wallDestroyed(WAL::Entity &entity, WAL::Wal &wal);
+
+		static void holeCollide(WAL::Entity &entity,
+		                        const WAL::Entity &wall,
+		                        CollisionComponent::CollidedAxis collidedAxis);
+
+		static void bumperCollide(WAL::Entity &entity,
+		                        const WAL::Entity &wall,
+		                        CollisionComponent::CollidedAxis collidedAxis);
+
+
+
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @brief Generate map of block to be loaded
+		static MapBlock createMap(int width, int height, bool isHeight = false, bool isNotClassic = false);
+
+		//! @param width Width of the map
+		//! @param height Height of the map
+		//! @param map Map to load with block declared inside
+		//! @param scene Scene where the map is instanced
+		//! @brief Generate the map
+		static void loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene);
+	};
 } // namespace BBM

@@ -119,10 +119,10 @@ namespace BBM
 
 				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("2nd Level: On");
-					//do
+					Runner::hasHeights = true;
 				} else {
 					text->setText("2nd Level: Off");
-					//do
+					Runner::hasHeights = false;
 				}
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
