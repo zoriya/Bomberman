@@ -7,14 +7,15 @@
 #include <System/System.hpp>
 #include <Wal.hpp>
 #include <Component/Timer/TimerComponent.hpp>
+#include "Component/Renderer/Drawable2DComponent.hpp"
 
 namespace BBM
 {
-	class TimerSystem : public WAL::System<TimerComponent>
+	class TimerSystem : public WAL::System<TimerComponent, Drawable2DComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<TimerComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<TimerComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		TimerSystem(WAL::Wal &);

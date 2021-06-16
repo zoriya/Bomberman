@@ -26,6 +26,7 @@
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
+#include "Drawables/2D/Text.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -41,7 +42,9 @@ namespace BBM
 		scene->addEntity("Timer")
 			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 				Runner::gameState.nextScene = GameState::ScoreScene;
-			});
+			})
+			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
 		return scene;
 	}
