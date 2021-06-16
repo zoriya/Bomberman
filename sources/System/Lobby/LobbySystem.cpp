@@ -225,7 +225,7 @@ namespace BBM
 			scene->addEntity("player hide wall")
 				.addComponent<PositionComponent>(x + 220, y + 161, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
 					const PlayerBonusComponent *bonus = player.tryGetComponent<PlayerBonusComponent>();
 
 					if (!bonus)
