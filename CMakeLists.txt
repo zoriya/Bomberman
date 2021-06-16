@@ -143,6 +143,8 @@ set(SOURCES
 	sources/Runner/LobbyScene.cpp
 	sources/Runner/HowToPlayScene.cpp
 	sources/Runner/ScoreScene.cpp
+	sources/System/Timer/TimerUISystem.hpp
+	sources/System/Timer/TimerUISystem.cpp
 )
 add_executable(bomberman
                sources/main.cpp

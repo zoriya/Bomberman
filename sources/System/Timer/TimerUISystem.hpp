@@ -11,19 +11,19 @@
 
 namespace BBM
 {
-	class TimerSystem : public WAL::System<TimerComponent>
+	class TimerUISystem : public WAL::System<TimerComponent, Drawable2DComponent>
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<TimerComponent> &entity, std::chrono::nanoseconds dtime) override;
+		void onUpdate(WAL::ViewEntity<TimerComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
-		TimerSystem(WAL::Wal &);
+		TimerUISystem(WAL::Wal &);
 		//! @brief A timer system is copy constructable.
-		TimerSystem(const TimerSystem &) = default;
+		TimerUISystem(const TimerUISystem &) = default;
 		//! @brief A default destructor
-		~TimerSystem() override = default;
+		~TimerUISystem() override = default;
 		//! @breief A timer system is assignable.
-		TimerSystem &operator=(const TimerSystem &) = default;
+		TimerUISystem &operator=(const TimerUISystem &) = default;
 	};
 }

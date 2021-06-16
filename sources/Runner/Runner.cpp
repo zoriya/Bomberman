@@ -16,6 +16,7 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <System/Timer/TimerSystem.hpp>
+#include <System/Timer/TimerUISystem.hpp>
 #include <System/BombHolder/BombHolderSystem.hpp>
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
@@ -67,6 +68,7 @@ namespace BBM
 	void Runner::addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<TimerSystem>()
+			.addSystem<TimerUISystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<LobbySystem>()
