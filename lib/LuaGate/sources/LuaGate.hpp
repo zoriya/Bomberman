@@ -3,7 +3,7 @@
 //
 
 #include <string>
-#include "lua.hpp"
+#include <lua.hpp>
 
 namespace LuaG
 {

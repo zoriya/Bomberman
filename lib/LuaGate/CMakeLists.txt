@@ -1,9 +1,8 @@
-CMAKE_MINIMUM_REQUIRED(VERSION 3.11)
+cmake_minimum_required(VERSION 3.11)
 set(CMAKE_CXX_STANDARD 20)
-set(LIB_NAME "LuaGate")
+project(LuaGate)
 
-project("${LIB_NAME}")
-include_directories(${LIB_NAME} ./sources)
+include_directories(sources)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
 	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
@@ -18,9 +17,17 @@ set(SRC
 	sources/LuaGate.cpp
 )
 
-add_library(${LIB_NAME} STATIC ${SRC} ${HEADERS})
-
-
 include(FindLua)
-include_directories(${LIB_NAME} ${LUA_INCLUDE_DIR})
-target_link_libraries(${LIB_NAME} ${LUA_LIBRARIES})
+if (NOT LUA_FOUND)
+	if (EXISTS ${CMAKE_SOURCE_DIR}/include/lua.hpp)
+		message("Using local lua")
+		set(LUA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/)
+		set(LUA_LIBRARIES ${CMAKE_SOURCE_DIR}/lua54.lib)
+	else()
+		message(FATAL_ERROR "Lua could not be found.")
+	endif()
+endif()
+
+add_library(LuaGate STATIC ${SRC} ${HEADERS})
+target_include_directories(LuaGate PUBLIC ${LUA_INCLUDE_DIR})
+target_link_libraries(LuaGate ${LUA_LIBRARIES})
