@@ -45,20 +45,14 @@ namespace BBM
 		drawable.drawable->drawWiresOn(this->_window);
 	}
 
-	void RenderSystem::rescaleDrawablePosition(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims)
+	void RenderSystem::rescaleDrawablePosition(Vector3f &position, const Vector2f &newWinDims)
 	{
-		RAY::Vector2 newPosition;
-		RAY::Vector2 oldPosition(drawable.getPosition());
-
-		newPosition.x = (oldPosition.x * newDims.x) / this->_previousDims.x;
-		newPosition.y = (oldPosition.y * newDims.y) / this->_previousDims.y;
-
-		drawable.setPosition(newPosition);
+		position.x = (position.x * newWinDims.x) / this->_previousDims.x;
+		position.y = (position.y * newWinDims.y) / this->_previousDims.y;
 	}
 
 	void RenderSystem::rescaleDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims)
 	{
-		this->rescaleDrawablePosition(drawable, newDims);
 		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(&drawable);
 
 		if (text) {
@@ -86,7 +80,6 @@ namespace BBM
 		if (newDims == this->_previousDims)
 			return;
 		newDims.y = (newDims.x * 720) / 1280;
-		std::cout << newDims.x << " " << newDims.y << std::endl;
 		this->_window.setDimensions(newDims);
 	}
 
@@ -122,8 +115,10 @@ namespace BBM
 			if (shader) {
 				RAY::Shader::BeginUsingCustomShader(shader->getShader());
 			}
-			if (windowDimensions != this->_previousDims)
+			if (windowDimensions != this->_previousDims) {
+				this->rescaleDrawablePosition(pos.position, windowDimensions);
 				this->rescaleDrawable(*drawable.drawable, windowDimensions);
+			}
 			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
 			drawable.drawable->drawOn(this->_window);
 			if (shader) {

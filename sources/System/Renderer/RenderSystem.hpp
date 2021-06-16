@@ -37,10 +37,10 @@ namespace BBM
 		//! @param newDims  the new window's dimensions
 		void rescaleDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
 
-				//! @brief rescale the drawables position according to new window dimensions
-		//! @param drawable  the drawable to rescale position of
+		//! @brief rescale the drawables position according to new window dimensions
+		//! @param position  a reference to position
 		//! @param newDims  the new window's dimensions
-		void rescaleDrawablePosition(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
+		void rescaleDrawablePosition(Vector3f &position, const Vector2f &newWinDims);
 
 		void resizeWindow(Vector2f &newDims);
 
