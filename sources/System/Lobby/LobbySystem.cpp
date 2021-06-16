@@ -14,7 +14,12 @@
 #include <Component/Gamepad/GamepadComponent.hpp>
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
-#include <Drawables/2D/Rectangle.hpp>
+#include <Drawables/2D/Text.hpp>
+#include <Drawables/2D/Text.hpp>
+#include "Component/Color/ColorComponent.hpp"
+#include "Component/Stat/StatComponent.hpp"
+#include "Component/Bonus/PlayerBonusComponent.hpp"
+#include "Component/BombHolder/BombHolderComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -179,17 +184,57 @@ namespace BBM
 				.addComponent<PositionComponent>(x, y, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
 			scene->addEntity("player hide fireup")
-				.addComponent<PositionComponent>(x + 172, y + 35, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+				.addComponent<PositionComponent>(x + 220, y + 35, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", x, y, 50, WHITE)
+				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
+
+					if (!bonus)
+						return;
+					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					if (!text)
+						return;
+					text->setText(std::to_string(bonus->explosionRadius));
+				});
 			scene->addEntity("player hide bombup")
-				.addComponent<PositionComponent>(x + 172, y + 77, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+				.addComponent<PositionComponent>(x + 220, y + 77, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", x, y, 50, WHITE)
+				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
+
+					if (!bonus)
+						return;
+					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					if (!text)
+						return;
+					text->setText(std::to_string(bonus->maxBombCount));
+				});
 			scene->addEntity("player hide speedup")
-				.addComponent<PositionComponent>(x + 172, y + 122, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
-			scene->addEntity("player hide speedup")
-				.addComponent<PositionComponent>(x + 172, y + 161, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 35, 35, _rayColors[lobby.color]);
+				.addComponent<PositionComponent>(x + 220, y + 122, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", x, y, 50, WHITE)
+				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+					const ControllableComponent *bonus = player.tryGetComponent<ControllableComponent>();
+
+					if (!bonus)
+						return;
+					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					if (!text)
+						return;
+					text->setText(std::to_string(bonus->speed));
+				});
+			scene->addEntity("player hide wall")
+				.addComponent<PositionComponent>(x + 220, y + 161, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", x, y, 50, WHITE)
+				.addComponent<StatComponent>([player](Drawable2DComponent &drawble) {
+					const PlayerBonusComponent *bonus = player.tryGetComponent<PlayerBonusComponent>();
+
+					if (!bonus)
+						return;
+					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					if (!text)
+						return;
+					text->setText(bonus->isNoClipOn ? "YES" : "NO");
+				});
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;

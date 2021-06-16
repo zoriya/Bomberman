@@ -145,6 +145,12 @@ set(SOURCES
 	sources/Runner/ScoreScene.cpp
 	sources/System/Timer/TimerUISystem.hpp
 	sources/System/Timer/TimerUISystem.cpp
+	sources/System/Bonus/BonusUISystem.hpp
+	sources/System/Bonus/BonusUISystem.cpp
+	sources/Component/Color/ColorComponent.hpp
+	sources/Component/Color/ColorComponent.cpp
+	sources/Component/Stat/StatComponent.cpp
+	sources/Component/Stat/StatComponent.hpp
 )
 add_executable(bomberman
                sources/main.cpp

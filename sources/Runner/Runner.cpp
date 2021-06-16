@@ -38,6 +38,7 @@
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
+#include "System/Bonus/BonusUISystem.hpp"
 
 namespace BBM
 {
@@ -77,6 +78,7 @@ namespace BBM
 			.addSystem<BombHolderSystem>()
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
+			.addSystem<BonusUISystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<LevitateSystem>()
 			.addSystem<PlayerBonusSystem>()
