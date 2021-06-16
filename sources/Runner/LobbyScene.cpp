@@ -154,7 +154,7 @@ namespace BBM
 
 		auto &aiLess = scene->addEntity("AI-")
 			.addComponent<PositionComponent>(1920 / 1.75, 2.10 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/cpu_remove.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_remove.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				wal.getSystem<LobbySystem>().removeAI();
@@ -173,7 +173,7 @@ namespace BBM
 		for (int i = 0; i < 4; i++) {
 			auto &playerTile = scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
 			auto &player = scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
