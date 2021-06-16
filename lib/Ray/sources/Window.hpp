@@ -139,6 +139,14 @@ namespace RAY {
 			//! @info Calling this function override the previous closing key
 			void setExitKey(Controller::Keyboard::Key key);
 
+			//! @return the configuration flgs for the window
+			unsigned getConfigFlags(void) const;
+		
+			//! @param flag the configuration flgs for the window
+			RAY::Window &setConfigFlags(unsigned flags);
+
+			//! @brief set window to fullscreen
+			RAY::Window &toggleFullscreen();
 
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true

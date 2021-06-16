@@ -177,17 +177,22 @@ namespace BBM
 			});
 		auto &fullscreen = scene->addEntity("fullscreen text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 50, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Fullscreen: On", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Fullscreen: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Window &window =  RAY::Window::getInstance();
+				unsigned oldFlags = window.getConfigFlags();
+
+				if (oldFlags == FLAG_WINDOW_RESIZABLE)
+					window.toggleFullscreen();
+				else
+					window.setConfigFlags(FLAG_WINDOW_RESIZABLE);
 
 				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("Fullscreen: On");
-					//do
 				} else {
 					text->setText("Fullscreen: Off");
-					//do
 				}
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)

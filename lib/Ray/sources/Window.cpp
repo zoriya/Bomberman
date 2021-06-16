@@ -194,3 +194,22 @@ void RAY::Window::setExitKey(RAY::Controller::Keyboard::Key key)
 {
 	SetExitKey(key);
 }
+
+unsigned RAY::Window::getConfigFlags(void) const
+{
+	return this->_flags;
+}
+
+RAY::Window &RAY::Window::setConfigFlags(unsigned flags)
+{
+	if (this->_isOpen)
+		SetWindowState(flags);
+	this->_flags = flags;
+	return *this;
+}
+
+RAY::Window &RAY::Window::toggleFullscreen()
+{
+	ToggleFullscreen();
+	return *this;
+}
