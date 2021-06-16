@@ -57,6 +57,9 @@ set(HEADERS
     sources/Vector/Vector2.hpp
     sources/Vector/Vector3.hpp
     sources/Utils/Cache.hpp
+	sources/Meshes/AMesh.hpp
+	sources/Meshes/MeshSphere.hpp
+	sources/Shaders/Shaders.hpp
 )
 
 set(SRC
@@ -97,7 +100,10 @@ set(SRC
     sources/Model/ModelAnimations.cpp
     sources/Vector/Vector2.cpp
     sources/Vector/Vector3.cpp
-    sources/Shaders/Shaders.cpp sources/Shaders/Shaders.hpp sources/Meshes/MeshSphere.cpp sources/Meshes/MeshSphere.hpp sources/Meshes/AMesh.cpp sources/Meshes/AMesh.hpp)
+    sources/Shaders/Shaders.cpp
+	sources/Meshes/MeshSphere.cpp
+	sources/Meshes/AMesh.cpp
+	)
 
 find_package(raylib QUIET)
 if (NOT raylib_FOUND)
