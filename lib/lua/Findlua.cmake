@@ -52,8 +52,8 @@ ExternalProject_Add(lua
 )
 ExternalProject_Get_property(lua SOURCE_DIR)
 
-set(LUA_LIBRARIES ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lua ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lualib.a)
-set(LUA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src)
+set(LUA_LIBRARIES ${SOURCE_DIR}/src/lua ${SOURCE_DIR}/src/lualib.a)
+set(LUA_INCLUDE_DIR ${SOURCE_DIR}/src)
 
 
 cmake_policy(PUSH)  # Policies apply to functions at definition-time
