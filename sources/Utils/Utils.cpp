@@ -10,14 +10,14 @@
 
 namespace BBM
 {
-	inline void Utils::ltrim(std::string &s)
+	inline void Utils::lTrim(std::string &s)
 	{
 		s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch) {
 			return !std::isspace(ch);
 		}));
 	}
 
-	inline void Utils::rtrim(std::string &s)
+	inline void Utils::rTrim(std::string &s)
 	{
 		s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch) {
 			return !std::isspace(ch);
@@ -26,23 +26,23 @@ namespace BBM
 
 	inline void Utils::trim(std::string &s)
 	{
-		ltrim(s);
-		rtrim(s);
+		lTrim(s);
+		rTrim(s);
 	}
 
-	inline std::string Utils::ltrim_copy(std::string s)
+	inline std::string Utils::lTrimCopy(std::string s)
 	{
-		ltrim(s);
+		lTrim(s);
 		return s;
 	}
 
-	inline std::string Utils::rtrim_copy(std::string s)
+	inline std::string Utils::rTrimCopy(std::string s)
 	{
-		rtrim(s);
+		rTrim(s);
 		return s;
 	}
 
-	inline std::string Utils::trim_copy(std::string s)
+	inline std::string Utils::trimCopy(std::string s)
 	{
 		trim(s);
 		return s;

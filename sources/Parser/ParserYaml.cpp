@@ -29,6 +29,7 @@
 #include <Component/Renderer/Drawable2DComponent.hpp>
 #include <System/Lobby/LobbySystem.hpp>
 #include <filesystem>
+#include "Utils/Utils.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -442,7 +443,7 @@ namespace BBM {
 		return strings;
 	}
 
-	std::string ParserYAML::getHeader(const std::string &line)
+	std::string ParserYAML::parseHeader(const std::string &line)
 	{
 		std::stringstream ss(line);
 		std::string headerName;
@@ -452,8 +453,59 @@ namespace BBM {
 
 
 		if (!garbage.empty()) {
-			throw ParserError("error on getHeader line: ");
+			throw ParserError("ill formed header, line: " + Utils::trimCopy(line));
+		}
+		if (headerName.back() != ':') {
+			throw ParserError("header not ended with ':' , line: " + Utils::trimCopy(line));
 		}
 		return headerName;
+	}
+
+	std::pair<std::string, std::string> ParserYAML::parseProperty(const std::string &line)
+	{
+		std::stringstream ss(line);
+		std::string propertyName;
+		std::string propertyValue;
+		std::string garbage;
+
+		ss >> propertyName >> propertyValue >> garbage;
+
+		if (!garbage.empty()) {
+			throw ParserError("ill formed property, line: " + Utils::trimCopy(line));
+		}
+		if (propertyName.back() != ':') {
+			throw ParserError("property name not ended with ':' , line: " + Utils::trimCopy(line));
+		}
+
+		return std::make_pair(propertyName, propertyValue);
+	}
+
+	bool ParserYAML::isHeader(const std::string &line)
+	{
+		return line.find(':') == line.back();
+	}
+
+	Node ParserYAML::parseFile(const std::string &path)
+	{
+		std::ifstream file(path);
+
+		return parseNode(file, "root");
+	}
+
+	Node ParserYAML::parseNode(std::ifstream &file, const std::string &nodeName)
+	{
+		std::string line;
+		Node node(nodeName);
+
+		while(std::getline(file, line)) {
+			if (line.empty())
+				continue;
+			if (isHeader(line)) {
+				node.addChildNode(parseNode(file, parseHeader(line)));
+			} else {
+				node.setProperty(parseProperty(line));
+			}
+		}
+		return node;
 	}
 }

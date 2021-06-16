@@ -6,6 +6,7 @@
 
 #include <Wal.hpp>
 #include "Items/Bonus.hpp"
+#include "Node.hpp"
 #include "Map/Map.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 
@@ -93,7 +94,17 @@ namespace BBM {
 		static bool _isFloat(const std::string &s);
 		static std::vector<std::string> _splitStr(const std::string &str, char delim);
 
-		static std::string getHeader(const std::string &line);
+		static std::string parseHeader(const std::string &line);
+
+		static std::pair<std::string ,std::string> parseProperty(const std::string &line);
+
+		static bool isHeader(const std::string &line);
+
+		static Node parseFile(const std::string &path);
+
+		static Node parseNode(std::ifstream &file, const std::string &nodeName);
+
+		static constexpr const char* indent = "  ";
 
 	public:
 		//! @brief All name that was into the file

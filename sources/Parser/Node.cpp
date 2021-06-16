@@ -43,4 +43,14 @@ namespace BBM
 		}
 		return childs;
 	}
+
+	void Node::setName(const std::string &name)
+	{
+		this->_name = name;
+	}
+
+	void Node::setProperty(const std::pair<std::string, std::string> &propertyNameValue)
+	{
+		this->setProperty(propertyNameValue.first, propertyNameValue.second);
+	}
 }

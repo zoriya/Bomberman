@@ -26,11 +26,14 @@ namespace BBM
 
 		std::string getName() const;
 
+		void setName(const std::string &name);
+
 		void addChildNode(const Node &childNode);
 
 		std::vector<Node> getChildNodes(const std::string &childNodeName);
 
 		void setProperty(const std::string &propertyName, const std::string &propertyValue);
+		void setProperty(const std::pair<std::string, std::string> &propertyNameValue);
 
 		std::string getProperty(const std::string &propertyName) const;
 
