@@ -4,6 +4,7 @@ precision mediump float;
 
 // Input vertex attributes (from vertex shader)
 varying vec3 fragPosition;
+varying vec3 fragNormal;
 varying vec2 fragTexCoord;
 
 uniform sampler2D texture0;
@@ -13,7 +14,9 @@ void main() {
     // Texel color fetching from texture sampler
 
     // NOTE: Implement here your fragment shader code
-    vec4 tmp = texture2D(texture0, fragTexCoord);
+    vec4 tmp;
+    tmp.rgb = texture2D(texture0, fragTexCoord).rgb;
+
 
     tmp.a = alpha;
 
