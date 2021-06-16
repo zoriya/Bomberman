@@ -47,6 +47,9 @@ namespace BBM {
 		//!@brief return explosion radius parsed
 		static float _parseExplosionRadius(std::string &line);
 		//!@param line to parse
+		//!@brief return speed parsed
+		static float _parseSpeed(std::string &line);
+		//!@param line to parse
 		//!@brief return vector3f of position parsed
 		static Vector3f _parsePosition(std::string &line);
 		//!@param blockType to parse
@@ -97,8 +100,10 @@ namespace BBM {
 		static std::vector<Vector3f> playerPosition;
 		//! @brief The amount of bomb a player had
 		static std::vector<int> playerBombCount;
-		//! @brief The explosion range per player
+		//! @brief The explosion range of a player
 		static std::vector<float> playerExplosionRange;
+		//! @brief The speed of a player
+		static std::vector<float> playerSpeed;
 		//! @brief The assets of the player
 		static std::vector<std::string> playerAssets;
 

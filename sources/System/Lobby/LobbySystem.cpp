@@ -188,12 +188,14 @@ namespace BBM
 			auto *position = player.tryGetComponent<PositionComponent>();
 			auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 			auto *model = player.tryGetComponent<Drawable3DComponent>();
-			if (position && bombHolder && model) {
+			auto *controllable = player.tryGetComponent<ControllableComponent>();
+			if (position && bombHolder && model && controllable) {
 				dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE,
 																						  ParserYAML::playerAssets[countPlayer]);
 				position->position = ParserYAML::playerPosition[countPlayer];
 				bombHolder->explosionRadius = ParserYAML::playerExplosionRange[countPlayer];
 				bombHolder->maxBombCount = ParserYAML::playerBombCount[countPlayer];
+				controllable->speed = ParserYAML::playerSpeed[countPlayer];
 			}
 			addController(player, lobby.layout);
 			countPlayer++;

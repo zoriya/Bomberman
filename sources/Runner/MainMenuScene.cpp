@@ -36,7 +36,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &play = scene->addEntity("play button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 720, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 650, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -56,18 +56,18 @@ namespace BBM
 			});
 		auto &resume = scene->addEntity("resume button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_resume_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 		   {
 			   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-			   texture->use("assets/buttons/button_new_game.png");
+			   texture->use("assets/buttons/button_resume_game.png");
 		   })
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				texture->use("assets/buttons/button_new_game_hovered.png");
+				texture->use("assets/buttons/button_resume_game_hovered.png");
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -88,7 +88,7 @@ namespace BBM
 				Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
 			});
 		auto &settings = scene->addEntity("settings button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 430, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -107,7 +107,7 @@ namespace BBM
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
 		auto &exit = scene->addEntity("exit button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 320, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{

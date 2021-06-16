@@ -42,6 +42,7 @@ namespace BBM {
 	std::vector<Vector3f> ParserYAML::playerPosition = {};
 	std::vector<int> ParserYAML::playerBombCount = {};
 	std::vector<float> ParserYAML::playerExplosionRange = {};
+	std::vector<float> ParserYAML::playerSpeed = {};
 	std::vector<std::string> ParserYAML::playerAssets = {};
 
 	std::string ParserYAML::_getBlockType(std::string blockName)
@@ -86,15 +87,17 @@ namespace BBM {
 		auto *position = entity.tryGetComponent<PositionComponent>();
 		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
 		auto *model = entity.tryGetComponent<Drawable3DComponent>();
+		auto *controllable = entity.tryGetComponent<ControllableComponent>();
 		auto name = entity.getName();
 
-		if (!position || !bombHolder || !model)
+		if (!position || !bombHolder || !model || !controllable)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_player << std::endl << "  " << name << ":" << std::endl << "    ";
 		_player << "texture_path: " << dynamic_cast<RAY3D::Model *>(model->drawable.get())->getTextureByMaterial(MAP_DIFFUSE).getResourcePath() << std::endl << "    ";
 		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
 		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
+		_player << "speed: " << std::to_string(controllable->speed) << std::endl << "    ";
 		_player << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";
 	}
 
@@ -162,6 +165,8 @@ namespace BBM {
 			} else if (lines[index].find("texture_path") != std::string::npos && !name.empty()) {
 				playerAssets.push_back(_parseAssets(lines[index]));
 				tmpAssets = _parseAssets(lines[index]);
+			} else if (lines[index].find("speed") != std::string::npos && !name.empty()) {
+				playerSpeed.push_back(_parseSpeed(lines[index]));
 			} else {
 				if (!name.empty()) {
 					break;
@@ -363,6 +368,13 @@ namespace BBM {
 	{
 		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
 			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
+		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
+	}
+
+	float ParserYAML::_parseSpeed(std::string &line)
+	{
+		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
+			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
 	}
 
