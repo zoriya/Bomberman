@@ -29,6 +29,14 @@ namespace BBM
 
 		//! ctor
 		template<typename T, typename ...Params>
+		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, Params &&...params)
+			: WAL::Component(entity),
+			  drawable(new T(std::forward<Params>(params)...)),
+			  drawBefore3D(false)
+		{}
+
+		//! ctor
+		template<typename T, typename ...Params>
 		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, bool drawBefore3D, Params &&...params)
 			: WAL::Component(entity),
 			 drawable(new T(std::forward<Params>(params)...)),

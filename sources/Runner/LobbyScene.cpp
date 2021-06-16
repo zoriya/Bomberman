@@ -39,13 +39,13 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("lobby text")
 			.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Get Ready", 120, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_new_game.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -68,7 +68,7 @@ namespace BBM
 
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_back.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
@@ -88,7 +88,7 @@ namespace BBM
 			});
 		auto &lavaOption = scene->addEntity("lava option text")
 			.addComponent<PositionComponent>(1920 / 6, 1.85 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Lava: Off", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				auto *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -112,7 +112,7 @@ namespace BBM
 
 		auto &heightOption = scene->addEntity("Height option text")
 			.addComponent<PositionComponent>(1920 / 6, 2.1 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "2nd Level: Off", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				auto *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -136,7 +136,7 @@ namespace BBM
 
 		auto &aiMore = scene->addEntity("AI+")
 			.addComponent<PositionComponent>(1920 / 1.75, 1.85 * 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/cpu_add.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_add.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				wal.getSystem<LobbySystem>().addAI();
@@ -176,11 +176,11 @@ namespace BBM
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
 			auto &player = scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/player/icons/none.png");
+				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
-				    // todo check why it does this | hacky way to fix ready texture
-				.addComponent<Drawable2DComponent, RAY::Texture>(false, "");
+				// todo check why it does this | hacky way to fix ready texture
+				.addComponent<Drawable2DComponent, RAY::Texture>("");
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")

@@ -30,13 +30,13 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/logo_small.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &music = scene->addEntity("music text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Music Volume", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -49,7 +49,7 @@ namespace BBM
 
 		auto &musicUp = scene->addEntity("music up button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_plus.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -72,7 +72,7 @@ namespace BBM
 
 		auto &musicDown = scene->addEntity("music down button")
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_minus.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -95,7 +95,7 @@ namespace BBM
 
 		auto &sound = scene->addEntity("sound text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Sound Volume", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -108,7 +108,7 @@ namespace BBM
 
 		auto &soundUp = scene->addEntity("sound up button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_plus.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -131,7 +131,7 @@ namespace BBM
 
 		auto &soundDown = scene->addEntity("sound down button")
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_minus.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -154,7 +154,7 @@ namespace BBM
 
 		auto &debug = scene->addEntity("debug text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Debug Mode: Off", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -177,7 +177,7 @@ namespace BBM
 			});
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_back.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;

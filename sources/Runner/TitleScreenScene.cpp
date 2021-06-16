@@ -28,13 +28,13 @@ namespace BBM
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg");
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(320, 180, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/logo_big.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_big.png");
 		scene->addEntity("text_prompt")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 130, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "Press space", 70, RAY::Vector2(), BLACK)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnIdleComponent>()
 			.addComponent<OnHoverComponent>()
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)

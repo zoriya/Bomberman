@@ -29,13 +29,13 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("pause text")
 			.addComponent<PositionComponent>(1920 / 2.5, 180, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "PAUSE", 120, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("PAUSE", 120, RAY::Vector2(), ORANGE);
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 6.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_back.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -54,7 +54,7 @@ namespace BBM
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_settings.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
@@ -73,7 +73,7 @@ namespace BBM
 			});
 		auto &exit = scene->addEntity("exit button")
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_exit.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());

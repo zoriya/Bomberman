@@ -51,30 +51,30 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 3.25, 100, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "GAME OVER", 120, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("GAME OVER", 120, RAY::Vector2(), ORANGE);
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 2.37, 250, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>(false, "CONGRATS", 50, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("CONGRATS", 50, RAY::Vector2(), ORANGE);
 		for (int i = 0; i < players.size(); i++) {
 			auto &playerTile = scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(false, RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
 				                                                     RAY::Vector2(200, 200), tilesColor[i]);
 			auto &playerRank = scene->addEntity("player rank name")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.75, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Text>(false, rankName[i], 30,
+				.addComponent<Drawable2DComponent, RAY2D::Text>(rankName[i], 30,
 				                                                RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
 				                                                tilesColor[i]);
 			auto &player = scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>(false, playersIconPath[i]);
+				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[i]);
 		}
 		scene->addEntity("back to main menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
-			.addComponent<Drawable2DComponent, RAY::Texture>(false, "assets/buttons/button_back.png")
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &) {
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			})
