@@ -14,11 +14,8 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Button/ButtonComponent.hpp"
-#include "Drawables/2D/Text.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
@@ -40,7 +37,7 @@ namespace BBM
 			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 				Runner::gameState.nextScene = GameState::ScoreScene;
 			});
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);
+		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
 
@@ -52,6 +49,7 @@ namespace BBM
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
+
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
@@ -60,7 +58,6 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
-//			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})

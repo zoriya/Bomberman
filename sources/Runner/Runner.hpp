@@ -9,9 +9,11 @@
 namespace BBM
 {
 	class Runner {
-		public:
+	public:
+		//! @brief Has the map heights or is it disabled?
+		static bool hasHeights;
 
-		//! @brief store current scenes informations
+		//! @brief store current scenes information
 		static GameState gameState;
 		//! @brief Start the game and run a Bomberman.
 		//! @return 0 on success, another value on error.

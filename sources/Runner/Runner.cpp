@@ -41,6 +41,7 @@
 namespace BBM
 {
 	GameState Runner::gameState;
+	bool Runner::hasHeights = false;
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
@@ -52,7 +53,7 @@ namespace BBM
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
-				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.jump) {
+				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.select) {
 					gameState.nextScene = GameState::SceneID::TitleScreenScene;
 					break;
 				}

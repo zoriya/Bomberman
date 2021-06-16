@@ -44,6 +44,9 @@ namespace RAY
 			//! @brief Load texture from file, lets one use one entity for multiple files
 			Texture &use(const std::string &filename);
 
+			//! @brief Unload the current texture (calls to drawOn will no-op).
+			void unload();
+
 			//! @return path of loaded texture
 			const std::string &getResourcePath() const;
 
