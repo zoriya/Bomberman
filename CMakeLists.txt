@@ -16,6 +16,9 @@ ExternalProject_Add(lua
 )
 ExternalProject_Get_property(lua SOURCE_DIR)
 
+set(LUA_LIBRARIES ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lua ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lualib.a)
+set(LUA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src)
+
 find_package(Lua QUIET)
 if (NOT LUA_FOUND)
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/lua)
