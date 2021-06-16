@@ -35,7 +35,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &music = scene->addEntity("music text")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Music Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -48,7 +48,7 @@ namespace BBM
 			});
 
 		auto &musicUp = scene->addEntity("music up button")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 100 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -71,7 +71,7 @@ namespace BBM
 			});
 
 		auto &musicDown = scene->addEntity("music down button")
-			.addComponent<PositionComponent>(1920 / 3, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 100 - 540, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -94,7 +94,7 @@ namespace BBM
 			});
 
 		auto &sound = scene->addEntity("sound text")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Sound Volume", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -107,7 +107,7 @@ namespace BBM
 			});
 
 		auto &soundUp = scene->addEntity("sound up button")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 100 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -130,7 +130,7 @@ namespace BBM
 			});
 
 		auto &soundDown = scene->addEntity("sound down button")
-			.addComponent<PositionComponent>(1920 / 3, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 3, 1080 - 100 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<SoundComponent>(sounds)
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -153,7 +153,7 @@ namespace BBM
 			});
 
 		auto &debug = scene->addEntity("debug text")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -165,6 +165,29 @@ namespace BBM
 				} else {
 					text->setText("Debug Mode: Off");
 					wal.getSystem<RenderSystem>().setDebug(false);
+				}
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				entity.getComponent<Drawable2DComponent>().drawable->setColor(ORANGE);
+			});
+		auto &fullscreen = scene->addEntity("fullscreen text")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 50, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Fullscreen: On", 70, RAY::Vector2(), BLACK)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				if (text->getString().find("Off") != std::string::npos) {
+					text->setText("Fullscreen: On");
+					//do
+				} else {
+					text->setText("Fullscreen: Off");
+					//do
 				}
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
@@ -204,8 +227,9 @@ namespace BBM
 		sound.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &soundDown, &soundUp);
 		soundDown.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, nullptr, &sound);
 		soundUp.getComponent<OnClickComponent>().setButtonLinks(&music, &debug, &sound);
-		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &back, &back);
-		back.getComponent<OnClickComponent>().setButtonLinks(&debug, nullptr, nullptr, &debug);
+		debug.getComponent<OnClickComponent>().setButtonLinks(&sound, &fullscreen);
+		fullscreen.getComponent<OnClickComponent>().setButtonLinks(&debug, &back, &back);
+		back.getComponent<OnClickComponent>().setButtonLinks(&fullscreen, nullptr, nullptr, &fullscreen);
 		return scene;
 	}
 }
