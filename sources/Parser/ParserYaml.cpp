@@ -144,9 +144,9 @@ namespace BBM {
 		blockFile << _block.str() << std::endl;
 		playerFile << _player.str() << std::endl;
 		bonusFile << _bonus.str() << std::endl;
-		_block.clear();
-		_player.clear();
-		_bonus.clear();
+		_block = std::stringstream();
+		_player = std::stringstream();
+		_bonus = std::stringstream();
 	}
 
 	void ParserYAML::_loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
@@ -202,7 +202,7 @@ namespace BBM {
 		if (!file.good())
 			throw (ParserError("File error"));
 		while (std::getline(file, line)) {
-			if (line.empty() || !line.compare("players:"))
+			if (line.empty() || line.find("players:") != std::string::npos)
 				continue;
 			lines.push_back(line);
 		}
@@ -287,6 +287,10 @@ namespace BBM {
 				_parseEntityName(lines[index], entity);
 			}
 		}
+		if (bonusType == Bonus::NOTHING) {
+			entity.scheduleDeletion();
+			return;
+		}
 		MapGenerator::createBonus(entity, pos, bonusType);
 	}
 
@@ -299,7 +303,7 @@ namespace BBM {
 		if (!file.good())
 			throw (ParserError("File error"));
 		while (std::getline(file, line)) {
-			if (line.empty() || !line.compare("bonuses:"))
+			if (line.empty() || line.find("bonuses:") != std::string::npos)
 				continue;
 			lines.push_back(line);
 		}
