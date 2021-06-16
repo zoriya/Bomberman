@@ -12,6 +12,7 @@
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
+#include <filesystem>
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 
@@ -70,6 +71,8 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
+				if (!std::filesystem::exists("save"))
+					std::filesystem::create_directories("save");
 				ParserYAML::save(Runner::gameState._loadedScenes[GameState::SceneID::GameScene]);
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
