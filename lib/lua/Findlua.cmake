@@ -40,6 +40,22 @@ This is because, the lua location is not standardized and may exist in
 locations other than lua/
 #]=======================================================================]
 
+include(ExternalProject)
+
+ExternalProject_Add(lua
+   URL "https://www.lua.org/ftp/lua-5.4.3.tar.gz"
+   CONFIGURE_COMMAND ""
+   BUILD_COMMAND make generic
+   BUILD_ALWAYS true
+   BUILD_IN_SOURCE true
+   INSTALL_COMMAND ""
+)
+ExternalProject_Get_property(lua SOURCE_DIR)
+
+set(LUA_LIBRARIES ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lua ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lualib.a)
+set(LUA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src)
+
+
 cmake_policy(PUSH)  # Policies apply to functions at definition-time
 cmake_policy(SET CMP0012 NEW)  # For while(TRUE)
 

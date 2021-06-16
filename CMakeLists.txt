@@ -4,20 +4,6 @@ project(bomberman)
 set(CMAKE_CXX_STANDARD 20)
 
 cmake_minimum_required(VERSION 3.10)
-include(ExternalProject)
-
-ExternalProject_Add(lua
-   URL "https://www.lua.org/ftp/lua-5.4.3.tar.gz"
-   CONFIGURE_COMMAND ""
-   BUILD_COMMAND make generic
-   BUILD_ALWAYS true
-   BUILD_IN_SOURCE true
-   INSTALL_COMMAND ""
-)
-ExternalProject_Get_property(lua SOURCE_DIR)
-
-set(LUA_LIBRARIES ${PROJECT}/lua-prefix/src/lua/src/lua ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src/lualib.a)
-set(LUA_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/lua-prefix/src/lua/src)
 
 find_package(Lua QUIET)
 if (NOT LUA_FOUND)
