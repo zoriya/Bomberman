@@ -44,7 +44,8 @@ namespace RAY
 			//! @brief Load texture from file, lets one use one entity for multiple files
 			Texture &use(const std::string &filename);
 
-			std::string getResourcePath() const;
+			//! @return path of loaded texture
+			const std::string &getResourcePath() const;
 
 		protected:
 		private:

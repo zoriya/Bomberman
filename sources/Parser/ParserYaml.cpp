@@ -92,7 +92,7 @@ namespace BBM {
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_player << std::endl << "  " << name << ":" << std::endl << "    ";
-		_player << "texture_path: " << dynamic_cast<RAY3D::Model *>(model->drawable.get())->getModelTexture().getResourcePath() << std::endl << "    ";
+		_player << "texture_path: " << dynamic_cast<RAY3D::Model *>(model->drawable.get())->getTextureByMaterial(MAP_DIFFUSE).getResourcePath() << std::endl << "    ";
 		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
 		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
 		_player << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";

@@ -61,6 +61,11 @@ namespace RAY::Drawables::Drawables3D
 		return true;
 	}
 
+	Texture &Model::getTextureByMaterial(MaterialType materialType)
+	{
+		return this->_textureList[materialType];
+	}
+
 	Model::operator ::Model() const
 	{
 		return *this->_model;
@@ -137,10 +142,5 @@ namespace RAY::Drawables::Drawables3D
 	void Model::resetShader()
 	{
 		this->_model->materials[0].shader = this->_originalShader;
-	}
-
-	Texture Model::getModelTexture() const
-	{
-		return (this->_textureList.at(MAP_DIFFUSE));
 	}
 }

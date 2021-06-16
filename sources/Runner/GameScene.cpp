@@ -24,8 +24,10 @@
 #include "Drawables/2D/Text.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
+#include "Component/Score/ScoreComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -38,7 +40,10 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-
+		scene->addEntity("Timer")
+			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
+				Runner::gameState.nextScene = GameState::ScoreScene;
+			});
 		return scene;
 	}
 
@@ -55,6 +60,7 @@ namespace BBM
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
 			.addComponent<ControllableComponent>()
+			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()

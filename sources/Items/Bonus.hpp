@@ -26,11 +26,17 @@ namespace BBM {
 		//! @brief Apply bonus effect that allows to run faster
 		static void SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
 
+		//! @param bonus bonus
+		//! @param player the entity on which the effect will be applied
+		//! @brief Apply bonus effect that allows to pass trough breakbable walls
+		static void NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
+
 		enum BonusType {
 			NOTHING,
 			BOMBSTOCK,
 			SPEEDUP,
-			EXPLOSIONINC
+			EXPLOSIONINC,
+			NOCLIP
 		};
 
 		static BonusType getRandomBonusType();

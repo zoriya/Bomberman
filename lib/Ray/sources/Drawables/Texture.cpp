@@ -32,11 +32,6 @@ namespace RAY {
 	{
 	}
 
-	std::string Texture::getResourcePath() const
-	{
-		return (this->_resourcePath);
-	}
-
 	Texture &Texture::use(const std::string &filename)
 	{
 		if (this->_resourcePath == filename)
@@ -45,6 +40,11 @@ namespace RAY {
 		this->_resourcePath = filename;
 		this->_dimensions = Vector2(this->_texture->width, this->_texture->height);
 		return *this;
+	}
+
+	const std::string &Texture::getResourcePath() const
+	{
+		return this->_resourcePath;
 	}
 
 	Texture::operator ::Texture() const

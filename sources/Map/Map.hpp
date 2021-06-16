@@ -48,6 +48,9 @@ namespace BBM
 
 		static void createBonus(WAL::Entity &entity, Vector3f position, Bonus::BonusType bonusType);
 
+		static void wallCollision(WAL::Entity &entity,
+								  const WAL::Entity &wall,
+								  CollisionComponent::CollidedAxis collidedAxis);
 		static void wallCollided(WAL::Entity &entity,
 		                         const WAL::Entity &wall,
 		                         CollisionComponent::CollidedAxis collidedAxis);
@@ -198,6 +201,5 @@ namespace BBM
 		static const std::string holePath;
 
 		static const std::string secondFloorHolePath;
-
 	};
 } // namespace BBM
