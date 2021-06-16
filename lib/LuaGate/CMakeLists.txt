@@ -18,6 +18,10 @@ set(SRC
 )
 
 include(FindLua)
+if (NOT LUA_FOUND AND EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/include/lua.hpp)
+	set(LUA_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+	set(LUA_LIBRARIES ${CMAKE_CURRENT_SOURCE_DIR})
+endif()
 
 add_library(LuaGate STATIC ${SRC} ${HEADERS})
 target_include_directories(LuaGate PUBLIC ${LUA_INCLUDE_DIR})
