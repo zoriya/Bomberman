@@ -18,7 +18,7 @@ set(SRC
 )
 
 include(FindLua)
-include_directories(${LUA_INCLUDE_DIR})
 
 add_library(LuaGate STATIC ${SRC} ${HEADERS})
+target_include_directories(LuaGate INTERFACE ${LUA_INCLUDE_DIR})
 target_link_libraries(LuaGate ${LUA_LIBRARIES})
