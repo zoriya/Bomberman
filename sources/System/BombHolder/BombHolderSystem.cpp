@@ -58,7 +58,7 @@ namespace BBM
 				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
 					return;
 				ctx.clock = 0ns;
-				ctx.explosionRadius -= 1;
+				ctx.explosionRadius -= 0.6;
 				if (ctx.explosionRadius < BombExplosionShaderComponent::maxRadius) {
 					ctx.explosionRadius = BombExplosionShaderComponent::maxRadius;
 					ctx.alpha -= 0.1;
@@ -73,7 +73,11 @@ namespace BBM
 			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();
 			})
-			.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(0.5, 16, 16));
+			.addComponent<Drawable3DComponent, RAY3D::Model>(GenMeshSphere(0.5, 16, 16),
+			                                                 std::make_pair(
+				                                                 MAP_DIFFUSE,
+				                                                 "assets/bombs/explosion/blast.png"
+			                                                 ));
 			/*.addComponent<Drawable3DComponent, RAY3D::Model>("assets/bombs/explosion/explosion.glb", false,
 			                                                 std::make_pair(
 				                                                 MAP_DIFFUSE,

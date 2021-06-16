@@ -96,12 +96,16 @@ uniform float radius;
 
 // Output vertex attributes (to fragment shader)
 varying vec3 fragPosition;
+varying vec2 fragTexCoord;
+varying vec4 fragColor;
 
 // NOTE: Add here your custom variables 
 
 void main() {
     // Send vertex attributes to fragment shader
     fragPosition = vertexPosition + vertexPosition * vec3(cnoise(vec3(vertexNormal + vec3(frame))) * 0.5);
+    fragColor = vertexColor;
+    fragTexCoord = vertexTexCoord;
     // Calculate final vertex position
     gl_Position = mvp * vec4(fragPosition , radius);
     //gl_Position = vec4(vertexNormal, 1.0);
