@@ -94,8 +94,8 @@ namespace BBM
 		if (!this->_currentButton)
 			return;
 		for (auto &[_, controllable]: controllableView)
-			if (controllable.move.x || controllable.move.y || controllable.jump) {
-				this->_updateCurrentButton(controllable.jump, controllable.move);
+			if (controllable.move.x || controllable.move.y || controllable.select) {
+				this->_updateCurrentButton(controllable.select, controllable.move);
 				return;
 			}
 		for (auto &entity:  buttons) {

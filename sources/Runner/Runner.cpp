@@ -43,6 +43,7 @@
 namespace BBM
 {
 	GameState Runner::gameState;
+	bool Runner::hasHeights = false;
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
