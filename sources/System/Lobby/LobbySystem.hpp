@@ -17,8 +17,6 @@ namespace BBM
 	class LobbySystem : public WAL::System<LobbyComponent, Drawable2DComponent>
 	{
 	private:
-		//! @brief Add a controller for the player.
-		static void _addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
 		void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
 
@@ -28,6 +26,12 @@ namespace BBM
 
 		std::array<bool, 4> _colorTaken = {};
 	public:
+		//! @brief Add a controller for the player.
+		static void addController(WAL::Entity &player, ControllableComponent::Layout layout);
+
+		//! @brief Add a controller for the player when we resume a game
+		static void resumeToGame(WAL::Wal &wal);
+
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 

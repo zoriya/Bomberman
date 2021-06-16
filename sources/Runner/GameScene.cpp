@@ -38,17 +38,7 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		try {
-			ParserYAML::load(scene);
-		} catch (std::exception const &err) {
-			scene->addEntity("Error message parser")
-				.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Text>(err.what(), 50, RAY::Vector2(), RED)
-				.addComponent<TimerComponent>(3s, [](WAL::Entity &entity, WAL::Wal &wal) {
-					entity.scheduleDeletion();
-				});
-			MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight), scene);
-		}
+
 		return scene;
 	}
 
@@ -69,7 +59,7 @@ namespace BBM
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
 //			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
-			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()

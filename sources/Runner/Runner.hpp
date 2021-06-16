@@ -16,6 +16,8 @@ namespace BBM
 		//! @brief the height of the map
 		static int mapHeight;
 
+		static int addedPlayer;
+
 		//! @brief store current scenes informations
 		static GameState gameState;
 		//! @brief Start the game and run a Bomberman.
@@ -55,6 +57,9 @@ namespace BBM
 
 		//! @brief load all data related to lobby screen
 		static std::shared_ptr<WAL::Scene> loadLobbyScene();
+
+		//! @brief load all data related to resume lobby screen
+		static std::shared_ptr<WAL::Scene> loadResumeLobbyScene();
 
 		//! @brief Create a player (without any controllable) and add it to the scene.
 		//! @param scene The scene where to player should reside.

@@ -3,6 +3,8 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include <Parser/ParserYaml.hpp>
+#include <Component/Timer/TimerComponent.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -34,7 +36,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &play = scene->addEntity("play button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 720, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -51,6 +53,39 @@ namespace BBM
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
+			});
+		auto &resume = scene->addEntity("resume button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 540, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+		   {
+			   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+			   texture->use("assets/buttons/button_new_game.png");
+		   })
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_new_game_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::ResumeLobbyScene;
+				auto scene = Runner::loadGameScene();
+				try {
+					ParserYAML::load(scene);
+				} catch (std::exception const &err) {
+					scene->addEntity("Error message parser")
+							.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
+							.addComponent<Drawable2DComponent, RAY2D::Text>(err.what(), 50, RAY::Vector2(), RED)
+							.addComponent<TimerComponent>(3s, [](WAL::Entity &entity, WAL::Wal &wal) {
+								entity.scheduleDeletion();
+							});
+					gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
+					return;
+				}
+				Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
@@ -109,8 +144,9 @@ namespace BBM
 			{
 				gameState.nextScene = BBM::GameState::SceneID::CreditScene;
 			});
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &settings);
-		settings.getComponent<OnClickComponent>().setButtonLinks(&play, &exit);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &resume);
+		resume.getComponent<OnClickComponent>().setButtonLinks(&play, &settings);
+		settings.getComponent<OnClickComponent>().setButtonLinks(&resume, &exit);
 		exit.getComponent<OnClickComponent>().setButtonLinks(&settings, &credits, nullptr, &credits);
 		credits.getComponent<OnClickComponent>().setButtonLinks(&exit, nullptr, &exit);
 		return scene;

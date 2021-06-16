@@ -124,6 +124,7 @@ namespace BBM
 		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
 		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
 		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
+		gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene] = loadResumeLobbyScene();
 	}
 
 	int Runner::run()

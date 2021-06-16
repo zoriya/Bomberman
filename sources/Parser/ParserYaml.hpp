@@ -91,6 +91,17 @@ namespace BBM {
 		static std::vector<std::string> _splitStr(const std::string &str, char delim);
 
 	public:
+		//! @brief All name that was into the file
+		static std::vector<std::string> playerName;
+		//! @brief Player position
+		static std::vector<Vector3f> playerPosition;
+		//! @brief The amount of bomb a player had
+		static std::vector<int> playerBombCount;
+		//! @brief The explosion range per player
+		static std::vector<float> playerExplosionRange;
+		//! @brief The assets of the player
+		static std::vector<std::string> playerAssets;
+
 		//!@param scene Scene to update
 		//!@brief save yaml
 		static void save(std::shared_ptr<WAL::Scene> scene);
@@ -98,6 +109,7 @@ namespace BBM {
 		//!@brief load yaml
 		static void load(std::shared_ptr<WAL::Scene> scene);
 
+		//! @brief save file name
 		static const std::string fileName;
 
 	};

@@ -14,6 +14,9 @@
 #include <Component/Gamepad/GamepadComponent.hpp>
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
+#include <Map/Map.hpp>
+#include <Component/BombHolder/BombHolderComponent.hpp>
+#include <Parser/ParserYaml.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 
@@ -124,7 +127,7 @@ namespace BBM
 		});
 	}
 
-	void LobbySystem::_addController(WAL::Entity &player, ControllableComponent::Layout layout)
+	void LobbySystem::addController(WAL::Entity &player, ControllableComponent::Layout layout)
 	{
 		switch (layout) {
 		case ControllableComponent::KEYBOARD_0:
@@ -159,7 +162,7 @@ namespace BBM
 			if (lobby.layout == ControllableComponent::NONE)
 				continue;
 			auto &player = Runner::createPlayer(*scene);
-			_addController(player, lobby.layout);
+			addController(player, lobby.layout);
 			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
 																		 0,
 																		 mapHeight * ((playerCount + 1) % 2));
@@ -168,6 +171,33 @@ namespace BBM
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
+		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight), scene);
+		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
+	}
+
+	void LobbySystem::resumeToGame(WAL::Wal &wal)
+	{
+		auto scene = Runner::gameState._loadedScenes[GameState::SceneID::GameScene];
+		int countPlayer = 0;
+
+		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
+			if (lobby.layout == ControllableComponent::NONE)
+				continue;
+			auto &player = Runner::createPlayer(*scene);
+			player.setName(ParserYAML::playerName[countPlayer]);
+			auto *position = player.tryGetComponent<PositionComponent>();
+			auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
+			auto *model = player.tryGetComponent<Drawable3DComponent>();
+			if (position && bombHolder && model) {
+				dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE,
+																						  ParserYAML::playerAssets[countPlayer]);
+				position->position = ParserYAML::playerPosition[countPlayer];
+				bombHolder->explosionRadius = ParserYAML::playerExplosionRange[countPlayer];
+				bombHolder->maxBombCount = ParserYAML::playerBombCount[countPlayer];
+			}
+			addController(player, lobby.layout);
+			countPlayer++;
+		}
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 	}
 }

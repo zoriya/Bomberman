@@ -26,8 +26,11 @@
 #include <cstring>
 #include <sstream>
 #include <Component/Gamepad/GamepadComponent.hpp>
+#include <Component/Renderer/Drawable2DComponent.hpp>
+#include <System/Lobby/LobbySystem.hpp>
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM {
 
@@ -35,6 +38,11 @@ namespace BBM {
 	std::stringstream ParserYAML::_block("");
 	std::stringstream ParserYAML::_bonus("");
 	std::stringstream ParserYAML::_player("");
+	std::vector<std::string> ParserYAML::playerName = {};
+	std::vector<Vector3f> ParserYAML::playerPosition = {};
+	std::vector<int> ParserYAML::playerBombCount = {};
+	std::vector<float> ParserYAML::playerExplosionRange = {};
+	std::vector<std::string> ParserYAML::playerAssets = {};
 
 	std::string ParserYAML::_getBlockType(std::string blockName)
 	{
@@ -140,39 +148,44 @@ namespace BBM {
 
 	void ParserYAML::_loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
 	{
-		int maxBomb = 3;
-		float explosionRadius = 3;
 		std::string name;
-		Vector3f pos;
-		std::string assets;
+		std::string tmpAssets;
+		static int countPlayer = 0;
 
 		for (; index != lines.size(); index++) {
 			if (lines[index].find("max_bomb") != std::string::npos && !name.empty()) {
-				maxBomb = _parseMaxBomb(lines[index]);
+				playerBombCount.push_back(_parseMaxBomb(lines[index]));
 			} else if (lines[index].find("explosion_radius") != std::string::npos && !name.empty()) {
-				explosionRadius = _parseExplosionRadius(lines[index]);
+				playerExplosionRange.push_back(_parseExplosionRadius(lines[index]));
 			} else if (lines[index].find("position") != std::string::npos && !name.empty()) {
-				pos = _parsePosition(lines[index]);
+				playerPosition.push_back(_parsePosition(lines[index]));
 			} else if (lines[index].find("texture_path") != std::string::npos && !name.empty()) {
-				assets = _parseAssets(lines[index]);
+				playerAssets.push_back(_parseAssets(lines[index]));
+				tmpAssets = _parseAssets(lines[index]);
 			} else {
 				if (!name.empty()) {
 					break;
 				}
 				name = lines[index];
+				name.erase(std::remove(name.begin(), name.end(), ' '), name.end());
+				name = name.substr(0, name.find(':'));
+				std::replace(name.begin(), name.end(), '_', ' ');
+				playerName.push_back(name);
 			}
 		}
-		auto &player = Runner::createPlayer(*scene);
-		_parseEntityName(name, player);
-		auto *position = player.tryGetComponent<PositionComponent>();
-		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
-		auto *model = player.tryGetComponent<Drawable3DComponent>();
-		if (position && bombHolder && model && !assets.empty()) {
-			dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE, assets);
-			position->position = pos;
-			bombHolder->explosionRadius = explosionRadius;
-			bombHolder->maxBombCount = maxBomb;
-		}
+		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
+		auto &playerTile = resumeScene->addEntity("player tile")
+			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
+		auto &playerLogo = resumeScene->addEntity("player")
+			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>(tmpAssets.replace(tmpAssets.find("textures"), 8, "icons"));
+		auto &ready = resumeScene->addEntity("ready")
+			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>();
+		playerLogo.addComponent<LobbyComponent>(countPlayer, ready, playerTile);
+		Runner::addedPlayer++;
+		countPlayer++;
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene)
@@ -291,11 +304,11 @@ namespace BBM {
 		}
 	}
 
-	void ParserYAML::load(std::shared_ptr<WAL::Scene> scene)
+	void ParserYAML::load(std::shared_ptr<WAL::Scene> gameScene)
 	{
-		_loadBlocks(scene);
-		_loadBonuses(scene);
-		_loadPlayers(scene);
+		_loadBlocks(gameScene);
+		_loadBonuses(gameScene);
+		_loadPlayers(gameScene);
 	}
 
 	WAL::Entity &ParserYAML::_parseEntityName(std::string line, WAL::Entity &entity)
