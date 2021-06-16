@@ -21,7 +21,7 @@ namespace RAY
 			//! @brief Create an texture, loading a file
 			//! @param filename: path to file to load
 			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
-			explicit Texture(const std::string &filename, bool lonely = false);
+			explicit Texture(const std::string &filename, bool lonely = false, float scale = 1, float rotation = 0);
 
 			//! @brief Create an empty texture
 			Texture();

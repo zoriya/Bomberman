@@ -11,14 +11,20 @@
 namespace RAY::Drawables
 {
 
-	ADrawable2D::ADrawable2D(const Vector2 &position, const RAY::Color &color) :
-		_position(position), _color(color)
+	ADrawable2D::ADrawable2D(const Vector2 &position, const RAY::Color &color, float scale, float rotation) :
+		_rotation(rotation),
+		_scale(scale),
+		_position(position),
+		_color(color)
 	{
 	}
 
 
-	ADrawable2D::ADrawable2D(int x, int y, const RAY::Color &color) :
-		_position(static_cast<float>(x), static_cast<float>(y)), _color(color)
+	ADrawable2D::ADrawable2D(int x, int y, const RAY::Color &color, float scale, float rotation) :
+		_rotation(rotation),
+		_scale(scale),
+		_position(static_cast<float>(x), static_cast<float>(y)),
+		_color(color)
 	{
 	}
 
@@ -49,5 +55,15 @@ namespace RAY::Drawables
 	{
 		this->_color = color;
 		return *this;
+	}
+
+	float ADrawable2D::getScale() const
+	{
+		return this->_scale;
+	}
+
+	void ADrawable2D::setScale(float scale)
+	{
+		this->_scale = scale;
 	}
 }
