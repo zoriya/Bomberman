@@ -39,7 +39,7 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		scene->addEntity("Timer")
-			.addComponent<TimerComponent>(std::chrono::seconds(60), [](WAL::Entity &, WAL::Wal &) {
+			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 				Runner::gameState.nextScene = GameState::ScoreScene;
 			});
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16), scene);

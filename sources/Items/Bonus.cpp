@@ -7,12 +7,14 @@
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
+#include <map>
+#include <random>
 #include "Component/BombHolder/BombHolderComponent.hpp"
 
 namespace BBM {
 	void Bonus::BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 		if (!bombHolder)
@@ -22,35 +24,54 @@ namespace BBM {
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!bombHolder || !playerBonus)
 			return;
-		if (bombHolder->explosionRadius <= 6)
-			bombHolder->explosionRadius++;
-		playerBonus->nextRangeBonusRate = playerBonus->rangeBonusRate;
+		bombHolder->explosionRadius++;
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
 	{
-		if (bonus.shouldDelete() || axis != 7)
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
 		auto *controllable = player.tryGetComponent<ControllableComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!controllable || !playerBonus)
 			return;
-		controllable->speed = 0.35f;
-		playerBonus->nextSpeedBonusRate = playerBonus->speedBonusRate;
+		controllable->speed += 0.025f;
+	}
+
+	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
+	{
+		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
+			return;
+		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
+		if (!playerBonus)
+			return;
+		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
+		playerBonus->isNoClipOn = true;
 	}
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
-		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
+		static std::default_random_engine generator(time(nullptr));
+		std::map<BonusType, float> chanceValue = {
+			{NOTHING, 100.0f},
+			{SPEEDUP, 45.0f},
+			{BOMBSTOCK, 30.0f},
+			{EXPLOSIONINC, 15.0f},
+			{NOCLIP, 1.5f},
+		};
+		std::uniform_int_distribution<int> distribution(1,1000);
+		float value = (distribution(generator) / 10);
+		BonusType bonus = NOTHING;
 
-		if (rnd < 0.8)
-			return (static_cast<BonusType>(std::rand() % (EXPLOSIONINC - 1) + 1));
-		return (NOTHING);
+		for (auto &chance : chanceValue)
+			if (chance.second > value)
+				bonus = chance.first;
+		return (bonus);
 	}
 }
