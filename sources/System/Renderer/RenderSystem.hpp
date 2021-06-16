@@ -27,20 +27,18 @@ namespace BBM
 		//! @brief Defines if the debug informations must be displayed or not
 		bool _debugMode;
 
-		Vector2f _previousDims = {1920, 1080};
-
 		//! @brief Window framerate limit
 		static constexpr short FPS = 60;
 
 		//! @brief rescale the drawables dimensions according to new window dimensions
 		//! @param drawable  the drawable to rescale
 		//! @param newDims  the new window's dimensions
-		void rescaleDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
+		void drawRescaledDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
 
 		//! @brief rescale the drawables position according to new window dimensions
 		//! @param position  a reference to position
 		//! @param newDims  the new window's dimensions
-		void rescaleDrawablePosition(Vector3f &position, const Vector2f &newWinDims);
+		Vector2f getRescaledPosition(Vector3f &position, const Vector2f &newWinDims);
 
 		void resizeWindow(Vector2f &newDims);
 
