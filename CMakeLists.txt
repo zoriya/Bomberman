@@ -3,8 +3,6 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-cmake_minimum_required(VERSION 3.10)
-
 include_directories(bomberman lib/Ray/sources)
 include_directories(bomberman lib/wal/sources)
 include_directories(bomberman lib/LuaGate/sources)
@@ -157,7 +155,7 @@ target_link_libraries(bomberman PUBLIC wal ray ${LUA_LIBRARIES} LuaGate)
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
                ${SOURCES}
-			   tests/CacheTest.cpp
+      	       tests/CacheTest.cpp
                tests/EntityTests.cpp
                tests/MainTest.cpp
                tests/EngineTests.cpp

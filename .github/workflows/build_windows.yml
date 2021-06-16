@@ -22,10 +22,16 @@ jobs:
       - name: Install Xorg lib
         if: matrix.name == 'Linux'
         run: |
-            sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev
+            sudo apt install -y libasound2-dev mesa-common-dev libx11-dev libxrandr-dev libxi-dev xorg-dev libgl1-mesa-dev libglu1-mesa-dev lua-devel
       - name: Update G++
         if: matrix.name == 'Linux'
         run: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-10 100
+      - name: Install Lua
+        if: matrix.name == 'Windows'
+        shell: bash
+        run: |
+          curl https://sourceforge.net/projects/luabinaries/files/5.4.2/Windows%20Libraries/Dynamic/lua-5.4.2_Win64_dll16_lib.zip/download -L > lua.zip
+          unzip lua
       - name: Build
         run: |
           mkdir build && cd build

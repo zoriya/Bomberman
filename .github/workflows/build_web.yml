@@ -9,6 +9,8 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
+    - name: Install lua
+      run: sudo apt install -y lua-devel
     - name: Exec
       shell: bash
       run: ./build_web.sh
