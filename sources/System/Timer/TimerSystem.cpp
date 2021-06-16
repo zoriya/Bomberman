@@ -4,6 +4,7 @@
 
 #include "TimerSystem.hpp"
 #include "Component/Timer/TimerComponent.hpp"
+#include "Drawables/2D/Text.hpp"
 
 using namespace std::chrono_literals;
 
