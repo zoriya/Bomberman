@@ -7,6 +7,7 @@
 #include <System/System.hpp>
 #include <Wal.hpp>
 #include <Component/Timer/TimerComponent.hpp>
+#include "Component/Renderer/Drawable2DComponent.hpp"
 
 namespace BBM
 {

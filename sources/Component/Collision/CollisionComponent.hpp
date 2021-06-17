@@ -17,9 +17,11 @@ namespace BBM
 		//! @brief Used to tell the collided axis
 		//! @note Usage: (collidedAxis (int given by callback)) & CollidedAxis::X
 		enum CollidedAxis {
+			NONE = 0,
 			X = 1,
 			Y = 2,
-			Z = 4
+			Z = 4,
+			ALL = 7
 		};
 
 		//! @brief onCollide functions to be called
@@ -72,4 +74,7 @@ namespace BBM
 		//! @brief A component can't be assigned
 		CollisionComponent &operator=(const CollisionComponent &) = delete;
 	};
+
+	CollisionComponent::CollidedAxis operator|(CollisionComponent::CollidedAxis first, CollisionComponent::CollidedAxis second);
+	CollisionComponent::CollidedAxis &operator|=(CollisionComponent::CollidedAxis &self, CollisionComponent::CollidedAxis other);
 }

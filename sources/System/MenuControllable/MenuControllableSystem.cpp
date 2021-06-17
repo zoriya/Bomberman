@@ -7,13 +7,20 @@
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Entity/Entity.hpp"
+#include "Drawables/Texture.hpp"
+#include "Drawables/2D/Text.hpp"
+#include "Controllers/Mouse.hpp"
+
+namespace RAYControl = RAY::Controller;
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
 	MenuControllableSystem::MenuControllableSystem(WAL::Wal &wal)
 		: System(wal),
-		_currentButton()
-	{}
+		_currentButton(), _oldMousePosition(-1, -1)
+	{
+	}
 
 	void MenuControllableSystem::_updateCurrentButton(bool selected, Vector2f move)
 	{
@@ -45,14 +52,41 @@ namespace BBM
 		    this->_currentButton->getComponent<OnClickComponent>().onEvent(*this->_currentButton, this->_wal);
 	}
 
-	void MenuControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entity)
+	bool MenuControllableSystem::_mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const
 	{
-		auto &controllable = entity.get<ControllableComponent>();
-		auto &buttons = _wal.getScene()->view<OnClickComponent, OnHoverComponent, OnIdleComponent>();
+		auto &positionComponent = entity.get<PositionComponent>();
+		RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.get<Drawable2DComponent>().drawable.get());
+		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.get<Drawable2DComponent>().drawable.get());
+		Vector2f buttonPos(positionComponent.getX(), positionComponent.getY());
+		Vector2f dimensions;
 
+		if (texture) {
+			dimensions.x = texture->getDimensions().x;
+			dimensions.y = texture->getDimensions().y;
+		} else if (text) {
+			dimensions.y = text->getFontSize();
+			dimensions.x = text->getString().size() * (text->getFontSize());
+		} else
+			return false;
+		return ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
+		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
+	}
+
+	void MenuControllableSystem::onSelfUpdate()
+	{
+		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
+		RAY::Vector2 winSize = RAY::Window::getInstance().getDimensions();
+		Vector2f relativeMousePos(rayMousePos.x * 1920 / winSize.x, rayMousePos.y * 1080 / winSize.y);
+		auto &controllableView = this->_wal.getScene()->view<ControllableComponent>();
+		auto &buttons = _wal.getScene()->view<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent>();
+
+
+		if (this->_oldMousePosition == Vector2f(-1, -1))
+			this->_oldMousePosition = relativeMousePos;
 		if (this->_currentButton && this->_currentButton->_scene.getID() != this->_wal.getScene()->getID()) {
 			this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
 			this->_currentButton = nullptr;
+			return;
 		}
 		if (this->_currentButton == nullptr && buttons.size()) {
 			this->_currentButton = &(*buttons.front());
@@ -60,6 +94,23 @@ namespace BBM
 		}
 		if (!this->_currentButton)
 			return;
-		this->_updateCurrentButton(controllable.select, controllable.move);
+		for (auto &[_, controllable]: controllableView)
+			if (controllable.move.x || controllable.move.y || controllable.select) {
+				this->_updateCurrentButton(controllable.select, controllable.move);
+				return;
+			}
+		if (relativeMousePos == this->_oldMousePosition && !RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))
+			return;
+		this->_oldMousePosition = relativeMousePos;
+		for (auto &entity:  buttons) {
+			if (_mouseOnButton(relativeMousePos, entity)) {
+				if (this->_currentButton)
+					this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
+				this->_currentButton = &(*entity);
+				this->_currentButton->getComponent<OnHoverComponent>().onEvent(*this->_currentButton, this->_wal);
+				if (RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))
+					this->_currentButton->getComponent<OnClickComponent>().onEvent(*this->_currentButton, this->_wal);
+			}
+		}
 	}
 }

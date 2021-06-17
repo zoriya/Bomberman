@@ -11,14 +11,20 @@
 
 namespace RAY {
 
-	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture);
+	Cache<::Texture> Texture::_texturesCache([] (const char *str) {
+		::Texture texture = LoadTexture(str);
+
+		if (texture.id <= 0)
+			throw Exception::ResourceNotFound(std::string(str));
+		return texture;
+	}, UnloadTexture);
 
 	Texture::Texture()
-		: Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE)
+		: Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, 1, 0), _resourcePath("")
 	{}
 
-	Texture::Texture(const std::string &filename, bool lonely):
-		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),
+	Texture::Texture(const std::string &filename, bool lonely, float scale, float rotation):
+		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, scale, rotation),
 		_texture(_texturesCache.fetch(filename, lonely)),
 		_resourcePath(filename)
 	{
@@ -42,6 +48,11 @@ namespace RAY {
 		return *this;
 	}
 
+	const std::string &Texture::getResourcePath() const
+	{
+		return this->_resourcePath;
+	}
+
 	Texture::operator ::Texture() const
 	{
 		return *this->_texture;
@@ -51,10 +62,7 @@ namespace RAY {
 	{
 		if (!this->_texture)
 			return;
-
-		float scale = this->_dimensions.x / this->_texture->width;
-
-		DrawTextureEx(*this, this->_position, 0, scale, this->_color);
+		DrawTextureEx(*this, this->_position, this->_rotation, this->_scale, this->_color);
 	}
 
 	void Texture::unload()

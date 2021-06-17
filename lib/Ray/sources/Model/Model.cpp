@@ -13,7 +13,13 @@
 namespace RAY::Drawables::Drawables3D
 {
 
-	RAY::Cache<::Model> Model::_modelsCache(LoadModel, UnloadModel);
+	RAY::Cache<::Model> Model::_modelsCache([] (const char *str) {
+		::Model model = LoadModel(str);
+
+		if (model.meshCount == 0)
+			throw Exception::ResourceNotFound(std::string(str));
+		return model;
+	}, UnloadModel);
 
 	Model::Model(const std::string &filename,
 	             bool lonely,
@@ -32,10 +38,20 @@ namespace RAY::Drawables::Drawables3D
 			this->setTextureToMaterial(texture->first, texture->second);
 	}
 
-	Model::Model(const Mesh &mesh)
-		: ADrawable3D({0, 0, 0}, WHITE),
-		  _model(std::make_shared<::Model>(LoadModelFromMesh(mesh)))
+	Model::Model(const Mesh::AMesh &mesh,
+	             std::optional<std::pair<MaterialType, std::string>> texture,
+	             const RAY::Vector3 &scale,
+	             const RAY::Vector3 &position,
+	             const RAY::Vector3 &rotationAxis,
+	             float rotationAngle)
+		: ADrawable3D(position, WHITE),
+		  _model(std::make_shared<::Model>(LoadModelFromMesh(*mesh.getRaylibMesh()))),
+		  _rotationAxis(rotationAxis),
+		  _rotationAngle(rotationAngle),
+		  _scale(scale)
 	{
+		if (texture.has_value())
+			this->setTextureToMaterial(texture->first, texture->second);
 	}
 
 	bool Model::unloadKeepMeshes()
@@ -59,6 +75,11 @@ namespace RAY::Drawables::Drawables3D
 		                   materialType,
 		                   this->_textureList.at(materialType));
 		return true;
+	}
+
+	Texture &Model::getTextureByMaterial(MaterialType materialType)
+	{
+		return this->_textureList[materialType];
 	}
 
 	Model::operator ::Model() const

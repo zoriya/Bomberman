@@ -3,18 +3,20 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(bomberman lib/Ray/sources)
-include_directories(bomberman lib/wal/sources)
-include_directories(bomberman sources)
+include_directories(lib/Ray/sources)
+include_directories(lib/wal/sources)
+include_directories(lib/LuaGate/sources)
+include_directories(sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/LuaGate)
 
 if (EMSCRIPTEN)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s NO_DISABLE_EXCEPTION_CATCHING --shell-file ../sources/wasm/frontend.html --preload-file ../assets")
-    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+	set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif ()
 
 set(SOURCES
@@ -79,6 +81,12 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/IAControllable/IAControllableComponent.hpp
+	sources/Component/IAControllable/IAControllableComponent.cpp
+	sources/System/IAControllable/IAControllableSystem.hpp
+	sources/System/IAControllable/IAControllableSystem.cpp
+	sources/Map/MapInfo.hpp
+	sources/Map/MapInfo.cpp
 	sources/Component/Button/ButtonComponent.hpp
 	sources/System/MenuControllable/MenuControllableSystem.cpp
 	sources/System/MenuControllable/MenuControllableSystem.hpp
@@ -134,33 +142,60 @@ set(SOURCES
 	sources/Runner/PauseMenuScene.cpp
 	sources/Runner/SettingsMenuScene.cpp
 	sources/Runner/CreditScene.cpp
+	sources/Component/Score/ScoreComponent.cpp
+	sources/Component/Score/ScoreComponent.hpp
+	sources/System/Score/ScoreSystem.cpp
+	sources/System/Score/ScoreSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.hpp
+	sources/System/EndCondition/EndConditionSystem.cpp
 	sources/Runner/LobbyScene.cpp
-)
+	sources/Runner/HowToPlayScene.cpp
+	sources/Runner/ScoreScene.cpp
+	sources/System/Shaders/ShaderSystem.cpp
+	sources/System/Shaders/ShaderSystem.hpp
+	sources/System/Shaders/ShaderModelSystem.cpp
+	sources/System/Shaders/ShaderModelSystem.hpp
+	sources/System/Shaders/ShaderDrawable2DSystem.cpp
+	sources/System/Shaders/ShaderDrawable2DSystem.hpp
+	sources/Component/Shaders/Items/BombExplosionShaderComponent.cpp
+	sources/Component/Shaders/Items/BombExplosionShaderComponent.hpp
+	sources/Component/Shaders/Items/WhiteShaderComponent.cpp
+	sources/Component/Shaders/Items/WhiteShaderComponent.hpp
+	sources/System/Timer/TimerUISystem.hpp
+	sources/System/Timer/TimerUISystem.cpp
+	sources/System/Bonus/BonusUISystem.hpp
+	sources/System/Bonus/BonusUISystem.cpp
+	sources/Component/Color/ColorComponent.hpp
+	sources/Component/Color/ColorComponent.cpp
+	sources/Component/Stat/StatComponent.cpp
+	sources/Component/Stat/StatComponent.hpp
+	)
+
 add_executable(bomberman
-               sources/main.cpp
-               ${SOURCES}
-)
-target_include_directories(bomberman PUBLIC sources)
-target_link_libraries(bomberman PUBLIC wal ray)
+	sources/main.cpp
+	${SOURCES}
+	)
+target_include_directories(bomberman PUBLIC sources LuaGate)
+target_link_libraries(bomberman PUBLIC wal ray LuaGate)
 
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
-               ${SOURCES}
-			   tests/CacheTest.cpp
-               tests/EntityTests.cpp
-               tests/MainTest.cpp
-               tests/EngineTests.cpp
-               tests/CallbackTest.cpp
-               tests/MoveTests.cpp
-               tests/ViewTest.cpp
-               tests/CollisionTest.cpp
-)
-target_include_directories(unit_tests PUBLIC sources)
-target_link_libraries(unit_tests PUBLIC wal ray)
+	${SOURCES}
+	tests/CacheTest.cpp
+	tests/EntityTests.cpp
+	tests/MainTest.cpp
+	tests/EngineTests.cpp
+	tests/CallbackTest.cpp
+	tests/MoveTests.cpp
+	tests/ViewTest.cpp
+	tests/CollisionTest.cpp
+	)
+target_include_directories(unit_tests PUBLIC sources LuaGate)
+target_link_libraries(unit_tests PUBLIC wal ray LuaGate)
 
 find_package(Catch2 QUIET)
 if (NOT Catch2_FOUND)
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/catch2)
 	find_package(Catch2 REQUIRED)
-endif()
+endif ()
 target_link_libraries(unit_tests PRIVATE Catch2::Catch2)
