@@ -52,7 +52,7 @@ namespace BBM
 	void CameraSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
-		if (!introAnimation(entity))
+		if (Runner::gameState.currentScene != GameState::GameScene || !introAnimation(entity))
 			return;
 		auto &pos = entity.get<PositionComponent>();
 		auto &cam = entity.get<CameraComponent>();
