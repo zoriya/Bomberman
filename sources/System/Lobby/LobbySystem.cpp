@@ -167,6 +167,12 @@ namespace BBM
 	bool LobbySystem::playersAreReady(WAL::Scene &scene)
 	{
 		auto &lobby = scene.view<LobbyComponent>();
+		long playerCount = std::count_if(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
+			auto &lobbyPlayer = entity.get<LobbyComponent>();
+			return lobbyPlayer.layout != ControllableComponent::NONE;
+		});
+		if (playerCount <= 1)
+			return false;
 		return std::all_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
 			auto &lobbyPlayer = entity.get<LobbyComponent>();
 			return lobbyPlayer.ready || lobbyPlayer.layout == ControllableComponent::NONE;
