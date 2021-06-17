@@ -25,7 +25,7 @@ namespace BBM
 		void _updateCurrentButton(bool selected, Vector2f move);
 
 		//! @return true if mouse on entity
-		bool _mouseOnButton(WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const;
+		bool _mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const;
 	public:
 		//! @brief time (in millisecond) since last check
 		std::chrono::time_point<std::chrono::steady_clock> now;

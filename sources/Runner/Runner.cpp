@@ -104,7 +104,7 @@ namespace BBM
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
+		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);
