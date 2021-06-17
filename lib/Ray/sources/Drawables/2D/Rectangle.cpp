@@ -12,8 +12,8 @@
 namespace RAY::Drawables::Drawables2D
 {
 
-	Rectangle::Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color) :
-		ADrawable2D(position, color), _dimensions(dimensions)
+	Rectangle::Rectangle(const Vector2 &position, const Vector2 &dimensions, const Color &color, float scale, float rotation) :
+		ADrawable2D(position, color, scale, rotation), _dimensions(dimensions)
 	{
 	}
 

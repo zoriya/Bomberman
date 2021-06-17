@@ -5,23 +5,29 @@
 #pragma once
 
 #include <string>
+#include <Models/Callback.hpp>
 #include <Component/Component.hpp>
 #include <Entity/Entity.hpp>
 #include <Shaders/Shaders.hpp>
 #include <Model/Model.hpp>
+#include <chrono>
+#include <Wal.hpp>
 
 namespace BBM
 {
 	class ShaderComponent : public WAL::Component
 	{
-	private:
-		//! @brief The shader to be applied
-		RAY::Shader _shader;
-		//! @brief The path to the fragment file
-		std::string _fragmentFilePath;
-		//! @brief The path to the vertex file
-		std::string _vertexFilePath;
 	public:
+		//! @brief The shader to be applied
+		RAY::Shader shader;
+		//! @brief The path to the fragment file
+		std::string fragmentFilePath;
+		//! @brief The path to the vertex file
+		std::string vertexFilePath;
+
+		//! @brief the function called to update shaders vars
+		WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> update;
+
 		//! @brief getter for _shader
 		RAY::Shader &getShader();
 
@@ -37,11 +43,18 @@ namespace BBM
 
 		//! @brief ctor
 		//! @note use empty string to omit a file
-		ShaderComponent(WAL::Entity &entity, const std::string& fragmentFilePath, const std::string& vertexFilePath = "");
+		ShaderComponent(WAL::Entity &entity,
+		                const std::string &fragmentFilePath,
+		                const std::string &vertexFilePath = "",
+		                const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+	                    bool lonely = false);
+
 		//! @brief Default copy ctor
 		ShaderComponent(const ShaderComponent &) = default;
+
 		//! @brief Default dtor
 		~ShaderComponent() override = default;
+
 		//! @brief Default assignment operator
 		ShaderComponent &operator=(const ShaderComponent &) = delete;
 	};
@@ -55,11 +68,18 @@ namespace BBM
 
 		//! @brief ctor
 		//! @note use empty string to omit a file
-		ShaderComponentModel(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath = "");
+		ShaderComponentModel(WAL::Entity &entity,
+		                     const std::string &fragmentFilePath,
+		                     const std::string &vertexFilePath = "",
+		                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+		                     bool lonely = false);
+
 		//! @brief Default copy ctor
 		ShaderComponentModel(const ShaderComponentModel &) = default;
+
 		//! @brief Default dtor
 		~ShaderComponentModel() override = default;
+
 		//! @brief Default assignment operator
 		ShaderComponentModel &operator=(const ShaderComponentModel &) = delete;
 	};
@@ -69,11 +89,18 @@ namespace BBM
 	public:
 		//! @brief ctor
 		//! @note use empty string to omit a file
-		ShaderComponentDrawable2D(WAL::Entity &entity, std::string fragmentFilePath, std::string vertexFilePath = "");
+		ShaderComponentDrawable2D(WAL::Entity &entity,
+		                          const std::string &fragmentFilePath,
+		                          const std::string &vertexFilePath = "",
+		                          const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate = WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds>(),
+		                          bool lonely = false);
+
 		//! @brief Default copy ctor
 		ShaderComponentDrawable2D(const ShaderComponentDrawable2D &) = default;
+
 		//! @brief Default dtor
 		~ShaderComponentDrawable2D() override = default;
+
 		//! @brief Default assignment operator
 		ShaderComponentDrawable2D &operator=(const ShaderComponentDrawable2D &) = delete;
 	};

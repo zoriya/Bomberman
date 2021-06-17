@@ -7,25 +7,33 @@
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Models/Vector2.hpp"
 #include "System/System.hpp"
+#include "Component/Position/PositionComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Component/Button/ButtonComponent.hpp"
 
 namespace BBM
 {
 	//! @brief A system to handle Controllable entities in a menu.
-	class MenuControllableSystem : public WAL::System<ControllableComponent>
+	class MenuControllableSystem : public WAL::System<>
 	{
 	private:
 		//! @brief index of the current button selected
 		WAL::Entity *_currentButton;
 
+		//! @brief position of the mouse at the precedent scene (to know which controller event to watch)
+		Vector2f _oldMousePosition;
+
 		//! @brief update current button reference
 		//! @param selected lets know if te new selected button is 'pressed'
 		void _updateCurrentButton(bool selected, Vector2f move);
 
+		//! @return true if mouse on entity
+		bool _mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const;
 	public:
 		//! @brief time (in millisecond) since last check
 		std::chrono::time_point<std::chrono::steady_clock> now;
 		//! @inherit
-		void onFixedUpdate(WAL::ViewEntity<ControllableComponent> &entities) override;
+		void onSelfUpdate() override;
 
 		//! @brief A default constructor
 		explicit MenuControllableSystem(WAL::Wal &wal);

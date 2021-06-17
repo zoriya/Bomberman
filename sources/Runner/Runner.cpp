@@ -16,6 +16,7 @@
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <System/Timer/TimerSystem.hpp>
+#include <System/Timer/TimerUISystem.hpp>
 #include <System/BombHolder/BombHolderSystem.hpp>
 #include <System/Event/EventSystem.hpp>
 #include <System/Health/HealthSystem.hpp>
@@ -24,6 +25,9 @@
 #include <System/IntroAnimation/IntroAnimationSystem.hpp>
 #include <System/Levitate/LevitateSystem.hpp>
 #include <System/Bonus/PlayerBonusSystem.hpp>
+#include "System/Shaders/ShaderSystem.hpp"
+#include "System/Shaders/ShaderDrawable2DSystem.hpp"
+#include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
@@ -35,7 +39,10 @@
 #include "System/Music/MusicSystem.hpp"
 #include "System/Renderer/CameraSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
+#include "System/Score/ScoreSystem.hpp"
+#include "System/EndCondition/EndConditionSystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
+#include "System/Bonus/BonusUISystem.hpp"
 
 namespace BBM
 {
@@ -47,19 +54,18 @@ namespace BBM
 		auto &view = engine.getScene()->view<ControllableComponent>();
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
-		if (gameState.currentScene == GameState::SceneID::GameScene || gameState.currentScene == GameState::SceneID::SplashScreen) {
+		if (gameState.currentScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
-					break;
-				} else if (gameState.currentScene == GameState::SceneID::SplashScreen && component.select) {
-					gameState.nextScene = GameState::SceneID::TitleScreenScene;
 					break;
 				}
 			}
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
+		if (gameState.nextScene == GameState::SceneID::ScoreScene)
+			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
@@ -68,6 +74,7 @@ namespace BBM
 	void Runner::addSystems(WAL::Wal &wal)
 	{
 		wal.addSystem<TimerSystem>()
+			.addSystem<TimerUISystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
 			.addSystem<LobbySystem>()
@@ -76,6 +83,7 @@ namespace BBM
 			.addSystem<BombHolderSystem>()
 			.addSystem<EventSystem>()
 			.addSystem<HealthSystem>()
+			.addSystem<BonusUISystem>()
 			.addSystem<CollisionSystem>()
 			.addSystem<LevitateSystem>()
 			.addSystem<PlayerBonusSystem>()
@@ -86,30 +94,38 @@ namespace BBM
 			.addSystem<IntroAnimationSystem>()
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
-			.addSystem<MusicSystem>()
-			.addSystem<CameraSystem>();
+			.addSystem<ShaderSystem>()
+			.addSystem<ShaderModelSystem>()
+			.addSystem<ShaderDrawable2DSystem>()
+			.addSystem<EndConditionSystem>()
+			.addSystem<ScoreSystem>()
+			.addSystem<CameraSystem>()
+			.addSystem<MusicSystem>();
 	}
 
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
+		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);
 	}
 
-	void Runner::addMenuControl(WAL::Scene &scene)
+	void Runner::addMenuControl(WAL::Scene &scene, const std::map<SoundComponent::SoundIndex, std::string> &sounds)
 	{
 		scene.addEntity("Keyboard default control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>();
 		scene.addEntity("Keyboard second control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>(ControllableComponent::Layout::KEYBOARD_1);
 		for (int i = 0; i < 4; i++) {
 			scene.addEntity("Gamepad controller")
 				.addComponent<ControllableComponent>()
+				.addComponent<SoundComponent>(sounds)
 				.addComponent<GamepadComponent>(i);
 		}
 	}
@@ -123,6 +139,7 @@ namespace BBM
 		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
 		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
 		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
+		gameState._loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
 	}
 
 	int Runner::run()

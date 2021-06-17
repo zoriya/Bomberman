@@ -889,7 +889,6 @@ FILE_PATTERNS          = *.c \
                          *.dox \
                          *.doc \
                          *.txt \
-                         *.py \
                          *.pyw \
                          *.f90 \
                          *.f95 \
@@ -919,6 +918,8 @@ RECURSIVE              = YES
 
 EXCLUDE                =   */tests/* \
                            cmake-build-debug/*
+                           build*/*
+                           emsdk/*
 
 # The EXCLUDE_SYMLINKS tag can be used to select whether or not files or
 # directories that are symbolic links (a Unix file system feature) are excluded
@@ -1027,7 +1028,7 @@ FILTER_SOURCE_PATTERNS =
 # (index.html). This can be useful if you have a project on for instance GitHub
 # and want to reuse the introduction page also for the doxygen output.
 
-USE_MDFILE_AS_MAINPAGE =
+USE_MDFILE_AS_MAINPAGE =    README.md
 
 #---------------------------------------------------------------------------
 # Configuration options related to source browsing

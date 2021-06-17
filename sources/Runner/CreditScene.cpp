@@ -23,7 +23,7 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
