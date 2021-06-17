@@ -53,6 +53,7 @@ namespace BBM
 			.addComponent<ShaderComponentModel>("assets/shaders/explosion.fs", "assets/shaders/explosion.vs", [](WAL::Entity &entity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
 				auto &ctx = entity.getComponent<BombExplosionShaderComponent>();
 				auto &shader = entity.getComponent<ShaderComponentModel>();
+				auto &pos = entity.getComponent<PositionComponent>();
 
 				ctx.clock += dtime;
 				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
@@ -69,7 +70,8 @@ namespace BBM
 				shader.shader.setShaderUniformVar("frame", ctx.frameCounter);
 				shader.shader.setShaderUniformVar("alpha", ctx.alpha);
 				shader.shader.setShaderUniformVar("radius", ctx.explosionRadius);
-			})
+				shader.shader.setShaderUniformVar("center", pos.position);
+			}, true)
 			.addComponent<TimerComponent>(500ms, [](WAL::Entity &explosion, WAL::Wal &wal) {
 				explosion.scheduleDeletion();
 			})
