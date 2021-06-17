@@ -10,6 +10,7 @@
 #include <Component/Controllable/ControllableComponent.hpp>
 #include "AnimatorSystem.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Health/HealthComponent.hpp"
 
 using Keyboard = RAY::Controller::Keyboard;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -27,6 +28,10 @@ namespace BBM
 		auto drawable = entity.get<Drawable3DComponent>().drawable.get();
 		auto &animation = entity.get<AnimationsComponent>();
 		auto anim = dynamic_cast<RAY3D::Model *>(drawable);
+		auto health = entity->tryGetComponent<HealthComponent>();
+
+		if (health && health->getHealthPoint() <= 0)
+			return;
 		if (anim && controllable.move != Vector2f(0, 0)) {
 			anim->setRotationAngle(controllable.move.angle(Vector2f(-1, 0)));
 			animation.setAnimIndex(0);
