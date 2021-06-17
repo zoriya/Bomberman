@@ -12,6 +12,7 @@
 #include <Runner/Runner.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Gamepad/GamepadComponent.hpp>
+#include "Component/IAControllable/IAControllableComponent.hpp"
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include <Drawables/2D/Text.hpp>
@@ -192,7 +193,7 @@ namespace BBM
 			player.addComponent<GamepadComponent>(3);
 			break;
 		case ControllableComponent::AI:
-//			throw std::runtime_error("Not implemented error");
+			player.addComponent<IAControllableComponent>("./assets/ai_scripts/john.lua");
 			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
@@ -214,7 +215,7 @@ namespace BBM
 			auto &player = Runner::createPlayer(*scene);
 			_addController(player, lobby.layout);
 			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
-																		 0,
+																		 (Runner::hasHeights ? 1.01 : 0),
 																		 mapHeight * (!(playerCount % 3)));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");

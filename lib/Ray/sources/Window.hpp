@@ -64,8 +64,11 @@ namespace RAY {
 			//! @brief Check if window is currently focused
 			bool isFocused(void) const;
 
+			//! @brief Get window dimensions
+			const RAY::Vector2 &getDimensions(void);
+
 			//! @brief Set window dimensions
-			const RAY::Vector2 &getDimensions(void) const;
+			RAY::Window &setDimensions(const Vector2 &dims);
 
 			//! @brief Set the cursor visibility
 			//! @param visible True if the cursor is visible
@@ -136,6 +139,14 @@ namespace RAY {
 			//! @info Calling this function override the previous closing key
 			void setExitKey(Controller::Keyboard::Key key);
 
+			//! @return the configuration flgs for the window
+			unsigned getConfigFlags(void) const;
+		
+			//! @param flag the configuration flgs for the window
+			RAY::Window &setConfigFlags(unsigned flags);
+
+			//! @brief set window to fullscreen
+			RAY::Window &toggleFullscreen();
 
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true
