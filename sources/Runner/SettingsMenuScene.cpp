@@ -24,7 +24,7 @@ namespace BBM
 			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
 		};
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
@@ -110,6 +110,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 100 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_plus.png")
 			.addComponent<SoundComponent>(sounds)
+			.addComponent<ControllableComponent>()
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				auto &component = entity.getComponent<SoundComponent>();
@@ -133,6 +134,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 3, 1080 - 100 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_minus.png")
 			.addComponent<SoundComponent>(sounds)
+			.addComponent<ControllableComponent>()
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());

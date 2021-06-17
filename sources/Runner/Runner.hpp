@@ -5,6 +5,8 @@
 #pragma once
 #include "Models/GameState.hpp"
 #include "Wal.hpp"
+#include <map>
+#include "Component/Sound/SoundComponent.hpp"
 
 namespace BBM
 {
@@ -30,7 +32,7 @@ namespace BBM
 		//! @brief init all raylib-related data & context
 		static void enableRaylib(WAL::Wal &wal);
 
-		static void addMenuControl(WAL::Scene &scene);
+		static void addMenuControl(WAL::Scene &scene, const std::map<SoundComponent::SoundIndex, std::string> &sounds = {});
 
 		//! @brief load all data related to title screen
 		static std::shared_ptr<WAL::Scene> loadTitleScreenScene();
