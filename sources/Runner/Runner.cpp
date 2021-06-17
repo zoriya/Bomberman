@@ -75,6 +75,7 @@ namespace BBM
 			return;
 		if (gameState.nextScene == GameState::SceneID::ScoreScene)
 			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		RAY::Window::getInstance().setVisibleCursor(gameState.nextScene != GameState::SceneID::GameScene);
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
