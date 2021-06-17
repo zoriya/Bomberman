@@ -450,10 +450,12 @@ namespace BBM
 					map[std::make_tuple(i, 0, j)] = BREAKABLE;
 			}
 		}
-		if (!isNotClassic)
-			map = createClassicUnbreakable(map, width, height);
-		else
-			map = createLongClassicUnbreakable(map, width, height);
+		if (!isHeight) {
+			if (!isNotClassic)
+				map = createClassicUnbreakable(map, width, height);
+			else
+				map = createLongClassicUnbreakable(map, width, height);
+		}
 		if (isHeight)
 			map = createHeight(map, width, height);
 		map = cleanBreakable(map, width, height);
@@ -461,7 +463,7 @@ namespace BBM
 	}
 
 	void MapGenerator::generateHeightCollision(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
-	{	
+	{
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
