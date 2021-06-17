@@ -99,9 +99,8 @@ namespace BBM
 				entity.scheduleDeletion();
 			})
 			.addComponent<LevitateComponent>(position.y)
-			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
-				bonus.scheduleDeletion();
-			}, func[bonusType - 1], 0.5, .5)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			    func[bonusType - 1], 0.5, .5)
 			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
 				bonus.scheduleDeletion();
 			})
@@ -243,9 +242,9 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<TagComponent<Breakable>>()
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
-			//.addComponent<CollisionComponent>(
-			//	WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-			//	&MapGenerator::wallCollided, 0.25, .75)
+			.addComponent<CollisionComponent>(
+				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+				&MapGenerator::wallCollided, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, false, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 

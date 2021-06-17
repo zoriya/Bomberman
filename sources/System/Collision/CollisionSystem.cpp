@@ -63,25 +63,25 @@ namespace BBM
 				continue;
 
 			auto pointB = posB.position + colB.positionOffset;
-			int collidedAxis = 0;
+			CollisionComponent::CollidedAxis collidedAxis = CollisionComponent::NONE;
 			// TODO if B is also a movable we don't check with it's changing position
 			Vector3f minB = Vector3f::min(pointB, pointB + colB.bound);
 			Vector3f maxB = Vector3f::max(pointB, pointB + colB.bound);
 
 			if (boxesCollide(minAx, maxAx, minB, maxB)) {
-				collidedAxis += vel.isNull() ? 7 : CollisionComponent::CollidedAxis::X;
+				collidedAxis |= vel.isNull() ? CollisionComponent::ALL : CollisionComponent::X;
 			}
 			if (!vel.isNull()) {
 				if (boxesCollide(minAy, maxAy, minB, maxB)) {
-					collidedAxis += CollisionComponent::CollidedAxis::Y;
+					collidedAxis |= CollisionComponent::Y;
 				}
 				if (boxesCollide(minAz, maxAz, minB, maxB)) {
-					collidedAxis += CollisionComponent::CollidedAxis::Z;
+					collidedAxis |= CollisionComponent::Z;
 				}
 			}
 			if (collidedAxis) {
-				colA.onCollide(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
-				colB.onCollided(entity, other, static_cast<CollisionComponent::CollidedAxis>(collidedAxis));
+				colA.onCollide(entity, other, collidedAxis);
+				colB.onCollided(entity, other, collidedAxis);
 			}
 		}
 	}
