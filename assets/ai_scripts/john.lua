@@ -9,7 +9,7 @@ mapinfo.dist { }
 ------------
 
 ------ Debug variables
-local debug = false
+local debug = true
 
 if not debug then
 	log = function() end
@@ -50,7 +50,7 @@ function CreateMyMap(infos, MaxX, MaxY)
 		end
 	end
 	for i, info in ipairs(infos) do
-		map[info.x][info.y] = info.type
+		map[info.x][info.y] = math.floor(info.type)
 	end
 	--PrintMap(map, MaxX, MaxY)
 	return map
@@ -107,7 +107,7 @@ function not_in(set, node)
 end
 
 
-function getNeighbors(node)
+function getNeighborsDefend(node)
 	local neighbors = {}
 	for _, dir in ipairs(Dirs) do
 		local neighborX = node.x + dir.x
@@ -150,16 +150,19 @@ function getLowestFromSet(set, f_score)
 end
 
 function fill_path(path, came_from, node)
-	if came_from[node] then
-		table.insert(path, 1, came_from[node])
-		return fill_path(path, came_from, came_from[node])
+	if came_from[node.x][node.y].x >= 0 and came_from[node.x][node.y].y >= 0 then
+		table.insert(path, 1, came_from[node.x][node.y])
+		return fill_path(path, came_from, came_from[node.x][node.y])
 	else
 		return path
 	end
 end
 
 --A star search
-function pathfind(root, target)
+function pathfind(root, target, getNeighborFunc)
+	if getNeighborFunc == nil then
+		getNeighborFunc = getNeighborsDefend
+	end
 	local closed = {}
 	local open = { root }
 	local came_from = {}
@@ -170,6 +173,13 @@ function pathfind(root, target)
 	g_score[root] = 0
 	f_score[root] = dist(root, target)
 
+
+	for i=0,MaxX + 1 do
+		came_from[i] = {}
+		for j=0,MaxY + 1 do
+			came_from[i][j] = {x = -1, y = -1}
+		end
+	end
 	while #open > 0 do
 		log("openset size")
 		log(#open)
@@ -178,8 +188,10 @@ function pathfind(root, target)
 		log(curr.x)
 		log(curr.y)
 		if curr.x == target.x and curr.y == target.y then
+			log("came from")
 			local path = fill_path({}, came_from, target) -- fill the path with came from
 			table.insert(path, target)
+			log("yee")
 			return path
 		end
 		setRemove(open, curr) -- remove curr from open
@@ -190,12 +202,25 @@ function pathfind(root, target)
 			log(c.x)
 			log(c.y)
 		end
-		local neighbors = getNeighbors(curr) -- get neighbors of current
+		local neighbors = getNeighborFunc(curr)
+		log("current neightbors") -- get neighbors of current
+		log("openset size")
+		log(#open)
 		for _, neighbor in ipairs(neighbors) do
+			log("i")
 			if not_in(closed, neighbor) then -- neighbor not in closed set
+				log("j")
 				local try_g_score = g_score[curr] + 1
-				if not_in(open, neighbor) or try_g_score < g_score[neighbor] then
-					came_from[neighbor] = curr
+				log("g score")
+				log(g_score[curr])
+				log("g score neig")
+				log(g_score[neighbor])
+				local g_score_neigh = 10000
+				if g_score[neighbor] ~= nil then
+					g_score_neigh = g_score[neighbor]
+				end
+				if not_in(open, neighbor) or try_g_score < g_score_neigh then
+					came_from[neighbor.x][neighbor.y] = {x = neighbor.x, y = neighbor.y}
 					g_score[neighbor] = try_g_score
 					f_score[neighbor] = g_score[neighbor] + dist(neighbor, target)
 					if not_in(open, neighbor) then
@@ -235,19 +260,37 @@ function getPathToSafeSpace(player)
 	return path
 end
 
-function getNeighborAttack()
+function getNeighborAttack(node)
+	log("atta")
+	local neighbors = {}
+	for _, dir in ipairs(Dirs) do
+		local neighborX = node.x + dir.x
+		local neighborY = node.y + dir.y
+		if neighborY <= MaxY and neighborX <= MaxX then
+			if neighborY >= 0 and neighborX >= 0 then
+				if Map[neighborX][neighborY] <= 1 and Danger[neighborX][neighborY] ~= 1 then
+					table.insert(neighbors, {x = neighborX, y = neighborY})
+				end
+			end
+		end
+	end
+	return neighbors
 end
 
 function getPathToEnemy(player, enemies)
 	local minDist = 100000
 	local res = {}
+	log("c")
 	for _, enemy in ipairs(enemies) do
+		log("wa")
 		local currDist = dist(player, enemy)
-		if currDist < minDist then
+		if currDist < minDist and enemy.x ~= player.x and enemy.y ~= player.y then
 			minDist, res = currDist, enemy
 		end
 	end
+	log("d")
 	local path = pathfind(player, res, getNeighborAttack)
+	log("e")
 	return path
 end
 
@@ -267,7 +310,7 @@ function Update(mapinfo)
 	end
 	Map = CreateMyMap(mapinfo.raw, MaxX, MaxY)
 	Danger = CreateDangerMap(mapinfo.danger)
-	PrintMap(Danger, MaxX, MaxY)
+	PrintMap(Map, MaxX, MaxY)
 	log("Current player pos")
 	log(mapinfo.player.x)
 	log(mapinfo.player.y)
@@ -306,8 +349,12 @@ function Update(mapinfo)
 		LastTarget = {x = f.x, y = f.y}
 		return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false
 	else
+		log("SAFE")
 		local enemies = mapinfo.enemies
+		log("len")
+		log(#enemies)
 		local pathToEnemy = getPathToEnemy(roundedPlayerPos, enemies)		
+		log("b")
 		if #pathToEnemy == 0 then
 			return 0, 0, false, false
 		end
@@ -315,6 +362,12 @@ function Update(mapinfo)
 		log("first way of the path")
 		log(f.x)
 		log(f.y)
+		log("PATH")
+		for i, c in ipairs(pathToEnemy) do
+			log("member")
+			log(c.x)
+			log(c.y)
+		end
 		LastTarget = {x = f.x, y = f.y}
 		--pathfind to closest player
 		if LastPos == nil then

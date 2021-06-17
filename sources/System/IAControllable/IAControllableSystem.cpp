@@ -2,6 +2,7 @@
 // Created by Louis Auzuret on 06/07/21
 //
 
+#include "Component/Score/ScoreComponent.hpp"
 #include "Component/Bomb/BasicBombComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
@@ -19,14 +20,12 @@ namespace BBM
 	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
 		_players.clear();
-		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (static_cast<WAL::Entity>(entity).getUid() == other.getUid())
-				continue;
+		if (!_wal.getScene())
+			return;
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, ScoreComponent>()) {
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
 		}
 		if (_cached)
-			return;
-		if (!_wal.getScene())
 			return;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Breakable>>())
 			_map.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
@@ -142,12 +141,32 @@ namespace BBM
 		state.setTable();
 	}
 
+	void IAControllableSystem::pushInfoEnemies(LuaG::State &state)
+	{
+		int index = 1;
+		state.push("enemies");
+		state.newTable();
+		for (auto &player : _players) {
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(player.x);
+			state.setTable();
+			state.push("y");
+			state.push(player.z);
+			state.setTable();
+			state.setTable();
+		}
+		state.setTable();
+	}
+
 	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
 	{
 		state.newTable();
 		pushInfoPlayer(state, player, bombHolder);
 		pushInfoRaw(state);
 		pushInfoDanger(state);
+		pushInfoEnemies(state);
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)

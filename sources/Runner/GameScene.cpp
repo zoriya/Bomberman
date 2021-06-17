@@ -2,6 +2,7 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include "Component/Tag/TagComponent.hpp"
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"

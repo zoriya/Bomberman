@@ -45,6 +45,9 @@ namespace BBM
 		//! @brief push danger map info
 		void pushInfoDanger(LuaG::State &state);
 
+		//! @brief push info ennemies
+		void pushInfoEnemies(LuaG::State &state);
+
 		//! @brief push all the infos to the lua stack
 		void pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder);
 	public:
