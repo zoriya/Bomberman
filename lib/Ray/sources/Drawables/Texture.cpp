@@ -11,10 +11,16 @@
 
 namespace RAY {
 
-	Cache<::Texture> Texture::_texturesCache(LoadTexture, UnloadTexture);
+	Cache<::Texture> Texture::_texturesCache([] (const char *str) {
+		::Texture texture = LoadTexture(str);
+
+		if (texture.id <= 0)
+			throw Exception::ResourceNotFound(std::string(str));
+		return texture;
+	}, UnloadTexture);
 
 	Texture::Texture()
-		: Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, 0, 0)
+		: Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE, 1, 0), _resourcePath("")
 	{}
 
 	Texture::Texture(const std::string &filename, bool lonely, float scale, float rotation):

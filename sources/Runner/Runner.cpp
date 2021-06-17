@@ -148,13 +148,7 @@ namespace BBM
 		Runner::enableRaylib(wal);
 		Runner::loadScenes();
 		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
-
-		try {
-			wal.run<GameState>(Runner::updateState, Runner::gameState);
-			return 0;
-		} catch (const std::exception &ex) {
-			std::cerr << ex.what() << std::endl;
-			return 1;
-		}
+		wal.run<GameState>(Runner::updateState, Runner::gameState);
+		return 0;
 	}
 }
