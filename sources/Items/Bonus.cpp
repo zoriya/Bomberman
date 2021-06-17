@@ -3,6 +3,7 @@
 //
 
 #include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"

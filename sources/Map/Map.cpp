@@ -301,7 +301,7 @@ namespace BBM
 		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 		            &MapGenerator::holeCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 1.75, 0.75));
 		if (coords.y == 0)
-			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, false, std::make_pair(MAP_DIFFUSE, holePng));
+			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, false, std::make_pair(MAP_DIFFUSE, holePng), Vector3f(1,1,1), 180);
 		else
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(secondFloorObj, false,
 			                                                           std::make_pair(MAP_DIFFUSE, secondFloorPng));

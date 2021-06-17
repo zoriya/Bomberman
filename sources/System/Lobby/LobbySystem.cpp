@@ -237,7 +237,7 @@ namespace BBM
 					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 					if (!text)
 						return;
-					text->setText(std::to_string(bonus->explosionRadius));
+					text->setText(std::to_string(static_cast<int>(bonus->explosionRadius)));
 				});
 			scene->addEntity("player hide bombup")
 				.addComponent<PositionComponent>(x + 220, y + 77, 0)
