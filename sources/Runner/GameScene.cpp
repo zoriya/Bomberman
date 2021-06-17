@@ -46,7 +46,8 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("background image")
 			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background.png", false)
-			.addComponent<PositionComponent>();
+			.addComponent<PositionComponent>()
+			.addComponent<TagComponent<Background>>();
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}

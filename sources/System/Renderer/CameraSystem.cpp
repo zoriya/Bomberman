@@ -74,6 +74,12 @@ namespace BBM
 		cam.target += (newCameraPos.abs() - pos.position.abs()) / 10;
 		newCameraPos.y = maxDist;
 		newCameraPos.z -= 1;
+		Vector3f pos2d(pos.position.abs().x,0, pos.position.abs().z);
+		Vector3f newPos2d(newCameraPos.abs().x, 0, pos.position.abs().z);
+		for (auto &[entity, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
+			backPos.position -= (newPos2d - pos2d) / 10;
+		}
 		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
+
 	}
 }
