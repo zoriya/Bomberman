@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 #include <Drawables/3D/Cube.hpp>
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
@@ -164,10 +165,11 @@ namespace BBM
 	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
-		const auto &pos = entity.get<PositionComponent>();
-		const auto &cam = entity.get<CameraComponent>();
-		_camera.setPosition(pos.position);
+		auto &pos = entity.get<PositionComponent>();
+		auto &cam = entity.get<CameraComponent>();
+		
 		_camera.setTarget(cam.target);
+		_camera.setPosition(pos.position);
 	}
 
 	void RenderSystem::setDebug(bool debug)

@@ -46,6 +46,7 @@
 #include "System/Gravity/GravitySystem.hpp"
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "System/Renderer/CameraSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
@@ -108,6 +109,7 @@ namespace BBM
 			.addSystem<ShaderDrawable2DSystem>()
 //			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
+			.addSystem<CameraSystem>()
 			.addSystem<MusicSystem>();
 	}
 
