@@ -27,7 +27,7 @@ namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
-	std::array<std::string, 4> LobbySystem::_colors = {
+	std::array<std::string, 4> LobbySystem::colors = {
 		"blue",
 		"red",
 		"green",
@@ -60,7 +60,7 @@ namespace BBM
 				lobby.color = 0;
 		} while (this->_colorTaken[lobby.color]);
 		this->_colorTaken[lobby.color] = true;
-		entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + _colors[lobby.color] + ".png");
+		entity.get<Drawable2DComponent>().drawable = std::make_shared<RAY::Texture>("assets/player/icons/" + colors[lobby.color] + ".png");
 		lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(_rayColors[lobby.color]);
 	}
 
@@ -216,8 +216,8 @@ namespace BBM
 																		 (Runner::hasHeights ? 1.01 : 0),
 																		 mapHeight * (!(playerCount % 3)));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
-			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
-			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
+			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + colors[lobby.color] + ".png");
+			std::string texturePath = "assets/player/ui/" + colors[lobby.color] + ".png";
 			int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
 			int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
 			scene->addEntity("player color tile")

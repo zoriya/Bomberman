@@ -34,24 +34,23 @@ namespace BBM
 		static const std::vector<std::string> rankName = {
 			"1st", "2nd", "3rd", "4th"
 		};
-		Runner::gameState._loadedScenes[GameState::LobbyScene] = Runner::loadLobbyScene();
-		auto &lobbyScene = Runner::gameState._loadedScenes[GameState::LobbyScene];
 
-		for (auto &[entity, score, drawable]: gameScene.view<ScoreComponent, Drawable3DComponent>())
-			players.push_back(entity);
+		for (WAL::Entity &entity : gameScene.view<ScoreComponent, Drawable3DComponent>())
+			players.emplace_back(entity);
 		std::sort(players.begin(), players.end(), [](WAL::Entity &entityA, WAL::Entity &entityB) {
 			return entityA.getComponent<ScoreComponent>().aliveTime > entityB.getComponent<ScoreComponent>().aliveTime;
 		});
 
 		int playerID = 0;
-		auto entityGarbage = WAL::Entity(*lobbyScene, "");
 		for (auto &entity: players) {
-			RAY3D::Model *model = dynamic_cast<RAY3D::Model *>(entity.get().getComponent<Drawable3DComponent>().drawable.get());
+			auto *model = dynamic_cast<RAY3D::Model *>(entity.get().getComponent<Drawable3DComponent>().drawable.get());
 			std::string path = model->getTextureByMaterial(MAP_DIFFUSE).getResourcePath();
 			playersIconPath.push_back(path.replace(path.find("textures"), std::string("textures").size(), "icons"));
-			auto &newPlayer = lobbyScene->addEntity("add")
-				.addComponent<LobbyComponent>(playerID++, entityGarbage, entityGarbage);
+			auto &newPlayer = scene->addEntity("add");
+			newPlayer.addComponent<LobbyComponent>(playerID++, newPlayer, newPlayer);
 			newPlayer.getComponent<LobbyComponent>().layout = entity.get().getComponent<ControllableComponent>().layout;
+			std::string color = path.substr(path.find_last_of('/'), path.find_last_of('.'));
+			newPlayer.getComponent<LobbyComponent>().color = std::find(LobbySystem::colors.begin(), LobbySystem::colors.end(), color) - LobbySystem::colors.begin();
 		}
 
 		addMenuControl(*scene, sounds);
