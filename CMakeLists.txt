@@ -127,6 +127,8 @@ set(SOURCES
 	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
 	sources/System/IntroAnimation/IntroAnimationSystem.hpp
 	sources/System/IntroAnimation/IntroAnimationSystem.cpp
+	sources/System/Renderer/CameraSystem.cpp
+	sources/System/Renderer/CameraSystem.cpp
 	sources/Runner/SplashScreenScene.cpp
 	sources/Runner/TitleScreenScene.cpp
 	sources/Runner/MainMenuScene.cpp

@@ -33,6 +33,7 @@
 #include "System/Gravity/GravitySystem.hpp"
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "System/Renderer/CameraSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
 
@@ -85,7 +86,8 @@ namespace BBM
 			.addSystem<IntroAnimationSystem>()
 			.addSystem<GravitySystem>()
 			.addSystem<BumperTimerSystem>()
-			.addSystem<MusicSystem>();
+			.addSystem<MusicSystem>()
+			.addSystem<CameraSystem>();
 	}
 
 	void Runner::enableRaylib(WAL::Wal &wal)
