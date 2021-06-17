@@ -329,6 +329,9 @@ namespace BBM {
 
 	void ParserYAML::load(std::shared_ptr<WAL::Scene> gameScene)
 	{
+		Node blocksInfos = parseFile("assets/save_block.yml");
+		Node bonusesInfos = parseFile("assets/save_bonus.yml");
+		Node playerInfos = parseFile("assets/save_player.yml");
 		_loadBlocks(gameScene);
 		_loadBonuses(gameScene);
 		_loadPlayers(gameScene);
