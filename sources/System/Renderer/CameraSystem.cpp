@@ -5,6 +5,12 @@
 #include "CameraSystem.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Tag/TagComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
+#include "Runner/Runner.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Drawables/2D/Text.hpp"
+
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -53,6 +59,12 @@ namespace BBM
 		}
 		if (playerPos.size() == 0)
 			introAnimation(entity, true);
+		static auto &timer = this->_wal.getScene()->addEntity("Timer")
+			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
+				Runner::gameState.nextScene = GameState::ScoreScene;
+			})
+			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
 		for (int i = 0; i < playerPos.size(); i++)

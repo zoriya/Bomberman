@@ -18,7 +18,6 @@
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
-#include "Drawables/2D/Text.hpp"
 #include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
@@ -38,12 +37,6 @@ namespace BBM
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		scene->addEntity("Timer")
-			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
-				Runner::gameState.nextScene = GameState::ScoreScene;
-			})
-			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("background image")
 			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background.png", false)
 			.addComponent<PositionComponent>();
