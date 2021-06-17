@@ -5,14 +5,19 @@
 #include "Component/Score/ScoreComponent.hpp"
 #include "Component/Health/HealthComponent.hpp"
 #include "Wal.hpp"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 namespace BBM
 {
 	class EndConditionSystem : public WAL::System<ScoreComponent, HealthComponent>
 	{
 	public:
+		std::chrono::nanoseconds endConditionRate = 500ms;
+
 		//! @inherit
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 		
 		//! @brief ctor
 		EndConditionSystem(WAL::Wal &wal);

@@ -26,7 +26,7 @@ namespace BBM
 			event(entity);
 	}
 
-	void EventSystem::onSelfUpdate()
+	void EventSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		for (auto &event : this->_globalEvents)
 			event(this->_wal);

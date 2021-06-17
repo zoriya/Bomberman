@@ -101,7 +101,7 @@ namespace BBM
 		this->_window.setDimensions(newDims);
 	}
 
-	void RenderSystem::onSelfUpdate()
+	void RenderSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		this->_camera.update();
 		this->_window.beginDrawing();

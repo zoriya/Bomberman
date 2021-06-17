@@ -27,7 +27,7 @@ namespace BBM
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<> &entity, std::chrono::nanoseconds dtime) override;
 		//! @inherit
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit EventSystem(WAL::Wal &wal);

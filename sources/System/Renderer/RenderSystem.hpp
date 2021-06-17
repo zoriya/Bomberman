@@ -45,7 +45,7 @@ namespace BBM
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;
