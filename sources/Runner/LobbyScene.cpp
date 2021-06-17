@@ -200,7 +200,7 @@ namespace BBM
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, &howToPlay);
 		howToPlay.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, &play);
