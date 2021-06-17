@@ -3,6 +3,7 @@
 //
 
 #include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
@@ -57,6 +58,7 @@ namespace BBM {
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
+		return (SPEEDUP);
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
