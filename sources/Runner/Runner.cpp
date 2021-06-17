@@ -12,6 +12,14 @@
 #include "System/Controllable/ControllableSystem.hpp"
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
+#include "Component/Button/ButtonComponent.hpp"
+#include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Controllable/ControllableComponent.hpp>
+#include <Component/IAControllable/IAControllableComponent.hpp>
+#include <Component/Keyboard/KeyboardComponent.hpp>
+#include <System/Gamepad/GamepadSystem.hpp>
+#include "Component/Renderer/CameraComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
@@ -30,6 +38,7 @@
 #include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
+#include "System/IAControllable/IAControllableSystem.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
@@ -76,6 +85,7 @@ namespace BBM
 			.addSystem<TimerUISystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<IAControllableSystem>()
 			.addSystem<LobbySystem>()
 			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
