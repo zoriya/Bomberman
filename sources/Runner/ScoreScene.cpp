@@ -12,6 +12,8 @@
 #include "Drawables/2D/Text.hpp"
 #include "Component/Score/ScoreComponent.hpp"
 #include "Model/Model.hpp"
+#include "System/Lobby/LobbySystem.hpp"
+#include "Component/Tag/TagComponent.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -32,6 +34,8 @@ namespace BBM
 		static const std::vector<std::string> rankName = {
 			"1st", "2nd", "3rd", "4th"
 		};
+		Runner::gameState._loadedScenes[GameState::LobbyScene] = Runner::loadLobbyScene();
+		auto &lobbyScene = Runner::gameState._loadedScenes[GameState::LobbyScene];
 
 		for (auto &[entity, score, drawable]: gameScene.view<ScoreComponent, Drawable3DComponent>())
 			players.push_back(entity);
@@ -39,10 +43,15 @@ namespace BBM
 			return entityA.getComponent<ScoreComponent>().aliveTime > entityB.getComponent<ScoreComponent>().aliveTime;
 		});
 
+		int playerID = 0;
+		auto entityGarbage = WAL::Entity(*lobbyScene, "");
 		for (auto &entity: players) {
 			RAY3D::Model *model = dynamic_cast<RAY3D::Model *>(entity.get().getComponent<Drawable3DComponent>().drawable.get());
 			std::string path = model->getTextureByMaterial(MAP_DIFFUSE).getResourcePath();
 			playersIconPath.push_back(path.replace(path.find("textures"), std::string("textures").size(), "icons"));
+			auto &newPlayer = lobbyScene->addEntity("add")
+				.addComponent<LobbyComponent>(playerID++, entityGarbage, entityGarbage);
+			newPlayer.getComponent<LobbyComponent>().layout = entity.get().getComponent<ControllableComponent>().layout;
 		}
 
 		addMenuControl(*scene, sounds);
@@ -72,7 +81,29 @@ namespace BBM
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[i]);
 		}
-		scene->addEntity("back to main menu")
+		auto &play = scene->addEntity("play button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/button_new_game.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				texture->use("assets/buttons/button_new_game_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+
+				if (Runner::gameState.currentScene != GameState::ScoreScene
+					|| !LobbySystem::playersAreReady(*wal.getScene()))
+					return;
+				LobbySystem::switchToGame(wal);
+			})
+			.addComponent<TagComponent<"PlayButton">>();
+		auto &back = scene->addEntity("back to main menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &) {
@@ -88,6 +119,8 @@ namespace BBM
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
+		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, &play);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &back, nullptr,&back);
 		return scene;
 	}
 }
