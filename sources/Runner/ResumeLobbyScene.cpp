@@ -26,8 +26,6 @@ namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
-	int Runner::addedPlayer = 0;
-
 	std::shared_ptr<WAL::Scene> Runner::loadResumeLobbyScene()
 	{
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {

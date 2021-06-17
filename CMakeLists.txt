@@ -11,10 +11,10 @@ add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
 
 if (EMSCRIPTEN)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -s NO_DISABLE_EXCEPTION_CATCHING --shell-file ../sources/wasm/frontend.html --preload-file ../assets")
-    set(CMAKE_EXECUTABLE_SUFFIX ".html")
+	set(CMAKE_EXECUTABLE_SUFFIX ".html")
 endif ()
 
 set(SOURCES
@@ -151,12 +151,32 @@ set(SOURCES
 	sources/Parser/Node.hpp
 	sources/Utils/Utils.cpp
 	sources/Utils/Utils.hpp
+	sources/Runner/HowToPlayScene.cpp
+	sources/Runner/ScoreScene.cpp
+	sources/System/Shaders/ShaderSystem.cpp
+	sources/System/Shaders/ShaderSystem.hpp
+	sources/System/Shaders/ShaderModelSystem.cpp
+	sources/System/Shaders/ShaderModelSystem.hpp
+	sources/System/Shaders/ShaderDrawable2DSystem.cpp
+	sources/System/Shaders/ShaderDrawable2DSystem.hpp
+	sources/Component/Shaders/Items/BombExplosionShaderComponent.cpp
+	sources/Component/Shaders/Items/BombExplosionShaderComponent.hpp
+	sources/Component/Shaders/Items/WhiteShaderComponent.cpp
+	sources/Component/Shaders/Items/WhiteShaderComponent.hpp
+	sources/System/Timer/TimerUISystem.hpp
+	sources/System/Timer/TimerUISystem.cpp
+	sources/System/Bonus/BonusUISystem.hpp
+	sources/System/Bonus/BonusUISystem.cpp
+	sources/Component/Color/ColorComponent.hpp
+	sources/Component/Color/ColorComponent.cpp
+	sources/Component/Stat/StatComponent.cpp
+	sources/Component/Stat/StatComponent.hpp
 	)
 
 add_executable(bomberman
-               sources/main.cpp
-               ${SOURCES}
-)
+	sources/main.cpp
+	${SOURCES}
+	)
 target_include_directories(bomberman PUBLIC sources)
 target_link_libraries(bomberman PUBLIC wal ray)
 
@@ -179,5 +199,5 @@ find_package(Catch2 QUIET)
 if (NOT Catch2_FOUND)
 	set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/lib/catch2)
 	find_package(Catch2 REQUIRED)
-endif()
+endif ()
 target_link_libraries(unit_tests PRIVATE Catch2::Catch2)

@@ -151,11 +151,16 @@ namespace BBM {
 		_bonus = std::stringstream();
 	}
 
-	void ParserYAML::_loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index)
+	void ParserYAML::_loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, int countPlayer)
 	{
 		std::string name;
 		std::string tmpAssets;
-		static int countPlayer = 0;
+		std::map<std::string, RAY::Color> map = {
+				{"red", RED},
+				{"blue", BLUE},
+				{"yellow", YELLOW},
+				{"green", GREEN}
+		};
 
 		for (; index != lines.size(); index++) {
 			if (lines[index].find("max_bomb") != std::string::npos && !name.empty()) {
@@ -185,10 +190,12 @@ namespace BBM {
 		tmpAssets.find("ai.png") == std::string::npos) || !std::filesystem::exists(tmpAssets)) {
 			throw (ParserError("Error with saved map: One asset is invalid.\n                Loading default maps..."));
 		}
+		auto start = tmpAssets.find_last_of("/") + 1;
+		auto color = map.at(tmpAssets.substr(start, tmpAssets.length() - start - 4));
 		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
 		auto &playerTile = resumeScene->addEntity("player tile")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3), RAY::Vector2(200, 200), color);
 		auto &playerLogo = resumeScene->addEntity("player")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>(tmpAssets.replace(tmpAssets.find("textures"), 8, "icons"));
@@ -196,8 +203,6 @@ namespace BBM {
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>();
 		playerLogo.addComponent<LobbyComponent>(countPlayer, ready, playerTile);
-		Runner::addedPlayer++;
-		countPlayer++;
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene)
@@ -205,6 +210,7 @@ namespace BBM {
 		std::ifstream file("save/" + fileName + "_player.yml");
 		std::string line;
 		std::vector<std::string> lines;
+		int countPlayer = 0;
 
 		if (!file.good())
 			throw (ParserError("File error"));
@@ -214,8 +220,9 @@ namespace BBM {
 			lines.push_back(line);
 		}
 		for (int index = 0; lines.size() != index; index++) {
-			_loadPlayer(scene, lines, index);
+			_loadPlayer(scene, lines, index, countPlayer);
 			index--;
+			countPlayer++;
 		}
 	}
 

@@ -35,3 +35,8 @@ jobs:
         shell: bash
         if: matrix.name == 'Linux'
         run: test -f build/bomberman
+      - name: Archive production artifact for Windows binary
+        uses: actions/upload-artifact@v1
+        with:
+          name: BombermanWindows.exe
+          path: build/Debug/bomberman.exe

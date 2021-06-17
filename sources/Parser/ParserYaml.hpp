@@ -67,7 +67,7 @@ namespace BBM {
 		//!@param lines Lines of the file
 		//!@param index index of the vector
 		//!@brief add player into scene
-		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
+		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, int countPlayer);
 		//!@param scene Scene to update
 		//!@param lines Lines of the file
 		//!@param index index of the vector

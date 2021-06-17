@@ -19,3 +19,8 @@ jobs:
       - name: CheckBinaryName
         shell: bash
         run: test -f build/bomberman
+      - name: Archive production artifact for Linux binary
+        uses: actions/upload-artifact@v1
+        with:
+          name: BombermanLinux
+          path: build/bomberman
