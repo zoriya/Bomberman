@@ -39,10 +39,10 @@ namespace BBM {
 		static void _savePlayer(const WAL::Entity &entity);
 		//!@param blockName block name
 		//!@brief transform block name
-		static std::string _getBlockType(std::string blockName);
+		static std::string _getBlockType(const std::string& blockName);
 		//!@param blockName bonus name
 		//!@brief transform bonus name
-		static std::string _getBonusType(std::string bonusName);
+		static std::string _getBonusType(const std::string& bonusName);
 
 		//!@param str to parse
 		//!@brief return max bomb parsed

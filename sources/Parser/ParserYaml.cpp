@@ -40,14 +40,8 @@ namespace BBM {
 	std::stringstream ParserYAML::_block("");
 	std::stringstream ParserYAML::_bonus("");
 	std::stringstream ParserYAML::_player("");
-	std::vector<std::string> ParserYAML::playerName = {};
-	std::vector<Vector3f> ParserYAML::playerPosition = {};
-	std::vector<int> ParserYAML::playerBombCount = {};
-	std::vector<float> ParserYAML::playerExplosionRange = {};
-	std::vector<float> ParserYAML::playerSpeed = {};
-	std::vector<std::string> ParserYAML::playerAssets = {};
 
-	std::string ParserYAML::_getBlockType(std::string blockName)
+	std::string ParserYAML::_getBlockType(const std::string& blockName)
 	{
 		static std::map<std::string, MapGenerator::BlockType> map {
 			{"Upper Floor", MapGenerator::BlockType::UPPERFLOOR},
@@ -60,7 +54,7 @@ namespace BBM {
 		return (std::to_string(map.at(blockName)));
 	}
 
-	std::string ParserYAML::_getBonusType(std::string bonusName)
+	std::string ParserYAML::_getBonusType(const std::string& bonusName)
 	{
 		static std::map<std::string, Bonus::BonusType> map {
 			{"Bonus Bomb Up", Bonus::BonusType::BOMBSTOCK},
@@ -193,7 +187,7 @@ namespace BBM {
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, Node &node)
 	{
 		int countPlayer = 0;
-		auto childNode = node.getChildNodes("players")[0].getChildNodes();
+		auto childNode = node.getChildNodes("players").at(0).getChildNodes();
 
 		if (childNode.size() < 2)
 			throw (ParserError("There isn't enough players to load this saved map."));
@@ -232,7 +226,7 @@ namespace BBM {
 		for (int i = 0; i < Runner::mapWidth; i++)
 			for (int j = 0; j < Runner::mapHeight; j++)
 				map[std::make_tuple(i, 0, j)] = MapGenerator::NOTHING;
-		auto childNode = node.getChildNodes("blocks")[0].getChildNodes();
+		auto childNode = node.getChildNodes("blocks").at(0).getChildNodes();
 		for (auto child : childNode)
 			_loadBlock(scene, child, map);
 		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, map, scene);
@@ -253,7 +247,7 @@ namespace BBM {
 
 	void ParserYAML::_loadBonuses(std::shared_ptr<WAL::Scene> scene, Node &node)
 	{
-		auto childNode = node.getChildNodes("bonuses")[0].getChildNodes();
+		auto childNode = node.getChildNodes("bonuses").at(0).getChildNodes();
 		for (auto child : childNode)
 			_loadBonus(scene, child);
 	}
