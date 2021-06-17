@@ -13,17 +13,17 @@ namespace WAL
 
 	Entity::Entity(Scene &scene, std::string name, bool notifyScene)
 		: _uid(Entity::nextID++),
-		_scene(scene),
 		_name(std::move(name)),
-		_notifyScene(notifyScene)
+		_notifyScene(notifyScene),
+		_scene(scene)
 	{ }
 
 	Entity::Entity(const Entity &other)
 		: _uid(Entity::nextID++),
-		_scene(other._scene),
 		_name(other._name),
 		_disabled(other._disabled),
-		_notifyScene(other._notifyScene)
+		_notifyScene(other._notifyScene),
+		_scene(other._scene)
 	{
 		for (const auto &cmp : other._components)
 			this->addComponent(*cmp.second);

@@ -3,8 +3,8 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-if (CMAKE_COMPILER_IS_GNUCC)
-	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -Werror -g")
+if (CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -Wno-unused-param -W -Werror -g")
 endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
