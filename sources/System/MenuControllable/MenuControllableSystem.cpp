@@ -72,7 +72,7 @@ namespace BBM
 		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
-	void MenuControllableSystem::onSelfUpdate()
+	void MenuControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
 		RAY::Vector2 winSize = RAY::Window::getInstance().getDimensions();
