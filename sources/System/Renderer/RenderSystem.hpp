@@ -6,6 +6,7 @@
 
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "System/System.hpp"
 #include "Camera/Camera2D.hpp"
