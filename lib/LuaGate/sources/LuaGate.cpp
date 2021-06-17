@@ -12,6 +12,11 @@ namespace LuaG
 		luaL_openlibs(_state);
 	}
 
+	State::State(lua_State *L)
+	: _state(L)
+	{
+	}
+
 	State::~State()
 	{
 		lua_close(_state);

@@ -16,6 +16,10 @@ namespace LuaG
 		//! @brief ctor
 		State();
 
+		//! @brief ctor
+		State(lua_State *L);
+
+
 		//! @brief dtor
 		~State();
 
