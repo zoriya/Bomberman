@@ -172,7 +172,7 @@ namespace BBM
 		ia._state.popLast();
 	}
 
-	void IAControllableSystem::onSelfUpdate()
+	void IAControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		_cached = false;
 		_map.clear();

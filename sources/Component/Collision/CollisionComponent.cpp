@@ -54,4 +54,20 @@ namespace BBM
 		bound({boundSize, boundSize, boundSize}),
 		positionOffset({positionOffset, positionOffset, positionOffset})
 	{}
+
+	CollisionComponent::CollidedAxis operator|(CollisionComponent::CollidedAxis first,
+		CollisionComponent::CollidedAxis second)
+	{
+		return static_cast<CollisionComponent::CollidedAxis>(static_cast<int>(first) | static_cast<int>(second));
+	}
+
+	CollisionComponent::CollidedAxis &operator|=(CollisionComponent::CollidedAxis &self,
+		CollisionComponent::CollidedAxis other)
+	{
+		int &selfI = reinterpret_cast<int &>(self);
+		int otherI = static_cast<int>(other);
+
+		selfI |= otherI;
+		return reinterpret_cast<CollisionComponent::CollidedAxis &>(selfI);
+	}
 }

@@ -33,7 +33,7 @@ namespace BBM
 		//! @brief time (in millisecond) since last check
 		std::chrono::time_point<std::chrono::steady_clock> now;
 		//! @inherit
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit MenuControllableSystem(WAL::Wal &wal);

@@ -48,7 +48,7 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("background image")
-			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background.png", false)
 			.addComponent<PositionComponent>();
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
@@ -81,7 +81,15 @@ namespace BBM
 			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
+				
 				animation.setAnimIndex(5);
+				if (entity.hasComponent<ControllableComponent>())
+					entity.removeComponent<ControllableComponent>();
+				if (entity.hasComponent<TimerComponent>())
+					return;
+				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &entity, WAL::Wal &wal) {
+					entity.scheduleDeletion();
+				});
 			});
 	}
 }

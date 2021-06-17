@@ -32,7 +32,7 @@ namespace BBM
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 
 		//! @inherit
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @brief Check if every player is ready.
 		//! @param scene The lobby scene containing lobby players.

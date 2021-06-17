@@ -28,7 +28,7 @@ namespace BBM
 		  _camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
 		  _debugMode(debugMode)
 	{
-		this->_window.setFPS(this->FPS);
+		this->_window.setFPS(BBM::RenderSystem::FPS);
 	}
 
 	void RenderSystem::drawBoundingBox(const WAL::Entity &entity, const PositionComponent &posComponent, const Drawable3DComponent &drawable) const
@@ -101,7 +101,7 @@ namespace BBM
 		this->_window.setDimensions(newDims);
 	}
 
-	void RenderSystem::onSelfUpdate()
+	void RenderSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		this->_camera.update();
 		this->_window.beginDrawing();
