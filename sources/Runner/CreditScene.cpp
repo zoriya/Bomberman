@@ -35,6 +35,9 @@ namespace BBM
 		auto &raylibLogo = scene->addEntity("raylib logo")
 			.addComponent<PositionComponent>(1920 / 3.5, 1080 / 1.75, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/raylib.png");
+		auto &epitechLogo = scene->addEntity("epitech logo")
+			.addComponent<PositionComponent>(1920 / 1.5, 1080 / 1.5, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/epitech.png");
 		auto &raylibText = scene->addEntity("raylib text")
 			.addComponent<PositionComponent>(1920 / 4, 1080 / 2, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Powered by:", 35, RAY::Vector2(), BLACK);
