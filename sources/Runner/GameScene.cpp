@@ -82,7 +82,9 @@ namespace BBM
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				animation.setAnimIndex(5);
-				entity.addComponent<TimerComponent>(5s, [](WAL::Entity &entity, WAL::Wal &wal) {
+				if (entity.hasComponent<TimerComponent>())
+					return;
+				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &entity, WAL::Wal &wal) {
 					entity.scheduleDeletion();
 				});
 			});
