@@ -80,7 +80,8 @@ const RAY::Vector2 &RAY::Window::getDimensions(void)
 RAY::Window &RAY::Window::setDimensions(const Vector2 &dims)
 {
 	this->_dimensions = dims;
-	SetWindowSize(dims.x, dims.y);
+	if (this->_isOpen)
+		SetWindowSize(dims.x, dims.y);
 	return *this;
 }
 
@@ -200,6 +201,11 @@ unsigned RAY::Window::getConfigFlags(void) const
 	return this->_flags;
 }
 
+bool RAY::Window::isFullscreen(void) const
+{
+	return IsWindowFullscreen();
+}
+
 RAY::Window &RAY::Window::setConfigFlags(unsigned flags)
 {
 	if (this->_isOpen)
@@ -211,5 +217,17 @@ RAY::Window &RAY::Window::setConfigFlags(unsigned flags)
 RAY::Window &RAY::Window::toggleFullscreen()
 {
 	ToggleFullscreen();
+	return *this;
+}
+
+RAY::Window &RAY::Window::maximize()
+{
+	MaximizeWindow();
+	return *this;
+}
+
+RAY::Window &RAY::Window::restore()
+{
+	RestoreWindow();
 	return *this;
 }
