@@ -46,6 +46,21 @@ namespace BBM
 		this->_window.beginDrawing();
 		this->_window.clear();
 
+		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable2DComponent>()) {
+			if (!drawable.drawBefore3D)
+				continue;
+			auto *shader = entity.tryGetComponent<ShaderComponentDrawable2D>();
+
+			if (shader) {
+				RAY::Shader::BeginUsingCustomShader(shader->getShader());
+			}
+			drawable.drawable->setPosition(Vector2f(pos.position.x, pos.position.y));
+			drawable.drawable->drawOn(this->_window);
+			if (shader) {
+				RAY::Shader::EndUsingCustomShader();
+			}
+		}
+
 		this->_window.useCamera(this->_camera);
 		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable3DComponent>()) {
 			auto *modelShader = entity.tryGetComponent<ShaderComponentModel>();
@@ -63,6 +78,8 @@ namespace BBM
 
 		// TODO sort entities based on the Z axis
 		for (auto &[entity, pos, drawable] : this->_wal.getScene()->view<PositionComponent, Drawable2DComponent>()) {
+			if (drawable.drawBefore3D)
+				continue;
 			auto *shader = entity.tryGetComponent<ShaderComponentDrawable2D>();
 
 			if (shader) {

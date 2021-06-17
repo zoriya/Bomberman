@@ -9,14 +9,14 @@
 namespace BBM
 {
 	class Runner {
-		public:
+	public:
+		//! @brief Has the map heights or is it disabled?
+		static bool hasHeights;
 
 		//! @brief the width of the map
 		static int mapWidth;
 		//! @brief the height of the map
 		static int mapHeight;
-
-		static int addedPlayer;
 
 		//! @brief store current scenes informations
 		static GameState gameState;
@@ -69,6 +69,8 @@ namespace BBM
 		//! @brief load all data related to splash screen
 		static std::shared_ptr<WAL::Scene> loadSplashScreenScene();
 
+		//! @brief load how to play screen
+		static std::shared_ptr<WAL::Scene> loadHowToPlayScene();
 		//! @brief load all data related to score scene screen
 		//! @param gameScene scene containing players (to know the scores)
 		static std::shared_ptr<WAL::Scene> loadScoreScene(WAL::Scene &gameScene);

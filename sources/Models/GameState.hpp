@@ -27,6 +27,7 @@ namespace BBM
 			ResumeLobbyScene,
 			TitleScreenScene,
 			CreditScene,
+			HowToPlayScene,
 			ScoreScene,
 		};
 

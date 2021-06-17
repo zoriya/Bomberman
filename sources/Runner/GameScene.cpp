@@ -17,17 +17,21 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Button/ButtonComponent.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include <Drawables/Image.hpp>
 #include "Drawables/2D/Text.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Component/Button/ButtonComponent.hpp"
+#include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
+#include "Drawables/2D/Text.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -43,7 +47,12 @@ namespace BBM
 		scene->addEntity("Timer")
 			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 				Runner::gameState.nextScene = GameState::ScoreScene;
-			});
+			})
+			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
+		scene->addEntity("background image")
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+			.addComponent<PositionComponent>();
 		return scene;
 	}
 
@@ -64,7 +73,6 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
-//			.addComponent<ShaderComponentModel>("assets/shaders/glsl330/predator.fs")
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})

@@ -21,7 +21,7 @@ namespace RAY
 		public:
 			//! @brief Create an image, loading a file
 			//! @param filename: path to file to load
-			//! @param lonely: should be set to true if the entity's loaded data must be independant from others
+			//! @param lonely: should be set to true if the entity's loaded data must be independent from others
 			Image(const std::string &filename, bool lonely = false);
 
 			//! @brief A default copy constructor
