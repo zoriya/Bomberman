@@ -125,7 +125,7 @@ namespace BBM
 		}
 
 		this->_wal.getScene()->scheduleNewEntity("Bomb")
-			.addComponent<PositionComponent>(position.round())
+			.addComponent<PositionComponent>(position)
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
 				// the bomb explode when hit
 				entity.scheduleDeletion();
@@ -180,16 +180,21 @@ namespace BBM
 		auto &position = entity.get<PositionComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
 
-		if (controllable.bomb && holder.bombCount > 0) {
-			holder.bombCount--;
-			this->_spawnBomb(position.position, holder);
-		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;
 			if (holder.nextBombRefill <= 0ns) {
 				holder.nextBombRefill = holder.refillRate;
 				holder.bombCount++;
 			}
+		}
+		if (controllable.bomb && holder.bombCount > 0) {
+			auto spawnPos = position.position.round();
+			for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, BasicBombComponent>()) {
+				if (pos.position == spawnPos)
+					return;
+			}
+			holder.bombCount--;
+			this->_spawnBomb(spawnPos, holder);
 		}
 	}
 }
