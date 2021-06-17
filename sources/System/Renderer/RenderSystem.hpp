@@ -56,9 +56,6 @@ namespace BBM
 
 		//! @param entity entity to draw bounding box of
 		void drawBoundingBox(const WAL::Entity &entity, const PositionComponent &posComponent, const Drawable3DComponent &drawable) const;
-		
-		//! @brief introduciton animation when entering gameScene
-		bool introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, bool restart = false);
 
 		//! @brief ctor
 		RenderSystem(WAL::Wal &wal, RAY::Window &window, bool debugMode = false);
