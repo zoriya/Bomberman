@@ -58,7 +58,6 @@ namespace BBM {
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
-		return (SPEEDUP);
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
