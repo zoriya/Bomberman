@@ -300,18 +300,18 @@ namespace BBM
 				std::cout << i << std::endl;
 			i++;
 			auto &player = Runner::createPlayer(*scene);
-			player.setName(ParserYAML::playerName[countPlayer]);
+			player.setName(ParserYAML::playersInfos[countPlayer].name);
 			auto *position = player.tryGetComponent<PositionComponent>();
 			auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 			auto *model = player.tryGetComponent<Drawable3DComponent>();
 			auto *controllable = player.tryGetComponent<ControllableComponent>();
 			if (position && bombHolder && model && controllable) {
 				dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE,
-																						  ParserYAML::playerAssets[countPlayer]);
-				position->position = ParserYAML::playerPosition[countPlayer];
-				bombHolder->explosionRadius = ParserYAML::playerExplosionRange[countPlayer];
-				bombHolder->maxBombCount = ParserYAML::playerBombCount[countPlayer];
-				controllable->speed = ParserYAML::playerSpeed[countPlayer];
+																						  ParserYAML::playersInfos[countPlayer].asset);
+				position->position = ParserYAML::playersInfos[countPlayer].position;
+				bombHolder->explosionRadius = ParserYAML::playersInfos[countPlayer].explosionRange;
+				bombHolder->maxBombCount = ParserYAML::playersInfos[countPlayer].maxBombCount;
+				controllable->speed = ParserYAML::playersInfos[countPlayer].speed;
 			}
 			addController(player, lobby.layout);
 			countPlayer++;

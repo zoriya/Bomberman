@@ -55,7 +55,7 @@ namespace BBM {
 		static float _parseSpeed(const std::string& line);
 		//!@param line to parse
 		//!@brief return vector3f of position parsed
-		static Vector3f _parsePosition(std::string line);
+		static Vector3f _parsePosition(const std::string& line);
 		//!@param blockType to parse
 		//!@brief return BlockType of type parsed
 		static MapGenerator::BlockType _parseBlockType(const std::string& blockType);
@@ -106,19 +106,18 @@ namespace BBM {
 
 		static Node parseFile(const std::string &path);
 
-
 		struct PlayerInfos {
-			std::string playerName;
+			std::string name;
 			//! @brief Player position
-			Vector3f playerPosition;
+			Vector3f position;
 			//! @brief The amount of bomb a player had
-			int playerBombCount;
+			int maxBombCount;
 			//! @brief The explosion range of a player
-			int playerExplosionRange;
+			int explosionRange;
 			//! @brief The speed of a player
-			float playerSpeed;
+			float speed;
 			//! @brief The assets of the player
-			std::string playerAssets;
+			std::string asset;
 		};
 
 		static std::vector<PlayerInfos> playersInfos;

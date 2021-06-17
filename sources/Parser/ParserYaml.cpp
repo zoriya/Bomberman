@@ -227,7 +227,7 @@ namespace BBM {
 			for (int j = 0; j < Runner::mapHeight; j++)
 				map[std::make_tuple(i, 0, j)] = MapGenerator::NOTHING;
 		auto childNode = node.getChildNodes("blocks").at(0).getChildNodes();
-		for (auto child : childNode)
+		for (const auto& child : childNode)
 			_loadBlock(scene, child, map);
 		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, map, scene);
 	}
@@ -262,7 +262,7 @@ namespace BBM {
 		_loadPlayers(gameScene, playerInfos);
 	}
 
-	Vector3f ParserYAML::_parsePosition(std::string line)
+	Vector3f ParserYAML::_parsePosition(const std::string& line)
 	{
 		float x;
 		float y;
