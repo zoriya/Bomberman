@@ -3,8 +3,8 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -g")
-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -Werror -W -g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O2 -D RELEASE -Wno-dev")
 
 include_directories(lib/Ray/sources)
 include_directories(lib/wal/sources)

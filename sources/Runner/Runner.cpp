@@ -107,7 +107,7 @@ namespace BBM
 			.addSystem<ShaderSystem>()
 			.addSystem<ShaderModelSystem>()
 			.addSystem<ShaderDrawable2DSystem>()
-//			.addSystem<EndConditionSystem>()
+			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
 			.addSystem<MusicSystem>();
@@ -115,7 +115,11 @@ namespace BBM
 
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
+		#ifdef RELEASE
+		RAY::TraceLog::setLevel(LOG_NONE);
+		#else
 		RAY::TraceLog::setLevel(LOG_WARNING);
+		#endif
 		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
