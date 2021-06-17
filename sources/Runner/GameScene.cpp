@@ -62,7 +62,7 @@ namespace BBM
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-
+		
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
