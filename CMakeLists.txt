@@ -3,7 +3,9 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -g")
+if (CMAKE_COMPILER_IS_GNUCC)
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -g")
+endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 include_directories(lib/Ray/sources)

@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: |
           mkdir build && cd build
-          cmake ..
+          cmake .. -DCMAKE_BUILD_TYPE=Debug
           cmake --build .
       - name: CheckBinaryName
         shell: bash
