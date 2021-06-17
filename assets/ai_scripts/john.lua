@@ -64,17 +64,19 @@ function CreateDangerMap(dangers)
     	end
     end
 	for i, zone in ipairs(dangers) do
+		if danger[math.floor(zone.x)] == nil then
+			danger[math.floor(zone.x)] = {}
+		end
 		danger[math.floor(zone.x)][math.floor(zone.y)] = math.floor(zone.level)
+		print("c")
 	end
-	--PrintMap(danger, MaxX, MaxY)
+	PrintMap(danger, MaxX, MaxY)
 	return danger
 end
 
-function isInExplosionRange(mapinfo, x, y)
-	for i, danger in ipairs(mapinfo.danger) do
-		if Danger[x][y] > 0 then
+function isInExplosionRange(x, y)
+	if Danger[x][y] > 0 then
 			return true
-		end
 	end
 	return false
 end
@@ -107,10 +109,9 @@ end
 
 function getNeighbors(node)
 	local neighbors = {}
-	for dir in Dirs do
+	for _, dir in ipairs(Dirs) do
 		local neighborX = node.x + dir.x
 		local neighborY = node.y + dir.y
-
 		if neighborY <= MaxY and neighborX <= MaxX then
 			if neighborY >= 0 and neighborX >= 0 then
 				if Map[neighborX][neighborY] == 0 then
@@ -119,6 +120,7 @@ function getNeighbors(node)
 			end
 		end
 	end
+	return neighbors
 end
 
 function getLowestFromSet(set, f_score)
@@ -164,7 +166,6 @@ function pathfind(root, target)
 		end
 		setRemove(open, curr) -- remove curr from open
 		setAdd(closed, curr)-- add node to closed
-
 		local neighbors = getNeighbors(curr) -- get neighbors of current
 		for _, neighbor in ipairs(neighbors) do
 			if not_in(closed, neighbor) then -- neighbor not in closed set
@@ -209,12 +210,14 @@ function getPathToSafeSpace(player)
 		end
 	end
 	local path = pathfind(player, res)
+	print("player")
+	print(player.x)
+	print(player.y)
 	for _, n in ipairs(path) do
-		print("x")
 		print(n.x)
-		print("y")
 		print(n.y)
 	end
+	return path
 end
 
 
@@ -232,18 +235,13 @@ function Update(mapinfo)
 	end
 	Map = CreateMyMap(mapinfo.raw, MaxX, MaxY)
 	Danger = CreateDangerMap(mapinfo.danger)
-	--PrintMap(Danger, MaxX, MaxY)
+	PrintMap(Danger, MaxX, MaxY)
 	local roundedPlayerPos = {x = math.floor(mapinfo.player.x+0.5), y = math.floor(mapinfo.player.y+0.5)}
-	if (isInExplosionRange(mapinfo, roundedPlayerPos.x, roundedPlayerPos.y)) then
+	if (isInExplosionRange(roundedPlayerPos.x, roundedPlayerPos.y)) then
 		local pathToSafeSpace = getPathToSafeSpace(roundedPlayerPos)
-		if (Map[roundedPlayerPos.x + 1][roundedPlayerPos.y] ~= 0) then
-			return -1, 0, false, false
-		else
-			return 1, 0, false, false
-		end
-		--play defensive RUN
+		local f = pathToSafeSpace[1]
+		return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false
 	else
-		return 1, 0, true, true;
-		--play offensive
+		return 0, 0, false, false;
 	end
 end
