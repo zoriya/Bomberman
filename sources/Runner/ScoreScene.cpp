@@ -48,9 +48,10 @@ namespace BBM
 			playersIconPath.push_back(path.replace(path.find("textures"), std::string("textures").size(), "icons"));
 			auto &newPlayer = scene->addEntity("add");
 			newPlayer.addComponent<LobbyComponent>(playerID++, newPlayer, newPlayer);
-			newPlayer.getComponent<LobbyComponent>().layout = entity.get().getComponent<ControllableComponent>().layout;
+			auto &lobby = newPlayer.getComponent<LobbyComponent>();
+			lobby.layout = entity.get().getComponent<ControllableComponent>().layout; // TODO layout was none.
 			std::string color = path.substr(path.find_last_of('/'), path.find_last_of('.'));
-			newPlayer.getComponent<LobbyComponent>().color = std::find(LobbySystem::colors.begin(), LobbySystem::colors.end(), color) - LobbySystem::colors.begin();
+			lobby.color = std::find(LobbySystem::colors.begin(), LobbySystem::colors.end(), color) - LobbySystem::colors.begin();
 		}
 
 		addMenuControl(*scene, sounds);

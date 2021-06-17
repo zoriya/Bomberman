@@ -73,8 +73,8 @@ namespace BBM
 				auto &animation = entity.getComponent<AnimationsComponent>();
 				
 				animation.setAnimIndex(5);
-				if (entity.hasComponent<ControllableComponent>())
-					entity.removeComponent<ControllableComponent>();
+				if (entity.hasComponent<AnimatorComponent>())
+					entity.removeComponent<AnimatorComponent>();
 				if (entity.hasComponent<TimerComponent>())
 					return;
 				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &entity, WAL::Wal &wal) {
