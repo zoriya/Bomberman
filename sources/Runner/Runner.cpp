@@ -110,17 +110,20 @@ namespace BBM
 			.addSystem<RenderSystem>(window);
 	}
 
-	void Runner::addMenuControl(WAL::Scene &scene)
+	void Runner::addMenuControl(WAL::Scene &scene, const std::map<SoundComponent::SoundIndex, std::string> &sounds)
 	{
 		scene.addEntity("Keyboard default control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>();
 		scene.addEntity("Keyboard second control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>(ControllableComponent::Layout::KEYBOARD_1);
 		for (int i = 0; i < 4; i++) {
 			scene.addEntity("Gamepad controller")
 				.addComponent<ControllableComponent>()
+				.addComponent<SoundComponent>(sounds)
 				.addComponent<GamepadComponent>(i);
 		}
 	}
