@@ -40,7 +40,7 @@ namespace BBM
 		drawable.drawable->drawWiresOn(this->_window);
 	}
 
-	void RenderSystem::onSelfUpdate()
+	void RenderSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		this->_camera.update();
 		this->_window.beginDrawing();

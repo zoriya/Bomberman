@@ -75,7 +75,7 @@ namespace BBM
 		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
-	void MenuControllableSystem::onSelfUpdate()
+	void MenuControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 
 		auto &controllableView = this->_wal.getScene()->view<ControllableComponent>();

@@ -97,7 +97,7 @@ namespace BBM
         component.frameCounter++;
 	}
 
-	void IntroAnimationSystem::onSelfUpdate(void)
+	void IntroAnimationSystem::onSelfUpdate(std::chrono::nanoseconds)
 	{
 	}
 }

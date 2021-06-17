@@ -149,7 +149,7 @@ namespace BBM
 			texture->unload();
 	}
 
-	void LobbySystem::onSelfUpdate()
+	void LobbySystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
 		if (view.size() == 0)
