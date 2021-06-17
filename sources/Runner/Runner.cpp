@@ -106,7 +106,7 @@ namespace BBM
 			.addSystem<ShaderSystem>()
 			.addSystem<ShaderModelSystem>()
 			.addSystem<ShaderDrawable2DSystem>()
-			.addSystem<EndConditionSystem>()
+//			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<MusicSystem>();
 	}

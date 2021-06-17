@@ -34,7 +34,7 @@ namespace BBM
 		size_t getCurrentAnimFrameCounter() const;
 
 		//! @brief get the current
-		RAY::ModelAnimation getCurrentModelAnim();
+		RAY::ModelAnimation &getCurrentModelAnim();
 
 		//! @brief set the anim frame counter
 		void setCurrentAnimFrameCounter(size_t animFrameCounter);
