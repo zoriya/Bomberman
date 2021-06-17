@@ -60,8 +60,6 @@ namespace BBM
 		Vector2f buttonPos(positionComponent.getX(), positionComponent.getY());
 		Vector2f dimensions;
 
-		WAL::Entity *newButton = nullptr; 
-
 		if (texture) {
 			dimensions.x = texture->getDimensions().x;
 			dimensions.y = texture->getDimensions().y;
