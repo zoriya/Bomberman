@@ -12,6 +12,7 @@
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
 #include "System/Renderer/RenderSystem.hpp"
+#include "Component/Stat/StatComponent.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 
@@ -25,7 +26,7 @@ namespace BBM
 		};
 
 		addMenuControl(*scene, sounds);
-		scene->addEntity("Control entity")
+		auto &audio = scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -92,6 +93,20 @@ namespace BBM
 
 				texture->use("assets/buttons/button_minus_hovered.png");
 			});
+		
+		auto &musicLevel = scene->addEntity("music level text")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 460, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(30, 10), BLACK)
+			.addComponent<StatComponent>([audio](Drawable2DComponent &drawble) {
+				const MusicComponent *music = audio.tryGetComponent<MusicComponent>();
+
+				if (!music)
+					return;
+				RAY2D::Rectangle *rect = dynamic_cast<RAY2D::Rectangle *>(drawble.drawable.get());
+				if (!rect)
+					return;
+				rect->setWidth((13 * 36.5) * music->volume);
+			});
 
 		auto &sound = scene->addEntity("sound text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 360, 0)
@@ -152,6 +167,20 @@ namespace BBM
 				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_minus_hovered.png");
+			});
+
+		auto &soundLevel = scene->addEntity("sound level text")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 280, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(30, 10), BLACK)
+			.addComponent<StatComponent>([audio](Drawable2DComponent &drawble) {
+				const SoundComponent *sound = audio.tryGetComponent<SoundComponent>();
+
+				if (!sound)
+					return;
+				RAY2D::Rectangle *rect = dynamic_cast<RAY2D::Rectangle *>(drawble.drawable.get());
+				if (!rect)
+					return;
+				rect->setWidth((13 * 36.5) * sound->volume);
 			});
 
 		auto &debug = scene->addEntity("debug text")
