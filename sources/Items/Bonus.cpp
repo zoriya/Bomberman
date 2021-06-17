@@ -20,6 +20,7 @@ namespace BBM {
 		if (!bombHolder)
 			return;
 		bombHolder->maxBombCount++;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -31,6 +32,7 @@ namespace BBM {
 		if (!bombHolder || !playerBonus)
 			return;
 		bombHolder->explosionRadius++;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -42,6 +44,7 @@ namespace BBM {
 		if (!controllable || !playerBonus)
 			return;
 		controllable->speed += 0.025f;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -53,6 +56,7 @@ namespace BBM {
 			return;
 		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
 		playerBonus->isNoClipOn = true;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	Bonus::BonusType Bonus::getRandomBonusType()

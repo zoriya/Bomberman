@@ -99,9 +99,8 @@ namespace BBM
 				entity.scheduleDeletion();
 			})
 			.addComponent<LevitateComponent>(position.y)
-			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
-				bonus.scheduleDeletion();
-			}, func[bonusType - 1], 0.5, .5)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			    func[bonusType - 1], 0.5, .5)
 			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
 				bonus.scheduleDeletion();
 			})
