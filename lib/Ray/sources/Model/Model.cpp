@@ -7,7 +7,7 @@
 
 #include "Model/Model.hpp"
 #include "Exceptions/RayError.hpp"
-#include <unordered_map>g
+#include <unordered_map>
 
 
 namespace RAY::Drawables::Drawables3D
