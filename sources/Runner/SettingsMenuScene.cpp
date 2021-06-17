@@ -184,18 +184,15 @@ namespace BBM
 			{
 				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				RAY::Window &window =  RAY::Window::getInstance();
-				unsigned oldFlags = window.getConfigFlags();
-
-				if (oldFlags == FLAG_WINDOW_RESIZABLE)
-					window.toggleFullscreen();
-				else
-					window.setConfigFlags(FLAG_WINDOW_RESIZABLE);
 
 				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("Fullscreen: On");
+					window.setDimensions(RAY::Vector2(1920, 1080));
 				} else {
 					text->setText("Fullscreen: Off");
+					window.setDimensions(RAY::Vector2(1280, 720));
 				}
+				window.toggleFullscreen();
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
