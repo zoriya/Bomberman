@@ -13,7 +13,13 @@
 namespace RAY::Drawables::Drawables3D
 {
 
-	RAY::Cache<::Model> Model::_modelsCache(LoadModel, UnloadModel);
+	RAY::Cache<::Model> Model::_modelsCache([] (const char *str) {
+		::Model model = LoadModel(str);
+
+		if (model.meshCount == 0)
+			throw Exception::ResourceNotFound(std::string(str));
+		return model;
+	}, UnloadModel);
 
 	Model::Model(const std::string &filename,
 	             bool lonely,

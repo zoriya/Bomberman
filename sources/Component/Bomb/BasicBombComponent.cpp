@@ -4,17 +4,19 @@
 
 #include "BasicBombComponent.hpp"
 
+#include <utility>
+
 namespace BBM
 {
-	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, unsigned ownerID)
-			: WAL::Component(entity),
-			damage(damage),
-			explosionRadius(explosionRadius),
-			ownerID(ownerID)
+	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, std::vector<unsigned> ignored)
+		: WAL::Component(entity),
+		damage(damage),
+		explosionRadius(explosionRadius),
+		ignoredEntities(std::move(ignored))
 	{}
 
 	WAL::Component *BasicBombComponent::clone(WAL::Entity &entity) const
 	{
-		return new BasicBombComponent(entity, this->damage, this->explosionRadius, this->ownerID);
+		return new BasicBombComponent(entity, this->damage, this->explosionRadius, this->ignoredEntities);
 	}
 }

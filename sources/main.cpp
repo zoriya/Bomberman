@@ -23,5 +23,10 @@ int main(int argc, char **argv)
 		usage(argv[0]);
 		return 1;
 	}
-	return BBM::Runner::run();
+	try {
+		return BBM::Runner::run();
+	} catch (const std::exception &ex) {
+		std::cerr << ex.what() << std::endl;
+		return 84;
+	}
 }

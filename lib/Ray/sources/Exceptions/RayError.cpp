@@ -26,3 +26,8 @@ RAY::Exception::WrongInputError::WrongInputError(const std::string &what):
 	RayError(what)
 {
 }
+
+RAY::Exception::ResourceNotFound::ResourceNotFound(const std::string &path):
+	RayError(path + " couldn't be loaded")
+{
+}
