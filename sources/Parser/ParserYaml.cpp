@@ -197,7 +197,7 @@ namespace BBM {
 
 		if (childNode.size() < 2)
 			throw (ParserError("There isn't enough players to load this saved map."));
-		for (auto child : childNode) {
+		for (auto &child : childNode) {
 			_loadPlayer(scene, child, countPlayer);
 			countPlayer++;
 		}
@@ -276,8 +276,8 @@ namespace BBM {
 		std::string subStr;
 
 		try {
-			auto start = line.find("[", 0) + 1;
-			subStr = line.substr(start, line.find("]", 0) - 1 - start);
+			auto start = line.find('[', 0) + 1;
+			subStr = line.substr(start, line.find(']', 0) - 1 - start);
 			auto pos = Utils::splitStr(subStr, ',');
 			if (pos.size() != 3)
 				throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
@@ -289,42 +289,42 @@ namespace BBM {
 		return Vector3f(x, y, z);
 	}
 
-	int ParserYAML::_parseMaxBomb(std::string line)
+	int ParserYAML::_parseMaxBomb(const std::string &str)
 	{
 		int maxBomb = 0;
 
-		if (line.find("-") != std::string::npos)
+		if (str.find('-') != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
-		if (!Utils::tryParseInteger(line, maxBomb))
+		if (!Utils::tryParseInteger(str, maxBomb))
 			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
 		return (maxBomb);
 	}
 
-	int ParserYAML::_parseExplosionRadius(std::string line)
+	int ParserYAML::_parseExplosionRadius(const std::string& line)
 	{
 		int explosionRadius = 0;
 
-		if (line.find("-") != std::string::npos)
+		if (line.find('-') != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		if (!Utils::tryParseInteger(line, explosionRadius))
 			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		return (explosionRadius);
 	}
 
-	float ParserYAML::_parseSpeed(std::string line)
+	float ParserYAML::_parseSpeed(const std::string& line)
 	{
 		float speed = 0;
 
-		if (line.find("-") != std::string::npos)
+		if (line.find('-') != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		if (!Utils::tryParseFloat(line, speed))
 			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		return (speed);
 	}
 
-	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string blockType)
+	MapGenerator::BlockType ParserYAML::_parseBlockType(const std::string& blockType)
 	{
-		if (blockType.find("-") != std::string::npos)
+		if (blockType.find('-') != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
 		int block = 0;
 		if (!Utils::tryParseInteger(blockType, block))
@@ -332,9 +332,9 @@ namespace BBM {
 		return (static_cast<MapGenerator::BlockType>(block));
 	}
 
-	Bonus::BonusType ParserYAML::_parseBonusType(std::string bonusType)
+	Bonus::BonusType ParserYAML::_parseBonusType(const std::string& bonusType)
 	{
-		if (bonusType.find("-") != std::string::npos)
+		if (bonusType.find('-') != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
 		int bonus = 0;
 		if (!Utils::tryParseInteger(bonusType, bonus))
@@ -406,10 +406,10 @@ namespace BBM {
 			if (lineIndentLevel != static_cast<int>(lineIndentLevel)) {
 				throw ParserError("Yaml only support 2 spaces as indent");
 			}
-			if (lineIndentLevel > indentLevel) {
+			if (lineIndentLevel > static_cast<float>(indentLevel)) {
 				throw ParserError("indent issue");
 			}
-			if (lineIndentLevel < indentLevel) {
+			if (lineIndentLevel < static_cast<float>(indentLevel)) {
 				file.seekg(static_cast<size_t>(file.tellg()) - (line.length() + endlNbChars));
 				return node;
 			}
