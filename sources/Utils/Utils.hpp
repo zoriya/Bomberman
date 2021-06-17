@@ -28,6 +28,11 @@ namespace BBM
 
 		//! @brief find the frequency of a substring in a string
 		static int findFrequency(const std::string &s, const std::string &pattern);
+
+
+		static bool tryParseInteger(const std::string &s, int &i);
+		static bool tryParseFloat(const std::string &s, float &f);
+		static std::vector<std::string> splitStr(const std::string &str, char delim);
 	};
 
 

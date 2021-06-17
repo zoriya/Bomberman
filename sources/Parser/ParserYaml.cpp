@@ -251,35 +251,27 @@ namespace BBM {
 		map[std::make_tuple(pos.x, pos.y, pos.z)] = blockType;
 	}
 
-	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene)
+	void ParserYAML::_loadBlocks(std::shared_ptr<WAL::Scene> scene, Node &node)
 	{
-		std::ifstream file("save/" + fileName + "_block.yml");
-		std::string line;
-		std::vector<std::string> lines;
 		MapGenerator::MapBlock map;
+		int size = -1;
 
-		if (!file.good())
-			throw (ParserError("File error"));
-		while (std::getline(file, line)) {
-			if (line.find("width:") != std::string::npos) {
-				Runner::mapWidth = std::atoi(line.substr(line.find(": ", 0) + 2, line.length()).c_str());
-				continue;
-			}
-			if (line.find("height:") != std::string::npos) {
-				Runner::mapHeight = std::atoi(line.substr(line.find(": ", 0) + 2, line.length()).c_str());
-				continue;
-			}
-			if (line.empty() || line.find("blocks:") != std::string::npos)
-				continue;
-			lines.push_back(line);
+		if (!Utils::tryParseInteger(node.getProperty("width"), size)) {
+			throw ParserError("width property must be an int");
 		}
+		Runner::mapWidth = size;
+		if (!Utils::tryParseInteger(node.getProperty("height"), size)) {
+			throw ParserError("width property must be an int");
+		}
+		Runner::mapHeight = size;
+
 		for (int i = 0; i < Runner::mapWidth; i++)
 			for (int j = 0; j < Runner::mapHeight; j++)
 				map[std::make_tuple(i, 0, j)] = MapGenerator::NOTHING;
-		for (int index = 0; lines.size() != index; index++) {
+		/*for (int index = 0; lines.size() != index; index++) {
 			_loadBlock(scene, lines, index, map);
 			index--;
-		}
+		}*/
 		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, map, scene);
 	}
 
@@ -332,7 +324,7 @@ namespace BBM {
 		Node blocksInfos = parseFile("assets/save_block.yml");
 		Node bonusesInfos = parseFile("assets/save_bonus.yml");
 		Node playerInfos = parseFile("assets/save_player.yml");
-		_loadBlocks(gameScene);
+		_loadBlocks(gameScene, blocksInfos);
 		_loadBonuses(gameScene);
 		_loadPlayers(gameScene);
 	}
@@ -364,7 +356,7 @@ namespace BBM {
 		try {
 			auto start = line.find("[", 0) + 1;
 			subStr = line.substr(start, line.find("]", 0) - 1 - start);
-			auto pos = _splitStr(subStr, ' ');
+			auto pos = Utils::splitStr(subStr, ' ');
 			if (pos.size() != 3)
 				throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 			x = pos[0];
@@ -373,15 +365,15 @@ namespace BBM {
 		} catch (const std::out_of_range &err) {
 			throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 		}
-		if (!_isFloat(x) || !_isFloat(y) || !_isFloat(z))
-			throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
+		//if (!_isFloat(x) || !_isFloat(y) || !_isFloat(z))
+		//	throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
 		return Vector3f(std::atof(x.c_str()), std::atof(y.c_str()), std::atof(z.c_str()));
 	}
 
 	int ParserYAML::_parseMaxBomb(std::string &line)
 	{
-		if (line.find(": ") == std::string::npos || !_isInteger(line.substr(line.find(": ") + 2)))
-			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
+		//if (line.find(": ") == std::string::npos || !_isInteger(line.substr(line.find(": ") + 2)))
+		//	throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
 		if (line.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
 		return (std::atoi(line.substr(line.find(": ") + 2).c_str()));
@@ -389,8 +381,8 @@ namespace BBM {
 
 	float ParserYAML::_parseExplosionRadius(std::string &line)
 	{
-		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
-			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
+		//if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
+		//	throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		if (line.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
@@ -398,8 +390,8 @@ namespace BBM {
 
 	float ParserYAML::_parseSpeed(std::string &line)
 	{
-		if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
-			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
+		//if (line.find(": ") == std::string::npos || !_isFloat(line.substr(line.find(": ") + 2)))
+		//	throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		if (line.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
 		return (std::atof(line.substr(line.find(": ") + 2).c_str()));
@@ -407,8 +399,8 @@ namespace BBM {
 
 	MapGenerator::BlockType ParserYAML::_parseBlockType(std::string &blockType)
 	{
-		if (blockType.find(": ") == std::string::npos || !_isInteger(blockType.substr(blockType.find(": ") + 2)))
-			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
+		//if (blockType.find(": ") == std::string::npos || !_isInteger(blockType.substr(blockType.find(": ") + 2)))
+		//	throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
 		if (blockType.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
 		return (static_cast<MapGenerator::BlockType>(std::atoi(blockType.substr(blockType.find(": ") + 2).c_str())));
@@ -416,41 +408,11 @@ namespace BBM {
 
 	Bonus::BonusType ParserYAML::_parseBonusType(std::string &bonusType)
 	{
-		if (bonusType.find(": ") == std::string::npos || !_isInteger(bonusType.substr(bonusType.find(": ") + 2)))
-			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
+		//if (bonusType.find(": ") == std::string::npos || !_isInteger(bonusType.substr(bonusType.find(": ") + 2)))
+		//	throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
 		if (bonusType.find("-") != std::string::npos)
 			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
 		return (static_cast<Bonus::BonusType>(std::atoi(bonusType.substr(bonusType.find(": ") + 2).c_str())));
-	}
-
-	bool ParserYAML::_isInteger(const std::string &s)
-	{
-		std::istringstream iss(s);
-		int i;
-
-		iss >> std::noskipws >> i;
-		return iss.eof() && !iss.fail();
-	}
-
-	bool ParserYAML::_isFloat(const std::string &s)
-	{
-		std::istringstream iss(s);
-		float f;
-
-		iss >> std::noskipws >> f;
-		return iss.eof() && !iss.fail();
-	}
-
-	std::vector<std::string> ParserYAML::_splitStr(const std::string &str, char delim)
-	{
-		std::vector<std::string> strings;
-		std::istringstream f(str);
-		std::string buffer;
-
-		while (std::getline(f, buffer, delim)) {;
-			strings.push_back(buffer);
-		}
-		return strings;
 	}
 
 	std::string ParserYAML::parseHeader(const std::string &line)

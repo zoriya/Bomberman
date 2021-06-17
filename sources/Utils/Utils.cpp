@@ -58,4 +58,32 @@ namespace BBM
 		return static_cast<int>(numberOfMatches);
 	}
 
+	bool Utils::tryParseInteger(const std::string &s, int &i)
+	{
+		std::istringstream iss(s);
+
+		iss >> std::noskipws >> i;
+		return iss.eof() && !iss.fail();
+	}
+
+	bool Utils::tryParseFloat(const std::string &s, float &f)
+	{
+		std::istringstream iss(s);
+
+		iss >> std::noskipws >> f;
+		return iss.eof() && !iss.fail();
+	}
+
+	std::vector<std::string> Utils::splitStr(const std::string &str, char delim)
+	{
+		std::vector<std::string> strings;
+		std::istringstream f(str);
+		std::string buffer;
+
+		while (std::getline(f, buffer, delim)) {;
+			strings.push_back(buffer);
+		}
+		return strings;
+	}
+
 }

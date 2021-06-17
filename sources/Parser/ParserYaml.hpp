@@ -85,14 +85,10 @@ namespace BBM {
 		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene);
 		//!@param scene Scene to update
 		//!@brief load all blocks into scene
-		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene);
+		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, Node &node);
 		//!@param scene Scene to update
 		//!@brief load all blocks into scene
 		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene);
-
-		static bool _isInteger(const std::string &s);
-		static bool _isFloat(const std::string &s);
-		static std::vector<std::string> _splitStr(const std::string &str, char delim);
 
 		static std::string parseHeader(const std::string &line);
 
