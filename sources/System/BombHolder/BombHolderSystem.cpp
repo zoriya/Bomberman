@@ -189,8 +189,8 @@ namespace BBM
 		}
 		if (controllable.bomb && holder.bombCount > 0) {
 			auto spawnPos = position.position.round();
-			for (auto &[__, pos, _] : this->_wal.getScene()->view<PositionComponent, BasicBombComponent>()) {
-				if (pos.position == spawnPos)
+			for (auto &eachEntity: this->_wal.getScene()->view<PositionComponent, BasicBombComponent>()) {
+				if (eachEntity.get<PositionComponent>().position == spawnPos)
 					return;
 			}
 			holder.bombCount--;
