@@ -22,7 +22,7 @@ namespace BBM
 		auto health = entity->tryGetComponent<HealthComponent>();
 		Vector2f move = controllable.move.normalized() * controllable.speed;
 
-		if (health->getHealthPoint() <= 0)
+		if (health && health->getHealthPoint() <= 0)
 			return;
 		movable.addForce(Vector3f(move.x, 0, move.y));
 	}
