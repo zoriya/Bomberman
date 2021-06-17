@@ -321,9 +321,9 @@ namespace BBM {
 
 	void ParserYAML::load(std::shared_ptr<WAL::Scene> gameScene)
 	{
-		Node blocksInfos = parseFile("assets/save_block.yml");
-		Node bonusesInfos = parseFile("assets/save_bonus.yml");
-		Node playerInfos = parseFile("assets/save_player.yml");
+		Node blocksInfos = parseFile("save/save_block.yml");
+		Node bonusesInfos = parseFile("save/save_bonus.yml");
+		Node playerInfos = parseFile("save/save_player.yml");
 		_loadBlocks(gameScene, blocksInfos);
 		_loadBonuses(gameScene);
 		_loadPlayers(gameScene);
@@ -461,6 +461,9 @@ namespace BBM {
 	Node ParserYAML::parseFile(const std::string &path)
 	{
 		std::ifstream file(path);
+
+		if (!file.good())
+			throw ParserError("can't read file");
 
 		return parseNode(file, "root");
 	}
