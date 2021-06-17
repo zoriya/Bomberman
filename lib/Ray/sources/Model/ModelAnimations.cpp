@@ -7,7 +7,13 @@
 
 #include "Model/ModelAnimations.hpp"
 
-RAY::Cache<::ModelAnimation> RAY::ModelAnimations::_animationsCache(LoadModelAnimations, UnloadModelAnimations);
+RAY::Cache<::ModelAnimation> RAY::ModelAnimations::_animationsCache([] (const char *str, int *counter) {
+		::ModelAnimation *modelanimations = LoadModelAnimations(str, counter);
+
+		if (modelanimations == nullptr)
+			throw Exception::ResourceNotFound(std::string(str));
+		return modelanimations;
+	}, UnloadModelAnimations);
 
 RAY::ModelAnimations::ModelAnimations(const std::string &filePath):
 	_animationsPtr(_animationsCache.fetch(filePath, &this->_animationCount)),

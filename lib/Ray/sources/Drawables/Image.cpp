@@ -11,7 +11,13 @@
 #include "Exceptions/RayError.hpp"
 
 namespace RAY {
-	Cache<::Image> Image::_imagesCache(LoadImage, UnloadImage);
+	Cache<::Image> Image::_imagesCache([] (const char *str) {
+		::Image image = LoadImage(str);
+
+		if (image.data == nullptr)
+			throw Exception::ResourceNotFound(std::string(str));
+		return image;
+	}, UnloadImage);
 
 	Image::Image(const std::string &filename, bool lonely):
 		Rectangle(Vector2(0, 0), Vector2(0, 0), WHITE),

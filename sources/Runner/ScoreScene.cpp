@@ -45,7 +45,7 @@ namespace BBM
 			playersIconPath.push_back(path.replace(path.find("textures"), std::string("textures").size(), "icons"));
 		}
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("Audio ressources")
 			.addComponent<MusicComponent>("assets/musics/music_result.ogg")
 			.addComponent<SoundComponent>(sounds);

@@ -18,8 +18,9 @@ namespace BBM
 {
 	MenuControllableSystem::MenuControllableSystem(WAL::Wal &wal)
 		: System(wal),
-		_currentButton()
-	{}
+		_currentButton(), _oldMousePosition(-1, -1)
+	{
+	}
 
 	void MenuControllableSystem::_updateCurrentButton(bool selected, Vector2f move)
 	{
@@ -51,14 +52,12 @@ namespace BBM
 		    this->_currentButton->getComponent<OnClickComponent>().onEvent(*this->_currentButton, this->_wal);
 	}
 
-	bool MenuControllableSystem::_mouseOnButton(WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const
+	bool MenuControllableSystem::_mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const
 	{
 		auto &positionComponent = entity.get<PositionComponent>();
-		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
 		RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.get<Drawable2DComponent>().drawable.get());
 		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.get<Drawable2DComponent>().drawable.get());
 		Vector2f buttonPos(positionComponent.getX(), positionComponent.getY());
-		Vector2f mousePos(rayMousePos.x, rayMousePos.y);
 		Vector2f dimensions;
 
 		WAL::Entity *newButton = nullptr; 
@@ -68,7 +67,7 @@ namespace BBM
 			dimensions.y = texture->getDimensions().y;
 		} else if (text) {
 			dimensions.y = text->getFontSize();
-			dimensions.x = text->getString().size() * (text->getLetterSpacing() + text->getFontSize());
+			dimensions.x = text->getString().size() * (text->getFontSize());
 		} else
 			return false;
 		return ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
@@ -77,11 +76,15 @@ namespace BBM
 
 	void MenuControllableSystem::onSelfUpdate()
 	{
-
+		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
+		RAY::Vector2 winSize = RAY::Window::getInstance().getDimensions();
+		Vector2f relativeMousePos(rayMousePos.x * 1920 / winSize.x, rayMousePos.y * 1080 / winSize.y);
 		auto &controllableView = this->_wal.getScene()->view<ControllableComponent>();
 		auto &buttons = _wal.getScene()->view<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent>();
 
 
+		if (this->_oldMousePosition == Vector2f(-1, -1))
+			this->_oldMousePosition = relativeMousePos;
 		if (this->_currentButton && this->_currentButton->_scene.getID() != this->_wal.getScene()->getID()) {
 			this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
 			this->_currentButton = nullptr;
@@ -98,8 +101,11 @@ namespace BBM
 				this->_updateCurrentButton(controllable.select, controllable.move);
 				return;
 			}
+		if (relativeMousePos == this->_oldMousePosition && !RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))
+			return;
+		this->_oldMousePosition = relativeMousePos;
 		for (auto &entity:  buttons) {
-			if (_mouseOnButton(entity)) {
+			if (_mouseOnButton(relativeMousePos, entity)) {
 				if (this->_currentButton)
 					this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
 				this->_currentButton = &(*entity);

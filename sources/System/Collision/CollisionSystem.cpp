@@ -7,7 +7,6 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "System/Collision/CollisionSystem.hpp"
 #include "Scene/Scene.hpp"
-
 namespace BBM
 {
 	CollisionSystem::CollisionSystem(WAL::Wal &wal)

@@ -33,7 +33,7 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
 			.addComponent<SoundComponent>(sounds);
@@ -196,7 +196,7 @@ namespace BBM
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
 				// todo check why it does this | hacky way to fix ready texture
-				.addComponent<Drawable2DComponent, RAY::Texture>("");
+				.addComponent<Drawable2DComponent, RAY::Texture>();
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
