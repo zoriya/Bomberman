@@ -22,7 +22,7 @@ namespace BBM
 			hasEnded = false;
 			return (false);
 		}
-		if (pos.position.distance(posTarget) < 2 || hasEnded) {
+		if (pos.position.distance(posTarget) < 4 || hasEnded) {
 			hasEnded = true;
 			return (true);
 		}
