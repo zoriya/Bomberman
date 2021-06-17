@@ -7,6 +7,8 @@
 #include <locale>
 #include <string>
 #include <regex>
+#include <ios>
+#include <sstream>
 #include "Utils.hpp"
 
 namespace BBM

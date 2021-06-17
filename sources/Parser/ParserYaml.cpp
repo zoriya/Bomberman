@@ -193,6 +193,8 @@ namespace BBM {
 		int countPlayer = 0;
 		auto childNode = node.getChildNodes("players")[0].getChildNodes();
 
+		if (childNode.size() < 2)
+			throw (ParserError("There isn't enough players to load this saved map."));
 		for (auto child : childNode) {
 			_loadPlayer(scene, child, countPlayer);
 			countPlayer++;
@@ -387,7 +389,6 @@ namespace BBM {
 
 		if (!file.good())
 			throw ParserError("can't read file");
-
 		return parseNode(file, "root");
 	}
 
@@ -395,6 +396,11 @@ namespace BBM {
 	{
 		std::string line;
 		Node node(nodeName);
+#ifdef __linux__
+		int endlNbChars = 1;
+#elif _WIN32
+		int endlNbChars = 2;
+#endif
 
 		while(std::getline(file, line)) {
 			if (line.empty())
@@ -407,7 +413,7 @@ namespace BBM {
 				throw ParserError("indent issue");
 			}
 			if (lineIndentLevel < indentLevel) {
-				file.seekg(static_cast<size_t>(file.tellg()) - (line.length() + 1));
+				file.seekg(static_cast<size_t>(file.tellg()) - (line.length() + endlNbChars));
 				return node;
 			}
 			if (isHeader(line)) {
