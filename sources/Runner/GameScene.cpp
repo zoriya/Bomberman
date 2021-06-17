@@ -81,8 +81,8 @@ namespace BBM
 			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
-				animation.setAnimIndex(5);
 				
+				animation.setAnimIndex(5);
 				if (entity.hasComponent<ControllableComponent>())
 					entity.removeComponent<ControllableComponent>();
 				if (entity.hasComponent<TimerComponent>())
