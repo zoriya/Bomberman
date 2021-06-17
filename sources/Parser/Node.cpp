@@ -44,6 +44,16 @@ namespace BBM
 		return childs;
 	}
 
+	std::vector<Node> Node::getChildNodes(void)
+	{
+		std::vector<Node> childs;
+
+		for (const auto &child : this->_childNodes) {
+			childs.emplace_back(child);
+		}
+		return childs;
+	}
+
 	void Node::setName(const std::string &name)
 	{
 		this->_name = name;

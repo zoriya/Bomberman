@@ -12,7 +12,7 @@ namespace BBM
 		: WAL::Component(entity)
 	{}
 
-	BombHolderComponent::BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount, float explosionRadius)
+	BombHolderComponent::BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount, int explosionRadius)
 		: WAL::Component(entity),
 		  maxBombCount(maxBombCount),
 		  explosionRadius(explosionRadius)

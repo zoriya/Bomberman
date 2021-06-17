@@ -38,57 +38,50 @@ namespace BBM {
 		static std::string _getBonusType(std::string bonusName);
 
 		//!@param line to parse
-		//!@param entity to update
-		//!@brief parse entity name
-		static WAL::Entity &_parseEntityName(std::string line, WAL::Entity &entity);
-		//!@param line to parse
 		//!@brief return max bomb parsed
-		static int _parseMaxBomb(std::string &line);
+		static int _parseMaxBomb(std::string line);
 		//!@param line to parse
 		//!@brief return explosion radius parsed
-		static float _parseExplosionRadius(std::string &line);
+		static int _parseExplosionRadius(std::string line);
 		//!@param line to parse
 		//!@brief return speed parsed
-		static float _parseSpeed(std::string &line);
+		static float _parseSpeed(std::string line);
 		//!@param line to parse
 		//!@brief return vector3f of position parsed
-		static Vector3f _parsePosition(std::string &line);
+		static Vector3f _parsePosition(std::string line);
 		//!@param blockType to parse
 		//!@brief return BlockType of type parsed
-		static MapGenerator::BlockType _parseBlockType(std::string &blockType);
+		static MapGenerator::BlockType _parseBlockType(std::string blockType);
 		//!@param bonusType to parse
 		//!@brief return bonusType of type parsed
-		static Bonus::BonusType _parseBonusType(std::string &bonusType);
-		//!@param assets to parse
-		//!@brief return assets parsed
-		static std::string _parseAssets(std::string &line);
+		static Bonus::BonusType _parseBonusType(std::string bonusType);
 
 		//!@param scene Scene to update
 		//!@param lines Lines of the file
 		//!@param index index of the vector
 		//!@brief add player into scene
-		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, int countPlayer);
+		static void _loadPlayer(std::shared_ptr<WAL::Scene> scene, Node &node, int countPlayer);
 		//!@param scene Scene to update
 		//!@param lines Lines of the file
 		//!@param index index of the vector
 		//!@param map map of all the block
 		//!@brief add block into scene
-		static void _loadBlock(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index, MapGenerator::MapBlock &map);
+		static void _loadBlock(std::shared_ptr<WAL::Scene> scene, Node child, MapGenerator::MapBlock &map);
 		//!@param scene Scene to update
 		//!@param lines Lines of the file
 		//!@param index index of the vector
 		//!@brief add bonus into scene
-		static void _loadBonus(std::shared_ptr<WAL::Scene> scene, std::vector<std::string> lines, int &index);
+		static void _loadBonus(std::shared_ptr<WAL::Scene> scene, Node &node);
 
 		//!@param scene Scene to update
 		//!@brief load all players into scene
-		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene);
+		static void _loadPlayers(std::shared_ptr<WAL::Scene> scene, Node &node);
 		//!@param scene Scene to update
 		//!@brief load all blocks into scene
 		static void _loadBlocks(std::shared_ptr<WAL::Scene> scene, Node &node);
 		//!@param scene Scene to update
 		//!@brief load all blocks into scene
-		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene);
+		static void _loadBonuses(std::shared_ptr<WAL::Scene> scene, Node &node);
 
 		static std::string parseHeader(const std::string &line);
 
