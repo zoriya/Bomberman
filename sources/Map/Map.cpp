@@ -99,9 +99,8 @@ namespace BBM
 				entity.scheduleDeletion();
 			})
 			.addComponent<LevitateComponent>(position.y)
-			.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
-				bonus.scheduleDeletion();
-			}, func[bonusType - 1], 0.5, .5)
+			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			    func[bonusType - 1], 0.5, .5)
 			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
 				bonus.scheduleDeletion();
 			})
@@ -133,6 +132,7 @@ namespace BBM
 					scene->addEntity("Unbreakable Wall")
 						.addComponent<PositionComponent>(i, 0, j)
 						.addComponent<TagComponent<Blowable>>()
+						.addComponent<TagComponent<Unbreakable>>()
 						.addComponent<CollisionComponent>(
 							WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 							&MapGenerator::wallCollided, 0.25, .75)
@@ -240,6 +240,7 @@ namespace BBM
 		scene->addEntity("Breakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<Breakable>>()
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
@@ -277,6 +278,7 @@ namespace BBM
 		scene->addEntity("Unbreakable Block")
 			.addComponent<PositionComponent>(coords)
 			.addComponent<TagComponent<Blowable>>()
+			.addComponent<TagComponent<Unbreakable>>()
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 				&MapGenerator::wallCollided, 0.25, .75)
@@ -294,6 +296,7 @@ namespace BBM
 		WAL::Entity &holeEntity = scene->addEntity("Hole Block");
 
 		holeEntity.addComponent<PositionComponent>(Vector3f(coords.x, coords.y - 1, coords.z))
+				  .addComponent<TagComponent<Hole>>()
 	              .addComponent<CollisionComponent>(
 		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 		            &MapGenerator::holeCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 1.75, 0.75));
@@ -312,7 +315,8 @@ namespace BBM
 
 		scene->addEntity("Bumper Block")
 			.addComponent<PositionComponent>(Vector3f(coords.x, coords.y, coords.z))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, false,std::make_pair(MAP_DIFFUSE, bumperPng))
+			.addComponent<TagComponent<Bumper>>()
+			.addComponent<Drawable3DComponent, RAY3D::Model>(bumperObj, false, std::make_pair(MAP_DIFFUSE, bumperPng))
 			.addComponent<CollisionComponent>(
 		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 		            &MapGenerator::bumperCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 0.75, 0.75));

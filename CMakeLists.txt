@@ -3,12 +3,14 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
-include_directories(bomberman lib/Ray/sources)
-include_directories(bomberman lib/wal/sources)
-include_directories(bomberman sources)
+include_directories(lib/Ray/sources)
+include_directories(lib/wal/sources)
+include_directories(lib/LuaGate/sources)
+include_directories(sources)
 
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/wal)
 add_subdirectory(${PROJECT_SOURCE_DIR}/lib/Ray)
+add_subdirectory(${PROJECT_SOURCE_DIR}/lib/LuaGate)
 
 if (EMSCRIPTEN)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -s USE_GLFW=3 -s ASSERTIONS=1 -s WASM=1 -s ASYNCIFY")
@@ -79,6 +81,12 @@ set(SOURCES
 	sources/Component/Collision/CollisionComponent.hpp
 	sources/System/Collision/CollisionSystem.hpp
 	sources/System/Collision/CollisionSystem.cpp
+	sources/Component/IAControllable/IAControllableComponent.hpp
+	sources/Component/IAControllable/IAControllableComponent.cpp
+	sources/System/IAControllable/IAControllableSystem.hpp
+	sources/System/IAControllable/IAControllableSystem.cpp
+	sources/Map/MapInfo.hpp
+	sources/Map/MapInfo.cpp
 	sources/Component/Button/ButtonComponent.hpp
 	sources/System/MenuControllable/MenuControllableSystem.cpp
 	sources/System/MenuControllable/MenuControllableSystem.hpp
@@ -167,8 +175,8 @@ add_executable(bomberman
 	sources/main.cpp
 	${SOURCES}
 	)
-target_include_directories(bomberman PUBLIC sources)
-target_link_libraries(bomberman PUBLIC wal ray)
+target_include_directories(bomberman PUBLIC sources LuaGate)
+target_link_libraries(bomberman PUBLIC wal ray LuaGate)
 
 
 add_executable(unit_tests EXCLUDE_FROM_ALL
@@ -182,8 +190,8 @@ add_executable(unit_tests EXCLUDE_FROM_ALL
 	tests/ViewTest.cpp
 	tests/CollisionTest.cpp
 	)
-target_include_directories(unit_tests PUBLIC sources)
-target_link_libraries(unit_tests PUBLIC wal ray)
+target_include_directories(unit_tests PUBLIC sources LuaGate)
+target_link_libraries(unit_tests PUBLIC wal ray LuaGate)
 
 find_package(Catch2 QUIET)
 if (NOT Catch2_FOUND)

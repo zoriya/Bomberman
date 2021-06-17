@@ -9,6 +9,8 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
+    - name: Install lua
+      run: sudo apt install -y liblua5.3-dev
     - name: Exec
       shell: bash
       run: ./build_web.sh

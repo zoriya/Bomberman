@@ -12,6 +12,7 @@
 #include <Runner/Runner.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Gamepad/GamepadComponent.hpp>
+#include "Component/IAControllable/IAControllableComponent.hpp"
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include <Drawables/2D/Text.hpp>
@@ -192,7 +193,7 @@ namespace BBM
 			player.addComponent<GamepadComponent>(3);
 			break;
 		case ControllableComponent::AI:
-//			throw std::runtime_error("Not implemented error");
+			player.addComponent<IAControllableComponent>("./assets/ai_scripts/john.lua");
 			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
@@ -205,10 +206,8 @@ namespace BBM
 		int mapWidth = 16;
 		int mapHeight = 16;
 		int playerCount = 0;
-		int playerID = 0;
 
 		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
-			playerID++;
 			if (lobby.layout == ControllableComponent::NONE)
 				continue;
 			auto &player = Runner::createPlayer(*scene);
@@ -219,8 +218,8 @@ namespace BBM
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
 			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
-			int x = (playerID % 2 == 0) ? 1920 - 10 - 320 : 10;
-			int y = playerID > 2 ? 1080 - 10 - 248 : 10;
+			int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
+			int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
 			scene->addEntity("player color tile")
 				.addComponent<PositionComponent>(x, y - 2, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);

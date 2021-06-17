@@ -19,16 +19,14 @@ namespace BBM
 		const int explosionRadius = 3;
 		//! @brief The damage made by the explosion on an entity
 		const int damage = 1;
-		//! @brief The ID of the owner.
-		unsigned ownerID;
-		//! @brief Should collisions with the owner be disabled.²
-		bool ignoreOwner = true;
+		//! @brief The list of IDs of ignored entities.
+		std::vector<unsigned> ignoredEntities;
 
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief A component can't be instantiated, it should be derived.
-		explicit BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, unsigned ownerID);
+		explicit BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, std::vector<unsigned> ignored);
 
 		//! @brief A component can't be instantiated, it should be derived.
 		BasicBombComponent(const BasicBombComponent &) = default;
