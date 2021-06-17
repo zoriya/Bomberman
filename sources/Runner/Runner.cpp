@@ -60,7 +60,6 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		auto &view = engine.getScene()->view<ControllableComponent>();
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {

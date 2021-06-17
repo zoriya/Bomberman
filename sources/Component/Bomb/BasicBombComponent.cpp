@@ -8,10 +8,10 @@
 
 namespace BBM
 {
-	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, std::vector<unsigned> ignored)
+	BasicBombComponent::BasicBombComponent(WAL::Entity &entity, int damageHit, int radius, std::vector<unsigned> ignored)
 		: WAL::Component(entity),
-		damage(damage),
-		explosionRadius(explosionRadius),
+		explosionRadius(radius),
+		damage(damageHit),
 		ignoredEntities(std::move(ignored))
 	{}
 

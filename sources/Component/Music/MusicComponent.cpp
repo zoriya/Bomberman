@@ -11,8 +11,8 @@ namespace BBM
 
 	MusicComponent::MusicComponent(WAL::Entity &entity, const std::string &musicPath)
 		: WAL::Component(entity),
-		  _musicPath(musicPath),
-		  _music(RAY::Audio::Music(musicPath))
+		  _music(RAY::Audio::Music(musicPath)),
+		  _musicPath(musicPath)
 	{
 	}
 

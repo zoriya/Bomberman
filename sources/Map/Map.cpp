@@ -95,13 +95,13 @@ namespace BBM
 			.addComponent<PositionComponent>(position)
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<MovableComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				entity.scheduleDeletion();
+			.addComponent<HealthComponent>(1, [](WAL::Entity &myEntity, WAL::Wal &) {
+				myEntity.scheduleDeletion();
 			})
 			.addComponent<LevitateComponent>(position.y)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 			    func[bonusType - 1], 0.5, .5)
-			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
+			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &){
 				bonus.scheduleDeletion();
 			})
 			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false,

@@ -18,9 +18,9 @@ namespace BBM
 		std::shared_ptr<RAY::Drawables::ADrawable3D> drawable;
 
 		//! @brief ctor
-		Drawable3DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable3D> drawable)
+		Drawable3DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable3D> drawable3D)
 			: WAL::Component(entity),
-			  drawable(std::move(drawable))
+			  drawable(std::move(drawable3D))
 		{}
 
 		//! ctor

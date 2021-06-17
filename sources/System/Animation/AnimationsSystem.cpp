@@ -19,7 +19,6 @@ namespace BBM
 	{
 		auto &model = entity.get<Drawable3DComponent>();
 		auto &anim = entity.get<AnimationsComponent>();
-		static int count = 0;
 
 		if (anim.skipNext) {
 			anim.skipNext = false;

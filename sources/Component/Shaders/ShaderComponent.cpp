@@ -20,14 +20,14 @@ namespace BBM
 	}
 
 	ShaderComponent::ShaderComponent(WAL::Entity &entity,
-	                                 const std::string &fragmentFilePath,
-	                                 const std::string &vertexFilePath,
+	                                 const std::string &fragmentPath,
+	                                 const std::string &vertexPath,
 	                                 const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate,
 	                                 bool lonely)
 		: WAL::Component(entity),
 		  shader(vertexFilePath, fragmentFilePath, lonely),
-		  fragmentFilePath(fragmentFilePath),
-		  vertexFilePath(vertexFilePath),
+		  fragmentFilePath(fragmentPath),
+		  vertexFilePath(vertexPath),
 		  update(onFixedUpdate)
 	{
 	}
@@ -43,11 +43,11 @@ namespace BBM
 	}
 
 	ShaderComponentModel::ShaderComponentModel(WAL::Entity &entity,
-	                                           const std::string &fragmentFilePath,
-	                                           const std::string &vertexFilePath,
+	                                           const std::string &fragmentPath,
+	                                           const std::string &vertexPath,
 	                                           const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate,
 	                                           bool lonely)
-		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate, lonely)
+		: ShaderComponent(entity, fragmentPath, vertexPath, onFixedUpdate, lonely)
 	{
 	}
 
@@ -60,11 +60,11 @@ namespace BBM
 	}
 
 	ShaderComponentDrawable2D::ShaderComponentDrawable2D(WAL::Entity &entity,
-	                                                     const std::string &fragmentFilePath,
-	                                                     const std::string &vertexFilePath,
+	                                                     const std::string &fragmentPath,
+	                                                     const std::string &vertexPath,
 	                                                     const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate,
 	                                                     bool lonely)
-		: ShaderComponent(entity, fragmentFilePath, vertexFilePath, onFixedUpdate, lonely)
+		: ShaderComponent(entity, fragmentPath, vertexPath, onFixedUpdate, lonely)
 	{
 	}
 }

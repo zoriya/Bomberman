@@ -25,7 +25,7 @@ namespace BBM
 		//! @brief A default constructor
 		TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay);
 		//! @brief Create a timer with a callback.
-		TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay, const WAL::Callback<WAL::Entity &, WAL::Wal &> &callback);
+		TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay, const WAL::Callback<WAL::Entity &, WAL::Wal &> &timerCallback);
 		//! @brief A timer component is copy constructable
 		TimerComponent(const TimerComponent &) = default;
 		//! @brief A default destructor
