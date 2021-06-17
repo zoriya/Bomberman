@@ -6,11 +6,13 @@
 
 #include "Component/Renderer/CameraComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "System/System.hpp"
 #include "Camera/Camera2D.hpp"
 #include "Window.hpp"
 #include "Wal.hpp"
+#include "Models/Vector2.hpp"
 
 namespace BBM
 {
@@ -29,10 +31,22 @@ namespace BBM
 		//! @brief Window framerate limit
 		static constexpr short FPS = 60;
 
+		//! @brief rescale the drawables dimensions according to new window dimensions
+		//! @param drawable  the drawable to rescale
+		//! @param newDims  the new window's dimensions
+		void drawRescaledDrawable(RAY::Drawables::ADrawable2D &drawable, const Vector2f &newDims);
+
+		//! @brief rescale the drawables position according to new window dimensions
+		//! @param position  a reference to position
+		//! @param newDims  the new window's dimensions
+		Vector2f getRescaledPosition(Vector3f &position, const Vector2f &newWinDims);
+
+		void resizeWindow(Vector2f &newDims);
+
 	public:
 		//! @brief A method called after all entities that this system manage has been updated.
 		//! @note render on screen here
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds dtime) override;

@@ -25,7 +25,7 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);

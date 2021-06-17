@@ -12,6 +12,7 @@
 #include <Runner/Runner.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
 #include <Component/Gamepad/GamepadComponent.hpp>
+#include "Component/IAControllable/IAControllableComponent.hpp"
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include <Map/Map.hpp>
@@ -150,7 +151,7 @@ namespace BBM
 			texture->unload();
 	}
 
-	void LobbySystem::onSelfUpdate()
+	void LobbySystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
 		if (view.size() == 0)
@@ -193,7 +194,7 @@ namespace BBM
 			player.addComponent<GamepadComponent>(3);
 			break;
 		case ControllableComponent::AI:
-//			throw std::runtime_error("Not implemented error");
+			player.addComponent<IAControllableComponent>("./assets/ai_scripts/john.lua");
 			break;
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
@@ -206,22 +207,20 @@ namespace BBM
 		int mapWidth = 16;
 		int mapHeight = 16;
 		int playerCount = 0;
-		int playerID = 0;
 
 		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
-			playerID++;
 			if (lobby.layout == ControllableComponent::NONE)
 				continue;
 			auto &player = Runner::createPlayer(*scene);
 			addController(player, lobby.layout);
 			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
-																		 0,
+																		 (Runner::hasHeights ? 1.01 : 0),
 																		 mapHeight * (!(playerCount % 3)));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + _colors[lobby.color] + ".png");
 			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
-			int x = (playerID % 2 == 0) ? 1920 - 10 - 320 : 10;
-			int y = playerID > 2 ? 1080 - 10 - 248 : 10;
+			int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
+			int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
 			scene->addEntity("player color tile")
 				.addComponent<PositionComponent>(x, y - 2, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);
@@ -239,7 +238,7 @@ namespace BBM
 					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 					if (!text)
 						return;
-					text->setText(std::to_string(bonus->explosionRadius));
+					text->setText(std::to_string(static_cast<int>(bonus->explosionRadius)));
 				});
 			scene->addEntity("player hide bombup")
 				.addComponent<PositionComponent>(x + 220, y + 77, 0)

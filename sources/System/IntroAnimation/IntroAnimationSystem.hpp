@@ -14,7 +14,7 @@ namespace BBM
 
 	public:
 		//! @inherit
-		void onSelfUpdate(void) override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<IntroAnimationComponent> &entities) override;

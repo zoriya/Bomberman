@@ -146,7 +146,7 @@ namespace WAL
 		{
 			const std::type_index &type = typeid(T);
 			if (this->hasComponent(type))
-				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
+				throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists on " + this->_name + ".");
 			this->_components[type] = std::make_unique<T>(*this, TypeHolder<TNested>()..., std::forward<Types>(params)...);
 			if (this->_notifyScene)
 				this->_componentAdded(type);

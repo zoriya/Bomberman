@@ -12,6 +12,14 @@
 #include "System/Controllable/ControllableSystem.hpp"
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
+#include "Component/Button/ButtonComponent.hpp"
+#include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Controllable/ControllableComponent.hpp>
+#include <Component/IAControllable/IAControllableComponent.hpp>
+#include <Component/Keyboard/KeyboardComponent.hpp>
+#include <System/Gamepad/GamepadSystem.hpp>
+#include "Component/Renderer/CameraComponent.hpp"
+#include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
@@ -30,6 +38,7 @@
 #include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
 #include "Map/Map.hpp"
+#include "System/IAControllable/IAControllableSystem.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
 #include <Parser/ParserYaml.hpp>
@@ -38,6 +47,7 @@
 #include "System/Gravity/GravitySystem.hpp"
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "System/Renderer/CameraSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
@@ -79,6 +89,7 @@ namespace BBM
 			.addSystem<TimerUISystem>()
 			.addSystem<KeyboardSystem>()
 			.addSystem<GamepadSystem>()
+			.addSystem<IAControllableSystem>()
 			.addSystem<LobbySystem>()
 			.addSystem<MenuControllableSystem>()
 			.addSystem<ControllableSystem>()
@@ -101,29 +112,33 @@ namespace BBM
 			.addSystem<ShaderDrawable2DSystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
+			.addSystem<CameraSystem>()
 			.addSystem<MusicSystem>();
 	}
 
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
 		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman");
+		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);
 	}
 
-	void Runner::addMenuControl(WAL::Scene &scene)
+	void Runner::addMenuControl(WAL::Scene &scene, const std::map<SoundComponent::SoundIndex, std::string> &sounds)
 	{
 		scene.addEntity("Keyboard default control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>();
 		scene.addEntity("Keyboard second control")
 			.addComponent<ControllableComponent>()
+			.addComponent<SoundComponent>(sounds)
 			.addComponent<KeyboardComponent>(ControllableComponent::Layout::KEYBOARD_1);
 		for (int i = 0; i < 4; i++) {
 			scene.addEntity("Gamepad controller")
 				.addComponent<ControllableComponent>()
+				.addComponent<SoundComponent>(sounds)
 				.addComponent<GamepadComponent>(i);
 		}
 	}
@@ -149,13 +164,7 @@ namespace BBM
 		Runner::enableRaylib(wal);
 		Runner::loadScenes();
 		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
-
-		try {
-			wal.run<GameState>(Runner::updateState, Runner::gameState);
-			return 0;
-		} catch (const std::exception &ex) {
-			std::cerr << ex.what() << std::endl;
-			return 1;
-		}
+		wal.run<GameState>(Runner::updateState, Runner::gameState);
+		return 0;
 	}
 }

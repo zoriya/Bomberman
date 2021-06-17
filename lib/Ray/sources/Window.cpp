@@ -70,9 +70,19 @@ bool RAY::Window::isFocused(void) const
 	return IsWindowFocused();
 }
 
-const RAY::Vector2 &RAY::Window::getDimensions(void) const
+const RAY::Vector2 &RAY::Window::getDimensions(void)
 {
+	this->_dimensions.x = GetScreenWidth();
+	this->_dimensions.y = GetScreenHeight();
 	return this->_dimensions;
+}
+
+RAY::Window &RAY::Window::setDimensions(const Vector2 &dims)
+{
+	this->_dimensions = dims;
+	if (this->_isOpen)
+		SetWindowSize(dims.x, dims.y);
+	return *this;
 }
 
 void RAY::Window::setVisibleCursor(bool visible)
@@ -184,4 +194,40 @@ bool RAY::Window::isReady() const
 void RAY::Window::setExitKey(RAY::Controller::Keyboard::Key key)
 {
 	SetExitKey(key);
+}
+
+unsigned RAY::Window::getConfigFlags(void) const
+{
+	return this->_flags;
+}
+
+bool RAY::Window::isFullscreen(void) const
+{
+	return IsWindowFullscreen();
+}
+
+RAY::Window &RAY::Window::setConfigFlags(unsigned flags)
+{
+	if (this->_isOpen)
+		SetWindowState(flags);
+	this->_flags = flags;
+	return *this;
+}
+
+RAY::Window &RAY::Window::toggleFullscreen()
+{
+	ToggleFullscreen();
+	return *this;
+}
+
+RAY::Window &RAY::Window::maximize()
+{
+	MaximizeWindow();
+	return *this;
+}
+
+RAY::Window &RAY::Window::restore()
+{
+	RestoreWindow();
+	return *this;
 }
