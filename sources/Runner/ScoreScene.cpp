@@ -119,8 +119,8 @@ namespace BBM
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
-		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, &play);
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &back, nullptr,&back);
+		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &back, &back);
 		return scene;
 	}
 }
