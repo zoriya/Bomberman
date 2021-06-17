@@ -198,6 +198,7 @@ namespace BBM
 		default:
 			throw std::runtime_error("Invalid controller for a player.");
 		}
+		player.getComponent<ControllableComponent>().layout = layout;
 	}
 
 	void LobbySystem::switchToGame(WAL::Wal &wal)
@@ -217,6 +218,8 @@ namespace BBM
 																		 mapHeight * (!(playerCount % 3)));
 			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
 			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + colors[lobby.color] + ".png");
+
+
 			std::string texturePath = "assets/player/ui/" + colors[lobby.color] + ".png";
 			int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
 			int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;

@@ -7,7 +7,6 @@
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/Health/HealthComponent.hpp"
-#include "Entity/Entity.hpp"
 
 namespace BBM
 {
@@ -22,8 +21,6 @@ namespace BBM
 		auto health = entity->tryGetComponent<HealthComponent>();
 		Vector2f move = controllable.move.normalized() * controllable.speed;
 
-		if (health && health->getHealthPoint() <= 0)
-			return;
 		movable.addForce(Vector3f(move.x, 0, move.y));
 	}
 }

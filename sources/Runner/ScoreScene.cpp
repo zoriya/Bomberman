@@ -42,16 +42,20 @@ namespace BBM
 		});
 
 		int playerID = 0;
-		for (auto &entity: players) {
+		for (auto &entity : players) {
 			auto *model = dynamic_cast<RAY3D::Model *>(entity.get().getComponent<Drawable3DComponent>().drawable.get());
 			std::string path = model->getTextureByMaterial(MAP_DIFFUSE).getResourcePath();
 			playersIconPath.push_back(path.replace(path.find("textures"), std::string("textures").size(), "icons"));
+
 			auto &newPlayer = scene->addEntity("add");
 			newPlayer.addComponent<LobbyComponent>(playerID++, newPlayer, newPlayer);
 			auto &lobby = newPlayer.getComponent<LobbyComponent>();
-			lobby.layout = entity.get().getComponent<ControllableComponent>().layout; // TODO layout was none.
-			std::string color = path.substr(path.find_last_of('/'), path.find_last_of('.'));
-			lobby.color = std::find(LobbySystem::colors.begin(), LobbySystem::colors.end(), color) - LobbySystem::colors.begin();
+			lobby.layout = entity.get().getComponent<ControllableComponent>().layout;
+
+			auto start = path.find_last_of('/') + 1;
+			std::string color = path.substr(start, path.find_last_of('.') - start);
+			auto iterator = std::find(LobbySystem::colors.begin(), LobbySystem::colors.end(), color);
+			lobby.color = static_cast<int>(iterator - LobbySystem::colors.begin());
 		}
 
 		addMenuControl(*scene, sounds);
@@ -96,13 +100,8 @@ namespace BBM
 			})
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-
-				if (Runner::gameState.currentScene != GameState::ScoreScene
-					|| !LobbySystem::playersAreReady(*wal.getScene()))
-					return;
 				LobbySystem::switchToGame(wal);
-			})
-			.addComponent<TagComponent<"PlayButton">>();
+			});
 		auto &back = scene->addEntity("back to main menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")

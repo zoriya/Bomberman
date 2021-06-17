@@ -28,8 +28,18 @@ namespace BBM
 			hasEnded = false;
 			return (false);
 		}
-		if (pos.position.distance(posTarget) < 4 || hasEnded) {
+		if (hasEnded)
+			return true;
+		if (pos.position.distance(posTarget) < 4) {
 			hasEnded = true;
+			this->_wal.getScene()->scheduleNewEntity("Timer")
+				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
+					Runner::gameState.nextScene = GameState::ScoreScene;
+				})
+				.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
+			for (WAL::Entity &player : this->_wal.getScene()->view<TagComponent<Player>>())
+				player.getComponent<ControllableComponent>().disabled = false;
 			return (true);
 		}
 
@@ -53,18 +63,10 @@ namespace BBM
 		float lowerZDist = 0;
 
 		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (!entity.hasComponent<ControllableComponent>())
-				entity.addComponent<ControllableComponent>();
 			playerPos.emplace_back(pos.position);
 		}
-		if (playerPos.size() == 0)
+		if (!playerPos.empty())
 			introAnimation(entity, true);
-		static auto &timer = this->_wal.getScene()->addEntity("Timer")
-			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
-				Runner::gameState.nextScene = GameState::ScoreScene;
-			})
-			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
 		for (int i = 0; i < playerPos.size(); i++)

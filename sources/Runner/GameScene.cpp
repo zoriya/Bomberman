@@ -60,6 +60,7 @@ namespace BBM
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
+			.addComponent<ControllableComponent>(true)
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<TagComponent<Player>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
@@ -77,6 +78,7 @@ namespace BBM
 					entity.removeComponent<AnimatorComponent>();
 				if (entity.hasComponent<TimerComponent>())
 					return;
+				entity.getComponent<ControllableComponent>().disabled = true;
 				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &entity, WAL::Wal &wal) {
 					entity.scheduleDeletion();
 				});
