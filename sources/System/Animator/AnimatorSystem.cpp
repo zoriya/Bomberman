@@ -27,6 +27,9 @@ namespace BBM
 		auto drawable = entity.get<Drawable3DComponent>().drawable.get();
 		auto &animation = entity.get<AnimationsComponent>();
 		auto anim = dynamic_cast<RAY3D::Model *>(drawable);
+
+		if (entity->shouldDelete())
+			return;
 		if (anim && controllable.move != Vector2f(0, 0)) {
 			anim->setRotationAngle(controllable.move.angle(Vector2f(-1, 0)));
 			animation.setAnimIndex(0);

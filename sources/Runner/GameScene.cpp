@@ -29,7 +29,7 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
