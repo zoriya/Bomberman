@@ -21,9 +21,11 @@ namespace BBM
 		auto &anim = entity.get<AnimationsComponent>();
 		static int count = 0;
 
-		count++;
-		if (count % 2)
+		if (anim.skipNext) {
+			anim.skipNext = false;
 			return;
+		}
+		anim.skipNext = true;
 
 		if (anim.isDisabled())
 			return;

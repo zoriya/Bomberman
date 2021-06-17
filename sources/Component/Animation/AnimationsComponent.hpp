@@ -20,7 +20,11 @@ namespace BBM
 		int _currentAnimIndex;
 		//! @brief Bool allowing to play pause an animation
 		bool _animDisabled;
+
 	public:
+		//! @brief Should the next update call be skipped?
+		bool skipNext = false;
+
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
