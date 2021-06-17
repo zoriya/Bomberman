@@ -161,19 +161,21 @@ namespace BBM {
 				{"green", GREEN}
 		};
 
-		playerName.push_back(node.getName());
-		playerAssets.push_back(node.getProperty("texture_path"));
-		playerBombCount.push_back(_parseMaxBomb(node.getProperty("max_bomb")));
-		playerExplosionRange.push_back(_parseExplosionRadius(node.getProperty("explosion_radius")));
-		playerSpeed.push_back(_parseSpeed(node.getProperty("speed")));
-		playerPosition.push_back(_parsePosition(node.getProperty("position")));
+		playersInfos.emplace_back(PlayerInfos{
+			node.getName(),
+			_parsePosition(node.getProperty("position")),
+			_parseMaxBomb(node.getProperty("max_bomb")),
+			_parseExplosionRadius(node.getProperty("explosion_radius")),
+			_parseSpeed(node.getProperty("speed")),
+			node.getProperty("texture_path")
+		});
 
 		if ((tmpAssets.find("red.png") == std::string::npos && tmpAssets.find("blue.png") == std::string::npos &&
 		tmpAssets.find("green.png") == std::string::npos && tmpAssets.find("yellow.png") == std::string::npos &&
 		tmpAssets.find("ai.png") == std::string::npos) || !std::filesystem::exists(tmpAssets)) {
 			throw (ParserError("Error with saved map: One asset is invalid.\n                Loading default maps..."));
 		}
-		auto start = tmpAssets.find_last_of("/") + 1;
+		auto start = tmpAssets.find_last_of('/') + 1;
 		auto color = map.at(tmpAssets.substr(start, tmpAssets.length() - start - 4));
 		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
 		auto &playerTile = resumeScene->addEntity("player tile")
@@ -396,11 +398,6 @@ namespace BBM {
 	{
 		std::string line;
 		Node node(nodeName);
-#ifdef __linux__
-		int endlNbChars = 1;
-#elif _WIN32
-		int endlNbChars = 2;
-#endif
 
 		while(std::getline(file, line)) {
 			if (line.empty())

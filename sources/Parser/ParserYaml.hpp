@@ -14,6 +14,13 @@ namespace BBM {
 	class ParserYAML {
 	private:
 
+		//! @brief The number of chars for endl
+		#ifdef __linux__
+				static constexpr int endlNbChars = 1;
+		#elif _WIN32
+				static constexpr int endlNbChars = 2;
+		#endif
+
 		//!@brief file block of the parser
 		static std::stringstream _block;
 		//!@brief file bonus of the parser
@@ -99,18 +106,22 @@ namespace BBM {
 
 		static Node parseFile(const std::string &path);
 
-		//! @brief All name that was into the file
-		static std::vector<std::string> playerName;
-		//! @brief Player position
-		static std::vector<Vector3f> playerPosition;
-		//! @brief The amount of bomb a player had
-		static std::vector<int> playerBombCount;
-		//! @brief The explosion range of a player
-		static std::vector<float> playerExplosionRange;
-		//! @brief The speed of a player
-		static std::vector<float> playerSpeed;
-		//! @brief The assets of the player
-		static std::vector<std::string> playerAssets;
+
+		struct PlayerInfos {
+			std::string playerName;
+			//! @brief Player position
+			Vector3f playerPosition;
+			//! @brief The amount of bomb a player had
+			int playerBombCount;
+			//! @brief The explosion range of a player
+			int playerExplosionRange;
+			//! @brief The speed of a player
+			float playerSpeed;
+			//! @brief The assets of the player
+			std::string playerAssets;
+		};
+
+		static std::vector<PlayerInfos> playersInfos;
 
 		//!@param scene Scene to update
 		//!@brief save yaml
@@ -121,6 +132,5 @@ namespace BBM {
 
 		//! @brief save file name
 		static const std::string fileName;
-
 	};
 }
