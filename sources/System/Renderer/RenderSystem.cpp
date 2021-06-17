@@ -94,7 +94,7 @@ namespace BBM
 	void RenderSystem::resizeWindow(Vector2f &newDims)
 	{
 		newDims.y = (newDims.x * 720) / 1280;
-		if (newDims.y < 720 || newDims.x < 1280) {
+		if ((newDims.y < 720 || newDims.x < 1280))  {
 			newDims.y = 720;
 			newDims.x = 1280;
 		}

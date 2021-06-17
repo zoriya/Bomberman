@@ -148,6 +148,15 @@ namespace RAY {
 			//! @brief set window to fullscreen
 			RAY::Window &toggleFullscreen();
 
+			//! @return true if the window is fullscreen
+			bool isFullscreen(void) const;
+
+			//! @brief set window to max size
+			RAY::Window &maximize();
+
+			//! @brief reset window size
+			RAY::Window &restore();
+
 		private:
 			//! @brief Creates window, and opens it if openNow is set to true
 			Window(int width, int height, std::string title, unsigned flags = 0, bool openNow = true);
