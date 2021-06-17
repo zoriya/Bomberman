@@ -33,7 +33,7 @@ namespace BBM
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
-		addMenuControl(*scene);
+		addMenuControl(*scene, sounds);
 		scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_player_select.ogg")
 			.addComponent<SoundComponent>(sounds);
@@ -59,39 +59,55 @@ namespace BBM
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				if (Runner::gameState.currentScene != GameState::LobbyScene
-				|| !LobbySystem::playersAreReady(*wal.getScene()))
+					|| !LobbySystem::playersAreReady(*wal.getScene()))
 					return;
 				LobbySystem::switchToGame(wal);
 			})
 			.addComponent<TagComponent<"PlayButton">>();
-
-
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
-				wal.getSystem<LobbySystem>().unloadLobby();
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
-				texture->use("assets/buttons/button_back.png");
+			   texture->use("assets/buttons/button_back.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_back_hovered.png");
+			});
+		auto &howToPlay = scene->addEntity("to to play")
+			.addComponent<PositionComponent>(1920 - 10 - 75, 1080 - 85, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_htp.png")
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				gameState.nextScene = BBM::GameState::SceneID::HowToPlayScene;
+			})
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_htp.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+			 texture->use("assets/buttons/button_htp_hovered.png");
 			});
 		auto &lavaOption = scene->addEntity("lava option text")
 			.addComponent<PositionComponent>(1920 / 6, 1.85 * 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				auto *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("Lava: On");
@@ -179,13 +195,15 @@ namespace BBM
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				// todo check why it does this | hacky way to fix ready texture
 				.addComponent<Drawable2DComponent, RAY::Texture>();
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		play.getComponent<OnClickComponent>().setButtonLinks(&heightOption, &back, &back, nullptr);
+		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, &howToPlay);
+		howToPlay.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, &play);
 		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
 		lavaOption.getComponent<OnClickComponent>().setButtonLinks(nullptr, &heightOption, nullptr, &aiMore);
 		heightOption.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &play, nullptr, &aiLess);

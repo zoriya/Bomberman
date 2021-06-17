@@ -45,7 +45,7 @@ namespace RAY {
 					this->_cache.emplace(path, std::vector<std::shared_ptr<T>>());
 				std::vector<std::shared_ptr<T>> &matchingDataVector = this->_cache.at(path);
 
-				if (matchingDataVector.size()) {
+				if (!matchingDataVector.empty()) {
 					for (std::shared_ptr<T> &i: matchingDataVector) {
 						if (!lonely)
 							return i;
@@ -117,23 +117,34 @@ namespace RAY {
 			_dataLoader(std::move(dataLoader)), _dataUnloader(std::move(dataUnloader))
 		{};
 
-		std::shared_ptr<::Shader> fetch(const std::string &vertexFile, const std::string &fragmentFile)
+		std::shared_ptr<::Shader> fetch(const std::string &vertexFile, const std::string &fragmentFile, bool lonely = false)
 		{
 			const std::string index = vertexFile + fragmentFile;
 
 			if (vertexFile.empty() && fragmentFile.empty()) {
 				throw RAY::Exception::WrongInputError();
 			}
-			if (this->_cache.find(index) != this->_cache.end())
-				return this->_cache[index];
+			if (!this->_cache.contains(index)) {
+				this->_cache.emplace(index, std::vector<std::shared_ptr<::Shader>>());
+			}
+			std::vector<std::shared_ptr<::Shader>> &matchingDataVector = this->_cache.at(index);
 
-			this->_cache.emplace(index, std::shared_ptr<::Shader>(
+			if (!matchingDataVector.empty()) {
+				for (std::shared_ptr<::Shader> &i: matchingDataVector) {
+					if (!lonely)
+						return i;
+					if (lonely && i.use_count() == 1)
+						return i;
+				}
+			}
+
+			matchingDataVector.emplace_back(std::shared_ptr<::Shader>(
 				new ::Shader(
 					this->_dataLoader(vertexFile.empty() ? nullptr : vertexFile.c_str(), fragmentFile.c_str())),
 				[this](::Shader *p) {
 					this->_dataUnloader(*p);
 				}));
-			return this->_cache[index];
+			return matchingDataVector.back();
 		};
 	private:
 		//! @brief function to call to load data
@@ -143,6 +154,6 @@ namespace RAY {
 		std::function<void(::Shader)> _dataUnloader;
 
 		//! @brief map storing shared ptr of caches
-		std::unordered_map<std::string, std::shared_ptr<::Shader>> _cache;
+		std::unordered_map<std::string, std::vector<std::shared_ptr<::Shader>>> _cache;
 	};
 }
