@@ -40,6 +40,7 @@ namespace BBM {
 	std::stringstream ParserYAML::_block("");
 	std::stringstream ParserYAML::_bonus("");
 	std::stringstream ParserYAML::_player("");
+	std::vector<ParserYAML::PlayerInfos> ParserYAML::playersInfos = {};
 
 	std::string ParserYAML::_getBlockType(const std::string& blockName)
 	{
