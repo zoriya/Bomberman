@@ -170,15 +170,15 @@ function pathfind(root, target)
 	f_score[root] = dist(root, target)
 
 	while #open > 0 do
+		log("openset size")
 		log(#open)
 		local curr = getLowestFromSet(open, f_score) --get lowest node of openset
+		log("current node")
 		log(curr.x)
 		log(curr.y)
-		log("f")
 		if curr.x == target.x and curr.y == target.y then
 			local path = fill_path({}, came_from, target) -- fill the path with came from
 			table.insert(path, target)
-			log("wow")
 			return path
 		end
 		setRemove(open, curr) -- remove curr from open
@@ -189,16 +189,11 @@ function pathfind(root, target)
 			log(c.x)
 			log(c.y)
 		end
-		log("g")
 		local neighbors = getNeighbors(curr) -- get neighbors of current
-		log("h")
 		for _, neighbor in ipairs(neighbors) do
-			log("i")
 			if not_in(closed, neighbor) then -- neighbor not in closed set
-				log("j")
 				local try_g_score = g_score[curr] + 1
 				if not_in(open, neighbor) or try_g_score < g_score[neighbor] then
-					log("e")
 					came_from[neighbor] = curr
 					g_score[neighbor] = try_g_score
 					f_score[neighbor] = g_score[neighbor] + dist(neighbor, target)
@@ -223,7 +218,6 @@ function getPathToSafeSpace(player)
 	local MaxYesc = (player.y + 3 > MaxY) and MaxY or (player.y + 3);
 
 	local maybeSafeSpace = {}
-	log("a")
 	for i=minXesc,MaxXesc do
 		for j=minYesc, MaxYesc do
 			if Map[i][j] == 0 and Danger[i][j] == 0 then
@@ -233,20 +227,13 @@ function getPathToSafeSpace(player)
 	end
 	local minDist = 100000
 	local res = {}
-	log("b")
 	for _, safe in ipairs(maybeSafeSpace) do
 		local currDist = dist(player, safe)
 		if currDist < minDist then
 			minDist, res = currDist, safe
 		end
 	end
-	log("c")
 	local path = pathfind(player, res)
-	for _, n in ipairs(path) do
-		print(n.x)
-		print(n.y)
-	end
-	log("d")
 	return path
 end
 
