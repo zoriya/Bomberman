@@ -7,7 +7,7 @@ project("${LIB_NAME}")
 include_directories(${LIB_NAME} ./sources)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -Werror -Wno-unused-parameter -g")
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -Wno-unused-parameter -g")
 endif()
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
