@@ -2,7 +2,6 @@
 // Created by Zoe Roux on 5/31/21.
 //
 
-#include <Component/Animation/AnimationsComponent.hpp>
 #include <Component/Bomb/BasicBombComponent.hpp>
 #include "Component/Timer/TimerComponent.hpp"
 #include "System/Event/EventSystem.hpp"
@@ -31,7 +30,8 @@ namespace BBM
 	                                    CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto &bombInfo = bomb.getComponent<BasicBombComponent>();
-		if (bombInfo.ignoreOwner && bombInfo.ownerID == entity.getUid())
+		auto found = std::find(bombInfo.ignoredEntities.begin(), bombInfo.ignoredEntities.end(), entity.getUid());
+		if (found != bombInfo.ignoredEntities.end())
 			return;
 		return MapGenerator::wallCollided(entity, bomb, collidedAxis);
 	}
@@ -115,8 +115,15 @@ namespace BBM
 		_dispatchExplosion(position, wal, explosionRadius);
 	}
 
-	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder, unsigned id)
+	void BombHolderSystem::_spawnBomb(Vector3f position, BombHolderComponent &holder)
 	{
+		std::vector<unsigned> overlapping;
+
+		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, BombHolderComponent>()) {
+			if (position.distance(pos.position) <= 1.1)
+				overlapping.emplace_back(entity.getUid());
+		}
+
 		this->_wal.getScene()->scheduleNewEntity("Bomb")
 			.addComponent<PositionComponent>(position.round())
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
@@ -154,7 +161,7 @@ namespace BBM
 			})
 			.addComponent<WhiteShaderComponent>()
 			.addComponent<TagComponent<BlowablePass>>()
-			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, id)
+			.addComponent<BasicBombComponent>(holder.damage, holder.explosionRadius, overlapping)
 			.addComponent<TimerComponent>(BombHolderSystem::explosionTimer, &BombHolderSystem::_bombExplosion)
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
@@ -166,9 +173,8 @@ namespace BBM
 			                                                 ));
 	}
 
-	void
-	BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity,
-	                           std::chrono::nanoseconds dtime)
+	void BombHolderSystem::onUpdate(WAL::ViewEntity<PositionComponent, BombHolderComponent, ControllableComponent> &entity,
+	                                std::chrono::nanoseconds dtime)
 	{
 		auto &holder = entity.get<BombHolderComponent>();
 		auto &position = entity.get<PositionComponent>();
@@ -176,7 +182,7 @@ namespace BBM
 
 		if (controllable.bomb && holder.bombCount > 0) {
 			holder.bombCount--;
-			this->_spawnBomb(position.position, holder, entity->getUid());
+			this->_spawnBomb(position.position, holder);
 		}
 		if (holder.bombCount < holder.maxBombCount) {
 			holder.nextBombRefill -= dtime;
