@@ -20,6 +20,9 @@ namespace BBM
 		//! @brief index of the current button selected
 		WAL::Entity *_currentButton;
 
+		//! @brief position of the mouse at the precedent scene (to know which controller event to watch)
+		Vector2f _oldMousePosition;
+
 		//! @brief update current button reference
 		//! @param selected lets know if te new selected button is 'pressed'
 		void _updateCurrentButton(bool selected, Vector2f move);
