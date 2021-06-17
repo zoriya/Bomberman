@@ -46,7 +46,7 @@ namespace BBM {
 			return;
 		if (controllable->speed >= 0.4)
 			return;
-		controllable->speed = 0.025f;
+		controllable->speed += 0.025f;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
