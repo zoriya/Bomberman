@@ -98,7 +98,7 @@ end
 
 function not_in(set, node)
 	for _,value in pairs(set) do
-		if value == node then
+		if value.x == node.x and value.y == node.y then
 			return false
 		end
 	end
@@ -115,6 +115,19 @@ function getNeighbors(node)
 			if neighborY >= 0 and neighborX >= 0 then
 				if Map[neighborX][neighborY] == 0 and Danger[neighborX][neighborY] ~= 1 then
 					table.insert(neighbors, {x = neighborX, y = neighborY})
+				end
+			end
+		end
+	end
+	if #neighbors == 0 then
+		for _, dir in ipairs(Dirs) do
+			local neighborX = node.x + dir.x
+			local neighborY = node.y + dir.y
+			if neighborY <= MaxY and neighborX <= MaxX then
+				if neighborY >= 0 and neighborX >= 0 then
+					if Map[neighborX][neighborY] == 0 then
+						table.insert(neighbors, {x = neighborX, y = neighborY})
+					end
 				end
 			end
 		end
@@ -157,7 +170,10 @@ function pathfind(root, target)
 	f_score[root] = dist(root, target)
 
 	while #open > 0 do
+		log(#open)
 		local curr = getLowestFromSet(open, f_score) --get lowest node of openset
+		log(curr.x)
+		log(curr.y)
 		log("f")
 		if curr.x == target.x and curr.y == target.y then
 			local path = fill_path({}, came_from, target) -- fill the path with came from
@@ -167,6 +183,12 @@ function pathfind(root, target)
 		end
 		setRemove(open, curr) -- remove curr from open
 		setAdd(closed, curr)-- add node to closed
+		log("closed set")
+		for i, c in ipairs(closed) do
+			log("member")
+			log(c.x)
+			log(c.y)
+		end
 		log("g")
 		local neighbors = getNeighbors(curr) -- get neighbors of current
 		log("h")
@@ -187,6 +209,7 @@ function pathfind(root, target)
 			end
 		end
 	end
+	return {}
 end
 
 function dist(nodeA, nodeB)
@@ -271,6 +294,9 @@ function Update(mapinfo)
 			log(i)
 			log(p.x)
 			log(p.y)
+		end
+		if #pathToSafeSpace == 0 then
+			return 0, 0, false, false
 		end
 		local f = pathToSafeSpace[1]
 		log("first way of the path")

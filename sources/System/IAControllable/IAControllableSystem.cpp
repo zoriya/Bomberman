@@ -80,6 +80,21 @@ namespace BBM
 			state.setTable();
 			state.setTable();
 		}
+		for (auto &bomb : _bombs) {
+			Vector3f bombPos = std::get<0>(bomb);
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(bombPos.x);
+			state.setTable();
+			state.push("y");
+			state.push(bombPos.z);
+			state.setTable();
+			state.push("type");
+			state.push(10);
+			state.setTable();
+			state.setTable();
+		}
 		state.setTable();
 	}
 
@@ -111,7 +126,6 @@ namespace BBM
 			int dangerLevel = std::chrono::duration_cast<std::chrono::seconds>(timeleft).count();
 			if (dangerLevel == 0)
 				dangerLevel = 1;
-			std::cout << "bombpos: " << bombPos.x << ", " << bombPos.z << std::endl;
 			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
 			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
 			for (int i = 1; i < bombRadius; i++) {
