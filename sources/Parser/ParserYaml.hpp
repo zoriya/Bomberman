@@ -102,7 +102,7 @@ namespace BBM {
 
 		static Node parseNode(std::ifstream &file, const std::string &nodeName, int indentLevel = 0);
 
-		static bool isCorrectIndentLevel(const std::string &line, int indentLevel);
+		static float getIndent(const std::string &line);
 
 		static constexpr const char* indent = "  ";
 

@@ -81,7 +81,7 @@ namespace BBM {
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_bonus << std::endl << "  " << name << ":" << std::endl << "    ";
 		_bonus << std::string("bonus_type: ") << _getBonusType(entity.getName()) << std::endl << "    ";
-		_bonus << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";
+		_bonus << "position: [" << std::to_string(position->getX()) << "," << std::to_string(position->getY()) << "," << std::to_string(position->getZ()) << "]";
 	}
 
 	void ParserYAML::_savePlayer(const WAL::Entity &entity)
@@ -100,7 +100,7 @@ namespace BBM {
 		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
 		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
 		_player << "speed: " << std::to_string(controllable->speed) << std::endl << "    ";
-		_player << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";
+		_player << "position: [" << std::to_string(position->getX()) << "," << std::to_string(position->getY()) << "," << std::to_string(position->getZ()) << "]";
 	}
 
 	void ParserYAML::_saveBlock(const WAL::Entity &entity)
@@ -113,7 +113,7 @@ namespace BBM {
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_block << std::endl << "  " << name << ":" << std::endl << "    ";
 		_block << std::string("block_type: ") << _getBlockType(entity.getName()) << std::endl << "    ";
-		_block << "position: [" << std::to_string(position->getX()) << " " << std::to_string(position->getY()) << " " << std::to_string(position->getZ()) << "]";
+		_block << "position: [" << std::to_string(position->getX()) << "," << std::to_string(position->getY()) << "," << std::to_string(position->getZ()) << "]";
 	}
 
 	void ParserYAML::save(std::shared_ptr<WAL::Scene> scene)
@@ -501,8 +501,17 @@ namespace BBM {
 		while(std::getline(file, line)) {
 			if (line.empty())
 				continue;
-			if (!isCorrectIndentLevel(line, indentLevel))
+			float lineIndentLevel = getIndent(line);
+			if (lineIndentLevel != static_cast<int>(lineIndentLevel)) {
+				throw ParserError("Yaml only support 2 spaces as indent");
+			}
+			if (lineIndentLevel > indentLevel) {
+				throw ParserError("indent issue");
+			}
+			if (lineIndentLevel < indentLevel) {
+				file.seekg(static_cast<size_t>(file.tellg()) - (line.length() + 1));
 				return node;
+			}
 			if (isHeader(line)) {
 				node.addChildNode(parseNode(file, parseHeader(line), indentLevel + 1));
 			} else {
@@ -512,14 +521,16 @@ namespace BBM {
 		return node;
 	}
 
-	bool ParserYAML::isCorrectIndentLevel(const std::string &line, int indentLevel)
+	float ParserYAML::getIndent(const std::string &line)
 	{
 		int nb = 0;
 		for (const auto &c : line) {
 			if (!std::isspace(c))
 				break;
+			if (c != ' ')
+				throw ParserError("Yaml only support 2 spaces as indent");
 			nb++;
 		}
-		return nb == indentLevel;
+		return static_cast<float>(nb / 2.);
 	}
 }
