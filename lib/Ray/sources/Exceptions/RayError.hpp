@@ -76,6 +76,23 @@ namespace RAY::Exception {
 		//! @brief A default assignment operator
 		WrongInputError &operator=(const WrongInputError &) = default;
 	};
+
+		//! @brief exception used when a resource is not found
+	class ResourceNotFound: public RayError {
+	public:
+		//! @brief Create a new exception instance
+		//! @param path path of the un-loadable path
+		explicit ResourceNotFound(const std::string &path);
+
+		//! @brief A default destructor
+		~ResourceNotFound() override = default;
+
+		//! @brief An exception is copy constructable
+		ResourceNotFound(const ResourceNotFound &) = default;
+
+		//! @brief A default assignment operator
+		ResourceNotFound &operator=(const ResourceNotFound &) = default;
+	};
 }
 
 #endif /* !RAYERROR_HPP_ */
