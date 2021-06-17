@@ -14,7 +14,7 @@ using namespace std::chrono_literals;
 
 namespace BBM
 {
-	class 		BombHolderComponent : public WAL::Component
+	class BombHolderComponent : public WAL::Component
 	{
 		public:
 			//! @brief The number of bomb that this entity hold.
