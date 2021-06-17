@@ -32,6 +32,8 @@ namespace BBM
 			modelPtr->setAnimation(anim.getCurrentModelAnim());
 			anim.incCurrentAnimFrameCounter();
 			anim.incCurrentAnimFrameCounter();
+			anim.incCurrentAnimFrameCounter();
+			anim.incCurrentAnimFrameCounter();
 		}
 	}
 }
