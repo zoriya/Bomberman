@@ -21,8 +21,11 @@ namespace BBM
 	{
 		const auto &gamepadComponent = entity.get<GamepadComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
-		Gamepad gamepad(gamepadComponent.getID());
 
+		if (controllable.disabled)
+			return;
+
+		Gamepad gamepad(gamepadComponent.getID());
 		const std::map<Button, bool &> keyPressedMap = {
 			{gamepadComponent.keyJump, controllable.select},
 			{gamepadComponent.keyBomb, controllable.bomb},
