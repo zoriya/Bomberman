@@ -38,9 +38,9 @@ namespace BBM
 		scene->addEntity("background image")
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/game.png"), Vector3f(50, 1, 50))
 			.addComponent<PositionComponent>(5, -2, 0);
-//		scene->addEntity("background image")
-//			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), 0, Vector3f(), Vector3f(90, 0, 0))
-//			.addComponent<PositionComponent>(50, 25, 0);
+		scene->addEntity("background image")
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), 90, Vector3f(), Vector3f(1, 0, 0))
+			.addComponent<PositionComponent>(0, 0, 22);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
