@@ -22,12 +22,13 @@ namespace BBM
 
 		void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
 
-		static std::array<std::string, 4> _colors;
 
 		static std::array<RAY::Color, 4> _rayColors;
 
 		std::array<bool, 4> _colorTaken = {};
 	public:
+		static std::array<std::string, 4> colors;
+
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 

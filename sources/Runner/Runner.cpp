@@ -69,11 +69,14 @@ namespace BBM
 					break;
 				}
 			}
+			if (gameState.nextScene != GameState::SceneID::GameScene)
+				engine.getSystem<CameraSystem>().hasEnded = false;
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
 		if (gameState.nextScene == GameState::SceneID::ScoreScene)
 			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		RAY::Window::getInstance().setVisibleCursor(gameState.nextScene != GameState::SceneID::GameScene);
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
