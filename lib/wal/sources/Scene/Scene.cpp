@@ -34,8 +34,8 @@ namespace WAL
 		for (auto &view : this->_views) {
 			if (std::find(view->getTypes().begin(), view->getTypes().end(), type) == view->getTypes().end())
 				continue;
-			bool valid = std::all_of(view->getTypes().begin(), view->getTypes().end(), [&entity](const auto &type){
-				return entity.hasComponent(type);
+			bool valid = std::all_of(view->getTypes().begin(), view->getTypes().end(), [&entity](const auto &ltype){
+				return entity.hasComponent(ltype);
 			});
 			if (valid)
 				view->emplace_back(entity);

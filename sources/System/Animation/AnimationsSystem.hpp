@@ -14,7 +14,7 @@ namespace BBM
 	{
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds) override;
+		void onFixedUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity) override;
 
 		//! @brief A default constructor
 		explicit AnimationsSystem(WAL::Wal &wal);

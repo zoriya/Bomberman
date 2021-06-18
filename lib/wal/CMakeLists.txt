@@ -3,6 +3,11 @@ project(wal)
 
 set(CMAKE_CXX_STANDARD 20)
 
+if (CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -Wno-unused-parameter -g")
+endif()
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
 add_library(wal
 	sources/Entity/Entity.hpp
 	sources/Component/Component.hpp
