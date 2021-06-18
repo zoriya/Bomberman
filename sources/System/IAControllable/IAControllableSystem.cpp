@@ -91,8 +91,8 @@ namespace BBM
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &pos = entity.get<PositionComponent>();
 		auto &bombHolder = entity.get<BombHolderComponent>();
-		MapInfo player(pos.position, MapGenerator::NOTHING);
 
+		_luamap.setPlayer(pos.position);
 		if (!ia.registered) {
 			this->registerFunc(ia._state);
 			ia.registered = true;

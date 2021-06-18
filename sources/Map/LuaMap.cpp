@@ -11,7 +11,8 @@
 namespace BBM
 {
 	LuaMap::LuaMap()
-	: _map(17, std::vector<int>(17, 0)), _danger(17, std::vector<int>(17, 0))
+	: _map(17, std::vector<int>(17, 0)), _danger(17, std::vector<int>(17, 0)),
+	_player(), _roundedPlayer()
 	{
 	}
 
@@ -37,6 +38,12 @@ namespace BBM
 			return false;
 		_danger[ypos][xpos] = dangerLevel;	
 		return true;
+	}
+
+	void LuaMap::setPlayer(Vector3f pos)
+	{
+		_player = Vector2f(pos.x, pos.y);
+		_roundedPlayer = Vector2f(std::round(_player.x), std::round(_player.y));
 	}
 
 	std::vector<Vector2f> LuaMap::fillPath(std::vector<Vector2f> &path, 

@@ -24,6 +24,9 @@ namespace BBM
 			//! @brief set dangerlevel at xpos ypos
 			bool setDanger(int xpos, int ypos, int dangerLevel);
 
+			//! @brief set player position
+			void setPlayer(Vector3f pos);
+
 			//! @brief A star pathfinding between two points
 			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
 
@@ -39,8 +42,17 @@ namespace BBM
 			//! @brief get closest safe space of player
 			static int getClosestSafeSpace(lua_State *L);
 
+			//! @brief map blocks in 2D grid
 			std::vector<std::vector<int>> _map;
+
+			//! @brief dangers in 2D grid
 			std::vector<std::vector<int>> _danger;
+
+			//! @brief player position
+			Vector2f _player;
+
+			//! @brief rounded player position
+			Vector2f _roundedPlayer;
 		private:
 			//! @brief unwind path for a_star
 			std::vector<Vector2f> fillPath(std::vector<Vector2f> &path, 
