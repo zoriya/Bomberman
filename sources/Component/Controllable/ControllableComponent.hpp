@@ -29,6 +29,9 @@ namespace BBM
 				AI
 			};
 
+			//! @brief True if the entity should not be controllable.
+			bool disabled;
+
 			//! @brief The X and Z abscis of the movement.
 			Vector2f move;
 			//! @brief input value to select
@@ -47,6 +50,8 @@ namespace BBM
 
 			//! @brief Initialize a new controllable component.
 			explicit ControllableComponent(WAL::Entity &entity);
+			//! @brief Initialize a new controllable component.
+			ControllableComponent(WAL::Entity &entity, bool isDisabled);
 			//! @brief A Controllable component is copy constructable.
 			ControllableComponent(const ControllableComponent &) = default;
 			//! @brief default destructor

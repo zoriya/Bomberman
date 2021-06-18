@@ -19,7 +19,6 @@ namespace BBM
 		auto &timer = entity.get<TimerComponent>();
 		timer.ringIn -= dtime;
 		if (timer.ringIn <= 0ns) {
-			timer.setDisable(true);
 			timer.callback(entity, this->_wal);
 		}
 	}
