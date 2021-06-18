@@ -69,7 +69,7 @@ namespace BBM
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
-		scene->addEntity("racoon")
+		scene->addEntity("raccoon")
 			.addComponent<PositionComponent>(1920 / 1.17 - 200, 1080 / 4, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/credit/rac.png");
 		scene->addEntity("arthi")
