@@ -45,10 +45,12 @@ namespace BBM
 
 		if (!health || !movable || !wallPos)
 			return;
-		if (entityPos->position.distance(wallPos->position) < 0.3)
+		if (entityPos->position.distance(wallPos->position) < 1.02)
 			health->takeDmg(health->getHealthPoint());
-		else
-			movable->addForce((wallPos->position - entityPos->position) * 0.02);
+		else {
+			auto vec = (wallPos->position - entityPos->position) * 0.03;
+			movable->addForce({vec.x, 0, vec.z});
+		}
 	}
 	
 	void MapGenerator::wallCollision(WAL::Entity &entity,
@@ -303,7 +305,7 @@ namespace BBM
 				  .addComponent<TagComponent<Hole>>()
 	              .addComponent<CollisionComponent>(
 		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::holeCollide, Vector3f(0.25, 0.25, 0.25),Vector3f(0.75, 1.75, 0.75));
+		            &MapGenerator::holeCollide, Vector3f(-0.75, 0.75, -0.75),Vector3f(2.5, 1.25,2.5));
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, false, std::make_pair(MAP_DIFFUSE, holePng), Vector3f(1,1,1), 180);
 		else
