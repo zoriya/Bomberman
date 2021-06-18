@@ -8,7 +8,7 @@
 
 namespace BBM
 {
-	class SpeedComponent : WAL::Component
+	class SpeedComponent : public WAL::Component
 	{
 	public:
 		//! @brief entity speed
