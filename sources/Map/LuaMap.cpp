@@ -42,7 +42,7 @@ namespace BBM
 
 	void LuaMap::setPlayer(Vector3f pos)
 	{
-		_player = Vector2f(pos.x, pos.y);
+		_player = Vector2f(pos.x, pos.z);
 		_roundedPlayer = Vector2f(std::round(_player.x), std::round(_player.y));
 	}
 
@@ -224,6 +224,16 @@ namespace BBM
 	{
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		return 1;
+	}
+
+	int LuaMap::isPlayerInDanger(lua_State *L)
+	{
+		auto y = lua_tonumber(L, -1);
+		auto x = lua_tonumber(L, -2);
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_pushboolean(L, map->_danger[map->_roundedPlayer.y][map->_roundedPlayer.x] > 0);
 		return 1;
 	}
 }

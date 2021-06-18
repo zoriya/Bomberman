@@ -48,6 +48,8 @@ namespace BBM
 			//! @brief get closest safe space of player
 			static int getClosestSafeSpace(lua_State *L);
 
+			static int isPlayerInDanger(lua_State *L);
+
 			//! @brief map blocks in 2D grid
 			std::vector<std::vector<int>> _map;
 

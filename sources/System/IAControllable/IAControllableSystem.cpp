@@ -91,6 +91,10 @@ namespace BBM
 		lua_pushlightuserdata(state.getState(), &_luamap);
 		lua_pushcclosure(state.getState(), LuaMap::getPlayerRound, 1);
 		lua_setglobal(state.getState(), "getPlayerRound");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::isPlayerInDanger, 1);
+		lua_setglobal(state.getState(), "isPlayerInDanger");
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
@@ -106,10 +110,13 @@ namespace BBM
 			ia.registered = true;
 		}
 		UpdateMapInfos(entity);
+		std::cout << _luamap._player << std::endl << std::flush;
 		ia._state.getGlobal("Update");
-		if (!lua_isfunction(ia._state.getState(), -1))
+		if (!lua_isfunction(ia._state.getState(), -1)) {
+			std::cout << "a" << std::flush;
 			return;
-		ia._state.callFunction(1, 4);
+		}
+		ia._state.callFunction(0, 4);
 		controllable.bomb = ia._state.getReturnBool();
 		controllable.select = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();

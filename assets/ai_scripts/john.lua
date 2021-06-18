@@ -130,12 +130,17 @@ function getPathToSafeSpace(player)
 end
 
 ------ Update
-function Update(mapinfo)
+function Update()
 	log("NEW FRAME")
+	print("a")
 	local dangerMap = getDanger()
-	local path = getPath(0, 0, 16, 16);
+	--local path = getPath(0, 0, 16, 16);
 	local player = getPlayer();
 	local playerRound = getPlayerRound();
+	PrintMap(dangerMap, 17, 17);
+	if isPlayerInDanger() then
+		return 1, 1, false, false
+	end
 	---- sjould send Map Danger and MaxX MaxY
 	--MaxX = 0
 	--MaxY = 0
