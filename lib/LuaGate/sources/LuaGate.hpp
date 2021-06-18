@@ -14,12 +14,15 @@ namespace LuaG
 		private:
 			//! @brief Lua state
 			lua_State *_state;
+
+			//! @brief Should close the state at destruction
+			bool _shouldClose;
 		public:
 		//! @brief ctor
 		State();
 
 		//! @brief ctor
-		State(lua_State *L);
+		State(lua_State *L, bool shouldClose = false);
 
 
 		//! @brief dtor

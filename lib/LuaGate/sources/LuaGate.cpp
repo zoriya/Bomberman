@@ -7,19 +7,20 @@
 namespace LuaG
 {
 	State::State()
-	: _state(luaL_newstate())
+	: _state(luaL_newstate()), _shouldClose(true)
 	{
 		luaL_openlibs(_state);
 	}
 
-	State::State(lua_State *L)
-	: _state(L)
+	State::State(lua_State *L, bool shouldClose)
+	: _state(L), _shouldClose(shouldClose)
 	{
 	}
 
 	State::~State()
 	{
-		lua_close(_state);
+		if (_shouldClose)
+			lua_close(_state);
 	}
 
 	lua_State *State::getState(void)

@@ -24,7 +24,7 @@ namespace BBM
 			//! @brief push table of table of the map
 			static int getMap(lua_State *L)
 			{
-				//LuaG::State state(L);
+				LuaG::State state(L);
 				int index = 1;
             	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
 
@@ -66,7 +66,7 @@ namespace BBM
 			//! @brief get array of nodes, path from a to b
 			static int getPath(lua_State *L)
 			{
-				//LuaG::State state(L);
+				LuaG::State state(L);
             	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
 				lua_settop(L, 1);
   				luaL_checktype(L, 1, LUA_TTABLE);
