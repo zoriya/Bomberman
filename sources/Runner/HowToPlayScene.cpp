@@ -35,16 +35,16 @@ namespace BBM
 		
 		scene->addEntity("select text")
 			.addComponent<PositionComponent>(1920 / 8, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Select:", 60, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Select/Drop Bomb:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("select")
 			.addComponent<PositionComponent>(1920 / 7, 1080 / 2.5, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Space/A Button", 35, RAY::Vector2(), BLACK);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Space/Left CTRL/A Button", 35, RAY::Vector2(), BLACK);
 		scene->addEntity("change skin text")
 			.addComponent<PositionComponent>(1920 / 8, 1080 / 2, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Change Skin/Drop Bomb:", 60, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Change Skin:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("change skin")
 			.addComponent<PositionComponent>(1920 / 7, 1080 / 1.75, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("E/B Button", 35, RAY::Vector2(), BLACK);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Left ctrl/Right shift/B Button", 35, RAY::Vector2(), BLACK);
 		scene->addEntity("move text")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Move:", 60, RAY::Vector2(), ORANGE);
@@ -56,7 +56,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Back/Pause:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("back")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 1.75, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc / Controller's Home button:", 35, RAY::Vector2(), BLACK);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc/Backspace/Controller's Home button:", 35, RAY::Vector2(), BLACK);
 		scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
