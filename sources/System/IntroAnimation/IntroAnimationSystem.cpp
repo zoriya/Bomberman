@@ -16,14 +16,14 @@ namespace RAY2D = RAY::Drawables::Drawables2D;
 namespace BBM
 {
 	IntroAnimationSystem::IntroAnimationSystem(WAL::Wal &wal)
-		: System(wal), wal(wal)
+		: System(wal)
 	{}
 
 	void IntroAnimationSystem::onFixedUpdate(WAL::ViewEntity<IntroAnimationComponent> &entity)
 	{
         static const RAY::Vector2 logoPos(1920 / 2 - 128, 1080 / 2 - 128);
         auto &component = entity.get<IntroAnimationComponent>();
-        auto scene = wal.getScene();
+        auto scene = this->_wal.getScene();
         RAY2D::Rectangle *rectangle = nullptr;
         RAY2D::Text *text = nullptr;
         static auto &powered_text = scene->addEntity("powered by text")

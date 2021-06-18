@@ -44,7 +44,7 @@ namespace BBM
 			//! @brief Constructor with the 3 callback
 			ButtonComponent(WAL::Entity &entity, WAL::Callback<WAL::Entity &, WAL::Wal &> callback)
 				:	WAL::Component(entity),
-					onEvent(callback), _up(nullptr), _down(nullptr), _left(nullptr), _right(nullptr)
+					onEvent(callback), _up(nullptr), _down(nullptr), _right(nullptr), _left(nullptr)
 			{ }
 
 			ButtonComponent &setButtonLinks(WAL::Entity *up = nullptr, WAL::Entity *down = nullptr,

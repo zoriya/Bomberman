@@ -29,10 +29,12 @@ namespace BBM
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(200, 100, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1525, 600), RAY::Color(WHITE).setA(150));
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 3, 100, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("How To Play?", 120, RAY::Vector2(), ORANGE);
-		
 		scene->addEntity("select text")
 			.addComponent<PositionComponent>(1920 / 8, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Select:", 60, RAY::Vector2(), ORANGE);
@@ -57,7 +59,7 @@ namespace BBM
 		scene->addEntity("back")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 1.75, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc / Controller's Home button:", 35, RAY::Vector2(), BLACK);
-		auto &back = scene->addEntity("back to menu")
+		scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)

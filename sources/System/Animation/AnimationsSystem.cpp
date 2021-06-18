@@ -14,7 +14,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void AnimationsSystem::onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds)
+	void AnimationsSystem::onFixedUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity)
 	{
 		auto &model = entity.get<Drawable3DComponent>();
 		auto &anim = entity.get<AnimationsComponent>();
@@ -24,6 +24,9 @@ namespace BBM
 		auto modelPtr = std::dynamic_pointer_cast<RAY::Drawables::Drawables3D::Model>(model.drawable);
 		if (modelPtr) {
 			modelPtr->setAnimation(anim.getCurrentModelAnim());
+			anim.incCurrentAnimFrameCounter();
+			anim.incCurrentAnimFrameCounter();
+			anim.incCurrentAnimFrameCounter();
 			anim.incCurrentAnimFrameCounter();
 		}
 	}

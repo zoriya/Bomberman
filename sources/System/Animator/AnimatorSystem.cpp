@@ -30,7 +30,7 @@ namespace BBM
 		auto anim = dynamic_cast<RAY3D::Model *>(drawable);
 		auto health = entity->tryGetComponent<HealthComponent>();
 
-		if (health && health->getHealthPoint() <= 0 || entity->shouldDelete())
+		if ((health && health->getHealthPoint() <= 0) || entity->shouldDelete())
 			return;
 		if (anim && controllable.move != Vector2f(0, 0)) {
 			anim->setRotationAngle(controllable.move.angle(Vector2f(-1, 0)));

@@ -32,25 +32,25 @@ namespace BBM
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
 			.addComponent<SoundComponent>(sounds);
 
-		auto &raylibLogo = scene->addEntity("raylib logo")
+		scene->addEntity("raylib logo")
 			.addComponent<PositionComponent>(1920 / 3.5 - 200, 1080 / 1.75, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/raylib.png");
-		auto &epitechLogo = scene->addEntity("epitech logo")
+		scene->addEntity("epitech logo")
 			.addComponent<PositionComponent>(1920 / 1.5 - 200, 1080 / 1.5, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/epitech.png");
-		auto &raylibText = scene->addEntity("raylib text")
+		scene->addEntity("raylib text")
 			.addComponent<PositionComponent>(1920 / 4 - 200, 1080 / 2, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Powered by:", 35, RAY::Vector2(), BLACK);
-		auto &otherRepoText = scene->addEntity("other repo text")
+		scene->addEntity("other repo text")
 			.addComponent<PositionComponent>(1920 / 4 - 200, 1080 / 4, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Many Thanks to:", 35, RAY::Vector2(), BLACK);
-		auto &BriansRepo = scene->addEntity("thx brian")
+		scene->addEntity("thx brian")
 			.addComponent<PositionComponent>(1920 / 3.5 - 200, 1080 / 3.25, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Brian Guitteny (and his team)\nAssets used by their permission", 35, RAY::Vector2(), BLACK);
-		auto &team = scene->addEntity("team")
+		scene->addEntity("team")
 			.addComponent<PositionComponent>(1920 / 1.5 - 200, 1080 / 4, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Team:\n Zoe Roux\n Clément Le Bihan\n Arthur Jamet\n Louis Auzuret\n Benjamin Henry\n Tom Augier", 35, RAY::Vector2(), BLACK);
-		auto &back = scene->addEntity("back to menu")
+		scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
