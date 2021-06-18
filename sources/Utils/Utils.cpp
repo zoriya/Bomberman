@@ -85,6 +85,9 @@ namespace BBM
 		while (std::getline(f, buffer, delim)) {;
 			strings.push_back(buffer);
 		}
+		if (str.back() == delim) {
+			strings.emplace_back("");
+		}
 		return strings;
 	}
 

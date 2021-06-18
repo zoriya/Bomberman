@@ -281,8 +281,12 @@ namespace BBM {
 		std::string subStr;
 
 		try {
-			auto start = line.find('[', 0) + 1;
-			subStr = line.substr(start, line.find(']', 0) - 1 - start);
+			auto start = line.find('[') + 1;
+			auto end = line.find(']');
+			if (start == std::string::npos || end == std::string::npos || line.back() != ']') {
+				throw ParserError("Error parsing position.");
+			}
+			subStr = line.substr(start, end - start);
 			auto pos = Utils::splitStr(subStr, ',');
 			if (pos.size() != 3)
 				throw (ParserError("Error parsing position."));
