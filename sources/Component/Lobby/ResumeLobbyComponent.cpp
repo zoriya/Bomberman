@@ -9,9 +9,9 @@ namespace BBM
 	ResumeLobbyComponent::ResumeLobbyComponent(WAL::Entity &entity, int playerNumber, WAL::Entity &button, WAL::Entity &tile, int pColor)
 			: WAL::Component(entity),
 			  playerID(playerNumber),
+			  playerColor(pColor),
 			  readyButton(button),
-			  coloredTile(tile),
-			  playerColor(pColor)
+			  coloredTile(tile)
 	{}
 
 	WAL::Component *ResumeLobbyComponent::clone(WAL::Entity &entity) const
