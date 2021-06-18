@@ -40,7 +40,7 @@ namespace BBM
 	}
 
 	std::vector<Vector2f> LuaMap::fillPath(std::vector<Vector2f> &path, 
-	std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node)
+	std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node) const
 	{
 		if (cameFrom.find(node) != cameFrom.end()) {
 			path.insert(path.begin(), cameFrom[node]);
@@ -49,23 +49,23 @@ namespace BBM
 			return path;
 	}
 
-	std::vector<Vector2f> LuaMap::getNeighbors(Vector2f node)
+	std::vector<Vector2f> LuaMap::getNeighbors(Vector2f node) const
 	{
 		std::vector<Vector2f> neighbors;
 		for (auto &dir : _dirs) {
 			Vector2f neighbor(node.x + dir.x, node.y + dir.y);
 			if (neighbor.y < 0 || neighbor.x < 0)
 				continue;
-			if (neighbor.y > 17 || neighbor.x > 17)
+			if (neighbor.y >= 17 || neighbor.x >= 17)
 				continue;
-			if (_map[neighbor.y][neighbor.x] == 0 &&
+			if (_map[neighbor.y][neighbor.x] <= 1 &&
 				_danger[neighbor.y][neighbor.x] != 1)
 				neighbors.push_back(neighbor);
 		}
 		return neighbors;
 	}
 
-	std::vector<Vector2f> LuaMap::pathfind(Vector2f root, Vector2f target)
+	std::vector<Vector2f> LuaMap::pathfind(Vector2f root, Vector2f target) const
 	{
 		std::vector<Vector2f> closed;
 		std::vector<Vector2f> open;
@@ -80,26 +80,34 @@ namespace BBM
 
 		while (open.size())
 		{
-			auto min_elem = std::min_element(fScore.begin(), fScore.end(),
-			[](const decltype(fScore)::value_type &l, const decltype(fScore)::value_type &r) -> bool
+			auto min_elem = std::min_element(open.begin(), open.end(),
+			[&fScore](const decltype(open)::value_type &l, const decltype(open)::value_type &r) -> bool
 			{
-				return l.second < r.second;
+				if (fScore.find(l) == fScore.end())
+					return true;
+				if (fScore.find(r) == fScore.end())
+					return false;
+				return fScore[l] < fScore[r];
 			});
-			if (min_elem == fScore.end())
+			if (min_elem == open.end())
 				break;
-			Vector2f current(min_elem->first);
+			Vector2f current(*min_elem);
 			if (current == target) {
 				this->fillPath(path, cameFrom, target);
+				path.push_back(target);
 				return path;
 			}
 			open.erase(std::remove(open.begin(), open.end(), current), open.end());
 			closed.push_back(current);
 			auto neighbors = getNeighbors(current);
 			for (auto &neighbor : neighbors) {
+				std::cout << neighbor << std::endl;
 				if (std::find(closed.begin(), closed.end(), neighbor) != closed.end())
 					continue;
 				int tryGSCore = gScore[current] + 1;
-				int GScoreNeighbor = 0;
+				int GScoreNeighbor = 10000;
+				if (gScore.find(neighbor) != gScore.end())
+					GScoreNeighbor = gScore[neighbor];
 				if (tryGSCore < GScoreNeighbor &&
 					std::find(open.begin(), open.end(), neighbor) == open.end()) {
 					cameFrom[neighbor] = current;
@@ -107,7 +115,6 @@ namespace BBM
 					fScore[neighbor] = gScore[neighbor] + neighbor.distance(target);
 					open.push_back(neighbor);
 				}
-				
 			}
 		}
 		return path;

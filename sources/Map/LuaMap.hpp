@@ -25,7 +25,7 @@ namespace BBM
 			bool setDanger(int xpos, int ypos, int dangerLevel);
 
 			//! @brief A star pathfinding between two points
-			std::vector<Vector2f> pathfind(Vector2f, Vector2f);
+			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
 
 			//! @brief push table of table of the map
 			static int getMap(lua_State *L)
@@ -73,10 +73,21 @@ namespace BBM
 			static int getPath(lua_State *L)
 			{
 				LuaG::State state(L);
+				auto y2 = lua_tonumber(L, -1);
+				auto x2 = lua_tonumber(L, -2);
+				auto y1 = lua_tonumber(L, -3);
+				auto x1 = lua_tonumber(L, -4);
             	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-				lua_settop(L, 1);
-  				luaL_checktype(L, 1, LUA_TTABLE);
-				//auto path = map->pathfind();
+				Vector2f fst(x1, y1);
+				Vector2f snd(x2, y2);
+				auto path = map->pathfind(fst, snd);
+				int index = 0;
+				std::cout << "start of path " << std::endl;
+				for (auto &r : path) {
+					std::cout << "index is " << index++ << " : " << r << std::endl << std::flush;
+				}
+
+				std::cout << "end of path " << std::endl;
 				//push newtable {{x = X, y = Y}, ...}
 				return 1;
 			}
@@ -85,10 +96,10 @@ namespace BBM
 		private:
 			//! @brief unwind path for a_star
 			std::vector<Vector2f> fillPath(std::vector<Vector2f> &path, 
-			std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node);
+			std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node) const;
 
 			//! @brief get neighbors of node for a_star
-			std::vector<Vector2f> getNeighbors(Vector2f node);
+			std::vector<Vector2f> getNeighbors(Vector2f node) const;
 
 			std::vector<Vector2f> _dirs = {
 				Vector2f(1, 0), Vector2f(-1, 0), Vector2f(0, 1), Vector2f(0, -1)
