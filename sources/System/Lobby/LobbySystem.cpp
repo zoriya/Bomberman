@@ -6,6 +6,7 @@
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
+#include "Component/Speed/SpeedComponent.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include <algorithm>
@@ -257,14 +258,14 @@ namespace BBM
 				.addComponent<PositionComponent>(x + 220, y + 122, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-					const ControllableComponent *bonus = player.tryGetComponent<ControllableComponent>();
+					auto *speed = player.tryGetComponent<SpeedComponent>();
 
-					if (!bonus)
+					if (!speed)
 						return;
 					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 					if (!text)
 						return;
-					text->setText(std::to_string(static_cast<int>(bonus->speed * 100)));
+					text->setText(std::to_string(static_cast<int>(speed->speed * 100)));
 				});
 			scene->addEntity("player hide wall")
 				.addComponent<PositionComponent>(x + 220, y + 161, 0)
@@ -304,14 +305,14 @@ namespace BBM
 			auto *position = player.tryGetComponent<PositionComponent>();
 			auto *bombHolder = player.tryGetComponent<BombHolderComponent>();
 			auto *model = player.tryGetComponent<Drawable3DComponent>();
-			auto *controllable = player.tryGetComponent<ControllableComponent>();
-			if (position && bombHolder && model && controllable) {
+			auto *speed = player.tryGetComponent<SpeedComponent>();
+			if (position && bombHolder && model && speed) {
 				dynamic_cast<RAY3D::Model *>(model->drawable.get())->setTextureToMaterial(MAP_DIFFUSE,
 																						  ParserYAML::playersInfos[countPlayer].asset);
 				position->position = ParserYAML::playersInfos[countPlayer].position;
 				bombHolder->explosionRadius = ParserYAML::playersInfos[countPlayer].explosionRange;
 				bombHolder->maxBombCount = ParserYAML::playersInfos[countPlayer].maxBombCount;
-				controllable->speed = ParserYAML::playersInfos[countPlayer].speed;
+				speed->speed = ParserYAML::playersInfos[countPlayer].speed;
 			}
 			addController(player, lobby.layout);
 			countPlayer++;

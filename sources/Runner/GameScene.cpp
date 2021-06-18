@@ -19,6 +19,7 @@
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Speed/SpeedComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
 #include "Drawables/2D/Text.hpp"
@@ -71,6 +72,7 @@ namespace BBM
 	        .addComponent<BumperTimerComponent>()
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<TagComponent<Player>>()
+			.addComponent<SpeedComponent>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()

@@ -19,7 +19,8 @@ namespace BBM
 	void ControllableSystem::onFixedUpdate(WAL::ViewEntity<ControllableComponent, MovableComponent> &entity)
 	{
 		auto &controllable = entity.get<ControllableComponent>();
-		auto &speed = entity.get<SpeedComponent>();
+		// todo check why the .get doesn't work
+		auto &speed = entity->getComponent<SpeedComponent>();
 		auto &movable = entity.get<MovableComponent>();
 		auto health = entity->tryGetComponent<HealthComponent>();
 		Vector2f move = controllable.move.normalized() * speed.speed;

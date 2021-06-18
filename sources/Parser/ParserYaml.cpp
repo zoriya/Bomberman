@@ -20,6 +20,7 @@
 #include <Items/Bonus.hpp>
 #include <Exception/Error.hpp>
 #include "ParserYaml.hpp"
+#include "Component/Speed/SpeedComponent.hpp"
 #include <algorithm>
 #include <Component/Levitate/LevitateComponent.hpp>
 #include <Runner/Runner.hpp>
@@ -84,17 +85,17 @@ namespace BBM {
 		auto *position = entity.tryGetComponent<PositionComponent>();
 		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
 		auto *model = entity.tryGetComponent<Drawable3DComponent>();
-		auto *controllable = entity.tryGetComponent<ControllableComponent>();
+		auto *speed = entity.tryGetComponent<SpeedComponent>();
 		auto name = entity.getName();
 
-		if (!position || !bombHolder || !model || !controllable)
+		if (!position || !bombHolder || !model || !speed)
 			return;
 		std::replace(name.begin(), name.end(), ' ', '_');
 		_player << std::endl << "  " << name << ":" << std::endl << "    ";
 		_player << "texture_path: " << dynamic_cast<RAY3D::Model *>(model->drawable.get())->getTextureByMaterial(MAP_DIFFUSE).getResourcePath() << std::endl << "    ";
 		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
 		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
-		_player << "speed: " << std::to_string(controllable->speed) << std::endl << "    ";
+		_player << "speed: " << std::to_string(speed->speed) << std::endl << "    ";
 		_player << "position: [" << std::to_string(position->getX()) << "," << std::to_string(position->getY()) << "," << std::to_string(position->getZ()) << "]";
 	}
 
