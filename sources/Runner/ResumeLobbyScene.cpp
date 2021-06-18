@@ -41,6 +41,9 @@ namespace BBM
 		scene->addEntity("background")
 				.addComponent<PositionComponent>()
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
+		scene->addEntity("white background")
+				.addComponent<PositionComponent>(200, 300, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1525, 325), RAY::Color(WHITE).setA(150));
 		scene->addEntity("lobby text")
 				.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
@@ -83,6 +86,25 @@ namespace BBM
 					RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 					texture->use("assets/buttons/button_back_hovered.png");
+				});
+		auto &howToPlay = scene->addEntity("to to play")
+				.addComponent<PositionComponent>(1920 - 10 - 75, 1080 - 85, 0)
+				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_htp.png")
+				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+				{
+					gameState.nextScene = BBM::GameState::SceneID::HowToPlayScene;
+				})
+				.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+				{
+					RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+					texture->use("assets/buttons/button_htp.png");
+				})
+				.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+				{
+					RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+					texture->use("assets/buttons/button_htp_hovered.png");
 				});
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
