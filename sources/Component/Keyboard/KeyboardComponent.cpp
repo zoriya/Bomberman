@@ -16,16 +16,16 @@ namespace BBM
 			this->keyDown = KEY_S;
 			this->keyLeft = KEY_A;
 			this->keyRight = KEY_D;
-			this->keyJump = KEY_SPACE;
-			this->keyBomb = KEY_E;
+			this->keyBomb = KEY_SPACE;
+			this->keySecondary = KEY_LEFT_CONTROL;
 			this->keyPause = KEY_ESCAPE;
 		} else {
 			this->keyUp = KEY_UP;
 			this->keyDown = KEY_DOWN;
 			this->keyLeft = KEY_LEFT;
 			this->keyRight = KEY_RIGHT;
-			this->keyJump = KEY_RIGHT_CONTROL;
-			this->keyBomb = KEY_ENTER;
+			this->keyBomb = KEY_RIGHT_CONTROL;
+			this->keySecondary = KEY_RIGHT_SHIFT;
 			this->keyPause = KEY_BACKSPACE;
 		}
 	}

@@ -22,9 +22,9 @@ namespace BBM
 			int _ID;
 		public:
 			//! @brief jump key
-			Button keyJump = GAMEPAD_BUTTON_RIGHT_FACE_DOWN;
+			Button keySecondary = GAMEPAD_BUTTON_RIGHT_FACE_RIGHT;
 			//! @brief bomb key
-			Button keyBomb = GAMEPAD_BUTTON_RIGHT_FACE_RIGHT;
+			Button keyBomb = GAMEPAD_BUTTON_RIGHT_FACE_DOWN;
 			//! @brief pause key
 			Button keyPause = GAMEPAD_BUTTON_MIDDLE;
 			//! @brief move right key

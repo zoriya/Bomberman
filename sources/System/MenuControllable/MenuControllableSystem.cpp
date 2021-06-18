@@ -95,8 +95,8 @@ namespace BBM
 		if (!this->_currentButton)
 			return;
 		for (auto &[_, controllable]: controllableView)
-			if (controllable.move.x || controllable.move.y || controllable.select) {
-				this->_updateCurrentButton(controllable.select, controllable.move);
+			if (controllable.move.x || controllable.move.y || controllable.bomb) {
+				this->_updateCurrentButton(controllable.bomb, controllable.move);
 				return;
 			}
 		if (relativeMousePos == this->_oldMousePosition && !RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))

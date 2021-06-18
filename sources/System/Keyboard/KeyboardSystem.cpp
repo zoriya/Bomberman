@@ -22,9 +22,9 @@ namespace BBM
 		auto &controllable = entity.get<ControllableComponent>();
 
 		const std::map<KeyboardKey, bool &> keyPressedMap = {
-			{keyboard.keyJump, controllable.select},
-			{keyboard.keyBomb, controllable.bomb},
-			{keyboard.keyPause, controllable.pause}
+			{keyboard.keySecondary, controllable.secondary},
+			{keyboard.keyBomb,      controllable.bomb},
+			{keyboard.keyPause,     controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)

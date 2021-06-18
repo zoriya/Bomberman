@@ -67,19 +67,20 @@ namespace BBM
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &wal)
 			{
+				wal.getSystem<LobbySystem>().unloadLobby();
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-			   RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+			   auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 			   texture->use("assets/buttons/button_back.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			});

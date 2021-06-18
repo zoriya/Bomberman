@@ -166,7 +166,7 @@ namespace BBM
 		pushInfo(ia._state, player, bombHolder);
 		ia._state.callFunction(1, 4);
 		controllable.bomb = ia._state.getReturnBool();
-		controllable.select = ia._state.getReturnBool();
+		controllable.secondary = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
 		controllable.move.x = ia._state.getReturnNumber();
 		ia._state.popLast();
