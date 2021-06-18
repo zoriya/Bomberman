@@ -31,9 +31,12 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/settings.png");
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(1920 / 3 - 30, 400, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(800, 800), RAY::Color(WHITE).setA(150));
 		scene->addEntity("logo")
-			.addComponent<PositionComponent>(1920 / 3, 180, 0)
+			.addComponent<PositionComponent>(1920 / 3, 100, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
 		auto &music = scene->addEntity("music text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 540, 0)

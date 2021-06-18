@@ -64,7 +64,10 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/score.png");
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(200, 100, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1525, 550), RAY::Color(BLACK).setA(150));
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 3.25, 100, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("GAME OVER", 120, RAY::Vector2(), ORANGE);

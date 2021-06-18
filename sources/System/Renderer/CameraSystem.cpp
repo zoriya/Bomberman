@@ -32,6 +32,9 @@ namespace BBM
 			return true;
 		if (pos.position.distance(posTarget) < 4) {
 			hasEnded = true;
+			this->_wal.getScene()->scheduleNewEntity("white background")
+				.addComponent<PositionComponent>(1920 / 2 - 2 * 30 - 20, 30, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(150, 60), RAY::Color(BLACK).setA(10));
 			this->_wal.getScene()->scheduleNewEntity("Timer")
 				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
 					Runner::gameState.nextScene = GameState::ScoreScene;

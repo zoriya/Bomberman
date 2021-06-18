@@ -38,7 +38,7 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		scene->addEntity("background image")
-			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background.png", false)
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/backgrounds/game.png", false)
 			.addComponent<PositionComponent>();
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;

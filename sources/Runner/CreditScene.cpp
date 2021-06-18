@@ -26,7 +26,7 @@ namespace BBM
 		addMenuControl(*scene, sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/plain.png");
 
 		scene->addEntity("Control entity")
 			.addComponent<MusicComponent>("assets/musics/music_title.ogg")
