@@ -190,7 +190,9 @@ set(SOURCES
 	sources/Component/Color/ColorComponent.cpp
 	sources/Component/Stat/StatComponent.cpp
 	sources/Component/Stat/StatComponent.hpp
-	sources/Component/Speed/SpeedComponent.cpp sources/Component/Speed/SpeedComponent.hpp)
+	sources/Component/Speed/SpeedComponent.cpp
+	sources/Component/Speed/SpeedComponent.hpp
+	)
 
 add_executable(bomberman
 	sources/main.cpp

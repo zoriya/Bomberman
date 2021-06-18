@@ -116,7 +116,7 @@ namespace BBM
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
-	        .addSystem<ResumeLobbySystem>()
+			.addSystem<ResumeLobbySystem>()
 			.addSystem<MusicSystem>();
 	}
 
