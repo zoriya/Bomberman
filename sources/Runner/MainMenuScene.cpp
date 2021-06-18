@@ -77,7 +77,7 @@ namespace BBM
 					ParserYAML::load(gameScene);
 				} catch (std::exception const &err) {
 					std::cout << err.what() << std::endl;
-					Runner::gameState._loadedScenes[GameState::SceneID::GameScene]->addEntity("Error message parser")
+					gameScene->addEntity("Error message parser")
 							.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
 							.addComponent<TimerComponent>(3s, [](WAL::Entity &myEntity, WAL::Wal &wal) {
 								myEntity.scheduleDeletion();
