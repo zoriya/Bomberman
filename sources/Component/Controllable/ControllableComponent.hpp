@@ -41,6 +41,8 @@ namespace BBM
 			float speed = .15f;
 			//! @brief The layout used for this controllable.
 			Layout layout = NONE;
+			//! @brief True if buttons should be triggered every frame where the key is down, false if the button should only be triggered once the key is released.
+			bool fastClick = false;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;

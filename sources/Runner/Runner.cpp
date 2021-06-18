@@ -64,6 +64,7 @@ namespace BBM
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
+				component.fastClick = true;
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
@@ -72,8 +73,12 @@ namespace BBM
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
-		if (gameState.nextScene == GameState::SceneID::ScoreScene)
+		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
 			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
+				component.fastClick = false;
+			}
+		}
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
