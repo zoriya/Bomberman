@@ -176,7 +176,7 @@ set(SOURCES
 	sources/Component/Color/ColorComponent.cpp
 	sources/Component/Stat/StatComponent.cpp
 	sources/Component/Stat/StatComponent.hpp
-	)
+	sources/Component/Shaders/Items/AlphaCtxShaderComponent.cpp sources/Component/Shaders/Items/AlphaCtxShaderComponent.hpp)
 
 add_executable(bomberman
 	sources/main.cpp
