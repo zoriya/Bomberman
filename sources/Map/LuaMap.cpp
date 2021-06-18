@@ -2,7 +2,9 @@
 //
 //
 
+#include <algorithm>
 #include <map>
+#include <set>
 #include "Map.hpp"
 #include "LuaMap.hpp"
 
@@ -37,35 +39,77 @@ namespace BBM
 		return true;
 	}
 
-	std::vector<Vector2f> pathfind(Vector2f root, Vector2f target)
+	std::vector<Vector2f> LuaMap::fillPath(std::vector<Vector2f> &path, 
+	std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node)
 	{
-		/*
+		if (cameFrom.find(node) != cameFrom.end()) {
+			path.insert(path.begin(), cameFrom[node]);
+			return fillPath(path, cameFrom, cameFrom[node]);
+		} else
+			return path;
+	}
+
+	std::vector<Vector2f> LuaMap::getNeighbors(Vector2f node)
+	{
+		std::vector<Vector2f> neighbors;
+		for (auto &dir : _dirs) {
+			Vector2f neighbor(node.x + dir.x, node.y + dir.y);
+			if (neighbor.y < 0 || neighbor.x < 0)
+				continue;
+			if (neighbor.y > 17 || neighbor.x > 17)
+				continue;
+			if (_map[neighbor.y][neighbor.x] == 0 &&
+				_danger[neighbor.y][neighbor.x] != 1)
+				neighbors.push_back(neighbor);
+		}
+		return neighbors;
+	}
+
+	std::vector<Vector2f> LuaMap::pathfind(Vector2f root, Vector2f target)
+	{
 		std::vector<Vector2f> closed;
 		std::vector<Vector2f> open;
-		std::map<Vector2f, Vector2f> came_from;
-		std::map<Vector2f, double> g_score;
-		std::map<Vector2f, double> f_score;
+		std::unordered_map<Vector2f, Vector2f> cameFrom;
+		std::unordered_map<Vector2f, double> gScore;
+		std::unordered_map<Vector2f, double> fScore;
 		std::vector<Vector2f> path;
 
-		g_score[root] = 0;
-		f_score[root] = root.distance(target);
+		open.push_back(root);
+		gScore[root] = 0;
+		fScore[root] = root.distance(target);
 
 		while (open.size())
 		{
-			Vector2f current = getLowestFScore();
+			auto min_elem = std::min_element(fScore.begin(), fScore.end(),
+			[](const decltype(fScore)::value_type &l, const decltype(fScore)::value_type &r) -> bool
+			{
+				return l.second < r.second;
+			});
+			if (min_elem == fScore.end())
+				break;
+			Vector2f current(min_elem->first);
 			if (current == target) {
-				fill_path();
+				this->fillPath(path, cameFrom, target);
 				return path;
 			}
-			remove_from_closed(current);
-			add_to_open(current);
+			open.erase(std::remove(open.begin(), open.end(), current), open.end());
+			closed.push_back(current);
 			auto neighbors = getNeighbors(current);
 			for (auto &neighbor : neighbors) {
-				if (neighbor in closed)
+				if (std::find(closed.begin(), closed.end(), neighbor) != closed.end())
 					continue;
+				int tryGSCore = gScore[current] + 1;
+				int GScoreNeighbor = 0;
+				if (tryGSCore < GScoreNeighbor &&
+					std::find(open.begin(), open.end(), neighbor) == open.end()) {
+					cameFrom[neighbor] = current;
+					gScore[neighbor] = tryGSCore;
+					fScore[neighbor] = gScore[neighbor] + neighbor.distance(target);
+					open.push_back(neighbor);
+				}
 				
 			}
 		}
-		return path;*/
+		return path;
 	}
 }

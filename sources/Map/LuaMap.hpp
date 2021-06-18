@@ -83,7 +83,29 @@ namespace BBM
 			std::vector<std::vector<int>> _map;
 			std::vector<std::vector<int>> _danger;
 		private:
-			//int blocks[][];
-			//int danger[][];
+			//! @brief unwind path for a_star
+			std::vector<Vector2f> fillPath(std::vector<Vector2f> &path, 
+			std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node);
+
+			//! @brief get neighbors of node for a_star
+			std::vector<Vector2f> getNeighbors(Vector2f node);
+
+			std::vector<Vector2f> _dirs = {
+				Vector2f(1, 0), Vector2f(-1, 0), Vector2f(0, 1), Vector2f(0, -1)
+			};
+	};
+}
+
+namespace std
+{
+	template<>
+	struct hash<BBM::Vector2f>
+	{
+		typedef BBM::Vector2f argument_type;
+		typedef std::size_t result_type;
+		result_type operator()(argument_type const &in) const
+		{
+			return in.x + in.y;
+		}
 	};
 }
