@@ -26,7 +26,7 @@ namespace BBM
 			//! @brief The number of nanosecond before the next bomb refill.
 			std::chrono::nanoseconds nextBombRefill = refillRate;
 			//! @brief The radius of the explosion.
-			int explosionRadius = 3;
+			unsigned int explosionRadius = 3;
 			//! @brief The damage made by the explosion on an entity
 			int damage = 1;
 
@@ -37,7 +37,7 @@ namespace BBM
 			explicit BombHolderComponent(WAL::Entity &entity);
 
 			//! @brief Constructor
-			BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount, int explosionRadius = 3);
+			BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount, unsigned int bombExplosionRadius = 3);
 
 			//! @brief A component can't be instantiated, it should be derived.
 			BombHolderComponent(const BombHolderComponent &) = default;

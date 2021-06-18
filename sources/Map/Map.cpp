@@ -175,6 +175,7 @@ namespace BBM
 				.addComponent<PositionComponent>(i, 0, height + 1)
 				.addComponent<TagComponent<Blowable>>();
 		}
+
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
 			.addComponent<CollisionComponent>(

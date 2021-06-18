@@ -58,7 +58,7 @@ namespace BBM
 			this->_colorTaken[lobby.color] = false;
 		do {
 			lobby.color++;
-			if (lobby.color >= this->_colorTaken.size())
+			if (lobby.color >= static_cast<int>(this->_colorTaken.size()))
 				lobby.color = 0;
 		} while (this->_colorTaken[lobby.color]);
 		this->_colorTaken[lobby.color] = true;

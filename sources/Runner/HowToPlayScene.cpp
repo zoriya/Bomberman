@@ -57,7 +57,7 @@ namespace BBM
 		scene->addEntity("back")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 1.75, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc / Controller's Home button:", 35, RAY::Vector2(), BLACK);
-		auto &back = scene->addEntity("back to menu")
+		scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)

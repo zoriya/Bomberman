@@ -27,8 +27,6 @@ namespace BBM
 			return (true);
 		}
 
-		auto &cam = entity.get<CameraComponent>();
-
 		pos.position += (posTarget - pos.position) / 100;
 		return (false);
 	}
@@ -46,17 +44,17 @@ namespace BBM
 		float lowerXDist = 0;
 		float lowerZDist = 0;
 
-		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (!entity.hasComponent<ControllableComponent>())
-				entity.addComponent<ControllableComponent>();
-			playerPos.emplace_back(pos.position);
+		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
+			if (!player.hasComponent<ControllableComponent>())
+				player.addComponent<ControllableComponent>();
+			playerPos.emplace_back(position.position);
 		}
 		if (playerPos.size() == 0)
 			introAnimation(entity, true);
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
-		for (int i = 0; i < playerPos.size(); i++)
-			for (int j = 0; j < playerPos.size(); j++) {
+		for (size_t i = 0; i < playerPos.size(); i++)
+			for (size_t j = 0; j < playerPos.size(); j++) {
 				if (maxDist < playerPos[i].distance(playerPos[j])) {
 					maxDist = playerPos[i].distance(playerPos[j]);
 					newCameraPos = (playerPos[i] + playerPos[j]) / 2;

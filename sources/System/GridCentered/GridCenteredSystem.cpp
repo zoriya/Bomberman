@@ -12,10 +12,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void GridCenteredSystem::onFixedUpdate(WAL::ViewEntity<GridCenteredComponent, MovableComponent, PositionComponent> &entity)
+	void GridCenteredSystem::onFixedUpdate(WAL::ViewEntity<GridCenteredComponent, MovableComponent, PositionComponent> &)
 	{
-		auto &grid = entity.get<GridCenteredComponent>();
-		auto &movement = entity.get<MovableComponent>();
-//		movement.addForce(grid.force * )
 	}
 }

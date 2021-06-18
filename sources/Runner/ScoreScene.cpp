@@ -58,17 +58,17 @@ namespace BBM
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 2.37, 250, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("CONGRATS", 50, RAY::Vector2(), ORANGE);
-		for (int i = 0; i < players.size(); i++) {
-			auto &playerTile = scene->addEntity("player tile")
+		for (size_t i = 0; i < players.size(); i++) {
+			scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
 				                                                     RAY::Vector2(200, 200), tilesColor[i]);
-			auto &playerRank = scene->addEntity("player rank name")
+			scene->addEntity("player rank name")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.75, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>(rankName[i], 30,
 				                                                RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
 				                                                tilesColor[i]);
-			auto &player = scene->addEntity("player")
+			scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[i]);
 		}

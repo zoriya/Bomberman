@@ -37,7 +37,7 @@ namespace BBM
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
 			//! @brief Constructor
-			HealthComponent(WAL::Entity &entity, unsigned int healthPoint, const WAL::Callback<WAL::Entity &, WAL::Wal &> &onDeath = WAL::Callback<WAL::Entity &, WAL::Wal &>());
+			HealthComponent(WAL::Entity &entity, unsigned int healthPoint, const WAL::Callback<WAL::Entity &, WAL::Wal &> &onDeathCallback = WAL::Callback<WAL::Entity &, WAL::Wal &>());
 
 			//! @brief A Health component can't be instantiated, it should be derived.
 			HealthComponent(const HealthComponent &) = default;

@@ -3,6 +3,11 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
+if (CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -Wno-unused-parameter -W -g")
+endif()
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
 include_directories(lib/Ray/sources)
 include_directories(lib/wal/sources)
 include_directories(lib/LuaGate/sources)
