@@ -283,7 +283,7 @@ namespace BBM {
 		try {
 			auto start = line.find('[') + 1;
 			auto end = line.find(']');
-			if (start == std::string::npos || end == std::string::npos || line.back() != ']') {
+			if (line.front() != '[' || end == std::string::npos || line.back() != ']') {
 				throw ParserError("Error parsing position.");
 			}
 			subStr = line.substr(start, end - start);
