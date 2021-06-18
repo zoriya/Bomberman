@@ -101,7 +101,6 @@ namespace BBM
 			closed.push_back(current);
 			auto neighbors = getNeighbors(current);
 			for (auto &neighbor : neighbors) {
-				std::cout << neighbor << std::endl;
 				if (std::find(closed.begin(), closed.end(), neighbor) != closed.end())
 					continue;
 				int tryGSCore = gScore[current] + 1;
@@ -118,5 +117,78 @@ namespace BBM
 			}
 		}
 		return path;
+	}
+
+	int LuaMap::getMap(lua_State *L)
+	{
+		LuaG::State state(L);
+		int index = 1;
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_newtable(L);
+		for (int i = 0; i < 17; i++) {
+			lua_pushinteger(L, index++);
+			lua_newtable(L);
+			int indexrow = 1;
+			for (int j = 0; j < 17; j++) {
+				lua_pushinteger(L, indexrow++);
+				lua_pushinteger(L, map->_map[i][j]);
+				lua_settable(L, -3);
+			}
+			lua_settable(L, -3);
+		}
+		return 1;	
+	}
+	
+	int LuaMap::getDanger(lua_State *L)
+	{
+		int index = 1;
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_newtable(L);
+		for (int i = 0; i < 17; i++) {
+			lua_pushinteger(L, index++);
+			lua_newtable(L);
+			int indexrow = 1;
+			for (int j = 0; j < 17; j++) {
+				lua_pushinteger(L, indexrow++);
+				lua_pushinteger(L, map->_danger[i][j]);
+				lua_settable(L, -3);
+			}
+			lua_settable(L, -3);
+		}
+		return 1;
+	}
+	
+	int LuaMap::getPath(lua_State *L)
+	{
+		LuaG::State state(L);
+		auto y2 = lua_tonumber(L, -1);
+		auto x2 = lua_tonumber(L, -2);
+		auto y1 = lua_tonumber(L, -3);
+		auto x1 = lua_tonumber(L, -4);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		Vector2f fst(x1, y1);
+		Vector2f snd(x2, y2);
+		auto path = map->pathfind(fst, snd);
+		int index = 1;
+		lua_newtable(L);
+		for (auto &r : path) {
+			lua_pushinteger(L, index++);
+			lua_newtable(L);
+			lua_pushstring(L, "x");
+			lua_pushnumber(L, r.x);
+			lua_settable(L, -3);
+			lua_pushstring(L, "y");
+			lua_pushnumber(L, r.y);
+			lua_settable(L, -3);
+			lua_settable(L, -3);
+		}
+		return 1;
+	}
+
+	int LuaMap::getClosestSafeSpace(lua_State *L)
+	{
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		return 1;
 	}
 }

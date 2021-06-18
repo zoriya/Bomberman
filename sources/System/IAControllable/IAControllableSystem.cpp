@@ -70,31 +70,6 @@ namespace BBM
 		}
 	}
 
-	void IAControllableSystem::pushInfoEnemies(LuaG::State &state)
-	{
-		int index = 1;
-		state.push("enemies");
-		state.newTable();
-		for (auto &player : _players) {
-			state.push(index++);
-			state.newTable();
-			state.push("x");
-			state.push(player.x);
-			state.setTable();
-			state.push("y");
-			state.push(player.z);
-			state.setTable();
-			state.setTable();
-		}
-		state.setTable();
-	}
-
-	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
-	{
-		state.newTable();
-		pushInfoEnemies(state);
-	}
-
 	void IAControllableSystem::registerFunc(LuaG::State &state)
 	{
 		lua_pushlightuserdata(state.getState(), &_luamap);
@@ -118,13 +93,14 @@ namespace BBM
 		auto &bombHolder = entity.get<BombHolderComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
-		if (!ia.registered)
+		if (!ia.registered) {
 			this->registerFunc(ia._state);
+			ia.registered = true;
+		}
 		UpdateMapInfos(entity);
 		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
 			return;
-		pushInfo(ia._state, player, bombHolder);
 		ia._state.callFunction(1, 4);
 		controllable.bomb = ia._state.getReturnBool();
 		controllable.select = ia._state.getReturnBool();

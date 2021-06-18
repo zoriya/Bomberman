@@ -41,72 +41,6 @@ function PrintMap(map, MaxX, maxZ)
 	end
 end
 
-function CreateMyMap(infos, MaxX, MaxY)
-	local map = {}
-	for i=0,MaxX + 1 do
-		map[i] = {}
-		for j=0,MaxY + 1 do
-			map[i][j] = 0
-		end
-	end
-	for i, info in ipairs(infos) do
-		map[info.x][info.y] = math.floor(info.type)
-	end
-	--PrintMap(map, MaxX, MaxY)
-	return map
-end
-
-function CreateDangerMap(dangers)
-	local danger = {}
-	for i=0,MaxX + 1 do
-		danger[i] = {}
-		for j=0,MaxY + 1 do
-			danger[i][j] = 0
-		end
-	end
-	for i, zone in ipairs(dangers) do
-		if danger[math.floor(zone.x)] == nil then
-			danger[math.floor(zone.x)] = {}
-		end
-		danger[math.floor(zone.x)][math.floor(zone.y)] = math.floor(zone.level)
-	end
-	PrintMap(danger, MaxX, MaxY)
-	return danger
-end
-
-function isInExplosionRange(x, y)
-	if Danger[x][y] > 0 then
-			return true
-	end
-	return false
-end
-
----- Pathfinding
-
-function setAdd(set, toAdd)
-	table.insert(set, toAdd)
-end
-
-function setRemove(set, toRemove)
-	for i, node in ipairs(set) do
-		if node == toRemove then
-			set[i] = set[#set]
-			set[#set] = nil
-			break
-		end
-	end
-end
-
-function not_in(set, node)
-	for _,value in pairs(set) do
-		if value.x == node.x and value.y == node.y then
-			return false
-		end
-	end
-	return true
-end
-
-
 function getNeighborsDefend(node)
 	local neighbors = {}
 	for _, dir in ipairs(Dirs) do
@@ -136,128 +70,8 @@ function getNeighborsDefend(node)
 	return neighbors
 end
 
-function getLowestFromSet(set, f_score)
-	local lowest = 100000
-	local best = nil
-	for _,node in ipairs(set) do
-		local score = f_score[node]
-		if score < lowest then
-			lowest = score
-			best = node
-		end
-	end
-	return best
-end
-
-function fill_path(path, came_from, node)
-	if came_from[node.x][node.y] ~= nil then
-		table.insert(path, 1, came_from[node.x][node.y])
-		return fill_path(path, came_from, came_from[node.x][node.y])
-	else
-		return path
-	end
-end
-
---A star search
-function pathfind(root, target, getNeighborFunc)
-	if getNeighborFunc == nil then
-		getNeighborFunc = getNeighborsDefend
-	end
-	local closed = {}
-	local open = { root }
-	local came_from = {}
-
-	local g_score = {}
-	local f_score = {}
-
-	g_score[root] = 0
-	f_score[root] = dist(root, target)
-
-
-	for i=0,MaxX + 1 do
-		came_from[i] = {}
-		for j=0,MaxY + 1 do
-			came_from[i][j] = nil
-		end
-	end
-	while #open > 0 do
-		log("openset size")
-		log(#open)
-		local curr = getLowestFromSet(open, f_score) --get lowest node of openset
-		log("current node")
-		log(curr.x)
-		log(curr.y)
-		if curr.x == target.x and curr.y == target.y then
-			log("came from")
-			local path = fill_path({}, came_from, target) -- fill the path with came from
-			table.insert(path, target)
-			log("yee")
-			return path
-		end
-		setRemove(open, curr) -- remove curr from open
-		setAdd(closed, curr)-- add node to closed
-		log("closed set")
-		for i, c in ipairs(closed) do
-			log("member")
-			log(c.x)
-			log(c.y)
-		end
-		local neighbors = getNeighborFunc(curr)
-		log("current neightbors") -- get neighbors of current
-		log("openset size")
-		log(#open)
-		for _, neighbor in ipairs(neighbors) do
-			log("i")
-			if not_in(closed, neighbor) then -- neighbor not in closed set
-				log("j")
-				local try_g_score = g_score[curr] + 1
-				log("g score")
-				log(g_score[curr])
-				log("g score neig")
-				log(g_score[neighbor])
-				local g_score_neigh = 10000
-				if g_score[neighbor] ~= nil then
-					g_score_neigh = g_score[neighbor]
-				end
-				if not_in(open, neighbor) or try_g_score < g_score_neigh then
-					came_from[neighbor.x][neighbor.y] = {x = curr.x, y = curr.y}
-					g_score[neighbor] = try_g_score
-					f_score[neighbor] = g_score[neighbor] + dist(neighbor, target)
-					if not_in(open, neighbor) then
-						setAdd(open, neighbor)
-					end
-				end
-			end
-		end
-	end
-	return {}
-end
-
 function dist(nodeA, nodeB)
 	return math.sqrt(math.pow(nodeB.x - nodeA.x, 2) + math.pow(nodeB.y - nodeA.y, 2))
-end
-
-function getPathToSafeSpace(player)
-	local minXesc = (player.x - 3 < 0) and 0 or (player.x - 3);
-	local MaxXesc = (player.x + 3 > MaxX) and MaxX or (player.x + 3);
-	local minYesc = (player.y - 3 < 0) and 0 or (player.y - 3);
-	local MaxYesc = (player.y + 3 > MaxY) and MaxY or (player.y + 3);
-
-	local minDist = 100000
-	local res = {}
-	for i=minXesc,MaxXesc do
-		for j=minYesc, MaxYesc do
-			if Map[i][j] == 0 and Danger[i][j] == 0 then
-				local safe = {x = i, y = j}
-				local currDist = dist(player, safe)
-				if currDist < minDist then
-					minDist, res = currDist, safe
-				end
-			end
-		end
-	end
-	local path = pathfind(player, res)
-	return path
 end
 
 function getNeighborAttack(node)
@@ -292,11 +106,38 @@ end
 
 
 
+function getPathToSafeSpace(player)
+	local minXesc = (player.x - 3 < 0) and 0 or (player.x - 3);
+	local MaxXesc = (player.x + 3 > MaxX) and MaxX or (player.x + 3);
+	local minYesc = (player.y - 3 < 0) and 0 or (player.y - 3);
+	local MaxYesc = (player.y + 3 > MaxY) and MaxY or (player.y + 3);
+
+	local minDist = 100000
+	local res = {}
+	for i=minXesc,MaxXesc do
+		for j=minYesc, MaxYesc do
+			if Map[i][j] == 0 and Danger[i][j] == 0 then
+				local safe = {x = i, y = j}
+				local currDist = dist(player, safe)
+				if currDist < minDist then
+					minDist, res = currDist, safe
+				end
+			end
+		end
+	end
+	local path = pathfind(player, res)
+	return path
+end
+
 ------ Update
 function Update(mapinfo)
 	log("NEW FRAME")
 	x = getDanger()
-	getPath(0, 0, 16, 16);
+	p = getPath(0, 0, 16, 16);
+	for i, c in ipairs(p) do
+		print(c.x)
+		print(c.y)
+	end
 	---- sjould send Map Danger and MaxX MaxY
 	--MaxX = 0
 	--MaxY = 0
