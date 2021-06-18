@@ -87,11 +87,11 @@ namespace BBM
 
 				auto nbMilliSec = duration_cast<std::chrono::milliseconds>(bonus.nextNoClipRate).count();
 
-				if (nbMilliSec > 1000) {
+				if (nbMilliSec > 1500) {
 					ctx.step = ctx.initalStepValue;
-				} else if (nbMilliSec > 500) {
+				} else if (nbMilliSec > 1000) {
 					ctx.step = 0.15;
-				} else if (nbMilliSec > 100) {
+				} else if (nbMilliSec > 200) {
 					ctx.step = 0.30;
 				} else {
 					ctx.step = 0.5;

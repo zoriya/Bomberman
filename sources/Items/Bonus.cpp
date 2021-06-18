@@ -71,7 +71,7 @@ namespace BBM {
 			{SPEEDUP, 45.0f},
 			{BOMBSTOCK, 30.0f},
 			{EXPLOSIONINC, 15.0f},
-			{NOCLIP, 70.5f},
+			{NOCLIP, 1.5f},
 		};
 		std::uniform_int_distribution<int> distribution(1,1000);
 		float value = (distribution(generator) / 10);
