@@ -8,8 +8,8 @@
 
 namespace BBM
 {
-	KeyboardComponent::KeyboardComponent(WAL::Entity &entity, ControllableComponent::Layout layout)
-		: WAL::Component(entity), layout(layout)
+	KeyboardComponent::KeyboardComponent(WAL::Entity &entity, ControllableComponent::Layout controllerLayout)
+		: WAL::Component(entity), layout(controllerLayout)
 	{
 		if (layout == ControllableComponent::KEYBOARD_0) {
 			this->keyUp = KEY_W;

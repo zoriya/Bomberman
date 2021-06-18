@@ -6,11 +6,11 @@
 
 namespace BBM
 {
-	LobbyComponent::LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton, WAL::Entity &coloredTile)
+	LobbyComponent::LobbyComponent(WAL::Entity &entity, int playerNumber, WAL::Entity &button, WAL::Entity &tile)
 		: WAL::Component(entity),
-		playerID(playerID),
-		readyButton(readyButton),
-		coloredTile(coloredTile)
+		playerID(playerNumber),
+		readyButton(button),
+		coloredTile(tile)
 	{}
 
 	WAL::Component *LobbyComponent::clone(WAL::Entity &entity) const

@@ -6,8 +6,8 @@
 
 namespace BBM
 {
-	MapInfo::MapInfo(Vector3f pos, MapGenerator::BlockType type)
-	: x(pos.x), y(pos.y), z(pos.z), type(type)
+	MapInfo::MapInfo(Vector3f pos, MapGenerator::BlockType blockType)
+	: x(pos.x), y(pos.y), z(pos.z), type(blockType)
 	{ }
 
 	MapInfo::MapInfo(const MapInfo &other)

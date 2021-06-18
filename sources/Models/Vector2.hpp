@@ -29,8 +29,8 @@ namespace BBM
 		{}
 
 		//! @brief Create a new vector2 representing a specific coordinate.
-		Vector2(T x, T y)
-			: x(x), y(y)
+		Vector2(T _x, T _y)
+			: x(_x), y(_y)
 		{}
 
 		//! @brief A default destructor
