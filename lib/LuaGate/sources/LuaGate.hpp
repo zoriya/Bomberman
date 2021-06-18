@@ -2,6 +2,8 @@
 // Created by Louis Auzuret on 10/06/21
 //
 
+#pragma once
+
 #include <string>
 #include <lua.hpp>
 

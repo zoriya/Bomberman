@@ -7,6 +7,7 @@
 #include <vector>
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "Map/MapInfo.hpp"
+#include "Map/LuaMap.hpp"
 #include "System/System.hpp"
 
 namespace BBM
@@ -21,6 +22,9 @@ namespace BBM
 		//! @brief Are the infos cached for current update
 		bool _cached;
 
+		//! @brief Map to handle the informations
+		LuaMap _luamap;
+
 		//! @brief All blocks in the map
 		std::vector<MapInfo> _map;
 
@@ -30,6 +34,9 @@ namespace BBM
 		//! @brief All bombs on the map
 		std::vector<std::tuple<Vector3f, int, std::chrono::nanoseconds>> _bombs;
 
+		//! @brief Register the functions to the lua
+		void registerFunc(LuaG::State &state);
+	
 		//! @brief update the raw info of the map
 		void UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity);
 

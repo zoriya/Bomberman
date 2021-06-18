@@ -31,9 +31,9 @@ function PrintMap(map, MaxX, maxZ)
 	log("---------")
 	log("PRINT MAP")
 	log("---------")
-	for i=0,MaxX + 1 do
+	for i=1,MaxX do
 		local s = "| "
-		for j=0,maxZ + 1 do
+		for j=1,maxZ do
 			s = s .. tostring(map[i][j]) .. " | ";
 		end
 		log(s)
@@ -150,7 +150,7 @@ function getLowestFromSet(set, f_score)
 end
 
 function fill_path(path, came_from, node)
-	if came_from[node.x][node.y].x >= 0 and came_from[node.x][node.y].y >= 0 then
+	if came_from[node.x][node.y] ~= nil then
 		table.insert(path, 1, came_from[node.x][node.y])
 		return fill_path(path, came_from, came_from[node.x][node.y])
 	else
@@ -177,7 +177,7 @@ function pathfind(root, target, getNeighborFunc)
 	for i=0,MaxX + 1 do
 		came_from[i] = {}
 		for j=0,MaxY + 1 do
-			came_from[i][j] = {x = -1, y = -1}
+			came_from[i][j] = nil
 		end
 	end
 	while #open > 0 do
@@ -220,7 +220,7 @@ function pathfind(root, target, getNeighborFunc)
 					g_score_neigh = g_score[neighbor]
 				end
 				if not_in(open, neighbor) or try_g_score < g_score_neigh then
-					came_from[neighbor.x][neighbor.y] = {x = neighbor.x, y = neighbor.y}
+					came_from[neighbor.x][neighbor.y] = {x = curr.x, y = curr.y}
 					g_score[neighbor] = try_g_score
 					f_score[neighbor] = g_score[neighbor] + dist(neighbor, target)
 					if not_in(open, neighbor) then
@@ -280,104 +280,105 @@ end
 function getPathToEnemy(player, enemies)
 	local minDist = 100000
 	local res = {}
-	log("c")
 	for _, enemy in ipairs(enemies) do
-		log("wa")
 		local currDist = dist(player, enemy)
 		if currDist < minDist and enemy.x ~= player.x and enemy.y ~= player.y then
 			minDist, res = currDist, enemy
 		end
 	end
-	log("d")
 	local path = pathfind(player, res, getNeighborAttack)
-	log("e")
 	return path
 end
 
 
+
 ------ Update
 function Update(mapinfo)
-	MaxX = 0
-	MaxY = 0
 	log("NEW FRAME")
-	for i, info in ipairs(mapinfo.raw) do
-		if info.x > MaxX then
-			MaxX = info.x
-		end
-		if info.y > MaxY then
-			MaxY = info.y
-		end
-	end
-	Map = CreateMyMap(mapinfo.raw, MaxX, MaxY)
-	Danger = CreateDangerMap(mapinfo.danger)
-	PrintMap(Map, MaxX, MaxY)
-	log("Current player pos")
-	log(mapinfo.player.x)
-	log(mapinfo.player.y)
-	log("Rounded player pos")
-	local roundedPlayerPos = {x = math.floor(mapinfo.player.x+0.5), y = math.floor(mapinfo.player.y+0.5)}
-	log(roundedPlayerPos.x)
-	log(roundedPlayerPos.y)
-	log("Last target")
-	if LastTarget ~= nil then
-		log(LastTarget.x)
-		log(LastTarget.y)
-		if math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 and math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 then
-			LastTarget = nil
-		else
-			return (LastTarget.x - mapinfo.player.x), (LastTarget.y - mapinfo.player.y), false, false
-		end
-	else
-		log("No last target")
-	end
-	if (isInExplosionRange(roundedPlayerPos.x, roundedPlayerPos.y)) then
-		log("IN DANGER")
-		local pathToSafeSpace = getPathToSafeSpace(roundedPlayerPos)
-		log("PATH")
-		for i,p in ipairs(pathToSafeSpace) do
-			log(i)
-			log(p.x)
-			log(p.y)
-		end
-		if #pathToSafeSpace == 0 then
-			return 0, 0, false, false
-		end
-		local f = pathToSafeSpace[1]
-		log("first way of the path")
-		log(f.x)
-		log(f.y)
-		LastTarget = {x = f.x, y = f.y}
-		return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false
-	else
-		log("SAFE")
-		local enemies = mapinfo.enemies
-		log("len")
-		log(#enemies)
-		local pathToEnemy = getPathToEnemy(roundedPlayerPos, enemies)		
-		log("b")
-		if #pathToEnemy == 0 then
-			return 0, 0, false, false
-		end
-		local f = pathToEnemy[1]
-		log("first way of the path")
-		log(f.x)
-		log(f.y)
-		log("PATH")
-		for i, c in ipairs(pathToEnemy) do
-			log("member")
-			log(c.x)
-			log(c.y)
-		end
-		LastTarget = {x = f.x, y = f.y}
-		--pathfind to closest player
-		if LastPos == nil then
-			LastPos = {x = mapinfo.player.x, y = mapinfo.player.y}
-		else
-			if mapinfo.player.x == LastPos.x and mapinfo.player.y == LastPos.y then
-				return 0, 0, true, true
-			end
-		end
-		LastTarget = {x = f.x, y = f.y}
-		return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false;
-	end
+	x = getMap()
+	PrintMap(x, 16, 16)
+	---- sjould send Map Danger and MaxX MaxY
+	--MaxX = 0
+	--MaxY = 0
+	--for i, info in ipairs(mapinfo.raw) do
+	--	if info.x > MaxX then
+	--		MaxX = info.
+	--	end
+	--	if info.y > MaxY then
+	--		MaxY = info.y
+	--	end
+	--end
+	--Map = CreateMyMap(mapinfo.raw, MaxX, MaxY)
+	--Danger = CreateDangerMap(mapinfo.danger)
+	--PrintMap(Map, MaxX, MaxY)
+	--log("Current player pos")
+	--log(mapinfo.player.x)
+	--log(mapinfo.player.y)
+	--log("Rounded player pos")
+	--local roundedPlayerPos = {x = math.floor(mapinfo.player.x+0.5), y = math.floor(mapinfo.player.y+0.5)}
+	--log(roundedPlayerPos.x)
+	--log(roundedPlayerPos.y)
+	--log("Last target")
+	--if LastTarget ~= nil then
+	--	log(LastTarget.x)
+	--	log(LastTarget.y)
+	--	if math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 and math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 then
+	--		LastTarget = nil
+	--	else
+	--		return (LastTarget.x - mapinfo.player.x), (LastTarget.y - mapinfo.player.y), false, false
+	--	end
+	--else
+	--	log("No last target")
+	--end
+	--if (isInExplosionRange(roundedPlayerPos.x, roundedPlayerPos.y)) then
+	--	log("IN DANGER")
+	--	local pathToSafeSpace = getPathToSafeSpace(roundedPlayerPos)
+	--	log("PATH")
+	--	for i,p in ipairs(pathToSafeSpace) do
+	--		log(i)
+	--		log(p.x)
+	--		log(p.y)
+	--	end
+	--	if #pathToSafeSpace == 0 then
+	--		return 0, 0, false, false
+	--	end
+	--	local f = pathToSafeSpace[1]
+	--	log("first way of the path")
+	--	log(f.x)
+	--	log(f.y)
+	--	LastTarget = {x = f.x, y = f.y}
+	--	return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false
+	--else
+	--	log("SAFE")
+	--	local enemies = mapinfo.enemies
+	--	log("len")
+	--	log(#enemies)
+	--	local pathToEnemy = getPathToEnemy(roundedPlayerPos, enemies)		
+	--	log("b")
+	--	if #pathToEnemy == 0 then
+	--		return 0, 0, false, false
+	--	end
+	--	local f = pathToEnemy[1]
+	--	log("first way of the path")
+	--	log(f.x)
+	--	log(f.y)
+	--	log("PATH")
+	--	for i, c in ipairs(pathToEnemy) do
+	--		log("member")
+	--		log(c.x)
+	--		log(c.y)
+	--	end
+	--	LastTarget = {x = f.x, y = f.y}
+	--	--pathfind to closest player
+	--	if LastPos == nil then
+	--		LastPos = {x = mapinfo.player.x, y = mapinfo.player.y}
+	--	else
+	--		if mapinfo.player.x == LastPos.x and mapinfo.player.y == LastPos.y then
+	--			return 0, 0, false, false
+	--		end
+	--	end
+	--	LastTarget = {x = f.x, y = f.y}
+	--	return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false;
+	--end
+	return 0,0, false, false
 end

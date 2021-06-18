@@ -14,7 +14,7 @@
 namespace BBM
 {
 	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
-	: System(wal), _wal(wal), _cached(false)
+	: System(wal), _wal(wal), _cached(false), _luamap()
 	{ }
 
 	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
@@ -169,6 +169,21 @@ namespace BBM
 		pushInfoEnemies(state);
 	}
 
+	void IAControllableSystem::registerFunc(LuaG::State &state)
+	{
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getMap, 1);
+		lua_setglobal(state.getState(), "getMap");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getDanger, 1);
+		lua_setglobal(state.getState(), "getDanger");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getPath, 1);
+		lua_setglobal(state.getState(), "getPath");
+	}
+
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
 		auto &ia = entity.get<IAControllableComponent>();
@@ -177,8 +192,9 @@ namespace BBM
 		auto &bombHolder = entity.get<BombHolderComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
+		if (!ia.registered)
+			this->registerFunc(ia._state);
 		UpdateMapInfos(entity);
-
 		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
 			return;

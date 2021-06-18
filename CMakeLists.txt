@@ -169,6 +169,8 @@ set(SOURCES
 	sources/Component/Color/ColorComponent.cpp
 	sources/Component/Stat/StatComponent.cpp
 	sources/Component/Stat/StatComponent.hpp
+	sources/Map/LuaMap.cpp
+	sources/Map/LuaMap.hpp
 	)
 
 add_executable(bomberman
