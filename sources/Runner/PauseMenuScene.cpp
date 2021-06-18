@@ -11,7 +11,6 @@
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
@@ -67,12 +66,12 @@ namespace BBM
 					timer.disabled = true;
 				gameScene->scheduleNewEntity("Restart timer")
 					.addComponent<TimerComponent>(std::chrono::seconds(3), [gameScene](WAL::Entity &entity, WAL::Wal &) {
-						for (auto &[_, controller, health] : gameScene->view<ControllableComponent, HealthComponent>()) {
-							if (health.getHealthPoint() > 0)
-								controller.disabled = false;
+						for (auto &view : gameScene->view<ControllableComponent, HealthComponent>()) {
+							if (view.get<HealthComponent>().getHealthPoint() > 0)
+								view.get<ControllableComponent>().disabled = false;
 						}
-						for (auto &[_, timer] : gameScene->view<TimerComponent>())
-							timer.disabled = false;
+						for (auto &view : gameScene->view<TimerComponent>())
+							view.get<TimerComponent>().disabled = false;
 						entity.scheduleDeletion();
 					})
 					.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 1080 / 2, 0)
@@ -85,17 +84,17 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_settings.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_settings_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
