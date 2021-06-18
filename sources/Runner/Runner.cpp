@@ -122,7 +122,7 @@ namespace BBM
 		#ifdef RELEASE
 		RAY::TraceLog::setLevel(LOG_NONE);
 		#else
-		RAY::TraceLog::setLevel(LOG_TRACE);
+		RAY::TraceLog::setLevel(LOG_WARNING);
 		#endif
 		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
@@ -170,6 +170,7 @@ namespace BBM
 		Runner::loadScenes();
 		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
 		wal.run<GameState>(Runner::updateState, Runner::gameState);
+		gameState._loadedScenes.clear();
 		return 0;
 	}
 }
