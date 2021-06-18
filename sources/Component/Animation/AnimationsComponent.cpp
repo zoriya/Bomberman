@@ -12,7 +12,7 @@ namespace BBM
 		: WAL::Component(entity),
 		  _modelAnimation(path),
 		  _currentAnimIndex(animIndex),
-		  _animDisabled(play)
+		  _animDisabled(!play)
 	{
 		this->_modelAnimation[this->_currentAnimIndex].setFrameCounter(0);
 	}
@@ -29,7 +29,7 @@ namespace BBM
 		return this->_modelAnimation.at(this->_currentAnimIndex).getFrameCounter();
 	}
 
-	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim()
+	RAY::ModelAnimation &AnimationsComponent::getCurrentModelAnim()
 	{
 		return this->_modelAnimation[this->_currentAnimIndex];
 	}

@@ -49,7 +49,7 @@ namespace BBM
 		using MapBlock = std::map<std::tuple<int, int, int>, BlockType>;
 
 		//! @brief Generate random block type
-		static BlockType getRandomBlockType();
+		static BlockType getRandomBlockType(bool = false);
 
 		//! @param map ASCII map
 		//! @param x x index on the block
@@ -159,6 +159,8 @@ namespace BBM
 		static const std::string objExtension;
 
 		static const std::string unbreakableWallPath;
+
+		static const std::string outerWallPath;
 
 		static const std::string breakableWallPath;
 

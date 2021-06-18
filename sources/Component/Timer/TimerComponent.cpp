@@ -13,10 +13,10 @@ namespace BBM
 		ringIn(delay)
 	{}
 
-	TimerComponent::TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay, const WAL::Callback<WAL::Entity &, WAL::Wal &> &callback)
+	TimerComponent::TimerComponent(WAL::Entity &entity, std::chrono::nanoseconds delay, const WAL::Callback<WAL::Entity &, WAL::Wal &> &timerCallback)
 		: WAL::Component(entity),
-		ringIn(delay),
-		callback(callback)
+		callback(timerCallback),
+		ringIn(delay)
 	{}
 
 	WAL::Component *TimerComponent::clone(WAL::Entity &entity) const

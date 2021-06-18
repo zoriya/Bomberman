@@ -5,6 +5,12 @@
 #include "CameraSystem.hpp"
 #include "Entity/Entity.hpp"
 #include "Component/Tag/TagComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
+#include "Runner/Runner.hpp"
+#include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Drawables/2D/Text.hpp"
+
+namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
@@ -12,31 +18,37 @@ namespace BBM
 		: System(wal)
 	{}
 
-	bool CameraSystem::introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, bool restart)
+	bool CameraSystem::introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity)
 	{	
 		auto &pos = entity.get<PositionComponent>();
 		static Vector3f posTarget(8, 25, 7);
-		static bool hasEnded = false;
 
-		if (restart) {
-			hasEnded = false;
-			return (false);
-		}
-		if (pos.position.distance(posTarget) < 4 || hasEnded) {
+		if (hasEnded)
+			return true;
+		if (pos.position.distance(posTarget) < 4) {
 			hasEnded = true;
-			return (true);
+			this->_wal.getScene()->scheduleNewEntity("white background")
+				.addComponent<PositionComponent>(1920 / 2 - 2 * 30 - 20, 28, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(150, 60), RAY::Color(BLACK).setA(150));
+			this->_wal.getScene()->scheduleNewEntity("Timer")
+				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
+					Runner::gameState.nextScene = GameState::ScoreScene;
+				})
+				.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
+				.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
+			for (WAL::Entity &player : this->_wal.getScene()->view<TagComponent<Player>>())
+				player.getComponent<ControllableComponent>().disabled = false;
+			return true;
 		}
-
-		auto &cam = entity.get<CameraComponent>();
 
 		pos.position += (posTarget - pos.position) / 100;
-		return (false);
+		return false;
 	}
 
 	void CameraSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
-		if (!introAnimation(entity))
+		if (Runner::gameState.currentScene != GameState::GameScene || !introAnimation(entity))
 			return;
 		auto &pos = entity.get<PositionComponent>();
 		auto &cam = entity.get<CameraComponent>();
@@ -46,17 +58,15 @@ namespace BBM
 		float lowerXDist = 0;
 		float lowerZDist = 0;
 
-		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (!entity.hasComponent<ControllableComponent>())
-				entity.addComponent<ControllableComponent>();
-			playerPos.emplace_back(pos.position);
+		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
+			if (!player.hasComponent<ControllableComponent>())
+				player.addComponent<ControllableComponent>();
+			playerPos.emplace_back(position.position);
 		}
-		if (playerPos.size() == 0)
-			introAnimation(entity, true);
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
-		for (int i = 0; i < playerPos.size(); i++)
-			for (int j = 0; j < playerPos.size(); j++) {
+		for (size_t i = 0; i < playerPos.size(); i++)
+			for (size_t j = 0; j < playerPos.size(); j++) {
 				if (maxDist < playerPos[i].distance(playerPos[j])) {
 					maxDist = playerPos[i].distance(playerPos[j]);
 					newCameraPos = (playerPos[i] + playerPos[j]) / 2;

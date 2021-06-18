@@ -29,7 +29,7 @@ namespace BBM
 		if (!movable || !bumperTimer)
 			return;
 		if (!bumperTimer->_isReseting) {
-			movable->_velocity.y = 1.5;
+			movable->_velocity.y = 2;
 			bumperTimer->_isReseting = true;
 		}
 	}
@@ -95,13 +95,13 @@ namespace BBM
 			.addComponent<PositionComponent>(position)
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<MovableComponent>()
-			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-				entity.scheduleDeletion();
+			.addComponent<HealthComponent>(1, [](WAL::Entity &myEntity, WAL::Wal &) {
+				myEntity.scheduleDeletion();
 			})
 			.addComponent<LevitateComponent>(position.y)
 			.addComponent<CollisionComponent>(WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
 			    func[bonusType - 1], 0.5, .5)
-			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &wal){
+			.addComponent<TimerComponent>(5s, [](WAL::Entity &bonus, WAL::Wal &){
 				bonus.scheduleDeletion();
 			})
 			.addComponent<Drawable3DComponent, RAY3D::Model>(map.at(bonusType) + ".obj", false,
@@ -113,6 +113,7 @@ namespace BBM
 	const std::string MapGenerator::imageExtension = ".png";
 	const std::string MapGenerator::objExtension = ".obj";
 	const std::string MapGenerator::breakableWallPath = MapGenerator::wallAssetsPath + "breakable_wall";
+	const std::string MapGenerator::outerWallPath = MapGenerator::wallAssetsPath + "outer_wall";
 	const std::string MapGenerator::unbreakableWallPath = MapGenerator::wallAssetsPath + "unbreakable_wall";
 	const std::string MapGenerator::floorPath = MapGenerator::wallAssetsPath + "floor";
 	const std::string MapGenerator::secondFloorPath = MapGenerator::wallAssetsPath + "upper_floor";
@@ -145,58 +146,55 @@ namespace BBM
 
 	void MapGenerator::generateWall(int width, int height, std::shared_ptr<WAL::Scene> scene)
 	{
-		static const std::string unbreakableObj = unbreakableWallPath + objExtension;
-		static const std::string unbreakablePnj = unbreakableWallPath + imageExtension;
+		static const std::string outerWallObj = unbreakableWallPath + objExtension;
+		static const std::string outerWallPnj = unbreakableWallPath + imageExtension;
 
-		for (int i = 0; i < height + 1; i++) {
+		for (int i = -1; i < height + 2; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(-1, 0, i)
-				.addComponent<TagComponent<Blowable>>();
+				.addComponent<TagComponent<Blowable>>()
+				.addComponent<Drawable3DComponent, RAY3D::Model>(outerWallObj, false,
+																 std::make_pair(MAP_DIFFUSE, outerWallPnj));
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(width + 1, 0, i)
-				.addComponent<TagComponent<Blowable>>();
+				.addComponent<TagComponent<Blowable>>()
+				.addComponent<Drawable3DComponent, RAY3D::Model>(outerWallObj, false,
+																 std::make_pair(MAP_DIFFUSE, outerWallPnj));
 		}
 		for (int i = 0; i < width + 1; i++) {
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(i, 0, -1)
-				.addComponent<TagComponent<Blowable>>();
+				.addComponent<TagComponent<Blowable>>()
+				.addComponent<Drawable3DComponent, RAY3D::Model>(outerWallObj, false,
+																 std::make_pair(MAP_DIFFUSE, outerWallPnj));
 			scene->addEntity("Bomb stopper")
 				.addComponent<PositionComponent>(i, 0, height + 1)
-				.addComponent<TagComponent<Blowable>>();
+				.addComponent<TagComponent<Blowable>>()
+				.addComponent<Drawable3DComponent, RAY3D::Model>(outerWallObj, false,
+																 std::make_pair(MAP_DIFFUSE, outerWallPnj));
 		}
 
 		scene->addEntity("Bottom Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, -1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
-			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
-			                                                 RAY::Vector3(width + 3, 1, 1));
+				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75));
 		scene->addEntity("Upper Wall")
 			.addComponent<PositionComponent>(Vector3f((width + 1) / 2, 0, height + 1))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
-			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
-			                                                 RAY::Vector3(width + 3, 1, 1));
+				&MapGenerator::wallCollision, Vector3f(-(width + 1) / 2 , 0.25, 0.25), Vector3f(width + 1, 2, 0.75));
 		scene->addEntity("Left Wall")
 			.addComponent<PositionComponent>(Vector3f(width + 1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
-			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
-			                                                 RAY::Vector3(1, 1, height + 1));
+				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1));
 		scene->addEntity("Right Wall")
 			.addComponent<PositionComponent>(Vector3f(-1, 0, height / 2))
 			.addComponent<CollisionComponent>(
 				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1))
-			.addComponent<Drawable3DComponent, RAY3D::Model>(unbreakableObj, false,
-			                                                 std::make_pair(MAP_DIFFUSE, unbreakablePnj),
-			                                                 RAY::Vector3(1, 1, height + 1));
+				&MapGenerator::wallCollision, Vector3f(0.25, 0.25, -(height + 1) / 2 ), Vector3f(0.75, 2, height + 1));
+
 	}
 
 	void MapGenerator::generateFloor(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
@@ -331,13 +329,13 @@ namespace BBM
 		        map[std::make_tuple(x, y, z - 1)] == blockType);
 	}
 
-	MapGenerator::BlockType MapGenerator::getRandomBlockType()
+	MapGenerator::BlockType MapGenerator::getRandomBlockType(bool hasHeight)
 	{
 		double rnd = static_cast<double>(std::rand()) / RAND_MAX;
 
-		if (rnd > 0.98)
+		if (rnd > 0.98 && !hasHeight)
 			return HOLE;
-		if (rnd > 0.25)
+		if ((!hasHeight && rnd > 0.25) || rnd > 0.7)
 			return BREAKABLE;
 		return NOTHING;
 	}
@@ -446,16 +444,18 @@ namespace BBM
 				if (isCloseToBlockType(map, i, 0, j, SPAWNER)) {
 					map[std::make_tuple(i, isNotClassic ? -1 : 0, j)] = isNotClassic ? BUMPER : NOTHING;
 				} else {
-					map[std::make_tuple(i, 0, j)] = getRandomBlockType();
+					map[std::make_tuple(i, 0, j)] = getRandomBlockType(isHeight);
 				}
 				if (map[std::make_tuple(i, 0, j)] == UNBREAKABLE && isCloseToBlockType(map, i, 0, j, UNBREAKABLE))
 					map[std::make_tuple(i, 0, j)] = BREAKABLE;
 			}
 		}
-		if (!isNotClassic)
-			map = createClassicUnbreakable(map, width, height);
-		else
-			map = createLongClassicUnbreakable(map, width, height);
+		if (!isHeight) {
+			if (!isNotClassic)
+				map = createClassicUnbreakable(map, width, height);
+			else
+				map = createLongClassicUnbreakable(map, width, height);
+		}
 		if (isHeight)
 			map = createHeight(map, width, height);
 		map = cleanBreakable(map, width, height);
@@ -463,7 +463,7 @@ namespace BBM
 	}
 
 	void MapGenerator::generateHeightCollision(MapBlock map, int width, int height, std::shared_ptr<WAL::Scene> scene)
-	{	
+	{
 		int floor = 2;
 
 		for (int i = 0; i < width + 1; i++) {
@@ -501,7 +501,7 @@ namespace BBM
 				.addComponent<PositionComponent>(Vector3f(width / 2 - width / 4, 0, height / 2 - height / 4))
 				.addComponent<CollisionComponent>(
 					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width, 0.75, height / 2 + height / 4));
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width / 2 + width / 4, 0.75, height / 2 + height / 4));
 	}
 
 	void MapGenerator::loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene)
