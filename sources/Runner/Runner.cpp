@@ -74,13 +74,14 @@ namespace BBM
 		if (gameState.nextScene == gameState.currentScene)
 			return;
 		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
-			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+			gameState.loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				component.fastClick = false;
 			}
 		}
-		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
-		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
+		gameState.loadedScenes[gameState.currentScene] = engine.getScene();
+		engine.changeScene(gameState.loadedScenes[gameState.nextScene]);
+		gameState.previousScene = gameState.currentScene;
 		gameState.currentScene = gameState.nextScene;
 	}
 
@@ -150,14 +151,14 @@ namespace BBM
 
 	void Runner::loadScenes()
 	{
-		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
-		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
-		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
-		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
-		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
-		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
-		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
-		gameState._loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
+		gameState.loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
+		gameState.loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
+		gameState.loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
+		gameState.loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
+		gameState.loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
+		gameState.loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
+		gameState.loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
+		gameState.loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
 	}
 
 	int Runner::run()
@@ -167,7 +168,7 @@ namespace BBM
 		Runner::addSystems(wal);
 		Runner::enableRaylib(wal);
 		Runner::loadScenes();
-		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
+		wal.changeScene(Runner::gameState.loadedScenes[GameState::SceneID::SplashScreen]);
 		wal.run<GameState>(Runner::updateState, Runner::gameState);
 		return 0;
 	}

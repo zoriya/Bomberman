@@ -280,7 +280,7 @@ namespace BBM
 				});
 			playerCount++;
 		}
-		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
+		Runner::gameState.loadedScenes[GameState::SceneID::GameScene] = scene;
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 		wal.getSystem<LobbySystem>().unloadLobby();
 	}

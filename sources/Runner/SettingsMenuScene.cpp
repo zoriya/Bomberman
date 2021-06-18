@@ -207,7 +207,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+				gameState.nextScene = gameState.previousScene;
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
