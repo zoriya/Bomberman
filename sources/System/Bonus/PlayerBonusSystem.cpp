@@ -3,6 +3,10 @@
 //
 
 #include "PlayerBonusSystem.hpp"
+#include "Component/Position/PositionComponent.hpp"
+#include "Component/Health//HealthComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 
 using namespace std::chrono_literals;
 
@@ -19,9 +23,20 @@ namespace BBM
 		auto &playerBonus = entity.get<PlayerBonusComponent>();
 
 		playerBonus.nextNoClipRate -= dtime;
-		if (playerBonus.nextNoClipRate <= 0ns) {
+		if (playerBonus.nextNoClipRate <= 0ns && playerBonus.isNoClipOn) {
 			playerBonus.nextNoClipRate = playerBonus.noClipBonusRate;
 			playerBonus.isNoClipOn = false;
+			auto playerPos = entity->tryGetComponent<PositionComponent>();
+			auto playerHealth = entity->tryGetComponent<HealthComponent>();
+			if (!playerHealth || !playerPos)
+				return;
+			for (auto &[other, pos, _] : this->_wal.getScene()->view<PositionComponent, CollisionComponent>()) {
+				if (other.hasComponent<TagComponent<Player>>())
+					continue;
+				auto vec = playerPos->position.abs() - pos.position.abs();
+				if (vec.abs().x < 0.65   && vec.abs().z < 0.65 && playerPos->position.distance(pos.position) < 1)
+					playerHealth->takeDmg(playerHealth->getHealthPoint());
+			}
 		}
 	}
 }

@@ -62,21 +62,25 @@ namespace BBM {
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
+		return NOCLIP;
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
-			{SPEEDUP, 45.0f},
-			{BOMBSTOCK, 30.0f},
-			{EXPLOSIONINC, 15.0f},
+			{BOMBSTOCK, 46.5f},
+			{SPEEDUP, 31.5f},
+			{EXPLOSIONINC, 16.5f},
 			{NOCLIP, 1.5f},
 		};
 		std::uniform_int_distribution<int> distribution(1,1000);
 		float value = (distribution(generator) / 10);
 		BonusType bonus = NOTHING;
 
+		std::cout << value << std::endl;
 		for (auto &chance : chanceValue)
-			if (chance.second > value)
+			if (chance.second > value) {
+				std::cout << value << "<" << chance.second << std::endl;
 				bonus = chance.first;
+			}
 		return (bonus);
 	}
 }
