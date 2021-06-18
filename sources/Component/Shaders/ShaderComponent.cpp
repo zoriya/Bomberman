@@ -25,7 +25,7 @@ namespace BBM
 	                                 const WAL::Callback<WAL::Entity &, WAL::Wal &, std::chrono::nanoseconds> &onFixedUpdate,
 	                                 bool lonely)
 		: WAL::Component(entity),
-		  shader(vertexFilePath, fragmentFilePath, lonely),
+		  shader(vertexPath, fragmentPath, lonely),
 		  fragmentFilePath(fragmentPath),
 		  vertexFilePath(vertexPath),
 		  update(onFixedUpdate)
