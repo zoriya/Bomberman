@@ -20,7 +20,7 @@ namespace BBM
 		//! @brief The ID of the lobby player (from 0 to 3)
 		int playerID;
 		//! @brief The color of the player (as an index)
-		int color;
+		int playerColor;
 		//! @brief Is this player ready
 		bool ready = false;
 		//! @brief The entity containing the ready display.
@@ -33,7 +33,7 @@ namespace BBM
 		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new lobby component.
-		explicit ResumeLobbyComponent(WAL::Entity &entity, int playerNumber, WAL::Entity &button, WAL::Entity &tile, int color);
+		explicit ResumeLobbyComponent(WAL::Entity &entity, int playerNumber, WAL::Entity &button, WAL::Entity &tile, int pColor);
 		//! @brief A lobby component is copyable.
 		ResumeLobbyComponent(const ResumeLobbyComponent &) = default;
 		//! @brief A default destructor

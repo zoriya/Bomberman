@@ -150,12 +150,12 @@ namespace BBM
 				speed->speed = ParserYAML::playersInfos[countPlayer].speed;
 			}
 			addController(player, lobby.layout);
-			std::string texturePath = "assets/player/ui/" + _colors[lobby.color] + ".png";
+			std::string texturePath = "assets/player/ui/" + _colors[lobby.playerColor] + ".png";
 			int x = (countPlayer % 2 == 0) ? 1920 - 10 - 320 : 10;
 			int y = (countPlayer % 3 != 0) ? 1080 - 10 - 248 : 10;
 			scene->addEntity("player color tile")
 					.addComponent<PositionComponent>(x, y - 2, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);
+					.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.playerColor]);
 			scene->addEntity("player ui tile")
 					.addComponent<PositionComponent>(x, y, 0)
 					.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
@@ -189,14 +189,14 @@ namespace BBM
 					.addComponent<PositionComponent>(x + 220, y + 122, 0)
 					.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 					.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-						auto *speed = player.tryGetComponent<SpeedComponent>();
+						auto speedComponent = player.tryGetComponent<SpeedComponent>();
 
-						if (!speed)
+						if (!speedComponent)
 							return;
 						RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
 						if (!text)
 							return;
-						text->setText(std::to_string(static_cast<int>(speed->speed * 100)));
+						text->setText(std::to_string(static_cast<int>(speedComponent->speed * 100)));
 					});
 			scene->addEntity("player hide wall")
 					.addComponent<PositionComponent>(x + 220, y + 161, 0)

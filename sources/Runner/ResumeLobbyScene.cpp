@@ -87,29 +87,10 @@ namespace BBM
 
 					texture->use("assets/buttons/button_back_hovered.png");
 				});
-		auto &howToPlay = scene->addEntity("to to play")
-				.addComponent<PositionComponent>(1920 - 10 - 75, 1080 - 85, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_htp.png")
-				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
-				{
-					gameState.nextScene = BBM::GameState::SceneID::HowToPlayScene;
-				})
-				.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
-				{
-					RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-					texture->use("assets/buttons/button_htp.png");
-				})
-				.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
-				{
-					RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
-					texture->use("assets/buttons/button_htp_hovered.png");
-				});
 		scene->addEntity("camera")
 			.addComponent<PositionComponent>(8, 20, 7)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &back, &back, nullptr);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &back, &back);
 		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);
 		return scene;
 	}
