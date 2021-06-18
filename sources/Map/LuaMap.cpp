@@ -227,13 +227,31 @@ namespace BBM
 		return 1;
 	}
 
-	int LuaMap::isPlayerInDanger(lua_State *L)
+	int LuaMap::getDangerLevelPlayer(lua_State *L)
+	{
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_pushboolean(L, map->_danger[map->_roundedPlayer.y][map->_roundedPlayer.x] > 0);
+		return 1;
+	}
+
+	int LuaMap::getDangerLevel(lua_State *L)
 	{
 		auto y = lua_tonumber(L, -1);
 		auto x = lua_tonumber(L, -2);
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_pushboolean(L, map->_danger[map->_roundedPlayer.y][map->_roundedPlayer.x] > 0);
+		lua_pushinteger(L, map->_danger[y][x]);
+		return 1;
+	}
+
+	int LuaMap::getBlockType(lua_State *L)
+	{
+		auto y = lua_tonumber(L, -1);
+		auto x = lua_tonumber(L, -2);
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_pushinteger(L, map->_map[y][x]);
 		return 1;
 	}
 }

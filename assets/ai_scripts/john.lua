@@ -108,9 +108,9 @@ end
 
 function getPathToSafeSpace(player)
 	local minXesc = (player.x - 3 < 0) and 0 or (player.x - 3);
-	local MaxXesc = (player.x + 3 > MaxX) and MaxX or (player.x + 3);
+	local MaxXesc = (player.x + 3 > 16) and 16 or (player.x + 3);
 	local minYesc = (player.y - 3 < 0) and 0 or (player.y - 3);
-	local MaxYesc = (player.y + 3 > MaxY) and MaxY or (player.y + 3);
+	local MaxYesc = (player.y + 3 > 16) and 16 or (player.y + 3);
 
 	local minDist = 100000
 	local res = {}
@@ -125,7 +125,10 @@ function getPathToSafeSpace(player)
 			end
 		end
 	end
-	local path = pathfind(player, res)
+	print("res")
+	print(res.x)
+	print(res.y)
+	local path = getPath(player.x, player.y, res.x, res.y)
 	return path
 end
 
@@ -135,10 +138,19 @@ function Update()
 	print("a")
 	local dangerMap = getDanger()
 	--local path = getPath(0, 0, 16, 16);
-	local player = getPlayer();
-	local playerRound = getPlayerRound();
-	PrintMap(dangerMap, 17, 17);
+	local player = getPlayerRound();
 	if isPlayerInDanger() then
+		print("b")
+		print("player")
+		print(player.x)
+		print(player.y)
+		local path = getPathToSafeSpace(player)
+		print("w")
+		for i,c in ipairs(path) do
+			print(i)
+			print(c.x)
+			print(c.y)
+		end
 		return 1, 1, false, false
 	end
 	---- sjould send Map Danger and MaxX MaxY
