@@ -18,16 +18,11 @@ namespace BBM
 		: System(wal)
 	{}
 
-	bool CameraSystem::introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, bool restart)
+	bool CameraSystem::introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity)
 	{	
 		auto &pos = entity.get<PositionComponent>();
 		static Vector3f posTarget(8, 25, 7);
-		static bool hasEnded = false;
 
-		if (restart) {
-			hasEnded = false;
-			return (false);
-		}
 		if (hasEnded)
 			return true;
 		if (pos.position.distance(posTarget) < 4) {
@@ -43,13 +38,12 @@ namespace BBM
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 			for (WAL::Entity &player : this->_wal.getScene()->view<TagComponent<Player>>())
 				player.getComponent<ControllableComponent>().disabled = false;
-			return (true);
+			return true;
 		}
 
 		auto &cam = entity.get<CameraComponent>();
-
 		pos.position += (posTarget - pos.position) / 100;
-		return (false);
+		return false;
 	}
 
 	void CameraSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
@@ -68,8 +62,6 @@ namespace BBM
 		for (auto &[entity, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
 			playerPos.emplace_back(pos.position);
 		}
-		if (!playerPos.empty())
-			introAnimation(entity, true);
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
 		for (int i = 0; i < playerPos.size(); i++)
