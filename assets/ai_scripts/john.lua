@@ -295,7 +295,7 @@ end
 ------ Update
 function Update(mapinfo)
 	log("NEW FRAME")
-	x = getMap()
+	x = getDanger()
 	PrintMap(x, 17, 17)
 	---- sjould send Map Danger and MaxX MaxY
 	--MaxX = 0

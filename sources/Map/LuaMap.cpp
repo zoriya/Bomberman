@@ -3,6 +3,7 @@
 //
 
 #include <map>
+#include "Map.hpp"
 #include "LuaMap.hpp"
 
 namespace BBM
@@ -15,6 +16,26 @@ namespace BBM
 	LuaMap::~LuaMap()
 	{ }
 
+	void LuaMap::clearDanger(void)
+	{
+		for (int i = 0; i < 17; i++) {
+			for (int j = 0; j < 17; j++) {
+				_danger[i][j] = 0;
+			}
+		}
+	}
+
+	bool LuaMap::setDanger(int xpos, int ypos, int dangerLevel)
+	{
+		if (xpos < 0 || xpos > 16 ||
+			ypos < 0 || ypos > 16)
+			return false;
+		if (_map[ypos][xpos] == MapGenerator::BREAKABLE ||
+			_map[ypos][xpos] == MapGenerator::UNBREAKABLE)
+			return false;
+		_danger[ypos][xpos] = dangerLevel;	
+		return true;
+	}
 
 	std::vector<Vector2f> pathfind(Vector2f root, Vector2f target)
 	{

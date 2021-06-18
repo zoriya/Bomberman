@@ -18,6 +18,12 @@ namespace BBM
 			//! @brief dtor
 			~LuaMap();
 
+			//! @brief Clear danger map
+			void clearDanger(void);
+
+			//! @brief set dangerlevel at xpos ypos
+			bool setDanger(int xpos, int ypos, int dangerLevel);
+
 			//! @brief A star pathfinding between two points
 			std::vector<Vector2f> pathfind(Vector2f, Vector2f);
 
