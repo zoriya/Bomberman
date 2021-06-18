@@ -59,7 +59,7 @@ namespace BBM
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				if (Runner::gameState.currentScene != GameState::LobbyScene
-					|| !LobbySystem::playersAreReady(*wal.getScene()))
+					&& !LobbySystem::playersAreReady(*wal.getScene()))
 					return;
 				LobbySystem::switchToGame(wal);
 			})

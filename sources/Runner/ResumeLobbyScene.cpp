@@ -16,6 +16,7 @@
 #include <Component/Animator/AnimatorComponent.hpp>
 #include <Component/Tag/TagComponent.hpp>
 #include <Drawables/Texture.hpp>
+#include <System/Lobby/ResumeLobbySystem.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
@@ -59,9 +60,9 @@ namespace BBM
 				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 				{
 					if (Runner::gameState.currentScene != GameState::ResumeLobbyScene
-						|| !LobbySystem::playersAreReady(*wal.getScene()))
+						|| !ResumeLobbySystem::playersAreReady(*wal.getScene()))
 						return;
-					LobbySystem::resumeToGame(wal);
+					ResumeLobbySystem::resumeToGame(wal);
 				})
 				.addComponent<TagComponent<"PlayButton">>();
 		auto &back = scene->addEntity("back to menu")

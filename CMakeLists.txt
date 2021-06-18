@@ -130,6 +130,10 @@ set(SOURCES
 	sources/System/Lobby/LobbySystem.hpp
 	sources/Component/Lobby/LobbyComponent.cpp
 	sources/Component/Lobby/LobbyComponent.hpp
+	sources/System/Lobby/ResumeLobbySystem.cpp
+	sources/System/Lobby/ResumeLobbySystem.hpp
+	sources/Component/Lobby/ResumeLobbyComponent.cpp
+	sources/Component/Lobby/ResumeLobbyComponent.hpp
 	sources/Component/Gravity/GravityComponent.hpp
 	sources/Component/Gravity/GravityComponent.cpp
 	sources/System/Gravity/GravitySystem.hpp

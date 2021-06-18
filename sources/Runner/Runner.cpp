@@ -42,6 +42,7 @@
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
 #include <Parser/ParserYaml.hpp>
+#include <System/Lobby/ResumeLobbySystem.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Sound/MenuSoundManagerSystem.hpp"
 #include "System/Gravity/GravitySystem.hpp"
@@ -112,6 +113,7 @@ namespace BBM
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
+	        .addSystem<ResumeLobbySystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -120,7 +122,7 @@ namespace BBM
 		#ifdef RELEASE
 		RAY::TraceLog::setLevel(LOG_NONE);
 		#else
-		RAY::TraceLog::setLevel(LOG_WARNING);
+		RAY::TraceLog::setLevel(LOG_TRACE);
 		#endif
 		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()

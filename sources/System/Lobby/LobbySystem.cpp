@@ -171,7 +171,7 @@ namespace BBM
 		auto &lobby = scene.view<LobbyComponent>();
 		return std::all_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
 			auto &lobbyPlayer = entity.get<LobbyComponent>();
-			return lobbyPlayer.ready || lobbyPlayer.layout == ControllableComponent::NONE;
+			return lobbyPlayer.ready && lobbyPlayer.layout != ControllableComponent::NONE;
 		});
 	}
 

@@ -30,6 +30,7 @@
 #include <Component/Renderer/Drawable2DComponent.hpp>
 #include <System/Lobby/LobbySystem.hpp>
 #include <filesystem>
+#include <Component/Lobby/ResumeLobbyComponent.hpp>
 #include "Utils/Utils.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -156,6 +157,12 @@ namespace BBM {
 				{"yellow", YELLOW},
 				{"green", GREEN}
 		};
+		std::map<std::string, int> colors = {
+				{"red", 1},
+				{"blue", 0},
+				{"yellow", 3},
+				{"green", 2}
+		};
 
 		playersInfos.emplace_back(PlayerInfos{
 			node.getName(),
@@ -172,7 +179,8 @@ namespace BBM {
 			throw (ParserError("Error with saved map: One asset is invalid.\n                Loading default maps..."));
 		}
 		auto start = tmpAssets.find_last_of('/') + 1;
-		auto color = map.at(tmpAssets.substr(start, tmpAssets.length() - start - 4));
+		auto colorStr = tmpAssets.substr(start, tmpAssets.length() - start - 4);
+		auto color = map.at(colorStr);
 		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
 		auto &playerTile = resumeScene->addEntity("player tile")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
@@ -183,7 +191,7 @@ namespace BBM {
 		auto &ready = resumeScene->addEntity("ready")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>();
-		playerLogo.addComponent<LobbyComponent>(countPlayer, ready, playerTile);
+		playerLogo.addComponent<ResumeLobbyComponent>(countPlayer, ready, playerTile, colors.at(colorStr));
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, Node &node)
