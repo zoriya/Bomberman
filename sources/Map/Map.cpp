@@ -39,10 +39,16 @@ namespace BBM
 	                               CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *health = entity.tryGetComponent<HealthComponent>();
+		auto *movable = entity.tryGetComponent<MovableComponent>();
+		auto *wallPos = wall.tryGetComponent<PositionComponent>();
+		auto *entityPos = entity.tryGetComponent<PositionComponent>();
 
-		if (!health)
+		if (!health || !movable || !wallPos)
 			return;
-		health->takeDmg(health->getHealthPoint());
+		if (entityPos->position.distance(wallPos->position) < 0.3)
+			health->takeDmg(health->getHealthPoint());
+		else
+			movable->addForce((wallPos->position - entityPos->position) * 0.02);
 	}
 	
 	void MapGenerator::wallCollision(WAL::Entity &entity,
@@ -336,7 +342,7 @@ namespace BBM
 		if (rnd > 0.98 && !hasHeight)
 			return HOLE;
 		if ((!hasHeight && rnd > 0.25) || rnd > 0.7)
-			return BREAKABLE;
+			return NOTHING;
 		return NOTHING;
 	}
 
