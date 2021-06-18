@@ -70,6 +70,8 @@ namespace BBM
 					break;
 				}
 			}
+			if (gameState.nextScene != GameState::SceneID::GameScene)
+				engine.getSystem<CameraSystem>().hasEnded = false;
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
@@ -81,6 +83,7 @@ namespace BBM
 		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
 			gameState.loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
 		}
+		RAY::Window::getInstance().setVisibleCursor(gameState.nextScene != GameState::SceneID::GameScene);
 		gameState.loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState.loadedScenes[gameState.nextScene]);
 		gameState.previousScene = gameState.currentScene;

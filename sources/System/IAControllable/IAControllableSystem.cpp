@@ -158,6 +158,9 @@ namespace BBM
 		auto &bombHolder = entity.get<BombHolderComponent>();
 		MapInfo player(pos.position, MapGenerator::NOTHING);
 
+		if (controllable.disabled)
+			return;
+
 		UpdateMapInfos(entity);
 
 		ia._state.getGlobal("Update");

@@ -10,16 +10,6 @@ namespace WAL
 		: _entity(entity)
 	{ }
 
-	bool Component::isDisabled() const
-	{
-		return this->_disabled;
-	}
-
-	void Component::setDisable(bool disabled)
-	{
-		this->_disabled = disabled;
-	}
-
 	void Component::onStart()
 	{
 		// TODO handle events here

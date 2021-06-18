@@ -9,6 +9,7 @@
 #include <Drawables/2D/Text.hpp>
 #include "Runner/Runner.hpp"
 #include "Component/Music/MusicComponent.hpp"
+#include "Drawables/Texture.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 
@@ -25,25 +26,47 @@ namespace BBM
         auto scene = this->_wal.getScene();
         RAY2D::Rectangle *rectangle = nullptr;
         RAY2D::Text *text = nullptr;
+        static auto &powered_text = scene->addEntity("powered by text")
+			.addComponent<PositionComponent>(1920 / 2 - 200, 1080 / 2 - 180, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("powered by", 30, RAY::Vector2(), WHITE);
         static auto &rayText = scene->addEntity("raylibtext Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 44, 1080 / 2 + 48, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Text>("", 50, RAY::Vector2(), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Text>("", 50, RAY::Vector2(), WHITE);
         static auto &bottomRectangle = scene->addEntity("bottom Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), WHITE);
         static auto &leftRectangle = scene->addEntity("left Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), WHITE);
         static auto &rightRectangle = scene->addEntity("right Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), WHITE);
         static auto &topRectangle = scene->addEntity("top Rectangle")
             .addComponent<PositionComponent>(1920 / 2 - 128, 1080 / 2 - 128, 0)
-            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), BLACK);
+            .addComponent<Drawable2DComponent, RAY2D::Rectangle>(logoPos, RAY::Vector2(16, 16), WHITE);
+        static auto &epitechLogo = scene->addEntity("epitech logo")
+			.addComponent<PositionComponent>(1920 / 2 - 150, 1080 / 2 - 61, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/epitech.png");
         static short letterCounter = 0;
 
         switch (component.currentStep)
         {
+        case IntroAnimationComponent::animationSteps::epitechLogo:
+            if (component.frameCounter == 30) {
+                epitechLogo.getComponent<PositionComponent>().position = Vector3f(1920, 1080, 0);
+            }
+            if (component.frameCounter == 40)
+                powered_text.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+            if (component.frameCounter == 50) {
+                rayText.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+                bottomRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+                leftRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+                rightRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+                topRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);
+                component.currentStep = IntroAnimationComponent::animationSteps::topLeftgrowing;
+                component.frameCounter = 0;
+            }
+            break;
         case IntroAnimationComponent::animationSteps::boxBlinking:
             if ((component.frameCounter / 15) % 2)
                 topRectangle.getComponent<Drawable2DComponent>().drawable->setColor(BLACK);

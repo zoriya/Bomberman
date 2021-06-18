@@ -2,8 +2,7 @@
 
 A recreation of the classic Bomberman arcade game
 
-[![Linux Build (Epitech Container)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_linux.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_linux.yml)
-[![Windows Build](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_windows.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build_windows.yml)
+[![Build](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/build.yml)
 [![Web Building](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/webassembly.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/webassembly.yml)
 [![Unit Tests](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/test.yml/badge.svg)](https://github.com/AnonymusRaccoon/Bomberman/actions/workflows/test.yml)
 

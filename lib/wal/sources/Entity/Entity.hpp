@@ -117,24 +117,21 @@ namespace WAL
 		}
 
 		//! @brief Check if this entity has a component.
-		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @tparam T The type of the component
 		template<typename T>
-		bool hasComponent(bool skipDisabled = true) const
+		bool hasComponent() const
 		{
 			const std::type_info &type = typeid(T);
-			return this->hasComponent(type, skipDisabled);
+			return this->hasComponent(type);
 		}
 
 		//! @brief Check if this entity has a component.
-		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_info &type, bool skipDisabled = true) const;
+		bool hasComponent(const std::type_info &type) const;
 
 		//! @brief Check if this entity has a component.
-		//! @param skipDisabled True if you want to skip disabled components (consider them non present), false otherwise.
 		//! @param type The type of the component
-		bool hasComponent(const std::type_index &type, bool skipDisabled = true) const;
+		bool hasComponent(const std::type_index &type) const;
 
 		//! @brief Add a component to this entity. The component is constructed in place.
 		//! @throw DuplicateError is thrown if a component with the same type already exist.

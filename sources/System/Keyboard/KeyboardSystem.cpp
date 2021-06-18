@@ -21,6 +21,9 @@ namespace BBM
 		const auto &keyboard = entity.get<KeyboardComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
 
+		if (controllable.disabled)
+			return;
+
 		const std::map<KeyboardKey, bool &> keyPressedMap = {
 			{keyboard.keySecondary, controllable.secondary},
 			{keyboard.keyBomb,      controllable.bomb},

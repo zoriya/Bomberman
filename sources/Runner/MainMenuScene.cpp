@@ -29,7 +29,7 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
 		scene->addEntity("logo")
 			.addComponent<PositionComponent>(1920 / 3, 180, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/logo_small.png");
