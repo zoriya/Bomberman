@@ -73,11 +73,13 @@ namespace BBM
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
-		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
-			gameState.loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		if (gameState.previousScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
 				component.fastClick = false;
 			}
+		}
+		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
+			gameState.loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
 		}
 		gameState.loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState.loadedScenes[gameState.nextScene]);
