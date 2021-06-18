@@ -177,7 +177,7 @@ namespace BBM {
 		if ((tmpAssets.find("red.png") == std::string::npos && tmpAssets.find("blue.png") == std::string::npos &&
 		tmpAssets.find("green.png") == std::string::npos && tmpAssets.find("yellow.png") == std::string::npos &&
 		tmpAssets.find("ai.png") == std::string::npos) || !std::filesystem::exists(tmpAssets)) {
-			throw (ParserError("Error with saved map: One asset is invalid.\n                Loading default maps..."));
+			throw (ParserError("One asset is invalid."));
 		}
 		auto start = tmpAssets.find_last_of('/') + 1;
 		auto colorStr = tmpAssets.substr(start, tmpAssets.length() - start - 4);
@@ -285,11 +285,11 @@ namespace BBM {
 			subStr = line.substr(start, line.find(']', 0) - 1 - start);
 			auto pos = Utils::splitStr(subStr, ',');
 			if (pos.size() != 3)
-				throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
+				throw (ParserError("Error parsing position."));
 			if (!Utils::tryParseFloat(pos[0], x) || !Utils::tryParseFloat(pos[1], y) || !Utils::tryParseFloat(pos[2], z))
-				throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
+				throw (ParserError("Error parsing position."));
 		} catch (const std::out_of_range &err) {
-			throw (ParserError("Error with saved map: Error parsing position.\n                Loading default maps..."));
+			throw (ParserError("Error parsing position."));
 		}
 		return Vector3f(x, y, z);
 	}
@@ -299,9 +299,9 @@ namespace BBM {
 		int maxBomb = 0;
 
 		if (str.find('-') != std::string::npos)
-			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse max bomb."));
 		if (!Utils::tryParseInteger(str, maxBomb))
-			throw (ParserError("Error with saved map: Couldn't parse max bomb.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse max bomb."));
 		return (maxBomb);
 	}
 
@@ -310,9 +310,9 @@ namespace BBM {
 		int explosionRadius = 0;
 
 		if (line.find('-') != std::string::npos)
-			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse explosion radius."));
 		if (!Utils::tryParseInteger(line, explosionRadius))
-			throw (ParserError("Error with saved map: Couldn't parse explosion radius.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse explosion radius."));
 		return (explosionRadius);
 	}
 
@@ -321,29 +321,29 @@ namespace BBM {
 		float speed = 0;
 
 		if (line.find('-') != std::string::npos)
-			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse speed."));
 		if (!Utils::tryParseFloat(line, speed))
-			throw (ParserError("Error with saved map: Couldn't parse speed.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse speed."));
 		return (speed);
 	}
 
 	MapGenerator::BlockType ParserYAML::_parseBlockType(const std::string& blockType)
 	{
 		if (blockType.find('-') != std::string::npos)
-			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse block type."));
 		int block = 0;
 		if (!Utils::tryParseInteger(blockType, block))
-			throw (ParserError("Error with saved map: Couldn't parse block type.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse block type."));
 		return (static_cast<MapGenerator::BlockType>(block));
 	}
 
 	Bonus::BonusType ParserYAML::_parseBonusType(const std::string& bonusType)
 	{
 		if (bonusType.find('-') != std::string::npos)
-			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse bonus type."));
 		int bonus = 0;
 		if (!Utils::tryParseInteger(bonusType, bonus))
-			throw (ParserError("Error with saved map: Couldn't parse bonus type.\n                Loading default maps..."));
+			throw (ParserError("Couldn't parse bonus type."));
 		return (static_cast<Bonus::BonusType>(bonus));
 	}
 
@@ -357,10 +357,10 @@ namespace BBM {
 
 
 		if (!garbage.empty()) {
-			throw ParserError("ill formed header, line: " + Utils::trimCopy(line));
+			throw ParserError("Ill formed header,\nline: " + Utils::trimCopy(line));
 		}
 		if (headerName.back() != ':') {
-			throw ParserError("header not ended with ':' , line: " + Utils::trimCopy(line));
+			throw ParserError("Header not ended with ':',\nline: " + Utils::trimCopy(line));
 		}
 		headerName.pop_back();
 		return headerName;
@@ -376,10 +376,10 @@ namespace BBM {
 		ss >> propertyName >> propertyValue >> garbage;
 
 		if (!garbage.empty()) {
-			throw ParserError("ill formed property, line: " + Utils::trimCopy(line));
+			throw ParserError("ill formed property, \nline: " + Utils::trimCopy(line));
 		}
 		if (propertyName.back() != ':') {
-			throw ParserError("property name not ended with ':' , line: " + Utils::trimCopy(line));
+			throw ParserError("property name not ended with ':', \nline: " + Utils::trimCopy(line));
 		}
 		propertyName.pop_back();
 		return std::make_pair(propertyName, propertyValue);
@@ -395,7 +395,7 @@ namespace BBM {
 		std::ifstream file(path);
 
 		if (!file.good())
-			throw ParserError("can't read file");
+			throw ParserError("Can't read file");
 		return parseNode(file, "root");
 	}
 
@@ -412,7 +412,7 @@ namespace BBM {
 				throw ParserError("Yaml only support 2 spaces as indent");
 			}
 			if (lineIndentLevel > static_cast<float>(indentLevel)) {
-				throw ParserError("indent issue");
+				throw ParserError("Indent issue");
 			}
 			if (lineIndentLevel < static_cast<float>(indentLevel)) {
 				file.seekg(static_cast<size_t>(file.tellg()) - (line.length() + endlNbChars));
