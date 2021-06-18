@@ -29,13 +29,13 @@ namespace BBM
             	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
 
 				lua_newtable(L);
-				for (int i = 0; i < 16; i++) {
-					lua_pushnumber(L, index++);
+				for (int i = 0; i < 17; i++) {
+					lua_pushinteger(L, index++);
 					lua_newtable(L);
 					int indexrow = 1;
-					for (int j = 0; j < 16; j++) {
-						lua_pushnumber(L, indexrow++);
-						lua_pushnumber(L, map->_map[i][j]);
+					for (int j = 0; j < 17; j++) {
+						lua_pushinteger(L, indexrow++);
+						lua_pushinteger(L, map->_map[i][j]);
 						lua_settable(L, -3);
 					}
 					lua_settable(L, -3);
@@ -50,13 +50,13 @@ namespace BBM
             	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
 
 				lua_newtable(L);
-				for (int i = 0; i < 16; i++) {
-					lua_pushnumber(L, index++);
+				for (int i = 0; i < 17; i++) {
+					lua_pushinteger(L, index++);
 					lua_newtable(L);
 					int indexrow = 1;
-					for (int j = 0; j < 16; j++) {
-						lua_pushnumber(L, indexrow++);
-						lua_pushnumber(L, map->_danger[i][j]);
+					for (int j = 0; j < 17; j++) {
+						lua_pushinteger(L, indexrow++);
+						lua_pushinteger(L, map->_danger[i][j]);
 						lua_settable(L, -3);
 					}
 					lua_settable(L, -3);

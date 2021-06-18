@@ -8,7 +8,7 @@
 namespace BBM
 {
 	LuaMap::LuaMap()
-	: _map(16, std::vector<int>(16, 0)), _danger(16, std::vector<int>(16, 0))
+	: _map(17, std::vector<int>(17, 0)), _danger(17, std::vector<int>(17, 0))
 	{
 	}
 

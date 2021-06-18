@@ -28,13 +28,13 @@ namespace BBM
 		if (_cached)
 			return;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Breakable>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::BREAKABLE;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Unbreakable>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::UNBREAKABLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::UNBREAKABLE;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Bumper>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::BUMPER));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::BUMPER;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Hole>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::HOLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::HOLE;
 		for (auto &[other, pos, bomb, timer] : _wal.getScene()->view<PositionComponent, BasicBombComponent, TimerComponent>())
 			_bombs.push_back(std::make_tuple(pos.position, bomb.explosionRadius, timer.ringIn));
 		_cached = true;
