@@ -12,6 +12,7 @@ namespace BBM
         unsigned int frameCounter = 0;
 
 		enum animationSteps {
+			epitechLogo,
             boxBlinking,
             topLeftgrowing,
             bottomRightGrowing,
@@ -20,7 +21,7 @@ namespace BBM
 			prompt,
         };
 
-        enum animationSteps currentStep = boxBlinking;
+        enum animationSteps currentStep = epitechLogo;
 
 		//! @inherit
 		Component *clone(WAL::Entity &entity) const override;
