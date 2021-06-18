@@ -72,20 +72,20 @@ namespace BBM
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::ResumeLobbyScene;
-				auto scene = Runner::loadGameScene();
+				auto gameScene = Runner::loadGameScene();
 				try {
-					ParserYAML::load(scene);
+					ParserYAML::load(gameScene);
 				} catch (std::exception const &err) {
 					Runner::gameState._loadedScenes[GameState::SceneID::LobbyScene]->addEntity("Error message parser")
 							.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
 							.addComponent<Drawable2DComponent, RAY2D::Text>(err.what(), 50, RAY::Vector2(), RED)
-							.addComponent<TimerComponent>(3s, [](WAL::Entity &entity, WAL::Wal &wal) {
-								entity.scheduleDeletion();
+							.addComponent<TimerComponent>(3s, [](WAL::Entity &myEntity, WAL::Wal &wal) {
+								myEntity.scheduleDeletion();
 							});
 					gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
 					return;
 				}
-				Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
+				Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = gameScene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 430, 0)

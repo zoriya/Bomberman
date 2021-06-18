@@ -33,8 +33,8 @@ namespace BBM
 		entity.addComponent<PositionComponent>(position)
 				.addComponent<TagComponent<Blowable>>()
 				.addComponent<MovableComponent>()
-				.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &wal) {
-					entity.scheduleDeletion();
+				.addComponent<HealthComponent>(1, [](WAL::Entity &myEntity, WAL::Wal &wal) {
+					myEntity.scheduleDeletion();
 				})
 				.addComponent<LevitateComponent>(position.y)
 				.addComponent<CollisionComponent>([](WAL::Entity &bonus, const WAL::Entity &player, CollisionComponent::CollidedAxis axis) {
