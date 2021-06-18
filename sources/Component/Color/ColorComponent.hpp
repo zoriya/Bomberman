@@ -20,7 +20,7 @@ namespace BBM
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new ColorComponent at a certain color
-		ColorComponent(WAL::Entity &entity, RAY::Color color);
+		ColorComponent(WAL::Entity &entity, RAY::Color componentColor);
 		//! @brief Create a new ColorComponent at a certain color
 		ColorComponent(WAL::Entity &entity, unsigned char r, unsigned char g, unsigned char b, unsigned char a);
 		//! @brief A color component is copy constructable

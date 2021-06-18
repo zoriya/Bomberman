@@ -60,7 +60,6 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		auto &view = engine.getScene()->view<ControllableComponent>();
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
@@ -115,7 +114,11 @@ namespace BBM
 
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
+		#ifdef RELEASE
+		RAY::TraceLog::setLevel(LOG_NONE);
+		#else
 		RAY::TraceLog::setLevel(LOG_WARNING);
+		#endif
 		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()

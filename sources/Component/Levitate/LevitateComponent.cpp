@@ -11,9 +11,9 @@ namespace BBM
 			  y()
 	{}
 
-	LevitateComponent::LevitateComponent(WAL::Entity &entity, float y)
+	LevitateComponent::LevitateComponent(WAL::Entity &entity, float entityY)
 			: WAL::Component(entity),
-			  y(y)
+			  y(entityY)
 	{}
 
 	WAL::Component *LevitateComponent::clone(WAL::Entity &entity) const

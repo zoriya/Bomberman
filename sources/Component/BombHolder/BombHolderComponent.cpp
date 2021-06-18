@@ -12,9 +12,9 @@ namespace BBM
 		: WAL::Component(entity)
 	{}
 
-	BombHolderComponent::BombHolderComponent(WAL::Entity &entity, unsigned int maxBombCount)
+	BombHolderComponent::BombHolderComponent(WAL::Entity &entity, unsigned int maxCount)
 		: WAL::Component(entity),
-		  maxBombCount(maxBombCount)
+		  maxBombCount(maxCount)
 	{}
 
 	WAL::Component *BombHolderComponent::clone(WAL::Entity &entity) const

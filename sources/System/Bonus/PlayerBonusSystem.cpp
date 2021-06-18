@@ -18,8 +18,6 @@ namespace BBM
 
 	void PlayerBonusSystem::onUpdate(WAL::ViewEntity<PlayerBonusComponent, ControllableComponent, BombHolderComponent> &entity, std::chrono::nanoseconds dtime)
 	{
-		auto &controllable = entity.get<ControllableComponent>();
-		auto &holder = entity.get<BombHolderComponent>();
 		auto &playerBonus = entity.get<PlayerBonusComponent>();
 
 		playerBonus.nextNoClipRate -= dtime;

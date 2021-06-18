@@ -21,7 +21,7 @@ namespace BBM
 		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Ctor
-		explicit CameraComponent(WAL::Entity &, Vector3f target = Vector3f());
+		explicit CameraComponent(WAL::Entity &, Vector3f cameraTarget = Vector3f());
 		//! @brief A camera component is copy constructable.
 		CameraComponent(const CameraComponent &) = default;
 		//! @brief Default destructor.

@@ -24,7 +24,7 @@ namespace BBM {
 		explicit LevitateComponent(WAL::Entity &entity);
 
 		//! @brief Create a new levitate component.
-		LevitateComponent(WAL::Entity &entity, float y);
+		LevitateComponent(WAL::Entity &entity, float entityY);
 
 		//! @brief A Levitate component is copy constructable.
 		LevitateComponent(const LevitateComponent &) = default;
