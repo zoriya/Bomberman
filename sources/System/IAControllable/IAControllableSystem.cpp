@@ -83,6 +83,14 @@ namespace BBM
 		lua_pushlightuserdata(state.getState(), &_luamap);
 		lua_pushcclosure(state.getState(), LuaMap::getPath, 1);
 		lua_setglobal(state.getState(), "getPath");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getPlayer, 1);
+		lua_setglobal(state.getState(), "getPlayer");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getPlayerRound, 1);
+		lua_setglobal(state.getState(), "getPlayerRound");
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)

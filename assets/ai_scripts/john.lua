@@ -132,12 +132,10 @@ end
 ------ Update
 function Update(mapinfo)
 	log("NEW FRAME")
-	x = getDanger()
-	p = getPath(0, 0, 16, 16);
-	for i, c in ipairs(p) do
-		print(c.x)
-		print(c.y)
-	end
+	local dangerMap = getDanger()
+	local path = getPath(0, 0, 16, 16);
+	local player = getPlayer();
+	local playerRound = getPlayerRound();
 	---- sjould send Map Danger and MaxX MaxY
 	--MaxX = 0
 	--MaxY = 0

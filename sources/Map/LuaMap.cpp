@@ -192,6 +192,34 @@ namespace BBM
 		return 1;
 	}
 
+	int LuaMap::getPlayer(lua_State *L)
+	{
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_newtable(L);
+		lua_pushstring(L, "x");
+		lua_pushnumber(L, map->_player.x);
+		lua_settable(L, -3);
+		lua_pushstring(L, "y");
+		lua_pushnumber(L, map->_player.y);
+		lua_settable(L, -3);
+		return 1;
+	}
+
+	int LuaMap::getPlayerRound(lua_State *L)
+	{
+		LuaG::State state(L);
+    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		lua_newtable(L);
+		lua_pushstring(L, "x");
+		lua_pushnumber(L, map->_roundedPlayer.x);
+		lua_settable(L, -3);
+		lua_pushstring(L, "y");
+		lua_pushnumber(L, map->_roundedPlayer.y);
+		lua_settable(L, -3);
+		return 1;
+	}
+
 	int LuaMap::getClosestSafeSpace(lua_State *L)
 	{
 		LuaG::State state(L);

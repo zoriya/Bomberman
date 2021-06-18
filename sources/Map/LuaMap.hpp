@@ -39,6 +39,12 @@ namespace BBM
 			//! @brief get array of nodes, path from a to b
 			static int getPath(lua_State *L);
 
+			//! @brief get player pos
+			static int getPlayer(lua_State *L);
+
+			//! @brief get rounded player pos
+			static int getPlayerRound(lua_State *L);
+
 			//! @brief get closest safe space of player
 			static int getClosestSafeSpace(lua_State *L);
 
