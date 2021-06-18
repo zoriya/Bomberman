@@ -36,11 +36,11 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		scene->addEntity("background image")
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/game.png"), Vector3f(50, 1, 50))
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/game.png"), Vector3f(50, 1, 50))
 			.addComponent<PositionComponent>(5, -2, 0);
 		scene->addEntity("background image")
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), 90, Vector3f(), Vector3f(1, 0, 0))
-			.addComponent<PositionComponent>(0, 0, 22);
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), -90, Vector3f(), Vector3f(1, 0, 0))
+			.addComponent<PositionComponent>(5, 0, 22);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
