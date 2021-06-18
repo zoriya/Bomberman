@@ -77,13 +77,13 @@ namespace BBM
 					ParserYAML::load(gameScene);
 				} catch (std::exception const &err) {
 					std::cout << err.what() << std::endl;
-					gameScene->addEntity("Error message parser")
+					Runner::gameState._loadedScenes[GameState::SceneID::LobbyScene]->addEntity("Error message parser")
 							.addComponent<PositionComponent>(1920 / 5, 2 * 1080 / 4.25, 0)
 							.addComponent<TimerComponent>(3s, [](WAL::Entity &myEntity, WAL::Wal &wal) {
 								myEntity.scheduleDeletion();
 							})
 							.addComponent<Drawable2DComponent, RAY2D::Text>(err.what(), 50, RAY::Vector2(), RED);
-					gameState.nextScene = BBM::GameState::SceneID::GameScene;
+					gameState.nextScene = BBM::GameState::SceneID::LobbyScene;
 					return;
 				}
 				Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = gameScene;
