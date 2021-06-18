@@ -16,11 +16,14 @@ namespace BBM
 	class CameraSystem : public WAL::System<CameraComponent, PositionComponent>
 	{
 	public:
+		//! @brief A boolean indicating if the intro's animation has ended.
+		bool hasEnded = false;
+
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, std::chrono::nanoseconds) override;
 
 		//! @brief introduciton animation when entering gameScene
-		bool introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity, bool restart = false);
+		bool introAnimation(WAL::ViewEntity<CameraComponent, PositionComponent> &entity);
 
 		//! @brief ctor
 		CameraSystem(WAL::Wal &wal);
