@@ -18,6 +18,8 @@
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
+#include <Drawables/3D/Plane.hpp>
+#include <Drawables/3D/Cube.hpp>
 #include "Drawables/2D/Text.hpp"
 #include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
@@ -45,9 +47,8 @@ namespace BBM
 			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("background image")
-			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background.png", false)
-			.addComponent<PositionComponent>()
-			.addComponent<TagComponent<Background>>();
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", false, std::make_pair(MAP_DIFFUSE, "assets/background.png"), Vector3f(50, 1, 50))
+			.addComponent<PositionComponent>(5, -2, 0);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
