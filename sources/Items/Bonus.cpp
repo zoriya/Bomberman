@@ -64,7 +64,6 @@ namespace BBM {
 
 	Bonus::BonusType Bonus::getRandomBonusType()
 	{
-		return NOCLIP;
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
@@ -79,10 +78,8 @@ namespace BBM {
 
 		std::cout << value << std::endl;
 		for (auto &chance : chanceValue)
-			if (chance.second > value) {
-				std::cout << value << "<" << chance.second << std::endl;
+			if (chance.second > value)
 				bonus = chance.first;
-			}
 		return (bonus);
 	}
 }
