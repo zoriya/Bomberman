@@ -21,26 +21,26 @@ namespace BBM
 		std::shared_ptr<RAY::Drawables::ADrawable2D> drawable;
 
 		//! @brief ctor
-		Drawable2DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable2D> drawable, bool drawBefore3D = false)
+		Drawable2DComponent(WAL::Entity &entity, std::shared_ptr<RAY::Drawables::ADrawable2D> drawable2D, bool drawBehind3D = false)
 			: WAL::Component(entity),
-			  drawable(std::move(drawable)),
-			  drawBefore3D(drawBefore3D)
+			  drawBefore3D(drawBehind3D),
+			  drawable(std::move(drawable2D))
 		{}
 
 		//! ctor
 		template<typename T, typename ...Params>
 		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, Params &&...params)
 			: WAL::Component(entity),
-			  drawable(new T(std::forward<Params>(params)...)),
-			  drawBefore3D(false)
+			  drawBefore3D(false),
+			  drawable(new T(std::forward<Params>(params)...))
 		{}
 
 		//! ctor
 		template<typename T, typename ...Params>
-		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, bool drawBefore3D, Params &&...params)
+		explicit Drawable2DComponent(WAL::Entity &entity, WAL::TypeHolder<T>, bool drawBehind3D, Params &&...params)
 			: WAL::Component(entity),
-			 drawable(new T(std::forward<Params>(params)...)),
-			 drawBefore3D(drawBefore3D)
+			 drawBefore3D(drawBehind3D),
+			 drawable(new T(std::forward<Params>(params)...))
 		{}
 
 		//! @brief Clone a component for another or the same entity.

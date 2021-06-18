@@ -20,15 +20,15 @@ namespace BBM
 		auto scene = std::make_shared<WAL::Scene>();
 
 		addMenuControl(*scene);
-		auto &splashComponent = scene->addEntity("animation component")
+		scene->addEntity("animation component")
 			.addComponent<IntroAnimationComponent>();
-		auto &background = scene->addEntity("background")
+		scene->addEntity("background")
 			.addComponent<PositionComponent>(0, 0, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(1920, 1080));
-		auto &text = scene->addEntity("powered by text")
+		scene->addEntity("powered by text")
 			.addComponent<PositionComponent>(1920 / 2 - 200, 1080 / 2 - 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("powered by", 30, RAY::Vector2(), BLACK);
-		auto &skipText = scene->addEntity("Press space to skip")
+		scene->addEntity("Press space to skip")
 			.addComponent<PositionComponent>(1920 - 250, 1080 - 30, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Press space to skip", 20, RAY::Vector2(), BLACK)
 			.addComponent<OnIdleComponent>()

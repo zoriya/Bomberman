@@ -26,7 +26,7 @@ namespace BBM
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief A component can't be instantiated, it should be derived.
-		explicit BasicBombComponent(WAL::Entity &entity, int damage, int explosionRadius, std::vector<unsigned> ignored);
+		explicit BasicBombComponent(WAL::Entity &entity, int damageHit, int radius, std::vector<unsigned> ignored);
 
 		//! @brief A component can't be instantiated, it should be derived.
 		BasicBombComponent(const BasicBombComponent &) = default;

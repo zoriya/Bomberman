@@ -29,7 +29,7 @@ namespace BBM
 		return this->_modelAnimation.at(this->_currentAnimIndex).getFrameCounter();
 	}
 
-	RAY::ModelAnimation AnimationsComponent::getCurrentModelAnim()
+	RAY::ModelAnimation &AnimationsComponent::getCurrentModelAnim()
 	{
 		return this->_modelAnimation[this->_currentAnimIndex];
 	}

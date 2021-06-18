@@ -84,8 +84,8 @@ namespace BBM
 					entity.removeComponent<ControllableComponent>();
 				if (entity.hasComponent<TimerComponent>())
 					return;
-				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &entity, WAL::Wal &wal) {
-					entity.scheduleDeletion();
+				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &wal) {
+					ent.scheduleDeletion();
 				});
 			});
 	}
