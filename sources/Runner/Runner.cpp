@@ -70,8 +70,6 @@ namespace BBM
 					break;
 				}
 			}
-			if (gameState.nextScene != GameState::SceneID::GameScene)
-				engine.getSystem<CameraSystem>().hasEnded = false;
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
@@ -117,9 +115,9 @@ namespace BBM
 			.addSystem<ShaderSystem>()
 			.addSystem<ShaderModelSystem>()
 			.addSystem<ShaderDrawable2DSystem>()
-			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
+			.addSystem<EndConditionSystem>()
 			.addSystem<MusicSystem>();
 	}
 
