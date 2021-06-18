@@ -15,7 +15,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void TimerUISystem::onUpdate(WAL::ViewEntity<TimerComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime)
+	void TimerUISystem::onUpdate(WAL::ViewEntity<TimerComponent, Drawable2DComponent, TagComponent<"Timer">> &entity, std::chrono::nanoseconds dtime)
 	{
 		auto &timer = entity.get<TimerComponent>();
 		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.get<Drawable2DComponent>().drawable.get());

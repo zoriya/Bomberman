@@ -21,7 +21,6 @@ namespace BBM
 		// todo check why the .get doesn't work
 		auto &speed = entity->getComponent<SpeedComponent>();
 		auto &movable = entity.get<MovableComponent>();
-		auto health = entity->tryGetComponent<HealthComponent>();
 		Vector2f move = controllable.move.normalized() * speed.speed;
 
 		movable.addForce(Vector3f(move.x, 0, move.y));
