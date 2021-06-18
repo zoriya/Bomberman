@@ -71,8 +71,8 @@ namespace BBM
 			maxDist = 23;
 		Vector3f pos2d(pos.position.abs().x,0, pos.position.abs().z);
 		Vector3f newPos2d(newCameraPos.abs().x, 0, pos.position.abs().z);
-		for (auto &[entity, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
-			backPos.position -= (newPos2d - pos2d) / 10;
+		for (auto &[other, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
+			backPos.position = cam.target;
 		}
 		newCameraPos.y = 0;
 		cam.target += (newCameraPos.abs() - cam.target.abs()) / 10;
