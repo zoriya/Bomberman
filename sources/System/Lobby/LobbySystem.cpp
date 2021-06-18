@@ -177,11 +177,11 @@ namespace BBM
 			return false;
 		return std::all_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<LobbyComponent> &entity) {
 			auto &lobbyPlayer = entity.get<LobbyComponent>();
-			return lobbyPlayer.ready && lobbyPlayer.layout != ControllableComponent::NONE;
+			return lobbyPlayer.ready || lobbyPlayer.layout == ControllableComponent::NONE;
 		});
 	}
 
-	void LobbySystem::_addController(WAL::Entity &player, ControllableComponent::Layout layout)
+	void LobbySystem::addController(WAL::Entity &player, ControllableComponent::Layout layout)
 	{
 		switch (layout) {
 		case ControllableComponent::KEYBOARD_0:
@@ -209,35 +209,18 @@ namespace BBM
 		player.getComponent<ControllableComponent>().layout = layout;
 	}
 
-	void LobbySystem::switchToGame(WAL::Wal &wal)
+	void LobbySystem::createTile(std::shared_ptr<WAL::Scene> scene, WAL::Entity &player, int color, int playerCount)
 	{
-		auto scene = Runner::loadGameScene();
-		int mapWidth = Runner::mapWidth;
-		int mapHeight = Runner::mapHeight;
-		int playerCount = 0;
-
-		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
-			if (lobby.layout == ControllableComponent::NONE)
-				continue;
-			auto &player = Runner::createPlayer(*scene);
-			_addController(player, lobby.layout);
-			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
-																		 (Runner::hasHeights ? 1.01 : 0),
-																		 mapHeight * (!(playerCount % 3)));
-			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
-			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + colors[lobby.color] + ".png");
-
-
-			std::string texturePath = "assets/player/ui/" + colors[lobby.color] + ".png";
-			int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
-			int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
-			scene->addEntity("player color tile")
+		std::string texturePath = "assets/player/ui/" + colors[color] + ".png";
+		int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
+		int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
+		scene->addEntity("player color tile")
 				.addComponent<PositionComponent>(x, y - 2, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.color]);
-			scene->addEntity("player ui tile")
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[color]);
+		scene->addEntity("player ui tile")
 				.addComponent<PositionComponent>(x, y, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
-			scene->addEntity("player hide fireup")
+		scene->addEntity("player hide fireup")
 				.addComponent<PositionComponent>(x + 220, y + 35, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
@@ -250,7 +233,7 @@ namespace BBM
 						return;
 					text->setText(std::to_string(static_cast<int>(bonus->explosionRadius)));
 				});
-			scene->addEntity("player hide bombup")
+		scene->addEntity("player hide bombup")
 				.addComponent<PositionComponent>(x + 220, y + 77, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
@@ -263,7 +246,7 @@ namespace BBM
 						return;
 					text->setText(std::to_string(bonus->bombCount) + " / " + std::to_string(bonus->maxBombCount));
 				});
-			scene->addEntity("player hide speedup")
+		scene->addEntity("player hide speedup")
 				.addComponent<PositionComponent>(x + 220, y + 122, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
@@ -276,7 +259,7 @@ namespace BBM
 						return;
 					text->setText(std::to_string(static_cast<int>(speed->speed * 100)));
 				});
-			scene->addEntity("player hide wall")
+		scene->addEntity("player hide wall")
 				.addComponent<PositionComponent>(x + 220, y + 161, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
 				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
@@ -289,6 +272,27 @@ namespace BBM
 						return;
 					text->setText(bonus->isNoClipOn ? "YES" : "NO");
 				});
+	}
+
+	void LobbySystem::switchToGame(WAL::Wal &wal)
+	{
+		auto scene = Runner::loadGameScene();
+		int mapWidth = Runner::mapWidth;
+		int mapHeight = Runner::mapHeight;
+		int playerCount = 0;
+
+		for (auto &[_, lobby] : wal.getScene()->view<LobbyComponent>()) {
+			if (lobby.layout == ControllableComponent::NONE)
+				continue;
+			auto &player = Runner::createPlayer(*scene);
+			player.getComponent<PositionComponent>().position = Vector3f(mapWidth * (playerCount % 2),
+																		 (Runner::hasHeights ? 1.01 : 0),
+																		 mapHeight * (!(playerCount % 3)));
+			auto *model = dynamic_cast<RAY3D::Model *>(player.getComponent<Drawable3DComponent>().drawable.get());
+			model->setTextureToMaterial(MAP_DIFFUSE, "assets/player/textures/" + colors[lobby.color] + ".png");
+
+			addController(player, lobby.layout);
+			createTile(scene, player, lobby.color, playerCount);
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;

@@ -16,13 +16,7 @@ namespace BBM
 	//! @brief A system to handle Health entities.
 	class ResumeLobbySystem : public WAL::System<ResumeLobbyComponent, Drawable2DComponent>
 	{
-	private:
-		static std::array<std::string, 4> _colors;
-
-		static std::array<RAY::Color, 4> _rayColors;
 	public:
-		//! @brief Add a controller for the player.
-		static void addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
 		//! @brief Add a controller for the player when we resume a game
 		static void resumeToGame(WAL::Wal &wal);

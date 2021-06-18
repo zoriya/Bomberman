@@ -23,26 +23,13 @@
 #include "Component/Color/ColorComponent.hpp"
 #include "Component/Stat/StatComponent.hpp"
 #include "Component/Bonus/PlayerBonusComponent.hpp"
+#include "System/Lobby/LobbySystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
 
 namespace BBM
 {
-	std::array<std::string, 4> ResumeLobbySystem::_colors = {
-			"blue",
-			"red",
-			"green",
-			"yellow"
-	};
-
-	std::array<RAY::Color, 4> ResumeLobbySystem::_rayColors = {
-			BLUE,
-			RED,
-			GREEN,
-			YELLOW
-	};
-
 	ResumeLobbySystem::ResumeLobbySystem(WAL::Wal &wal)
 			: System(wal)
 	{}
@@ -100,33 +87,6 @@ namespace BBM
 		});
 	}
 
-	void ResumeLobbySystem::addController(WAL::Entity &player, ControllableComponent::Layout layout)
-	{
-		switch (layout) {
-			case ControllableComponent::KEYBOARD_0:
-			case ControllableComponent::KEYBOARD_1:
-				player.addComponent<KeyboardComponent>(layout);
-				break;
-			case ControllableComponent::GAMEPAD_0:
-				player.addComponent<GamepadComponent>(0);
-				break;
-			case ControllableComponent::GAMEPAD_1:
-				player.addComponent<GamepadComponent>(1);
-				break;
-			case ControllableComponent::GAMEPAD_2:
-				player.addComponent<GamepadComponent>(2);
-				break;
-			case ControllableComponent::GAMEPAD_3:
-				player.addComponent<GamepadComponent>(3);
-				break;
-			case ControllableComponent::AI:
-				player.addComponent<IAControllableComponent>("./assets/ai_scripts/john.lua");
-				break;
-			default:
-				throw std::runtime_error("Invalid controller for a player.");
-		}
-	}
-
 	void ResumeLobbySystem::resumeToGame(WAL::Wal &wal)
 	{
 		auto scene = Runner::gameState._loadedScenes[GameState::SceneID::GameScene];
@@ -149,68 +109,8 @@ namespace BBM
 				bombHolder->maxBombCount = ParserYAML::playersInfos[countPlayer].maxBombCount;
 				speed->speed = ParserYAML::playersInfos[countPlayer].speed;
 			}
-			addController(player, lobby.layout);
-			std::string texturePath = "assets/player/ui/" + _colors[lobby.playerColor] + ".png";
-			int x = (countPlayer % 2 == 0) ? 1920 - 10 - 320 : 10;
-			int y = (countPlayer % 3 != 0) ? 1080 - 10 - 248 : 10;
-			scene->addEntity("player color tile")
-					.addComponent<PositionComponent>(x, y - 2, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[lobby.playerColor]);
-			scene->addEntity("player ui tile")
-					.addComponent<PositionComponent>(x, y, 0)
-					.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
-			scene->addEntity("player hide fireup")
-					.addComponent<PositionComponent>(x + 220, y + 35, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-					.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-						const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
-
-						if (!bonus)
-							return;
-						RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
-						if (!text)
-							return;
-						text->setText(std::to_string(static_cast<int>(bonus->explosionRadius)));
-					});
-			scene->addEntity("player hide bombup")
-					.addComponent<PositionComponent>(x + 220, y + 77, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-					.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-						const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
-
-						if (!bonus)
-							return;
-						RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
-						if (!text)
-							return;
-						text->setText(std::to_string(bonus->bombCount) + " / " + std::to_string(bonus->maxBombCount));
-					});
-			scene->addEntity("player hide speedup")
-					.addComponent<PositionComponent>(x + 220, y + 122, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-					.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-						auto speedComponent = player.tryGetComponent<SpeedComponent>();
-
-						if (!speedComponent)
-							return;
-						RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
-						if (!text)
-							return;
-						text->setText(std::to_string(static_cast<int>(speedComponent->speed * 100)));
-					});
-			scene->addEntity("player hide wall")
-					.addComponent<PositionComponent>(x + 220, y + 161, 0)
-					.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-					.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
-						const PlayerBonusComponent *bonus = player.tryGetComponent<PlayerBonusComponent>();
-
-						if (!bonus)
-							return;
-						RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
-						if (!text)
-							return;
-						text->setText(bonus->isNoClipOn ? "YES" : "NO");
-					});
+			LobbySystem::addController(player, lobby.layout);
+			LobbySystem::createTile(scene, player, lobby.playerColor, countPlayer);
 			countPlayer++;
 		}
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
