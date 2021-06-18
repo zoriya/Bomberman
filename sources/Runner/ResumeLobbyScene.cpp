@@ -40,7 +40,7 @@ namespace BBM
 				.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 				.addComponent<PositionComponent>()
-				.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+				.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
 		scene->addEntity("lobby text")
 				.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
@@ -68,8 +68,9 @@ namespace BBM
 		auto &back = scene->addEntity("back to menu")
 				.addComponent<PositionComponent>(10, 1080 - 85, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+				.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 				{
+					wal.getSystem<ResumeLobbySystem>().unloadLobbyFromResume();
 					gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 				})
 				.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)

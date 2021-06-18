@@ -45,6 +45,8 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!speed || !playerBonus)
 			return;
+		if (speed->speed >= 0.4)
+			return;
 		speed->speed += 0.025f;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}

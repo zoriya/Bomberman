@@ -24,7 +24,11 @@ namespace BBM
 			unsigned long second = std::chrono::duration_cast<std::chrono::seconds>(timer.ringIn).count();
 			unsigned long minutes = second / 60;
 			second = second % 60;
-			text->setText(std::to_string(minutes) + ":" + std::to_string(second));
+			std::string stringed = std::to_string(minutes) + ":";
+			if (second < 10)
+				stringed += "0";
+			stringed += std::to_string(second);
+			text->setText(stringed);
 		}
 	}
 }

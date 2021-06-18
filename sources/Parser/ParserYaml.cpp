@@ -164,6 +164,7 @@ namespace BBM {
 				{"green", 2}
 		};
 
+
 		playersInfos.emplace_back(PlayerInfos{
 			node.getName(),
 			_parsePosition(node.getProperty("position")),

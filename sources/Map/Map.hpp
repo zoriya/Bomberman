@@ -87,7 +87,7 @@ namespace BBM
 		using MapElem = std::function<void(Vector3f coords, std::shared_ptr<WAL::Scene> scene)>;
 
 		//! @brief Generate random block type
-		static BlockType getRandomBlockType();
+		static BlockType getRandomBlockType(bool = false);
 
 		//! @param map ASCII map
 		//! @param x x index on the block
@@ -187,6 +187,8 @@ namespace BBM
 		static const std::string objExtension;
 
 		static const std::string unbreakableWallPath;
+
+		static const std::string outerWallPath;
 
 		static const std::string breakableWallPath;
 
