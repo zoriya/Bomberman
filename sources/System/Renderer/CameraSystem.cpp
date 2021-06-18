@@ -60,6 +60,9 @@ namespace BBM
 		float lowerZDist = 0;
 
 		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
+			// To be remove !
+			if (!player.hasComponent<MovableComponent>())
+				player.addComponent<MovableComponent>();
 			playerPos.emplace_back(position.position);
 		}
 		if (playerPos.size() == 1)
