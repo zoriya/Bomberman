@@ -76,7 +76,6 @@ namespace BBM {
 		float value = (distribution(generator) / 10);
 		BonusType bonus = NOTHING;
 
-		std::cout << value << std::endl;
 		for (auto &chance : chanceValue)
 			if (chance.second > value)
 				bonus = chance.first;

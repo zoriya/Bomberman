@@ -28,11 +28,9 @@ namespace BBM
 			auto playerHealth = entity->tryGetComponent<HealthComponent>();
 			if (!playerHealth || !playerPos)
 				return;
-			for (auto &[other, pos, _] : this->_wal.getScene()->view<PositionComponent, CollisionComponent>()) {
-				if (other.hasComponent<TagComponent<Player>>())
-					continue;
-				auto vec = playerPos->position.abs() - pos.position.abs();
-				if (vec.abs().x < 0.65   && vec.abs().z < 0.65 && playerPos->position.distance(pos.position) < 1)
+			for (auto &[other, pos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Blowable>>()) {
+				auto vec = (playerPos->position - pos.position).abs();
+				if (vec.x < 0.65   && vec.z < 0.65 && playerPos->position.distance(pos.position) < 1)
 					playerHealth->takeDmg(playerHealth->getHealthPoint());
 			}
 		}
