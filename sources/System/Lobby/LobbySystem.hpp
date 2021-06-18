@@ -30,6 +30,7 @@ namespace BBM
 		//! @brief Add a controller for the player.
 		static void addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
+		//! @brief Create ingame tile
 		static void createTile(std::shared_ptr<WAL::Scene> scene, WAL::Entity &player, int color, int playerCount);
 
 		//! @inherit
