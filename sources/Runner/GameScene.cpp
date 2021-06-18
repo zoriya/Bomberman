@@ -16,8 +16,10 @@
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Shaders/Items/AlphaCtxShaderComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
+#include "Component/Shaders/ShaderComponent.hpp"
 #include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
@@ -66,6 +68,44 @@ namespace BBM
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
+			.addComponent<AlphaVarShaderComponent>()
+			.addComponent<ShaderComponentModel>("assets/shaders/alpha.fs", "", [](WAL::Entity &myEntity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
+				auto &ctx = myEntity.getComponent<AlphaVarShaderComponent>();
+
+				ctx.clock += dtime;
+				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
+					return;
+				ctx.clock = 0ns;
+				auto &bonus = myEntity.getComponent<PlayerBonusComponent>();
+				auto &shader = myEntity.getComponent<ShaderComponentModel>();
+
+				if (!bonus.isNoClipOn) {
+					ctx.alpha = ctx.maxAlpha;
+					shader.shader.setShaderUniformVar("alpha", ctx.alpha);
+					return;
+				}
+
+				auto nbMilliSec = duration_cast<std::chrono::milliseconds>(bonus.nextNoClipRate).count();
+
+				if (nbMilliSec > 1500) {
+					ctx.step = ctx.initalStepValue;
+				} else if (nbMilliSec > 1000) {
+					ctx.step = 0.15;
+				} else if (nbMilliSec > 200) {
+					ctx.step = 0.30;
+				} else {
+					ctx.step = 0.5;
+				}
+				ctx.alpha += static_cast<float>(ctx.step * ctx.balance);
+
+				if (ctx.alpha <= ctx.minAlpha) {
+					ctx.balance = 1;
+				}
+				if (ctx.alpha >= ctx.maxAlpha) {
+					ctx.balance = -1;
+				}
+				shader.shader.setShaderUniformVar("alpha", ctx.alpha);
+			}, true)
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
 			.addComponent<BombHolderComponent>()

@@ -9,6 +9,7 @@
 #include <map>
 #include <raylib.h>
 #include "Utils/Cache.hpp"
+#include "Vector/Vector3.hpp"
 
 namespace RAY
 {
@@ -45,6 +46,8 @@ namespace RAY
 		//! @brief The set var for float values
 		//! @note Throw if the var is not found
 		void setShaderUniformVar(const std::string &varName, int value);
+
+		void setShaderUniformVar(const std::string &varName, const RAY::Vector3 &vector);
 
 		void setLocation(::ShaderLocationIndex, const std::string &name);
 
