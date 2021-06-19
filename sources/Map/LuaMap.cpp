@@ -146,7 +146,7 @@ namespace BBM
 	{
 		LuaG::State state(L);
 		int index = 1;
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.newTable();
 		for (int i = 0; i < 17; i++) {
 			state.push(index++);
@@ -166,7 +166,7 @@ namespace BBM
 	{
 		LuaG::State state(L);
 		int index = 1;
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.newTable();
 		for (int i = 0; i < 17; i++) {
 			state.push(index++);
@@ -185,11 +185,11 @@ namespace BBM
 	int LuaMap::getPath(lua_State *L)
 	{
 		LuaG::State state(L);
-		auto y2 = lua_tonumber(L, -1);
-		auto x2 = lua_tonumber(L, -2);
-		auto y1 = lua_tonumber(L, -3);
-		auto x1 = lua_tonumber(L, -4);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		auto y2 = state.getNumber(-1);
+		auto x2 = state.getNumber(-2);
+		auto y1 = state.getNumber(-3);
+		auto x1 = state.getNumber(-4);
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		Vector2f fst(x1, y1);
 		Vector2f snd(x2, y2);
 		auto path = map->pathfind(fst, snd);
@@ -212,7 +212,7 @@ namespace BBM
 	int LuaMap::getPlayer(lua_State *L)
 	{
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.newTable();
 		state.push("x");
 		state.push(map->_player.x);
@@ -226,7 +226,7 @@ namespace BBM
 	int LuaMap::getPlayerRound(lua_State *L)
 	{
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.newTable();
 		state.push("x");
 		state.push(map->_roundedPlayer.x);
@@ -240,7 +240,7 @@ namespace BBM
 	int LuaMap::getClosestSafeSpace(lua_State *L)
 	{
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		Vector2f closest = map->findSafeSpace();
 		state.newTable();
 		state.push("x");
@@ -255,27 +255,27 @@ namespace BBM
 	int LuaMap::getDangerLevelPlayer(lua_State *L)
 	{
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		lua_pushboolean(L, map->_danger[map->_roundedPlayer.y][map->_roundedPlayer.x] > 0);
 		return 1;
 	}
 
 	int LuaMap::getDangerLevel(lua_State *L)
 	{
-		auto y = lua_tonumber(L, -1);
-		auto x = lua_tonumber(L, -2);
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		auto y = state.getNumber(-1);
+		auto x = state.getNumber(-2);
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.push(map->_danger[y][x]);
 		return 1;
 	}
 
 	int LuaMap::getBlockType(lua_State *L)
 	{
-		auto y = lua_tonumber(L, -1);
-		auto x = lua_tonumber(L, -2);
 		LuaG::State state(L);
-    	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		auto y = state.getNumber(-1);
+		auto x = state.getNumber(-2);
+    	const LuaMap *map = (const LuaMap *) state.getPointer(state.getFirstUpValueIdx());
 		state.push(map->_map[y][x]);
 		return 1;
 	}

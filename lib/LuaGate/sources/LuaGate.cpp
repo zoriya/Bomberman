@@ -70,6 +70,21 @@ namespace LuaG
 		return res;
 	}
 
+	float State::getNumber(int idx)
+	{
+		return lua_tonumber(_state, idx);
+	}
+
+	const void *State::getPointer(int idx)
+	{
+		return lua_topointer(_state, idx);
+	}
+
+	int State::getFirstUpValueIdx(void)
+	{
+		return lua_upvalueindex(1);
+	}
+
 	bool State::callFunction(int nbParams, int nbReturns)
 	{
 		lua_pcall(_state, nbParams, nbReturns, 0);

@@ -52,6 +52,15 @@ namespace LuaG
 		//! @brief Get return Number
 		bool getReturnBool(void);
 
+		//! @brief Get Number at index in the stack
+		float getNumber(int index);
+
+		//! @brief Get Number at index in the stack
+		const void *getPointer(int index);
+
+		//! @brief Get first upvalue index
+		int getFirstUpValueIdx(void);
+
 		//! @brief call a lua function
 		bool callFunction(int nbParams, int nbReturns);
 
