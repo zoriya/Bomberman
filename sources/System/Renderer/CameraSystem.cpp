@@ -92,6 +92,5 @@ namespace BBM
 		newCameraPos.y = maxDist;
 		newCameraPos.z -= newCameraPos.z > 1 ? 1 : 0;
 		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
-
 	}
 }
