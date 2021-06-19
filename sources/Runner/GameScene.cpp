@@ -122,7 +122,9 @@ namespace BBM
 					return;
 				entity.getComponent<ControllableComponent>().disabled = true;
 				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &) {
-					ent.scheduleDeletion();
+					ent.removeComponent<SoundComponent>();
+					ent.removeComponent<CollisionComponent>();
+					ent.removeComponent<PositionComponent>();
 				});
 			});
 	}
