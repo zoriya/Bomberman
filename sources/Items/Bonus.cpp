@@ -59,6 +59,7 @@ namespace BBM {
 		if (!playerBonus)
 			return;
 		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
+
 		playerBonus->isNoClipOn = true;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
