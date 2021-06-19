@@ -157,7 +157,6 @@ namespace BBM
 			distance[pos.y][pos.x] = 1;
 			direction[pos.y][pos.x] = i;
 		}
-		int finalDir = -1;
 		while (d < 6) {
 			for (int i = 0; i < 17; i++) {
 				for (int j = 0; j < 17; j++) {
