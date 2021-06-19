@@ -36,7 +36,6 @@ namespace BBM
 					engine.getSystem<CameraSystem>().hasEnded = false;
 					Runner::gameState.nextScene = GameState::ScoreScene;
 				})
-				.addComponent<TagComponent<"Timer">>()
 				.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
 				.addComponent<TagComponent<Timer>>()
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);

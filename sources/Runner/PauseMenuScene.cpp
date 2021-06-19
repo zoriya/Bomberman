@@ -77,7 +77,7 @@ namespace BBM
 						entity.scheduleDeletion();
 					})
 					.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 1080 / 2, 0)
-					.addComponent<TagComponent<"Timer">>()
+					.addComponent<TagComponent<Timer>>()
 					.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
