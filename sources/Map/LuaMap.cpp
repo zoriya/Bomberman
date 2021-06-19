@@ -142,7 +142,6 @@ namespace BBM
 		int d = 1;
 		std::vector<std::vector<int>> distance(17, std::vector<int>(17, -1));
 		std::vector<std::vector<int>> direction(17, std::vector<int>(17, -1));
-		// -1 is empty, -2 is blocked
 		for (int i = 0; i < 17; i++)
 			for (int j = 0; j < 17; j++)
 				distance[i][j] = _map[i][j] == 0 ? -1 : -2;
@@ -150,6 +149,10 @@ namespace BBM
 		for (int i = 0; i < 4; i++) {
 			Vector2f pos = _roundedPlayer + _dirs[i];
 			if (pos.x < 0 || pos.x > 16 || pos.y < 0 || pos.y > 16)
+				continue;
+			if (_danger[pos.y][pos.x] == 0 && _map[pos.y][pos.x] == 0)
+				return _roundedPlayer + _dirs[i];
+			if (_map[pos.y][pos.x] != 0)
 				continue;
 			distance[pos.y][pos.x] = 1;
 			direction[pos.y][pos.x] = i;
@@ -161,7 +164,6 @@ namespace BBM
 					if (distance[j][i] != d)
 						continue;
 					auto currentDir = direction[j][i];
-
 					for (int k = 0; k < 4; k++) {
 						Vector2f pos = Vector2f(i, j) + _dirs[k];
 						if (pos.x < 0 || pos.x > 16 || pos.y < 0 || pos.y > 16)
