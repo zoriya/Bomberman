@@ -343,7 +343,7 @@ namespace BBM
 		if (rnd > 0.98 && !hasHeight)
 			return HOLE;
 		if ((!hasHeight && rnd > 0.25) || rnd > 0.7)
-			return HOLE;
+			return BREAKABLE;
 		return NOTHING;
 	}
 
