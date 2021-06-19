@@ -17,11 +17,10 @@
 #include "Component/BombHolder/BombHolderComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
+#include "Component/Shaders/Items/AlphaCtxShaderComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
-#include "Drawables/2D/Text.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
-#include "Component/Button/ButtonComponent.hpp"
+#include "Component/Shaders/ShaderComponent.hpp"
 #include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
@@ -29,7 +28,6 @@
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
-#include "Drawables/2D/Text.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -40,16 +38,10 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
-		scene->addEntity("Timer")
-			.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
-				Runner::gameState.nextScene = GameState::ScoreScene;
-			})
-			.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("background image")
-			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/background_game.png", false)
+			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/backgrounds/game.png", false)
 			.addComponent<PositionComponent>();
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
@@ -63,26 +55,74 @@ namespace BBM
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
-		
+
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
-			.addComponent<ControllableComponent>()
 			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
 	        .addComponent<BumperTimerComponent>()
+			.addComponent<ControllableComponent>(true)
 			.addComponent<TagComponent<BlowablePass>>()
+			.addComponent<TagComponent<Player>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
 			.addComponent<MovableComponent>()
+			.addComponent<AlphaVarShaderComponent>()
+			.addComponent<ShaderComponentModel>("assets/shaders/alpha.fs", "", [](WAL::Entity &myEntity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
+				auto &ctx = myEntity.getComponent<AlphaVarShaderComponent>();
+
+				ctx.clock += dtime;
+				if (duration_cast<std::chrono::milliseconds>(ctx.clock).count() <= 10)
+					return;
+				ctx.clock = 0ns;
+				auto &bonus = myEntity.getComponent<PlayerBonusComponent>();
+				auto &shader = myEntity.getComponent<ShaderComponentModel>();
+
+				if (!bonus.isNoClipOn) {
+					ctx.alpha = ctx.maxAlpha;
+					shader.shader.setShaderUniformVar("alpha", ctx.alpha);
+					return;
+				}
+
+				auto nbMilliSec = duration_cast<std::chrono::milliseconds>(bonus.nextNoClipRate).count();
+
+				if (nbMilliSec > 1500) {
+					ctx.step = ctx.initalStepValue;
+				} else if (nbMilliSec > 1000) {
+					ctx.step = 0.15;
+				} else if (nbMilliSec > 200) {
+					ctx.step = 0.30;
+				} else {
+					ctx.step = 0.5;
+				}
+				ctx.alpha += static_cast<float>(ctx.step * ctx.balance);
+
+				if (ctx.alpha <= ctx.minAlpha) {
+					ctx.balance = 1;
+				}
+				if (ctx.alpha >= ctx.maxAlpha) {
+					ctx.balance = -1;
+				}
+				shader.shader.setShaderUniformVar("alpha", ctx.alpha);
+			}, true)
 			.addComponent<SoundComponent>(soundPath)
 			.addComponent<MusicComponent>("assets/musics/music_battle.ogg")
 			.addComponent<BombHolderComponent>()
 			.addComponent<PlayerBonusComponent>()
 			.addComponent<HealthComponent>(1, [](WAL::Entity &entity, WAL::Wal &) {
 				auto &animation = entity.getComponent<AnimationsComponent>();
+				
 				animation.setAnimIndex(5);
+				if (entity.hasComponent<AnimatorComponent>())
+					entity.removeComponent<AnimatorComponent>();
+				if (entity.hasComponent<TimerComponent>())
+					return;
+				entity.getComponent<ControllableComponent>().disabled = true;
+				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &wal) {
+					ent.scheduleDeletion();
+				});
 			});
 	}
 }

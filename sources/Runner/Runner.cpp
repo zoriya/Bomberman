@@ -46,6 +46,7 @@
 #include "System/Gravity/GravitySystem.hpp"
 #include "System/BumperTimer/BumperTimerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
+#include "System/Renderer/CameraSystem.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
@@ -59,7 +60,6 @@ namespace BBM
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{
-		auto &view = engine.getScene()->view<ControllableComponent>();
 		if (RAY::Window::getInstance().shouldClose())
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
@@ -69,11 +69,14 @@ namespace BBM
 					break;
 				}
 			}
+			if (gameState.nextScene != GameState::SceneID::GameScene)
+				engine.getSystem<CameraSystem>().hasEnded = false;
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
 		if (gameState.nextScene == GameState::SceneID::ScoreScene)
 			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		RAY::Window::getInstance().setVisibleCursor(gameState.nextScene != GameState::SceneID::GameScene);
 		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
 		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
 		gameState.currentScene = gameState.nextScene;
@@ -108,13 +111,18 @@ namespace BBM
 			.addSystem<ShaderDrawable2DSystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
+			.addSystem<CameraSystem>()
 			.addSystem<MusicSystem>();
 	}
 
 	void Runner::enableRaylib(WAL::Wal &wal)
 	{
+		#ifdef RELEASE
+		RAY::TraceLog::setLevel(LOG_NONE);
+		#else
 		RAY::TraceLog::setLevel(LOG_WARNING);
-		RAY::Window &window = RAY::Window::getInstance(1920, 1080, "Bomberman", FLAG_WINDOW_RESIZABLE);
+		#endif
+		RAY::Window &window = RAY::Window::getInstance(1280, 720, "Bomberman", FLAG_WINDOW_RESIZABLE);
 		wal.addSystem<AnimationsSystem>()
 			.addSystem<AnimatorSystem>()
 			.addSystem<RenderSystem>(window);

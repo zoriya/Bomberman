@@ -117,6 +117,8 @@ namespace BBM
 			this->registerFunc(ia._state);
 			ia.registered = true;
 		}
+		if (controllable.disabled)
+			return;
 		UpdateMapInfos(entity);
 		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
@@ -129,7 +131,7 @@ namespace BBM
 		ia._state.popLast();
 	}
 
-	void IAControllableSystem::onSelfUpdate()
+	void IAControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		_cached = false;
 		_luamap.clearDanger();

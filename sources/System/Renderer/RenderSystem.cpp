@@ -12,6 +12,7 @@
 #include "Drawables/ADrawable3D.hpp"
 #include "Drawables/ADrawable2D.hpp"
 #include "Component/Shaders/ShaderComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 #include <Drawables/3D/Cube.hpp>
 #include "Models/Vector3.hpp"
 #include "Component/Collision/CollisionComponent.hpp"
@@ -28,7 +29,7 @@ namespace BBM
 		  _camera(Vector3f(), Vector3f(), Vector3f(0, 1, 0), 50, CAMERA_PERSPECTIVE),
 		  _debugMode(debugMode)
 	{
-		this->_window.setFPS(this->FPS);
+		this->_window.setFPS(BBM::RenderSystem::FPS);
 	}
 
 	void RenderSystem::drawBoundingBox(const WAL::Entity &entity, const PositionComponent &posComponent, const Drawable3DComponent &drawable) const
@@ -94,14 +95,14 @@ namespace BBM
 	void RenderSystem::resizeWindow(Vector2f &newDims)
 	{
 		newDims.y = (newDims.x * 720) / 1280;
-		if (newDims.y < 720 || newDims.x < 1280) {
+		if ((newDims.y < 720 || newDims.x < 1280))  {
 			newDims.y = 720;
 			newDims.x = 1280;
 		}
 		this->_window.setDimensions(newDims);
 	}
 
-	void RenderSystem::onSelfUpdate()
+	void RenderSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		this->_camera.update();
 		this->_window.beginDrawing();
@@ -164,10 +165,11 @@ namespace BBM
 	void RenderSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
 	                            std::chrono::nanoseconds dtime)
 	{
-		const auto &pos = entity.get<PositionComponent>();
-		const auto &cam = entity.get<CameraComponent>();
-		_camera.setPosition(pos.position);
+		auto &pos = entity.get<PositionComponent>();
+		auto &cam = entity.get<CameraComponent>();
+		
 		_camera.setTarget(cam.target);
+		_camera.setPosition(pos.position);
 	}
 
 	void RenderSystem::setDebug(bool debug)

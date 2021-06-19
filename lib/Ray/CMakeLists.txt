@@ -7,9 +7,9 @@ project("${LIB_NAME}")
 include_directories(${LIB_NAME} ./sources)
 
 if (CMAKE_COMPILER_IS_GNUCXX)
-	set(GCC_COVERAGE_COMPILE_FLAGS "-Wall -Wextra -Werror -Wshadow")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GCC_COVERAGE_COMPILE_FLAGS}")
-endif ()
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -W -Wno-unused-parameter -g")
+endif()
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 
 set(HEADERS
     sources/Color.hpp

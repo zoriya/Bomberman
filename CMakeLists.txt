@@ -3,6 +3,11 @@ project(bomberman)
 
 set(CMAKE_CXX_STANDARD 20)
 
+if (CMAKE_COMPILER_IS_GNUCXX)
+	set(CMAKE_CXX_FLAGS_DEBUG "-Wall -Wextra -Wshadow -Wno-unused-parameter -W -g")
+endif()
+set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+
 include_directories(lib/Ray/sources)
 include_directories(lib/wal/sources)
 include_directories(lib/LuaGate/sources)
@@ -135,6 +140,8 @@ set(SOURCES
 	sources/Component/IntroAnimation/IntroAnimationComponent.cpp
 	sources/System/IntroAnimation/IntroAnimationSystem.hpp
 	sources/System/IntroAnimation/IntroAnimationSystem.cpp
+	sources/System/Renderer/CameraSystem.cpp
+	sources/System/Renderer/CameraSystem.cpp
 	sources/Runner/SplashScreenScene.cpp
 	sources/Runner/TitleScreenScene.cpp
 	sources/Runner/MainMenuScene.cpp
@@ -171,6 +178,8 @@ set(SOURCES
 	sources/Component/Stat/StatComponent.hpp
 	sources/Map/LuaMap.cpp
 	sources/Map/LuaMap.hpp
+	sources/Component/Shaders/Items/AlphaCtxShaderComponent.cpp
+	sources/Component/Shaders/Items/AlphaCtxShaderComponent.hpp
 	)
 
 add_executable(bomberman

@@ -43,7 +43,7 @@ namespace BBM
 		void onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity) override;
 
 		//! @inherit
-		void onSelfUpdate() override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		IAControllableSystem(WAL::Wal &wal);

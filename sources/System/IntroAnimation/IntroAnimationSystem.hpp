@@ -8,13 +8,9 @@ namespace BBM
 	//! @brief A system to handle Controllable entities in a menu.
 	class IntroAnimationSystem : public WAL::System<IntroAnimationComponent>
 	{
-	private:
-		//! @brief reference to wal
-		WAL::Wal &wal;
-
 	public:
 		//! @inherit
-		void onSelfUpdate(void) override;
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @inherit
 		void onFixedUpdate(WAL::ViewEntity<IntroAnimationComponent> &entities) override;

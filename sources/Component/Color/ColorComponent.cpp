@@ -7,9 +7,9 @@
 namespace BBM
 {
 
-	ColorComponent::ColorComponent(WAL::Entity &entity, RAY::Color color)
+	ColorComponent::ColorComponent(WAL::Entity &entity, RAY::Color componentColor)
 		: Component(entity),
-		  color(color)
+		  color(componentColor)
 	{}
 
 	ColorComponent::ColorComponent(WAL::Entity &entity, unsigned char r, unsigned char g, unsigned char b, unsigned char a)

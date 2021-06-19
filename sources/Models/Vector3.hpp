@@ -29,8 +29,8 @@ namespace BBM
 		{}
 
 		//! @brief Create a new vector3 representing a specific coordinate.
-		Vector3(T x, T y, T z)
-			: x(x), y(y), z(z)
+		Vector3(T _x, T _y, T _z)
+			: x(_x), y(_y), z(_z)
 		{}
 
 		//! @brief A default destructor
@@ -135,7 +135,7 @@ namespace BBM
 
 		double magnitude() const
 		{
-			return (std::sqrt(std::pow(this->x, 2) + std::pow(this->y, 2), std::pow(this->z, 2)));
+			return (std::sqrt(std::pow(this->x, 2) + std::pow(this->y, 2) + std::pow(this->z, 2)));
 		}
 
 		Vector3<T> normalize()
@@ -166,6 +166,11 @@ namespace BBM
 		Vector3<T> projection(const Vector3<T> &point) const
 		{
 			return (point * this) / std::pow(this->magnitude(), 2) * this;
+		}
+
+		Vector3<T> abs() const
+		{
+			return Vector3<T>(std::abs(this->x), std::abs(this->y), std::abs(this->z));
 		}
 
 		Vector3<T> trunc() const requires(std::is_floating_point_v<T>)

@@ -60,8 +60,6 @@ namespace BBM
 		Vector2f buttonPos(positionComponent.getX(), positionComponent.getY());
 		Vector2f dimensions;
 
-		WAL::Entity *newButton = nullptr; 
-
 		if (texture) {
 			dimensions.x = texture->getDimensions().x;
 			dimensions.y = texture->getDimensions().y;
@@ -74,7 +72,7 @@ namespace BBM
 		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
-	void MenuControllableSystem::onSelfUpdate()
+	void MenuControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
 		RAY::Vector2 winSize = RAY::Window::getInstance().getDimensions();

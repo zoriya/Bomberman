@@ -25,9 +25,9 @@ namespace RAY::Drawables::Drawables3D
 	             bool lonely,
 	             std::optional<std::pair<MaterialType, std::string>> texture,
 	             const RAY::Vector3 &scale,
+	             float rotationAngle,
 	             const RAY::Vector3 &position,
-	             const RAY::Vector3 &rotationAxis,
-	             float rotationAngle)
+	             const RAY::Vector3 &rotationAxis)
 		: ADrawable3D(position, WHITE),
 		  _model(_modelsCache.fetch(filename, lonely)),
 		  _rotationAxis(rotationAxis),
@@ -41,9 +41,9 @@ namespace RAY::Drawables::Drawables3D
 	Model::Model(const Mesh::AMesh &mesh,
 	             std::optional<std::pair<MaterialType, std::string>> texture,
 	             const RAY::Vector3 &scale,
+	             float rotationAngle,
 	             const RAY::Vector3 &position,
-	             const RAY::Vector3 &rotationAxis,
-	             float rotationAngle)
+	             const RAY::Vector3 &rotationAxis)
 		: ADrawable3D(position, WHITE),
 		  _model(std::make_shared<::Model>(LoadModelFromMesh(*mesh.getRaylibMesh()))),
 		  _rotationAxis(rotationAxis),

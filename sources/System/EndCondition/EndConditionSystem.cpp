@@ -11,7 +11,7 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void EndConditionSystem::onSelfUpdate()
+	void EndConditionSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		unsigned int alivePlayersCount = 0;
 		auto &view = this->_wal.getScene()->view<ScoreComponent, HealthComponent>();
@@ -20,7 +20,12 @@ namespace BBM
 			return;
 		for (auto &[_, scoreComponent, healthComponent]: view)
 			alivePlayersCount += (healthComponent.getHealthPoint() != 0);
-		if (alivePlayersCount <= 1)
-			Runner::gameState.nextScene = Runner::gameState.ScoreScene;
+		if (alivePlayersCount <= 1) {
+			endConditionRate -= dtime;
+			if (endConditionRate <= 0ns) {
+				Runner::gameState.nextScene = Runner::gameState.ScoreScene;
+				endConditionRate = 500ms;
+			}
+		}
 	}
 }

@@ -44,7 +44,8 @@ namespace WAL
 		virtual void onFixedUpdate(ViewEntity<Dependencies...> &entity) {}
 
 		//! @brief A method called after all entities that this system manage has been updated.
-		virtual void onSelfUpdate() {}
+		//! @param dtime The delta time.
+		virtual void onSelfUpdate(std::chrono::nanoseconds dtime) {}
 
 
 		//! @brief Update the whole system (every entities that this system is responsible can be updated.
@@ -53,7 +54,7 @@ namespace WAL
 		{
 			for (auto &entity : this->getView())
 				this->onUpdate(entity, dtime);
-			this->onSelfUpdate();
+			this->onSelfUpdate(dtime);
 		}
 
 		//! @brief An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up.

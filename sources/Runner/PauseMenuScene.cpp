@@ -29,7 +29,10 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/pause.png");
+			scene->addEntity("white background")
+			.addComponent<PositionComponent>(1920 / 2.5 - 20, 180, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(450, 110), RAY::Color(BLACK).setA(150));
 		scene->addEntity("pause text")
 			.addComponent<PositionComponent>(1920 / 2.5, 180, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("PAUSE", 120, RAY::Vector2(), ORANGE);

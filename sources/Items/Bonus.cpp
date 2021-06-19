@@ -3,6 +3,7 @@
 //
 
 #include <Component/Collision/CollisionComponent.hpp>
+#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
@@ -20,6 +21,7 @@ namespace BBM {
 		if (!bombHolder)
 			return;
 		bombHolder->maxBombCount++;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::ExplosionRangeBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -31,6 +33,7 @@ namespace BBM {
 		if (!bombHolder || !playerBonus)
 			return;
 		bombHolder->explosionRadius++;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::SpeedUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -41,7 +44,10 @@ namespace BBM {
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
 		if (!controllable || !playerBonus)
 			return;
+		if (controllable->speed >= 0.4)
+			return;
 		controllable->speed += 0.025f;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	void Bonus::NoClipBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis)
@@ -52,7 +58,9 @@ namespace BBM {
 		if (!playerBonus)
 			return;
 		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
+
 		playerBonus->isNoClipOn = true;
+		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
 	Bonus::BonusType Bonus::getRandomBonusType()

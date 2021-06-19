@@ -39,12 +39,27 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(200, 300 - 50, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1525, 550), RAY::Color(WHITE).setA(150));
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(1920 / 2 - 500, 1080 - 100, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1000, 100), RAY::Color(WHITE).setA(150));
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(1920 / 2.75 - 10, 80, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(650, 130), RAY::Color(WHITE).setA(150));
 		scene->addEntity("lobby text")
-			.addComponent<PositionComponent>(1920 / 2.75, 100, 0)
+			.addComponent<PositionComponent>(1920 / 2.75, 80, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Get Ready", 120, RAY::Vector2(), ORANGE);
+		scene->addEntity("lobby text")
+			.addComponent<PositionComponent>(1920 / 2.75, 1080 - 80, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Join: A Button / Space / Right Ctrl", 30, RAY::Vector2(), BLACK);
+		scene->addEntity("lobby text")
+			.addComponent<PositionComponent>(1920 / 4 + 100, 1080 - 40, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Change Skin: B Button / Shift / Left Ctrl", 30, RAY::Vector2(), BLACK);
 		auto &play = scene->addEntity("play button")
-			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180 - 50, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_new_game.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -103,7 +118,7 @@ namespace BBM
 			 texture->use("assets/buttons/button_htp_hovered.png");
 			});
 		auto &lavaOption = scene->addEntity("lava option text")
-			.addComponent<PositionComponent>(1920 / 6, 1.85 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 6, 1.85 * 1080 / 3 - 50, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Lava: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -127,7 +142,7 @@ namespace BBM
 			});
 
 		auto &heightOption = scene->addEntity("Height option text")
-			.addComponent<PositionComponent>(1920 / 6, 2.1 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 6, 2.1 * 1080 / 3 - 50, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("2nd Level: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -151,7 +166,7 @@ namespace BBM
 			});
 
 		auto &aiMore = scene->addEntity("AI+")
-			.addComponent<PositionComponent>(1920 / 1.75, 1.85 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 1.75, 1.85 * 1080 / 3 - 50, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_add.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -169,7 +184,7 @@ namespace BBM
 			});
 
 		auto &aiLess = scene->addEntity("AI-")
-			.addComponent<PositionComponent>(1920 / 1.75, 2.10 * 1080 / 3, 0)
+			.addComponent<PositionComponent>(1920 / 1.75, 2.10 * 1080 / 3 - 50, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/cpu_remove.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
@@ -188,19 +203,19 @@ namespace BBM
 
 		for (int i = 0; i < 4; i++) {
 			auto &playerTile = scene->addEntity("player tile")
-				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3 - 50, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3), RAY::Vector2(200, 200), RAY::Color(0, 0, 0, 0));
 			auto &player = scene->addEntity("player")
-				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3 - 50, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
-				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3, 0)
+				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3 - 50, 0)
 				// todo check why it does this | hacky way to fix ready texture
 				.addComponent<Drawable2DComponent, RAY::Texture>();
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
 		scene->addEntity("camera")
-			.addComponent<PositionComponent>(8, 20, 7)
+			.addComponent<PositionComponent>(-5, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		play.getComponent<OnClickComponent>().setButtonLinks(&lavaOption, &back, &back, &howToPlay);
 		howToPlay.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, &play);

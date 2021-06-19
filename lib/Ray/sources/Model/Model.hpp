@@ -31,18 +31,18 @@ namespace RAY::Drawables::Drawables3D {
 			Model(const std::string &filePath, bool lonely = false,
 			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
 				  const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1),
+				  float rotationAngle = 0,
 			      const RAY::Vector3 &position = {0, 0, 0},
-			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0),
-			      float rotationAngle = 0);
+			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0));
 
 			//! @brief Create an model, loading a file
 			//! @param mesh: mesh to load
 			Model(const Mesh::AMesh &mesh,
 			      std::optional<std::pair<MaterialType, std::string>> texture = std::nullopt,
 			      const RAY::Vector3 &scale = RAY::Vector3(1, 1, 1),
+			      float rotationAngle = 0,
 			      const RAY::Vector3 &position = {0, 0, 0},
-			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0),
-			      float rotationAngle = 0);
+			      const RAY::Vector3 &rotationAxis = RAY::Vector3(0, 1, 0));
 
 			//! @brief A copy constructor
 			Model(const Model &model) = default;

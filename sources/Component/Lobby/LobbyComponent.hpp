@@ -33,7 +33,7 @@ namespace BBM
 		Component *clone(WAL::Entity &entity) const override;
 
 		//! @brief Create a new lobby component.
-		explicit LobbyComponent(WAL::Entity &entity, int playerID, WAL::Entity &readyButton, WAL::Entity &coloredTile);
+		explicit LobbyComponent(WAL::Entity &entity, int playerNumber, WAL::Entity &button, WAL::Entity &tile);
 		//! @brief A lobby component is copyable.
 		LobbyComponent(const LobbyComponent &) = default;
 		//! @brief A default destructor
