@@ -81,11 +81,18 @@ namespace BBM
 		maxDist += (lowerXDist  + lowerZDist) / 2;
 		if (maxDist < 14)
 			maxDist = 14;
-		if (maxDist > 25)
-			maxDist = 25;
-		cam.target += (newCameraPos.abs() - pos.position.abs()) / 10;
+		if (maxDist > 23)
+			maxDist = 23;
+		Vector3f pos2d(pos.position.abs().x,0, pos.position.abs().z);
+		Vector3f newPos2d(newCameraPos.abs().x, 0, pos.position.abs().z);
+		for (auto &[other, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
+			backPos.position = cam.target;
+		}
+		newCameraPos.y = 0;
+		cam.target += (newCameraPos.abs() - cam.target.abs()) / 10;
 		newCameraPos.y = maxDist;
-		newCameraPos.z -= 1;
+		newCameraPos.z -= newCameraPos.z > 1 ? 1 : 0;
 		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
+
 	}
 }

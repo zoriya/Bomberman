@@ -3,7 +3,6 @@
 //
 
 #include <Wal.hpp>
-#include <iostream>
 #include "System/Movable/MovableSystem.hpp"
 #include "System/Renderer/RenderSystem.hpp"
 #include <Drawables/2D/Rectangle.hpp>
@@ -12,15 +11,9 @@
 #include "System/Controllable/ControllableSystem.hpp"
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
-#include "Component/Button/ButtonComponent.hpp"
-#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/IAControllable/IAControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
-#include "Component/Renderer/CameraComponent.hpp"
-#include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <System/Timer/TimerSystem.hpp>
@@ -37,7 +30,6 @@
 #include "System/Shaders/ShaderDrawable2DSystem.hpp"
 #include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
-#include "Map/Map.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
@@ -50,7 +42,6 @@
 #include "System/Lobby/LobbySystem.hpp"
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
-#include "Component/Lobby/LobbyComponent.hpp"
 #include "System/Bonus/BonusUISystem.hpp"
 
 namespace BBM
