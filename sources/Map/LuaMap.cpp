@@ -370,14 +370,7 @@ namespace BBM
 				break;
 			newDangerMap[pos.y][pos.x] = 3;
 		}
-		for (int i = 0; i < 17; i++) {
-			for (int j = 0; j < 17; j++) {
-				std::cout << newDangerMap[i][j] << " | ";
-			}
-			std::cout << std::endl;
-		}
 		Vector2f res = map->findSafeSpace(newDangerMap);
-		std::cout << "res: " << res << std::endl;
 		lua_pushboolean(L, map->_roundedPlayer != res);
 		return 1;
 	}

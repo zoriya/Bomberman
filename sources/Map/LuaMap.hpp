@@ -101,7 +101,13 @@ namespace std
 		typedef std::size_t result_type;
 		result_type operator()(argument_type const &in) const
 		{
-			return in.x + in.y;
+			union {
+				float vector[2];
+				result_type hashed;
+			} hasher;
+			hasher.vector[0] = in.x;
+			hasher.vector[1] = in.y;
+			return hasher.hashed;
 		}
 	};
 }

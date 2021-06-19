@@ -108,9 +108,9 @@ end
 
 function getPathToSafeSpace(player)
 	local res = getClosestSafeSpace()
-	print("run to")
-	print(res.x)
-	print(res.y)
+	log("run to")
+	log(res.x)
+	log(res.y)
 	
 	local p = {player}
 	table.insert(p, res)
@@ -137,26 +137,26 @@ function Update()
 		end
 	end
 	
-	print("player")
-	print(player.x)
-	print(player.y)
+	log("player")
+	log(player.x)
+	log(player.y)
 	local player = getPlayerRound();
 	if getDangerLevelPlayer() then
-		print("INDANGER")
+		log("INDANGER")
 		local dangerMap = getDanger()
 		PrintMap(dangerMap, 17, 17)
 		local path = getPathToSafeSpace(player)
 		if #path >= 2 then
-			print("path found")
+			log("path found")
 			for i, c in ipairs(path) do
-				print(i)
-				print(c.x)
-				print(c.y)
+				log(i)
+				log(c.x)
+				log(c.y)
 			end
 			LastTarget = {x = path[2].x, y = path[2].y}
 			return path[2].x - player.x, path[2].y - player.y, false, false
 		end
-		print("nopath found")
+		log("nopath found")
 		return 0, 0, false, false
 	end
 	local y = math.random(4)
