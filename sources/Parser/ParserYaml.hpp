@@ -16,9 +16,9 @@ namespace BBM {
 
 		//! @brief The number of chars for endl
 		#ifdef __linux__
-				static constexpr int endlNbChars = 1;
+			static constexpr int endlNbChars = 1;
 		#elif _WIN32
-				static constexpr int endlNbChars = 2;
+			static constexpr int endlNbChars = 2;
 		#endif
 
 		//!@brief file block of the parser
