@@ -239,7 +239,7 @@ namespace BBM {
 		Runner::mapHeight = size;
 		long timer = 0;
 		if (!Utils::tryParseLong(node.getProperty("timer"), timer)) {
-			throw ParserError("timer property parsing error (must be a long)");
+			throw ParserError("timer property must be a long");
 		}
 		Runner::timerDelay = std::chrono::nanoseconds(timer);
 
