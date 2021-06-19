@@ -8,9 +8,9 @@ A recreation of the classic Bomberman arcade game
 
 Repository link: https://github.com/AnonymusRaccoon/Bomberman/
 
-## Demo
+## Demo (Click to See on YouTube)
 
-Very soon :)
+[![DEMO](http://img.youtube.com/vi/5tkaYtMpdKY/0.jpg)](http://www.youtube.com/watch?v=5tkaYtMpdKY "Indie Studio - Bomberman")
 
 ## Screenshots
 
