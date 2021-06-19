@@ -104,7 +104,7 @@ varying vec3 fragNormal;
 
 void main() {
     // Send vertex attributes to fragment shader
-    fragPosition = vertexPosition + vertexPosition * vec3(cnoise(vec3(vertexNormal + vec3(frame))) * 0.5);
+    fragPosition = vertexPosition + vertexPosition * vec3(cnoise(vec3(vertexNormal + center + vec3(frame))) * 0.5);
     fragColor = vertexColor;
     fragNormal = vertexNormal;
     fragTexCoord = vertexTexCoord;

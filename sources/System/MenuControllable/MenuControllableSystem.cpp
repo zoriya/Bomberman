@@ -55,24 +55,24 @@ namespace BBM
 	bool MenuControllableSystem::_mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const
 	{
 		auto &positionComponent = entity.get<PositionComponent>();
-		RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.get<Drawable2DComponent>().drawable.get());
-		RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.get<Drawable2DComponent>().drawable.get());
 		Vector2f buttonPos(positionComponent.getX(), positionComponent.getY());
 		Vector2f dimensions;
 
-		if (texture) {
+		if (auto *texture = dynamic_cast<RAY::Texture *>(entity.get<Drawable2DComponent>().drawable.get())) {
 			dimensions.x = texture->getDimensions().x;
 			dimensions.y = texture->getDimensions().y;
-		} else if (text) {
+		}
+		else if (auto *text = dynamic_cast<RAY2D::Text *>(entity.get<Drawable2DComponent>().drawable.get())) {
 			dimensions.y = text->getFontSize();
 			dimensions.x = text->getString().size() * (text->getFontSize());
-		} else
+		}
+		else
 			return false;
 		return ((buttonPos.x <= mousePos.x && mousePos.x <= buttonPos.x + dimensions.x)
-		&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
+			&& (buttonPos.y <= mousePos.y && mousePos.y <= buttonPos.y + dimensions.y));
 	}
 
-	void MenuControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
+	void MenuControllableSystem::onSelfUpdate(std::chrono::nanoseconds)
 	{
 		RAY::Vector2 rayMousePos = RAYControl::Mouse::getCursorPosition();
 		RAY::Vector2 winSize = RAY::Window::getInstance().getDimensions();
@@ -95,8 +95,8 @@ namespace BBM
 		if (!this->_currentButton)
 			return;
 		for (auto &[_, controllable]: controllableView)
-			if (controllable.move.x || controllable.move.y || controllable.select) {
-				this->_updateCurrentButton(controllable.select, controllable.move);
+			if (controllable.move.x || controllable.move.y || controllable.bomb) {
+				this->_updateCurrentButton(controllable.bomb, controllable.move);
 				return;
 			}
 		if (relativeMousePos == this->_oldMousePosition && !RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))

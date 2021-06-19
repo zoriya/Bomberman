@@ -1,6 +1,7 @@
 
 #include "EndConditionSystem.hpp"
 #include <map>
+#include <System/Renderer/CameraSystem.hpp>
 #include "Runner/Runner.hpp"
 #include "Component/Score/ScoreComponent.hpp"
 
@@ -23,6 +24,7 @@ namespace BBM
 		if (alivePlayersCount <= 1) {
 			endConditionRate -= dtime;
 			if (endConditionRate <= 0ns) {
+				this->_wal.getSystem<CameraSystem>().hasEnded = false;
 				Runner::gameState.nextScene = Runner::gameState.ScoreScene;
 				endConditionRate = 500ms;
 			}
