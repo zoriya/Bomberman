@@ -24,6 +24,7 @@ namespace BBM
 			SettingsScene,
 			PauseMenuScene,
 			LobbyScene,
+			ResumeLobbyScene,
 			TitleScreenScene,
 			CreditScene,
 			HowToPlayScene,

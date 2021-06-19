@@ -5,6 +5,7 @@
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
+#include "Component/Speed/SpeedComponent.hpp"
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
@@ -40,13 +41,13 @@ namespace BBM {
 	{
 		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
-		auto *controllable = player.tryGetComponent<ControllableComponent>();
+		auto *speed = player.tryGetComponent<SpeedComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
-		if (!controllable || !playerBonus)
+		if (!speed || !playerBonus)
 			return;
-		if (controllable->speed >= 0.4)
+		if (speed->speed >= 0.4)
 			return;
-		controllable->speed += 0.025f;
+		speed->speed += 0.025f;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 

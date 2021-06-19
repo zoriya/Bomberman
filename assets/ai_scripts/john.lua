@@ -9,7 +9,7 @@ mapinfo.dist { }
 ------------
 
 ------ Debug variables
-local debug = true
+local debug = false
 
 if not debug then
 	log = function() end

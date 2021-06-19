@@ -33,6 +33,8 @@
 #include "System/IAControllable/IAControllableSystem.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
+#include <Parser/ParserYaml.hpp>
+#include <System/Lobby/ResumeLobbySystem.hpp>
 #include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Sound/MenuSoundManagerSystem.hpp"
 #include "System/Gravity/GravitySystem.hpp"
@@ -46,7 +48,10 @@
 
 namespace BBM
 {
+	std::chrono::nanoseconds Runner::timerDelay = std::chrono::minutes(3);
 	GameState Runner::gameState;
+	int Runner::mapWidth = 16;
+	int Runner::mapHeight = 16;
 	bool Runner::hasHeights = false;
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
@@ -108,6 +113,7 @@ namespace BBM
 			.addSystem<ShaderDrawable2DSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
+			.addSystem<ResumeLobbySystem>()
 			.addSystem<EndConditionSystem>()
 			.addSystem<MusicSystem>();
 	}
@@ -152,6 +158,7 @@ namespace BBM
 		gameState.loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
 		gameState.loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
 		gameState.loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
+		gameState.loadedScenes[GameState::SceneID::ResumeLobbyScene] = loadResumeLobbyScene();
 		gameState.loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
 	}
 
@@ -164,6 +171,7 @@ namespace BBM
 		Runner::loadScenes();
 		wal.changeScene(Runner::gameState.loadedScenes[GameState::SceneID::SplashScreen]);
 		wal.run<GameState>(Runner::updateState, Runner::gameState);
+		gameState.loadedScenes.clear();
 		return 0;
 	}
 }

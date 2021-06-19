@@ -3,11 +3,14 @@
 #include "Runner.hpp"
 #include <map>
 #include "Component/Tag/TagComponent.hpp"
+#include <Parser/ParserYaml.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
+#include <Component/Renderer/Drawable2DComponent.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
 #include "Component/Animator/AnimatorComponent.hpp"
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "Component/Health/HealthComponent.hpp"
@@ -18,6 +21,7 @@
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Shaders/Items/AlphaCtxShaderComponent.hpp"
+#include "Component/Speed/SpeedComponent.hpp"
 #include <Drawables/Image.hpp>
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
@@ -44,7 +48,6 @@ namespace BBM
 		scene->addEntity("background image")
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), -90, Vector3f(), Vector3f(1, 0, 0))
 			.addComponent<PositionComponent>(5, 14, 22);
-		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
 
@@ -57,7 +60,7 @@ namespace BBM
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
 		};
 
-		return scene.addEntity("player")
+		return scene.addEntity("Player")
 			.addComponent<PositionComponent>()
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::nullopt, Vector3f(.75, .75, .75))
 			.addComponent<ScoreComponent>()
@@ -67,6 +70,7 @@ namespace BBM
 			.addComponent<ControllableComponent>(true)
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<TagComponent<Player>>()
+			.addComponent<SpeedComponent>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
 			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.6, 2, .6})
 			.addComponent<MovableComponent>()

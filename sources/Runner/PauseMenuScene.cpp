@@ -7,6 +7,7 @@
 #include "Component/Health/HealthComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
+#include <Parser/ParserYaml.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -14,6 +15,7 @@
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
+#include <filesystem>
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
 
@@ -75,9 +77,32 @@ namespace BBM
 						entity.scheduleDeletion();
 					})
 					.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 1080 / 2, 0)
-					.addComponent<TagComponent<"Timer">>()
+					.addComponent<TagComponent<Timer>>()
 					.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
+			});
+		auto &save = scene->addEntity("save & quit button")
+			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 240, 0)
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_save.png")
+			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_save.png");
+			})
+			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
+			{
+				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+
+				texture->use("assets/buttons/button_save_hovered.png");
+			})
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			{
+				if (!std::filesystem::exists("save"))
+					std::filesystem::create_directories("save");
+				ParserYAML::save(Runner::gameState.loadedScenes[GameState::SceneID::GameScene]);
+				wal.getSystem<CameraSystem>().hasEnded = false;
+				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
 		auto &settings = scene->addEntity("settings button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 360, 0)
@@ -99,7 +124,7 @@ namespace BBM
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
 		auto &exit = scene->addEntity("exit button")
-			.addComponent<PositionComponent>(1920 / 1.5, 1080 - 360, 0)
+			.addComponent<PositionComponent>(1920 / 1.55, 1080 - 360, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
@@ -120,9 +145,10 @@ namespace BBM
 			});
 		//needed material
 		//music
-		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, nullptr, &settings);
-		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &play, &exit);
-		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, nullptr, &settings, nullptr);
+		save.getComponent<OnClickComponent>().setButtonLinks(&settings);
+		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &save, nullptr, &settings);
+		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, &save, &play, &exit);
+		exit.getComponent<OnClickComponent>().setButtonLinks(nullptr, &save, &settings, nullptr);
 		return scene;
 	}
 }

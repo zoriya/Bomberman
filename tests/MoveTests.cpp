@@ -12,6 +12,7 @@
 #include "System/Movable/MovableSystem.hpp"
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/Movable/MovableComponent.hpp>
+#include <Component/Speed/SpeedComponent.hpp>
 
 using namespace WAL;
 using namespace BBM;
@@ -24,6 +25,7 @@ TEST_CASE("Move test", "[Component][System]")
 	wal.getScene()->addEntity("player")
 		.addComponent<ControllableComponent>()
 		.addComponent<MovableComponent>()
+		.addComponent<SpeedComponent>()
 		.addComponent<PositionComponent>();
 	Entity &entity = wal.getScene()->getEntities().front();
 

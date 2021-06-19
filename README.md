@@ -8,14 +8,17 @@ A recreation of the classic Bomberman arcade game
 
 Repository link: https://github.com/AnonymusRaccoon/Bomberman/
 
-## Demo
+## Demo (Click to See on YouTube)
 
-Very soon :)
-
+[![DEMO](http://img.youtube.com/vi/5tkaYtMpdKY/0.jpg)](http://www.youtube.com/watch?v=5tkaYtMpdKY "Indie Studio - Bomberman")
 
 ## Screenshots
 
-Very soon :)
+<div>
+<img align="left" src="./assets/images/titlescreen.png" width="45%">
+<img align="right" src="./assets/images/lobby.png" width="45%">
+<img src="./assets/images/game.png">
+</div>
 
 
 ## Run (compile from the sources)
@@ -56,14 +59,7 @@ Enjoy !
 
 ## Tech Stack
 
-**Bomberman:** C++20, raylib, Catch2, CMake, Doxygen
-## Contributing
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
+**Bomberman:** C++20, raylib, Catch2, CMake, Doxygen, Lua
 
 
 ## Authors

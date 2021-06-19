@@ -39,6 +39,11 @@ namespace WAL
 		return this->_name;
 	}
 
+	void Entity::setName(std::string &name)
+	{
+		this->_name = name;
+	}
+
 	bool Entity::isDisable() const
 	{
 		return this->_disabled;

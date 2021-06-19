@@ -6,6 +6,7 @@
 #pragma once
 
 #include "Entity/Entity.hpp"
+#include "Component/Collision/CollisionComponent.hpp"
 
 namespace BBM {
 	class Bonus {
@@ -14,11 +15,6 @@ namespace BBM {
 		//! @param player the entity on which the effect will be applied
 		//! @brief Apply bonus effect that allows players to carry one more bomb than before
 		static void BombUpBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
-
-		//! @param bonus bonus
-		//! @param player the entity on which the effect will be applied
-		//! @brief Apply bonus effect who increased the bomb damage
-		static void DamageIncreasedBonus(WAL::Entity &player, const WAL::Entity &bonus, CollisionComponent::CollidedAxis axis);
 
 		//! @param bonus bonus
 		//! @param player the entity on which the effect will be applied
