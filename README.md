@@ -15,9 +15,9 @@ Repository link: https://github.com/AnonymusRaccoon/Bomberman/
 ## Screenshots
 
 <div>
-<img align="left" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/titlescreen.png" width="45%">
-<img align="right" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/lobby.png" width="45%">
-<img src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/game.png">
+<img align="left" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/assets/images/titlescreen.png" width="45%">
+<img align="right" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/assets/images/lobby.png" width="45%">
+<img src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/assets/images/game.png">
 </div>
 
 
