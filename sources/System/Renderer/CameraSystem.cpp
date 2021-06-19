@@ -8,6 +8,7 @@
 #include "Component/Timer/TimerComponent.hpp"
 #include "Runner/Runner.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Drawables/2D/Text.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -61,8 +62,6 @@ namespace BBM
 		float lowerZDist = 0;
 
 		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (!player.hasComponent<ControllableComponent>())
-				player.addComponent<ControllableComponent>();
 			playerPos.emplace_back(position.position);
 		}
 		if (playerPos.size() == 1)

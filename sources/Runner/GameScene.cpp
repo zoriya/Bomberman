@@ -58,7 +58,7 @@ namespace BBM
 
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::nullopt, Vector3f(.75, .75, .75))
 			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
@@ -67,7 +67,7 @@ namespace BBM
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<TagComponent<Player>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
-			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
+			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.6, 2, .6})
 			.addComponent<MovableComponent>()
 			.addComponent<AlphaVarShaderComponent>()
 			.addComponent<ShaderComponentModel>("assets/shaders/alpha.fs", "", [](WAL::Entity &myEntity, WAL::Wal &, std::chrono::nanoseconds dtime) {
