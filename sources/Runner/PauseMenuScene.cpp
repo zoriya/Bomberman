@@ -96,11 +96,12 @@ namespace BBM
 
 				texture->use("assets/buttons/button_save_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
 				if (!std::filesystem::exists("save"))
 					std::filesystem::create_directories("save");
 				ParserYAML::save(Runner::gameState.loadedScenes[GameState::SceneID::GameScene]);
+				wal.getSystem<CameraSystem>().hasEnded = false;
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
 		auto &settings = scene->addEntity("settings button")

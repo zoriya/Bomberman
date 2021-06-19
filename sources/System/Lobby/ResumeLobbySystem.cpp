@@ -84,8 +84,7 @@ namespace BBM
 		return std::all_of(lobby.begin(), lobby.end(), [](WAL::ViewEntity<ResumeLobbyComponent> &entity) {
 			auto &lobbyPlayer = entity.get<ResumeLobbyComponent>();
 			return lobbyPlayer.ready && lobbyPlayer.layout != ControllableComponent::NONE;
-		});
-	}
+		});	}
 
 	void ResumeLobbySystem::resumeToGame(WAL::Wal &wal)
 	{
