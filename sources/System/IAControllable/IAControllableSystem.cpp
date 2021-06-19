@@ -76,45 +76,16 @@ namespace BBM
 
 	void IAControllableSystem::registerFunc(LuaG::State &state)
 	{
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getMap, 1);
-		lua_setglobal(state.getState(), "getMap");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getDanger, 1);
-		lua_setglobal(state.getState(), "getDanger");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getPath, 1);
-		lua_setglobal(state.getState(), "getPath");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getPlayer, 1);
-		lua_setglobal(state.getState(), "getPlayer");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getPlayerRound, 1);
-		lua_setglobal(state.getState(), "getPlayerRound");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getDangerLevelPlayer, 1);
-		lua_setglobal(state.getState(), "getDangerLevelPlayer");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getDangerLevel, 1);
-		lua_setglobal(state.getState(), "getDangerLevel");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getBlockType, 1);
-		lua_setglobal(state.getState(), "getBlockType");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::getClosestSafeSpace, 1);
-		lua_setglobal(state.getState(), "getClosestSafeSpace");
-
-		lua_pushlightuserdata(state.getState(), &_luamap);
-		lua_pushcclosure(state.getState(), LuaMap::canPutBomb, 1);
-		lua_setglobal(state.getState(), "canPutBombSafe");
+		state.registerClosure(&_luamap, "getMap", LuaMap::getMap);
+		state.registerClosure(&_luamap, "getDanger", LuaMap::getDanger);
+		state.registerClosure(&_luamap, "getPath", LuaMap::getPath);
+		state.registerClosure(&_luamap, "getPlayer", LuaMap::getPlayer);
+		state.registerClosure(&_luamap, "getPlayerRound", LuaMap::getPlayerRound);
+		state.registerClosure(&_luamap, "getDangerLevelPlayer", LuaMap::getDangerLevelPlayer);
+		state.registerClosure(&_luamap, "getDangerLevel", LuaMap::getDangerLevel);
+		state.registerClosure(&_luamap, "getBlockType", LuaMap::getBlockType);
+		state.registerClosure(&_luamap, "getClosestSafeSpace", LuaMap::getClosestSafeSpace);
+		state.registerClosure(&_luamap, "canPutBombSafe", LuaMap::canPutBomb);
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)

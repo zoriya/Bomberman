@@ -115,4 +115,11 @@ namespace LuaG
 	{
 		lua_pop(_state, -1);
 	}
+
+	void State::registerClosure(void *ptr, std::string funcName, lua_CFunction fn)
+	{
+		lua_pushlightuserdata(_state, ptr);
+		lua_pushcclosure(_state, fn, 1);
+		lua_setglobal(_state, funcName.c_str());
+	}
 }

@@ -78,5 +78,7 @@ namespace LuaG
 
 		//! @brief Pop last value on the stack
 		void popLast(void);
+
+		void registerClosure(void *ptr, std::string funcName, lua_CFunction fn);
 	};
 }
