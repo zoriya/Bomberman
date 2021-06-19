@@ -116,7 +116,7 @@ function getPathToSafeSpace(player)
 	local res = {}
 	for i=minXesc,MaxXesc do
 		for j=minYesc, MaxYesc do
-			if Map[i][j] == 0 and Danger[i][j] == 0 then
+			if getBlockType(i, j) == 0 and getDangerLevel(i, j) == 0 then
 				local safe = {x = i, y = j}
 				local currDist = dist(player, safe)
 				if currDist < minDist then
@@ -132,14 +132,27 @@ function getPathToSafeSpace(player)
 	return path
 end
 
+LastTarget = nil
 ------ Update
 function Update()
 	log("NEW FRAME")
-	print("a")
-	local dangerMap = getDanger()
 	--local path = getPath(0, 0, 16, 16);
+	
+	local player = getPlayer()
+	if LastTarget ~= nil then
+		log("last target")
+		log(LastTarget.x)
+		log(LastTarget.y)
+		if math.abs(LastTarget.x - player.x) <= 0.1 and math.abs(LastTarget.x - player.x) <= 0.1 then
+			LastTarget = nil
+		else
+			return (LastTarget.x - player.x), (LastTarget.y - player.y), false, false
+		end
+	end
 	local player = getPlayerRound();
-	if isPlayerInDanger() then
+	local dangerMap = getDanger()
+	PrintMap(dangerMap, 16, 16)
+	if getDangerLevelPlayer() then
 		print("b")
 		print("player")
 		print(player.x)
@@ -151,7 +164,12 @@ function Update()
 			print(c.x)
 			print(c.y)
 		end
-		return 1, 1, false, false
+
+		if #path >= 2 then
+			LastTarget = {x = path[2].x, y = path[2].y}
+			return path[2].x - player.x, path[2].y - player.y, false, false
+		end
+		return 0, 0, false, false
 	end
 	---- sjould send Map Danger and MaxX MaxY
 	--MaxX = 0

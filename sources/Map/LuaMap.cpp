@@ -65,7 +65,7 @@ namespace BBM
 				continue;
 			if (neighbor.y >= 17 || neighbor.x >= 17)
 				continue;
-			if (_map[neighbor.y][neighbor.x] <= 1 &&
+			if (_map[neighbor.y][neighbor.x] == 0 &&
 				_danger[neighbor.y][neighbor.x] != 1)
 				neighbors.push_back(neighbor);
 		}
