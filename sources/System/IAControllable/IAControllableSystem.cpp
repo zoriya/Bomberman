@@ -46,7 +46,9 @@ namespace BBM
 		int dangerLevel = std::chrono::duration_cast<std::chrono::seconds>(ringIn).count();
 		if (dangerLevel == 0)
 			dangerLevel = 1;
+		radius++;
 		_luamap._map[bombPos.z][bombPos.x] = 10;
+		std::cout << "bomb" << bombPos << std::endl << std::flush;
 		_luamap._danger[bombPos.z][bombPos.x] = dangerLevel;
 		for (auto i = 1; i < radius; i++) {
 			pos = bombPos - Vector3f(i, 0, 0);

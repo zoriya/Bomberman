@@ -111,8 +111,10 @@ function getPathToSafeSpace(player)
 	print("run to")
 	print(res.x)
 	print(res.y)
-	local path = getPath(player.x, player.y, res.x, res.y)
-	return path
+	
+	local p = {player}
+	table.insert(p, res)
+	return p
 end
 
 LastTarget = nil
@@ -137,10 +139,10 @@ function Update()
 	print(player.x)
 	print(player.y)
 	local player = getPlayerRound();
-	local dangerMap = getDanger()
-	--PrintMap(dangerMap, 16, 16)
 	if getDangerLevelPlayer() then
 		print("INDANGER")
+		local dangerMap = getDanger()
+		PrintMap(dangerMap, 17, 17)
 		local path = getPathToSafeSpace(player)
 		if #path >= 2 then
 			print("path found")
