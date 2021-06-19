@@ -11,7 +11,8 @@ namespace RAY::Drawables::Drawables3D
 {
 
 	Plane::Plane(const Vector3 &position, const Vector2 &dimensions, const Color &color) :
-		ADrawable3D(position, color), _dimensions(dimensions)
+		ADrawable3D(position, color),
+		_dimensions(dimensions)
 	{
 	}
 
