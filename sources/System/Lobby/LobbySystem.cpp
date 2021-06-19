@@ -296,7 +296,7 @@ namespace BBM
 			playerCount++;
 		}
 		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
-		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight), scene);
+		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight, Runner::hasHeights), scene);
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 		wal.getSystem<LobbySystem>().unloadLobby();
 	}
