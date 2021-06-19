@@ -216,7 +216,7 @@ namespace BBM
 		int y = (playerCount % 3 != 0) ? 1080 - 10 - 248 : 10;
 		scene->addEntity("player color tile")
 				.addComponent<PositionComponent>(x, y - 2, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, _rayColors[color]);
+				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(x, y, 320, 248, RAY::Color(_rayColors[color]).setA(150));
 		scene->addEntity("player ui tile")
 				.addComponent<PositionComponent>(x, y, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>(texturePath);
