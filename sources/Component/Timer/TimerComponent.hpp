@@ -15,6 +15,9 @@ namespace BBM
 	class TimerComponent : public WAL::Component
 	{
 	public:
+		//! @brief Is the ticking of this component disabled?
+		bool disabled = false;
+
 		//! @brief The callback to call when the timer ring.
 		WAL::Callback<WAL::Entity &, WAL::Wal &> callback;
 		//! @brief The ring delay of this timer component.

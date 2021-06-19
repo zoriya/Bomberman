@@ -18,7 +18,7 @@ namespace BBM
 	{
 	public:
 		//! @brief jump key
-		Key keyJump = KEY_SPACE;
+		Key keySecondary = KEY_SPACE;
 		//! @brief bomb key
 		Key keyBomb = KEY_E;
 		//! @brief pause key

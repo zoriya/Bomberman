@@ -31,6 +31,9 @@ namespace BBM
 		};
 
 
+		//! @brief The scene before the actual one. Used for back buttons.
+		SceneID previousScene = SplashScreen;
+
 		//! @brief The currently loaded scene
 		SceneID currentScene = SplashScreen;
 
@@ -38,6 +41,6 @@ namespace BBM
 		SceneID nextScene = SplashScreen;
 
 		//! @brief The list of loaded scenes.
-		std::unordered_map<SceneID, std::shared_ptr<WAL::Scene>> _loadedScenes = {};
+		std::unordered_map<SceneID, std::shared_ptr<WAL::Scene>> loadedScenes = {};
 	};
 }

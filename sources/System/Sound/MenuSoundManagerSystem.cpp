@@ -20,7 +20,7 @@ namespace BBM {
 		std::map<bool, SoundComponent::SoundIndex> soundIndex = {
 			{controllable.move.x, SoundComponent::MOVE},
 			{controllable.move.y, SoundComponent::MOVE},
-			{controllable.select, SoundComponent::JUMP},
+			{controllable.bomb,   SoundComponent::BOMB},
 		};
 		for (auto &a : soundIndex) {
 			if (a.first) {
