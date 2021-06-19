@@ -128,10 +128,8 @@ namespace BBM {
 		std::ofstream playerFile(player);
 		std::ofstream bonusFile(bonus);
 		auto &ret = scene->view<TagComponent<Timer>, TimerComponent>();
+		_block << "timer: " << ret.front().get<TimerComponent>().ringIn.count();
 
-		for (auto &[myEntity, tag, timerComponent] : ret) {
-			_block << "timer: " << timerComponent.ringIn.count();
-		}
 		_player << "players:";
 		_bonus << "bonuses:";
 		_block << std::endl << "width: " << std::to_string(Runner::mapWidth);
