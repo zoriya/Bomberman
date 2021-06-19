@@ -18,7 +18,6 @@ namespace BBM
 	{
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &movable = entity.get<MovableComponent>();
-		auto health = entity->tryGetComponent<HealthComponent>();
 		Vector2f move = controllable.move.normalized() * controllable.speed;
 
 		movable.addForce(Vector3f(move.x, 0, move.y));
