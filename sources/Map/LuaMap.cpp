@@ -147,36 +147,37 @@ namespace BBM
 		LuaG::State state(L);
 		int index = 1;
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_newtable(L);
+		state.newTable();
 		for (int i = 0; i < 17; i++) {
-			lua_pushinteger(L, index++);
-			lua_newtable(L);
+			state.push(index++);
+			state.newTable();
 			int indexrow = 1;
 			for (int j = 0; j < 17; j++) {
-				lua_pushinteger(L, indexrow++);
-				lua_pushinteger(L, map->_map[i][j]);
-				lua_settable(L, -3);
+				state.push(indexrow++);
+				state.push(map->_map[i][j]);
+				state.setTable();
 			}
-			lua_settable(L, -3);
+			state.setTable();
 		}
 		return 1;	
 	}
 	
 	int LuaMap::getDanger(lua_State *L)
 	{
+		LuaG::State state(L);
 		int index = 1;
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_newtable(L);
+		state.newTable();
 		for (int i = 0; i < 17; i++) {
-			lua_pushinteger(L, index++);
-			lua_newtable(L);
+			state.push(index++);
+			state.newTable();
 			int indexrow = 1;
 			for (int j = 0; j < 17; j++) {
-				lua_pushinteger(L, indexrow++);
-				lua_pushinteger(L, map->_danger[i][j]);
-				lua_settable(L, -3);
+				state.push(indexrow++);
+				state.push(map->_danger[i][j]);
+				state.setTable();
 			}
-			lua_settable(L, -3);
+			state.setTable();
 		}
 		return 1;
 	}
@@ -193,17 +194,17 @@ namespace BBM
 		Vector2f snd(x2, y2);
 		auto path = map->pathfind(fst, snd);
 		int index = 1;
-		lua_newtable(L);
+		state.newTable();
 		for (auto &r : path) {
-			lua_pushinteger(L, index++);
-			lua_newtable(L);
-			lua_pushstring(L, "x");
-			lua_pushnumber(L, r.x);
-			lua_settable(L, -3);
-			lua_pushstring(L, "y");
-			lua_pushnumber(L, r.y);
-			lua_settable(L, -3);
-			lua_settable(L, -3);
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(r.x);
+			state.setTable();
+			state.push("y");
+			state.push(r.y);
+			state.setTable();
+			state.setTable();
 		}
 		return 1;
 	}
@@ -212,13 +213,13 @@ namespace BBM
 	{
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_newtable(L);
-		lua_pushstring(L, "x");
-		lua_pushnumber(L, map->_player.x);
-		lua_settable(L, -3);
-		lua_pushstring(L, "y");
-		lua_pushnumber(L, map->_player.y);
-		lua_settable(L, -3);
+		state.newTable();
+		state.push("x");
+		state.push(map->_player.x);
+		state.setTable();
+		state.push("y");
+		state.push(map->_player.y);
+		state.setTable();
 		return 1;
 	}
 
@@ -226,13 +227,13 @@ namespace BBM
 	{
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_newtable(L);
-		lua_pushstring(L, "x");
-		lua_pushnumber(L, map->_roundedPlayer.x);
-		lua_settable(L, -3);
-		lua_pushstring(L, "y");
-		lua_pushnumber(L, map->_roundedPlayer.y);
-		lua_settable(L, -3);
+		state.newTable();
+		state.push("x");
+		state.push(map->_roundedPlayer.x);
+		state.setTable();
+		state.push("y");
+		state.push(map->_roundedPlayer.y);
+		state.setTable();
 		return 1;
 	}
 
@@ -241,13 +242,13 @@ namespace BBM
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
 		Vector2f closest = map->findSafeSpace();
-		lua_newtable(L);
-		lua_pushstring(L, "x");
-		lua_pushinteger(L, closest.x);
-		lua_settable(L, -3);
-		lua_pushstring(L, "y");
-		lua_pushinteger(L, closest.y);
-		lua_settable(L, -3);
+		state.newTable();
+		state.push("x");
+		state.push(closest.x);
+		state.setTable();
+		state.push("y");
+		state.push(closest.y);
+		state.setTable();
 		return 1;
 	}
 
@@ -265,7 +266,7 @@ namespace BBM
 		auto x = lua_tonumber(L, -2);
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_pushinteger(L, map->_danger[y][x]);
+		state.push(map->_danger[y][x]);
 		return 1;
 	}
 
@@ -275,7 +276,7 @@ namespace BBM
 		auto x = lua_tonumber(L, -2);
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
-		lua_pushinteger(L, map->_map[y][x]);
+		state.push(map->_map[y][x]);
 		return 1;
 	}
 }
