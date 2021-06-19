@@ -69,6 +69,13 @@ namespace BBM
 		}
 
 		template<typename T2>
+		Vector2<T> operator-(const Vector2<T2> &vec) const
+		{
+			return Vector2<T>(this->x - vec.x, this->y - vec.y);
+		}
+
+
+		template<typename T2>
 		Vector2<T> &operator*=(T2 d)
 		{
 			this->x *= d;

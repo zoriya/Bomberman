@@ -97,18 +97,18 @@ namespace BBM
 				texture->use("assets/buttons/button_minus_hovered.png");
 			});
 		
-		auto &musicLevel = scene->addEntity("music level text")
+		scene->addEntity("music level text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 460, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(30, 10), BLACK)
 			.addComponent<StatComponent>([audio](Drawable2DComponent &drawble) {
-				const MusicComponent *music = audio.tryGetComponent<MusicComponent>();
+				const MusicComponent *musicCmp = audio.tryGetComponent<MusicComponent>();
 
-				if (!music)
+				if (!musicCmp)
 					return;
 				RAY2D::Rectangle *rect = dynamic_cast<RAY2D::Rectangle *>(drawble.drawable.get());
 				if (!rect)
 					return;
-				rect->setWidth((13 * 36.5) * music->volume);
+				rect->setWidth((13 * 36.5) * musicCmp->volume);
 			});
 
 		auto &sound = scene->addEntity("sound text")
@@ -172,18 +172,18 @@ namespace BBM
 				texture->use("assets/buttons/button_minus_hovered.png");
 			});
 
-		auto &soundLevel = scene->addEntity("sound level text")
+		scene->addEntity("sound level text")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 100 - 280, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(), RAY::Vector2(30, 10), BLACK)
-			.addComponent<StatComponent>([audio](Drawable2DComponent &drawble) {
-				const SoundComponent *sound = audio.tryGetComponent<SoundComponent>();
+			.addComponent<StatComponent>([audio](Drawable2DComponent &drawable) {
+				const auto *soundCmp = audio.tryGetComponent<SoundComponent>();
 
-				if (!sound)
+				if (!soundCmp)
 					return;
-				RAY2D::Rectangle *rect = dynamic_cast<RAY2D::Rectangle *>(drawble.drawable.get());
+				auto *rect = dynamic_cast<RAY2D::Rectangle *>(drawable.drawable.get());
 				if (!rect)
 					return;
-				rect->setWidth((13 * 36.5) * sound->volume);
+				rect->setWidth((13 * 36.5) * soundCmp->volume);
 			});
 
 		auto &debug = scene->addEntity("debug text")
@@ -191,7 +191,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Debug Mode: Off", 70, RAY::Vector2(), BLACK)
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
 			{
-				RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *text = dynamic_cast<RAY2D::Text *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				if (text->getString().find("Off") != std::string::npos) {
 					text->setText("Debug Mode: On");
@@ -239,7 +239,7 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
+				gameState.nextScene = gameState.previousScene;
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
