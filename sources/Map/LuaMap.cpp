@@ -99,7 +99,7 @@ namespace BBM
 		while (open.size())
 		{
 			auto min_elem = std::min_element(open.begin(), open.end(),
-			[&fScore](const decltype(open)::value_type &l, const decltype(open)::value_type &r) -> bool
+			[&fScore](const auto &l, const auto &r) -> bool
 			{
 				if (fScore.find(l) == fScore.end())
 					return true;
