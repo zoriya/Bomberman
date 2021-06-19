@@ -131,7 +131,7 @@ namespace BBM
 			return;
 		ia._state.callFunction(0, 4);
 		controllable.bomb = ia._state.getReturnBool();
-		controllable.select = ia._state.getReturnBool();
+		controllable.secondary = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
 		controllable.move.x = ia._state.getReturnNumber();
 		ia._state.popLast();

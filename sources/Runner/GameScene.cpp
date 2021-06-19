@@ -18,10 +18,8 @@
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Shaders/Items/AlphaCtxShaderComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
 #include <Drawables/Image.hpp>
 #include "Component/Shaders/ShaderComponent.hpp"
-#include "Drawables/Texture.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
@@ -41,8 +39,11 @@ namespace BBM
 			.addComponent<PositionComponent>(8, 0, -5)
 			.addComponent<CameraComponent>(Vector3f(8, 0, 8));
 		scene->addEntity("background image")
-			.addComponent<Drawable2DComponent, RAY::Texture>(true, "assets/backgrounds/game.png", false)
-			.addComponent<PositionComponent>();
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/game.png"), Vector3f(50, 1, 50))
+			.addComponent<PositionComponent>(5, -2, 0);
+		scene->addEntity("background image")
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), -90, Vector3f(), Vector3f(1, 0, 0))
+			.addComponent<PositionComponent>(5, 14, 22);
 		MapGenerator::loadMap(16, 16, MapGenerator::createMap(16, 16, hasHeights), scene);
 		return scene;
 	}
@@ -58,7 +59,7 @@ namespace BBM
 
 		return scene.addEntity("player")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true)
+			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/player/player.iqm", true, std::nullopt, Vector3f(.75, .75, .75))
 			.addComponent<ScoreComponent>()
 			.addComponent<AnimatorComponent>()
 		    .addComponent<GravityComponent>()
@@ -67,10 +68,10 @@ namespace BBM
 			.addComponent<TagComponent<BlowablePass>>()
 			.addComponent<TagComponent<Player>>()
 			.addComponent<AnimationsComponent>("assets/player/player.iqm", 3)
-			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.75, 2, .75})
+			.addComponent<CollisionComponent>(BBM::Vector3f{0.25, 0, 0.25}, BBM::Vector3f{.6, 2, .6})
 			.addComponent<MovableComponent>()
 			.addComponent<AlphaVarShaderComponent>()
-			.addComponent<ShaderComponentModel>("assets/shaders/alpha.fs", "", [](WAL::Entity &myEntity, WAL::Wal &wal, std::chrono::nanoseconds dtime) {
+			.addComponent<ShaderComponentModel>("assets/shaders/alpha.fs", "", [](WAL::Entity &myEntity, WAL::Wal &, std::chrono::nanoseconds dtime) {
 				auto &ctx = myEntity.getComponent<AlphaVarShaderComponent>();
 
 				ctx.clock += dtime;
@@ -120,7 +121,7 @@ namespace BBM
 				if (entity.hasComponent<TimerComponent>())
 					return;
 				entity.getComponent<ControllableComponent>().disabled = true;
-				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &wal) {
+				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &) {
 					ent.scheduleDeletion();
 				});
 			});

@@ -3,7 +3,6 @@
 //
 
 #include <Wal.hpp>
-#include <iostream>
 #include "System/Movable/MovableSystem.hpp"
 #include "System/Renderer/RenderSystem.hpp"
 #include <Drawables/2D/Rectangle.hpp>
@@ -12,15 +11,9 @@
 #include "System/Controllable/ControllableSystem.hpp"
 #include "System/Gamepad/GamepadSystem.hpp"
 #include <System/Collision/CollisionSystem.hpp>
-#include "Component/Button/ButtonComponent.hpp"
-#include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
 #include <Component/IAControllable/IAControllableComponent.hpp>
 #include <Component/Keyboard/KeyboardComponent.hpp>
-#include <System/Gamepad/GamepadSystem.hpp>
-#include "Component/Renderer/CameraComponent.hpp"
-#include "Component/Renderer/Drawable3DComponent.hpp"
-#include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Runner.hpp"
 #include "Models/GameState.hpp"
 #include <System/Timer/TimerSystem.hpp>
@@ -37,7 +30,6 @@
 #include "System/Shaders/ShaderDrawable2DSystem.hpp"
 #include "System/Shaders/ShaderModelSystem.hpp"
 #include "System/Animation/AnimationsSystem.hpp"
-#include "Map/Map.hpp"
 #include "System/IAControllable/IAControllableSystem.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include <System/Bomb/BombSystem.hpp>
@@ -50,7 +42,6 @@
 #include "System/Lobby/LobbySystem.hpp"
 #include "System/Score/ScoreSystem.hpp"
 #include "System/EndCondition/EndConditionSystem.hpp"
-#include "Component/Lobby/LobbyComponent.hpp"
 #include "System/Bonus/BonusUISystem.hpp"
 
 namespace BBM
@@ -64,21 +55,27 @@ namespace BBM
 			engine.shouldClose = true;
 		if (gameState.currentScene == GameState::SceneID::GameScene) {
 			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
+				component.fastClick = true;
 				if (component.pause && gameState.currentScene == GameState::SceneID::GameScene) {
 					gameState.nextScene = GameState::SceneID::PauseMenuScene;
 					break;
 				}
 			}
-			if (gameState.nextScene != GameState::SceneID::GameScene)
-				engine.getSystem<CameraSystem>().hasEnded = false;
 		}
 		if (gameState.nextScene == gameState.currentScene)
 			return;
-		if (gameState.nextScene == GameState::SceneID::ScoreScene)
-			gameState._loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		if (gameState.previousScene == GameState::SceneID::GameScene) {
+			for (auto &[_, component]: engine.getScene()->view<ControllableComponent>()) {
+				component.fastClick = false;
+			}
+		}
+		if (gameState.nextScene == GameState::SceneID::ScoreScene) {
+			gameState.loadedScenes[GameState::SceneID::ScoreScene] = Runner::loadScoreScene(*engine.getScene());
+		}
 		RAY::Window::getInstance().setVisibleCursor(gameState.nextScene != GameState::SceneID::GameScene);
-		gameState._loadedScenes[gameState.currentScene] = engine.getScene();
-		engine.changeScene(gameState._loadedScenes[gameState.nextScene]);
+		gameState.loadedScenes[gameState.currentScene] = engine.getScene();
+		engine.changeScene(gameState.loadedScenes[gameState.nextScene]);
+		gameState.previousScene = gameState.currentScene;
 		gameState.currentScene = gameState.nextScene;
 	}
 
@@ -109,9 +106,9 @@ namespace BBM
 			.addSystem<ShaderSystem>()
 			.addSystem<ShaderModelSystem>()
 			.addSystem<ShaderDrawable2DSystem>()
-			.addSystem<EndConditionSystem>()
 			.addSystem<ScoreSystem>()
 			.addSystem<CameraSystem>()
+			.addSystem<EndConditionSystem>()
 			.addSystem<MusicSystem>();
 	}
 
@@ -148,14 +145,14 @@ namespace BBM
 
 	void Runner::loadScenes()
 	{
-		gameState._loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
-		gameState._loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
-		gameState._loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
-		gameState._loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
-		gameState._loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
-		gameState._loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
-		gameState._loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
-		gameState._loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
+		gameState.loadedScenes[GameState::SceneID::MainMenuScene] = loadMainMenuScene();
+		gameState.loadedScenes[GameState::SceneID::SettingsScene] = loadSettingsMenuScene();
+		gameState.loadedScenes[GameState::SceneID::PauseMenuScene] = loadPauseMenuScene();
+		gameState.loadedScenes[GameState::SceneID::TitleScreenScene] = loadTitleScreenScene();
+		gameState.loadedScenes[GameState::SceneID::CreditScene] = loadCreditScene();
+		gameState.loadedScenes[GameState::SceneID::SplashScreen] = loadSplashScreenScene();
+		gameState.loadedScenes[GameState::SceneID::LobbyScene] = loadLobbyScene();
+		gameState.loadedScenes[GameState::SceneID::HowToPlayScene] = loadHowToPlayScene();
 	}
 
 	int Runner::run()
@@ -165,7 +162,7 @@ namespace BBM
 		Runner::addSystems(wal);
 		Runner::enableRaylib(wal);
 		Runner::loadScenes();
-		wal.changeScene(Runner::gameState._loadedScenes[GameState::SceneID::SplashScreen]);
+		wal.changeScene(Runner::gameState.loadedScenes[GameState::SceneID::SplashScreen]);
 		wal.run<GameState>(Runner::updateState, Runner::gameState);
 		return 0;
 	}

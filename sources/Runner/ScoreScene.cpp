@@ -35,11 +35,12 @@ namespace BBM
 			"1st", "2nd", "3rd", "4th"
 		};
 
-		for (WAL::Entity &entity : gameScene.view<ScoreComponent, Drawable3DComponent>())
+		for (WAL::Entity &entity: gameScene.view<ScoreComponent, Drawable3DComponent>())
 			players.emplace_back(entity);
 		std::sort(players.begin(), players.end(), [](WAL::Entity &entityA, WAL::Entity &entityB) {
 			return entityA.getComponent<ScoreComponent>().aliveTime > entityB.getComponent<ScoreComponent>().aliveTime;
 		});
+		auto bestTime = players.front().get().getComponent<ScoreComponent>().aliveTime;
 
 		int playerID = 0;
 		for (auto &entity : players) {
@@ -59,7 +60,7 @@ namespace BBM
 		}
 
 		addMenuControl(*scene, sounds);
-		scene->addEntity("Audio ressources")
+		scene->addEntity("Audio resources")
 			.addComponent<MusicComponent>("assets/musics/music_result.ogg")
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
@@ -74,19 +75,23 @@ namespace BBM
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 2.37, 250, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("CONGRATS", 50, RAY::Vector2(), ORANGE);
-		for (size_t i = 0; i < players.size(); i++) {
+		for (std::size_t i = 0; i < players.size(); i++) {
+			std::size_t place = i;
+			if (players[i].get().getComponent<ScoreComponent>().aliveTime == bestTime)
+				place = 0;
+
 			scene->addEntity("player tile")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
-				                                                     RAY::Vector2(200, 200), tilesColor[i]);
+				                                                     RAY::Vector2(200, 200), tilesColor[place]);
 			scene->addEntity("player rank name")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.75, 0)
-				.addComponent<Drawable2DComponent, RAY2D::Text>(rankName[i], 30,
+				.addComponent<Drawable2DComponent, RAY2D::Text>(rankName[place], 30,
 				                                                RAY::Vector2(224 * (i + 1) + 200 * i, 1080 / 3),
-				                                                tilesColor[i]);
+				                                                tilesColor[place]);
 			scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[i]);
+				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[place]);
 		}
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)
@@ -108,17 +113,15 @@ namespace BBM
 		auto &back = scene->addEntity("back to main menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &) {
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &) {
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			})
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &) {
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				texture->use("assets/buttons/button_back.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &) {
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
-
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 				texture->use("assets/buttons/button_back_hovered.png");
 			});
 		back.getComponent<OnClickComponent>().setButtonLinks(&play, nullptr, nullptr, &play);

@@ -27,13 +27,13 @@ namespace BBM
 
 		Gamepad gamepad(gamepadComponent.getID());
 		const std::map<Button, bool &> keyPressedMap = {
-			{gamepadComponent.keyJump, controllable.select},
-			{gamepadComponent.keyBomb, controllable.bomb},
-			{gamepadComponent.keyPause, controllable.pause}
+			{gamepadComponent.keySecondary, controllable.secondary},
+			{gamepadComponent.keyBomb,      controllable.bomb},
+			{gamepadComponent.keyPause,     controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = gamepad.isDown(key.first);
+			key.second = controllable.fastClick ? gamepad.isDown(key.first) : gamepad.isPressed(key.first);
 		controllable.move.x = gamepad.getAxisValue(gamepadComponent.LeftStickX) * -1;
 		controllable.move.y = gamepad.getAxisValue(gamepadComponent.LeftStickY) * -1;
 		controllable.move.x -= static_cast<float>(gamepad.isDown(gamepadComponent.keyRight));

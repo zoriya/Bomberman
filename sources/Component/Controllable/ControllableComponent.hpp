@@ -34,9 +34,9 @@ namespace BBM
 
 			//! @brief The X and Z abscis of the movement.
 			Vector2f move;
-			//! @brief input value to select
-			bool select = false;
-			//! @brief input value for bomb
+			//! @brief input value for secondary inputs.
+			bool secondary = false;
+			//! @brief input value for bomb and selection
 			bool bomb = false;
 			//! @brief input value for pause
 			bool pause = false;
@@ -44,6 +44,8 @@ namespace BBM
 			float speed = .15f;
 			//! @brief The layout used for this controllable.
 			Layout layout = NONE;
+			//! @brief True if buttons should be triggered every frame where the key is down, false if the button should only be triggered once the key is released.
+			bool fastClick = false;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
