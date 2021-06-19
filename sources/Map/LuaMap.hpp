@@ -30,6 +30,9 @@ namespace BBM
 			//! @brief A star pathfinding between two points
 			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
 
+			//! @brief find a safe space for current player
+			Vector2f findSafeSpace(void) const;
+
 			//! @brief push table of table of the map
 			static int getMap(lua_State *L);
 

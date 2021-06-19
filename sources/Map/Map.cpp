@@ -240,9 +240,9 @@ namespace BBM
 			.addComponent<TagComponent<Blowable>>()
 			.addComponent<TagComponent<Breakable>>()
 			.addComponent<HealthComponent>(1, &MapGenerator::wallDestroyed)
-			.addComponent<CollisionComponent>(
-				WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-				&MapGenerator::wallCollided, 0.25, .75)
+			//.addComponent<CollisionComponent>(
+			//	WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
+			//	&MapGenerator::wallCollided, 0.25, .75)
 			.addComponent<Drawable3DComponent, RAY3D::Model>(breakableObj, false, std::make_pair(MAP_DIFFUSE, breakablePng));
 	}
 

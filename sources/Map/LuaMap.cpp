@@ -69,6 +69,17 @@ namespace BBM
 				_danger[neighbor.y][neighbor.x] != 1)
 				neighbors.push_back(neighbor);
 		}
+		if (neighbors.size())
+			return neighbors;
+		for (auto &dir : _dirs) {
+			Vector2f neighbor(node.x + dir.x, node.y + dir.y);
+			if (neighbor.y < 0 || neighbor.x < 0)
+				continue;
+			if (neighbor.y >= 17 || neighbor.x >= 17)
+				continue;
+			if (_map[neighbor.y][neighbor.x] == 0)
+				neighbors.push_back(neighbor);
+		}
 		return neighbors;
 	}
 
@@ -124,6 +135,11 @@ namespace BBM
 			}
 		}
 		return path;
+	}
+
+	Vector2f LuaMap::findSafeSpace(void) const
+	{
+		return _roundedPlayer;
 	}
 
 	int LuaMap::getMap(lua_State *L)
@@ -224,6 +240,14 @@ namespace BBM
 	{
 		LuaG::State state(L);
     	const LuaMap *map = (const LuaMap *) lua_topointer(L, lua_upvalueindex(1));
+		Vector2f closest = map->findSafeSpace();
+		lua_newtable(L);
+		lua_pushstring(L, "x");
+		lua_pushinteger(L, closest.x);
+		lua_settable(L, -3);
+		lua_pushstring(L, "y");
+		lua_pushinteger(L, closest.y);
+		lua_settable(L, -3);
 		return 1;
 	}
 

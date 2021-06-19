@@ -107,25 +107,8 @@ end
 
 
 function getPathToSafeSpace(player)
-	local minXesc = (player.x - 3 < 0) and 0 or (player.x - 3);
-	local MaxXesc = (player.x + 3 > 16) and 16 or (player.x + 3);
-	local minYesc = (player.y - 3 < 0) and 0 or (player.y - 3);
-	local MaxYesc = (player.y + 3 > 16) and 16 or (player.y + 3);
-
-	local minDist = 100000
-	local res = {}
-	for i=minXesc,MaxXesc do
-		for j=minYesc, MaxYesc do
-			if getBlockType(i, j) == 0 and getDangerLevel(i, j) == 0 then
-				local safe = {x = i, y = j}
-				local currDist = dist(player, safe)
-				if currDist < minDist then
-					minDist, res = currDist, safe
-				end
-			end
-		end
-	end
-	print("res")
+	local res = getClosestSafeSpace()
+	print("run to")
 	print(res.x)
 	print(res.y)
 	local path = getPath(player.x, player.y, res.x, res.y)
@@ -149,61 +132,30 @@ function Update()
 			return (LastTarget.x - player.x), (LastTarget.y - player.y), false, false
 		end
 	end
+	
+	print("player")
+	print(player.x)
+	print(player.y)
 	local player = getPlayerRound();
 	local dangerMap = getDanger()
-	PrintMap(dangerMap, 16, 16)
+	--PrintMap(dangerMap, 16, 16)
 	if getDangerLevelPlayer() then
-		print("b")
-		print("player")
-		print(player.x)
-		print(player.y)
+		print("INDANGER")
 		local path = getPathToSafeSpace(player)
-		print("w")
-		for i,c in ipairs(path) do
-			print(i)
-			print(c.x)
-			print(c.y)
-		end
-
 		if #path >= 2 then
+			print("path found")
+			for i, c in ipairs(path) do
+				print(i)
+				print(c.x)
+				print(c.y)
+			end
 			LastTarget = {x = path[2].x, y = path[2].y}
 			return path[2].x - player.x, path[2].y - player.y, false, false
 		end
+		print("nopath found")
 		return 0, 0, false, false
 	end
-	---- sjould send Map Danger and MaxX MaxY
-	--MaxX = 0
-	--MaxY = 0
-	--for i, info in ipairs(mapinfo.raw) do
-	--	if info.x > MaxX then
-	--		MaxX = info.
-	--	end
-	--	if info.y > MaxY then
-	--		MaxY = info.y
-	--	end
-	--end
-	--Map = CreateMyMap(mapinfo.raw, MaxX, MaxY)
-	--Danger = CreateDangerMap(mapinfo.danger)
-	--PrintMap(Map, MaxX, MaxY)
-	--log("Current player pos")
-	--log(mapinfo.player.x)
-	--log(mapinfo.player.y)
-	--log("Rounded player pos")
-	--local roundedPlayerPos = {x = math.floor(mapinfo.player.x+0.5), y = math.floor(mapinfo.player.y+0.5)}
-	--log(roundedPlayerPos.x)
-	--log(roundedPlayerPos.y)
-	--log("Last target")
-	--if LastTarget ~= nil then
-	--	log(LastTarget.x)
-	--	log(LastTarget.y)
-	--	if math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 and math.abs(LastTarget.x - mapinfo.player.x) <= 0.1 then
-	--		LastTarget = nil
-	--	else
-	--		return (LastTarget.x - mapinfo.player.x), (LastTarget.y - mapinfo.player.y), false, false
-	--	end
-	--else
-	--	log("No last target")
-	--end
+	print("SAFE")
 	--if (isInExplosionRange(roundedPlayerPos.x, roundedPlayerPos.y)) then
 	--	log("IN DANGER")
 	--	local pathToSafeSpace = getPathToSafeSpace(roundedPlayerPos)

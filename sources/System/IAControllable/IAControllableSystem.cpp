@@ -103,6 +103,10 @@ namespace BBM
 		lua_pushlightuserdata(state.getState(), &_luamap);
 		lua_pushcclosure(state.getState(), LuaMap::getBlockType, 1);
 		lua_setglobal(state.getState(), "getBlockType");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::getClosestSafeSpace, 1);
+		lua_setglobal(state.getState(), "getClosestSafeSpace");
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
