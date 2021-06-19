@@ -51,8 +51,10 @@ namespace WAL
 		Scene &_scene;
 		//! @brief Get the ID of the entity.
 		unsigned getUid() const;
-		//! @brief Get the name fo the entity
+		//! @brief Get the name of the entity
 		std::string getName() const;
+		//!@brief Set the name of the entity
+		void setName(std::string &name);
 
 		//! @brief Used if the entity is disabled
 		bool isDisable() const;

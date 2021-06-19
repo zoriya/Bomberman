@@ -122,10 +122,18 @@ set(SOURCES
 	sources/System/Sound/PlayerSoundManagerSystem.hpp
 	sources/System/Music/MusicSystem.hpp
 	sources/System/Music/MusicSystem.cpp
+	sources/Parser/ParserYaml.hpp
+	sources/Parser/ParserYaml.cpp
+	sources/Exception/Error.hpp
+	sources/Exception/Error.cpp
 	sources/System/Lobby/LobbySystem.cpp
 	sources/System/Lobby/LobbySystem.hpp
 	sources/Component/Lobby/LobbyComponent.cpp
 	sources/Component/Lobby/LobbyComponent.hpp
+	sources/System/Lobby/ResumeLobbySystem.cpp
+	sources/System/Lobby/ResumeLobbySystem.hpp
+	sources/Component/Lobby/ResumeLobbyComponent.cpp
+	sources/Component/Lobby/ResumeLobbyComponent.hpp
 	sources/Component/Gravity/GravityComponent.hpp
 	sources/Component/Gravity/GravityComponent.cpp
 	sources/System/Gravity/GravitySystem.hpp
@@ -156,6 +164,12 @@ set(SOURCES
 	sources/System/EndCondition/EndConditionSystem.hpp
 	sources/System/EndCondition/EndConditionSystem.cpp
 	sources/Runner/LobbyScene.cpp
+	sources/Runner/ResumeLobbyScene.cpp
+	sources/Runner/ScoreScene.cpp
+	sources/Parser/Node.cpp
+	sources/Parser/Node.hpp
+	sources/Utils/Utils.cpp
+	sources/Utils/Utils.hpp
 	sources/Runner/HowToPlayScene.cpp
 	sources/Runner/ScoreScene.cpp
 	sources/System/Shaders/ShaderSystem.cpp
@@ -178,6 +192,8 @@ set(SOURCES
 	sources/Component/Stat/StatComponent.hpp
 	sources/Component/Shaders/Items/AlphaCtxShaderComponent.cpp
 	sources/Component/Shaders/Items/AlphaCtxShaderComponent.hpp
+	sources/Component/Speed/SpeedComponent.cpp
+	sources/Component/Speed/SpeedComponent.hpp
 	)
 
 add_executable(bomberman

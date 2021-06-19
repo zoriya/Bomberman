@@ -61,4 +61,5 @@ namespace BBM
 	constexpr const char Bumper[] = "Bumper";
 	// interact with bombs (getting damage etc) but doesn't stop explosion
 	constexpr const char BlowablePass[] = "BlowablePass";
+	constexpr const char Timer[] = "Timer";
 }
