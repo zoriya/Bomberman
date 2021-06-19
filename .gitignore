@@ -10,3 +10,4 @@ build_web/*
 wasm-python.py
 lua54*
 include/*
+save/*
