@@ -119,6 +119,8 @@ end
 
 LastTarget = nil
 ------ Update
+
+math.randomseed(os.time())
 function Update()
 	log("NEW FRAME")
 	--local path = getPath(0, 0, 16, 16);
@@ -157,8 +159,36 @@ function Update()
 		print("nopath found")
 		return 0, 0, false, false
 	end
-	if canPutBombSafe() then
-		return 0, 0, true, true
+	local y = math.random(4)
+	log("y")
+	log(y)
+	if y == 1 then
+		local canPut = canPutBombSafe()
+		if canPut then
+			LastTarget = nil
+			return 0, 0, true, true
+		end
+	end
+	local x = math.random(4)
+	local dirX = {-1, 0, 1, 0}
+	local dirY = {0, -1, 0, 1}
+	local target = {x = player.x + dirX[x], y = player.y + dirY[x]}
+	log("target")
+	log(target.x)
+	log(target.y)
+	if target.x < 0 or target.x > 16 or target.y < 0 or target.y > 16 then
+		return 0, 0, false, false
+	end
+	local blocktypetarget = getBlockType(target.x, target.y)
+	local dangerleveltarget = getDangerLevel(target.x, target.y)
+	log("blocktype")
+	log(blocktypetarget)
+	log("dangelever")
+	log(dangerleveltarget)
+	if dangerleveltarget == 0 and blocktypetarget == 0 then
+		log("a")
+		LastTarget = {x = target.x, y = target.y}
+		return  LastTarget.x - player.x, LastTarget.y - player.y, false, false
 	end
 	return 0,0, false, false
 end
