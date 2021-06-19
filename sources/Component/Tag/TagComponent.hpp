@@ -54,6 +54,7 @@ namespace BBM
 	constexpr const char Blowable[] = "Blowable";
 	// interact with visual features like camera
 	constexpr const char Player[] = "Player";
+	constexpr const char Background[] = "Background";
 	constexpr const char Unbreakable[] = "Unbreakable";
 	constexpr const char Breakable[] = "Breakable";
 	constexpr const char Hole[] = "Hole";

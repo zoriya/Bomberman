@@ -25,13 +25,13 @@ namespace BBM
 			return;
 
 		const std::map<KeyboardKey, bool &> keyPressedMap = {
-			{keyboard.keyJump, controllable.select},
-			{keyboard.keyBomb, controllable.bomb},
-			{keyboard.keyPause, controllable.pause}
+			{keyboard.keySecondary, controllable.secondary},
+			{keyboard.keyBomb,      controllable.bomb},
+			{keyboard.keyPause,     controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = Keyboard::isDown(key.first);
+			key.second = controllable.fastClick ? Keyboard::isDown(key.first) : Keyboard ::isPressed(key.first);
 		controllable.move = Vector2f();
 		if (Keyboard::isDown(keyboard.keyRight))
 			controllable.move.x -= 1;

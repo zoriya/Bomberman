@@ -45,7 +45,7 @@ namespace BBM
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
 				auto &controller = ctrl;
-				if (controller.select) {
+				if (controller.bomb) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<ResumeLobbyComponent, Drawable2DComponent> &view) {
 						return view.get<ResumeLobbyComponent>().layout == controller.layout;
 					}))
@@ -53,7 +53,7 @@ namespace BBM
 					lobby.ready = true;
 					lobby.lastInput = lastTick;
 					lobby.layout = controller.layout;
-					controller.select = false;
+					controller.bomb = false;
 					this->_wal.getSystem<MenuControllableSystem>().now = lastTick;
 					auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 					if (texture)
@@ -89,7 +89,7 @@ namespace BBM
 
 	void ResumeLobbySystem::resumeToGame(WAL::Wal &wal)
 	{
-		auto scene = Runner::gameState._loadedScenes[GameState::SceneID::GameScene];
+		auto scene = Runner::gameState.loadedScenes[GameState::SceneID::GameScene];
 		int countPlayer = 0;
 
 		for (auto &[_, lobby] : wal.getScene()->view<ResumeLobbyComponent>()) {

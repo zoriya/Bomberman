@@ -3,12 +3,15 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include <System/Renderer/CameraSystem.hpp>
+#include "Component/Health/HealthComponent.hpp"
+#include "Component/Timer/TimerComponent.hpp"
+#include "Component/Tag/TagComponent.hpp"
 #include <Parser/ParserYaml.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
-#include "Component/Keyboard/KeyboardComponent.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
 #include "Component/Button/ButtonComponent.hpp"
 #include "Drawables/2D/Text.hpp"
@@ -43,18 +46,39 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_back.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_back_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &)
 			{
+				auto &gameScene = gameState.loadedScenes[BBM::GameState::SceneID::GameScene];
+				for (auto &[entity, controller, _] : gameScene->view<ControllableComponent, HealthComponent>()) {
+					controller.disabled = true;
+					controller.pause = false;
+					controller.bomb = false;
+				}
+				for (auto &[_, timer] : gameScene->view<TimerComponent>())
+					timer.disabled = true;
+				gameScene->scheduleNewEntity("Restart timer")
+					.addComponent<TimerComponent>(std::chrono::seconds(3), [gameScene](WAL::Entity &entity, WAL::Wal &) {
+						for (auto &view : gameScene->view<ControllableComponent, HealthComponent>()) {
+							if (view.get<HealthComponent>().getHealthPoint() > 0)
+								view.get<ControllableComponent>().disabled = false;
+						}
+						for (auto &view : gameScene->view<TimerComponent>())
+							view.get<TimerComponent>().disabled = false;
+						entity.scheduleDeletion();
+					})
+					.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 1080 / 2, 0)
+					.addComponent<TagComponent<"Timer">>()
+					.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
 		auto &save = scene->addEntity("save & quit button")
@@ -76,7 +100,7 @@ namespace BBM
 			{
 				if (!std::filesystem::exists("save"))
 					std::filesystem::create_directories("save");
-				ParserYAML::save(Runner::gameState._loadedScenes[GameState::SceneID::GameScene]);
+				ParserYAML::save(Runner::gameState.loadedScenes[GameState::SceneID::GameScene]);
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
 		auto &settings = scene->addEntity("settings button")
@@ -84,17 +108,17 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_settings.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_settings.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_settings_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &)
 			{
 				gameState.nextScene = BBM::GameState::SceneID::SettingsScene;
 			});
@@ -103,18 +127,19 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_exit.png")
 			.addComponent<OnIdleComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_exit.png");
 			})
 			.addComponent<OnHoverComponent>([](WAL::Entity &entity, WAL::Wal &)
 			{
-				RAY::Texture *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
+				auto *texture = dynamic_cast<RAY::Texture *>(entity.getComponent<Drawable2DComponent>().drawable.get());
 
 				texture->use("assets/buttons/button_exit_hovered.png");
 			})
-			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &wal)
+			.addComponent<OnClickComponent>([](WAL::Entity &, WAL::Wal &wal)
 			{
+				wal.getSystem<CameraSystem>().hasEnded = false;
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
 		//needed material

@@ -77,7 +77,7 @@ namespace BBM
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
 				auto &controller = ctrl;
-				if (controller.select) {
+				if (controller.bomb) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &view) {
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
@@ -86,7 +86,7 @@ namespace BBM
 					lobby.color = -1;
 					this->_nextColor(entity);
 					lobby.layout = controller.layout;
-					controller.select = false;
+					controller.bomb = false;
 					return;
 				}
 			}
@@ -95,16 +95,16 @@ namespace BBM
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout != lobby.layout)
 				continue;
-			if (controller.select && !lobby.ready) {
+			if (controller.bomb && !lobby.ready) {
 				lobby.ready = true;
 				lobby.lastInput = lastTick;
-				controller.select = false;
+				controller.bomb = false;
 				this->_wal.getSystem<MenuControllableSystem>().now = lastTick;
 				auto *texture = dynamic_cast<RAY::Texture *>(lobby.readyButton.getComponent<Drawable2DComponent>().drawable.get());
 				if (texture)
 					texture->use("assets/player/icons/ready.png");
 			}
-			if (controller.bomb && !lobby.ready) {
+			if (controller.secondary && !lobby.ready) {
 				lobby.lastInput = lastTick;
 				this->_nextColor(entity);
 			}
@@ -295,7 +295,7 @@ namespace BBM
 			createTile(scene, player, lobby.color, playerCount);
 			playerCount++;
 		}
-		Runner::gameState._loadedScenes[GameState::SceneID::GameScene] = scene;
+		Runner::gameState.loadedScenes[GameState::SceneID::GameScene] = scene;
 		MapGenerator::loadMap(Runner::mapWidth, Runner::mapHeight, MapGenerator::createMap(Runner::mapWidth, Runner::mapHeight, Runner::hasHeights), scene);
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 		wal.getSystem<LobbySystem>().unloadLobby();

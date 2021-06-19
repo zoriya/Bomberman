@@ -8,6 +8,7 @@
 #include "Component/Timer/TimerComponent.hpp"
 #include "Runner/Runner.hpp"
 #include "Component/Renderer/Drawable2DComponent.hpp"
+#include "Component/Movable/MovableComponent.hpp"
 #include "Drawables/2D/Text.hpp"
 
 namespace RAY2D = RAY::Drawables::Drawables2D;
@@ -31,9 +32,11 @@ namespace BBM
 				.addComponent<PositionComponent>(1920 / 2 - 2 * 30 - 20, 28, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(150, 60), RAY::Color(BLACK).setA(150));
 			this->_wal.getScene()->scheduleNewEntity("Timer")
-				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &) {
+				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &engine) {
+					engine.getSystem<CameraSystem>().hasEnded = false;
 					Runner::gameState.nextScene = GameState::ScoreScene;
 				})
+				.addComponent<TagComponent<"Timer">>()
 				.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 30, 0)
 				.addComponent<TagComponent<Timer>>()
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
@@ -60,8 +63,6 @@ namespace BBM
 		float lowerZDist = 0;
 
 		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (!player.hasComponent<ControllableComponent>())
-				player.addComponent<ControllableComponent>();
 			playerPos.emplace_back(position.position);
 		}
 		if (playerPos.size() == 1)
@@ -80,11 +81,18 @@ namespace BBM
 		maxDist += (lowerXDist  + lowerZDist) / 2;
 		if (maxDist < 14)
 			maxDist = 14;
-		if (maxDist > 25)
-			maxDist = 25;
-		cam.target += (newCameraPos.abs() - pos.position.abs()) / 10;
+		if (maxDist > 23)
+			maxDist = 23;
+		Vector3f pos2d(pos.position.abs().x,0, pos.position.abs().z);
+		Vector3f newPos2d(newCameraPos.abs().x, 0, pos.position.abs().z);
+		for (auto &[other, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
+			backPos.position = cam.target;
+		}
+		newCameraPos.y = 0;
+		cam.target += (newCameraPos.abs() - cam.target.abs()) / 10;
 		newCameraPos.y = maxDist;
-		newCameraPos.z -= 1;
+		newCameraPos.z -= newCameraPos.z > 1 ? 1 : 0;
 		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
+
 	}
 }

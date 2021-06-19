@@ -182,7 +182,7 @@ namespace BBM {
 		auto start = tmpAssets.find_last_of('/') + 1;
 		auto colorStr = tmpAssets.substr(start, tmpAssets.length() - start - 4);
 		auto color = map.at(colorStr);
-		auto resumeScene = Runner::gameState._loadedScenes[GameState::SceneID::ResumeLobbyScene];
+		auto resumeScene = Runner::gameState.loadedScenes[GameState::SceneID::ResumeLobbyScene];
 		auto &playerTile = resumeScene->addEntity("player tile")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(RAY::Vector2(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3), RAY::Vector2(200, 200), color);

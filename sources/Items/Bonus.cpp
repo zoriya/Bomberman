@@ -69,9 +69,9 @@ namespace BBM {
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
-			{SPEEDUP, 45.0f},
-			{BOMBSTOCK, 30.0f},
-			{EXPLOSIONINC, 15.0f},
+			{BOMBSTOCK, 46.5f},
+			{SPEEDUP, 31.5f},
+			{EXPLOSIONINC, 16.5f},
 			{NOCLIP, 1.5f},
 		};
 		std::uniform_int_distribution<int> distribution(1,1000);
