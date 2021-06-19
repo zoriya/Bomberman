@@ -27,6 +27,9 @@ namespace BBM
 		}
 		if (_cached)
 			return;
+		for (int i = 0; i < 17; i++)
+			for (int j = 0; j < 17; j++)
+				_luamap._map[i][j] = 0;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Breakable>>())
 			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::BREAKABLE;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Unbreakable>>())
