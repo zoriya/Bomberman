@@ -12,7 +12,7 @@ namespace BBM
 {
 	LuaMap::LuaMap()
 	: _map(17, std::vector<int>(17, 0)), _danger(17, std::vector<int>(17, 0)),
-	_player(), _roundedPlayer()
+	_player(), _roundedPlayer(), currRadius()
 	{
 	}
 
@@ -137,7 +137,7 @@ namespace BBM
 		return path;
 	}
 
-	Vector2f LuaMap::findSafeSpace(void) const
+	Vector2f LuaMap::findSafeSpace(const std::vector<std::vector<int>> &dangerMap) const
 	{
 		int d = 1;
 		std::vector<std::vector<int>> distance(17, std::vector<int>(17, -1));
@@ -150,7 +150,7 @@ namespace BBM
 			Vector2f pos = _roundedPlayer + _dirs[i];
 			if (pos.x < 0 || pos.x > 16 || pos.y < 0 || pos.y > 16)
 				continue;
-			if (_danger[pos.y][pos.x] == 0 && _map[pos.y][pos.x] == 0)
+			if (dangerMap[pos.y][pos.x] == 0 && _map[pos.y][pos.x] == 0)
 				return _roundedPlayer + _dirs[i];
 			if (_map[pos.y][pos.x] != 0)
 				continue;
@@ -170,7 +170,7 @@ namespace BBM
 							continue;
 						if (distance[pos.y][pos.x] != -1)
 							continue;
-						if (_danger[pos.y][pos.x] == 0)
+						if (dangerMap[pos.y][pos.x] == 0)
 							return _roundedPlayer + _dirs[currentDir];
 						direction[pos.y][pos.x] = currentDir;
 						distance[pos.y][pos.x] = d + 1;
@@ -281,7 +281,7 @@ namespace BBM
 	{
 		LuaG::State state(L);
     	const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
-		Vector2f closest = map->findSafeSpace();
+		Vector2f closest = map->findSafeSpace(map->_danger);
 		state.newTable();
 		state.push("x");
 		state.push(closest.x);
@@ -317,6 +317,68 @@ namespace BBM
 		auto x = state.getNumber(-2);
     	const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
 		state.push(map->_map[y][x]);
+		return 1;
+	}
+
+	int LuaMap::canPutBomb(lua_State *L)
+	{
+		LuaG::State state(L);
+		const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
+		Vector2f pos;
+		std::vector<std::vector<int>> newDangerMap(17, std::vector<int>(17, 0));
+		for (int i = 0; i < 17; i++)
+			for (int j = 0; j < 17; j++)
+				newDangerMap[i][j] = map->_danger[i][j];
+		newDangerMap[map->_roundedPlayer.y][map->_roundedPlayer.x] = 3;
+		for (auto i = 1; i < map->currRadius; i++) {
+			pos = map->_roundedPlayer - Vector2f(i, 0);
+			if (pos.x < 0 || pos.x > 16 ||
+				pos.y < 0 || pos.y > 16)
+				break;
+			if (map->_map[pos.y][pos.x] == MapGenerator::BREAKABLE ||
+				map->_map[pos.y][pos.x] == MapGenerator::UNBREAKABLE)
+				break;
+			newDangerMap[pos.y][pos.x] = 3;
+		}
+		for (auto i = 1; i < map->currRadius; i++) {
+			pos = map->_roundedPlayer - Vector2f(-i, 0);
+			if (pos.x < 0 || pos.x > 16 ||
+				pos.y < 0 || pos.y > 16)
+				break;
+			if (map->_map[pos.y][pos.x] == MapGenerator::BREAKABLE ||
+				map->_map[pos.y][pos.x] == MapGenerator::UNBREAKABLE)
+				break;
+			newDangerMap[pos.y][pos.x] = 3;
+		}
+		for (auto i = 1; i < map->currRadius; i++) {
+			pos = map->_roundedPlayer - Vector2f(0, i);
+			if (pos.x < 0 || pos.x > 16 ||
+				pos.y < 0 || pos.y > 16)
+				break;
+			if (map->_map[pos.y][pos.x] == MapGenerator::BREAKABLE ||
+				map->_map[pos.y][pos.x] == MapGenerator::UNBREAKABLE)
+				break;
+			newDangerMap[pos.y][pos.x] = 3;
+		}
+		for (auto i = 1; i < map->currRadius; i++) {
+			pos = map->_roundedPlayer - Vector2f(0, -i);
+			if (pos.x < 0 || pos.x > 16 ||
+				pos.y < 0 || pos.y > 16)
+				break;
+			if (map->_map[pos.y][pos.x] == MapGenerator::BREAKABLE ||
+				map->_map[pos.y][pos.x] == MapGenerator::UNBREAKABLE)
+				break;
+			newDangerMap[pos.y][pos.x] = 3;
+		}
+		for (int i = 0; i < 17; i++) {
+			for (int j = 0; j < 17; j++) {
+				std::cout << newDangerMap[i][j] << " | ";
+			}
+			std::cout << std::endl;
+		}
+		Vector2f res = map->findSafeSpace(newDangerMap);
+		std::cout << "res: " << res << std::endl;
+		lua_pushboolean(L, map->_roundedPlayer != res);
 		return 1;
 	}
 }

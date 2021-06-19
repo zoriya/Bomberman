@@ -31,7 +31,7 @@ namespace BBM
 			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
 
 			//! @brief find a safe space for current player
-			Vector2f findSafeSpace(void) const;
+			Vector2f findSafeSpace(const std::vector<std::vector<int>> &dangerMap) const;
 
 			//! @brief push table of table of the map
 			static int getMap(lua_State *L);
@@ -60,6 +60,9 @@ namespace BBM
 			//! @brief get block type at x y
 			static int getBlockType(lua_State *L);
 
+			//! @brief Check if current player can put a bomb with an escape
+			static int canPutBomb(lua_State *L);
+
 			//! @brief map blocks in 2D grid
 			std::vector<std::vector<int>> _map;
 
@@ -71,6 +74,9 @@ namespace BBM
 
 			//! @brief rounded player position
 			Vector2f _roundedPlayer;
+
+			//! @brief Explosion radius of current player
+			int currRadius;
 		private:
 			//! @brief unwind path for a_star
 			std::vector<Vector2f> fillPath(std::vector<Vector2f> &path, 
@@ -82,6 +88,7 @@ namespace BBM
 			std::vector<Vector2f> _dirs = {
 				Vector2f(1, 0), Vector2f(-1, 0), Vector2f(0, 1), Vector2f(0, -1)
 			};
+
 	};
 }
 

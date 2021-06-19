@@ -157,56 +157,8 @@ function Update()
 		print("nopath found")
 		return 0, 0, false, false
 	end
-	print("SAFE")
-	--if (isInExplosionRange(roundedPlayerPos.x, roundedPlayerPos.y)) then
-	--	log("IN DANGER")
-	--	local pathToSafeSpace = getPathToSafeSpace(roundedPlayerPos)
-	--	log("PATH")
-	--	for i,p in ipairs(pathToSafeSpace) do
-	--		log(i)
-	--		log(p.x)
-	--		log(p.y)
-	--	end
-	--	if #pathToSafeSpace == 0 then
-	--		return 0, 0, false, false
-	--	end
-	--	local f = pathToSafeSpace[1]
-	--	log("first way of the path")
-	--	log(f.x)
-	--	log(f.y)
-	--	LastTarget = {x = f.x, y = f.y}
-	--	return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false
-	--else
-	--	log("SAFE")
-	--	local enemies = mapinfo.enemies
-	--	log("len")
-	--	log(#enemies)
-	--	local pathToEnemy = getPathToEnemy(roundedPlayerPos, enemies)		
-	--	log("b")
-	--	if #pathToEnemy == 0 then
-	--		return 0, 0, false, false
-	--	end
-	--	local f = pathToEnemy[1]
-	--	log("first way of the path")
-	--	log(f.x)
-	--	log(f.y)
-	--	log("PATH")
-	--	for i, c in ipairs(pathToEnemy) do
-	--		log("member")
-	--		log(c.x)
-	--		log(c.y)
-	--	end
-	--	LastTarget = {x = f.x, y = f.y}
-	--	--pathfind to closest player
-	--	if LastPos == nil then
-	--		LastPos = {x = mapinfo.player.x, y = mapinfo.player.y}
-	--	else
-	--		if mapinfo.player.x == LastPos.x and mapinfo.player.y == LastPos.y then
-	--			return 0, 0, false, false
-	--		end
-	--	end
-	--	LastTarget = {x = f.x, y = f.y}
-	--	return f.x - roundedPlayerPos.x, f.y - roundedPlayerPos.y, false, false;
-	--end
+	if canPutBombSafe() then
+		return 0, 0, true, true
+	end
 	return 0,0, false, false
 end

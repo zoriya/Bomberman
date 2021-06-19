@@ -51,7 +51,6 @@ namespace BBM
 			dangerLevel = 1;
 		radius++;
 		_luamap._map[bombPos.z][bombPos.x] = 10;
-		std::cout << "bomb" << bombPos << std::endl << std::flush;
 		_luamap._danger[bombPos.z][bombPos.x] = dangerLevel;
 		for (auto i = 1; i < radius; i++) {
 			pos = bombPos - Vector3f(i, 0, 0);
@@ -112,6 +111,10 @@ namespace BBM
 		lua_pushlightuserdata(state.getState(), &_luamap);
 		lua_pushcclosure(state.getState(), LuaMap::getClosestSafeSpace, 1);
 		lua_setglobal(state.getState(), "getClosestSafeSpace");
+
+		lua_pushlightuserdata(state.getState(), &_luamap);
+		lua_pushcclosure(state.getState(), LuaMap::canPutBomb, 1);
+		lua_setglobal(state.getState(), "canPutBombSafe");
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
@@ -122,6 +125,7 @@ namespace BBM
 		auto &bombHolder = entity.get<BombHolderComponent>();
 
 		_luamap.setPlayer(pos.position);
+		_luamap.currRadius = bombHolder.explosionRadius;
 		if (!ia.registered) {
 			this->registerFunc(ia._state);
 			ia.registered = true;
