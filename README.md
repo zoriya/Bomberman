@@ -12,10 +12,13 @@ Repository link: https://github.com/AnonymusRaccoon/Bomberman/
 
 Very soon :)
 
-
 ## Screenshots
 
-Very soon :)
+<div>
+<img align="left" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/titlescreen.png" width="45%">
+<img align="right" src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/lobby.png" width="45%">
+<img src="https://github.com/AnonymusRaccoon/Bomberman/blob/readme/images/game.png">
+</div>
 
 
 ## Run (compile from the sources)
@@ -56,14 +59,7 @@ Enjoy !
 
 ## Tech Stack
 
-**Bomberman:** C++20, raylib, Catch2, CMake, Doxygen
-## Contributing
-
-Contributions are always welcome!
-
-See `contributing.md` for ways to get started.
-
-Please adhere to this project's `code of conduct`.
+**Bomberman:** C++20, raylib, Catch2, CMake, Doxygen, Lua
 
 
 ## Authors
