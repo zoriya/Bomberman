@@ -508,7 +508,7 @@ namespace BBM
 				.addComponent<PositionComponent>(Vector3f(width / 2 - width / 4, 0, height / 2 - height / 4))
 				.addComponent<CollisionComponent>(
 					WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width / 2 + width / 4, 0.75, height / 2 + height / 4));
+		            &MapGenerator::wallCollided, Vector3f(0.25, 0.25, 0.25),Vector3f(width / 2 + 0.75, 0.75, height / 2 + 0.75));
 	}
 
 	void MapGenerator::loadMap(int width, int height, MapBlock map, const std::shared_ptr<WAL::Scene> &scene)
