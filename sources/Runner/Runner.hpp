@@ -5,6 +5,7 @@
 #pragma once
 #include "Models/GameState.hpp"
 #include "Wal.hpp"
+#include <chrono>
 #include <map>
 #include "Component/Sound/SoundComponent.hpp"
 
@@ -19,6 +20,8 @@ namespace BBM
 		static int mapWidth;
 		//! @brief the height of the map
 		static int mapHeight;
+		//! @brief timer duration
+		static std::chrono::nanoseconds timerDelay;
 
 		//! @brief store current scenes informations
 		static GameState gameState;

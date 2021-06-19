@@ -32,7 +32,7 @@ namespace BBM
 				.addComponent<PositionComponent>(1920 / 2 - 2 * 30 - 20, 28, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(150, 60), RAY::Color(BLACK).setA(150));
 			this->_wal.getScene()->scheduleNewEntity("Timer")
-				.addComponent<TimerComponent>(std::chrono::minutes (3), [](WAL::Entity &, WAL::Wal &engine) {
+				.addComponent<TimerComponent>(Runner::timerDelay, [](WAL::Entity &, WAL::Wal &engine) {
 					engine.getSystem<CameraSystem>().hasEnded = false;
 					Runner::gameState.nextScene = GameState::ScoreScene;
 				})

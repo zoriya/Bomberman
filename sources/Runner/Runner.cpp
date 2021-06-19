@@ -52,6 +52,7 @@ namespace BBM
 	int Runner::mapWidth = 16;
 	int Runner::mapHeight = 16;
 	bool Runner::hasHeights = false;
+	std::chrono::nanoseconds timerDelay = std::chrono::minutes(3);
 
 	void Runner::updateState(WAL::Wal &engine, GameState &state)
 	{

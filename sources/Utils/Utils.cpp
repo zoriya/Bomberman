@@ -91,4 +91,12 @@ namespace BBM
 		return strings;
 	}
 
+	bool Utils::tryParseLong(const std::string &s, long &l)
+	{
+		std::istringstream iss(s);
+
+		iss >> std::noskipws >> l;
+		return iss.eof() && !iss.fail();
+	}
+
 }

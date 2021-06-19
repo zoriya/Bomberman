@@ -127,10 +127,14 @@ namespace BBM {
 		std::ofstream blockFile(block);
 		std::ofstream playerFile(player);
 		std::ofstream bonusFile(bonus);
+		auto &ret = scene->view<TagComponent<Timer>, TimerComponent>();
 
+		for (auto &[myEntity, tag, timerComponent] : ret) {
+			_block << "timer: " << timerComponent.ringIn.count();
+		}
 		_player << "players:";
 		_bonus << "bonuses:";
-		_block << "width: " << std::to_string(Runner::mapWidth);
+		_block << std::endl << "width: " << std::to_string(Runner::mapWidth);
 		_block << std::endl << "height: " + std::to_string(Runner::mapHeight);
 		_block << std::endl << "blocks:";
 		for (const auto &entity : scene->getEntities()) {
@@ -233,6 +237,11 @@ namespace BBM {
 			throw ParserError("width property must be an int");
 		}
 		Runner::mapHeight = size;
+		long timer = 0;
+		if (!Utils::tryParseLong(node.getProperty("timer"), timer)) {
+			throw ParserError("timer property parsing error (must be a long)");
+		}
+		Runner::timerDelay = std::chrono::nanoseconds(timer);
 
 		for (int i = 0; i < Runner::mapWidth; i++)
 			for (int j = 0; j < Runner::mapHeight; j++)
