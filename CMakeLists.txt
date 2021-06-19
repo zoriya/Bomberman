@@ -190,6 +190,8 @@ set(SOURCES
 	sources/Component/Color/ColorComponent.cpp
 	sources/Component/Stat/StatComponent.cpp
 	sources/Component/Stat/StatComponent.hpp
+	sources/Map/LuaMap.cpp
+	sources/Map/LuaMap.hpp
 	sources/Component/Shaders/Items/AlphaCtxShaderComponent.cpp
 	sources/Component/Shaders/Items/AlphaCtxShaderComponent.hpp
 	sources/Component/Speed/SpeedComponent.cpp

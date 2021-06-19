@@ -2,6 +2,7 @@
 // Created by Louis Auzuret on 06/07/21
 //
 
+#include "Component/Score/ScoreComponent.hpp"
 #include "Component/Bomb/BasicBombComponent.hpp"
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Timer/TimerComponent.hpp"
@@ -13,141 +14,78 @@
 namespace BBM
 {
 	IAControllableSystem::IAControllableSystem(WAL::Wal &wal)
-	: System(wal), _wal(wal), _cached(false)
+	: System(wal), _wal(wal), _cached(false), _luamap()
 	{ }
 
 	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
 		_players.clear();
-		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
-			if (static_cast<WAL::Entity>(entity).getUid() == other.getUid())
-				continue;
+		if (!_wal.getScene())
+			return;
+		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, ScoreComponent>()) {
 			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
 		}
 		if (_cached)
 			return;
-		if (!_wal.getScene())
-			return;
+		for (int i = 0; i < 17; i++)
+			for (int j = 0; j < 17; j++)
+				_luamap._map[i][j] = 0;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Breakable>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::BREAKABLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::BREAKABLE;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Unbreakable>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::UNBREAKABLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::UNBREAKABLE;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Bumper>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::BUMPER));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::BUMPER;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, TagComponent<Hole>>())
-			_map.push_back(MapInfo(pos.position, MapGenerator::HOLE));
+			_luamap._map[pos.position.z][pos.position.x] = MapGenerator::HOLE;
 		for (auto &[other, pos, bomb, timer] : _wal.getScene()->view<PositionComponent, BasicBombComponent, TimerComponent>())
-			_bombs.push_back(std::make_tuple(pos.position, bomb.explosionRadius, timer.ringIn));
+			updateDangerBomb(pos.position, bomb.explosionRadius, timer.ringIn);
 		_cached = true;
-
 	}
 
-	void IAControllableSystem::pushInfoPlayer(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
+	void IAControllableSystem::updateDangerBomb(Vector3f bombPos, int radius, std::chrono::nanoseconds ringIn)
 	{
-		state.push("player");
-		state.newTable();
-		state.push("x");
-		state.push(player.x);
-		state.setTable();
-		state.push("y");
-		state.push(player.z);
-		state.setTable();
-		state.push("bombCount");
-		state.push(bombHolder.bombCount);
-		state.setTable();
-		state.push("radius");
-		state.push(bombHolder.explosionRadius);
-		state.setTable();
-		state.setTable();
-	}
-
-	void IAControllableSystem::pushInfoRaw(LuaG::State &state)
-	{
-		int index = 0;
-		state.push("raw");
-		state.newTable();
-		for (auto &info : _map) {
-			state.push(index++);
-			state.newTable();
-			state.push("x");
-			state.push(info.x);
-			state.setTable();
-			state.push("y");
-			state.push(info.z);
-			state.setTable();
-			state.push("type");
-			state.push(info.type);
-			state.setTable();
-			state.setTable();
+		Vector3f pos;
+		int dangerLevel = std::chrono::duration_cast<std::chrono::seconds>(ringIn).count();
+		if (dangerLevel == 0)
+			dangerLevel = 1;
+		radius++;
+		_luamap._map[bombPos.z][bombPos.x] = 10;
+		_luamap._danger[bombPos.z][bombPos.x] = dangerLevel;
+		for (auto i = 1; i < radius; i++) {
+			pos = bombPos - Vector3f(i, 0, 0);
+			if (!_luamap.setDanger(pos.x, pos.z, dangerLevel))
+				break;
 		}
-		for (auto &bomb : _bombs) {
-			Vector3f bombPos = std::get<0>(bomb);
-			state.push(index++);
-			state.newTable();
-			state.push("x");
-			state.push(bombPos.x);
-			state.setTable();
-			state.push("y");
-			state.push(bombPos.z);
-			state.setTable();
-			state.push("type");
-			state.push(10);
-			state.setTable();
-			state.setTable();
+		for (auto i = 1; i < radius; i++) {
+			pos = bombPos - Vector3f(-i, 0, 0);
+			if (!_luamap.setDanger(pos.x, pos.z, dangerLevel))
+				break;
 		}
-		state.setTable();
-	}
-
-	void IAControllableSystem::pushInfoDangerPos(LuaG::State &state, int &index, float xpos, float ypos, int dangerLevel)
-	{
-		state.push(index++);
-		state.newTable();
-		state.push("x");
-		state.push(xpos);
-		state.setTable();
-		state.push("y");
-		state.push(ypos);
-		state.setTable();
-		state.push("level");
-		state.push(dangerLevel);
-		state.setTable();
-		state.setTable();
-	}
-
-	void IAControllableSystem::pushInfoDanger(LuaG::State &state)
-	{
-		int index = 0;
-		state.push("danger");
-		state.newTable();
-		for (auto &bomb : _bombs) {
-			Vector3f bombPos = std::get<0>(bomb);
-			int bombRadius = std::get<1>(bomb);
-			std::chrono::nanoseconds timeleft = std::get<2>(bomb);
-			int dangerLevel = std::chrono::duration_cast<std::chrono::seconds>(timeleft).count();
-			if (dangerLevel == 0)
-				dangerLevel = 1;
-			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
-			pushInfoDangerPos(state, index, bombPos.x, bombPos.z, dangerLevel);
-			for (int i = 1; i < bombRadius; i++) {
-				Vector3f pos = bombPos - Vector3f(i, 0, 0);
-				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
-				pos = bombPos - Vector3f(-i, 0, 0);
-				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
-				pos = bombPos - Vector3f(0, 0, i);
-				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
-				pos = bombPos - Vector3f(0, 0, -i);
-				pushInfoDangerPos(state, index, pos.x, pos.z, dangerLevel);
-			}
+		for (auto i = 1; i < radius; i++) {
+			pos = bombPos - Vector3f(0, 0, i);
+			if (!_luamap.setDanger(pos.x, pos.z, dangerLevel))
+				break;
 		}
-		state.setTable();
+		for (auto i = 1; i < radius; i++) {
+			pos = bombPos - Vector3f(0, 0, -i);
+			if (!_luamap.setDanger(pos.x, pos.z, dangerLevel))
+				break;
+		}
 	}
 
-	void IAControllableSystem::pushInfo(LuaG::State &state, MapInfo &player, BombHolderComponent &bombHolder)
+	void IAControllableSystem::registerFunc(LuaG::State &state)
 	{
-		state.newTable();
-		pushInfoPlayer(state, player, bombHolder);
-		pushInfoRaw(state);
-		pushInfoDanger(state);
+		state.registerClosure(&_luamap, "getMap", LuaMap::getMap);
+		state.registerClosure(&_luamap, "getDanger", LuaMap::getDanger);
+		state.registerClosure(&_luamap, "getPath", LuaMap::getPath);
+		state.registerClosure(&_luamap, "getPlayer", LuaMap::getPlayer);
+		state.registerClosure(&_luamap, "getPlayerRound", LuaMap::getPlayerRound);
+		state.registerClosure(&_luamap, "getDangerLevelPlayer", LuaMap::getDangerLevelPlayer);
+		state.registerClosure(&_luamap, "getDangerLevel", LuaMap::getDangerLevel);
+		state.registerClosure(&_luamap, "getBlockType", LuaMap::getBlockType);
+		state.registerClosure(&_luamap, "getClosestSafeSpace", LuaMap::getClosestSafeSpace);
+		state.registerClosure(&_luamap, "canPutBombSafe", LuaMap::canPutBomb);
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
@@ -156,18 +94,20 @@ namespace BBM
 		auto &controllable = entity.get<ControllableComponent>();
 		auto &pos = entity.get<PositionComponent>();
 		auto &bombHolder = entity.get<BombHolderComponent>();
-		MapInfo player(pos.position, MapGenerator::NOTHING);
 
+		_luamap.setPlayer(pos.position);
+		_luamap.currRadius = bombHolder.explosionRadius;
+		if (!ia.registered) {
+			this->registerFunc(ia._state);
+			ia.registered = true;
+		}
 		if (controllable.disabled)
 			return;
-
 		UpdateMapInfos(entity);
-
 		ia._state.getGlobal("Update");
 		if (!lua_isfunction(ia._state.getState(), -1))
 			return;
-		pushInfo(ia._state, player, bombHolder);
-		ia._state.callFunction(1, 4);
+		ia._state.callFunction(0, 4);
 		controllable.bomb = ia._state.getReturnBool();
 		controllable.secondary = ia._state.getReturnBool();
 		controllable.move.y = ia._state.getReturnNumber();
@@ -178,7 +118,6 @@ namespace BBM
 	void IAControllableSystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
 		_cached = false;
-		_map.clear();
-		_bombs.clear();
+		_luamap.clearDanger();
 	}
 }

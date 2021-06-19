@@ -22,6 +22,9 @@ namespace BBM
             const std::string _scriptPath;
         public:
 
+            //! @brief Is the binding registered
+            bool registered;
+
             //! @brief LuaGate state
             LuaG::State _state;
 

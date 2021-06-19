@@ -2,6 +2,7 @@
 #include <Wal.hpp>
 #include "Runner.hpp"
 #include <map>
+#include "Component/Tag/TagComponent.hpp"
 #include <Parser/ParserYaml.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include <Component/Renderer/Drawable2DComponent.hpp>
