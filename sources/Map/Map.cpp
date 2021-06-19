@@ -39,17 +39,18 @@ namespace BBM
 	                               CollisionComponent::CollidedAxis collidedAxis)
 	{
 		auto *health = entity.tryGetComponent<HealthComponent>();
+		auto *movable = entity.tryGetComponent<MovableComponent>();
 		auto *wallPos = wall.tryGetComponent<PositionComponent>();
 		auto *entityPos = entity.tryGetComponent<PositionComponent>();
-		auto *wallCol = entity.tryGetComponent<CollisionComponent>();
 
-		if (!health || !wallPos || !entityPos)
+		if (!health)
 			return;
-		std::cout << "EntityPos :" << entityPos->position << std::endl;
-		std::cout << "Hole bound :" << wallCol->bound << std::endl;
-		std::cout << "Wall Pos :" << wallCol->positionOffset + wallPos->position << std::endl;
-		if (collidedAxis & CollisionComponent::X && collidedAxis & CollisionComponent::Y)
+		auto posWall = Vector3f(wallPos->position.x, wallPos->position.y + 1, wallPos->position.z);
+		auto vec = (posWall - entityPos->position).abs();
+		if (vec.x < 0.3   && vec.z < 0.3 && posWall.distance(entityPos->position) < 0.5) {
 			health->takeDmg(health->getHealthPoint());
+			movable->_velocity = Vector3f();
+		}
 	}
 	
 	void MapGenerator::wallCollision(WAL::Entity &entity,
@@ -303,7 +304,7 @@ namespace BBM
 				  .addComponent<TagComponent<Hole>>()
 	              .addComponent<CollisionComponent>(
 		            WAL::Callback<WAL::Entity &, const WAL::Entity &, CollisionComponent::CollidedAxis>(),
-		            &MapGenerator::holeCollide, Vector3f(.4,.4,.4), Vector3f(0,.75,0));
+		            &MapGenerator::holeCollide, 0.25, 0.75);
 		if (coords.y == 0)
 			holeEntity.addComponent<Drawable3DComponent, RAY3D::Model>(holeObj, false, std::make_pair(MAP_DIFFUSE, holePng), Vector3f(1,1,1), 180);
 		else
