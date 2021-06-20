@@ -62,10 +62,6 @@ namespace BBM
 		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
 			playerPos.emplace_back(position.position);
 		}
-		if (pos.position.x > Runner::mapWidth || pos.position.z > Runner::mapHeight) {
-			pos.position.x = Runner::mapWidth / 2;
-			pos.position.y = (Runner::mapHeight / 2) - 1;
-		}
 		if (playerPos.size() == 1)
 			newCameraPos = playerPos[0];
 		for (size_t i = 0; i < playerPos.size(); i++)
@@ -82,8 +78,6 @@ namespace BBM
 					lowerZDist = std::abs((playerPos[i].z - playerPos[j].z));
 			}
 		maxDist += (lowerXDist  + lowerZDist) / 2;
-		if (maxDist < 1)
-			return;
 		if (maxDist < 14)
 			maxDist = 14;
 		if (maxDist > 23)
@@ -92,15 +86,7 @@ namespace BBM
 			backPos.position = cam.target;
 		}
 		newCameraPos.y = 0;
-		if (lowerXDist < 0.5)
-			newCameraPos.x = pos.position.x;
-		if (lowerZDist < 0.5)
-			newCameraPos.z = pos.position.z;
 		cam.target += (newCameraPos.abs() - cam.target.abs()) / 10;
-		cam.target = cam.target.abs();
-		newCameraPos.y = maxDist;
-		if (lowerZDist > 0.5 || cam.target.z >= pos.position.z)
-			newCameraPos.z = cam.target.z > 1 ? newCameraPos.z - 1 : 0;
-		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
+		pos.position = Vector3f(cam.target.x, maxDist, cam.target.z - 1);
 	}
 }
