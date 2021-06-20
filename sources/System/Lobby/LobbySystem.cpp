@@ -18,7 +18,6 @@
 #include <Component/Renderer/Drawable3DComponent.hpp>
 #include <Map/Map.hpp>
 #include <Component/BombHolder/BombHolderComponent.hpp>
-#include <Parser/ParserYaml.hpp>
 #include <Drawables/2D/Text.hpp>
 #include "Component/Color/ColorComponent.hpp"
 #include "Component/Stat/StatComponent.hpp"
@@ -66,7 +65,7 @@ namespace BBM
 		lobby.coloredTile.getComponent<Drawable2DComponent>().drawable->setColor(_rayColors[lobby.color]);
 	}
 
-	void LobbySystem::onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime)
+	void LobbySystem::onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds)
 	{
 		auto &lobby = entity.get<LobbyComponent>();
 
@@ -77,7 +76,7 @@ namespace BBM
 		if (lobby.layout == ControllableComponent::NONE) {
 			for (auto &[_, ctrl] : this->_wal.getScene()->view<ControllableComponent>()) {
 				auto &controller = ctrl;
-				if (controller.bomb) {
+				if (controller.bomb && this->_canJoin()) {
 					if (std::any_of(this->getView().begin(), this->getView().end(), [&controller](WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &view) {
 						return view.get<LobbyComponent>().layout == controller.layout;
 					}))
@@ -95,7 +94,7 @@ namespace BBM
 		for (auto &[_, controller] : this->_wal.getScene()->view<ControllableComponent>()) {
 			if (controller.layout != lobby.layout)
 				continue;
-			if (controller.bomb && !lobby.ready) {
+			if (controller.bomb && !lobby.ready && this->_canJoin()) {
 				lobby.ready = true;
 				lobby.lastInput = lastTick;
 				controller.bomb = false;
@@ -104,11 +103,20 @@ namespace BBM
 				if (texture)
 					texture->use("assets/player/icons/ready.png");
 			}
-			if (controller.secondary && !lobby.ready) {
+			if (controller.secondary) {
 				lobby.lastInput = lastTick;
 				this->_nextColor(entity);
 			}
 		}
+	}
+
+	bool LobbySystem::_canJoin()
+	{
+		auto *button = this->_wal.getSystem<MenuControllableSystem>().currentButton;
+
+		if (!button)
+			return true;
+		return button->hasComponent<TagComponent<"PlayButton">>();
 	}
 
 	void LobbySystem::addAI()
@@ -152,7 +160,7 @@ namespace BBM
 			texture->unload();
 	}
 
-	void LobbySystem::onSelfUpdate(std::chrono::nanoseconds dtime)
+	void LobbySystem::onSelfUpdate(std::chrono::nanoseconds)
 	{
 		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
 		if (view.size() == 0)
@@ -209,7 +217,7 @@ namespace BBM
 		player.getComponent<ControllableComponent>().layout = layout;
 	}
 
-	void LobbySystem::createTile(std::shared_ptr<WAL::Scene> scene, WAL::Entity &player, int color, int playerCount)
+	void LobbySystem::createTile(const std::shared_ptr<WAL::Scene>& scene, WAL::Entity &player, int color, int playerCount)
 	{
 		std::string texturePath = "assets/player/ui/" + colors[color] + ".png";
 		int x = (playerCount % 2 == 0) ? 1920 - 10 - 320 : 10;
@@ -223,25 +231,25 @@ namespace BBM
 		scene->addEntity("player hide fireup")
 				.addComponent<PositionComponent>(x + 220, y + 35, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawable) {
 					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
 
 					if (!bonus)
 						return;
-					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					auto *text = dynamic_cast<RAY2D::Text *>(drawable.drawable.get());
 					if (!text)
 						return;
 					text->setText(std::to_string(static_cast<int>(bonus->explosionRadius)));
 				});
-		scene->addEntity("player hide bombup")
+		scene->addEntity("player hide bomb-up")
 				.addComponent<PositionComponent>(x + 220, y + 77, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawable) {
 					const BombHolderComponent *bonus = player.tryGetComponent<BombHolderComponent>();
 
 					if (!bonus)
 						return;
-					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					auto *text = dynamic_cast<RAY2D::Text *>(drawable.drawable.get());
 					if (!text)
 						return;
 					text->setText(std::to_string(bonus->bombCount) + " / " + std::to_string(bonus->maxBombCount));
@@ -249,12 +257,12 @@ namespace BBM
 		scene->addEntity("player hide speedup")
 				.addComponent<PositionComponent>(x + 220, y + 122, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawable) {
 					auto *speed = player.tryGetComponent<SpeedComponent>();
 
 					if (!speed)
 						return;
-					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					auto *text = dynamic_cast<RAY2D::Text *>(drawable.drawable.get());
 					if (!text)
 						return;
 					text->setText(std::to_string(static_cast<int>(speed->speed * 100)));
@@ -262,12 +270,12 @@ namespace BBM
 		scene->addEntity("player hide wall")
 				.addComponent<PositionComponent>(x + 220, y + 161, 0)
 				.addComponent<Drawable2DComponent, RAY2D::Text>("", 20, x, y, WHITE)
-				.addComponent<StatComponent>([&player](Drawable2DComponent &drawble) {
+				.addComponent<StatComponent>([&player](Drawable2DComponent &drawable) {
 					const PlayerBonusComponent *bonus = player.tryGetComponent<PlayerBonusComponent>();
 
 					if (!bonus)
 						return;
-					RAY2D::Text *text = dynamic_cast<RAY2D::Text *>(drawble.drawable.get());
+					auto *text = dynamic_cast<RAY2D::Text *>(drawable.drawable.get());
 					if (!text)
 						return;
 					text->setText(bonus->isNoClipOn ? "YES" : "NO");
