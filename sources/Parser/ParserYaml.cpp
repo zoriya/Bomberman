@@ -62,7 +62,8 @@ namespace BBM {
 		static std::map<std::string, Bonus::BonusType> map {
 			{"Bonus Bomb Up", Bonus::BonusType::BOMBSTOCK},
 			{"Bonus Speed Up", Bonus::BonusType::SPEEDUP},
-			{"Bonus Fire Up", Bonus::BonusType::EXPLOSIONINC}
+			{"Bonus Fire Up", Bonus::BonusType::EXPLOSIONINC},
+			{"Bonus Wallpass", Bonus::BonusType::NOCLIP}
 		};
 
 		return (std::to_string(map.at(bonusName)));
