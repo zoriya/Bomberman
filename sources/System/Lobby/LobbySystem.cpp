@@ -116,7 +116,7 @@ namespace BBM
 
 		if (!button)
 			return true;
-		return button->hasComponent<TagComponent<"PlayButton">>();
+		return button->hasComponent<TagComponent<PlayButton>>();
 	}
 
 	void LobbySystem::addAI()
@@ -162,7 +162,7 @@ namespace BBM
 
 	void LobbySystem::onSelfUpdate(std::chrono::nanoseconds)
 	{
-		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
+		auto &view = this->_wal.getScene()->view<TagComponent<PlayButton>, Drawable2DComponent>();
 		if (view.size() == 0)
 			return;
 		auto *texture = dynamic_cast<RAY::Texture *>(view.front().get<Drawable2DComponent>().drawable.get());

@@ -77,7 +77,7 @@ namespace BBM
 					return;
 				LobbySystem::switchToGame(wal);
 			})
-			.addComponent<TagComponent<"PlayButton">>();
+			.addComponent<TagComponent<PlayButton>>();
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
