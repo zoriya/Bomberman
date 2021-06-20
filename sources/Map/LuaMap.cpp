@@ -56,7 +56,7 @@ namespace BBM
 			return path;
 	}
 
-	std::vector<Vector2f> LuaMap::getNeighbors(Vector2f node) const
+	std::vector<Vector2f> LuaMap::getNeighbors(Vector2f node, bool throughBreakable) const
 	{
 		std::vector<Vector2f> neighbors;
 		for (auto &dir : _dirs) {
@@ -65,7 +65,8 @@ namespace BBM
 				continue;
 			if (neighbor.y >= 17 || neighbor.x >= 17)
 				continue;
-			if (_map[neighbor.y][neighbor.x] == 0 &&
+			if ((_map[neighbor.y][neighbor.x] == 0 || 
+			_map[neighbor.y][neighbor.x] == throughBreakable) &&
 				_danger[neighbor.y][neighbor.x] != 1)
 				neighbors.push_back(neighbor);
 		}
@@ -83,7 +84,7 @@ namespace BBM
 		return neighbors;
 	}
 
-	std::vector<Vector2f> LuaMap::pathfind(Vector2f root, Vector2f target) const
+	std::vector<Vector2f> LuaMap::pathfind(Vector2f root, Vector2f target, bool throughBreakable) const
 	{
 		std::vector<Vector2f> closed;
 		std::vector<Vector2f> open;
@@ -117,7 +118,7 @@ namespace BBM
 			}
 			open.erase(std::remove(open.begin(), open.end(), current), open.end());
 			closed.push_back(current);
-			auto neighbors = getNeighbors(current);
+			auto neighbors = getNeighbors(current, throughBreakable);
 			for (auto &neighbor : neighbors) {
 				if (std::find(closed.begin(), closed.end(), neighbor) != closed.end())
 					continue;
@@ -224,14 +225,16 @@ namespace BBM
 	int LuaMap::getPath(lua_State *L)
 	{
 		LuaG::State state(L);
-		auto y2 = state.getNumber(-1);
-		auto x2 = state.getNumber(-2);
-		auto y1 = state.getNumber(-3);
-		auto x1 = state.getNumber(-4);
-    	const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
+		auto throughBreakable = state.getBool(-1);
+		auto y2 = state.getNumber(-2);
+		auto x2 = state.getNumber(-3);
+		auto y1 = state.getNumber(-4);
+		auto x1 = state.getNumber(-5);
+
+		const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
 		Vector2f fst(x1, y1);
 		Vector2f snd(x2, y2);
-		auto path = map->pathfind(fst, snd);
+		auto path = map->pathfind(fst, snd, throughBreakable);
 		int index = 1;
 		state.newTable();
 		for (auto &r : path) {

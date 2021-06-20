@@ -58,7 +58,7 @@ LastTarget = nil
 math.randomseed(os.time())
 function Update()
 	log("NEW FRAME")
-	--local path = getPath(0, 0, 16, 16);
+	local path = getPath(0, 0, 16, 16, true);
 	
 	local player = getPlayer()
 	if LastTarget ~= nil then

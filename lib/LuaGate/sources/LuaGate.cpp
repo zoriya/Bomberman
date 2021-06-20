@@ -70,6 +70,11 @@ namespace LuaG
 		return res;
 	}
 
+	bool State::getBool(int idx)
+	{
+		return lua_toboolean(_state, idx);
+	}
+
 	float State::getNumber(int idx)
 	{
 		return lua_tonumber(_state, idx);

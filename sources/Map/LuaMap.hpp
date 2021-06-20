@@ -28,7 +28,7 @@ namespace BBM
 			void setPlayer(Vector3f pos);
 
 			//! @brief A star pathfinding between two points
-			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
+			std::vector<Vector2f> pathfind(Vector2f root, Vector2f target, bool throughBreakable) const;
 
 			//! @brief find a safe space for current player
 			Vector2f findSafeSpace(const std::vector<std::vector<int>> &dangerMap) const;
@@ -95,7 +95,7 @@ namespace BBM
 			std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node) const;
 
 			//! @brief get neighbors of node for a_star
-			std::vector<Vector2f> getNeighbors(Vector2f node) const;
+			std::vector<Vector2f> getNeighbors(Vector2f node, bool throughBreakable) const;
 
 			std::vector<Vector2f> _dirs = {
 				Vector2f(1, 0), Vector2f(-1, 0), Vector2f(0, 1), Vector2f(0, -1)
