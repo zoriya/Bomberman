@@ -54,7 +54,7 @@ namespace BBM
 	WAL::Entity &Runner::createPlayer(WAL::Scene &scene)
 	{
 		std::map<SoundComponent::SoundIndex, std::string> soundPath ={
-			{SoundComponent::JUMP, "assets/sounds/jump.wav"},
+			{SoundComponent::BOMB, "assets/sounds/jump.wav"},
 			{SoundComponent::MOVE, "assets/sounds/move.ogg"},
 			{SoundComponent::BOMB, "assets/sounds/bomb_drop.ogg"},
 			//{SoundComponent::DEATH, "assets/sounds/death.ogg"}
