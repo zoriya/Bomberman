@@ -147,8 +147,6 @@ namespace BBM
 				wal.getSystem<CameraSystem>().hasEnded = false;
 				gameState.nextScene = BBM::GameState::SceneID::MainMenuScene;
 			});
-		//needed material
-		//music
 		save.getComponent<OnClickComponent>().setButtonLinks(&settings);
 		play.getComponent<OnClickComponent>().setButtonLinks(nullptr, &save, nullptr, &settings);
 		settings.getComponent<OnClickComponent>().setButtonLinks(nullptr, &save, &play, &exit);

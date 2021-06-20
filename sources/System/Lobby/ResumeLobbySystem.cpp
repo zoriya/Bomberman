@@ -106,6 +106,7 @@ namespace BBM
 		}
 		Runner::gameState.nextScene = BBM::GameState::SceneID::GameScene;
 		wal.getSystem<ResumeLobbySystem>().unloadLobbyFromResume();
+		ParserYAML::playersInfos.clear();
 	}
 
 	void ResumeLobbySystem::unloadLobbyFromResume()
