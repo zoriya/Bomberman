@@ -20,7 +20,7 @@ namespace BBM
 	{
 		auto scene = std::make_shared<WAL::Scene>();
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
-			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+			{SoundComponent::BOMB, "assets/sounds/click.ogg"}
 		};
 
 		addMenuControl(*scene, sounds);

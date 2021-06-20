@@ -26,7 +26,7 @@ namespace BBM
 		std::vector<std::string> playersIconPath;
 		std::vector<std::reference_wrapper<WAL::Entity>> players;
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
-			{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+			{SoundComponent::BOMB, "assets/sounds/click.ogg"}
 		};
 		static const std::vector<RAY::Color> tilesColor = {
 			GOLD, GRAY, BROWN, PURPLE

@@ -28,7 +28,7 @@ namespace BBM
 	std::shared_ptr<WAL::Scene> Runner::loadResumeLobbyScene()
 	{
 		static const std::map<SoundComponent::SoundIndex, std::string> sounds = {
-				{SoundComponent::JUMP, "assets/sounds/click.ogg"}
+			{SoundComponent::BOMB, "assets/sounds/click.ogg"}
 		};
 		auto scene = std::make_shared<WAL::Scene>();
 
