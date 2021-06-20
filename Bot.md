@@ -3,6 +3,13 @@
 A bot in this bomberman is using a lua script as way to choose what to do
 So you can make your own with some helper functions given from C++
 
+## Update function
+
+Each frame, the game will call the "Update" function in the script.
+This is the same lua state as the last call so this means you can set global variables to keep data between frames
+
+Update function should take no arguments.
+
 ## Map Blocks
 
 ```lua
@@ -54,4 +61,13 @@ function getClosestSafeSpace();
 
 -- canPutBombSafe returns true if player can put a bomb and find a path to safe space if bomb is put
 function canPutBombSafe();
+
+-- getRadius returns the explosion radius of the current player
+function getRadius();
+
+-- getEnemies returns a table with enemies position {{x = X, y = Y}, ...}
+function getEnemies();
+
+-- getEnemies returns a table with enemies position rounded {{x = X, y = Y}, ...}
+function getEnemiesRound();
 ```
