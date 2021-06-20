@@ -26,7 +26,7 @@ function getMap();
 -- value is number of seconds before explosion
 function getDanger();
 
--- getPath returns a table of nodes of a path from A to B
+-- getPath returns a table of nodes of a path from A to B {{x = X, y = Y}, ...}
 -- @param x1 should be int
 -- @param y1 should be int
 -- @param x2 should be int
@@ -46,7 +46,7 @@ function getDangerLevel(xpos, ypos);
 function getDangerLevelPlayer();
 
 -- getBlockType returns block type at [xpos, ypos]
-function getBlockType();
+function getBlockType(xpos, ypos);
 
 -- getClosestSafeSpace returns the block next to player where the player should go to to the closest safe space
 -- returns player pos if no path is found
