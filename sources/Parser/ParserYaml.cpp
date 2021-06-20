@@ -362,6 +362,8 @@ namespace BBM {
 		int block = 0;
 		if (!Utils::tryParse(blockType, block))
 			throw (ParserError("Couldn't parse block type."));
+		if (block < 0 || block > 7)
+			throw (ParserError("Couldn't parse block type."));
 		return (static_cast<MapGenerator::BlockType>(block));
 	}
 
@@ -371,6 +373,8 @@ namespace BBM {
 			throw (ParserError("Couldn't parse bonus type."));
 		int bonus = 0;
 		if (!Utils::tryParse(bonusType, bonus))
+			throw (ParserError("Couldn't parse bonus type."));
+		if (bonus < 0 || bonus > 4)
 			throw (ParserError("Couldn't parse bonus type."));
 		return (static_cast<Bonus::BonusType>(bonus));
 	}
