@@ -63,6 +63,15 @@ namespace BBM
 			//! @brief Check if current player can put a bomb with an escape
 			static int canPutBomb(lua_State *L);
 
+			//! @brief Get current explosion radius of the player
+			static int getRadius(lua_State *L);
+
+			//! @brief Get enemies position
+			static int getEnemies(lua_State *L);
+
+			//! @brief Get enemies position rounded
+			static int getEnemiesRound(lua_State *L);
+
 			//! @brief map blocks in 2D grid
 			std::vector<std::vector<int>> _map;
 
@@ -71,6 +80,9 @@ namespace BBM
 
 			//! @brief player position
 			Vector2f _player;
+
+			//! @brief other players position
+			std::vector<Vector2f> _enemies;
 
 			//! @brief rounded player position
 			Vector2f _roundedPlayer;

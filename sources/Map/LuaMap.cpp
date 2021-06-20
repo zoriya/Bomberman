@@ -319,6 +319,54 @@ namespace BBM
 		return 1;
 	}
 
+	int LuaMap::getRadius(lua_State *L)
+	{
+		LuaG::State state(L);
+		const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
+		state.push(map->currRadius);
+		return 1;
+	}
+
+	int LuaMap::getEnemies(lua_State *L)
+	{
+		LuaG::State state(L);
+		const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
+		int index = 1;
+		state.newTable();
+		for (auto &r : map->_enemies) {
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(r.x);
+			state.setTable();
+			state.push("y");
+			state.push(r.y);
+			state.setTable();
+			state.setTable();
+		}
+		return 1;	
+	}
+
+	int LuaMap::getEnemiesRound(lua_State *L)
+	{
+		LuaG::State state(L);
+		const LuaMap *map = reinterpret_cast<const LuaMap *>(state.getPointer(state.getFirstUpValueIdx()));
+		int index = 1;
+		state.newTable();
+		for (auto &r : map->_enemies) {
+			state.push(index++);
+			state.newTable();
+			state.push("x");
+			state.push(std::round(r.x));
+			state.setTable();
+			state.push("y");
+			state.push(std::round(r.y));
+			state.setTable();
+			state.setTable();
+		}
+		return 1;	return 1;	
+	}
+
 	int LuaMap::canPutBomb(lua_State *L)
 	{
 		LuaG::State state(L);

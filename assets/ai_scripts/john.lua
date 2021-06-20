@@ -137,6 +137,22 @@ function Update()
 		end
 	end
 	
+	local enemies = getEnemies()
+	local enemiesRound = getEnemiesRound()
+
+	log("enemies")
+	for i, v in ipairs(enemies) do
+		log("enemy")
+		log(v.x)
+		log(v.y)
+	end
+	log("enemies ROUND")
+	for i, v in ipairs(enemiesRound) do
+		log("enemy ROUND")
+		log(v.x)
+		log(v.y)
+	end
+
 	log("player")
 	log(player.x)
 	log(player.y)
