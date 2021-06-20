@@ -18,6 +18,8 @@ namespace BBM
 	{
 	private:
 
+		bool _canJoin();
+
 		void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
 
 
@@ -31,7 +33,7 @@ namespace BBM
 		static void addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
 		//! @brief Create ingame tile
-		static void createTile(std::shared_ptr<WAL::Scene> scene, WAL::Entity &player, int color, int playerCount);
+		static void createTile(const std::shared_ptr<WAL::Scene>& drawable, WAL::Entity &player, int color, int playerCount);
 
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
