@@ -367,7 +367,7 @@ namespace BBM
 			state.setTable();
 			state.setTable();
 		}
-		return 1;	return 1;	
+		return 1;
 	}
 
 	int LuaMap::canPutBomb(lua_State *L)
