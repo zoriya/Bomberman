@@ -243,16 +243,16 @@ namespace BBM {
 		MapGenerator::MapBlock map;
 		int size = -1;
 
-		if (!Utils::tryParseInteger(node.getProperty("width"), size)) {
+		if (!Utils::tryParse(node.getProperty("width"), size)) {
 			throw ParserError("width property must be an int");
 		}
 		Runner::mapWidth = size;
-		if (!Utils::tryParseInteger(node.getProperty("height"), size)) {
+		if (!Utils::tryParse(node.getProperty("height"), size)) {
 			throw ParserError("width property must be an int");
 		}
 		Runner::mapHeight = size;
-		long timer = 0;
-		if (!Utils::tryParseLong(node.getProperty("timer"), timer)) {
+		std::chrono::nanoseconds::rep timer = 0;
+		if (!Utils::tryParse(node.getProperty("timer"), timer)) {
 			throw ParserError("timer property must be a long");
 		}
 		Runner::timerDelay = std::chrono::nanoseconds(timer);
@@ -313,7 +313,7 @@ namespace BBM {
 			auto pos = Utils::splitStr(subStr, ',');
 			if (pos.size() != 3)
 				throw (ParserError("Error parsing position."));
-			if (!Utils::tryParseFloat(pos[0], x) || !Utils::tryParseFloat(pos[1], y) || !Utils::tryParseFloat(pos[2], z))
+			if (!Utils::tryParse(pos[0], x) || !Utils::tryParse(pos[1], y) || !Utils::tryParse(pos[2], z))
 				throw (ParserError("Error parsing position."));
 		} catch (const std::out_of_range &err) {
 			throw (ParserError("Error parsing position."));
@@ -327,7 +327,7 @@ namespace BBM {
 
 		if (str.find('-') != std::string::npos)
 			throw (ParserError("Couldn't parse max bomb."));
-		if (!Utils::tryParseInteger(str, maxBomb))
+		if (!Utils::tryParse(str, maxBomb))
 			throw (ParserError("Couldn't parse max bomb."));
 		return (maxBomb);
 	}
@@ -338,7 +338,7 @@ namespace BBM {
 
 		if (line.find('-') != std::string::npos)
 			throw (ParserError("Couldn't parse explosion radius."));
-		if (!Utils::tryParseInteger(line, explosionRadius))
+		if (!Utils::tryParse(line, explosionRadius))
 			throw (ParserError("Couldn't parse explosion radius."));
 		return (explosionRadius);
 	}
@@ -349,7 +349,7 @@ namespace BBM {
 
 		if (line.find('-') != std::string::npos)
 			throw (ParserError("Couldn't parse speed."));
-		if (!Utils::tryParseFloat(line, speed))
+		if (!Utils::tryParse(line, speed))
 			throw (ParserError("Couldn't parse speed."));
 		return (speed);
 	}
@@ -359,7 +359,7 @@ namespace BBM {
 		if (blockType.find('-') != std::string::npos)
 			throw (ParserError("Couldn't parse block type."));
 		int block = 0;
-		if (!Utils::tryParseInteger(blockType, block))
+		if (!Utils::tryParse(blockType, block))
 			throw (ParserError("Couldn't parse block type."));
 		return (static_cast<MapGenerator::BlockType>(block));
 	}
@@ -369,7 +369,7 @@ namespace BBM {
 		if (bonusType.find('-') != std::string::npos)
 			throw (ParserError("Couldn't parse bonus type."));
 		int bonus = 0;
-		if (!Utils::tryParseInteger(bonusType, bonus))
+		if (!Utils::tryParse(bonusType, bonus))
 			throw (ParserError("Couldn't parse bonus type."));
 		return (static_cast<Bonus::BonusType>(bonus));
 	}
