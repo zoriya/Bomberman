@@ -52,6 +52,9 @@ namespace LuaG
 		//! @brief Get return Number
 		bool getReturnBool(void);
 
+		//! @brief Get bool at index in the stack
+		bool getBool(int index);
+
 		//! @brief Get Number at index in the stack
 		float getNumber(int index);
 

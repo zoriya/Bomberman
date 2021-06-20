@@ -28,7 +28,7 @@ namespace BBM
 			void setPlayer(Vector3f pos);
 
 			//! @brief A star pathfinding between two points
-			std::vector<Vector2f> pathfind(Vector2f, Vector2f) const;
+			std::vector<Vector2f> pathfind(Vector2f root, Vector2f target, bool throughBreakable) const;
 
 			//! @brief find a safe space for current player
 			Vector2f findSafeSpace(const std::vector<std::vector<int>> &dangerMap) const;
@@ -63,6 +63,15 @@ namespace BBM
 			//! @brief Check if current player can put a bomb with an escape
 			static int canPutBomb(lua_State *L);
 
+			//! @brief Get current explosion radius of the player
+			static int getRadius(lua_State *L);
+
+			//! @brief Get enemies position
+			static int getEnemies(lua_State *L);
+
+			//! @brief Get enemies position rounded
+			static int getEnemiesRound(lua_State *L);
+
 			//! @brief map blocks in 2D grid
 			std::vector<std::vector<int>> _map;
 
@@ -71,6 +80,9 @@ namespace BBM
 
 			//! @brief player position
 			Vector2f _player;
+
+			//! @brief other players position
+			std::vector<Vector2f> _enemies;
 
 			//! @brief rounded player position
 			Vector2f _roundedPlayer;
@@ -83,7 +95,7 @@ namespace BBM
 			std::unordered_map<Vector2f, Vector2f> &cameFrom, Vector2f node) const;
 
 			//! @brief get neighbors of node for a_star
-			std::vector<Vector2f> getNeighbors(Vector2f node) const;
+			std::vector<Vector2f> getNeighbors(Vector2f node, bool throughBreakable) const;
 
 			std::vector<Vector2f> _dirs = {
 				Vector2f(1, 0), Vector2f(-1, 0), Vector2f(0, 1), Vector2f(0, -1)
