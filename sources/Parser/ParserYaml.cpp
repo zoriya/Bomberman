@@ -130,7 +130,10 @@ namespace BBM {
 		std::ofstream playerFile(player);
 		std::ofstream bonusFile(bonus);
 		auto &ret = scene->view<TagComponent<Timer>, TimerComponent>();
-		_block << "timer: " << ret.front().get<TimerComponent>().ringIn.count();
+		if (ret.size())
+			_block << "timer: " << ret.front().get<TimerComponent>().ringIn.count();
+		else
+			_block << "timer: " << std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::minutes(3)).count();
 
 		_player << "players:";
 		_bonus << "bonuses:";
