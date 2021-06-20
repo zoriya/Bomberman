@@ -197,6 +197,10 @@ namespace BBM {
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>();
 		auto *lobby = playerLogo.addComponent<ResumeLobbyComponent>(countPlayer, ready, playerTile, colors.at(colorStr)).tryGetComponent<ResumeLobbyComponent>();
+		std::string iaPropertyValue = node.getProperty("ia");
+		if (iaPropertyValue != "false" && iaPropertyValue != "true") {
+			throw ParserError("Invalid value for ia property");
+		}
 		if (node.getProperty("ia") == "true") {
 			auto *texture = dynamic_cast<RAY::Texture *>(ready.getComponent<Drawable2DComponent>().drawable.get());
 			lobby->ready = true;

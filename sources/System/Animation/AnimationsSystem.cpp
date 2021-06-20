@@ -5,7 +5,6 @@
 #include "AnimationsSystem.hpp"
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "Model/Model.hpp"
-#include <iostream>
 #include "Component/Tag/TagComponent.hpp"
 #include "Component/Position/PositionComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
