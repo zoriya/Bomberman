@@ -45,6 +45,8 @@ namespace BBM
 			//! @brief True if buttons should be triggered every frame where the key is down, false if the button should only be triggered once the key is released.
 			bool fastClick = false;
 
+			void disable();
+
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
