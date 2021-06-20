@@ -87,6 +87,7 @@ namespace BBM {
 		auto *bombHolder = entity.tryGetComponent<BombHolderComponent>();
 		auto *model = entity.tryGetComponent<Drawable3DComponent>();
 		auto *speed = entity.tryGetComponent<SpeedComponent>();
+		auto *controllable = entity.tryGetComponent<ControllableComponent>();
 		auto name = entity.getName();
 
 		if (!position || !bombHolder || !model || !speed)
@@ -97,6 +98,7 @@ namespace BBM {
 		_player << "max_bomb: " << std::to_string(bombHolder->maxBombCount) << std::endl << "    ";
 		_player << "explosion_radius: " << std::to_string(bombHolder->explosionRadius) << std::endl << "    ";
 		_player << "speed: " << std::to_string(speed->speed) << std::endl << "    ";
+		_player << "ia: " << (controllable->layout == ControllableComponent::AI ? "true" : "false") << std::endl << "    ";
 		_player << "position: [" << std::to_string(position->getX()) << "," << std::to_string(position->getY()) << "," << std::to_string(position->getZ()) << "]";
 	}
 
@@ -177,8 +179,8 @@ namespace BBM {
 		});
 
 		if ((tmpAssets.find("red.png") == std::string::npos && tmpAssets.find("blue.png") == std::string::npos &&
-		tmpAssets.find("green.png") == std::string::npos && tmpAssets.find("yellow.png") == std::string::npos &&
-		tmpAssets.find("ai.png") == std::string::npos) || !std::filesystem::exists(tmpAssets)) {
+		tmpAssets.find("green.png") == std::string::npos && tmpAssets.find("yellow.png") == std::string::npos)
+		|| !std::filesystem::exists(tmpAssets)) {
 			throw (ParserError("One asset is invalid."));
 		}
 		auto start = tmpAssets.find_last_of('/') + 1;
@@ -194,7 +196,14 @@ namespace BBM {
 		auto &ready = resumeScene->addEntity("ready")
 			.addComponent<PositionComponent>(224 * (countPlayer + 1) + 200 * countPlayer, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>();
-		playerLogo.addComponent<ResumeLobbyComponent>(countPlayer, ready, playerTile, colors.at(colorStr));
+		auto *lobby = playerLogo.addComponent<ResumeLobbyComponent>(countPlayer, ready, playerTile, colors.at(colorStr)).tryGetComponent<ResumeLobbyComponent>();
+		if (node.getProperty("ia") == "true") {
+			auto *texture = dynamic_cast<RAY::Texture *>(ready.getComponent<Drawable2DComponent>().drawable.get());
+			lobby->ready = true;
+			lobby->layout = ControllableComponent::AI;
+			if (texture)
+				texture->use("assets/player/icons/ai.png");
+		}
 	}
 
 	void ParserYAML::_loadPlayers(std::shared_ptr<WAL::Scene> scene, Node &node)
