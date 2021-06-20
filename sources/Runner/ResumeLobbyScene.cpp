@@ -65,7 +65,7 @@ namespace BBM
 						return;
 					ResumeLobbySystem::resumeToGame(wal);
 				})
-				.addComponent<TagComponent<"ResumeButton">>();
+				.addComponent<TagComponent<ResumeButton>>();
 		auto &back = scene->addEntity("back to menu")
 				.addComponent<PositionComponent>(10, 1080 - 85, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")

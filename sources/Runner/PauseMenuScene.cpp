@@ -59,7 +59,7 @@ namespace BBM
 			{
 				auto &gameScene = gameState.loadedScenes[BBM::GameState::SceneID::GameScene];
 
-				for (WAL::Entity &entity : gameScene->view<TagComponent<"RestartTimer">>())
+				for (WAL::Entity &entity : gameScene->view<TagComponent<RestartTimer>>())
 					entity.scheduleDeletion();
 
 				for (auto &[entity, controller, _] : gameScene->view<ControllableComponent, HealthComponent>()) {
@@ -81,7 +81,7 @@ namespace BBM
 					})
 					.addComponent<PositionComponent>(1920 / 2 - 2 * 30, 1080 / 2, 0)
 					.addComponent<TagComponent<Timer>>()
-					.addComponent<TagComponent<"RestartTimer">>()
+					.addComponent<TagComponent<RestartTimer>>()
 					.addComponent<Drawable2DComponent, RAY2D::Text>("", 60, RAY::Vector2(), ORANGE);
 				gameState.nextScene = BBM::GameState::SceneID::GameScene;
 			});
