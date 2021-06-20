@@ -2,6 +2,8 @@
 // Created by Louis Auzuret on 10/06/21
 //
 
+#pragma once
+
 #include <string>
 #include <lua.hpp>
 
@@ -12,9 +14,16 @@ namespace LuaG
 		private:
 			//! @brief Lua state
 			lua_State *_state;
+
+			//! @brief Should close the state at destruction
+			bool _shouldClose;
 		public:
 		//! @brief ctor
 		State();
+
+		//! @brief ctor
+		State(lua_State *L, bool shouldClose = false);
+
 
 		//! @brief dtor
 		~State();
@@ -43,6 +52,15 @@ namespace LuaG
 		//! @brief Get return Number
 		bool getReturnBool(void);
 
+		//! @brief Get Number at index in the stack
+		float getNumber(int index);
+
+		//! @brief Get Number at index in the stack
+		const void *getPointer(int index);
+
+		//! @brief Get first upvalue index
+		int getFirstUpValueIdx(void);
+
 		//! @brief call a lua function
 		bool callFunction(int nbParams, int nbReturns);
 
@@ -60,5 +78,7 @@ namespace LuaG
 
 		//! @brief Pop last value on the stack
 		void popLast(void);
+
+		void registerClosure(void *ptr, std::string funcName, lua_CFunction fn);
 	};
 }

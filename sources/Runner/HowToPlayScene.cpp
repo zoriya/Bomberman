@@ -28,23 +28,25 @@ namespace BBM
 			.addComponent<SoundComponent>(sounds);
 		scene->addEntity("background")
 			.addComponent<PositionComponent>()
-			.addComponent<Drawable2DComponent, RAY::Texture>("assets/plain_menu_background.png");
+			.addComponent<Drawable2DComponent, RAY::Texture>("assets/backgrounds/menu.png");
+		scene->addEntity("white background")
+			.addComponent<PositionComponent>(200, 100, 0)
+			.addComponent<Drawable2DComponent, RAY2D::Rectangle>(Vector2f(), Vector2f(1525, 600), RAY::Color(WHITE).setA(150));
 		scene->addEntity("scene title text")
 			.addComponent<PositionComponent>(1920 / 3, 100, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("How To Play?", 120, RAY::Vector2(), ORANGE);
-		
 		scene->addEntity("select text")
 			.addComponent<PositionComponent>(1920 / 8, 1080 / 3, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Select:", 60, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Select/Drop Bomb:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("select")
 			.addComponent<PositionComponent>(1920 / 7, 1080 / 2.5, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Space/A Button", 35, RAY::Vector2(), BLACK);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Space/Left CTRL/A Button", 35, RAY::Vector2(), BLACK);
 		scene->addEntity("change skin text")
 			.addComponent<PositionComponent>(1920 / 8, 1080 / 2, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Change Skin/Drop Bomb:", 60, RAY::Vector2(), ORANGE);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Change Skin:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("change skin")
 			.addComponent<PositionComponent>(1920 / 7, 1080 / 1.75, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("E/B Button", 35, RAY::Vector2(), BLACK);
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Left ctrl/Right shift/B Button", 35, RAY::Vector2(), BLACK);
 		scene->addEntity("move text")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 3, 0)
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Move:", 60, RAY::Vector2(), ORANGE);
@@ -56,8 +58,8 @@ namespace BBM
 			.addComponent<Drawable2DComponent, RAY2D::Text>("Back/Pause:", 60, RAY::Vector2(), ORANGE);
 		scene->addEntity("back")
 			.addComponent<PositionComponent>(1920 / 1.75, 1080 / 1.75, 0)
-			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc / Controller's Home button:", 35, RAY::Vector2(), BLACK);
-		auto &back = scene->addEntity("back to menu")
+			.addComponent<Drawable2DComponent, RAY2D::Text>("Esc/Backspace/Controller's Home button:", 35, RAY::Vector2(), BLACK);
+		scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
 			.addComponent<OnClickComponent>([](WAL::Entity &entity, WAL::Wal &)

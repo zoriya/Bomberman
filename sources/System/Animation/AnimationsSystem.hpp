@@ -12,9 +12,20 @@ namespace BBM
 {
 	class AnimationsSystem : public WAL::System<Drawable3DComponent, AnimationsComponent>
 	{
+	private:
+
+		//! @brief used to reset animsToskip
+		long maxAnimsToSkip = 4;
+
+		//! @brief Should the next update call be skipped?
+		long animsToSkip = maxAnimsToSkip;
+
 	public:
 		//! @inherit
-		void onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds) override;
+		void onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds dtime) override;
+
+		//! @inherit
+		void onSelfUpdate(std::chrono::nanoseconds dtime) override;
 
 		//! @brief A default constructor
 		explicit AnimationsSystem(WAL::Wal &wal);

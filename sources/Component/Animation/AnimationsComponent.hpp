@@ -20,7 +20,9 @@ namespace BBM
 		int _currentAnimIndex;
 		//! @brief Bool allowing to play pause an animation
 		bool _animDisabled;
+
 	public:
+
 		//! @inherit
 		WAL::Component *clone(WAL::Entity &entity) const override;
 
@@ -34,7 +36,7 @@ namespace BBM
 		size_t getCurrentAnimFrameCounter() const;
 
 		//! @brief get the current
-		RAY::ModelAnimation getCurrentModelAnim();
+		RAY::ModelAnimation &getCurrentModelAnim();
 
 		//! @brief set the anim frame counter
 		void setCurrentAnimFrameCounter(size_t animFrameCounter);

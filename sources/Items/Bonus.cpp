@@ -5,6 +5,7 @@
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Collision/CollisionComponent.hpp>
 #include <Component/Controllable/ControllableComponent.hpp>
+#include "Component/Speed/SpeedComponent.hpp"
 #include <Component/Bonus/PlayerBonusComponent.hpp>
 #include "Component/Movable/MovableComponent.hpp"
 #include "Bonus.hpp"
@@ -40,11 +41,13 @@ namespace BBM {
 	{
 		if (bonus.shouldDelete() || axis != CollisionComponent::CollidedAxis::ALL)
 			return;
-		auto *controllable = player.tryGetComponent<ControllableComponent>();
+		auto *speed = player.tryGetComponent<SpeedComponent>();
 		auto *playerBonus = player.tryGetComponent<PlayerBonusComponent>();
-		if (!controllable || !playerBonus)
+		if (!speed || !playerBonus)
 			return;
-		controllable->speed += 0.025f;
+		if (speed->speed >= 0.4)
+			return;
+		speed->speed += 0.025f;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
 
@@ -56,6 +59,7 @@ namespace BBM {
 		if (!playerBonus)
 			return;
 		playerBonus->nextNoClipRate = playerBonus->noClipBonusRate;
+
 		playerBonus->isNoClipOn = true;
 		const_cast<WAL::Entity &>(bonus).scheduleDeletion();
 	}
@@ -65,9 +69,9 @@ namespace BBM {
 		static std::default_random_engine generator(time(nullptr));
 		std::map<BonusType, float> chanceValue = {
 			{NOTHING, 100.0f},
-			{SPEEDUP, 45.0f},
-			{BOMBSTOCK, 30.0f},
-			{EXPLOSIONINC, 15.0f},
+			{BOMBSTOCK, 46.5f},
+			{SPEEDUP, 31.5f},
+			{EXPLOSIONINC, 16.5f},
 			{NOCLIP, 1.5f},
 		};
 		std::uniform_int_distribution<int> distribution(1,1000);

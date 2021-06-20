@@ -13,17 +13,17 @@ namespace WAL
 
 	Entity::Entity(Scene &scene, std::string name, bool notifyScene)
 		: _uid(Entity::nextID++),
-		_scene(scene),
 		_name(std::move(name)),
-		_notifyScene(notifyScene)
+		_notifyScene(notifyScene),
+		_scene(scene)
 	{ }
 
 	Entity::Entity(const Entity &other)
 		: _uid(Entity::nextID++),
-		_scene(other._scene),
 		_name(other._name),
 		_disabled(other._disabled),
-		_notifyScene(other._notifyScene)
+		_notifyScene(other._notifyScene),
+		_scene(other._scene)
 	{
 		for (const auto &cmp : other._components)
 			this->addComponent(*cmp.second);
@@ -39,6 +39,11 @@ namespace WAL
 		return this->_name;
 	}
 
+	void Entity::setName(std::string &name)
+	{
+		this->_name = name;
+	}
+
 	bool Entity::isDisable() const
 	{
 		return this->_disabled;
@@ -52,7 +57,7 @@ namespace WAL
 	Entity &Entity::addComponent(const Component &component)
 	{
 		const std::type_index &type = typeid(component);
-		if (this->hasComponent(type, false))
+		if (this->hasComponent(type))
 			throw DuplicateError("A component of the type \"" + std::string(type.name()) + "\" already exists.");
 		this->_components.emplace(type, component.clone(*this));
 		if (this->_notifyScene)
@@ -60,19 +65,14 @@ namespace WAL
 		return *this;
 	}
 
-	bool Entity::hasComponent(const std::type_info &type, bool skipDisabled) const
+	bool Entity::hasComponent(const std::type_info &type) const
 	{
-		return this->hasComponent(static_cast<const std::type_index &>(type), skipDisabled);
+		return this->hasComponent(static_cast<const std::type_index &>(type));
 	}
 
-	bool Entity::hasComponent(const std::type_index &type, bool skipDisabled) const
+	bool Entity::hasComponent(const std::type_index &type) const
 	{
-		auto cmp = this->_components.find(type);
-		if (cmp == this->_components.end())
-			return false;
-		if (skipDisabled)
-			return !cmp->second->isDisabled();
-		return true;
+		return this->_components.contains(type);
 	}
 
 	void Entity::_componentAdded(const std::type_index &type)

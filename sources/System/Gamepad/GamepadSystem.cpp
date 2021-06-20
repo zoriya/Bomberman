@@ -17,20 +17,25 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void GamepadSystem::onFixedUpdate(WAL::ViewEntity<GamepadComponent, ControllableComponent> &entity)
+	void GamepadSystem::onUpdate(WAL::ViewEntity<GamepadComponent, ControllableComponent> &entity, std::chrono::nanoseconds)
 	{
 		const auto &gamepadComponent = entity.get<GamepadComponent>();
 		auto &controllable = entity.get<ControllableComponent>();
-		Gamepad gamepad(gamepadComponent.getID());
 
+		if (controllable.disabled)
+			return;
+
+		Gamepad gamepad(gamepadComponent.getID());
 		const std::map<Button, bool &> keyPressedMap = {
-			{gamepadComponent.keyJump, controllable.select},
-			{gamepadComponent.keyBomb, controllable.bomb},
-			{gamepadComponent.keyPause, controllable.pause}
+			{gamepadComponent.keySecondary, controllable.secondary},
+			{gamepadComponent.keyBomb,      controllable.bomb},
+			{gamepadComponent.keyPause,     controllable.pause}
 		};
 
 		for (auto key : keyPressedMap)
-			key.second = gamepad.isDown(key.first);
+			key.second = controllable.fastClick ? gamepad.isDown(key.first) : gamepad.isPressed(key.first);
+		if (gamepad.isPressed(GAMEPAD_BUTTON_MIDDLE_LEFT) || gamepad.isPressed(GAMEPAD_BUTTON_MIDDLE_RIGHT))
+			controllable.pause = true;
 		controllable.move.x = gamepad.getAxisValue(gamepadComponent.LeftStickX) * -1;
 		controllable.move.y = gamepad.getAxisValue(gamepadComponent.LeftStickY) * -1;
 		controllable.move.x -= static_cast<float>(gamepad.isDown(gamepadComponent.keyRight));

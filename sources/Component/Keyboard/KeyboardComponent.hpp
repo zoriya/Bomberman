@@ -18,7 +18,7 @@ namespace BBM
 	{
 	public:
 		//! @brief jump key
-		Key keyJump = KEY_SPACE;
+		Key keySecondary = KEY_SPACE;
 		//! @brief bomb key
 		Key keyBomb = KEY_E;
 		//! @brief pause key
@@ -40,7 +40,7 @@ namespace BBM
 		void onStart() override;
 
 		//! @brief Create a new keyboard component using custom keys.
-		explicit KeyboardComponent(WAL::Entity &entity, ControllableComponent::Layout layout = ControllableComponent::Layout::KEYBOARD_0);
+		explicit KeyboardComponent(WAL::Entity &entity, ControllableComponent::Layout controllerLayout = ControllableComponent::Layout::KEYBOARD_0);
 
 		//! @brief A Keyboard component is copy constructable.
 		KeyboardComponent(const KeyboardComponent &) = default;

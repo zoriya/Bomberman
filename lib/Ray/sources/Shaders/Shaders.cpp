@@ -6,6 +6,7 @@
 
 #include <utility>
 #include "Exceptions/RayError.hpp"
+#include "Vector/Vector3.hpp"
 
 namespace RAY
 {
@@ -38,6 +39,7 @@ namespace RAY
 		SetShaderValue(*this->_rayLibShader, this->_shaderIndexVars[varName], &value, SHADER_UNIFORM_FLOAT);
 	}
 
+
 	void Shader::setShaderUniformVar(const std::string &varName, int value)
 	{
 		if (this->_shaderIndexVars.find(varName) == this->_shaderIndexVars.end()) {
@@ -60,4 +62,18 @@ namespace RAY
 	{
 		EndShaderMode();
 	}
+
+	void Shader::setShaderUniformVar(const std::string &varName, const RAY::Vector3 &vector)
+	{
+		if (this->_shaderIndexVars.find(varName) == this->_shaderIndexVars.end()) {
+			int varShaderIndex = GetShaderLocation(*this->_rayLibShader, varName.c_str());
+
+			if (varShaderIndex < 0) {
+				throw Exception::WrongInputError("The loaded shader doesn't have a variable called: " + varName);
+			}
+			this->_shaderIndexVars[varName] = varShaderIndex;
+		}
+		SetShaderValue(*this->_rayLibShader, this->_shaderIndexVars[varName], &vector, SHADER_UNIFORM_VEC3);
+	}
+
 }

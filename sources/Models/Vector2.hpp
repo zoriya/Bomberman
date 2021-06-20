@@ -29,8 +29,8 @@ namespace BBM
 		{}
 
 		//! @brief Create a new vector2 representing a specific coordinate.
-		Vector2(T x, T y)
-			: x(x), y(y)
+		Vector2(T _x, T _y)
+			: x(_x), y(_y)
 		{}
 
 		//! @brief A default destructor
@@ -67,6 +67,13 @@ namespace BBM
 			this->y -= vec.y;
 			return *this;
 		}
+
+		template<typename T2>
+		Vector2<T> operator-(const Vector2<T2> &vec) const
+		{
+			return Vector2<T>(this->x - vec.x, this->y - vec.y);
+		}
+
 
 		template<typename T2>
 		Vector2<T> &operator*=(T2 d)

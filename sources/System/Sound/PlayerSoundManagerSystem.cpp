@@ -21,7 +21,6 @@ namespace BBM {
 		std::map<bool, SoundComponent::SoundIndex> soundIndex = {
 			{health.getHealthPoint() <= 0,                         SoundComponent::DEATH},
 			{controllable.bomb,                                    SoundComponent::BOMB},
-			{controllable.select,                                  SoundComponent::JUMP},
 			{controllable.move.x != 0 || controllable.move.y != 0, SoundComponent::MOVE}
 		};
 		for (auto &a : soundIndex) {

@@ -10,10 +10,10 @@
 
 namespace BBM
 {
-	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, const WAL::Callback<WAL::Entity &, WAL::Wal &> &onDeath)
+	HealthComponent::HealthComponent(WAL::Entity &entity, unsigned int healthPoint, const WAL::Callback<WAL::Entity &, WAL::Wal &> &onDeathCallback)
 		: WAL::Component(entity),
 		  _healthPoint(healthPoint),
-		  onDeath(onDeath)
+		  onDeath(onDeathCallback)
 	{}
 
 	WAL::Component *HealthComponent::clone(WAL::Entity &entity) const

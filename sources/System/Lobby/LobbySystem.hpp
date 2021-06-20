@@ -17,17 +17,22 @@ namespace BBM
 	class LobbySystem : public WAL::System<LobbyComponent, Drawable2DComponent>
 	{
 	private:
-		//! @brief Add a controller for the player.
-		static void _addController(WAL::Entity &player, ControllableComponent::Layout layout);
 
 		void _nextColor(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity);
 
-		static std::array<std::string, 4> _colors;
 
 		static std::array<RAY::Color, 4> _rayColors;
 
 		std::array<bool, 4> _colorTaken = {};
 	public:
+		static std::array<std::string, 4> colors;
+
+		//! @brief Add a controller for the player.
+		static void addController(WAL::Entity &player, ControllableComponent::Layout layout);
+
+		//! @brief Create ingame tile
+		static void createTile(std::shared_ptr<WAL::Scene> scene, WAL::Entity &player, int color, int playerCount);
+
 		//! @inherit
 		void onUpdate(WAL::ViewEntity<LobbyComponent, Drawable2DComponent> &entity, std::chrono::nanoseconds dtime) override;
 

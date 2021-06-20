@@ -7,14 +7,20 @@
 namespace LuaG
 {
 	State::State()
-	: _state(luaL_newstate())
+	: _state(luaL_newstate()), _shouldClose(true)
 	{
 		luaL_openlibs(_state);
 	}
 
+	State::State(lua_State *L, bool shouldClose)
+	: _state(L), _shouldClose(shouldClose)
+	{
+	}
+
 	State::~State()
 	{
-		lua_close(_state);
+		if (_shouldClose)
+			lua_close(_state);
 	}
 
 	lua_State *State::getState(void)
@@ -64,6 +70,21 @@ namespace LuaG
 		return res;
 	}
 
+	float State::getNumber(int idx)
+	{
+		return lua_tonumber(_state, idx);
+	}
+
+	const void *State::getPointer(int idx)
+	{
+		return lua_topointer(_state, idx);
+	}
+
+	int State::getFirstUpValueIdx(void)
+	{
+		return lua_upvalueindex(1);
+	}
+
 	bool State::callFunction(int nbParams, int nbReturns)
 	{
 		lua_pcall(_state, nbParams, nbReturns, 0);
@@ -93,5 +114,12 @@ namespace LuaG
 	void State::popLast(void)
 	{
 		lua_pop(_state, -1);
+	}
+
+	void State::registerClosure(void *ptr, std::string funcName, lua_CFunction fn)
+	{
+		lua_pushlightuserdata(_state, ptr);
+		lua_pushcclosure(_state, fn, 1);
+		lua_setglobal(_state, funcName.c_str());
 	}
 }

@@ -61,6 +61,7 @@ TEST_CASE("View add entity", "[View]")
 		.addComponent<PositionComponent>();
 	scene.applyChanges();
 	REQUIRE(scene.view<PositionComponent>().size() == 2);
+	(void)entity;
 }
 
 TEST_CASE("View remove entity", "[View]")
@@ -75,6 +76,7 @@ TEST_CASE("View remove entity", "[View]")
 	REQUIRE(scene.view<PositionComponent>().size() == 0);
 	for (auto &it : scene.view<PositionComponent>())
 		REQUIRE(false);
+	(void)scene;
 }
 
 TEST_CASE("View cache switch", "[View]")

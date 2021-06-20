@@ -29,24 +29,29 @@ namespace BBM
 				AI
 			};
 
+			//! @brief True if the entity should not be controllable.
+			bool disabled;
+
 			//! @brief The X and Z abscis of the movement.
 			Vector2f move;
-			//! @brief input value to select
-			bool select = false;
-			//! @brief input value for bomb
+			//! @brief input value for secondary inputs.
+			bool secondary = false;
+			//! @brief input value for bomb and selection
 			bool bomb = false;
 			//! @brief input value for pause
 			bool pause = false;
-			//! @brief The speed applied to every controllable entities.
-			float speed = .15f;
 			//! @brief The layout used for this controllable.
 			Layout layout = NONE;
+			//! @brief True if buttons should be triggered every frame where the key is down, false if the button should only be triggered once the key is released.
+			bool fastClick = false;
 
 			//! @inherit
 			WAL::Component *clone(WAL::Entity &entity) const override;
 
 			//! @brief Initialize a new controllable component.
 			explicit ControllableComponent(WAL::Entity &entity);
+			//! @brief Initialize a new controllable component.
+			ControllableComponent(WAL::Entity &entity, bool isDisabled);
 			//! @brief A Controllable component is copy constructable.
 			ControllableComponent(const ControllableComponent &) = default;
 			//! @brief default destructor

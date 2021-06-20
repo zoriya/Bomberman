@@ -5,6 +5,7 @@
 #pragma once
 #include "Models/GameState.hpp"
 #include "Wal.hpp"
+#include <chrono>
 #include <map>
 #include "Component/Sound/SoundComponent.hpp"
 
@@ -15,7 +16,14 @@ namespace BBM
 		//! @brief Has the map heights or is it disabled?
 		static bool hasHeights;
 
-		//! @brief store current scenes information
+		//! @brief the width of the map
+		static int mapWidth;
+		//! @brief the height of the map
+		static int mapHeight;
+		//! @brief timer duration
+		static std::chrono::nanoseconds timerDelay;
+
+		//! @brief store current scenes informations
 		static GameState gameState;
 		//! @brief Start the game and run a Bomberman.
 		//! @return 0 on success, another value on error.
@@ -54,6 +62,9 @@ namespace BBM
 
 		//! @brief load all data related to lobby screen
 		static std::shared_ptr<WAL::Scene> loadLobbyScene();
+
+		//! @brief load all data related to resume lobby screen
+		static std::shared_ptr<WAL::Scene> loadResumeLobbyScene();
 
 		//! @brief Create a player (without any controllable) and add it to the scene.
 		//! @param scene The scene where to player should reside.
