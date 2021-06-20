@@ -20,6 +20,12 @@ namespace BBM
     {
         if (std::filesystem::exists(scriptPath)) {
 	        _state.dofile(scriptPath);
+            _state.getGlobal("Update");
+            if (lua_isfunction(_state.getState(), -1)) {
+                _state.popLast();
+            } else {
+                throw Error("Lua script doesn't have Update function");
+            }
         }
         else {
         	throw Error("Couldn't load lua script: " + scriptPath);

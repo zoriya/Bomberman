@@ -19,11 +19,13 @@ namespace BBM
 
 	void IAControllableSystem::UpdateMapInfos(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
 	{
-		_players.clear();
+		_luamap._enemies.clear();
 		if (!_wal.getScene())
 			return;
 		for (auto &[other, pos, _] : _wal.getScene()->view<PositionComponent, ScoreComponent>()) {
-			_players.push_back(MapInfo(pos.position, MapGenerator::NOTHING));
+			if (other == entity)
+				continue;
+			_luamap._enemies.push_back(Vector2f(pos.position.x, pos.position.z));
 		}
 		if (_cached)
 			return;
@@ -86,6 +88,9 @@ namespace BBM
 		state.registerClosure(&_luamap, "getBlockType", LuaMap::getBlockType);
 		state.registerClosure(&_luamap, "getClosestSafeSpace", LuaMap::getClosestSafeSpace);
 		state.registerClosure(&_luamap, "canPutBombSafe", LuaMap::canPutBomb);
+		state.registerClosure(&_luamap, "getRadius", LuaMap::getRadius);
+		state.registerClosure(&_luamap, "getEnemies", LuaMap::getEnemies);
+		state.registerClosure(&_luamap, "getEnemiesRound", LuaMap::getEnemiesRound);
 	}
 
 	void IAControllableSystem::onFixedUpdate(WAL::ViewEntity<PositionComponent, ControllableComponent, IAControllableComponent, BombHolderComponent> &entity)
