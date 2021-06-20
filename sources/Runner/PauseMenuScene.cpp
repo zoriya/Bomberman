@@ -63,9 +63,7 @@ namespace BBM
 					entity.scheduleDeletion();
 
 				for (auto &[entity, controller, _] : gameScene->view<ControllableComponent, HealthComponent>()) {
-					controller.disabled = true;
-					controller.pause = false;
-					controller.bomb = false;
+					controller.disable();
 				}
 				for (auto &[_, timer] : gameScene->view<TimerComponent>())
 					timer.disabled = true;

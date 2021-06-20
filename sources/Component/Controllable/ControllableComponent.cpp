@@ -20,4 +20,12 @@ namespace BBM
 		: WAL::Component(entity),
 		disabled(isDisabled)
 	{}
+
+	void ControllableComponent::disable()
+	{
+		this->disabled = true;
+		this->pause = false;
+		this->bomb = false;
+		this->move = Vector2f();
+	}
 }

@@ -121,7 +121,7 @@ namespace BBM
 					entity.removeComponent<AnimatorComponent>();
 				if (entity.hasComponent<TimerComponent>())
 					return;
-				entity.getComponent<ControllableComponent>().disabled = true;
+				entity.getComponent<ControllableComponent>().disable();
 				entity.addComponent<TimerComponent>(1s, [](WAL::Entity &ent, WAL::Wal &) {
 					if (!ent.hasComponent<SoundComponent>())
 						return;
