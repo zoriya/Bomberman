@@ -49,8 +49,7 @@ namespace BBM
 	}
 
 	void CameraSystem::onUpdate(WAL::ViewEntity<CameraComponent, PositionComponent> &entity,
-	                            std::chrono::nanoseconds dtime)
-	{
+	                            std::chrono::nanoseconds dtime) {
 		if (Runner::gameState.currentScene != GameState::GameScene || !introAnimation(entity))
 			return;
 		auto &pos = entity.get<PositionComponent>();
@@ -60,7 +59,6 @@ namespace BBM
 		float maxDist = 0;
 		float lowerXDist = 0;
 		float lowerZDist = 0;
-
 		for (auto &[player, position, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Player>>()) {
 			playerPos.emplace_back(position.position);
 		}
@@ -68,6 +66,8 @@ namespace BBM
 			newCameraPos = playerPos[0];
 		for (size_t i = 0; i < playerPos.size(); i++)
 			for (size_t j = 0; j < playerPos.size(); j++) {
+				if (i == j)
+					continue;
 				if (maxDist < playerPos[i].distance(playerPos[j])) {
 					maxDist = playerPos[i].distance(playerPos[j]);
 					newCameraPos = (playerPos[i] + playerPos[j]) / 2;
@@ -82,15 +82,11 @@ namespace BBM
 			maxDist = 14;
 		if (maxDist > 23)
 			maxDist = 23;
-		Vector3f pos2d(pos.position.abs().x,0, pos.position.abs().z);
-		Vector3f newPos2d(newCameraPos.abs().x, 0, pos.position.abs().z);
 		for (auto &[other, backPos, _] : this->_wal.getScene()->view<PositionComponent, TagComponent<Background>>()) {
 			backPos.position = cam.target;
 		}
 		newCameraPos.y = 0;
 		cam.target += (newCameraPos.abs() - cam.target.abs()) / 10;
-		newCameraPos.y = maxDist;
-		newCameraPos.z -= newCameraPos.z > 1 ? 1 : 0;
-		pos.position += (newCameraPos.abs() - pos.position.abs()) / 10;
+		pos.position = Vector3f(cam.target.x, maxDist, cam.target.z - 1);
 	}
 }
