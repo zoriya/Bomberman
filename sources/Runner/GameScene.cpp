@@ -126,6 +126,7 @@ namespace BBM
 					if (!ent.hasComponent<SoundComponent>())
 						return;
 					ent.removeComponent<SoundComponent>();
+					ent.removeComponent<HealthComponent>();
 					ent.removeComponent<CollisionComponent>();
 					ent.removeComponent<PositionComponent>();
 				});
