@@ -30,13 +30,14 @@ namespace BBM
 		static int findFrequency(const std::string &s, const std::string &pattern);
 
 		//! @brief return true if parsing has been successful result ill be in i
-		static bool tryParseInteger(const std::string &s, int &i);
+		template<typename T>
+		static bool tryParse(const std::string &s, T &f)
+		{
+			std::istringstream iss(s);
 
-		//! @brief return true if parsing has been successful result ill be in f
-		static bool tryParseFloat(const std::string &s, float &f);
-
-		//! @brief return true if parsing has been successful result ill be in l
-		static bool tryParseLong(const std::string &s, long &l);
+			iss >> std::noskipws >> f;
+			return iss.eof() && !iss.fail();
+		}
 
 		//! @brief split a string with a delim char
 		static std::vector<std::string> splitStr(const std::string &str, char delim);
