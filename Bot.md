@@ -38,7 +38,8 @@ function getDanger();
 -- @param y1 should be int
 -- @param x2 should be int
 -- @param y2 should be int
-function getPath(x1, y1, x2, y2);
+-- @param throughBreakable bool path is going through breakables blocks or not
+function getPath(x1, y1, x2, y2, throughBreakable);
 
 -- getPlayer returns player pos as {x = xPlayer, y = yPlayer}
 function getPlayer();
