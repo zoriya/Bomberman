@@ -17,9 +17,7 @@
 #include <Component/Tag/TagComponent.hpp>
 #include <Drawables/Texture.hpp>
 #include <System/Lobby/ResumeLobbySystem.hpp>
-#include "System/Sound/PlayerSoundManagerSystem.hpp"
 #include "System/Music/MusicSystem.hpp"
-#include "System/Lobby/LobbySystem.hpp"
 #include "Component/Lobby/LobbyComponent.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -67,7 +65,7 @@ namespace BBM
 						return;
 					ResumeLobbySystem::resumeToGame(wal);
 				})
-				.addComponent<TagComponent<"PlayButton">>();
+				.addComponent<TagComponent<"ResumeButton">>();
 		auto &back = scene->addEntity("back to menu")
 				.addComponent<PositionComponent>(10, 1080 - 85, 0)
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")

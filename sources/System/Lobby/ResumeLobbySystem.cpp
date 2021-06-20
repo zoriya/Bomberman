@@ -66,7 +66,7 @@ namespace BBM
 
 	void ResumeLobbySystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
-		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
+		auto &view = this->_wal.getScene()->view<TagComponent<"ResumeButton">, Drawable2DComponent>();
 		if (view.size() == 0)
 			return;
 		auto *texture = dynamic_cast<RAY::Texture *>(view.front().get<Drawable2DComponent>().drawable.get());
