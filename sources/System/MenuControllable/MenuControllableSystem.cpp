@@ -18,13 +18,14 @@ namespace BBM
 {
 	MenuControllableSystem::MenuControllableSystem(WAL::Wal &wal)
 		: System(wal),
-		_currentButton(), _oldMousePosition(-1, -1)
+		  _oldMousePosition(-1, -1),
+		  currentButton()
 	{
 	}
 
 	void MenuControllableSystem::_updateCurrentButton(bool selected, Vector2f move)
 	{
-		auto &buttonComponent = this->_currentButton->getComponent<OnClickComponent>();
+		auto &buttonComponent = this->currentButton->getComponent<OnClickComponent>();
 		WAL::Entity *newButton = nullptr; 
 
 		if (move.y > 0 && buttonComponent._up)
@@ -44,12 +45,12 @@ namespace BBM
 		}
 
 		if (newButton) {
-			this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
-			this->_currentButton = newButton;
-			this->_currentButton->getComponent<OnHoverComponent>().onEvent(*this->_currentButton, this->_wal);
+			this->currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, this->_wal);
+			this->currentButton = newButton;
+			this->currentButton->getComponent<OnHoverComponent>().onEvent(*this->currentButton, this->_wal);
 		}
 		if (selected)
-		    this->_currentButton->getComponent<OnClickComponent>().onEvent(*this->_currentButton, this->_wal);
+		    this->currentButton->getComponent<OnClickComponent>().onEvent(*this->currentButton, this->_wal);
 	}
 
 	bool MenuControllableSystem::_mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const
@@ -83,16 +84,16 @@ namespace BBM
 
 		if (this->_oldMousePosition == Vector2f(-1, -1))
 			this->_oldMousePosition = relativeMousePos;
-		if (this->_currentButton && this->_currentButton->_scene.getID() != this->_wal.getScene()->getID()) {
-			this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
-			this->_currentButton = nullptr;
+		if (this->currentButton && this->currentButton->_scene.getID() != this->_wal.getScene()->getID()) {
+			this->currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, this->_wal);
+			this->currentButton = nullptr;
 			return;
 		}
-		if (this->_currentButton == nullptr && buttons.size()) {
-			this->_currentButton = &(*buttons.front());
-			this->_currentButton->getComponent<OnHoverComponent>().onEvent(*this->_currentButton, this->_wal);
+		if (this->currentButton == nullptr && buttons.size()) {
+			this->currentButton = &(*buttons.front());
+			this->currentButton->getComponent<OnHoverComponent>().onEvent(*this->currentButton, this->_wal);
 		}
-		if (!this->_currentButton)
+		if (!this->currentButton)
 			return;
 		for (auto &[_, controllable]: controllableView)
 			if (controllable.move.x || controllable.move.y || controllable.bomb) {
@@ -104,12 +105,12 @@ namespace BBM
 		this->_oldMousePosition = relativeMousePos;
 		for (auto &entity:  buttons) {
 			if (_mouseOnButton(relativeMousePos, entity)) {
-				if (this->_currentButton)
-					this->_currentButton->getComponent<OnIdleComponent>().onEvent(*this->_currentButton, this->_wal);
-				this->_currentButton = &(*entity);
-				this->_currentButton->getComponent<OnHoverComponent>().onEvent(*this->_currentButton, this->_wal);
+				if (this->currentButton)
+					this->currentButton->getComponent<OnIdleComponent>().onEvent(*this->currentButton, this->_wal);
+				this->currentButton = &(*entity);
+				this->currentButton->getComponent<OnHoverComponent>().onEvent(*this->currentButton, this->_wal);
 				if (RAYControl::Mouse::isPressed(RAYControl::Mouse::Button::MOUSE_BUTTON_LEFT))
-					this->_currentButton->getComponent<OnClickComponent>().onEvent(*this->_currentButton, this->_wal);
+					this->currentButton->getComponent<OnClickComponent>().onEvent(*this->currentButton, this->_wal);
 			}
 		}
 	}

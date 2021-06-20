@@ -91,7 +91,7 @@ namespace BBM
 				                                                tilesColor[place]);
 			scene->addEntity("player")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 2.5, 0)
-				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[place]);
+				.addComponent<Drawable2DComponent, RAY::Texture>(playersIconPath[i]);
 		}
 		auto &play = scene->addEntity("play button")
 			.addComponent<PositionComponent>(1920 / 2.5, 1080 - 180, 0)

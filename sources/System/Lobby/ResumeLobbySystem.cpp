@@ -9,20 +9,12 @@
 #include "Component/Speed/SpeedComponent.hpp"
 #include "System/MenuControllable/MenuControllableSystem.hpp"
 #include "Component/Tag/TagComponent.hpp"
-#include <algorithm>
 #include <Runner/Runner.hpp>
-#include <Component/Keyboard/KeyboardComponent.hpp>
-#include <Component/Gamepad/GamepadComponent.hpp>
-#include "Component/IAControllable/IAControllableComponent.hpp"
 #include <Component/Position/PositionComponent.hpp>
 #include <Component/Renderer/Drawable3DComponent.hpp>
-#include <Map/Map.hpp>
 #include <Component/BombHolder/BombHolderComponent.hpp>
 #include <Parser/ParserYaml.hpp>
-#include <Drawables/2D/Text.hpp>
 #include "Component/Color/ColorComponent.hpp"
-#include "Component/Stat/StatComponent.hpp"
-#include "Component/Bonus/PlayerBonusComponent.hpp"
 #include "System/Lobby/LobbySystem.hpp"
 
 namespace RAY3D = RAY::Drawables::Drawables3D;
@@ -66,7 +58,7 @@ namespace BBM
 
 	void ResumeLobbySystem::onSelfUpdate(std::chrono::nanoseconds dtime)
 	{
-		auto &view = this->_wal.getScene()->view<TagComponent<"PlayButton">, Drawable2DComponent>();
+		auto &view = this->_wal.getScene()->view<TagComponent<ResumeButton>, Drawable2DComponent>();
 		if (view.size() == 0)
 			return;
 		auto *texture = dynamic_cast<RAY::Texture *>(view.front().get<Drawable2DComponent>().drawable.get());

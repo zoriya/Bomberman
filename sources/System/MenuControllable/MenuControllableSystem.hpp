@@ -17,9 +17,6 @@ namespace BBM
 	class MenuControllableSystem : public WAL::System<>
 	{
 	private:
-		//! @brief index of the current button selected
-		WAL::Entity *_currentButton;
-
 		//! @brief position of the mouse at the precedent scene (to know which controller event to watch)
 		Vector2f _oldMousePosition;
 
@@ -30,6 +27,9 @@ namespace BBM
 		//! @return true if mouse on entity
 		bool _mouseOnButton(const Vector2f &mousePos, WAL::ViewEntity<OnClickComponent, OnHoverComponent, OnIdleComponent, PositionComponent, Drawable2DComponent> &entity) const;
 	public:
+		//! @brief index of the current button selected
+		WAL::Entity *currentButton;
+
 		//! @brief time (in millisecond) since last check
 		std::chrono::time_point<std::chrono::steady_clock> now;
 		//! @inherit

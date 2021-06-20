@@ -77,7 +77,7 @@ namespace BBM
 					return;
 				LobbySystem::switchToGame(wal);
 			})
-			.addComponent<TagComponent<"PlayButton">>();
+			.addComponent<TagComponent<PlayButton>>();
 		auto &back = scene->addEntity("back to menu")
 			.addComponent<PositionComponent>(10, 1080 - 85, 0)
 			.addComponent<Drawable2DComponent, RAY::Texture>("assets/buttons/button_back.png")
@@ -186,7 +186,6 @@ namespace BBM
 				.addComponent<Drawable2DComponent, RAY::Texture>("assets/player/icons/none.png");
 			auto &ready = scene->addEntity("ready")
 				.addComponent<PositionComponent>(224 * (i + 1) + 200 * i, 1080 / 3 - 50, 0)
-				// todo check why it does this | hacky way to fix ready texture
 				.addComponent<Drawable2DComponent, RAY::Texture>();
 			player.addComponent<LobbyComponent>(i, ready, playerTile);
 		}
