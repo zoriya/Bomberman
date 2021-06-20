@@ -3,9 +3,7 @@
 #include "Runner.hpp"
 #include <map>
 #include "Component/Tag/TagComponent.hpp"
-#include <Parser/ParserYaml.hpp>
 #include <Component/Bonus/PlayerBonusComponent.hpp>
-#include <Component/Renderer/Drawable2DComponent.hpp>
 #include "Component/Music/MusicComponent.hpp"
 #include "Component/Sound/SoundComponent.hpp"
 #include "Component/Controllable/ControllableComponent.hpp"
@@ -18,7 +16,6 @@
 #include "Component/Collision/CollisionComponent.hpp"
 #include "Component/Movable/MovableComponent.hpp"
 #include "Component/BombHolder/BombHolderComponent.hpp"
-#include "Component/Tag/TagComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 #include "Component/Shaders/Items/AlphaCtxShaderComponent.hpp"
 #include "Component/Speed/SpeedComponent.hpp"
@@ -26,7 +23,6 @@
 #include "Component/Shaders/ShaderComponent.hpp"
 #include "Component/Gravity/GravityComponent.hpp"
 #include "Component/BumperTimer/BumperTimerComponent.hpp"
-#include "Component/Timer/TimerComponent.hpp"
 #include "Model/Model.hpp"
 #include "Map/Map.hpp"
 #include "Component/Score/ScoreComponent.hpp"
@@ -48,6 +44,7 @@ namespace BBM
 		scene->addEntity("background image")
 			.addComponent<Drawable3DComponent, RAY3D::Model>("assets/map/breakable_wall.obj", true, std::make_pair(MAP_DIFFUSE, "assets/backgrounds/gameWall.png"), Vector3f(50, 1, 50), -90, Vector3f(), Vector3f(1, 0, 0))
 			.addComponent<PositionComponent>(5, 14, 22);
+		addMenuControl(*scene);
 		return scene;
 	}
 
