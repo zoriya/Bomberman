@@ -66,6 +66,7 @@ namespace BBM
 					controller.disabled = true;
 					controller.pause = false;
 					controller.bomb = false;
+					controller.move = Vector2f();
 				}
 				for (auto &[_, timer] : gameScene->view<TimerComponent>())
 					timer.disabled = true;
