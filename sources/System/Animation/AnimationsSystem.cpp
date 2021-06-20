@@ -5,6 +5,8 @@
 #include "AnimationsSystem.hpp"
 #include "Component/Animation/AnimationsComponent.hpp"
 #include "Model/Model.hpp"
+#include "Component/Tag/TagComponent.hpp"
+#include "Component/Position/PositionComponent.hpp"
 #include "Component/Renderer/Drawable3DComponent.hpp"
 
 namespace BBM
@@ -14,20 +16,29 @@ namespace BBM
 		: System(wal)
 	{}
 
-	void AnimationsSystem::onFixedUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity)
+	void AnimationsSystem::onUpdate(WAL::ViewEntity<Drawable3DComponent, AnimationsComponent> &entity, std::chrono::nanoseconds)
 	{
-		auto &model = entity.get<Drawable3DComponent>();
 		auto &anim = entity.get<AnimationsComponent>();
 
 		if (anim.isAnimDisabled())
 			return;
-		auto modelPtr = std::dynamic_pointer_cast<RAY::Drawables::Drawables3D::Model>(model.drawable);
-		if (modelPtr) {
-			modelPtr->setAnimation(anim.getCurrentModelAnim());
-			anim.incCurrentAnimFrameCounter();
-			anim.incCurrentAnimFrameCounter();
-			anim.incCurrentAnimFrameCounter();
-			anim.incCurrentAnimFrameCounter();
+		anim.incCurrentAnimFrameCounter();
+		anim.incCurrentAnimFrameCounter();
+		if (this->animsToSkip <= 0) {
+			auto &model = entity.get<Drawable3DComponent>();
+			auto modelPtr = std::dynamic_pointer_cast<RAY::Drawables::Drawables3D::Model>(model.drawable);
+			if (modelPtr) {
+				modelPtr->setAnimation(anim.getCurrentModelAnim());
+			}
 		}
+	}
+
+	void AnimationsSystem::onSelfUpdate(std::chrono::nanoseconds)
+	{
+		this->maxAnimsToSkip = this->_wal.getScene()->view<AnimationsComponent, TagComponent<Player>, PositionComponent>().size() - 1;
+		if (this->animsToSkip <= 0) {
+			this->animsToSkip = this->maxAnimsToSkip + 1;
+		}
+		this->animsToSkip--;
 	}
 }
