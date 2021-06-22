@@ -11,3 +11,4 @@ wasm-python.py
 lua54*
 include/*
 save/*
+lib/Lua/*

@@ -17,17 +17,33 @@ set(SRC
 	sources/LuaGate.cpp
 )
 
-include(FindLua)
-if (NOT LUA_FOUND)
-	if (EXISTS ${CMAKE_SOURCE_DIR}/include/lua.hpp)
-		message("Using local lua")
-		set(LUA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/)
-		set(LUA_LIBRARIES ${CMAKE_SOURCE_DIR}/lua54.lib)
-	else()
-		message(FATAL_ERROR "Lua could not be found.")
+add_library(LuaGate STATIC ${SRC} ${HEADERS})
+if (EMSCRIPTEN)
+	include(ExternalProject)
+	ExternalProject_Add(LUA
+		SOURCE_DIR ${CMAKE_SOURCE_DIR}/lib/Lua
+		URL http://www.lua.org/ftp/lua-5.4.3.tar.gz
+		DOWNLOAD_DIR ${CMAKE_SOURCE_DIR}/lib/Lua
+		BUILD_IN_SOURCE 1
+		CONFIGURE_COMMAND echo "Trololol"
+		BUILD_COMMAND make generic CC="emcc" 'AR="emar rcu"' RANLIB="emranlib"
+		INSTALL_COMMAND cmake -E echo "Ta mere en slip"
+	)
+	set(LUA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/lib/Lua/src)
+	set(LUA_LIBRARIES ${CMAKE_SOURCE_DIR}/lib/Lua/src/liblua.a)
+	add_dependencies(LuaGate LUA)
+else()
+	include(FindLua)
+	if (NOT LUA_FOUND)
+		if (EXISTS ${CMAKE_SOURCE_DIR}/include/lua.hpp)
+			message("Using local lua")
+			set(LUA_INCLUDE_DIR ${CMAKE_SOURCE_DIR}/include/)
+			set(LUA_LIBRARIES ${CMAKE_SOURCE_DIR}/lua54.lib)
+		else()
+			message(FATAL_ERROR "Lua could not be found.")
+		endif()
 	endif()
 endif()
 
-add_library(LuaGate STATIC ${SRC} ${HEADERS})
 target_include_directories(LuaGate PUBLIC ${LUA_INCLUDE_DIR})
 target_link_libraries(LuaGate ${LUA_LIBRARIES})
