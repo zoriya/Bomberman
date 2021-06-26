@@ -1,0 +1,181 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Sphere Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Sphere.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Sphere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Sphere\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a6efd85a43b6964e0c242f7c036ef1df4}{Sphere}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&center\+Position, int radius, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a262cf5d0797c28614b11643f52bc0059}{Sphere}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a17c9ed3eea2cf595611d3724ac8b66fd}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \&)=default
+\begin{DoxyCompactList}\small\item\em A sphere is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a2dbc9dace3f0dfdd8d27beab59da1ee5}{$\sim$\+Sphere}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a7dc950536262782780174f43d360cddd}{get\+Radius}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac82665fc37a9eb2ff72dedaed9dd4f92}{set\+Radius}} (int radius)
+\begin{DoxyCompactList}\small\item\em set radius \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a4e092d4e44603977fb4bc1d85e7f371a}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac501281dd04c97a75fd1b877d2f8ea74}{draw\+Wires\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw sphere\textquotesingle{}s wires on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a099c2b6e4a0cfce4d9e39005299b014f}{\+\_\+radius}}
+\begin{DoxyCompactList}\small\item\em Radius of the sphere. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a6efd85a43b6964e0c242f7c036ef1df4}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a6efd85a43b6964e0c242f7c036ef1df4}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!Sphere@{Sphere}}
+\index{Sphere@{Sphere}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{Sphere()}{Sphere()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::\+Sphere (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{center\+Position,  }\item[{int}]{radius,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em center\+Position} & position of the center \\
+\hline
+{\em radius} & radius of the sphere \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the sphere ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a262cf5d0797c28614b11643f52bc0059}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a262cf5d0797c28614b11643f52bc0059}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!Sphere@{Sphere}}
+\index{Sphere@{Sphere}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{Sphere()}{Sphere()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::\+Sphere (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a2dbc9dace3f0dfdd8d27beab59da1ee5}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a2dbc9dace3f0dfdd8d27beab59da1ee5}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!````~Sphere@{$\sim$Sphere}}
+\index{````~Sphere@{$\sim$Sphere}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{$\sim$Sphere()}{~Sphere()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::$\sim$\+Sphere (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a4e092d4e44603977fb4bc1d85e7f371a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a4e092d4e44603977fb4bc1d85e7f371a}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac501281dd04c97a75fd1b877d2f8ea74}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac501281dd04c97a75fd1b877d2f8ea74}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!drawWiresOn@{drawWiresOn}}
+\index{drawWiresOn@{drawWiresOn}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{drawWiresOn()}{drawWiresOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::draw\+Wires\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw sphere\textquotesingle{}s wires on window. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_afe9251bb8645e310d629da6b8297d5b9}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a7dc950536262782780174f43d360cddd}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a7dc950536262782780174f43d360cddd}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::get\+Radius (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the radius of the sphere 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a17c9ed3eea2cf595611d3724ac8b66fd}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a17c9ed3eea2cf595611d3724ac8b66fd}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A sphere is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac82665fc37a9eb2ff72dedaed9dd4f92}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_ac82665fc37a9eb2ff72dedaed9dd4f92}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!setRadius@{setRadius}}
+\index{setRadius@{setRadius}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{setRadius()}{setRadius()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere}{Sphere}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::set\+Radius (\begin{DoxyParamCaption}\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+set radius 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a099c2b6e4a0cfce4d9e39005299b014f}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere_a099c2b6e4a0cfce4d9e39005299b014f}} 
+\index{RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}!\_radius@{\_radius}}
+\index{\_radius@{\_radius}!RAY::Drawables::Drawables3D::Sphere@{RAY::Drawables::Drawables3D::Sphere}}
+\doxysubsubsection{\texorpdfstring{\_radius}{\_radius}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Sphere\+::\+\_\+radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Radius of the sphere. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Sphere_8hpp}{Sphere.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Sphere_8cpp}{Sphere.\+cpp}}\end{DoxyCompactItemize}

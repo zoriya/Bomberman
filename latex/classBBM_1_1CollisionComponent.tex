@@ -1,0 +1,281 @@
+\hypertarget{classBBM_1_1CollisionComponent}{}\doxysection{B\+BM\+::Collision\+Component Class Reference}
+\label{classBBM_1_1CollisionComponent}\index{BBM::CollisionComponent@{BBM::CollisionComponent}}
+
+
+{\ttfamily \#include $<$Collision\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Collision\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classBBM_1_1CollisionComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Collision\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1CollisionComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} \{ \newline
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a645b40bb7b5fa7d5c58c11ea08edcec8}{N\+O\+NE}} = 0, 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a575c0e8c0ab26640a36f515d5ac6e7da}{X}} = 1, 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431afaf2d681c3ce4c50dcc7b484cd1bf6ce}{Y}} = 2, 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a9cd7f5993d6a24684a087f54a3ebbaf1}{Z}} = 4, 
+\newline
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431af7422d96a2893c4db99856915aad881e}{A\+LL}} = 7
+ \}
+\begin{DoxyCompactList}\small\item\em Used to tell the collided axis. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1CollisionComponent_a3100897500bc8640dc541e7ca8fe7e53}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a4d766bd8be5bb25ca72003c4b639b9e5}{Collision\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a3c67d77d12f5bd3ff6ab87eee4e219be}{Collision\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&\mbox{\hyperlink{classBBM_1_1CollisionComponent_a63a43d7889bdcd28d3210cec508ad874}{on\+Collide}}, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&\mbox{\hyperlink{classBBM_1_1CollisionComponent_a28a25411d46c2f461bfc6570310ccf5b}{on\+Collided}}, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}{position\+Offset}}, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_af9c176ef71d1c7098390814e64b7464e}{bound}})
+\begin{DoxyCompactList}\small\item\em Constructor with a \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a7e93211eba7986b41d1a6c0401d6d46c}{Collision\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&\mbox{\hyperlink{classBBM_1_1CollisionComponent_a63a43d7889bdcd28d3210cec508ad874}{on\+Collide}}, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&\mbox{\hyperlink{classBBM_1_1CollisionComponent_a28a25411d46c2f461bfc6570310ccf5b}{on\+Collided}}, float \mbox{\hyperlink{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}{position\+Offset}}, float bound\+Size)
+\begin{DoxyCompactList}\small\item\em Constructor with a \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}, same bound\+Size for all axis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_ad9e98eef424affd124474bd99135588c}{Collision\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}{position\+Offset}}, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_af9c176ef71d1c7098390814e64b7464e}{bound}})
+\begin{DoxyCompactList}\small\item\em Constructor of collider with no callback. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a532b4b27461535a6475466c9a05867c9}{Collision\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, float \mbox{\hyperlink{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}{position\+Offset}}, float bound\+Size)
+\begin{DoxyCompactList}\small\item\em Constructor no callback, same bound\+Size \& position\+Offset for all axis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a832a5c7e5fe4552f99181f341f83d41b}{Collision\+Component}} (const \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent_a24f0a794ca13d9707b4c133deedcb6fd}{$\sim$\+Collision\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}} \& \mbox{\hyperlink{classBBM_1_1CollisionComponent_a7534497106abbdac85ee3de6245daa90}{operator=}} (const \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \mbox{\hyperlink{classBBM_1_1CollisionComponent_a63a43d7889bdcd28d3210cec508ad874}{on\+Collide}}
+\begin{DoxyCompactList}\small\item\em on\+Collide functions to be called \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \mbox{\hyperlink{classBBM_1_1CollisionComponent_a28a25411d46c2f461bfc6570310ccf5b}{on\+Collided}}
+\begin{DoxyCompactList}\small\item\em on\+Collided functions to be called \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_af9c176ef71d1c7098390814e64b7464e}{bound}}
+\begin{DoxyCompactList}\small\item\em Bound size on all axis. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}{position\+Offset}}
+\begin{DoxyCompactList}\small\item\em Offset from the position component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollidedAxis@{CollidedAxis}}
+\index{CollidedAxis@{CollidedAxis}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollidedAxis}{CollidedAxis}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{B\+B\+M\+::\+Collision\+Component\+::\+Collided\+Axis}}}
+
+
+
+Used to tell the collided axis. 
+
+\begin{DoxyNote}{Note}
+Usage\+: (collided\+Axis (int given by callback)) \& Collided\+Axis\+::X 
+\end{DoxyNote}
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!BBM::CollisionComponent@{BBM::CollisionComponent}}\index{BBM::CollisionComponent@{BBM::CollisionComponent}!NONE@{NONE}}}\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a645b40bb7b5fa7d5c58c11ea08edcec8}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a645b40bb7b5fa7d5c58c11ea08edcec8}} 
+N\+O\+NE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{X@{X}!BBM::CollisionComponent@{BBM::CollisionComponent}}\index{BBM::CollisionComponent@{BBM::CollisionComponent}!X@{X}}}\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a575c0e8c0ab26640a36f515d5ac6e7da}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a575c0e8c0ab26640a36f515d5ac6e7da}} 
+X&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Y@{Y}!BBM::CollisionComponent@{BBM::CollisionComponent}}\index{BBM::CollisionComponent@{BBM::CollisionComponent}!Y@{Y}}}\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431afaf2d681c3ce4c50dcc7b484cd1bf6ce}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431afaf2d681c3ce4c50dcc7b484cd1bf6ce}} 
+Y&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Z@{Z}!BBM::CollisionComponent@{BBM::CollisionComponent}}\index{BBM::CollisionComponent@{BBM::CollisionComponent}!Z@{Z}}}\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a9cd7f5993d6a24684a087f54a3ebbaf1}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431a9cd7f5993d6a24684a087f54a3ebbaf1}} 
+Z&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ALL@{ALL}!BBM::CollisionComponent@{BBM::CollisionComponent}}\index{BBM::CollisionComponent@{BBM::CollisionComponent}!ALL@{ALL}}}\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431af7422d96a2893c4db99856915aad881e}\label{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431af7422d96a2893c4db99856915aad881e}} 
+A\+LL&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a4d766bd8be5bb25ca72003c4b639b9e5}\label{classBBM_1_1CollisionComponent_a4d766bd8be5bb25ca72003c4b639b9e5}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a3c67d77d12f5bd3ff6ab87eee4e219be}\label{classBBM_1_1CollisionComponent_a3c67d77d12f5bd3ff6ab87eee4e219be}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&}]{on\+Collide,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&}]{on\+Collided,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{position\+Offset,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{bound }\end{DoxyParamCaption})}
+
+
+
+Constructor with a \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a7e93211eba7986b41d1a6c0401d6d46c}\label{classBBM_1_1CollisionComponent_a7e93211eba7986b41d1a6c0401d6d46c}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&}]{on\+Collide,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}} $>$ \&}]{on\+Collided,  }\item[{float}]{position\+Offset,  }\item[{float}]{bound\+Size }\end{DoxyParamCaption})}
+
+
+
+Constructor with a \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}, same bound\+Size for all axis. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_ad9e98eef424affd124474bd99135588c}\label{classBBM_1_1CollisionComponent_ad9e98eef424affd124474bd99135588c}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{position\+Offset,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{bound }\end{DoxyParamCaption})}
+
+
+
+Constructor of collider with no callback. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a532b4b27461535a6475466c9a05867c9}\label{classBBM_1_1CollisionComponent_a532b4b27461535a6475466c9a05867c9}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{float}]{position\+Offset,  }\item[{float}]{bound\+Size }\end{DoxyParamCaption})}
+
+
+
+Constructor no callback, same bound\+Size \& position\+Offset for all axis. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a832a5c7e5fe4552f99181f341f83d41b}\label{classBBM_1_1CollisionComponent_a832a5c7e5fe4552f99181f341f83d41b}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!CollisionComponent@{CollisionComponent}}
+\index{CollisionComponent@{CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{CollisionComponent()}{CollisionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::\+Collision\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a24f0a794ca13d9707b4c133deedcb6fd}\label{classBBM_1_1CollisionComponent_a24f0a794ca13d9707b4c133deedcb6fd}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!````~CollisionComponent@{$\sim$CollisionComponent}}
+\index{````~CollisionComponent@{$\sim$CollisionComponent}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionComponent()}{~CollisionComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+Component\+::$\sim$\+Collision\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a3100897500bc8640dc541e7ca8fe7e53}\label{classBBM_1_1CollisionComponent_a3100897500bc8640dc541e7ca8fe7e53}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Collision\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a7534497106abbdac85ee3de6245daa90}\label{classBBM_1_1CollisionComponent_a7534497106abbdac85ee3de6245daa90}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}}\& B\+B\+M\+::\+Collision\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_af9c176ef71d1c7098390814e64b7464e}\label{classBBM_1_1CollisionComponent_af9c176ef71d1c7098390814e64b7464e}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!bound@{bound}}
+\index{bound@{bound}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{bound}{bound}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Collision\+Component\+::bound}
+
+
+
+Bound size on all axis. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a63a43d7889bdcd28d3210cec508ad874}\label{classBBM_1_1CollisionComponent_a63a43d7889bdcd28d3210cec508ad874}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!onCollide@{onCollide}}
+\index{onCollide@{onCollide}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{onCollide}{onCollide}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}}$>$ B\+B\+M\+::\+Collision\+Component\+::on\+Collide}
+
+
+
+on\+Collide functions to be called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & self \\
+\hline
+{\em second} & the entity you collided \\
+\hline
+{\em third} & the collision axis (to know which axis collided) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a28a25411d46c2f461bfc6570310ccf5b}\label{classBBM_1_1CollisionComponent_a28a25411d46c2f461bfc6570310ccf5b}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!onCollided@{onCollided}}
+\index{onCollided@{onCollided}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{onCollided}{onCollided}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collided\+Axis}}$>$ B\+B\+M\+::\+Collision\+Component\+::on\+Collided}
+
+
+
+on\+Collided functions to be called 
+
+
+\begin{DoxyParams}{Parameters}
+{\em first} & the entity that collided you \\
+\hline
+{\em second} & self \\
+\hline
+{\em third} & the collision axis (to know which axis collided) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}\label{classBBM_1_1CollisionComponent_a00eee9ae1c9e3a17a9c40506310b1d0e}} 
+\index{BBM::CollisionComponent@{BBM::CollisionComponent}!positionOffset@{positionOffset}}
+\index{positionOffset@{positionOffset}!BBM::CollisionComponent@{BBM::CollisionComponent}}
+\doxysubsubsection{\texorpdfstring{positionOffset}{positionOffset}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Collision\+Component\+::position\+Offset}
+
+
+
+Offset from the position component. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Collision/\mbox{\hyperlink{CollisionComponent_8hpp}{Collision\+Component.\+hpp}}\item 
+sources/\+Component/\+Collision/\mbox{\hyperlink{CollisionComponent_8cpp}{Collision\+Component.\+cpp}}\end{DoxyCompactItemize}

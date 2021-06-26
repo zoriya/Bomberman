@@ -1,0 +1,6 @@
+<map id="BBM::KeyboardSystem" name="BBM::KeyboardSystem">
+<area shape="rect" id="node1" title="A system to handle keyboard entities." alt="" coords="63,639,233,775"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="17,351,279,589"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,86,131,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,5,301,288"/>
+</map>

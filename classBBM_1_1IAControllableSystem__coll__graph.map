@@ -1,0 +1,8 @@
+<map id="BBM::IAControllableSystem" name="BBM::IAControllableSystem">
+<area shape="rect" id="node1" title="A system to handle keyboard entities." alt="" coords="233,872,434,1081"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,461,285,714"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="83,86,208,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="236,5,383,288"/>
+<area shape="rect" id="node5" href="$classBBM_1_1LuaMap.html" title=" " alt="" coords="398,365,589,809"/>
+<area shape="rect" id="node6" href="$classBBM_1_1Vector2.html" title=" " alt="" coords="409,27,577,266"/>
+</map>

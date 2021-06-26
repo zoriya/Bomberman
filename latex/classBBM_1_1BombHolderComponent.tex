@@ -1,0 +1,201 @@
+\hypertarget{classBBM_1_1BombHolderComponent}{}\doxysection{B\+BM\+::Bomb\+Holder\+Component Class Reference}
+\label{classBBM_1_1BombHolderComponent}\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+
+
+{\ttfamily \#include $<$Bomb\+Holder\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Bomb\+Holder\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classBBM_1_1BombHolderComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Bomb\+Holder\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BombHolderComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ab207e58ae1fa6a1f207e492aba5afdf1}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderComponent_a479c8f62031fe00e6ba91c7cb624b308}{Bomb\+Holder\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderComponent_a3fe3fcf99543c402749202fbe6f1348f}{Bomb\+Holder\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, unsigned int \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ad4f94c76903a4d5a45ed8594556d3d9c}{max\+Bomb\+Count}}, unsigned int bomb\+Explosion\+Radius=3)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderComponent_a7cd7016b4aedd108bee7fdeb4942f5ae}{Bomb\+Holder\+Component}} (const \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderComponent_a1fc2c217ff8d8091db321a012f82e322}{$\sim$\+Bomb\+Holder\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \& \mbox{\hyperlink{classBBM_1_1BombHolderComponent_a7c7468822888b2675640dd33ab8482b1}{operator=}} (const \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ad8f80c54909e78bd580defbd97f1918b}{bomb\+Count}} = 1
+\begin{DoxyCompactList}\small\item\em The number of bomb that this entity hold. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ad4f94c76903a4d5a45ed8594556d3d9c}{max\+Bomb\+Count}} = 3
+\begin{DoxyCompactList}\small\item\em The max number of bomb that this entity can have. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BombHolderComponent_aceef4842d23e038b2ef8122652eb1d5a}{refill\+Rate}} = 1s
+\begin{DoxyCompactList}\small\item\em The number of seconds of each refill. This variable is used to reset the next\+Bomb\+Refill value. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ad8553bf4fabff1e5094f600b1107801e}{next\+Bomb\+Refill}} = \mbox{\hyperlink{classBBM_1_1BombHolderComponent_aceef4842d23e038b2ef8122652eb1d5a}{refill\+Rate}}
+\begin{DoxyCompactList}\small\item\em The number of nanosecond before the next bomb refill. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1BombHolderComponent_aacf4d4040bbb22b768b2045954b0db27}{explosion\+Radius}} = 3
+\begin{DoxyCompactList}\small\item\em The radius of the explosion. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1BombHolderComponent_a4ae29560af1e7dca33d04423943bccd9}{damage}} = 1
+\begin{DoxyCompactList}\small\item\em The damage made by the explosion on an entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a479c8f62031fe00e6ba91c7cb624b308}\label{classBBM_1_1BombHolderComponent_a479c8f62031fe00e6ba91c7cb624b308}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!BombHolderComponent@{BombHolderComponent}}
+\index{BombHolderComponent@{BombHolderComponent}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{BombHolderComponent()}{BombHolderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+Component\+::\+Bomb\+Holder\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a3fe3fcf99543c402749202fbe6f1348f}\label{classBBM_1_1BombHolderComponent_a3fe3fcf99543c402749202fbe6f1348f}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!BombHolderComponent@{BombHolderComponent}}
+\index{BombHolderComponent@{BombHolderComponent}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{BombHolderComponent()}{BombHolderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+Component\+::\+Bomb\+Holder\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{unsigned int}]{max\+Bomb\+Count,  }\item[{unsigned int}]{bomb\+Explosion\+Radius = {\ttfamily 3} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a7cd7016b4aedd108bee7fdeb4942f5ae}\label{classBBM_1_1BombHolderComponent_a7cd7016b4aedd108bee7fdeb4942f5ae}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!BombHolderComponent@{BombHolderComponent}}
+\index{BombHolderComponent@{BombHolderComponent}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{BombHolderComponent()}{BombHolderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+Component\+::\+Bomb\+Holder\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a1fc2c217ff8d8091db321a012f82e322}\label{classBBM_1_1BombHolderComponent_a1fc2c217ff8d8091db321a012f82e322}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!````~BombHolderComponent@{$\sim$BombHolderComponent}}
+\index{````~BombHolderComponent@{$\sim$BombHolderComponent}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$BombHolderComponent()}{~BombHolderComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+Component\+::$\sim$\+Bomb\+Holder\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_ab207e58ae1fa6a1f207e492aba5afdf1}\label{classBBM_1_1BombHolderComponent_ab207e58ae1fa6a1f207e492aba5afdf1}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Bomb\+Holder\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a7c7468822888b2675640dd33ab8482b1}\label{classBBM_1_1BombHolderComponent_a7c7468822888b2675640dd33ab8482b1}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}}\& B\+B\+M\+::\+Bomb\+Holder\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_ad8f80c54909e78bd580defbd97f1918b}\label{classBBM_1_1BombHolderComponent_ad8f80c54909e78bd580defbd97f1918b}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!bombCount@{bombCount}}
+\index{bombCount@{bombCount}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{bombCount}{bombCount}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Bomb\+Holder\+Component\+::bomb\+Count = 1}
+
+
+
+The number of bomb that this entity hold. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_a4ae29560af1e7dca33d04423943bccd9}\label{classBBM_1_1BombHolderComponent_a4ae29560af1e7dca33d04423943bccd9}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!damage@{damage}}
+\index{damage@{damage}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Bomb\+Holder\+Component\+::damage = 1}
+
+
+
+The damage made by the explosion on an entity. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_aacf4d4040bbb22b768b2045954b0db27}\label{classBBM_1_1BombHolderComponent_aacf4d4040bbb22b768b2045954b0db27}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!explosionRadius@{explosionRadius}}
+\index{explosionRadius@{explosionRadius}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{explosionRadius}{explosionRadius}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Bomb\+Holder\+Component\+::explosion\+Radius = 3}
+
+
+
+The radius of the explosion. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_ad4f94c76903a4d5a45ed8594556d3d9c}\label{classBBM_1_1BombHolderComponent_ad4f94c76903a4d5a45ed8594556d3d9c}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!maxBombCount@{maxBombCount}}
+\index{maxBombCount@{maxBombCount}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{maxBombCount}{maxBombCount}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Bomb\+Holder\+Component\+::max\+Bomb\+Count = 3}
+
+
+
+The max number of bomb that this entity can have. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_ad8553bf4fabff1e5094f600b1107801e}\label{classBBM_1_1BombHolderComponent_ad8553bf4fabff1e5094f600b1107801e}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!nextBombRefill@{nextBombRefill}}
+\index{nextBombRefill@{nextBombRefill}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{nextBombRefill}{nextBombRefill}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bomb\+Holder\+Component\+::next\+Bomb\+Refill = \mbox{\hyperlink{classBBM_1_1BombHolderComponent_aceef4842d23e038b2ef8122652eb1d5a}{refill\+Rate}}}
+
+
+
+The number of nanosecond before the next bomb refill. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderComponent_aceef4842d23e038b2ef8122652eb1d5a}\label{classBBM_1_1BombHolderComponent_aceef4842d23e038b2ef8122652eb1d5a}} 
+\index{BBM::BombHolderComponent@{BBM::BombHolderComponent}!refillRate@{refillRate}}
+\index{refillRate@{refillRate}!BBM::BombHolderComponent@{BBM::BombHolderComponent}}
+\doxysubsubsection{\texorpdfstring{refillRate}{refillRate}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bomb\+Holder\+Component\+::refill\+Rate = 1s}
+
+
+
+The number of seconds of each refill. This variable is used to reset the next\+Bomb\+Refill value. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Bomb\+Holder/\mbox{\hyperlink{BombHolderComponent_8hpp}{Bomb\+Holder\+Component.\+hpp}}\item 
+sources/\+Component/\+Bomb\+Holder/\mbox{\hyperlink{BombHolderComponent_8cpp}{Bomb\+Holder\+Component.\+cpp}}\end{DoxyCompactItemize}

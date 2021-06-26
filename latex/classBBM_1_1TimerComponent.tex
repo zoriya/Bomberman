@@ -1,0 +1,165 @@
+\hypertarget{classBBM_1_1TimerComponent}{}\doxysection{B\+BM\+::Timer\+Component Class Reference}
+\label{classBBM_1_1TimerComponent}\index{BBM::TimerComponent@{BBM::TimerComponent}}
+
+
+{\ttfamily \#include $<$Timer\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Timer\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=210pt]{classBBM_1_1TimerComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Timer\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1TimerComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1TimerComponent_a002a2a069ef2cffda16d0a13e2e3c4a8}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1TimerComponent_af486c37bf20e572ee75841aa5ec39982}{Timer\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, std\+::chrono\+::nanoseconds delay)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1TimerComponent_ae159852538f5dd5f1675e2e33b83d258}{Timer\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, std\+::chrono\+::nanoseconds delay, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \&timer\+Callback)
+\begin{DoxyCompactList}\small\item\em Create a timer with a callback. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1TimerComponent_a1c7e578d725c01458303661bffa059fa}{Timer\+Component}} (const \mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A timer component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1TimerComponent_ab007853700f240c52fd8a9a8f6219ee0}{$\sim$\+Timer\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}} \& \mbox{\hyperlink{classBBM_1_1TimerComponent_a7e4c02b20706af34d7debf1497920a18}{operator=}} (const \mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1TimerComponent_ac9cdd65bcdae368affe9e8d4ed629cc0}{disabled}} = false
+\begin{DoxyCompactList}\small\item\em Is the ticking of this component disabled? \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \mbox{\hyperlink{classBBM_1_1TimerComponent_a17a4b756f83895450b3aaee03ead5129}{callback}}
+\begin{DoxyCompactList}\small\item\em The callback to call when the timer ring. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1TimerComponent_a022b3940c9703087d45d98648d9aa31f}{ring\+In}}
+\begin{DoxyCompactList}\small\item\em The ring delay of this timer component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_af486c37bf20e572ee75841aa5ec39982}\label{classBBM_1_1TimerComponent_af486c37bf20e572ee75841aa5ec39982}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!TimerComponent@{TimerComponent}}
+\index{TimerComponent@{TimerComponent}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{TimerComponent()}{TimerComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Timer\+Component\+::\+Timer\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{delay }\end{DoxyParamCaption})}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_ae159852538f5dd5f1675e2e33b83d258}\label{classBBM_1_1TimerComponent_ae159852538f5dd5f1675e2e33b83d258}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!TimerComponent@{TimerComponent}}
+\index{TimerComponent@{TimerComponent}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{TimerComponent()}{TimerComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Timer\+Component\+::\+Timer\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{delay,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \&}]{timer\+Callback }\end{DoxyParamCaption})}
+
+
+
+Create a timer with a callback. 
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_a1c7e578d725c01458303661bffa059fa}\label{classBBM_1_1TimerComponent_a1c7e578d725c01458303661bffa059fa}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!TimerComponent@{TimerComponent}}
+\index{TimerComponent@{TimerComponent}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{TimerComponent()}{TimerComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Timer\+Component\+::\+Timer\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A timer component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_ab007853700f240c52fd8a9a8f6219ee0}\label{classBBM_1_1TimerComponent_ab007853700f240c52fd8a9a8f6219ee0}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!````~TimerComponent@{$\sim$TimerComponent}}
+\index{````~TimerComponent@{$\sim$TimerComponent}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$TimerComponent()}{~TimerComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Timer\+Component\+::$\sim$\+Timer\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_a002a2a069ef2cffda16d0a13e2e3c4a8}\label{classBBM_1_1TimerComponent_a002a2a069ef2cffda16d0a13e2e3c4a8}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Timer\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_a7e4c02b20706af34d7debf1497920a18}\label{classBBM_1_1TimerComponent_a7e4c02b20706af34d7debf1497920a18}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}}\& B\+B\+M\+::\+Timer\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1TimerComponent}{Timer\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A component is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_a17a4b756f83895450b3aaee03ead5129}\label{classBBM_1_1TimerComponent_a17a4b756f83895450b3aaee03ead5129}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!callback@{callback}}
+\index{callback@{callback}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{callback}{callback}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&$>$ B\+B\+M\+::\+Timer\+Component\+::callback}
+
+
+
+The callback to call when the timer ring. 
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_ac9cdd65bcdae368affe9e8d4ed629cc0}\label{classBBM_1_1TimerComponent_ac9cdd65bcdae368affe9e8d4ed629cc0}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!disabled@{disabled}}
+\index{disabled@{disabled}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{disabled}{disabled}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Timer\+Component\+::disabled = false}
+
+
+
+Is the ticking of this component disabled? 
+
+\mbox{\Hypertarget{classBBM_1_1TimerComponent_a022b3940c9703087d45d98648d9aa31f}\label{classBBM_1_1TimerComponent_a022b3940c9703087d45d98648d9aa31f}} 
+\index{BBM::TimerComponent@{BBM::TimerComponent}!ringIn@{ringIn}}
+\index{ringIn@{ringIn}!BBM::TimerComponent@{BBM::TimerComponent}}
+\doxysubsubsection{\texorpdfstring{ringIn}{ringIn}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Timer\+Component\+::ring\+In}
+
+
+
+The ring delay of this timer component. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Timer/\mbox{\hyperlink{TimerComponent_8hpp}{Timer\+Component.\+hpp}}\item 
+sources/\+Component/\+Timer/\mbox{\hyperlink{TimerComponent_8cpp}{Timer\+Component.\+cpp}}\end{DoxyCompactItemize}

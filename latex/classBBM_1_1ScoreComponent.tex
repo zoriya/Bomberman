@@ -1,0 +1,137 @@
+\hypertarget{classBBM_1_1ScoreComponent}{}\doxysection{B\+BM\+::Score\+Component Class Reference}
+\label{classBBM_1_1ScoreComponent}\index{BBM::ScoreComponent@{BBM::ScoreComponent}}
+
+
+A basic position component.  
+
+
+
+
+{\ttfamily \#include $<$Score\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Score\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=208pt]{classBBM_1_1ScoreComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Score\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ScoreComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1ScoreComponent_a883f96cc56d9aa629c70d0edb48e7e08}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ScoreComponent_aeec8adb5d0d8fad0d45ca43e585670bc}{Score\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} linked to a specific entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ScoreComponent_a323097631200fe338b5129fee9eb8e0a}{Score\+Component}} (const \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A position component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ScoreComponent_aaded903458e047426833117104dccf60}{$\sim$\+Score\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} \& \mbox{\hyperlink{classBBM_1_1ScoreComponent_ac327e3646316fa952df174f2bf6b0707}{operator=}} (const \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A position component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1ScoreComponent_a7b274b214d2cd6effae92c5f8ee64c1e}{alive\+Time}}
+\begin{DoxyCompactList}\small\item\em the score of the player \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A basic position component. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_aeec8adb5d0d8fad0d45ca43e585670bc}\label{classBBM_1_1ScoreComponent_aeec8adb5d0d8fad0d45ca43e585670bc}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!ScoreComponent@{ScoreComponent}}
+\index{ScoreComponent@{ScoreComponent}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{ScoreComponent()}{ScoreComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Score\+Component\+::\+Score\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} linked to a specific entity. 
+
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_a323097631200fe338b5129fee9eb8e0a}\label{classBBM_1_1ScoreComponent_a323097631200fe338b5129fee9eb8e0a}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!ScoreComponent@{ScoreComponent}}
+\index{ScoreComponent@{ScoreComponent}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{ScoreComponent()}{ScoreComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Score\+Component\+::\+Score\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A position component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_aaded903458e047426833117104dccf60}\label{classBBM_1_1ScoreComponent_aaded903458e047426833117104dccf60}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!````~ScoreComponent@{$\sim$ScoreComponent}}
+\index{````~ScoreComponent@{$\sim$ScoreComponent}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$ScoreComponent()}{~ScoreComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Score\+Component\+::$\sim$\+Score\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_a883f96cc56d9aa629c70d0edb48e7e08}\label{classBBM_1_1ScoreComponent_a883f96cc56d9aa629c70d0edb48e7e08}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Score\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_ac327e3646316fa952df174f2bf6b0707}\label{classBBM_1_1ScoreComponent_ac327e3646316fa952df174f2bf6b0707}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}}\& B\+B\+M\+::\+Score\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ScoreComponent}{Score\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A position component is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1ScoreComponent_a7b274b214d2cd6effae92c5f8ee64c1e}\label{classBBM_1_1ScoreComponent_a7b274b214d2cd6effae92c5f8ee64c1e}} 
+\index{BBM::ScoreComponent@{BBM::ScoreComponent}!aliveTime@{aliveTime}}
+\index{aliveTime@{aliveTime}!BBM::ScoreComponent@{BBM::ScoreComponent}}
+\doxysubsubsection{\texorpdfstring{aliveTime}{aliveTime}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Score\+Component\+::alive\+Time}
+
+
+
+the score of the player 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Score/\mbox{\hyperlink{ScoreComponent_8hpp}{Score\+Component.\+hpp}}\item 
+sources/\+Component/\+Score/\mbox{\hyperlink{ScoreComponent_8cpp}{Score\+Component.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,6 @@
+<map id="BBM::IntroAnimationComponent" name="BBM::IntroAnimationComponent">
+<area shape="rect" id="node1" title="A component to slowly center entities to the middle of their current block. This allow flexibility in..." alt="" coords="5,1028,237,1179"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="55,813,188,979"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="30,395,213,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="30,5,213,332"/>
+</map>

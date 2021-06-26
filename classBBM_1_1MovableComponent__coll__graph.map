@@ -1,0 +1,7 @@
+<map id="BBM::MovableComponent" name="BBM::MovableComponent">
+<area shape="rect" id="node1" title="A component to place on entities that can move or be moved." alt="" coords="132,1173,323,1339"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="30,872,163,1037"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="5,395,188,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="5,5,188,332"/>
+<area shape="rect" id="node5" href="$classBBM_1_1Vector3.html" title=" " alt="" coords="187,813,355,1096"/>
+</map>

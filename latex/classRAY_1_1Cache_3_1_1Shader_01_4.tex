@@ -1,0 +1,88 @@
+\hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4}{}\doxysection{R\+AY\+::Cache$<$\+::Shader $>$ Class Reference}
+\label{classRAY_1_1Cache_3_1_1Shader_01_4}\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+
+
+{\ttfamily \#include $<$Cache.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Cache$<$\+::Shader $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=209pt]{classRAY_1_1Cache_3_1_1Shader_01_4__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Cache_3_1_1Shader_01_4_a67745d3b24fe685a135a4bc49e7a622e}{Cache}} (std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}(const char $\ast$, const char $\ast$)$>$ data\+Loader, std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}})$>$ data\+Unloader)
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1Shader_01_4_aa3091ab5a78e30ec28f226a1f0488e3c}{fetch}} (const std\+::string \&vertex\+File, const std\+::string \&fragment\+File, bool lonely=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}(const char $\ast$, const char $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1Shader_01_4_a93b9cf54f1d49b8530c3c789195c11d1}{\+\_\+data\+Loader}}
+\begin{DoxyCompactList}\small\item\em function to call to load data \end{DoxyCompactList}\item 
+std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}})$>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1Shader_01_4_a91debb3c857cb837bbc75134143ff249}{\+\_\+data\+Unloader}}
+\begin{DoxyCompactList}\small\item\em function to call when the ray data will be unloaded \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ $>$ $>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1Shader_01_4_a381170b32e0ccdb27c4b88d743e961d8}{\+\_\+cache}}
+\begin{DoxyCompactList}\small\item\em map storing shared ptr of caches \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4_a67745d3b24fe685a135a4bc49e7a622e}\label{classRAY_1_1Cache_3_1_1Shader_01_4_a67745d3b24fe685a135a4bc49e7a622e}} 
+\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}!Cache@{Cache}}
+\index{Cache@{Cache}!RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+\doxysubsubsection{\texorpdfstring{Cache()}{Cache()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$\+::\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} (\begin{DoxyParamCaption}\item[{std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}(const char $\ast$, const char $\ast$)$>$}]{data\+Loader,  }\item[{std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}})$>$}]{data\+Unloader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4_aa3091ab5a78e30ec28f226a1f0488e3c}\label{classRAY_1_1Cache_3_1_1Shader_01_4_aa3091ab5a78e30ec28f226a1f0488e3c}} 
+\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}!fetch@{fetch}}
+\index{fetch@{fetch}!RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$\+::fetch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vertex\+File,  }\item[{const std\+::string \&}]{fragment\+File,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4_a381170b32e0ccdb27c4b88d743e961d8}\label{classRAY_1_1Cache_3_1_1Shader_01_4_a381170b32e0ccdb27c4b88d743e961d8}} 
+\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}!\_cache@{\_cache}}
+\index{\_cache@{\_cache}!RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+\doxysubsubsection{\texorpdfstring{\_cache}{\_cache}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}$>$ $>$ $>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$\+::\+\_\+cache\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+map storing shared ptr of caches 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4_a93b9cf54f1d49b8530c3c789195c11d1}\label{classRAY_1_1Cache_3_1_1Shader_01_4_a93b9cf54f1d49b8530c3c789195c11d1}} 
+\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}!\_dataLoader@{\_dataLoader}}
+\index{\_dataLoader@{\_dataLoader}!RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataLoader}{\_dataLoader}}
+{\footnotesize\ttfamily std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}(const char $\ast$, const char $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$\+::\+\_\+data\+Loader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call to load data 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1Shader_01_4_a91debb3c857cb837bbc75134143ff249}\label{classRAY_1_1Cache_3_1_1Shader_01_4_a91debb3c857cb837bbc75134143ff249}} 
+\index{RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}!\_dataUnloader@{\_dataUnloader}}
+\index{\_dataUnloader@{\_dataUnloader}!RAY::Cache$<$::Shader $>$@{RAY::Cache$<$::Shader $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataUnloader}{\_dataUnloader}}
+{\footnotesize\ttfamily std\+::function$<$void(\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}})$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$\+::\+\_\+data\+Unloader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call when the ray data will be unloaded 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Utils/\mbox{\hyperlink{Cache_8hpp}{Cache.\+hpp}}\end{DoxyCompactItemize}

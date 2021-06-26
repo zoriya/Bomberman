@@ -1,0 +1,190 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Line Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Line.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Line\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Line__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Line\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Line__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a881e84cc85b3edf8e637b383a1ddea83}{Line}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&start\+Position, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&end\+Position, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2dbcf988b269b2bc099f3169da8b5b07}{Line}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a1d3cf04f8d09ba9919192f50de86c440}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \&)=default
+\begin{DoxyCompactList}\small\item\em A line is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_af90c65196e18c10cb8c3ed857c7b3e4e}{$\sim$\+Line}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_ae2a723240dee9e06c188207e368e7455}{get\+Start\+Position}} (void) const
+\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a288261d700f2844078533dc3710d3f26}{get\+End\+Position}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2209806fe56285c28bd8e9ca854b32ee}{set\+Start\+Position}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&start\+Position)
+\begin{DoxyCompactList}\small\item\em Set start position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a9da2d30f557cd9bcb9011083457310a2}{set\+End\+Position}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&end\+Position)
+\begin{DoxyCompactList}\small\item\em Set end position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a511cfe8ef1be4e9fca2bf53c521a28fd}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a68b60a40ab9dcbdecbc92809f49a1b49}{\+\_\+end\+Position}}
+\begin{DoxyCompactList}\small\item\em end position \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a881e84cc85b3edf8e637b383a1ddea83}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a881e84cc85b3edf8e637b383a1ddea83}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!Line@{Line}}
+\index{Line@{Line}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{Line()}{Line()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{start\+Position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{end\+Position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Position} & position of top-\/left point ~\newline
+ \\
+\hline
+{\em start\+Position} & position of bottom-\/rigth point ~\newline
+ \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the line ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2dbcf988b269b2bc099f3169da8b5b07}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2dbcf988b269b2bc099f3169da8b5b07}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!Line@{Line}}
+\index{Line@{Line}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{Line()}{Line()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::\+Line (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_af90c65196e18c10cb8c3ed857c7b3e4e}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_af90c65196e18c10cb8c3ed857c7b3e4e}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!````~Line@{$\sim$Line}}
+\index{````~Line@{$\sim$Line}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{$\sim$Line()}{~Line()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::$\sim$\+Line (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a511cfe8ef1be4e9fca2bf53c521a28fd}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a511cfe8ef1be4e9fca2bf53c521a28fd}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a288261d700f2844078533dc3710d3f26}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a288261d700f2844078533dc3710d3f26}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!getEndPosition@{getEndPosition}}
+\index{getEndPosition@{getEndPosition}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{getEndPosition()}{getEndPosition()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::get\+End\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the end position of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_ae2a723240dee9e06c188207e368e7455}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_ae2a723240dee9e06c188207e368e7455}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!getStartPosition@{getStartPosition}}
+\index{getStartPosition@{getStartPosition}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{getStartPosition()}{getStartPosition()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::get\+Start\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the start position of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a1d3cf04f8d09ba9919192f50de86c440}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a1d3cf04f8d09ba9919192f50de86c440}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A line is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a9da2d30f557cd9bcb9011083457310a2}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a9da2d30f557cd9bcb9011083457310a2}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!setEndPosition@{setEndPosition}}
+\index{setEndPosition@{setEndPosition}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{setEndPosition()}{setEndPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::set\+End\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{end\+Position }\end{DoxyParamCaption})}
+
+
+
+Set end position. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2209806fe56285c28bd8e9ca854b32ee}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a2209806fe56285c28bd8e9ca854b32ee}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!setStartPosition@{setStartPosition}}
+\index{setStartPosition@{setStartPosition}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{setStartPosition()}{setStartPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Line}{Line}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::set\+Start\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{start\+Position }\end{DoxyParamCaption})}
+
+
+
+Set start position. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a68b60a40ab9dcbdecbc92809f49a1b49}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Line_a68b60a40ab9dcbdecbc92809f49a1b49}} 
+\index{RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}!\_endPosition@{\_endPosition}}
+\index{\_endPosition@{\_endPosition}!RAY::Drawables::Drawables3D::Line@{RAY::Drawables::Drawables3D::Line}}
+\doxysubsubsection{\texorpdfstring{\_endPosition}{\_endPosition}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Line\+::\+\_\+end\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+end position 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{3D_2Line_8hpp}{Line.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{3D_2Line_8cpp}{Line.\+cpp}}\end{DoxyCompactItemize}

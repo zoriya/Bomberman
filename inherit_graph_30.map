@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classRAY_1_1Camera_1_1ICamera.html" title="Interface for Cameras." alt="" coords="5,31,172,57"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Camera_1_1Camera2D.html" title="Entity representing a Camera in 2D space." alt="" coords="220,5,401,32"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Camera_1_1Camera3D.html" title="Entity representing a Camera in 3D space." alt="" coords="220,56,401,83"/>
+</map>

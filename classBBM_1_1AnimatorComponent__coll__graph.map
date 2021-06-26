@@ -1,0 +1,6 @@
+<map id="BBM::AnimatorComponent" name="BBM::AnimatorComponent">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1028,200,1164"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="36,813,169,979"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="11,395,194,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="11,5,194,332"/>
+</map>

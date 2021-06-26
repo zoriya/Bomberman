@@ -1,0 +1,5 @@
+<map id="WAL::Component" name="WAL::Component">
+<area shape="rect" id="node1" title="Represent a single component of WAL." alt="" coords="30,813,163,979"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="5,395,188,751"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="5,5,188,332"/>
+</map>

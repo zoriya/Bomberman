@@ -1,0 +1,5 @@
+<map id="RAY::Exception::NotCompatibleError" name="RAY::Exception::NotCompatibleError">
+<area shape="rect" id="node1" title="exception used when an incompatibility occurs" alt="" coords="5,300,228,436"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Exception_1_1RayError.html" title="base exception class for RAY lib" alt="" coords="26,131,207,252"/>
+<area shape="rect" id="node3" title=" " alt="" coords="61,5,172,83"/>
+</map>

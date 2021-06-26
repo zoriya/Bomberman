@@ -1,0 +1,6 @@
+<map id="BBM::EndConditionSystem" name="BBM::EndConditionSystem">
+<area shape="rect" id="node1" title=" " alt="" coords="51,639,245,775"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="29,351,267,589"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,86,131,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,5,301,288"/>
+</map>

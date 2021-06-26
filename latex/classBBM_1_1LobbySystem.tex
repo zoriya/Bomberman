@@ -1,0 +1,303 @@
+\hypertarget{classBBM_1_1LobbySystem}{}\doxysection{B\+BM\+::Lobby\+System Class Reference}
+\label{classBBM_1_1LobbySystem}\index{BBM::LobbySystem@{BBM::LobbySystem}}
+
+
+A system to handle Health entities.  
+
+
+
+
+{\ttfamily \#include $<$Lobby\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Lobby\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1LobbySystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Lobby\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1LobbySystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_a8b23479c367bb334c1c9730a9d6905d3}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&entity, std\+::chrono\+::nanoseconds dtime) override
+\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_a618c56a877b6d39ff499c8f6175b7daa}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_a634f26d96afad28e2839eaa8d49925e7}{unload\+Lobby}} ()
+\begin{DoxyCompactList}\small\item\em Reset the lobby scene to it\textquotesingle{}s default state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_ac58f8f5f60f29763d66e04e7cffda9b3}{add\+AI}} ()
+\begin{DoxyCompactList}\small\item\em Add an AI to the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_aa43a1c11b07bb5a635121d9f227927a1}{remove\+AI}} ()
+\begin{DoxyCompactList}\small\item\em Remove an AI from the game. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbySystem_abb98745a919a7b94abe003d7a9b3749a}{Lobby\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbySystem_ab780e37adcdb1fe0a1184459266f78e9}{Lobby\+System}} (const \mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Lobby system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbySystem_a6703fc776d42a8439a3bbcd303910a23}{$\sim$\+Lobby\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}} \& \mbox{\hyperlink{classBBM_1_1LobbySystem_ab6ce39878fbb968a2f3073a8253359e0}{operator=}} (const \mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1LobbySystem_ac2b3c2035751509961ed776de13334b5}{add\+Controller}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&player, \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} layout)
+\begin{DoxyCompactList}\small\item\em Add a controller for the player. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1LobbySystem_aee1cf69b0c40c2cc82db5060c5fb242b}{create\+Tile}} (const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \&drawable, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&player, int color, int player\+Count)
+\begin{DoxyCompactList}\small\item\em Create ingame tile. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classBBM_1_1LobbySystem_ad628147ab2230d9b1421dd36c64403b9}{players\+Are\+Ready}} (\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Check if every player is ready. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1LobbySystem_ab307f0732c41bf8de3ea32e3ca6302ec}{switch\+To\+Game}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em Inform the engine that the next scene should be the game scene and load it. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::array$<$ std\+::string, 4 $>$ \mbox{\hyperlink{classBBM_1_1LobbySystem_af4637e3b2318d34cceb4c15c8d414438}{colors}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1LobbySystem_aebf2652da1ba70cba1646804f2161b51}{\+\_\+can\+Join}} ()
+\item 
+void \mbox{\hyperlink{classBBM_1_1LobbySystem_ab4b11ca957c69d788969eff4de687f1a}{\+\_\+next\+Color}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&entity)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ bool, 4 $>$ \mbox{\hyperlink{classBBM_1_1LobbySystem_a054902fd49fc13e0eba4af6138a8ad6a}{\+\_\+color\+Taken}} = \{\}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::array$<$ \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}}, 4 $>$ \mbox{\hyperlink{classBBM_1_1LobbySystem_ae050816d043cac958c7ed7ae4ed29b01}{\+\_\+ray\+Colors}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle Health entities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_abb98745a919a7b94abe003d7a9b3749a}\label{classBBM_1_1LobbySystem_abb98745a919a7b94abe003d7a9b3749a}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!LobbySystem@{LobbySystem}}
+\index{LobbySystem@{LobbySystem}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{LobbySystem()}{LobbySystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+System\+::\+Lobby\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ab780e37adcdb1fe0a1184459266f78e9}\label{classBBM_1_1LobbySystem_ab780e37adcdb1fe0a1184459266f78e9}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!LobbySystem@{LobbySystem}}
+\index{LobbySystem@{LobbySystem}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{LobbySystem()}{LobbySystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+System\+::\+Lobby\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Lobby system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_a6703fc776d42a8439a3bbcd303910a23}\label{classBBM_1_1LobbySystem_a6703fc776d42a8439a3bbcd303910a23}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!````~LobbySystem@{$\sim$LobbySystem}}
+\index{````~LobbySystem@{$\sim$LobbySystem}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$LobbySystem()}{~LobbySystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+System\+::$\sim$\+Lobby\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_aebf2652da1ba70cba1646804f2161b51}\label{classBBM_1_1LobbySystem_aebf2652da1ba70cba1646804f2161b51}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!\_canJoin@{\_canJoin}}
+\index{\_canJoin@{\_canJoin}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{\_canJoin()}{\_canJoin()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Lobby\+System\+::\+\_\+can\+Join (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ab4b11ca957c69d788969eff4de687f1a}\label{classBBM_1_1LobbySystem_ab4b11ca957c69d788969eff4de687f1a}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!\_nextColor@{\_nextColor}}
+\index{\_nextColor@{\_nextColor}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{\_nextColor()}{\_nextColor()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::\+\_\+next\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ac58f8f5f60f29763d66e04e7cffda9b3}\label{classBBM_1_1LobbySystem_ac58f8f5f60f29763d66e04e7cffda9b3}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!addAI@{addAI}}
+\index{addAI@{addAI}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{addAI()}{addAI()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::add\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Add an AI to the game. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ac2b3c2035751509961ed776de13334b5}\label{classBBM_1_1LobbySystem_ac2b3c2035751509961ed776de13334b5}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!addController@{addController}}
+\index{addController@{addController}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{addController()}{addController()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::add\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{player,  }\item[{\mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}}}]{layout }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Add a controller for the player. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_aee1cf69b0c40c2cc82db5060c5fb242b}\label{classBBM_1_1LobbySystem_aee1cf69b0c40c2cc82db5060c5fb242b}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!createTile@{createTile}}
+\index{createTile@{createTile}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{createTile()}{createTile()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::create\+Tile (\begin{DoxyParamCaption}\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \&}]{drawable,  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{player,  }\item[{int}]{color,  }\item[{int}]{player\+Count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create ingame tile. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_a618c56a877b6d39ff499c8f6175b7daa}\label{classBBM_1_1LobbySystem_a618c56a877b6d39ff499c8f6175b7daa}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$ Lobby\+Component, Drawable2\+D\+Component $>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_a8b23479c367bb334c1c9730a9d6905d3}\label{classBBM_1_1LobbySystem_a8b23479c367bb334c1c9730a9d6905d3}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ab6ce39878fbb968a2f3073a8253359e0}\label{classBBM_1_1LobbySystem_ab6ce39878fbb968a2f3073a8253359e0}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}}\& B\+B\+M\+::\+Lobby\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LobbySystem}{Lobby\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A system is not assignable. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ad628147ab2230d9b1421dd36c64403b9}\label{classBBM_1_1LobbySystem_ad628147ab2230d9b1421dd36c64403b9}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!playersAreReady@{playersAreReady}}
+\index{playersAreReady@{playersAreReady}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{playersAreReady()}{playersAreReady()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Lobby\+System\+::players\+Are\+Ready (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if every player is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The lobby scene containing lobby players. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_aa43a1c11b07bb5a635121d9f227927a1}\label{classBBM_1_1LobbySystem_aa43a1c11b07bb5a635121d9f227927a1}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!removeAI@{removeAI}}
+\index{removeAI@{removeAI}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{removeAI()}{removeAI()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::remove\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Remove an AI from the game. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ab307f0732c41bf8de3ea32e3ca6302ec}\label{classBBM_1_1LobbySystem_ab307f0732c41bf8de3ea32e3ca6302ec}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!switchToGame@{switchToGame}}
+\index{switchToGame@{switchToGame}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{switchToGame()}{switchToGame()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::switch\+To\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Inform the engine that the next scene should be the game scene and load it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wal} & The engine. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_a634f26d96afad28e2839eaa8d49925e7}\label{classBBM_1_1LobbySystem_a634f26d96afad28e2839eaa8d49925e7}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!unloadLobby@{unloadLobby}}
+\index{unloadLobby@{unloadLobby}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{unloadLobby()}{unloadLobby()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lobby\+System\+::unload\+Lobby (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset the lobby scene to it\textquotesingle{}s default state. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_a054902fd49fc13e0eba4af6138a8ad6a}\label{classBBM_1_1LobbySystem_a054902fd49fc13e0eba4af6138a8ad6a}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!\_colorTaken@{\_colorTaken}}
+\index{\_colorTaken@{\_colorTaken}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{\_colorTaken}{\_colorTaken}}
+{\footnotesize\ttfamily std\+::array$<$bool, 4$>$ B\+B\+M\+::\+Lobby\+System\+::\+\_\+color\+Taken = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_ae050816d043cac958c7ed7ae4ed29b01}\label{classBBM_1_1LobbySystem_ae050816d043cac958c7ed7ae4ed29b01}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!\_rayColors@{\_rayColors}}
+\index{\_rayColors@{\_rayColors}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{\_rayColors}{\_rayColors}}
+{\footnotesize\ttfamily std\+::array$<$ \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}}, 4 $>$ B\+B\+M\+::\+Lobby\+System\+::\+\_\+ray\+Colors\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        BLUE,}
+\DoxyCodeLine{        RED,}
+\DoxyCodeLine{        GREEN,}
+\DoxyCodeLine{        }
+\DoxyCodeLine{        }
+\DoxyCodeLine{        YELLOW}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBBM_1_1LobbySystem_af4637e3b2318d34cceb4c15c8d414438}\label{classBBM_1_1LobbySystem_af4637e3b2318d34cceb4c15c8d414438}} 
+\index{BBM::LobbySystem@{BBM::LobbySystem}!colors@{colors}}
+\index{colors@{colors}!BBM::LobbySystem@{BBM::LobbySystem}}
+\doxysubsubsection{\texorpdfstring{colors}{colors}}
+{\footnotesize\ttfamily std\+::array$<$ std\+::string, 4 $>$ B\+B\+M\+::\+Lobby\+System\+::colors\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"blue"},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"red"},}
+\DoxyCodeLine{        \textcolor{stringliteral}{"green"},}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{        \textcolor{stringliteral}{"yellow"}}
+\DoxyCodeLine{    \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Lobby/\mbox{\hyperlink{LobbySystem_8hpp}{Lobby\+System.\+hpp}}\item 
+sources/\+System/\+Lobby/\mbox{\hyperlink{LobbySystem_8cpp}{Lobby\+System.\+cpp}}\end{DoxyCompactItemize}

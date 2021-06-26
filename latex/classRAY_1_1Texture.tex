@@ -1,0 +1,229 @@
+\hypertarget{classRAY_1_1Texture}{}\doxysection{R\+AY\+::Texture Class Reference}
+\label{classRAY_1_1Texture}\index{RAY::Texture@{RAY::Texture}}
+
+
+Object representation of a texture.  
+
+
+
+
+{\ttfamily \#include $<$Texture.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Texture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Texture__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Texture\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Texture__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Texture_adc561aee2ea604a0aa2501485daed0de}{Texture}} (const std\+::string \&filename, bool lonely=false, float scale=1, float rotation=0)
+\begin{DoxyCompactList}\small\item\em Create an texture, loading a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture_aed5f28940999f9fca4ffbe4810fa672c}{Texture}} ()
+\begin{DoxyCompactList}\small\item\em Create an empty texture. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture_a5ac8461d44c14960677921259ee6b0d0}{Texture}} (const \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \&)=default
+\begin{DoxyCompactList}\small\item\em A texture is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture_a0c598dc604de552f27ea20f0be699cfb}{Texture}} (const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&)
+\begin{DoxyCompactList}\small\item\em A textrue can be loaded from an image. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \& \mbox{\hyperlink{classRAY_1_1Texture_a749da02cc1e93c900c0d8e166c599b7b}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \&)=default
+\begin{DoxyCompactList}\small\item\em An texture is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture_ac47894368c6c3f24f8f0a29f98da2924}{$\sim$\+Texture}} () override=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} destructor, will not unload ressources. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Texture_a8af69711e03caac8fb3caeb84e09a7da}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em draw texture on a window \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \& \mbox{\hyperlink{classRAY_1_1Texture_ab136b5184ffa52619d8d44e89750de60}{use}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Load texture from file, lets one use one entity for multiple files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Texture_a89cf085680757b846516671d50885afb}{unload}} ()
+\begin{DoxyCompactList}\small\item\em Unload the current texture (calls to draw\+On will no-\/op). \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classRAY_1_1Texture_afe852ad4163be9891adc572c69679076}{get\+Resource\+Path}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} $>$ \mbox{\hyperlink{classRAY_1_1Texture_acf751bdff7b2d50a48ca9a8c380f831b}{\+\_\+texture}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Texture}{Texture}}, really, that\textquotesingle{}s just it... \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Texture_a3c244e84697495bd49950928d3064e3a}{\+\_\+resource\+Path}}
+\begin{DoxyCompactList}\small\item\em path to the file the texture is loaded from \end{DoxyCompactList}\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Texture_a9819a4ad81318c1d6fc5301c7bf14303}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Texture}{Texture}}() const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} $>$ \mbox{\hyperlink{classRAY_1_1Texture_a4a4d24268ce25474a5aad1ada85afa84}{\+\_\+textures\+Cache}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Object representation of a texture. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Texture_adc561aee2ea604a0aa2501485daed0de}\label{classRAY_1_1Texture_adc561aee2ea604a0aa2501485daed0de}} 
+\index{RAY::Texture@{RAY::Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{lonely = {\ttfamily false},  }\item[{float}]{scale = {\ttfamily 1},  }\item[{float}]{rotation = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create an texture, loading a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to file to load \\
+\hline
+{\em lonely} & should be set to true if the entity\textquotesingle{}s loaded data must be independant from others \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Texture_aed5f28940999f9fca4ffbe4810fa672c}\label{classRAY_1_1Texture_aed5f28940999f9fca4ffbe4810fa672c}} 
+\index{RAY::Texture@{RAY::Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Texture\+::\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Create an empty texture. 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_a5ac8461d44c14960677921259ee6b0d0}\label{classRAY_1_1Texture_a5ac8461d44c14960677921259ee6b0d0}} 
+\index{RAY::Texture@{RAY::Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A texture is copy constructable. 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_a0c598dc604de552f27ea20f0be699cfb}\label{classRAY_1_1Texture_a0c598dc604de552f27ea20f0be699cfb}} 
+\index{RAY::Texture@{RAY::Texture}!Texture@{Texture}}
+\index{Texture@{Texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{Texture()}{Texture()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Texture\+::\+Texture (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&}]{image }\end{DoxyParamCaption})}
+
+
+
+A textrue can be loaded from an image. 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_ac47894368c6c3f24f8f0a29f98da2924}\label{classRAY_1_1Texture_ac47894368c6c3f24f8f0a29f98da2924}} 
+\index{RAY::Texture@{RAY::Texture}!````~Texture@{$\sim$Texture}}
+\index{````~Texture@{$\sim$Texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{$\sim$Texture()}{~Texture()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Texture\+::$\sim$\+Texture (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} destructor, will not unload ressources. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Texture_a8af69711e03caac8fb3caeb84e09a7da}\label{classRAY_1_1Texture_a8af69711e03caac8fb3caeb84e09a7da}} 
+\index{RAY::Texture@{RAY::Texture}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Texture\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+draw texture on a window 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle_aa6841ac2e4d0a52e40261f775dfaf156}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Rectangle}}.
+
+\mbox{\Hypertarget{classRAY_1_1Texture_afe852ad4163be9891adc572c69679076}\label{classRAY_1_1Texture_afe852ad4163be9891adc572c69679076}} 
+\index{RAY::Texture@{RAY::Texture}!getResourcePath@{getResourcePath}}
+\index{getResourcePath@{getResourcePath}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{getResourcePath()}{getResourcePath()}}
+{\footnotesize\ttfamily const std\+::string \& R\+A\+Y\+::\+Texture\+::get\+Resource\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+path of loaded texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Texture_a749da02cc1e93c900c0d8e166c599b7b}\label{classRAY_1_1Texture_a749da02cc1e93c900c0d8e166c599b7b}} 
+\index{RAY::Texture@{RAY::Texture}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Texture}{Texture}}\& R\+A\+Y\+::\+Texture\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An texture is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_a89cf085680757b846516671d50885afb}\label{classRAY_1_1Texture_a89cf085680757b846516671d50885afb}} 
+\index{RAY::Texture@{RAY::Texture}!unload@{unload}}
+\index{unload@{unload}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{unload()}{unload()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Texture\+::unload (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unload the current texture (calls to draw\+On will no-\/op). 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_ab136b5184ffa52619d8d44e89750de60}\label{classRAY_1_1Texture_ab136b5184ffa52619d8d44e89750de60}} 
+\index{RAY::Texture@{RAY::Texture}!use@{use}}
+\index{use@{use}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{use()}{use()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \& R\+A\+Y\+::\+Texture\+::use (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load texture from file, lets one use one entity for multiple files. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Texture_a9819a4ad81318c1d6fc5301c7bf14303}\label{classRAY_1_1Texture_a9819a4ad81318c1d6fc5301c7bf14303}} 
+\index{RAY::Texture@{RAY::Texture}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Texture\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Texture_a3c244e84697495bd49950928d3064e3a}\label{classRAY_1_1Texture_a3c244e84697495bd49950928d3064e3a}} 
+\index{RAY::Texture@{RAY::Texture}!\_resourcePath@{\_resourcePath}}
+\index{\_resourcePath@{\_resourcePath}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{\_resourcePath}{\_resourcePath}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Texture\+::\+\_\+resource\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+path to the file the texture is loaded from 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_acf751bdff7b2d50a48ca9a8c380f831b}\label{classRAY_1_1Texture_acf751bdff7b2d50a48ca9a8c380f831b}} 
+\index{RAY::Texture@{RAY::Texture}!\_texture@{\_texture}}
+\index{\_texture@{\_texture}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{\_texture}{\_texture}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Texture}{Texture}}$>$ R\+A\+Y\+::\+Texture\+::\+\_\+texture\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Texture}{Texture}}, really, that\textquotesingle{}s just it... 
+
+\mbox{\Hypertarget{classRAY_1_1Texture_a4a4d24268ce25474a5aad1ada85afa84}\label{classRAY_1_1Texture_a4a4d24268ce25474a5aad1ada85afa84}} 
+\index{RAY::Texture@{RAY::Texture}!\_texturesCache@{\_texturesCache}}
+\index{\_texturesCache@{\_texturesCache}!RAY::Texture@{RAY::Texture}}
+\doxysubsubsection{\texorpdfstring{\_texturesCache}{\_texturesCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} $>$ R\+A\+Y\+::\+Texture\+::\+\_\+textures\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{Texture_8hpp}{Texture.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{Texture_8cpp}{Texture.\+cpp}}\end{DoxyCompactItemize}

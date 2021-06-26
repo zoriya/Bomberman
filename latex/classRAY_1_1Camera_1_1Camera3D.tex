@@ -1,0 +1,296 @@
+\hypertarget{classRAY_1_1Camera_1_1Camera3D}{}\doxysection{R\+AY\+::Camera\+::Camera3D Class Reference}
+\label{classRAY_1_1Camera_1_1Camera3D}\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+
+
+Entity representing a \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} in 3D space.  
+
+
+
+
+{\ttfamily \#include $<$Camera3\+D.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Camera\+::Camera3D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classRAY_1_1Camera_1_1Camera3D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Camera\+::Camera3D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{classRAY_1_1Camera_1_1Camera3D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a3e0c250010cb35b1081d72c7ebbe2b67}{Camera3D}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&position, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&target, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&up, float fovy, \mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{Projection}} projection)
+\begin{DoxyCompactList}\small\item\em 3D \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a67b784c4cfde1a17b2f3960a08c69052}{Camera3D}} (const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \&)=default
+\begin{DoxyCompactList}\small\item\em A copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a8fc595c16538719c2ef25ba091e4838a}{$\sim$\+Camera3D}} () override=default
+\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \& \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a4526a6b3887673905392916e3c7dcd9d}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \&)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} is assignable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a025802964edad6fb9c902cc73c8ec84b}{set\+Position}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&Position)
+\begin{DoxyCompactList}\small\item\em Set Position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a64970d55cbb41bc00cb1b9a8fb641478}{set\+Target}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&target)
+\begin{DoxyCompactList}\small\item\em Set target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ae2f584eb06ab4a2eb7c8621a34cf18f0}{set\+Up}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&up)
+\begin{DoxyCompactList}\small\item\em Set up. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ac136f95842f2e0246fd7f8853b59ac32}{set\+Fovy}} (float fovy)
+\begin{DoxyCompactList}\small\item\em Set fovy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a0edc0462788a91d3c6e3f5352062f150}{set\+Projection}} (\mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{Projection}} projection)
+\begin{DoxyCompactList}\small\item\em Set Projection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ab098ab1ea364ae947c76eeecdd8ba138}{get\+Position}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a0947409249ed4320d7f803df3616c51f}{get\+Target}} (void) const
+\begin{DoxyCompactList}\small\item\em Get target. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_af2470cd2d0dc6fe657fb1992be992cea}{get\+Up}} (void) const
+\begin{DoxyCompactList}\small\item\em Get up. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ad8ddd0de6920a3022647184483f3c080}{get\+Fovy}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Fovy. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{Projection}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ac32f60954dcf58c2803b9c817615c874}{get\+Projection}} (void) const
+\begin{DoxyCompactList}\small\item\em Get projection. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ae8d9c2f08cc44172b15de6d1c6d8f99d}{get\+Matrix}} (void) const override
+\begin{DoxyCompactList}\small\item\em Returns camera 3d transform matrix. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a55e6d8f3291a5338d1c732d1ac0a123f}{set\+Mode}} (\mbox{\hyperlink{namespaceRAY_1_1Camera_a1b12ed3a71f23e5977ac48641a15fbba}{Mode}} mode)
+\begin{DoxyCompactList}\small\item\em Set camera mode (multiple camera modes available) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a2843e6bf4cab1ae43e4e5815762b3403}{update}} (void)
+\begin{DoxyCompactList}\small\item\em Update camera position for selected mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a59731cf8dcbc2def24e868059a3aa447}{\+\_\+camera}}
+\item 
+\mbox{\hyperlink{namespaceRAY_1_1Camera_a1b12ed3a71f23e5977ac48641a15fbba}{Mode}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_ad4881ab0d5a70969d28956f01f0a23e4}{\+\_\+mode}}
+\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D_a88adff613ce5b7c9fe8e4c2aa182410b}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}}() const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity representing a \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} in 3D space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a3e0c250010cb35b1081d72c7ebbe2b67}\label{classRAY_1_1Camera_1_1Camera3D_a3e0c250010cb35b1081d72c7ebbe2b67}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!Camera3D@{Camera3D}}
+\index{Camera3D@{Camera3D}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{Camera3D()}{Camera3D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::\+Camera3D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{target,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{up,  }\item[{float}]{fovy,  }\item[{\mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{Projection}}}]{projection }\end{DoxyParamCaption})}
+
+
+
+3D \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} position \\
+\hline
+{\em target} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} target it looks-\/at \\
+\hline
+{\em up} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} up vector (rotation over its axis) \\
+\hline
+{\em fovy} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} field-\/of-\/view apperture in Y (degrees) in perspective, used as near plane width in orthographic \\
+\hline
+{\em projection} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} projection\+: C\+A\+M\+E\+R\+A\+\_\+\+P\+E\+R\+S\+P\+E\+C\+T\+I\+VE or C\+A\+M\+E\+R\+A\+\_\+\+O\+R\+T\+H\+O\+G\+R\+A\+P\+H\+IC \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a67b784c4cfde1a17b2f3960a08c69052}\label{classRAY_1_1Camera_1_1Camera3D_a67b784c4cfde1a17b2f3960a08c69052}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!Camera3D@{Camera3D}}
+\index{Camera3D@{Camera3D}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{Camera3D()}{Camera3D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::\+Camera3D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a8fc595c16538719c2ef25ba091e4838a}\label{classRAY_1_1Camera_1_1Camera3D_a8fc595c16538719c2ef25ba091e4838a}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!````~Camera3D@{$\sim$Camera3D}}
+\index{````~Camera3D@{$\sim$Camera3D}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{$\sim$Camera3D()}{~Camera3D()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::$\sim$\+Camera3D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ad8ddd0de6920a3022647184483f3c080}\label{classRAY_1_1Camera_1_1Camera3D_ad8ddd0de6920a3022647184483f3c080}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getFovy@{getFovy}}
+\index{getFovy@{getFovy}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getFovy()}{getFovy()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Fovy (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get Fovy. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ae8d9c2f08cc44172b15de6d1c6d8f99d}\label{classRAY_1_1Camera_1_1Camera3D_ae8d9c2f08cc44172b15de6d1c6d8f99d}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getMatrix@{getMatrix}}
+\index{getMatrix@{getMatrix}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getMatrix()}{getMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Matrix (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns camera 3d transform matrix. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Camera_1_1ICamera_a08a56fb1cd94c7b7e3946388105f03f6}{R\+A\+Y\+::\+Camera\+::\+I\+Camera}}.
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ab098ab1ea364ae947c76eeecdd8ba138}\label{classRAY_1_1Camera_1_1Camera3D_ab098ab1ea364ae947c76eeecdd8ba138}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get Position. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ac32f60954dcf58c2803b9c817615c874}\label{classRAY_1_1Camera_1_1Camera3D_ac32f60954dcf58c2803b9c817615c874}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getProjection@{getProjection}}
+\index{getProjection@{getProjection}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getProjection()}{getProjection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{R\+A\+Y\+::\+Camera\+::\+Projection}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Projection (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get projection. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a0947409249ed4320d7f803df3616c51f}\label{classRAY_1_1Camera_1_1Camera3D_a0947409249ed4320d7f803df3616c51f}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Target (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get target. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_af2470cd2d0dc6fe657fb1992be992cea}\label{classRAY_1_1Camera_1_1Camera3D_af2470cd2d0dc6fe657fb1992be992cea}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!getUp@{getUp}}
+\index{getUp@{getUp}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{getUp()}{getUp()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::get\+Up (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get up. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a4526a6b3887673905392916e3c7dcd9d}\label{classRAY_1_1Camera_1_1Camera3D_a4526a6b3887673905392916e3c7dcd9d}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}}\& R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ac136f95842f2e0246fd7f8853b59ac32}\label{classRAY_1_1Camera_1_1Camera3D_ac136f95842f2e0246fd7f8853b59ac32}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setFovy@{setFovy}}
+\index{setFovy@{setFovy}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setFovy()}{setFovy()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Fovy (\begin{DoxyParamCaption}\item[{float}]{fovy }\end{DoxyParamCaption})}
+
+
+
+Set fovy. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a55e6d8f3291a5338d1c732d1ac0a123f}\label{classRAY_1_1Camera_1_1Camera3D_a55e6d8f3291a5338d1c732d1ac0a123f}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setMode@{setMode}}
+\index{setMode@{setMode}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceRAY_1_1Camera_a1b12ed3a71f23e5977ac48641a15fbba}{Mode}}}]{mode }\end{DoxyParamCaption})}
+
+
+
+Set camera mode (multiple camera modes available) 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a025802964edad6fb9c902cc73c8ec84b}\label{classRAY_1_1Camera_1_1Camera3D_a025802964edad6fb9c902cc73c8ec84b}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{Position }\end{DoxyParamCaption})}
+
+
+
+Set Position. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a0edc0462788a91d3c6e3f5352062f150}\label{classRAY_1_1Camera_1_1Camera3D_a0edc0462788a91d3c6e3f5352062f150}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setProjection@{setProjection}}
+\index{setProjection@{setProjection}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setProjection()}{setProjection()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Projection (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceRAY_1_1Camera_aa3b67f2d0c827178f407ffb0bf5d259e}{Projection}}}]{projection }\end{DoxyParamCaption})}
+
+
+
+Set Projection. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a64970d55cbb41bc00cb1b9a8fb641478}\label{classRAY_1_1Camera_1_1Camera3D_a64970d55cbb41bc00cb1b9a8fb641478}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Target (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Set target. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ae2f584eb06ab4a2eb7c8621a34cf18f0}\label{classRAY_1_1Camera_1_1Camera3D_ae2f584eb06ab4a2eb7c8621a34cf18f0}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!setUp@{setUp}}
+\index{setUp@{setUp}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{setUp()}{setUp()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::set\+Up (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{up }\end{DoxyParamCaption})}
+
+
+
+Set up. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a2843e6bf4cab1ae43e4e5815762b3403}\label{classRAY_1_1Camera_1_1Camera3D_a2843e6bf4cab1ae43e4e5815762b3403}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!update@{update}}
+\index{update@{update}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::update (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Update camera position for selected mode. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a88adff613ce5b7c9fe8e4c2aa182410b}\label{classRAY_1_1Camera_1_1Camera3D_a88adff613ce5b7c9fe8e4c2aa182410b}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_a59731cf8dcbc2def24e868059a3aa447}\label{classRAY_1_1Camera_1_1Camera3D_a59731cf8dcbc2def24e868059a3aa447}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!\_camera@{\_camera}}
+\index{\_camera@{\_camera}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{\_camera}{\_camera}}
+{\footnotesize\ttfamily \+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera3D}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::\+\_\+camera\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera3D_ad4881ab0d5a70969d28956f01f0a23e4}\label{classRAY_1_1Camera_1_1Camera3D_ad4881ab0d5a70969d28956f01f0a23e4}} 
+\index{RAY::Camera::Camera3D@{RAY::Camera::Camera3D}!\_mode@{\_mode}}
+\index{\_mode@{\_mode}!RAY::Camera::Camera3D@{RAY::Camera::Camera3D}}
+\doxysubsubsection{\texorpdfstring{\_mode}{\_mode}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceRAY_1_1Camera_a1b12ed3a71f23e5977ac48641a15fbba}{Mode}} R\+A\+Y\+::\+Camera\+::\+Camera3\+D\+::\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Camera/\mbox{\hyperlink{Camera3D_8hpp}{Camera3\+D.\+hpp}}\item 
+lib/\+Ray/sources/\+Camera/\mbox{\hyperlink{Camera3D_8cpp}{Camera3\+D.\+cpp}}\end{DoxyCompactItemize}

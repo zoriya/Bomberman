@@ -1,0 +1,7 @@
+<map id="BBM::StatComponent" name="BBM::StatComponent">
+<area shape="rect" id="node1" title="A Stat component which contains a text and a callback." alt="" coords="115,1085,276,1221"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="30,835,163,1001"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="5,395,188,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="5,5,188,332"/>
+<area shape="rect" id="node5" href="$classWAL_1_1Callback.html" title=" " alt="" coords="188,813,403,1023"/>
+</map>

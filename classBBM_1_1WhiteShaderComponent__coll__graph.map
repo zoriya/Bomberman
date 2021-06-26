@@ -1,0 +1,6 @@
+<map id="BBM::WhiteShaderComponent" name="BBM::WhiteShaderComponent">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1028,224,1193"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="48,813,181,979"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="23,395,206,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="23,5,206,332"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="RAY::Camera::ICamera" name="RAY::Camera::ICamera">
+<area shape="rect" id="node1" title="Interface for Cameras." alt="" coords="115,5,282,97"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Camera_1_1Camera2D.html" title="Entity representing a Camera in 2D space." alt="" coords="5,145,187,413"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Camera_1_1Camera3D.html" title="Entity representing a Camera in 3D space." alt="" coords="211,153,392,406"/>
+</map>

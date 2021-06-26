@@ -1,0 +1,15 @@
+<map id="RAY::Drawables::ADrawable3D" name="RAY::Drawables::ADrawable3D">
+<area shape="rect" id="node1" title="Abstraction of any three&#45;dimensionnal drawable." alt="" coords="1153,145,1371,399"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Circle.html" title="Circle in a three&#45;dimensionnal space." alt="" coords="5,505,212,729"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Cube.html" title="Cube in a three&#45;dimensionnal space." alt="" coords="236,520,443,715"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder.html" title="Cylinder in a three&#45;dimensionnal space." alt="" coords="467,476,673,759"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Grid.html" title="a grid (centered at (0, 0, 0))" alt="" coords="697,491,904,744"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Line.html" title="Line in a three&#45;dimensionnal space." alt="" coords="928,513,1135,722"/>
+<area shape="rect" id="node8" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Model.html" title="Basic 3D Model type." alt="" coords="1159,447,1365,788"/>
+<area shape="rect" id="node9" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Plane.html" title="Plane in a three&#45;dimensionnal space." alt="" coords="1389,527,1596,707"/>
+<area shape="rect" id="node10" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Point.html" title="Point in a three&#45;dimensionnal space." alt="" coords="1620,542,1827,693"/>
+<area shape="rect" id="node11" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Ray.html" title="Ray in a three&#45;dimensionnal space." alt="" coords="1851,527,2057,707"/>
+<area shape="rect" id="node12" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Sphere.html" title="Sphere in a three&#45;dimensionnal space." alt="" coords="2081,520,2288,715"/>
+<area shape="rect" id="node13" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Triangle.html" title="Triangle in a three&#45;dimensionnal space." alt="" coords="2312,491,2519,744"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="1164,5,1360,97"/>
+</map>

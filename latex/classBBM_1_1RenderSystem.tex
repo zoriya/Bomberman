@@ -1,0 +1,249 @@
+\hypertarget{classBBM_1_1RenderSystem}{}\doxysection{B\+BM\+::Render\+System Class Reference}
+\label{classBBM_1_1RenderSystem}\index{BBM::RenderSystem@{BBM::RenderSystem}}
+
+
+{\ttfamily \#include $<$Render\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Render\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1RenderSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Render\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBBM_1_1RenderSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_aad0df3e33bae4bc5364c9b7398c0eab6}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_a94013e853543c250ab3195e84e519bf4}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&entity, std\+::chrono\+::nanoseconds dtime) override
+\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_af17cbc1b3f7de038e9f8589ae00719f5}{set\+Debug}} (bool debug)
+\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_a3259b4c047113ed035fecbc1ea4cc308}{draw\+Bounding\+Box}} (const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&pos\+Component, const \mbox{\hyperlink{classBBM_1_1Drawable3DComponent}{Drawable3\+D\+Component}} \&drawable) const
+\item 
+\mbox{\hyperlink{classBBM_1_1RenderSystem_af0a993a3cc0dc631f62fd7e8c58efd2e}{Render\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal, \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&window, bool debug\+Mode=false)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1RenderSystem_a60d1cd310f0d571d50ffcf06e81ec6d5}{Render\+System}} (const \mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1RenderSystem_ad01b3245ffa26e219d0a901e63e87ef4}{$\sim$\+Render\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}} \& \mbox{\hyperlink{classBBM_1_1RenderSystem_a2028ece8405fa511967dfa8f315824c4}{operator=}} (const \mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A render screen system can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_a65035c2275ea970028ec30ee6dc7af3e}{draw\+Rescaled\+Drawable}} (\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}} \&drawable, const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&new\+Dims)
+\begin{DoxyCompactList}\small\item\em rescale the drawables dimensions according to new window dimensions \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \mbox{\hyperlink{classBBM_1_1RenderSystem_a89a1e9b8086d5ea3592d79dae96b2429}{get\+Rescaled\+Position}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \&position, const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&new\+Win\+Dims)
+\begin{DoxyCompactList}\small\item\em rescale the drawables position according to new window dimensions \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1RenderSystem_ab0c65f44f91514ab522bbf2895be8223}{resize\+Window}} (\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&new\+Dims)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classBBM_1_1RenderSystem_a75c9f28d9f56ef9e4c44077507bec931}{\+\_\+window}}
+\begin{DoxyCompactList}\small\item\em The window to render on. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{R\+A\+Y\+::\+Camera\+::\+Camera3D}} \mbox{\hyperlink{classBBM_1_1RenderSystem_afcfd644df5330cf823bb8e93d4806746}{\+\_\+camera}}
+\begin{DoxyCompactList}\small\item\em The camera used to render. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1RenderSystem_a9aa32a17d4756361e6f8ce043d1d3d85}{\+\_\+debug\+Mode}}
+\begin{DoxyCompactList}\small\item\em Defines if the debug informations must be displayed or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr short \mbox{\hyperlink{classBBM_1_1RenderSystem_a07611ee0c87e251598236f35df9a46eb}{F\+PS}} = 60
+\begin{DoxyCompactList}\small\item\em Window framerate limit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_af0a993a3cc0dc631f62fd7e8c58efd2e}\label{classBBM_1_1RenderSystem_af0a993a3cc0dc631f62fd7e8c58efd2e}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!RenderSystem@{RenderSystem}}
+\index{RenderSystem@{RenderSystem}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{RenderSystem()}{RenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Render\+System\+::\+Render\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal,  }\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{window,  }\item[{bool}]{debug\+Mode = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a60d1cd310f0d571d50ffcf06e81ec6d5}\label{classBBM_1_1RenderSystem_a60d1cd310f0d571d50ffcf06e81ec6d5}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!RenderSystem@{RenderSystem}}
+\index{RenderSystem@{RenderSystem}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{RenderSystem()}{RenderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Render\+System\+::\+Render\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_ad01b3245ffa26e219d0a901e63e87ef4}\label{classBBM_1_1RenderSystem_ad01b3245ffa26e219d0a901e63e87ef4}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!````~RenderSystem@{$\sim$RenderSystem}}
+\index{````~RenderSystem@{$\sim$RenderSystem}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$RenderSystem()}{~RenderSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Render\+System\+::$\sim$\+Render\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a3259b4c047113ed035fecbc1ea4cc308}\label{classBBM_1_1RenderSystem_a3259b4c047113ed035fecbc1ea4cc308}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!drawBoundingBox@{drawBoundingBox}}
+\index{drawBoundingBox@{drawBoundingBox}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{drawBoundingBox()}{drawBoundingBox()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::draw\+Bounding\+Box (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&}]{pos\+Component,  }\item[{const \mbox{\hyperlink{classBBM_1_1Drawable3DComponent}{Drawable3\+D\+Component}} \&}]{drawable }\end{DoxyParamCaption}) const}
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to draw bounding box of \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a65035c2275ea970028ec30ee6dc7af3e}\label{classBBM_1_1RenderSystem_a65035c2275ea970028ec30ee6dc7af3e}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!drawRescaledDrawable@{drawRescaledDrawable}}
+\index{drawRescaledDrawable@{drawRescaledDrawable}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{drawRescaledDrawable()}{drawRescaledDrawable()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::draw\+Rescaled\+Drawable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}} \&}]{drawable,  }\item[{const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&}]{new\+Dims }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+rescale the drawables dimensions according to new window dimensions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drawable} & the drawable to rescale \\
+\hline
+{\em new\+Dims} & the new window\textquotesingle{}s dimensions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a89a1e9b8086d5ea3592d79dae96b2429}\label{classBBM_1_1RenderSystem_a89a1e9b8086d5ea3592d79dae96b2429}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!getRescaledPosition@{getRescaledPosition}}
+\index{getRescaledPosition@{getRescaledPosition}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{getRescaledPosition()}{getRescaledPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} B\+B\+M\+::\+Render\+System\+::get\+Rescaled\+Position (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \&}]{position,  }\item[{const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&}]{new\+Win\+Dims }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+rescale the drawables position according to new window dimensions 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & a reference to position \\
+\hline
+{\em new\+Dims} & the new window\textquotesingle{}s dimensions \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_aad0df3e33bae4bc5364c9b7398c0eab6}\label{classBBM_1_1RenderSystem_aad0df3e33bae4bc5364c9b7398c0eab6}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+\begin{DoxyNote}{Note}
+render on screen here 
+\end{DoxyNote}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$ Camera\+Component, Position\+Component $>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a94013e853543c250ab3195e84e519bf4}\label{classBBM_1_1RenderSystem_a94013e853543c250ab3195e84e519bf4}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a2028ece8405fa511967dfa8f315824c4}\label{classBBM_1_1RenderSystem_a2028ece8405fa511967dfa8f315824c4}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}}\& B\+B\+M\+::\+Render\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1RenderSystem}{Render\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A render screen system can\textquotesingle{}t be assigned. 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_ab0c65f44f91514ab522bbf2895be8223}\label{classBBM_1_1RenderSystem_ab0c65f44f91514ab522bbf2895be8223}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!resizeWindow@{resizeWindow}}
+\index{resizeWindow@{resizeWindow}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{resizeWindow()}{resizeWindow()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::resize\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&}]{new\+Dims }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_af17cbc1b3f7de038e9f8589ae00719f5}\label{classBBM_1_1RenderSystem_af17cbc1b3f7de038e9f8589ae00719f5}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!setDebug@{setDebug}}
+\index{setDebug@{setDebug}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{setDebug()}{setDebug()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Render\+System\+::set\+Debug (\begin{DoxyParamCaption}\item[{bool}]{debug }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em debug} & true if debug mode should be enabled \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_afcfd644df5330cf823bb8e93d4806746}\label{classBBM_1_1RenderSystem_afcfd644df5330cf823bb8e93d4806746}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!\_camera@{\_camera}}
+\index{\_camera@{\_camera}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{\_camera}{\_camera}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{R\+A\+Y\+::\+Camera\+::\+Camera3D}} B\+B\+M\+::\+Render\+System\+::\+\_\+camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The camera used to render. 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a9aa32a17d4756361e6f8ce043d1d3d85}\label{classBBM_1_1RenderSystem_a9aa32a17d4756361e6f8ce043d1d3d85}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!\_debugMode@{\_debugMode}}
+\index{\_debugMode@{\_debugMode}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{\_debugMode}{\_debugMode}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Render\+System\+::\+\_\+debug\+Mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Defines if the debug informations must be displayed or not. 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a75c9f28d9f56ef9e4c44077507bec931}\label{classBBM_1_1RenderSystem_a75c9f28d9f56ef9e4c44077507bec931}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!\_window@{\_window}}
+\index{\_window@{\_window}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{\_window}{\_window}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}}\& B\+B\+M\+::\+Render\+System\+::\+\_\+window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The window to render on. 
+
+\mbox{\Hypertarget{classBBM_1_1RenderSystem_a07611ee0c87e251598236f35df9a46eb}\label{classBBM_1_1RenderSystem_a07611ee0c87e251598236f35df9a46eb}} 
+\index{BBM::RenderSystem@{BBM::RenderSystem}!FPS@{FPS}}
+\index{FPS@{FPS}!BBM::RenderSystem@{BBM::RenderSystem}}
+\doxysubsubsection{\texorpdfstring{FPS}{FPS}}
+{\footnotesize\ttfamily constexpr short B\+B\+M\+::\+Render\+System\+::\+F\+PS = 60\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+
+
+Window framerate limit. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Renderer/\mbox{\hyperlink{RenderSystem_8hpp}{Render\+System.\+hpp}}\item 
+sources/\+System/\+Renderer/\mbox{\hyperlink{RenderSystem_8cpp}{Render\+System.\+cpp}}\end{DoxyCompactItemize}

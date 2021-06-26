@@ -1,0 +1,238 @@
+\hypertarget{classRAY_1_1Camera_1_1Camera2D}{}\doxysection{R\+AY\+::Camera\+::Camera2D Class Reference}
+\label{classRAY_1_1Camera_1_1Camera2D}\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+
+
+Entity representing a \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} in 2D space.  
+
+
+
+
+{\ttfamily \#include $<$Camera2\+D.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Camera\+::Camera2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classRAY_1_1Camera_1_1Camera2D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Camera\+::Camera2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=283pt]{classRAY_1_1Camera_1_1Camera2D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_aae4ef6a617daf167cbaf7a5127acf8c5}{Camera2D}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&offset, const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&target, float rotation, float zoom=1)
+\begin{DoxyCompactList}\small\item\em 2D \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a50bea78b3c66adbcfd4794b1f2ca2582}{Camera2D}} (const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \&)=default
+\begin{DoxyCompactList}\small\item\em A copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_addae9cb9d5f41862cff2346c2116aafe}{$\sim$\+Camera2D}} () override=default
+\item 
+\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \& \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_ae480d01d198f450588038235514aae00}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \&)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} is assignable. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a76d01c22327524a485fcc0b7fdc0454f}{set\+Offset}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&offset)
+\begin{DoxyCompactList}\small\item\em Set Offset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a3f1f28cee457d976f70542dd062101f6}{set\+Target}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&target)
+\begin{DoxyCompactList}\small\item\em Set target. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_af924d9eb8c8ebb014d6d5ebb14e5ffe1}{set\+Rotation}} (float rotation)
+\begin{DoxyCompactList}\small\item\em Set rotation. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a9d890ddff0c8bf966e9e2e0277aaf31e}{set\+Zoom}} (float zoom)
+\begin{DoxyCompactList}\small\item\em Set zoom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a81f83d2bd98b64efa2d3c99cf0d968ba}{get\+Offset}} (void) const
+\begin{DoxyCompactList}\small\item\em Get Offset. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_acb234637661b458d190dafdd6a6ebfc7}{get\+Target}} (void) const
+\begin{DoxyCompactList}\small\item\em Get target. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a8ecbf705b1ff3a77484e6e09b3dddac8}{get\+Rotation}} (void) const
+\begin{DoxyCompactList}\small\item\em Get rotation. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a73eacc9e337d87a5d7632e3414078c46}{get\+Zoom}} (void) const
+\begin{DoxyCompactList}\small\item\em Get zoom. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a0cc09d02c487fdfa3df6a69549702906}{get\+Matrix}} (void) const override
+\begin{DoxyCompactList}\small\item\em Returns camera 2d transform matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a7f85b36c99266b7db6cc021f9a448cec}{\+\_\+camera}}
+\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D_a335a04b401a6109072f5415431dfe25d}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}}() const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity representing a \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} in 2D space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_aae4ef6a617daf167cbaf7a5127acf8c5}\label{classRAY_1_1Camera_1_1Camera2D_aae4ef6a617daf167cbaf7a5127acf8c5}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!Camera2D@{Camera2D}}
+\index{Camera2D@{Camera2D}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{Camera2D()}{Camera2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::\+Camera2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{offset,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{target,  }\item[{float}]{rotation,  }\item[{float}]{zoom = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+2D \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em offset} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} offset (displacement from target) \\
+\hline
+{\em target} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} target (rotation and zoom origin) \\
+\hline
+{\em rotation} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} rotation in degrees \\
+\hline
+{\em zoom} & \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} zoom (scaling), should be 1.\+0f by default \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a50bea78b3c66adbcfd4794b1f2ca2582}\label{classRAY_1_1Camera_1_1Camera2D_a50bea78b3c66adbcfd4794b1f2ca2582}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!Camera2D@{Camera2D}}
+\index{Camera2D@{Camera2D}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{Camera2D()}{Camera2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::\+Camera2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_addae9cb9d5f41862cff2346c2116aafe}\label{classRAY_1_1Camera_1_1Camera2D_addae9cb9d5f41862cff2346c2116aafe}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!````~Camera2D@{$\sim$Camera2D}}
+\index{````~Camera2D@{$\sim$Camera2D}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{$\sim$Camera2D()}{~Camera2D()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::$\sim$\+Camera2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a0cc09d02c487fdfa3df6a69549702906}\label{classRAY_1_1Camera_1_1Camera2D_a0cc09d02c487fdfa3df6a69549702906}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!getMatrix@{getMatrix}}
+\index{getMatrix@{getMatrix}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{getMatrix()}{getMatrix()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::get\+Matrix (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns camera 2d transform matrix. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Camera_1_1ICamera_a08a56fb1cd94c7b7e3946388105f03f6}{R\+A\+Y\+::\+Camera\+::\+I\+Camera}}.
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a81f83d2bd98b64efa2d3c99cf0d968ba}\label{classRAY_1_1Camera_1_1Camera2D_a81f83d2bd98b64efa2d3c99cf0d968ba}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{getOffset()}{getOffset()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::get\+Offset (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get Offset. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a8ecbf705b1ff3a77484e6e09b3dddac8}\label{classRAY_1_1Camera_1_1Camera2D_a8ecbf705b1ff3a77484e6e09b3dddac8}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!getRotation@{getRotation}}
+\index{getRotation@{getRotation}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{getRotation()}{getRotation()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::get\+Rotation (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get rotation. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_acb234637661b458d190dafdd6a6ebfc7}\label{classRAY_1_1Camera_1_1Camera2D_acb234637661b458d190dafdd6a6ebfc7}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!getTarget@{getTarget}}
+\index{getTarget@{getTarget}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{getTarget()}{getTarget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::get\+Target (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get target. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a73eacc9e337d87a5d7632e3414078c46}\label{classRAY_1_1Camera_1_1Camera2D_a73eacc9e337d87a5d7632e3414078c46}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!getZoom@{getZoom}}
+\index{getZoom@{getZoom}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{getZoom()}{getZoom()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::get\+Zoom (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get zoom. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_ae480d01d198f450588038235514aae00}\label{classRAY_1_1Camera_1_1Camera2D_ae480d01d198f450588038235514aae00}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}}\& R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{namespaceRAY_1_1Camera}{Camera}} is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a76d01c22327524a485fcc0b7fdc0454f}\label{classRAY_1_1Camera_1_1Camera2D_a76d01c22327524a485fcc0b7fdc0454f}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!setOffset@{setOffset}}
+\index{setOffset@{setOffset}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{setOffset()}{setOffset()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::set\+Offset (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{offset }\end{DoxyParamCaption})}
+
+
+
+Set Offset. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_af924d9eb8c8ebb014d6d5ebb14e5ffe1}\label{classRAY_1_1Camera_1_1Camera2D_af924d9eb8c8ebb014d6d5ebb14e5ffe1}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::set\+Rotation (\begin{DoxyParamCaption}\item[{float}]{rotation }\end{DoxyParamCaption})}
+
+
+
+Set rotation. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a3f1f28cee457d976f70542dd062101f6}\label{classRAY_1_1Camera_1_1Camera2D_a3f1f28cee457d976f70542dd062101f6}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!setTarget@{setTarget}}
+\index{setTarget@{setTarget}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{setTarget()}{setTarget()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::set\+Target (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{target }\end{DoxyParamCaption})}
+
+
+
+Set target. 
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a9d890ddff0c8bf966e9e2e0277aaf31e}\label{classRAY_1_1Camera_1_1Camera2D_a9d890ddff0c8bf966e9e2e0277aaf31e}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!setZoom@{setZoom}}
+\index{setZoom@{setZoom}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{setZoom()}{setZoom()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::set\+Zoom (\begin{DoxyParamCaption}\item[{float}]{zoom }\end{DoxyParamCaption})}
+
+
+
+Set zoom. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a335a04b401a6109072f5415431dfe25d}\label{classRAY_1_1Camera_1_1Camera2D_a335a04b401a6109072f5415431dfe25d}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Camera_1_1Camera2D_a7f85b36c99266b7db6cc021f9a448cec}\label{classRAY_1_1Camera_1_1Camera2D_a7f85b36c99266b7db6cc021f9a448cec}} 
+\index{RAY::Camera::Camera2D@{RAY::Camera::Camera2D}!\_camera@{\_camera}}
+\index{\_camera@{\_camera}!RAY::Camera::Camera2D@{RAY::Camera::Camera2D}}
+\doxysubsubsection{\texorpdfstring{\_camera}{\_camera}}
+{\footnotesize\ttfamily \+::\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera2D}} R\+A\+Y\+::\+Camera\+::\+Camera2\+D\+::\+\_\+camera\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Camera/\mbox{\hyperlink{Camera2D_8hpp}{Camera2\+D.\+hpp}}\item 
+lib/\+Ray/sources/\+Camera/\mbox{\hyperlink{Camera2D_8cpp}{Camera2\+D.\+cpp}}\end{DoxyCompactItemize}

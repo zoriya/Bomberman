@@ -1,0 +1,168 @@
+\hypertarget{classWAL_1_1ViewIterator}{}\doxysection{W\+AL\+::View\+Iterator$<$ It, Components $>$ Class Template Reference}
+\label{classWAL_1_1ViewIterator}\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+
+
+{\ttfamily \#include $<$View.\+hpp$>$}
+
+
+
+Collaboration diagram for W\+AL\+::View\+Iterator$<$ It, Components $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{classWAL_1_1ViewIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classWAL_1_1ViewIterator_af215a92e251c66b50acdd258edbb9541}{iterator\+\_\+category}} = std\+::forward\+\_\+iterator\+\_\+tag
+\item 
+using \mbox{\hyperlink{classWAL_1_1ViewIterator_ab0a2493ae809b9a9e0db48618991105a}{difference\+\_\+type}} = std\+::ptrdiff\+\_\+t
+\item 
+using \mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} = \mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Components... $>$
+\item 
+using \mbox{\hyperlink{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}{pointer}} = \mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} $\ast$
+\item 
+using \mbox{\hyperlink{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}{reference}} = \mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} \&
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}{reference}} \mbox{\hyperlink{classWAL_1_1ViewIterator_aeafb5bb1953d55f7908e9d27803e12f9}{operator$\ast$}} ()
+\item 
+\mbox{\hyperlink{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}{pointer}} \mbox{\hyperlink{classWAL_1_1ViewIterator_af1020e9e6d3c37b24166d6ad8a66a186}{operator-\/$>$}} ()
+\item 
+\mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} \& \mbox{\hyperlink{classWAL_1_1ViewIterator_a280b98cdcb9b208539beb8e818ac1b03}{operator++}} ()
+\item 
+\mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} \mbox{\hyperlink{classWAL_1_1ViewIterator_ad471710f04df0dc8b0739f45f5f31686}{operator++}} (int)
+\item 
+bool \mbox{\hyperlink{classWAL_1_1ViewIterator_a169465a81e1b0216f8c138aa79b4180e}{operator==}} (const \mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} \&other) const
+\item 
+bool \mbox{\hyperlink{classWAL_1_1ViewIterator_aae01c8043b28f1b267792cbcd84a302b}{operator!=}} (const \mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} \&other) const
+\item 
+\mbox{\hyperlink{classWAL_1_1ViewIterator_a00dbd7f4aee43913167c9a9ea74dabd4}{View\+Iterator}} (It current)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+It \mbox{\hyperlink{classWAL_1_1ViewIterator_a60ceeaf8e9516798a53698b0940211a4}{\+\_\+it}}
+\item 
+std\+::optional$<$ \mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Components... $>$ $>$ \mbox{\hyperlink{classWAL_1_1ViewIterator_a7fdc6a50521fec9aeb90b59cca38f524}{\+\_\+entity}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_ab0a2493ae809b9a9e0db48618991105a}\label{classWAL_1_1ViewIterator_ab0a2493ae809b9a9e0db48618991105a}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!difference\_type@{difference\_type}}
+\index{difference\_type@{difference\_type}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{difference\_type}{difference\_type}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+using \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator_ab0a2493ae809b9a9e0db48618991105a}{difference\+\_\+type}} =  std\+::ptrdiff\+\_\+t}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_af215a92e251c66b50acdd258edbb9541}\label{classWAL_1_1ViewIterator_af215a92e251c66b50acdd258edbb9541}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!iterator\_category@{iterator\_category}}
+\index{iterator\_category@{iterator\_category}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{iterator\_category}{iterator\_category}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+using \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator_af215a92e251c66b50acdd258edbb9541}{iterator\+\_\+category}} =  std\+::forward\+\_\+iterator\+\_\+tag}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}\label{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!pointer@{pointer}}
+\index{pointer@{pointer}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{pointer}{pointer}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+using \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}{pointer}} =  \mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} $\ast$}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}\label{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!reference@{reference}}
+\index{reference@{reference}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{reference}{reference}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+using \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}{reference}} =  \mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} \&}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}\label{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!value\_type@{value\_type}}
+\index{value\_type@{value\_type}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{value\_type}{value\_type}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+using \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator_ac83e2ec962650d7b61c0e39bee337c5c}{value\+\_\+type}} =  \mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$Components...$>$}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a00dbd7f4aee43913167c9a9ea74dabd4}\label{classWAL_1_1ViewIterator_a00dbd7f4aee43913167c9a9ea74dabd4}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!ViewIterator@{ViewIterator}}
+\index{ViewIterator@{ViewIterator}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{ViewIterator()}{ViewIterator()}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} (\begin{DoxyParamCaption}\item[{It}]{current }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_aae01c8043b28f1b267792cbcd84a302b}\label{classWAL_1_1ViewIterator_aae01c8043b28f1b267792cbcd84a302b}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+bool \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator!= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}}$<$ It, Components $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_aeafb5bb1953d55f7908e9d27803e12f9}\label{classWAL_1_1ViewIterator_aeafb5bb1953d55f7908e9d27803e12f9}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator$\ast$()}{operator*()}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1ViewIterator_a2b1ad56a7d062cb375b78f1ac74748d4}{reference}} \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator$\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a280b98cdcb9b208539beb8e818ac1b03}\label{classWAL_1_1ViewIterator_a280b98cdcb9b208539beb8e818ac1b03}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}}\& \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator++ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_ad471710f04df0dc8b0739f45f5f31686}\label{classWAL_1_1ViewIterator_ad471710f04df0dc8b0739f45f5f31686}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator++@{operator++}}
+\index{operator++@{operator++}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator++()}{operator++()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}} \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator++ (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_af1020e9e6d3c37b24166d6ad8a66a186}\label{classWAL_1_1ViewIterator_af1020e9e6d3c37b24166d6ad8a66a186}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator-\/$>$@{operator-\/$>$}}
+\index{operator-\/$>$@{operator-\/$>$}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator-\/$>$()}{operator->()}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1ViewIterator_af7343ace41a6f936a071d73363b4d6a7}{pointer}} \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator-\/$>$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a169465a81e1b0216f8c138aa79b4180e}\label{classWAL_1_1ViewIterator_a169465a81e1b0216f8c138aa79b4180e}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!operator==@{operator==}}
+\index{operator==@{operator==}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+bool \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1ViewIterator}{View\+Iterator}}$<$ It, Components $>$ \&}]{other }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a7fdc6a50521fec9aeb90b59cca38f524}\label{classWAL_1_1ViewIterator_a7fdc6a50521fec9aeb90b59cca38f524}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!\_entity@{\_entity}}
+\index{\_entity@{\_entity}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{\_entity}{\_entity}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+std\+::optional$<$\mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$Components...$>$ $>$ \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\+\_\+entity\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classWAL_1_1ViewIterator_a60ceeaf8e9516798a53698b0940211a4}\label{classWAL_1_1ViewIterator_a60ceeaf8e9516798a53698b0940211a4}} 
+\index{WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}!\_it@{\_it}}
+\index{\_it@{\_it}!WAL::ViewIterator$<$ It, Components $>$@{WAL::ViewIterator$<$ It, Components $>$}}
+\doxysubsubsection{\texorpdfstring{\_it}{\_it}}
+{\footnotesize\ttfamily template$<$typename It , typename ... Components$>$ \\
+It \mbox{\hyperlink{classWAL_1_1ViewIterator}{W\+A\+L\+::\+View\+Iterator}}$<$ It, Components $>$\+::\+\_\+it\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+View/\mbox{\hyperlink{View_8hpp}{View.\+hpp}}\end{DoxyCompactItemize}

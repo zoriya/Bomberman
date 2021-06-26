@@ -1,0 +1,32 @@
+\hypertarget{lib_2Ray_2CMakeLists_8txt}{}\doxysection{lib/\+Ray/\+C\+Make\+Lists.txt File Reference}
+\label{lib_2Ray_2CMakeLists_8txt}\index{lib/Ray/CMakeLists.txt@{lib/Ray/CMakeLists.txt}}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}{set}} (C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD 20) set(L\+I\+B\+\_\+\+N\+A\+ME \char`\"{}ray\char`\"{}) project(\char`\"{}\$
+\item 
+\mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a739b9eb929a980316b19a9417c78727c}{include\+\_\+directories}} (\$\{L\+I\+B\+\_\+\+N\+A\+ME\} ./sources) \mbox{\hyperlink{CMakeLists_8txt_a2a4a8226faed9c23e628c7902a65ca0e}{if}}(C\+M\+A\+K\+E\+\_\+\+C\+O\+M\+P\+I\+L\+E\+R\+\_\+\+I\+S\+\_\+\+G\+N\+U\+C\+XX) \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}{set}}(C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+F\+L\+A\+G\+S\+\_\+\+D\+E\+B\+UG \char`\"{}-\/Wall -\/Wextra -\/Wshadow -\/W -\/Wno-\/unused-\/parameter -\/g\char`\"{}) endif() \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}{set}}(C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+F\+L\+A\+G\+S\+\_\+\+R\+E\+L\+E\+A\+SE \char`\"{}-\/O2\char`\"{}) set(H\+E\+A\+D\+E\+RS sources/Color.\+hpp sources/Font.\+hpp sources/Matrix.\+hpp sources/Mesh.\+hpp sources/Trace\+Log.\+hpp sources/Window.\+hpp sources/Audio/I\+Audio.\+hpp sources/Audio/Music.\+hpp sources/Audio/Sound.\+hpp sources/Camera/Camera2\+D.\+hpp sources/Camera/Camera3\+D.\+hpp sources/Camera/Camera\+Mode.\+hpp sources/Camera/Camera\+Projection.\+hpp sources/Camera/I\+Camera.\+hpp sources/Controllers/Gamepad.\+hpp sources/Controllers/Keyboard.\+hpp sources/Controllers/Mouse.\+hpp sources/Drawables/A\+Drawable2\+D.\+hpp sources/Drawables/A\+Drawable3\+D.\+hpp sources/Drawables/I\+Drawable.\+hpp sources/Drawables/Image.\+hpp sources/Drawables/Texture.\+hpp sources/Drawables/2D/Circle.\+hpp sources/Drawables/2D/Line.\+hpp sources/Drawables/2D/Point.\+hpp sources/Drawables/2D/Rectangle.\+hpp sources/Drawables/2D/Text.\+hpp sources/Drawables/2D/Triangle.\+hpp sources/Drawables/3D/Circle.\+hpp sources/Drawables/3D/Cube.\+hpp sources/Drawables/3D/Cylinder.\+hpp sources/Drawables/3D/Grid.\+hpp sources/Drawables/3D/Line.\+hpp sources/Drawables/3D/Plane.\+hpp sources/Drawables/3D/Point.\+hpp sources/Drawables/3D/Ray.\+hpp sources/Drawables/3D/Sphere.\+hpp sources/Drawables/3D/Triangle.\+hpp sources/Exceptions/Ray\+Error.\+hpp sources/Model/Model.\+hpp sources/Model/Model\+Animation.\+hpp sources/Model/Model\+Animations.\+hpp sources/Vector/Vector2.\+hpp sources/Vector/Vector3.\+hpp sources/Utils/Cache.\+hpp sources/Meshes/A\+Mesh.\+hpp sources/Meshes/Mesh\+Sphere.\+hpp sources/Shaders/Shaders.\+hpp) \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}{set}}(S\+RC sources/Color.\+cpp sources/Font.\+cpp sources/Trace\+Log.\+cpp sources/Window.\+cpp sources/Audio/Music.\+cpp sources/Audio/Sound.\+cpp sources/Camera/Camera2\+D.\+cpp sources/Camera/Camera3\+D.\+cpp sources/Controllers/Gamepad.\+cpp sources/Controllers/Keyboard.\+cpp sources/Controllers/Mouse.\+cpp sources/Drawables/2D/Circle.\+cpp sources/Drawables/2D/Line.\+cpp sources/Drawables/2D/Point.\+cpp sources/Drawables/2D/Rectangle.\+cpp sources/Drawables/2D/Text.\+cpp sources/Drawables/2D/Triangle.\+cpp sources/Drawables/3D/Circle.\+cpp sources/Drawables/3D/Cube.\+cpp sources/Drawables/3D/Cylinder.\+cpp sources/Drawables/3D/Grid.\+cpp sources/Drawables/3D/Line.\+cpp sources/Drawables/3D/Plane.\+cpp sources/Drawables/3D/Point.\+cpp sources/Drawables/3D/Ray.\+cpp sources/Drawables/3D/Sphere.\+cpp sources/Drawables/3D/Triangle.\+cpp sources/Drawables/A\+Drawable2\+D.\+cpp sources/Drawables/A\+Drawable3\+D.\+cpp sources/Drawables/Image.\+cpp sources/Drawables/Texture.\+cpp sources/Exceptions/Ray\+Error.\+cpp sources/Model/Model.\+cpp sources/Model/Model\+Animation.\+cpp sources/Model/Model\+Animations.\+cpp sources/Vector/Vector2.\+cpp sources/Vector/Vector3.\+cpp sources/Shaders/Shaders.\+cpp sources/Meshes/Mesh\+Sphere.\+cpp sources/Meshes/A\+Mesh.\+cpp) \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_ac88533330fe111fe633bbc9c601d5db7}{find\+\_\+package}}(raylib Q\+U\+I\+ET) \mbox{\hyperlink{CMakeLists_8txt_a2a4a8226faed9c23e628c7902a65ca0e}{if}}(N\+OT raylib\+\_\+\+F\+O\+U\+ND) \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}{set}}(C\+M\+A\+K\+E\+\_\+\+M\+O\+D\+U\+L\+E\+\_\+\+P\+A\+TH \$
+\item 
+raylib \mbox{\hyperlink{lib_2Ray_2CMakeLists_8txt_ac88533330fe111fe633bbc9c601d5db7}{find\+\_\+package}} (raylib R\+E\+Q\+U\+I\+R\+ED) endif() add\+\_\+library(\$
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{lib_2Ray_2CMakeLists_8txt_ac88533330fe111fe633bbc9c601d5db7}\label{lib_2Ray_2CMakeLists_8txt_ac88533330fe111fe633bbc9c601d5db7}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!find\_package@{find\_package}}
+\index{find\_package@{find\_package}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{find\_package()}{find\_package()}}
+{\footnotesize\ttfamily raylib find\+\_\+package (\begin{DoxyParamCaption}\item[{raylib}]{R\+E\+Q\+U\+I\+R\+ED }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lib_2Ray_2CMakeLists_8txt_a739b9eb929a980316b19a9417c78727c}\label{lib_2Ray_2CMakeLists_8txt_a739b9eb929a980316b19a9417c78727c}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!include\_directories@{include\_directories}}
+\index{include\_directories@{include\_directories}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{include\_directories()}{include\_directories()}}
+{\footnotesize\ttfamily include\+\_\+directories (\begin{DoxyParamCaption}\item[{}]{\$\{\+L\+I\+B\+\_\+\+N\+A\+M\+E\} ./ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}\label{lib_2Ray_2CMakeLists_8txt_a472d2776f96e0bf5bc77c951cf84b91b}} 
+\index{CMakeLists.txt@{CMakeLists.txt}!set@{set}}
+\index{set@{set}!CMakeLists.txt@{CMakeLists.txt}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily set (\begin{DoxyParamCaption}\item[{C\+M\+A\+K\+E\+\_\+\+C\+X\+X\+\_\+\+S\+T\+A\+N\+D\+A\+RD}]{20 }\end{DoxyParamCaption})}
+

@@ -1,0 +1,615 @@
+\hypertarget{classRAY_1_1Window}{}\doxysection{R\+AY\+::Window Class Reference}
+\label{classRAY_1_1Window}\index{RAY::Window@{RAY::Window}}
+
+
+{\ttfamily \#include $<$Window.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Window\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classRAY_1_1Window__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}{display\+State}} \{ \mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a4ead54473ecc831ed24c79f6706173a6}{T\+W\+O\+\_\+\+D\+I\+M\+E\+N\+S\+I\+O\+N\+N\+AL}}, 
+\mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2ad6eb21d94d90dfcf3a3b601a807d037f}{T\+H\+R\+E\+E\+\_\+\+D\+I\+M\+E\+N\+S\+I\+O\+N\+N\+AL}}, 
+\mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a0593e15e5306797b9bbda22d5ba6a9a2}{N\+O\+NE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Different states of the view of the window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Window_ab7c691ccc30c1dd14f796d8d0b2a02e7}{Window}} (\mbox{\hyperlink{classRAY_1_1Window}{Window}} \&\&)=default
+\begin{DoxyCompactList}\small\item\em A window is movable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Window_af379eab7c8423ee88e5940115f850937}{Window}} (const \mbox{\hyperlink{classRAY_1_1Window}{Window}} \&window)=delete
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Window}{Window}} \& \mbox{\hyperlink{classRAY_1_1Window_ad711005e28e80efcbbbe74cc547f39f4}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Window}{Window}} \&window)=delete
+\begin{DoxyCompactList}\small\item\em A window is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Window_a1a580d7e932507c292e2c9dac880ade0}{$\sim$\+Window}} ()=default
+\begin{DoxyCompactList}\small\item\em Closes window if still open. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_adaae02bd8ef76d5fe7e05c924bdaa52d}{open}} (void)
+\begin{DoxyCompactList}\small\item\em Initialize window and Open\+GL context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_a54cd071aa8062288686a901d7e332123}{should\+Close}} (void) const
+\begin{DoxyCompactList}\small\item\em Check if K\+E\+Y\+\_\+\+E\+S\+C\+A\+PE pressed or Close icon pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_ab66ed87b70736411649a802ba97f9e40}{close}} (void)
+\begin{DoxyCompactList}\small\item\em Close window and unload Open\+GL context. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_aebf51e851b4fe167bea64a723ab79cbc}{is\+Focused}} (void) const
+\begin{DoxyCompactList}\small\item\em Check if window is currently focused. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \& \mbox{\hyperlink{classRAY_1_1Window_a9bfd7ee3d1a83c47d1e902efd683c5a5}{get\+Dimensions}} (void)
+\begin{DoxyCompactList}\small\item\em Get window dimensions. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classRAY_1_1Window_a6b0fc36e2c0a444ba0ba260592c1ea4b}{set\+Dimensions}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&dims)
+\begin{DoxyCompactList}\small\item\em Set window dimensions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a61472da135223d38b3e26aef7e65e7c2}{set\+Visible\+Cursor}} (bool visible)
+\begin{DoxyCompactList}\small\item\em Set the cursor visibility. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_afa6dfce510927b85a367bef4785f6aaf}{enable\+Cursor}} (bool enable)
+\begin{DoxyCompactList}\small\item\em Enable/\+Disable the cursor. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_a627e17f942a04cc336213f685d2aeee6}{cursor\+Is\+Visible}} (void) const
+\begin{DoxyCompactList}\small\item\em Check if cursor is not visible. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_ac3bada4d069160275b1636ba1a1a3cae}{set\+Icon}} (\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&img)
+\begin{DoxyCompactList}\small\item\em set the window icon \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \mbox{\hyperlink{classRAY_1_1Window_abd466a3a8ef3700e48c9a0d4664e9b1c}{get\+Cursor\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Get the cursor position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a3969b01d42db0dd534a5a80fdda6f3c8}{set\+F\+PS}} (unsigned int fps)
+\begin{DoxyCompactList}\small\item\em Set target F\+PS (maximum) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_af62cc40cf64b65b9a38ebdac8298b8a3}{clear}} (\mbox{\hyperlink{classRAY_1_1Color}{Color}} color=B\+L\+A\+CK)
+\begin{DoxyCompactList}\small\item\em Set background color (framebuffer clear color) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a08a2aec0e3ff9203a3b1241fc111363a}{begin\+Drawing}} ()
+\begin{DoxyCompactList}\small\item\em Setup canvas (framebuffer) to start drawing. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a1db5ed3358b99f14d84001531cde9c88}{end\+Drawing}} ()
+\begin{DoxyCompactList}\small\item\em End canvas drawing and swap buffers (double buffering) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a0510d16f04cfc2aa3a1168fa76846181}{use\+Camera}} (\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera\+::\+Camera2D}} \&camera)
+\begin{DoxyCompactList}\small\item\em Initialize 2D mode with custom camera (2D) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_aa10adcc8c85f4a867a6672564709840b}{use\+Camera}} (\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera\+::\+Camera3D}} \&camera)
+\begin{DoxyCompactList}\small\item\em Initialize 3D mode with custom camera (2D) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_aa7dbe96f2afac1016663549a9bac7c06}{unuse\+Camera}} (void)
+\begin{DoxyCompactList}\small\item\em Ends current view mode and returns to default mode. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_ad8fe14e5aa9525706cc8634a7e29eda7}{set\+Title}} (const std\+::string \&title)
+\begin{DoxyCompactList}\small\item\em Set the window title. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a9276b21b5d0de28fed81657019f1d9bf}{draw}} (\mbox{\hyperlink{classRAY_1_1Drawables_1_1IDrawable}{R\+A\+Y\+::\+Drawables\+::\+I\+Drawable}} \&drawable)
+\begin{DoxyCompactList}\small\item\em draw drawable \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_adf861f50837496cbd968dfb3b03d7fdd}{draw}} (const \mbox{\hyperlink{namespaceRAY_a8d665c40cb6c993b3413c5b18b6731fa}{Mesh}} \&mesh, const Material \&material, const \mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} \&transform)
+\begin{DoxyCompactList}\small\item\em Draw a 3d mesh with material and transform. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Window_aac03286b46644091dff4edf821910b64}{draw\+F\+PS}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&position)
+\begin{DoxyCompactList}\small\item\em Draws current F\+PS on the frame. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_a215362f39fc7bdc7c933fa8464ddd86e}{is\+Ready}} () const
+\item 
+void \mbox{\hyperlink{classRAY_1_1Window_a7ff8be8e95b25184af54753319b0a78a}{set\+Exit\+Key}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Controller\+::\+Keyboard\+::\+Key}} key)
+\item 
+unsigned \mbox{\hyperlink{classRAY_1_1Window_aa2a931aacf7d744c260e9ee9941b53ee}{get\+Config\+Flags}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classRAY_1_1Window_abb1470bc7a02dc86d8b396ad8d9392cc}{set\+Config\+Flags}} (unsigned flags)
+\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classRAY_1_1Window_a36f59045ccae4991f09b43499f2d82fa}{toggle\+Fullscreen}} ()
+\begin{DoxyCompactList}\small\item\em set window to fullscreen \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_a45c0268fddeed64658cccb1ab89eebcc}{is\+Fullscreen}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classRAY_1_1Window_a9b62478a957f80d988974c4e30c6dfa0}{maximize}} ()
+\begin{DoxyCompactList}\small\item\em set window to max size \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& \mbox{\hyperlink{classRAY_1_1Window_a7fc52644b335b838bf4ec984e5c0c235}{restore}} ()
+\begin{DoxyCompactList}\small\item\em reset window size \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Window}{Window}} \& \mbox{\hyperlink{classRAY_1_1Window_af1fc3ba6843f2a73a07c94b50ccb9448}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Get The window\textquotesingle{}s instance, if the window has not been already constructed a runtime exception is thrown. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classRAY_1_1Window}{Window}} \& \mbox{\hyperlink{classRAY_1_1Window_a958860cdb2ddd791e1481fa965bc37f1}{get\+Instance}} (int width, int height, const std\+::string \&title, unsigned flags=0, bool open\+Now=true) noexcept
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Window_a3d91780a669cdc8f36185837232324f9}{Window}} (int width, int height, std\+::string title, unsigned flags=0, bool open\+Now=true)
+\begin{DoxyCompactList}\small\item\em Creates window, and opens it if open\+Now is set to true. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \mbox{\hyperlink{classRAY_1_1Window_a728a2ab740c142e30aab2f202bf25929}{\+\_\+dimensions}}
+\begin{DoxyCompactList}\small\item\em Dimension of window. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Window_a8832a4a474311a1bd079d07d12760c18}{\+\_\+title}}
+\begin{DoxyCompactList}\small\item\em Title of window. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Window_ab5e8e1e522fd066b2bd5e759cc2ff6b4}{\+\_\+is\+Open}}
+\begin{DoxyCompactList}\small\item\em has the window been open? \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classRAY_1_1Window_ae93814283734ab14f796028f6f384a74}{\+\_\+flags}}
+\begin{DoxyCompactList}\small\item\em flags for the window (ex\+: F\+L\+A\+G\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+R\+E\+S\+I\+Z\+A\+B\+LE) \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}{display\+State}} \mbox{\hyperlink{classRAY_1_1Window_a9c448dc49c2499f8ddd96171f3a02e46}{\+\_\+display\+State}}
+\begin{DoxyCompactList}\small\item\em Current window draw-\/state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::optional$<$ \mbox{\hyperlink{classRAY_1_1Window}{Window}} $>$ \mbox{\hyperlink{classRAY_1_1Window_abd607aeaa52d4b0bd760318ffb87ce33}{\+\_\+instance}} = std\+::nullopt
+\begin{DoxyCompactList}\small\item\em The window\textquotesingle{}s instance as an optional. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}\label{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}} 
+\index{RAY::Window@{RAY::Window}!displayState@{displayState}}
+\index{displayState@{displayState}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{displayState}{displayState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}{R\+A\+Y\+::\+Window\+::display\+State}}}
+
+
+
+Different states of the view of the window. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TWO\_DIMENSIONNAL@{TWO\_DIMENSIONNAL}!RAY::Window@{RAY::Window}}\index{RAY::Window@{RAY::Window}!TWO\_DIMENSIONNAL@{TWO\_DIMENSIONNAL}}}\mbox{\Hypertarget{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a4ead54473ecc831ed24c79f6706173a6}\label{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a4ead54473ecc831ed24c79f6706173a6}} 
+T\+W\+O\+\_\+\+D\+I\+M\+E\+N\+S\+I\+O\+N\+N\+AL&When a custom 2D camera is used. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THREE\_DIMENSIONNAL@{THREE\_DIMENSIONNAL}!RAY::Window@{RAY::Window}}\index{RAY::Window@{RAY::Window}!THREE\_DIMENSIONNAL@{THREE\_DIMENSIONNAL}}}\mbox{\Hypertarget{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2ad6eb21d94d90dfcf3a3b601a807d037f}\label{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2ad6eb21d94d90dfcf3a3b601a807d037f}} 
+T\+H\+R\+E\+E\+\_\+\+D\+I\+M\+E\+N\+S\+I\+O\+N\+N\+AL&When a custom 3D camera is used. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!RAY::Window@{RAY::Window}}\index{RAY::Window@{RAY::Window}!NONE@{NONE}}}\mbox{\Hypertarget{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a0593e15e5306797b9bbda22d5ba6a9a2}\label{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2a0593e15e5306797b9bbda22d5ba6a9a2}} 
+N\+O\+NE&When no camera is used. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Window_ab7c691ccc30c1dd14f796d8d0b2a02e7}\label{classRAY_1_1Window_ab7c691ccc30c1dd14f796d8d0b2a02e7}} 
+\index{RAY::Window@{RAY::Window}!Window@{Window}}
+\index{Window@{Window}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Window\+::\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{Window}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A window is movable. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_af379eab7c8423ee88e5940115f850937}\label{classRAY_1_1Window_af379eab7c8423ee88e5940115f850937}} 
+\index{RAY::Window@{RAY::Window}!Window@{Window}}
+\index{Window@{Window}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Window\+::\+Window (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Window}{Window}} \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a1a580d7e932507c292e2c9dac880ade0}\label{classRAY_1_1Window_a1a580d7e932507c292e2c9dac880ade0}} 
+\index{RAY::Window@{RAY::Window}!````~Window@{$\sim$Window}}
+\index{````~Window@{$\sim$Window}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{$\sim$Window()}{~Window()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Window\+::$\sim$\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Closes window if still open. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a3d91780a669cdc8f36185837232324f9}\label{classRAY_1_1Window_a3d91780a669cdc8f36185837232324f9}} 
+\index{RAY::Window@{RAY::Window}!Window@{Window}}
+\index{Window@{Window}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{Window()}{Window()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Window\+::\+Window (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::string}]{title,  }\item[{unsigned}]{flags = {\ttfamily 0},  }\item[{bool}]{open\+Now = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates window, and opens it if open\+Now is set to true. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Window_a08a2aec0e3ff9203a3b1241fc111363a}\label{classRAY_1_1Window_a08a2aec0e3ff9203a3b1241fc111363a}} 
+\index{RAY::Window@{RAY::Window}!beginDrawing@{beginDrawing}}
+\index{beginDrawing@{beginDrawing}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{beginDrawing()}{beginDrawing()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::begin\+Drawing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Setup canvas (framebuffer) to start drawing. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_af62cc40cf64b65b9a38ebdac8298b8a3}\label{classRAY_1_1Window_af62cc40cf64b65b9a38ebdac8298b8a3}} 
+\index{RAY::Window@{RAY::Window}!clear@{clear}}
+\index{clear@{clear}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}}}]{color = {\ttfamily BLACK} }\end{DoxyParamCaption})}
+
+
+
+Set background color (framebuffer clear color) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The color to clear the screen (default\+: black) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_ab66ed87b70736411649a802ba97f9e40}\label{classRAY_1_1Window_ab66ed87b70736411649a802ba97f9e40}} 
+\index{RAY::Window@{RAY::Window}!close@{close}}
+\index{close@{close}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Close window and unload Open\+GL context. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a627e17f942a04cc336213f685d2aeee6}\label{classRAY_1_1Window_a627e17f942a04cc336213f685d2aeee6}} 
+\index{RAY::Window@{RAY::Window}!cursorIsVisible@{cursorIsVisible}}
+\index{cursorIsVisible@{cursorIsVisible}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{cursorIsVisible()}{cursorIsVisible()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::cursor\+Is\+Visible (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if cursor is not visible. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_adf861f50837496cbd968dfb3b03d7fdd}\label{classRAY_1_1Window_adf861f50837496cbd968dfb3b03d7fdd}} 
+\index{RAY::Window@{RAY::Window}!draw@{draw}}
+\index{draw@{draw}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::draw (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceRAY_a8d665c40cb6c993b3413c5b18b6731fa}{Mesh}} \&}]{mesh,  }\item[{const Material \&}]{material,  }\item[{const \mbox{\hyperlink{namespaceRAY_afe19e487e05a704e44e5457d818c9039}{Matrix}} \&}]{transform }\end{DoxyParamCaption})}
+
+
+
+Draw a 3d mesh with material and transform. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a9276b21b5d0de28fed81657019f1d9bf}\label{classRAY_1_1Window_a9276b21b5d0de28fed81657019f1d9bf}} 
+\index{RAY::Window@{RAY::Window}!draw@{draw}}
+\index{draw@{draw}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Drawables_1_1IDrawable}{R\+A\+Y\+::\+Drawables\+::\+I\+Drawable}} \&}]{drawable }\end{DoxyParamCaption})}
+
+
+
+draw drawable 
+
+
+\begin{DoxyParams}{Parameters}
+{\em drawable} & The drawable to render on screen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_aac03286b46644091dff4edf821910b64}\label{classRAY_1_1Window_aac03286b46644091dff4edf821910b64}} 
+\index{RAY::Window@{RAY::Window}!drawFPS@{drawFPS}}
+\index{drawFPS@{drawFPS}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{drawFPS()}{drawFPS()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::draw\+F\+PS (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{position }\end{DoxyParamCaption})}
+
+
+
+Draws current F\+PS on the frame. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_afa6dfce510927b85a367bef4785f6aaf}\label{classRAY_1_1Window_afa6dfce510927b85a367bef4785f6aaf}} 
+\index{RAY::Window@{RAY::Window}!enableCursor@{enableCursor}}
+\index{enableCursor@{enableCursor}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{enableCursor()}{enableCursor()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::enable\+Cursor (\begin{DoxyParamCaption}\item[{bool}]{enable }\end{DoxyParamCaption})}
+
+
+
+Enable/\+Disable the cursor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em enable} & True for the cursor to be enabled \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_a1db5ed3358b99f14d84001531cde9c88}\label{classRAY_1_1Window_a1db5ed3358b99f14d84001531cde9c88}} 
+\index{RAY::Window@{RAY::Window}!endDrawing@{endDrawing}}
+\index{endDrawing@{endDrawing}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{endDrawing()}{endDrawing()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::end\+Drawing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+End canvas drawing and swap buffers (double buffering) 
+
+\mbox{\Hypertarget{classRAY_1_1Window_aa2a931aacf7d744c260e9ee9941b53ee}\label{classRAY_1_1Window_aa2a931aacf7d744c260e9ee9941b53ee}} 
+\index{RAY::Window@{RAY::Window}!getConfigFlags@{getConfigFlags}}
+\index{getConfigFlags@{getConfigFlags}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{getConfigFlags()}{getConfigFlags()}}
+{\footnotesize\ttfamily unsigned R\+A\+Y\+::\+Window\+::get\+Config\+Flags (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the configuration flgs for the window 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Window_abd466a3a8ef3700e48c9a0d4664e9b1c}\label{classRAY_1_1Window_abd466a3a8ef3700e48c9a0d4664e9b1c}} 
+\index{RAY::Window@{RAY::Window}!getCursorPosition@{getCursorPosition}}
+\index{getCursorPosition@{getCursorPosition}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{getCursorPosition()}{getCursorPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} R\+A\+Y\+::\+Window\+::get\+Cursor\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the cursor position. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a9bfd7ee3d1a83c47d1e902efd683c5a5}\label{classRAY_1_1Window_a9bfd7ee3d1a83c47d1e902efd683c5a5}} 
+\index{RAY::Window@{RAY::Window}!getDimensions@{getDimensions}}
+\index{getDimensions@{getDimensions}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{getDimensions()}{getDimensions()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \& R\+A\+Y\+::\+Window\+::get\+Dimensions (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get window dimensions. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_af1fc3ba6843f2a73a07c94b50ccb9448}\label{classRAY_1_1Window_af1fc3ba6843f2a73a07c94b50ccb9448}} 
+\index{RAY::Window@{RAY::Window}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get The window\textquotesingle{}s instance, if the window has not been already constructed a runtime exception is thrown. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a958860cdb2ddd791e1481fa965bc37f1}\label{classRAY_1_1Window_a958860cdb2ddd791e1481fa965bc37f1}} 
+\index{RAY::Window@{RAY::Window}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::get\+Instance (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{const std\+::string \&}]{title,  }\item[{unsigned}]{flags = {\ttfamily 0},  }\item[{bool}]{open\+Now = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}
+
+\begin{DoxyReturn}{Returns}
+A widow insta,ce. Only one window can be open at a time 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Window_aebf51e851b4fe167bea64a723ab79cbc}\label{classRAY_1_1Window_aebf51e851b4fe167bea64a723ab79cbc}} 
+\index{RAY::Window@{RAY::Window}!isFocused@{isFocused}}
+\index{isFocused@{isFocused}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{isFocused()}{isFocused()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::is\+Focused (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if window is currently focused. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a45c0268fddeed64658cccb1ab89eebcc}\label{classRAY_1_1Window_a45c0268fddeed64658cccb1ab89eebcc}} 
+\index{RAY::Window@{RAY::Window}!isFullscreen@{isFullscreen}}
+\index{isFullscreen@{isFullscreen}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{isFullscreen()}{isFullscreen()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::is\+Fullscreen (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+true if the window is fullscreen 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Window_a215362f39fc7bdc7c933fa8464ddd86e}\label{classRAY_1_1Window_a215362f39fc7bdc7c933fa8464ddd86e}} 
+\index{RAY::Window@{RAY::Window}!isReady@{isReady}}
+\index{isReady@{isReady}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{isReady()}{isReady()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::is\+Ready (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+true if the window\textquotesingle{}s context has been correctly initialized 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Window_a9b62478a957f80d988974c4e30c6dfa0}\label{classRAY_1_1Window_a9b62478a957f80d988974c4e30c6dfa0}} 
+\index{RAY::Window@{RAY::Window}!maximize@{maximize}}
+\index{maximize@{maximize}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{maximize()}{maximize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::maximize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+set window to max size 
+
+\mbox{\Hypertarget{classRAY_1_1Window_adaae02bd8ef76d5fe7e05c924bdaa52d}\label{classRAY_1_1Window_adaae02bd8ef76d5fe7e05c924bdaa52d}} 
+\index{RAY::Window@{RAY::Window}!open@{open}}
+\index{open@{open}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::open (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialize window and Open\+GL context. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_ad711005e28e80efcbbbe74cc547f39f4}\label{classRAY_1_1Window_ad711005e28e80efcbbbe74cc547f39f4}} 
+\index{RAY::Window@{RAY::Window}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{Window}}\& R\+A\+Y\+::\+Window\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Window}{Window}} \&}]{window }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A window is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a7fc52644b335b838bf4ec984e5c0c235}\label{classRAY_1_1Window_a7fc52644b335b838bf4ec984e5c0c235}} 
+\index{RAY::Window@{RAY::Window}!restore@{restore}}
+\index{restore@{restore}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{restore()}{restore()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::restore (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+reset window size 
+
+\mbox{\Hypertarget{classRAY_1_1Window_abb1470bc7a02dc86d8b396ad8d9392cc}\label{classRAY_1_1Window_abb1470bc7a02dc86d8b396ad8d9392cc}} 
+\index{RAY::Window@{RAY::Window}!setConfigFlags@{setConfigFlags}}
+\index{setConfigFlags@{setConfigFlags}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setConfigFlags()}{setConfigFlags()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::set\+Config\+Flags (\begin{DoxyParamCaption}\item[{unsigned}]{flags }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em flag} & the configuration flgs for the window \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_a6b0fc36e2c0a444ba0ba260592c1ea4b}\label{classRAY_1_1Window_a6b0fc36e2c0a444ba0ba260592c1ea4b}} 
+\index{RAY::Window@{RAY::Window}!setDimensions@{setDimensions}}
+\index{setDimensions@{setDimensions}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setDimensions()}{setDimensions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::set\+Dimensions (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{dims }\end{DoxyParamCaption})}
+
+
+
+Set window dimensions. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a7ff8be8e95b25184af54753319b0a78a}\label{classRAY_1_1Window_a7ff8be8e95b25184af54753319b0a78a}} 
+\index{RAY::Window@{RAY::Window}!setExitKey@{setExitKey}}
+\index{setExitKey@{setExitKey}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setExitKey()}{setExitKey()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::set\+Exit\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Controller\+::\+Keyboard\+::\+Key}}}]{key }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & if this key is pressed, the window will close @info Default is E\+SC key @info Calling this function override the previous closing key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_a3969b01d42db0dd534a5a80fdda6f3c8}\label{classRAY_1_1Window_a3969b01d42db0dd534a5a80fdda6f3c8}} 
+\index{RAY::Window@{RAY::Window}!setFPS@{setFPS}}
+\index{setFPS@{setFPS}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setFPS()}{setFPS()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::set\+F\+PS (\begin{DoxyParamCaption}\item[{unsigned int}]{fps }\end{DoxyParamCaption})}
+
+
+
+Set target F\+PS (maximum) 
+
+\mbox{\Hypertarget{classRAY_1_1Window_ac3bada4d069160275b1636ba1a1a3cae}\label{classRAY_1_1Window_ac3bada4d069160275b1636ba1a1a3cae}} 
+\index{RAY::Window@{RAY::Window}!setIcon@{setIcon}}
+\index{setIcon@{setIcon}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setIcon()}{setIcon()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::set\+Icon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&}]{img }\end{DoxyParamCaption})}
+
+
+
+set the window icon 
+
+\mbox{\Hypertarget{classRAY_1_1Window_ad8fe14e5aa9525706cc8634a7e29eda7}\label{classRAY_1_1Window_ad8fe14e5aa9525706cc8634a7e29eda7}} 
+\index{RAY::Window@{RAY::Window}!setTitle@{setTitle}}
+\index{setTitle@{setTitle}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setTitle()}{setTitle()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::set\+Title (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{title }\end{DoxyParamCaption})}
+
+
+
+Set the window title. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a61472da135223d38b3e26aef7e65e7c2}\label{classRAY_1_1Window_a61472da135223d38b3e26aef7e65e7c2}} 
+\index{RAY::Window@{RAY::Window}!setVisibleCursor@{setVisibleCursor}}
+\index{setVisibleCursor@{setVisibleCursor}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{setVisibleCursor()}{setVisibleCursor()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::set\+Visible\+Cursor (\begin{DoxyParamCaption}\item[{bool}]{visible }\end{DoxyParamCaption})}
+
+
+
+Set the cursor visibility. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em visible} & True if the cursor is visible \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Window_a54cd071aa8062288686a901d7e332123}\label{classRAY_1_1Window_a54cd071aa8062288686a901d7e332123}} 
+\index{RAY::Window@{RAY::Window}!shouldClose@{shouldClose}}
+\index{shouldClose@{shouldClose}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{shouldClose()}{shouldClose()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::should\+Close (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Check if K\+E\+Y\+\_\+\+E\+S\+C\+A\+PE pressed or Close icon pressed. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a36f59045ccae4991f09b43499f2d82fa}\label{classRAY_1_1Window_a36f59045ccae4991f09b43499f2d82fa}} 
+\index{RAY::Window@{RAY::Window}!toggleFullscreen@{toggleFullscreen}}
+\index{toggleFullscreen@{toggleFullscreen}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{toggleFullscreen()}{toggleFullscreen()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \& R\+A\+Y\+::\+Window\+::toggle\+Fullscreen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+set window to fullscreen 
+
+\mbox{\Hypertarget{classRAY_1_1Window_aa7dbe96f2afac1016663549a9bac7c06}\label{classRAY_1_1Window_aa7dbe96f2afac1016663549a9bac7c06}} 
+\index{RAY::Window@{RAY::Window}!unuseCamera@{unuseCamera}}
+\index{unuseCamera@{unuseCamera}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{unuseCamera()}{unuseCamera()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::unuse\+Camera (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Ends current view mode and returns to default mode. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a0510d16f04cfc2aa3a1168fa76846181}\label{classRAY_1_1Window_a0510d16f04cfc2aa3a1168fa76846181}} 
+\index{RAY::Window@{RAY::Window}!useCamera@{useCamera}}
+\index{useCamera@{useCamera}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{useCamera()}{useCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::use\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera2D}{Camera\+::\+Camera2D}} \&}]{camera }\end{DoxyParamCaption})}
+
+
+
+Initialize 2D mode with custom camera (2D) 
+
+\mbox{\Hypertarget{classRAY_1_1Window_aa10adcc8c85f4a867a6672564709840b}\label{classRAY_1_1Window_aa10adcc8c85f4a867a6672564709840b}} 
+\index{RAY::Window@{RAY::Window}!useCamera@{useCamera}}
+\index{useCamera@{useCamera}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{useCamera()}{useCamera()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Window\+::use\+Camera (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Camera_1_1Camera3D}{Camera\+::\+Camera3D}} \&}]{camera }\end{DoxyParamCaption})}
+
+
+
+Initialize 3D mode with custom camera (2D) 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Window_a728a2ab740c142e30aab2f202bf25929}\label{classRAY_1_1Window_a728a2ab740c142e30aab2f202bf25929}} 
+\index{RAY::Window@{RAY::Window}!\_dimensions@{\_dimensions}}
+\index{\_dimensions@{\_dimensions}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_dimensions}{\_dimensions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} R\+A\+Y\+::\+Window\+::\+\_\+dimensions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dimension of window. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a9c448dc49c2499f8ddd96171f3a02e46}\label{classRAY_1_1Window_a9c448dc49c2499f8ddd96171f3a02e46}} 
+\index{RAY::Window@{RAY::Window}!\_displayState@{\_displayState}}
+\index{\_displayState@{\_displayState}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_displayState}{\_displayState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classRAY_1_1Window_a1fbce0754b8870b068792b5d37860ce2}{display\+State}} R\+A\+Y\+::\+Window\+::\+\_\+display\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current window draw-\/state. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_ae93814283734ab14f796028f6f384a74}\label{classRAY_1_1Window_ae93814283734ab14f796028f6f384a74}} 
+\index{RAY::Window@{RAY::Window}!\_flags@{\_flags}}
+\index{\_flags@{\_flags}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_flags}{\_flags}}
+{\footnotesize\ttfamily unsigned int R\+A\+Y\+::\+Window\+::\+\_\+flags\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+flags for the window (ex\+: F\+L\+A\+G\+\_\+\+W\+I\+N\+D\+O\+W\+\_\+\+R\+E\+S\+I\+Z\+A\+B\+LE) 
+
+\mbox{\Hypertarget{classRAY_1_1Window_abd607aeaa52d4b0bd760318ffb87ce33}\label{classRAY_1_1Window_abd607aeaa52d4b0bd760318ffb87ce33}} 
+\index{RAY::Window@{RAY::Window}!\_instance@{\_instance}}
+\index{\_instance@{\_instance}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_instance}{\_instance}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} $>$ R\+A\+Y\+::\+Window\+::\+\_\+instance = std\+::nullopt\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The window\textquotesingle{}s instance as an optional. 
+
+\mbox{\Hypertarget{classRAY_1_1Window_ab5e8e1e522fd066b2bd5e759cc2ff6b4}\label{classRAY_1_1Window_ab5e8e1e522fd066b2bd5e759cc2ff6b4}} 
+\index{RAY::Window@{RAY::Window}!\_isOpen@{\_isOpen}}
+\index{\_isOpen@{\_isOpen}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_isOpen}{\_isOpen}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Window\+::\+\_\+is\+Open\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+has the window been open? 
+
+\mbox{\Hypertarget{classRAY_1_1Window_a8832a4a474311a1bd079d07d12760c18}\label{classRAY_1_1Window_a8832a4a474311a1bd079d07d12760c18}} 
+\index{RAY::Window@{RAY::Window}!\_title@{\_title}}
+\index{\_title@{\_title}!RAY::Window@{RAY::Window}}
+\doxysubsubsection{\texorpdfstring{\_title}{\_title}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Window\+::\+\_\+title\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Title of window. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Window_8hpp}{Window.\+hpp}}\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Window_8cpp}{Window.\+cpp}}\end{DoxyCompactItemize}

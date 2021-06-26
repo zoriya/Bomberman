@@ -1,0 +1,9 @@
+<map id="BBM::MusicComponent" name="BBM::MusicComponent">
+<area shape="rect" id="node1" title="A basic Music component." alt="" coords="101,1115,279,1397"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="34,850,167,1015"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="5,395,188,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="5,5,188,332"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Audio_1_1Music.html" title="A manager for music stream." alt="" coords="193,813,371,1052"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Audio_1_1IAudio.html" title="Interface for Audio ressources." alt="" coords="213,483,351,663"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Cache.html" title=" " alt="" coords="375,483,551,663"/>
+</map>

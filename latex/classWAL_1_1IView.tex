@@ -1,0 +1,100 @@
+\hypertarget{classWAL_1_1IView}{}\doxysection{W\+AL\+::I\+View Class Reference}
+\label{classWAL_1_1IView}\index{WAL::IView@{WAL::IView}}
+
+
+A basic view used to manipulate view without knowing their type at compile time.  
+
+
+
+
+{\ttfamily \#include $<$View.\+hpp$>$}
+
+
+
+Inheritance diagram for W\+AL\+::I\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classWAL_1_1IView__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+AL\+::I\+View\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classWAL_1_1IView__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual const std\+::vector$<$ std\+::type\+\_\+index $>$ \& \mbox{\hyperlink{classWAL_1_1IView_ac4f9bb90bb24466be93f67d3530ebb70}{get\+Types}} () const =0
+\begin{DoxyCompactList}\small\item\em The list of types that every entity of the view has. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1IView_a8c3741ec0baef0080718c8ce7baa473e}{emplace\+\_\+back}} (\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&)=0
+\item 
+virtual void \mbox{\hyperlink{classWAL_1_1IView_ab12fb0ff90d93bd87f116f3fcf194f93}{erase}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&)=0
+\item 
+virtual \mbox{\hyperlink{classWAL_1_1IView_acb89db5a4d39e4c621c5e1f97a7bced0}{$\sim$\+I\+View}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A basic view used to manipulate view without knowing their type at compile time. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1IView_acb89db5a4d39e4c621c5e1f97a7bced0}\label{classWAL_1_1IView_acb89db5a4d39e4c621c5e1f97a7bced0}} 
+\index{WAL::IView@{WAL::IView}!````~IView@{$\sim$IView}}
+\index{````~IView@{$\sim$IView}!WAL::IView@{WAL::IView}}
+\doxysubsubsection{\texorpdfstring{$\sim$IView()}{~IView()}}
+{\footnotesize\ttfamily virtual W\+A\+L\+::\+I\+View\+::$\sim$\+I\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1IView_a8c3741ec0baef0080718c8ce7baa473e}\label{classWAL_1_1IView_a8c3741ec0baef0080718c8ce7baa473e}} 
+\index{WAL::IView@{WAL::IView}!emplace\_back@{emplace\_back}}
+\index{emplace\_back@{emplace\_back}!WAL::IView@{WAL::IView}}
+\doxysubsubsection{\texorpdfstring{emplace\_back()}{emplace\_back()}}
+{\footnotesize\ttfamily virtual void W\+A\+L\+::\+I\+View\+::emplace\+\_\+back (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1View_a9f5b16fcfe6af044685d080b505807e1}{W\+A\+L\+::\+View$<$ Components $>$}}.
+
+\mbox{\Hypertarget{classWAL_1_1IView_ab12fb0ff90d93bd87f116f3fcf194f93}\label{classWAL_1_1IView_ab12fb0ff90d93bd87f116f3fcf194f93}} 
+\index{WAL::IView@{WAL::IView}!erase@{erase}}
+\index{erase@{erase}!WAL::IView@{WAL::IView}}
+\doxysubsubsection{\texorpdfstring{erase()}{erase()}}
+{\footnotesize\ttfamily virtual void W\+A\+L\+::\+I\+View\+::erase (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1View_aaf69c8a72933a4b721af2f45019b0e27}{W\+A\+L\+::\+View$<$ Components $>$}}.
+
+\mbox{\Hypertarget{classWAL_1_1IView_ac4f9bb90bb24466be93f67d3530ebb70}\label{classWAL_1_1IView_ac4f9bb90bb24466be93f67d3530ebb70}} 
+\index{WAL::IView@{WAL::IView}!getTypes@{getTypes}}
+\index{getTypes@{getTypes}!WAL::IView@{WAL::IView}}
+\doxysubsubsection{\texorpdfstring{getTypes()}{getTypes()}}
+{\footnotesize\ttfamily virtual const std\+::vector$<$std\+::type\+\_\+index$>$\& W\+A\+L\+::\+I\+View\+::get\+Types (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+The list of types that every entity of the view has. 
+
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1View_a01e249df565f8519ce27fd5dcb833bbc}{W\+A\+L\+::\+View$<$ Components $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+View/\mbox{\hyperlink{View_8hpp}{View.\+hpp}}\end{DoxyCompactItemize}

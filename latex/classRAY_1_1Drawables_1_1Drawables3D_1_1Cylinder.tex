@@ -1,0 +1,254 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Cylinder Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Cylinder.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Cylinder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Cylinder\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a235cef288490a9f06deab191d3f3b646}{Cylinder}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&position, float radius\+Top, float radius\+Bottom, float height, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a7d70eba72914bcaf769ff428131dc531}{Cylinder}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a4d1143a79facd0bddf256d496c5a8b13}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \&)=default
+\begin{DoxyCompactList}\small\item\em A cylinder is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a78aec98b48357edef3fd75dd2034d5f8}{$\sim$\+Cylinder}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a5f89efbd57082ec6f9bbc7e5df7fe66c}{get\+Top\+Radius}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a06222e0f3556b0ac727f38672e069618}{set\+Top\+Radius}} (float radius)
+\begin{DoxyCompactList}\small\item\em set radius \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab580f79e7a029ba3f4a311f47b4b8ca3}{get\+Bottom\+Radius}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a40af53bdc9db6cbf27df694fc620d595}{set\+Bottom\+Radius}} (float radius)
+\begin{DoxyCompactList}\small\item\em set radius \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad7f94a58831702869d32981094cbfd3a}{get\+Height}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a8eb6f1d62cfc92e005735e5cf4e9013e}{set\+Height}} (float height)
+\begin{DoxyCompactList}\small\item\em the Height \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_abf0e0eed4d17a4d92692be86c07ed8f8}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a2cd235b04db3ebbeb472b269aaad1de4}{draw\+Wires\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw cylinder\textquotesingle{}s wires on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a30f2e663c3d309a99833dd56836011a8}{\+\_\+top\+Radius}}
+\begin{DoxyCompactList}\small\item\em Radius of the cylinder. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab423fa42166d896d1eee69dd69a614ab}{\+\_\+bottom\+Radius}}
+\begin{DoxyCompactList}\small\item\em Radius of the cylinder. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad2bd519bde3fb06212ec5d5c715e9fbc}{\+\_\+height}}
+\begin{DoxyCompactList}\small\item\em height of the cylinder \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a235cef288490a9f06deab191d3f3b646}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a235cef288490a9f06deab191d3f3b646}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!Cylinder@{Cylinder}}
+\index{Cylinder@{Cylinder}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{Cylinder()}{Cylinder()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::\+Cylinder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{position,  }\item[{float}]{radius\+Top,  }\item[{float}]{radius\+Bottom,  }\item[{float}]{height,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of the center \\
+\hline
+{\em radius\+Top} & radius at the top the cylinder \\
+\hline
+{\em radius\+Bottom} & radius at the bottom of the cylinder \\
+\hline
+{\em radius\+Bottom} & heighth of the cylinder \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the cylinder \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a7d70eba72914bcaf769ff428131dc531}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a7d70eba72914bcaf769ff428131dc531}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!Cylinder@{Cylinder}}
+\index{Cylinder@{Cylinder}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{Cylinder()}{Cylinder()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::\+Cylinder (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a78aec98b48357edef3fd75dd2034d5f8}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a78aec98b48357edef3fd75dd2034d5f8}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!````~Cylinder@{$\sim$Cylinder}}
+\index{````~Cylinder@{$\sim$Cylinder}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cylinder()}{~Cylinder()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::$\sim$\+Cylinder (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_abf0e0eed4d17a4d92692be86c07ed8f8}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_abf0e0eed4d17a4d92692be86c07ed8f8}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a2cd235b04db3ebbeb472b269aaad1de4}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a2cd235b04db3ebbeb472b269aaad1de4}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!drawWiresOn@{drawWiresOn}}
+\index{drawWiresOn@{drawWiresOn}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{drawWiresOn()}{drawWiresOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::draw\+Wires\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw cylinder\textquotesingle{}s wires on window. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_afe9251bb8645e310d629da6b8297d5b9}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab580f79e7a029ba3f4a311f47b4b8ca3}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab580f79e7a029ba3f4a311f47b4b8ca3}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!getBottomRadius@{getBottomRadius}}
+\index{getBottomRadius@{getBottomRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{getBottomRadius()}{getBottomRadius()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::get\+Bottom\+Radius (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the radius of the cylinder 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad7f94a58831702869d32981094cbfd3a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad7f94a58831702869d32981094cbfd3a}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::get\+Height (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the Height 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a5f89efbd57082ec6f9bbc7e5df7fe66c}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a5f89efbd57082ec6f9bbc7e5df7fe66c}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!getTopRadius@{getTopRadius}}
+\index{getTopRadius@{getTopRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{getTopRadius()}{getTopRadius()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::get\+Top\+Radius (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the radius of the cylinder 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a4d1143a79facd0bddf256d496c5a8b13}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a4d1143a79facd0bddf256d496c5a8b13}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A cylinder is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a40af53bdc9db6cbf27df694fc620d595}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a40af53bdc9db6cbf27df694fc620d595}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!setBottomRadius@{setBottomRadius}}
+\index{setBottomRadius@{setBottomRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setBottomRadius()}{setBottomRadius()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::set\+Bottom\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})}
+
+
+
+set radius 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a8eb6f1d62cfc92e005735e5cf4e9013e}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a8eb6f1d62cfc92e005735e5cf4e9013e}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!setHeight@{setHeight}}
+\index{setHeight@{setHeight}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setHeight()}{setHeight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::set\+Height (\begin{DoxyParamCaption}\item[{float}]{height }\end{DoxyParamCaption})}
+
+
+
+the Height 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a06222e0f3556b0ac727f38672e069618}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a06222e0f3556b0ac727f38672e069618}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!setTopRadius@{setTopRadius}}
+\index{setTopRadius@{setTopRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{setTopRadius()}{setTopRadius()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder}{Cylinder}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::set\+Top\+Radius (\begin{DoxyParamCaption}\item[{float}]{radius }\end{DoxyParamCaption})}
+
+
+
+set radius 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab423fa42166d896d1eee69dd69a614ab}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ab423fa42166d896d1eee69dd69a614ab}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!\_bottomRadius@{\_bottomRadius}}
+\index{\_bottomRadius@{\_bottomRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{\_bottomRadius}{\_bottomRadius}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::\+\_\+bottom\+Radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Radius of the cylinder. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad2bd519bde3fb06212ec5d5c715e9fbc}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_ad2bd519bde3fb06212ec5d5c715e9fbc}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!\_height@{\_height}}
+\index{\_height@{\_height}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{\_height}{\_height}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::\+\_\+height\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+height of the cylinder 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a30f2e663c3d309a99833dd56836011a8}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cylinder_a30f2e663c3d309a99833dd56836011a8}} 
+\index{RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}!\_topRadius@{\_topRadius}}
+\index{\_topRadius@{\_topRadius}!RAY::Drawables::Drawables3D::Cylinder@{RAY::Drawables::Drawables3D::Cylinder}}
+\doxysubsubsection{\texorpdfstring{\_topRadius}{\_topRadius}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cylinder\+::\+\_\+top\+Radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Radius of the cylinder. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Cylinder_8hpp}{Cylinder.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Cylinder_8cpp}{Cylinder.\+cpp}}\end{DoxyCompactItemize}

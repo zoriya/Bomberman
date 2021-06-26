@@ -1,0 +1,7 @@
+<map id="RAY::Drawables::Drawables2D::Point" name="RAY::Drawables::Drawables2D::Point">
+<area shape="rect" id="node1" title="Point in a two&#45;dimensionnal space." alt="" coords="179,609,385,789"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable2D.html" title="Abstraction of any two&#45;dimensionnal drawable." alt="" coords="173,292,391,560"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="5,71,201,163"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Vector2.html" title="A Two&#45;dimensionnal Vector data type." alt="" coords="225,27,339,207"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="363,5,476,229"/>
+</map>

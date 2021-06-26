@@ -1,0 +1,243 @@
+\hypertarget{classRAY_1_1Audio_1_1Music}{}\doxysection{R\+AY\+::Audio\+::Music Class Reference}
+\label{classRAY_1_1Audio_1_1Music}\index{RAY::Audio::Music@{RAY::Audio::Music}}
+
+
+A manager for music stream.  
+
+
+
+
+{\ttfamily \#include $<$Music.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Audio\+::Music\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classRAY_1_1Audio_1_1Music__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Audio\+::Music\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=334pt]{classRAY_1_1Audio_1_1Music__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music_ac01ef2ca9babc8dcf5ad3e25cf5dca2e}{Music}} (const std\+::string \&path, bool lonely=false)
+\begin{DoxyCompactList}\small\item\em Load \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} stream from file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music_ab97654a7edbb3ec1841f99dcc8d3b05a}{$\sim$\+Music}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music_aa786dc2eaf448cee215ff779dd67dd9a}{Music}} (const \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \&\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}})=default
+\begin{DoxyCompactList}\small\item\em A copy constructor constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a63431ac0f8b4e6e102df1b1adf3497e9}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \&\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}})=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} is assignable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a5ccc3974eea22af6b63d153cefe13bf1}{is\+Playing}} (void) override
+\begin{DoxyCompactList}\small\item\em Check if \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} is playing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a5d764101a1d2671b4f23f4e94053efcf}{play}} (void) override
+\begin{DoxyCompactList}\small\item\em Start \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a0347213bdcfd6d276a8b89aefc36b64b}{stop}} (void) override
+\begin{DoxyCompactList}\small\item\em Stop \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} playing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a3c55da91f34e76b13e0b9a4328b3b710}{pause}} (void) override
+\begin{DoxyCompactList}\small\item\em Pause \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} playing. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a9ea16dbecab774d6923d4383f7aa3549}{resume}} (void) override
+\begin{DoxyCompactList}\small\item\em Resume playing paused \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_aeb62dadcee0f9b180f612330ce6ce666}{set\+Volume}} (float volume) override
+\begin{DoxyCompactList}\small\item\em Set volume for \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} (1.\+0 is max level) \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a46a855c4b1c384094751f0703ba29b58}{set\+Pitch}} (float pitch) override
+\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_ae611f0273436daca57764b33d66fa065}{update\+Music\+Stream}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} $>$ \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a6b5edb93cdf42fee41d07693a21e70c5}{\+\_\+music}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} $>$ \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a8fd6660f1106b6bde2da041281dbd44f}{\+\_\+musics\+Cache}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A manager for music stream. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_ac01ef2ca9babc8dcf5ad3e25cf5dca2e}\label{classRAY_1_1Audio_1_1Music_ac01ef2ca9babc8dcf5ad3e25cf5dca2e}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!Music@{Music}}
+\index{Music@{Music}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{Music()}{Music()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Audio\+::\+Music\+::\+Music (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Load \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} stream from file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lonely} & should be set to true if the entity\textquotesingle{}s loaded data must be independant from others \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_ab97654a7edbb3ec1841f99dcc8d3b05a}\label{classRAY_1_1Audio_1_1Music_ab97654a7edbb3ec1841f99dcc8d3b05a}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!````~Music@{$\sim$Music}}
+\index{````~Music@{$\sim$Music}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{$\sim$Music()}{~Music()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Audio\+::\+Music\+::$\sim$\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_aa786dc2eaf448cee215ff779dd67dd9a}\label{classRAY_1_1Audio_1_1Music_aa786dc2eaf448cee215ff779dd67dd9a}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!Music@{Music}}
+\index{Music@{Music}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{Music()}{Music()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Audio\+::\+Music\+::\+Music (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \&}]{Music }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A copy constructor constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a5ccc3974eea22af6b63d153cefe13bf1}\label{classRAY_1_1Audio_1_1Music_a5ccc3974eea22af6b63d153cefe13bf1}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Audio\+::\+Music\+::is\+Playing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Check if \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} is playing. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a646994b4477ca83939dbc2240ab9d2fe}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a63431ac0f8b4e6e102df1b1adf3497e9}\label{classRAY_1_1Audio_1_1Music_a63431ac0f8b4e6e102df1b1adf3497e9}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}\& R\+A\+Y\+::\+Audio\+::\+Music\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} \&}]{Music }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a3c55da91f34e76b13e0b9a4328b3b710}\label{classRAY_1_1Audio_1_1Music_a3c55da91f34e76b13e0b9a4328b3b710}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!pause@{pause}}
+\index{pause@{pause}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::pause (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Pause \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} playing. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a64eead3083d58c84f32d9f44030c5449}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a5d764101a1d2671b4f23f4e94053efcf}\label{classRAY_1_1Audio_1_1Music_a5d764101a1d2671b4f23f4e94053efcf}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!play@{play}}
+\index{play@{play}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::play (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Start \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_aa613d07f901d91944a626dfb3bfafdbd}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a9ea16dbecab774d6923d4383f7aa3549}\label{classRAY_1_1Audio_1_1Music_a9ea16dbecab774d6923d4383f7aa3549}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!resume@{resume}}
+\index{resume@{resume}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::resume (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Resume playing paused \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a763eaabbbc35b534e5cdabc0d52f21d8}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a46a855c4b1c384094751f0703ba29b58}\label{classRAY_1_1Audio_1_1Music_a46a855c4b1c384094751f0703ba29b58}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!setPitch@{setPitch}}
+\index{setPitch@{setPitch}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{setPitch()}{setPitch()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{pitch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a39d97be467eb0a7ae8f9ec7561674bd5}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_aeb62dadcee0f9b180f612330ce6ce666}\label{classRAY_1_1Audio_1_1Music_aeb62dadcee0f9b180f612330ce6ce666}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Set volume for \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} (1.\+0 is max level) 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a621c3e5a5fac70734350a605cba8922c}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a0347213bdcfd6d276a8b89aefc36b64b}\label{classRAY_1_1Audio_1_1Music_a0347213bdcfd6d276a8b89aefc36b64b}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!stop@{stop}}
+\index{stop@{stop}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Stop \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} playing. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_ad3a22a8539e33e68a241470b78cc3d96}{R\+A\+Y\+::\+Audio\+::\+I\+Audio}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_ae611f0273436daca57764b33d66fa065}\label{classRAY_1_1Audio_1_1Music_ae611f0273436daca57764b33d66fa065}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!updateMusicStream@{updateMusicStream}}
+\index{updateMusicStream@{updateMusicStream}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{updateMusicStream()}{updateMusicStream()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \& R\+A\+Y\+::\+Audio\+::\+Music\+::update\+Music\+Stream (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a6b5edb93cdf42fee41d07693a21e70c5}\label{classRAY_1_1Audio_1_1Music_a6b5edb93cdf42fee41d07693a21e70c5}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!\_music@{\_music}}
+\index{\_music@{\_music}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{\_music}{\_music}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}}$>$ R\+A\+Y\+::\+Audio\+::\+Music\+::\+\_\+music\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1Music_a8fd6660f1106b6bde2da041281dbd44f}\label{classRAY_1_1Audio_1_1Music_a8fd6660f1106b6bde2da041281dbd44f}} 
+\index{RAY::Audio::Music@{RAY::Audio::Music}!\_musicsCache@{\_musicsCache}}
+\index{\_musicsCache@{\_musicsCache}!RAY::Audio::Music@{RAY::Audio::Music}}
+\doxysubsubsection{\texorpdfstring{\_musicsCache}{\_musicsCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{Music}} $>$ R\+A\+Y\+::\+Audio\+::\+Music\+::\+\_\+musics\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Audio/\mbox{\hyperlink{Music_8hpp}{Music.\+hpp}}\item 
+lib/\+Ray/sources/\+Audio/\mbox{\hyperlink{Music_8cpp}{Music.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="WAL::System&lt; Dependencies &gt;" name="WAL::System&lt; Dependencies &gt;">
+<area shape="rect" id="node1" title="A base system of WAL." alt="" coords="33,351,263,575"/>
+<area shape="rect" id="node2" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,86,131,207"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,5,301,288"/>
+</map>

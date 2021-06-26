@@ -1,0 +1,65 @@
+A bot in this bomberman is using a lua script as way to choose what to do So you can make your own with some helper functions given from C++\hypertarget{md_Bot_autotoc_md1}{}\doxysection{Update function}\label{md_Bot_autotoc_md1}
+Each frame, the game will call the \char`\"{}\+Update\char`\"{} function in the script. This is the same lua state as the last call so this means you can set global variables to keep data between frames
+
+Update function should take no arguments.\hypertarget{md_Bot_autotoc_md2}{}\doxysection{Map Blocks}\label{md_Bot_autotoc_md2}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{nothing = 0}
+\DoxyCodeLine{breakable = 1}
+\DoxyCodeLine{hole = 2}
+\DoxyCodeLine{bumper = 4}
+\DoxyCodeLine{unbreakable = 7}
+\DoxyCodeLine{bomb = 10}
+\end{DoxyCode}
+\hypertarget{md_Bot_autotoc_md3}{}\doxysection{Registered functions}\label{md_Bot_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/ getMap returns a table of the blocks of the map}
+\DoxyCodeLine{-\/-\/ From 1 to 17 \{\{0, 1, 2 ..\}, ..\}}
+\DoxyCodeLine{function getMap();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getDanger returns a table of the danger zone on the map}
+\DoxyCodeLine{-\/-\/ From 1 to 17 \{\{0, 1, 2 ..\}, ..\}}
+\DoxyCodeLine{-\/-\/ value is number of seconds before explosion}
+\DoxyCodeLine{function getDanger();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getPath returns a table of nodes of a path from A to B \{\{x = X, y = Y\}, ...\}}
+\DoxyCodeLine{-\/-\/ @param x1 should be int}
+\DoxyCodeLine{-\/-\/ @param y1 should be int}
+\DoxyCodeLine{-\/-\/ @param x2 should be int}
+\DoxyCodeLine{-\/-\/ @param y2 should be int}
+\DoxyCodeLine{-\/-\/ @param throughBreakable bool path is going through breakables blocks or not}
+\DoxyCodeLine{function getPath(x1, y1, x2, y2, throughBreakable);}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getPlayer returns player pos as \{x = xPlayer, y = yPlayer\}}
+\DoxyCodeLine{function getPlayer();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getPlayerRound  returns player pos with rounded value \{x = xPlayer, y = yPlayer\}}
+\DoxyCodeLine{function getPlayerRound();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getDangerLevel returns danger level at [xpos, ypos]}
+\DoxyCodeLine{function getDangerLevel(xpos, ypos);}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getDangerLevelPlayer get danger level on the position of the player}
+\DoxyCodeLine{function getDangerLevelPlayer();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getBlockType returns block type at [xpos, ypos]}
+\DoxyCodeLine{function getBlockType(xpos, ypos);}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getClosestSafeSpace returns the block next to player where the player should go to to the closest safe space}
+\DoxyCodeLine{-\/-\/ returns player pos if no path is found}
+\DoxyCodeLine{function getClosestSafeSpace();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ canPutBombSafe returns true if player can put a bomb and find a path to safe space if bomb is put}
+\DoxyCodeLine{function canPutBombSafe();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getRadius returns the explosion radius of the current player}
+\DoxyCodeLine{function getRadius();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getEnemies returns a table with enemies position \{\{x = X, y = Y\}, ...\}}
+\DoxyCodeLine{function getEnemies();}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ getEnemies returns a table with enemies position rounded \{\{x = X, y = Y\}, ...\}}
+\DoxyCodeLine{function getEnemiesRound();}
+\end{DoxyCode}
+ 

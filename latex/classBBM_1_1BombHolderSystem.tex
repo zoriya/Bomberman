@@ -1,0 +1,178 @@
+\hypertarget{classBBM_1_1BombHolderSystem}{}\doxysection{B\+BM\+::Bomb\+Holder\+System Class Reference}
+\label{classBBM_1_1BombHolderSystem}\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+
+
+The system that allow one to place bombs.  
+
+
+
+
+{\ttfamily \#include $<$Bomb\+Holder\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Bomb\+Holder\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BombHolderSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Bomb\+Holder\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BombHolderSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1BombHolderSystem_abe359dc5eca943f294097896d1f91880}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}} $>$ \&entity, std\+::chrono\+::nanoseconds dtime) override
+\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderSystem_adb3f9baeee70624ad3db80f5effb6f1b}{Bomb\+Holder\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderSystem_a2ab6fdc0af122f9b479ec39e4cda9409}{Bomb\+Holder\+System}} (const \mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A bomb holder system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderSystem_aee49340d6691177ab45e5a813dcbb561}{$\sim$\+Bomb\+Holder\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}} \& \mbox{\hyperlink{classBBM_1_1BombHolderSystem_a48848f3bfbb4335823e2a53c78c0b3ab}{operator=}} (const \mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A bomb holder system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BombHolderSystem_a6ab3eb62eb5b681f5655efa57b0b3530}{explosion\+Timer}} = 2s
+\begin{DoxyCompactList}\small\item\em The explosion time of new bombs. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1BombHolderSystem_aafe72ba32d3405f3ab8c294a6100c587}{\+\_\+spawn\+Bomb}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} position, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&holder)
+\begin{DoxyCompactList}\small\item\em Spawn a bomb at the specified position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1BombHolderSystem_a9453397262d3316042c67246992e83f4}{\+\_\+dispatch\+Explosion}} (const \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \&position, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal, int size, \mbox{\hyperlink{namespaceBBM_a0a8b3d5f5f14ee3b6115058c8275cc56}{Expansion\+Direction}} expansion\+Directions=Expansion\+Direction\+::\+D\+O\+WN$\vert$Expansion\+Direction\+::\+UP$\vert$Expansion\+Direction\+::\+F\+R\+O\+NT$\vert$Expansion\+Direction\+::\+B\+A\+CK$\vert$Expansion\+Direction\+::\+L\+E\+FT$\vert$Expansion\+Direction\+::\+R\+I\+G\+HT)
+\begin{DoxyCompactList}\small\item\em Spawn a bomb at the specified position. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1BombHolderSystem_a510e539829f58c806f4281f163488998}{\+\_\+bomb\+Explosion}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&bomb, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&)
+\begin{DoxyCompactList}\small\item\em The method triggered when the bomb explode. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1BombHolderSystem_a9b4c0d78a28205a3597facb0f9d994ba}{\+\_\+bomb\+Collide}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&wall, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{B\+B\+M\+::\+Collision\+Component\+::\+Collided\+Axis}} collided\+Axis)
+\begin{DoxyCompactList}\small\item\em The method called when a player collide with a bomb. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The system that allow one to place bombs. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_adb3f9baeee70624ad3db80f5effb6f1b}\label{classBBM_1_1BombHolderSystem_adb3f9baeee70624ad3db80f5effb6f1b}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!BombHolderSystem@{BombHolderSystem}}
+\index{BombHolderSystem@{BombHolderSystem}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{BombHolderSystem()}{BombHolderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+System\+::\+Bomb\+Holder\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a2ab6fdc0af122f9b479ec39e4cda9409}\label{classBBM_1_1BombHolderSystem_a2ab6fdc0af122f9b479ec39e4cda9409}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!BombHolderSystem@{BombHolderSystem}}
+\index{BombHolderSystem@{BombHolderSystem}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{BombHolderSystem()}{BombHolderSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+System\+::\+Bomb\+Holder\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A bomb holder system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_aee49340d6691177ab45e5a813dcbb561}\label{classBBM_1_1BombHolderSystem_aee49340d6691177ab45e5a813dcbb561}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!````~BombHolderSystem@{$\sim$BombHolderSystem}}
+\index{````~BombHolderSystem@{$\sim$BombHolderSystem}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$BombHolderSystem()}{~BombHolderSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Holder\+System\+::$\sim$\+Bomb\+Holder\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a9b4c0d78a28205a3597facb0f9d994ba}\label{classBBM_1_1BombHolderSystem_a9b4c0d78a28205a3597facb0f9d994ba}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!\_bombCollide@{\_bombCollide}}
+\index{\_bombCollide@{\_bombCollide}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{\_bombCollide()}{\_bombCollide()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Bomb\+Holder\+System\+::\+\_\+bomb\+Collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{wall,  }\item[{\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{B\+B\+M\+::\+Collision\+Component\+::\+Collided\+Axis}}}]{collided\+Axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The method called when a player collide with a bomb. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a510e539829f58c806f4281f163488998}\label{classBBM_1_1BombHolderSystem_a510e539829f58c806f4281f163488998}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!\_bombExplosion@{\_bombExplosion}}
+\index{\_bombExplosion@{\_bombExplosion}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{\_bombExplosion()}{\_bombExplosion()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Bomb\+Holder\+System\+::\+\_\+bomb\+Explosion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{bomb,  }\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The method triggered when the bomb explode. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a9453397262d3316042c67246992e83f4}\label{classBBM_1_1BombHolderSystem_a9453397262d3316042c67246992e83f4}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!\_dispatchExplosion@{\_dispatchExplosion}}
+\index{\_dispatchExplosion@{\_dispatchExplosion}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{\_dispatchExplosion()}{\_dispatchExplosion()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Bomb\+Holder\+System\+::\+\_\+dispatch\+Explosion (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \&}]{position,  }\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal,  }\item[{int}]{size,  }\item[{\mbox{\hyperlink{namespaceBBM_a0a8b3d5f5f14ee3b6115058c8275cc56}{Expansion\+Direction}}}]{expansion\+Directions = {\ttfamily ExpansionDirection\+:\+:DOWN~$\vert$~ExpansionDirection\+:\+:UP~$\vert$~ExpansionDirection\+:\+:FRONT~$\vert$~ExpansionDirection\+:\+:BACK~$\vert$~ExpansionDirection\+:\+:LEFT~$\vert$~ExpansionDirection\+:\+:RIGHT} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Spawn a bomb at the specified position. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_aafe72ba32d3405f3ab8c294a6100c587}\label{classBBM_1_1BombHolderSystem_aafe72ba32d3405f3ab8c294a6100c587}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!\_spawnBomb@{\_spawnBomb}}
+\index{\_spawnBomb@{\_spawnBomb}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{\_spawnBomb()}{\_spawnBomb()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Bomb\+Holder\+System\+::\+\_\+spawn\+Bomb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{position,  }\item[{\mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} \&}]{holder }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Spawn a bomb at the specified position. 
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_abe359dc5eca943f294097896d1f91880}\label{classBBM_1_1BombHolderSystem_abe359dc5eca943f294097896d1f91880}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Bomb\+Holder\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}} $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a48848f3bfbb4335823e2a53c78c0b3ab}\label{classBBM_1_1BombHolderSystem_a48848f3bfbb4335823e2a53c78c0b3ab}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}}\& B\+B\+M\+::\+Bomb\+Holder\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombHolderSystem}{Bomb\+Holder\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A bomb holder system is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombHolderSystem_a6ab3eb62eb5b681f5655efa57b0b3530}\label{classBBM_1_1BombHolderSystem_a6ab3eb62eb5b681f5655efa57b0b3530}} 
+\index{BBM::BombHolderSystem@{BBM::BombHolderSystem}!explosionTimer@{explosionTimer}}
+\index{explosionTimer@{explosionTimer}!BBM::BombHolderSystem@{BBM::BombHolderSystem}}
+\doxysubsubsection{\texorpdfstring{explosionTimer}{explosionTimer}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bomb\+Holder\+System\+::explosion\+Timer = 2s\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The explosion time of new bombs. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Bomb\+Holder/\mbox{\hyperlink{BombHolderSystem_8hpp}{Bomb\+Holder\+System.\+hpp}}\item 
+sources/\+System/\+Bomb\+Holder/\mbox{\hyperlink{BombHolderSystem_8cpp}{Bomb\+Holder\+System.\+cpp}}\end{DoxyCompactItemize}

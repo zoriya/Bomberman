@@ -1,0 +1,167 @@
+\hypertarget{classWAL_1_1Component}{}\doxysection{W\+AL\+::Component Class Reference}
+\label{classWAL_1_1Component}\index{WAL::Component@{WAL::Component}}
+
+
+Represent a single component of \mbox{\hyperlink{namespaceWAL}{W\+AL}}.  
+
+
+
+
+{\ttfamily \#include $<$Component.\+hpp$>$}
+
+
+
+Inheritance diagram for W\+AL\+::Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWAL_1_1Component__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+AL\+::Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classWAL_1_1Component__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{Component}} \& \mbox{\hyperlink{classWAL_1_1Component_a155fb97f22714a0f489af7442d7d3253}{operator=}} (const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classWAL_1_1Component_a3d8e13fdc53a63b0b1f8d15576f98cf8}{$\sim$\+Component}} ()=default
+\begin{DoxyCompactList}\small\item\em A virtual destructor. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classWAL_1_1Component}{Component}} $\ast$ \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&entity) const =0
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1Component_a4acae0960f4232caf8395b2465dde8cc}{on\+Start}} ()
+\begin{DoxyCompactList}\small\item\em The entity or this component has just been enabled. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1Component_a0f3f4fe54fd06de1e685835977fef050}{on\+Stop}} ()
+\begin{DoxyCompactList}\small\item\em The entity or this component has just been disable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component_a3a3306df3733bfa77c70d789b650984b}{Component}} (const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Component_a3841f7c8cc4eeb9d1e97b3182976d89f}{\+\_\+entity}}
+\begin{DoxyCompactList}\small\item\em The entity that own this component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represent a single component of \mbox{\hyperlink{namespaceWAL}{W\+AL}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}\label{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}} 
+\index{WAL::Component@{WAL::Component}!Component@{Component}}
+\index{Component@{Component}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Component\+::\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classWAL_1_1Component_a3a3306df3733bfa77c70d789b650984b}\label{classWAL_1_1Component_a3a3306df3733bfa77c70d789b650984b}} 
+\index{WAL::Component@{WAL::Component}!Component@{Component}}
+\index{Component@{Component}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{Component()}{Component()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Component\+::\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classWAL_1_1Component_a3d8e13fdc53a63b0b1f8d15576f98cf8}\label{classWAL_1_1Component_a3d8e13fdc53a63b0b1f8d15576f98cf8}} 
+\index{WAL::Component@{WAL::Component}!````~Component@{$\sim$Component}}
+\index{````~Component@{$\sim$Component}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{$\sim$Component()}{~Component()}}
+{\footnotesize\ttfamily virtual W\+A\+L\+::\+Component\+::$\sim$\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+A virtual destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}\label{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}} 
+\index{WAL::Component@{WAL::Component}!clone@{clone}}
+\index{clone@{clone}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classWAL_1_1Component}{Component}}$\ast$ W\+A\+L\+::\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classBBM_1_1SoundComponent_a04a856c645ec50bb91841abbf13fdf92}{B\+B\+M\+::\+Sound\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent_a1d5a3a725a11eb5b0303ef9bf30a2317}{B\+B\+M\+::\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a0a2d90e754f54f2355cd7232c8518328}{B\+B\+M\+::\+Drawable2\+D\+Component}}, \mbox{\hyperlink{classBBM_1_1GamepadComponent_a9236f1517e38c0941e87b174831e4600}{B\+B\+M\+::\+Gamepad\+Component}}, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a3100897500bc8640dc541e7ca8fe7e53}{B\+B\+M\+::\+Collision\+Component}}, \mbox{\hyperlink{classBBM_1_1MusicComponent_a33d95a88477b5c537e7822be5f0a5602}{B\+B\+M\+::\+Music\+Component}}, \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a981130e4ff1e3e3c732447a498482233}{B\+B\+M\+::\+Keyboard\+Component}}, \mbox{\hyperlink{classBBM_1_1HealthComponent_a7b306deb84464d098401a90d329d0e9b}{B\+B\+M\+::\+Health\+Component}}, \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a3ad8de6942cae3d91ac0f598cf170495}{B\+B\+M\+::\+Alpha\+Var\+Shader\+Component}}, \mbox{\hyperlink{classBBM_1_1TagComponent_acbc817c750991767445056dfe7f541e5}{B\+B\+M\+::\+Tag\+Component$<$ name $>$}}, \mbox{\hyperlink{classBBM_1_1Drawable3DComponent_a23b678fa1e6924cf9c9a002f1f6c11de}{B\+B\+M\+::\+Drawable3\+D\+Component}}, \mbox{\hyperlink{classBBM_1_1ShaderComponent_a36c2d21cae2834f505aad8801fcf01ae}{B\+B\+M\+::\+Shader\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent_ab207e58ae1fa6a1f207e492aba5afdf1}{B\+B\+M\+::\+Bomb\+Holder\+Component}}, \mbox{\hyperlink{classBBM_1_1ButtonComponent_a48c2bfff77628639ebd6f8143261e875}{B\+B\+M\+::\+Button\+Component$<$ T $>$}}, \mbox{\hyperlink{classBBM_1_1LobbyComponent_a5f2bdd2ceadd856a92222390af7909dd}{B\+B\+M\+::\+Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1ResumeLobbyComponent_af7cff872ff391cbfce6c173eb478eb4c}{B\+B\+M\+::\+Resume\+Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a2e9d74facffa09c96a68c37f074acf75}{B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component}}, \mbox{\hyperlink{classBBM_1_1IAControllableComponent_add7ac0d860ba9381f3d7909ffd7c88b7}{B\+B\+M\+::\+I\+A\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1MovableComponent_a6582f9ee0da90d63f7f0256e7b4c1ac0}{B\+B\+M\+::\+Movable\+Component}}, \mbox{\hyperlink{classBBM_1_1WhiteShaderComponent_afc47dd2a38caf1ddbbcd26b8e8a3b92c}{B\+B\+M\+::\+White\+Shader\+Component}}, \mbox{\hyperlink{classBBM_1_1AnimationsComponent_ab11abcdf13c666cffab59ef36ad303a4}{B\+B\+M\+::\+Animations\+Component}}, \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a0db813914cd6b24de32d4d73140186bc}{B\+B\+M\+::\+Bumper\+Timer\+Component}}, \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_ae8f930885531b3e9928e14662f045f80}{B\+B\+M\+::\+Intro\+Animation\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent_ad2cd452275fa92914a38e36f597b50d9}{B\+B\+M\+::\+Position\+Component}}, \mbox{\hyperlink{classBBM_1_1BasicBombComponent_ae39c8b28a5c65a4185059687bea3c559}{B\+B\+M\+::\+Basic\+Bomb\+Component}}, \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a19d88987a7c79900611250e0fd8a439f}{B\+B\+M\+::\+Player\+Bonus\+Component}}, \mbox{\hyperlink{classBBM_1_1TimerComponent_a002a2a069ef2cffda16d0a13e2e3c4a8}{B\+B\+M\+::\+Timer\+Component}}, \mbox{\hyperlink{classBBM_1_1StatComponent_a79955405b03746cc03551e64c1b8a1f4}{B\+B\+M\+::\+Stat\+Component}}, \mbox{\hyperlink{classBBM_1_1LevitateComponent_aae1d48334f2bd23c45cb5744a7c900cb}{B\+B\+M\+::\+Levitate\+Component}}, \mbox{\hyperlink{classBBM_1_1CameraComponent_aecd25f380910341e6388d1f75b5816e3}{B\+B\+M\+::\+Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1ColorComponent_aa5d9a64a42cea8190a95c6b0fef76fd1}{B\+B\+M\+::\+Color\+Component}}, \mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a8b4488a60c3c32f5cece4251acb46b35}{B\+B\+M\+::\+Grid\+Centered\+Component}}, \mbox{\hyperlink{classBBM_1_1SpeedComponent_a92e09a11cebffa38256771d7e677c672}{B\+B\+M\+::\+Speed\+Component}}, \mbox{\hyperlink{classBBM_1_1GravityComponent_a7f42cc506d3aabb240f027d4c0da319c}{B\+B\+M\+::\+Gravity\+Component}}, \mbox{\hyperlink{classBBM_1_1ScoreComponent_a883f96cc56d9aa629c70d0edb48e7e08}{B\+B\+M\+::\+Score\+Component}}, and \mbox{\hyperlink{classBBM_1_1AnimatorComponent_a6fe4e92fd1fd34638028ef490b0148ca}{B\+B\+M\+::\+Animator\+Component}}.
+
+\mbox{\Hypertarget{classWAL_1_1Component_a4acae0960f4232caf8395b2465dde8cc}\label{classWAL_1_1Component_a4acae0960f4232caf8395b2465dde8cc}} 
+\index{WAL::Component@{WAL::Component}!onStart@{onStart}}
+\index{onStart@{onStart}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{onStart()}{onStart()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Component\+::on\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The entity or this component has just been enabled. 
+
+
+
+Reimplemented in \mbox{\hyperlink{classBBM_1_1ShaderComponentModel_aea74da9b0564d071fae2bdc3b77a0ac1}{B\+B\+M\+::\+Shader\+Component\+Model}}, \mbox{\hyperlink{classBBM_1_1GamepadComponent_a552c5d4b1601c8892817321434fa99cd}{B\+B\+M\+::\+Gamepad\+Component}}, and \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a7f308a1f89b4d2141400f313b64b231d}{B\+B\+M\+::\+Keyboard\+Component}}.
+
+\mbox{\Hypertarget{classWAL_1_1Component_a0f3f4fe54fd06de1e685835977fef050}\label{classWAL_1_1Component_a0f3f4fe54fd06de1e685835977fef050}} 
+\index{WAL::Component@{WAL::Component}!onStop@{onStop}}
+\index{onStop@{onStop}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{onStop()}{onStop()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Component\+::on\+Stop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+The entity or this component has just been disable. 
+
+\mbox{\Hypertarget{classWAL_1_1Component_a155fb97f22714a0f489af7442d7d3253}\label{classWAL_1_1Component_a155fb97f22714a0f489af7442d7d3253}} 
+\index{WAL::Component@{WAL::Component}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{Component}}\& W\+A\+L\+::\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1Component_a3841f7c8cc4eeb9d1e97b3182976d89f}\label{classWAL_1_1Component_a3841f7c8cc4eeb9d1e97b3182976d89f}} 
+\index{WAL::Component@{WAL::Component}!\_entity@{\_entity}}
+\index{\_entity@{\_entity}!WAL::Component@{WAL::Component}}
+\doxysubsubsection{\texorpdfstring{\_entity}{\_entity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{Entity}}\& W\+A\+L\+::\+Component\+::\+\_\+entity\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The entity that own this component. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+Component/\mbox{\hyperlink{Component_8hpp}{Component.\+hpp}}\item 
+lib/wal/sources/\+Component/\mbox{\hyperlink{Component_8cpp}{Component.\+cpp}}\end{DoxyCompactItemize}

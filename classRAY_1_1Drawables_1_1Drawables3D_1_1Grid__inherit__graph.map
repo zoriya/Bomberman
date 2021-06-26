@@ -1,0 +1,5 @@
+<map id="RAY::Drawables::Drawables3D::Grid" name="RAY::Drawables::Drawables3D::Grid">
+<area shape="rect" id="node1" title="a grid (centered at (0, 0, 0))" alt="" coords="11,447,218,700"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable3D.html" title="Abstraction of any three&#45;dimensionnal drawable." alt="" coords="5,145,224,399"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="17,5,213,97"/>
+</map>

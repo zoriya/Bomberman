@@ -1,0 +1,5 @@
+<map id="BBM::LobbySystem" name="BBM::LobbySystem">
+<area shape="rect" id="node1" title="A system to handle Health entities." alt="" coords="46,461,205,773"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,175,245,413"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="63,5,188,127"/>
+</map>

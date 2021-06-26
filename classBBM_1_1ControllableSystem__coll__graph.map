@@ -1,0 +1,6 @@
+<map id="BBM::ControllableSystem" name="BBM::ControllableSystem">
+<area shape="rect" id="node1" title="A system to handle Controllable entities." alt="" coords="54,639,242,775"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="23,351,273,589"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,86,131,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,5,301,288"/>
+</map>

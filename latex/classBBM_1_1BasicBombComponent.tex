@@ -1,0 +1,153 @@
+\hypertarget{classBBM_1_1BasicBombComponent}{}\doxysection{B\+BM\+::Basic\+Bomb\+Component Class Reference}
+\label{classBBM_1_1BasicBombComponent}\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+
+
+{\ttfamily \#include $<$Basic\+Bomb\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Basic\+Bomb\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{classBBM_1_1BasicBombComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Basic\+Bomb\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BasicBombComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1BasicBombComponent_ae39c8b28a5c65a4185059687bea3c559}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BasicBombComponent_adf5ec54c421cdd74bd88914b10244fbd}{Basic\+Bomb\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, int damage\+Hit, int radius, std\+::vector$<$ unsigned $>$ ignored)
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BasicBombComponent_ad17b462316ed757e9ebc4afd3403f813}{Basic\+Bomb\+Component}} (const \mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BasicBombComponent_aa91cde74165695eaad8511838d5fad39}{$\sim$\+Basic\+Bomb\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}} \& \mbox{\hyperlink{classBBM_1_1BasicBombComponent_aeac32099264bb21fac465ad98e6b080f}{operator=}} (const \mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classBBM_1_1BasicBombComponent_ab81a98a12ad372cd59b228b57658af58}{explosion\+Radius}} = 3
+\begin{DoxyCompactList}\small\item\em The radius of the explosion. \end{DoxyCompactList}\item 
+const int \mbox{\hyperlink{classBBM_1_1BasicBombComponent_ab798939211662a8c94448472fadef35b}{damage}} = 1
+\begin{DoxyCompactList}\small\item\em The damage made by the explosion on an entity. \end{DoxyCompactList}\item 
+std\+::vector$<$ unsigned $>$ \mbox{\hyperlink{classBBM_1_1BasicBombComponent_a8ffc99959c28afed516f4099329c17ae}{ignored\+Entities}}
+\begin{DoxyCompactList}\small\item\em The list of I\+Ds of ignored entities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_adf5ec54c421cdd74bd88914b10244fbd}\label{classBBM_1_1BasicBombComponent_adf5ec54c421cdd74bd88914b10244fbd}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!BasicBombComponent@{BasicBombComponent}}
+\index{BasicBombComponent@{BasicBombComponent}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{BasicBombComponent()}{BasicBombComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Basic\+Bomb\+Component\+::\+Basic\+Bomb\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{int}]{damage\+Hit,  }\item[{int}]{radius,  }\item[{std\+::vector$<$ unsigned $>$}]{ignored }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_ad17b462316ed757e9ebc4afd3403f813}\label{classBBM_1_1BasicBombComponent_ad17b462316ed757e9ebc4afd3403f813}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!BasicBombComponent@{BasicBombComponent}}
+\index{BasicBombComponent@{BasicBombComponent}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{BasicBombComponent()}{BasicBombComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Basic\+Bomb\+Component\+::\+Basic\+Bomb\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_aa91cde74165695eaad8511838d5fad39}\label{classBBM_1_1BasicBombComponent_aa91cde74165695eaad8511838d5fad39}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!````~BasicBombComponent@{$\sim$BasicBombComponent}}
+\index{````~BasicBombComponent@{$\sim$BasicBombComponent}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$BasicBombComponent()}{~BasicBombComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Basic\+Bomb\+Component\+::$\sim$\+Basic\+Bomb\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_ae39c8b28a5c65a4185059687bea3c559}\label{classBBM_1_1BasicBombComponent_ae39c8b28a5c65a4185059687bea3c559}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Basic\+Bomb\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_aeac32099264bb21fac465ad98e6b080f}\label{classBBM_1_1BasicBombComponent_aeac32099264bb21fac465ad98e6b080f}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}}\& B\+B\+M\+::\+Basic\+Bomb\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BasicBombComponent}{Basic\+Bomb\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_ab798939211662a8c94448472fadef35b}\label{classBBM_1_1BasicBombComponent_ab798939211662a8c94448472fadef35b}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!damage@{damage}}
+\index{damage@{damage}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{damage}{damage}}
+{\footnotesize\ttfamily const int B\+B\+M\+::\+Basic\+Bomb\+Component\+::damage = 1}
+
+
+
+The damage made by the explosion on an entity. 
+
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_ab81a98a12ad372cd59b228b57658af58}\label{classBBM_1_1BasicBombComponent_ab81a98a12ad372cd59b228b57658af58}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!explosionRadius@{explosionRadius}}
+\index{explosionRadius@{explosionRadius}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{explosionRadius}{explosionRadius}}
+{\footnotesize\ttfamily const int B\+B\+M\+::\+Basic\+Bomb\+Component\+::explosion\+Radius = 3}
+
+
+
+The radius of the explosion. 
+
+\mbox{\Hypertarget{classBBM_1_1BasicBombComponent_a8ffc99959c28afed516f4099329c17ae}\label{classBBM_1_1BasicBombComponent_a8ffc99959c28afed516f4099329c17ae}} 
+\index{BBM::BasicBombComponent@{BBM::BasicBombComponent}!ignoredEntities@{ignoredEntities}}
+\index{ignoredEntities@{ignoredEntities}!BBM::BasicBombComponent@{BBM::BasicBombComponent}}
+\doxysubsubsection{\texorpdfstring{ignoredEntities}{ignoredEntities}}
+{\footnotesize\ttfamily std\+::vector$<$unsigned$>$ B\+B\+M\+::\+Basic\+Bomb\+Component\+::ignored\+Entities}
+
+
+
+The list of I\+Ds of ignored entities. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Bomb/\mbox{\hyperlink{BasicBombComponent_8hpp}{Basic\+Bomb\+Component.\+hpp}}\item 
+sources/\+Component/\+Bomb/\mbox{\hyperlink{BasicBombComponent_8cpp}{Basic\+Bomb\+Component.\+cpp}}\end{DoxyCompactItemize}

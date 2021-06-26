@@ -1,0 +1,180 @@
+\hypertarget{classBBM_1_1HealthComponent}{}\doxysection{B\+BM\+::Health\+Component Class Reference}
+\label{classBBM_1_1HealthComponent}\index{BBM::HealthComponent@{BBM::HealthComponent}}
+
+
+{\ttfamily \#include $<$Health\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Health\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=214pt]{classBBM_1_1HealthComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Health\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1HealthComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1HealthComponent_ab8ae4426222d4d531f8d12d29723fbe9}{add\+Health\+Point}} (unsigned int health\+Point)
+\begin{DoxyCompactList}\small\item\em add health to the entity \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1HealthComponent_ac7c0169337f0a000a7009aeb942a3805}{take\+Dmg}} (unsigned int damage)
+\begin{DoxyCompactList}\small\item\em reduce health \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1HealthComponent_a64d002dfb8b5ad39fb658684c93e576f}{get\+Health\+Point}} (void) const
+\begin{DoxyCompactList}\small\item\em return health point of the entity \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1HealthComponent_a7b306deb84464d098401a90d329d0e9b}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1HealthComponent_ade53c57050557a4b45503b0f9d83cec9}{Health\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, unsigned int health\+Point, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \&on\+Death\+Callback=\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$())
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1HealthComponent_a28763193826a1b83c9ba1920291a3313}{Health\+Component}} (const \mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Health component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1HealthComponent_a4953b0657d0bca94a1474f83ff57ee1f}{$\sim$\+Health\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}} \& \mbox{\hyperlink{classBBM_1_1HealthComponent_af4cb5fa2938b447afaffe0a09f86e8a7}{operator=}} (const \mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Health component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \mbox{\hyperlink{classBBM_1_1HealthComponent_ab6e6c483cf90f16a45cfa1dda3ed5e9e}{on\+Death}}
+\begin{DoxyCompactList}\small\item\em The callback invoked on this entity\textquotesingle{}s death. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1HealthComponent_a0dcb9db6a32f7dc6144a881c846aa3eb}{\+\_\+health\+Point}}
+\begin{DoxyCompactList}\small\item\em life of an entity \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_ade53c57050557a4b45503b0f9d83cec9}\label{classBBM_1_1HealthComponent_ade53c57050557a4b45503b0f9d83cec9}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!HealthComponent@{HealthComponent}}
+\index{HealthComponent@{HealthComponent}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{HealthComponent()}{HealthComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Health\+Component\+::\+Health\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{unsigned int}]{health\+Point,  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \&}]{on\+Death\+Callback = {\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}~\&,~\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}}~\&$>$()} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_a28763193826a1b83c9ba1920291a3313}\label{classBBM_1_1HealthComponent_a28763193826a1b83c9ba1920291a3313}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!HealthComponent@{HealthComponent}}
+\index{HealthComponent@{HealthComponent}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{HealthComponent()}{HealthComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Health\+Component\+::\+Health\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Health component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_a4953b0657d0bca94a1474f83ff57ee1f}\label{classBBM_1_1HealthComponent_a4953b0657d0bca94a1474f83ff57ee1f}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!````~HealthComponent@{$\sim$HealthComponent}}
+\index{````~HealthComponent@{$\sim$HealthComponent}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$HealthComponent()}{~HealthComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Health\+Component\+::$\sim$\+Health\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_ab8ae4426222d4d531f8d12d29723fbe9}\label{classBBM_1_1HealthComponent_ab8ae4426222d4d531f8d12d29723fbe9}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!addHealthPoint@{addHealthPoint}}
+\index{addHealthPoint@{addHealthPoint}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{addHealthPoint()}{addHealthPoint()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Health\+Component\+::add\+Health\+Point (\begin{DoxyParamCaption}\item[{unsigned int}]{health\+Point }\end{DoxyParamCaption})}
+
+
+
+add health to the entity 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_a7b306deb84464d098401a90d329d0e9b}\label{classBBM_1_1HealthComponent_a7b306deb84464d098401a90d329d0e9b}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Health\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_a64d002dfb8b5ad39fb658684c93e576f}\label{classBBM_1_1HealthComponent_a64d002dfb8b5ad39fb658684c93e576f}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!getHealthPoint@{getHealthPoint}}
+\index{getHealthPoint@{getHealthPoint}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{getHealthPoint()}{getHealthPoint()}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Health\+Component\+::get\+Health\+Point (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+return health point of the entity 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_af4cb5fa2938b447afaffe0a09f86e8a7}\label{classBBM_1_1HealthComponent_af4cb5fa2938b447afaffe0a09f86e8a7}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}}\& B\+B\+M\+::\+Health\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1HealthComponent}{Health\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Health component can\textquotesingle{}t be assigned. 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_ac7c0169337f0a000a7009aeb942a3805}\label{classBBM_1_1HealthComponent_ac7c0169337f0a000a7009aeb942a3805}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!takeDmg@{takeDmg}}
+\index{takeDmg@{takeDmg}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{takeDmg()}{takeDmg()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Health\+Component\+::take\+Dmg (\begin{DoxyParamCaption}\item[{unsigned int}]{damage }\end{DoxyParamCaption})}
+
+
+
+reduce health 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_a0dcb9db6a32f7dc6144a881c846aa3eb}\label{classBBM_1_1HealthComponent_a0dcb9db6a32f7dc6144a881c846aa3eb}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!\_healthPoint@{\_healthPoint}}
+\index{\_healthPoint@{\_healthPoint}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{\_healthPoint}{\_healthPoint}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Health\+Component\+::\+\_\+health\+Point\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+life of an entity 
+
+\mbox{\Hypertarget{classBBM_1_1HealthComponent_ab6e6c483cf90f16a45cfa1dda3ed5e9e}\label{classBBM_1_1HealthComponent_ab6e6c483cf90f16a45cfa1dda3ed5e9e}} 
+\index{BBM::HealthComponent@{BBM::HealthComponent}!onDeath@{onDeath}}
+\index{onDeath@{onDeath}!BBM::HealthComponent@{BBM::HealthComponent}}
+\doxysubsubsection{\texorpdfstring{onDeath}{onDeath}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&$>$ B\+B\+M\+::\+Health\+Component\+::on\+Death}
+
+
+
+The callback invoked on this entity\textquotesingle{}s death. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Health/\mbox{\hyperlink{HealthComponent_8hpp}{Health\+Component.\+hpp}}\item 
+sources/\+Component/\+Health/\mbox{\hyperlink{HealthComponent_8cpp}{Health\+Component.\+cpp}}\end{DoxyCompactItemize}

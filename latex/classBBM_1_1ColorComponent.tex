@@ -1,0 +1,149 @@
+\hypertarget{classBBM_1_1ColorComponent}{}\doxysection{B\+BM\+::Color\+Component Class Reference}
+\label{classBBM_1_1ColorComponent}\index{BBM::ColorComponent@{BBM::ColorComponent}}
+
+
+A basic color component.  
+
+
+
+
+{\ttfamily \#include $<$Color\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Color\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=207pt]{classBBM_1_1ColorComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Color\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ColorComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1ColorComponent_aa5d9a64a42cea8190a95c6b0fef76fd1}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ColorComponent_a7614a9b5a6a93ed73e676883ede6b7ab}{Color\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} component\+Color)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} at a certain color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ColorComponent_ad32f9a43ec14b5f68b3e313a39ee13ac}{Color\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} at a certain color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ColorComponent_a2674904b2d78b8967cd586625b652f96}{Color\+Component}} (const \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A color component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ColorComponent_aeb48c99c0f69951f8fdfc3af4bf3bf81}{$\sim$\+Color\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} \& \mbox{\hyperlink{classBBM_1_1ColorComponent_a8ec0159f56bd75384dd5cee5bc8c1c46}{operator=}} (const \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A color component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \mbox{\hyperlink{classBBM_1_1ColorComponent_a764f7574a8100411512ead247abce901}{color}}
+\begin{DoxyCompactList}\small\item\em Get the editable color of this entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A basic color component. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_a7614a9b5a6a93ed73e676883ede6b7ab}\label{classBBM_1_1ColorComponent_a7614a9b5a6a93ed73e676883ede6b7ab}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!ColorComponent@{ColorComponent}}
+\index{ColorComponent@{ColorComponent}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{ColorComponent()}{ColorComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Color\+Component\+::\+Color\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}}}]{component\+Color }\end{DoxyParamCaption})}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} at a certain color. 
+
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_ad32f9a43ec14b5f68b3e313a39ee13ac}\label{classBBM_1_1ColorComponent_ad32f9a43ec14b5f68b3e313a39ee13ac}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!ColorComponent@{ColorComponent}}
+\index{ColorComponent@{ColorComponent}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{ColorComponent()}{ColorComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Color\+Component\+::\+Color\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{unsigned char}]{r,  }\item[{unsigned char}]{g,  }\item[{unsigned char}]{b,  }\item[{unsigned char}]{a }\end{DoxyParamCaption})}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} at a certain color. 
+
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_a2674904b2d78b8967cd586625b652f96}\label{classBBM_1_1ColorComponent_a2674904b2d78b8967cd586625b652f96}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!ColorComponent@{ColorComponent}}
+\index{ColorComponent@{ColorComponent}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{ColorComponent()}{ColorComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Color\+Component\+::\+Color\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A color component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_aeb48c99c0f69951f8fdfc3af4bf3bf81}\label{classBBM_1_1ColorComponent_aeb48c99c0f69951f8fdfc3af4bf3bf81}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!````~ColorComponent@{$\sim$ColorComponent}}
+\index{````~ColorComponent@{$\sim$ColorComponent}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$ColorComponent()}{~ColorComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Color\+Component\+::$\sim$\+Color\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_aa5d9a64a42cea8190a95c6b0fef76fd1}\label{classBBM_1_1ColorComponent_aa5d9a64a42cea8190a95c6b0fef76fd1}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Color\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_a8ec0159f56bd75384dd5cee5bc8c1c46}\label{classBBM_1_1ColorComponent_a8ec0159f56bd75384dd5cee5bc8c1c46}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}}\& B\+B\+M\+::\+Color\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ColorComponent}{Color\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A color component is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1ColorComponent_a764f7574a8100411512ead247abce901}\label{classBBM_1_1ColorComponent_a764f7574a8100411512ead247abce901}} 
+\index{BBM::ColorComponent@{BBM::ColorComponent}!color@{color}}
+\index{color@{color}!BBM::ColorComponent@{BBM::ColorComponent}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} B\+B\+M\+::\+Color\+Component\+::color}
+
+
+
+Get the editable color of this entity. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Color/\mbox{\hyperlink{ColorComponent_8hpp}{Color\+Component.\+hpp}}\item 
+sources/\+Component/\+Color/\mbox{\hyperlink{ColorComponent_8cpp}{Color\+Component.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,5 @@
+<map id="RAY::Drawables::Drawables2D::Line" name="RAY::Drawables::Drawables2D::Line">
+<area shape="rect" id="node1" title="Line in a two&#45;dimensionnal space." alt="" coords="11,491,218,700"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable2D.html" title="Abstraction of any two&#45;dimensionnal drawable." alt="" coords="5,145,224,443"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="17,5,213,97"/>
+</map>

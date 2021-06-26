@@ -1,0 +1,3 @@
+<map id="WAL::IView" name="WAL::IView">
+<area shape="rect" id="node1" title="A basic view used to manipulate view without knowing their type at compile time." alt="" coords="5,5,147,127"/>
+</map>

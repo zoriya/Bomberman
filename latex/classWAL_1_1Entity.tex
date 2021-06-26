@@ -1,0 +1,564 @@
+\hypertarget{classWAL_1_1Entity}{}\doxysection{W\+AL\+::Entity Class Reference}
+\label{classWAL_1_1Entity}\index{WAL::Entity@{WAL::Entity}}
+
+
+An entity of the \mbox{\hyperlink{namespaceWAL}{W\+AL}}\textquotesingle{}s E\+CS.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+hpp$>$}
+
+
+
+Collaboration diagram for W\+AL\+::Entity\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classWAL_1_1Entity__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classWAL_1_1Entity_a81177b5b05e828fc01c6ca5e0610919e}{get\+Uid}} () const
+\begin{DoxyCompactList}\small\item\em Get the ID of the entity. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classWAL_1_1Entity_a8b3c80dba69cee51e26d94578ab13a8b}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Entity_a064a265e84654a8f2705baec45b704d4}{set\+Name}} (std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Set the name of the entity. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_ae0d4da7d91e79679bbc73f55cad0292b}{is\+Disable}} () const
+\begin{DoxyCompactList}\small\item\em Used if the entity is disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Entity_a61ff93de21f8c45ed251d907ada37943}{set\+Disable}} (bool disabled)
+\begin{DoxyCompactList}\small\item\em Disable this entity. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_a5694cee7a83bf348ceb4b734e32eec41}{should\+Delete}} () const
+\begin{DoxyCompactList}\small\item\em Has this entity been scheduled for deletion? \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Entity_a0e6d560b27c42e5f78553997dda3fb58}{schedule\+Deletion}} ()
+\begin{DoxyCompactList}\small\item\em Schedule this entity for deletion. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classWAL_1_1Entity_a40e82b034d9dbbb0ee926fb12108e4aa}{get\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Get a component of a specific type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T $\ast$ \mbox{\hyperlink{classWAL_1_1Entity_a2648069824a092c28720c39bd6504740}{try\+Get\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Get a component of a specific type or null if not found. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\const T \& \mbox{\hyperlink{classWAL_1_1Entity_a812940171ef3cc43f92cd8650bfe4554}{get\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Get a component of a specific type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\const T $\ast$ \mbox{\hyperlink{classWAL_1_1Entity_a0b422d669b252865808bfffbcb9ac04c}{try\+Get\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Get a component of a specific type or null if not found. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\bool \mbox{\hyperlink{classWAL_1_1Entity_aeadca512fb8f3b4974d539fd13e3914c}{has\+Component}} () const
+\begin{DoxyCompactList}\small\item\em Check if this entity has a component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_aaf8a392502960af7c3794b8dc228e44d}{has\+Component}} (const std\+::type\+\_\+info \&type) const
+\begin{DoxyCompactList}\small\item\em Check if this entity has a component. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_af34085d38b9abad84e0f311910701d3c}{has\+Component}} (const std\+::type\+\_\+index \&type) const
+\begin{DoxyCompactList}\small\item\em Check if this entity has a component. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename ... T\+Nested, typename ... Types$>$ }\\\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Entity_abbf8f4d10432444bea6d38f9cf7b72dd}{add\+Component}} (Types \&\&...params)
+\begin{DoxyCompactList}\small\item\em Add a component to this entity. The component is constructed in place. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Entity_a49e43a60c5a8e955072c72f3dd6d2ae9}{add\+Component}} (const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&component)
+\begin{DoxyCompactList}\small\item\em Copy a component to this entity. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Entity_acd3e9423730cfa1e6a10c3fc8ce6d0b5}{remove\+Component}} ()
+\begin{DoxyCompactList}\small\item\em Remove a specific component (by type). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity_a9ab5bc6a2e1c456d43009a63f2c59baf}{Entity}} (\mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&wal, std\+::string name, bool notify\+Scene=true)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity_abaa311a1b867fe0c65800ac38c91750a}{Entity}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&)
+\begin{DoxyCompactList}\small\item\em An entity is copyable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity_aa5234fb4bd98ffaf0c0bd3fa3f26e7e5}{Entity}} (\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&\&)=default
+\begin{DoxyCompactList}\small\item\em An entity is movable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity_a1fcbe44ee128e994ca6862e352e0d07a}{$\sim$\+Entity}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Entity_aaeb3ce19f542be794bdffc0cb13c3910}{operator=}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&)=delete
+\begin{DoxyCompactList}\small\item\em An entity is not assignable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_a6cd36d547ef0c065984cb724bfd02e5c}{operator==}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \& \mbox{\hyperlink{classWAL_1_1Entity_a2688386364cd278b1b380b2df6e59a2f}{\+\_\+scene}}
+\begin{DoxyCompactList}\small\item\em A reference to the E\+CS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classWAL_1_1Entity_a7d5fd5138670dd3881b844d14ee25138}{\+\_\+component\+Added}} (const std\+::type\+\_\+index \&type)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classWAL_1_1Callback}{Callback}} called when a component is added. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Entity_aada44282fae474785c2eb41a5fceb5b5}{\+\_\+component\+Removed}} (const std\+::type\+\_\+index \&type)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classWAL_1_1Callback}{Callback}} called when a component is removed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned \mbox{\hyperlink{classWAL_1_1Entity_a5d47ffe82cb2550dcaca8c687af52d5f}{\+\_\+uid}}
+\begin{DoxyCompactList}\small\item\em The unique ID of the entity. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classWAL_1_1Entity_a5827cbf10106560a83765f3b8108dd5b}{\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em An entity name (this is useful for debugging) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_a0c2d523f5a36df3d0b1c89f7df5ff2c3}{\+\_\+disabled}} = false
+\begin{DoxyCompactList}\small\item\em Is this entity enabled? \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_ad95c491e8f42133660e7f63547f23ba7}{\+\_\+should\+Delete}} = false
+\begin{DoxyCompactList}\small\item\em Has this entity been scheduled for deletion? \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWAL_1_1Entity_ae8085246c5606b2e63f07aafbfbd29fb}{\+\_\+notify\+Scene}}
+\begin{DoxyCompactList}\small\item\em Should this entity notify the scene of component changes? \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::type\+\_\+index, std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Component}{Component}} $>$ $>$ \mbox{\hyperlink{classWAL_1_1Entity_abffa45bca0bb1cf83273a3d09d7a1edd}{\+\_\+components}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of the components of this entity. \end{DoxyCompactList}\item 
+friend \mbox{\hyperlink{classWAL_1_1Entity_a5fb43539ae16e6425867016c0c7c31fa}{Scene}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static unsigned \mbox{\hyperlink{classWAL_1_1Entity_a97c8fc7c4e33dccc7257e3dc03da5991}{next\+ID}} = 0
+\begin{DoxyCompactList}\small\item\em This ID will be the one of the next entity created. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classWAL_1_1Entity_a08dc234aef8a23721226038a152bc6dd}{Wal}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+An entity of the \mbox{\hyperlink{namespaceWAL}{W\+AL}}\textquotesingle{}s E\+CS. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1Entity_a9ab5bc6a2e1c456d43009a63f2c59baf}\label{classWAL_1_1Entity_a9ab5bc6a2e1c456d43009a63f2c59baf}} 
+\index{WAL::Entity@{WAL::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&}]{wal,  }\item[{std\+::string}]{name,  }\item[{bool}]{notify\+Scene = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_abaa311a1b867fe0c65800ac38c91750a}\label{classWAL_1_1Entity_abaa311a1b867fe0c65800ac38c91750a}} 
+\index{WAL::Entity@{WAL::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+An entity is copyable. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_aa5234fb4bd98ffaf0c0bd3fa3f26e7e5}\label{classWAL_1_1Entity_aa5234fb4bd98ffaf0c0bd3fa3f26e7e5}} 
+\index{WAL::Entity@{WAL::Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Entity\+::\+Entity (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An entity is movable. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a1fcbe44ee128e994ca6862e352e0d07a}\label{classWAL_1_1Entity_a1fcbe44ee128e994ca6862e352e0d07a}} 
+\index{WAL::Entity@{WAL::Entity}!````~Entity@{$\sim$Entity}}
+\index{````~Entity@{$\sim$Entity}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{$\sim$Entity()}{~Entity()}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Entity\+::$\sim$\+Entity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Entity_a7d5fd5138670dd3881b844d14ee25138}\label{classWAL_1_1Entity_a7d5fd5138670dd3881b844d14ee25138}} 
+\index{WAL::Entity@{WAL::Entity}!\_componentAdded@{\_componentAdded}}
+\index{\_componentAdded@{\_componentAdded}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_componentAdded()}{\_componentAdded()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Entity\+::\+\_\+component\+Added (\begin{DoxyParamCaption}\item[{const std\+::type\+\_\+index \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} called when a component is added. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Entity_aada44282fae474785c2eb41a5fceb5b5}\label{classWAL_1_1Entity_aada44282fae474785c2eb41a5fceb5b5}} 
+\index{WAL::Entity@{WAL::Entity}!\_componentRemoved@{\_componentRemoved}}
+\index{\_componentRemoved@{\_componentRemoved}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_componentRemoved()}{\_componentRemoved()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Entity\+::\+\_\+component\+Removed (\begin{DoxyParamCaption}\item[{const std\+::type\+\_\+index \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} called when a component is removed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Entity_a49e43a60c5a8e955072c72f3dd6d2ae9}\label{classWAL_1_1Entity_a49e43a60c5a8e955072c72f3dd6d2ae9}} 
+\index{WAL::Entity@{WAL::Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& W\+A\+L\+::\+Entity\+::add\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Component}{Component}} \&}]{component }\end{DoxyParamCaption})}
+
+
+
+Copy a component to this entity. 
+
+\begin{DoxyReturn}{Returns}
+This entity is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_abbf8f4d10432444bea6d38f9cf7b72dd}\label{classWAL_1_1Entity_abbf8f4d10432444bea6d38f9cf7b72dd}} 
+\index{WAL::Entity@{WAL::Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , typename ... T\+Nested, typename ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}}\& W\+A\+L\+::\+Entity\+::add\+Component (\begin{DoxyParamCaption}\item[{Types \&\&...}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a component to this entity. The component is constructed in place. 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classWAL_1_1DuplicateError}{Duplicate\+Error}}} & is thrown if a component with the same type already exist. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+This entity is returned 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_a40e82b034d9dbbb0ee926fb12108e4aa}\label{classWAL_1_1Entity_a40e82b034d9dbbb0ee926fb12108e4aa}} 
+\index{WAL::Entity@{WAL::Entity}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T\& W\+A\+L\+::\+Entity\+::get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a component of a specific type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em The} & type of the component \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classWAL_1_1NotFoundError}{Not\+Found\+Error}}} & if the component could not be found \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The component of the requested type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_a812940171ef3cc43f92cd8650bfe4554}\label{classWAL_1_1Entity_a812940171ef3cc43f92cd8650bfe4554}} 
+\index{WAL::Entity@{WAL::Entity}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T\& W\+A\+L\+::\+Entity\+::get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a component of a specific type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em The} & type of the component \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classWAL_1_1NotFoundError}{Not\+Found\+Error}}} & if the component could not be found \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+The component of the requested type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_a8b3c80dba69cee51e26d94578ab13a8b}\label{classWAL_1_1Entity_a8b3c80dba69cee51e26d94578ab13a8b}} 
+\index{WAL::Entity@{WAL::Entity}!getName@{getName}}
+\index{getName@{getName}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string W\+A\+L\+::\+Entity\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the name of the entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a81177b5b05e828fc01c6ca5e0610919e}\label{classWAL_1_1Entity_a81177b5b05e828fc01c6ca5e0610919e}} 
+\index{WAL::Entity@{WAL::Entity}!getUid@{getUid}}
+\index{getUid@{getUid}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{getUid()}{getUid()}}
+{\footnotesize\ttfamily unsigned W\+A\+L\+::\+Entity\+::get\+Uid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the ID of the entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_aeadca512fb8f3b4974d539fd13e3914c}\label{classWAL_1_1Entity_aeadca512fb8f3b4974d539fd13e3914c}} 
+\index{WAL::Entity@{WAL::Entity}!hasComponent@{hasComponent}}
+\index{hasComponent@{hasComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{hasComponent()}{hasComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+bool W\+A\+L\+::\+Entity\+::has\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if this entity has a component. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & The type of the component \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classWAL_1_1Entity_af34085d38b9abad84e0f311910701d3c}\label{classWAL_1_1Entity_af34085d38b9abad84e0f311910701d3c}} 
+\index{WAL::Entity@{WAL::Entity}!hasComponent@{hasComponent}}
+\index{hasComponent@{hasComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{hasComponent()}{hasComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::has\+Component (\begin{DoxyParamCaption}\item[{const std\+::type\+\_\+index \&}]{type }\end{DoxyParamCaption}) const}
+
+
+
+Check if this entity has a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Entity_aaf8a392502960af7c3794b8dc228e44d}\label{classWAL_1_1Entity_aaf8a392502960af7c3794b8dc228e44d}} 
+\index{WAL::Entity@{WAL::Entity}!hasComponent@{hasComponent}}
+\index{hasComponent@{hasComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{hasComponent()}{hasComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::has\+Component (\begin{DoxyParamCaption}\item[{const std\+::type\+\_\+info \&}]{type }\end{DoxyParamCaption}) const}
+
+
+
+Check if this entity has a component. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the component \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Entity_ae0d4da7d91e79679bbc73f55cad0292b}\label{classWAL_1_1Entity_ae0d4da7d91e79679bbc73f55cad0292b}} 
+\index{WAL::Entity@{WAL::Entity}!isDisable@{isDisable}}
+\index{isDisable@{isDisable}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{isDisable()}{isDisable()}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::is\+Disable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Used if the entity is disabled. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_aaeb3ce19f542be794bdffc0cb13c3910}\label{classWAL_1_1Entity_aaeb3ce19f542be794bdffc0cb13c3910}} 
+\index{WAL::Entity@{WAL::Entity}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{Entity}}\& W\+A\+L\+::\+Entity\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+An entity is not assignable. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a6cd36d547ef0c065984cb724bfd02e5c}\label{classWAL_1_1Entity_a6cd36d547ef0c065984cb724bfd02e5c}} 
+\index{WAL::Entity@{WAL::Entity}!operator==@{operator==}}
+\index{operator==@{operator==}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::operator== (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{other }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+true if the two entities hold the same uid 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_acd3e9423730cfa1e6a10c3fc8ce6d0b5}\label{classWAL_1_1Entity_acd3e9423730cfa1e6a10c3fc8ce6d0b5}} 
+\index{WAL::Entity@{WAL::Entity}!removeComponent@{removeComponent}}
+\index{removeComponent@{removeComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{removeComponent()}{removeComponent()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}}\& W\+A\+L\+::\+Entity\+::remove\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a specific component (by type). 
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em \mbox{\hyperlink{classWAL_1_1NotFoundError}{Not\+Found\+Error}}} & is thrown if the component could not be found. \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyReturn}{Returns}
+This entity is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_a0e6d560b27c42e5f78553997dda3fb58}\label{classWAL_1_1Entity_a0e6d560b27c42e5f78553997dda3fb58}} 
+\index{WAL::Entity@{WAL::Entity}!scheduleDeletion@{scheduleDeletion}}
+\index{scheduleDeletion@{scheduleDeletion}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{scheduleDeletion()}{scheduleDeletion()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Entity\+::schedule\+Deletion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Schedule this entity for deletion. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a61ff93de21f8c45ed251d907ada37943}\label{classWAL_1_1Entity_a61ff93de21f8c45ed251d907ada37943}} 
+\index{WAL::Entity@{WAL::Entity}!setDisable@{setDisable}}
+\index{setDisable@{setDisable}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{setDisable()}{setDisable()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Entity\+::set\+Disable (\begin{DoxyParamCaption}\item[{bool}]{disabled }\end{DoxyParamCaption})}
+
+
+
+Disable this entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a064a265e84654a8f2705baec45b704d4}\label{classWAL_1_1Entity_a064a265e84654a8f2705baec45b704d4}} 
+\index{WAL::Entity@{WAL::Entity}!setName@{setName}}
+\index{setName@{setName}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Entity\+::set\+Name (\begin{DoxyParamCaption}\item[{std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set the name of the entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a5694cee7a83bf348ceb4b734e32eec41}\label{classWAL_1_1Entity_a5694cee7a83bf348ceb4b734e32eec41}} 
+\index{WAL::Entity@{WAL::Entity}!shouldDelete@{shouldDelete}}
+\index{shouldDelete@{shouldDelete}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{shouldDelete()}{shouldDelete()}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::should\+Delete (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Has this entity been scheduled for deletion? 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a2648069824a092c28720c39bd6504740}\label{classWAL_1_1Entity_a2648069824a092c28720c39bd6504740}} 
+\index{WAL::Entity@{WAL::Entity}!tryGetComponent@{tryGetComponent}}
+\index{tryGetComponent@{tryGetComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{tryGetComponent()}{tryGetComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T$\ast$ W\+A\+L\+::\+Entity\+::try\+Get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a component of a specific type or null if not found. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em The} & type of the component \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The component or nullptr if not found. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Entity_a0b422d669b252865808bfffbcb9ac04c}\label{classWAL_1_1Entity_a0b422d669b252865808bfffbcb9ac04c}} 
+\index{WAL::Entity@{WAL::Entity}!tryGetComponent@{tryGetComponent}}
+\index{tryGetComponent@{tryGetComponent}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{tryGetComponent()}{tryGetComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+const T$\ast$ W\+A\+L\+::\+Entity\+::try\+Get\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a component of a specific type or null if not found. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em The} & type of the component \\
+\hline
+\end{DoxyTemplParams}
+\begin{DoxyReturn}{Returns}
+The component or nullptr if not found. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Entity_a08dc234aef8a23721226038a152bc6dd}\label{classWAL_1_1Entity_a08dc234aef8a23721226038a152bc6dd}} 
+\index{WAL::Entity@{WAL::Entity}!Wal@{Wal}}
+\index{Wal@{Wal}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{Wal}{Wal}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1Entity_abffa45bca0bb1cf83273a3d09d7a1edd}\label{classWAL_1_1Entity_abffa45bca0bb1cf83273a3d09d7a1edd}} 
+\index{WAL::Entity@{WAL::Entity}!\_components@{\_components}}
+\index{\_components@{\_components}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_components}{\_components}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::type\+\_\+index, std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1Component}{Component}}$>$ $>$ W\+A\+L\+::\+Entity\+::\+\_\+components = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of the components of this entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a0c2d523f5a36df3d0b1c89f7df5ff2c3}\label{classWAL_1_1Entity_a0c2d523f5a36df3d0b1c89f7df5ff2c3}} 
+\index{WAL::Entity@{WAL::Entity}!\_disabled@{\_disabled}}
+\index{\_disabled@{\_disabled}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_disabled}{\_disabled}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::\+\_\+disabled = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Is this entity enabled? 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a5827cbf10106560a83765f3b8108dd5b}\label{classWAL_1_1Entity_a5827cbf10106560a83765f3b8108dd5b}} 
+\index{WAL::Entity@{WAL::Entity}!\_name@{\_name}}
+\index{\_name@{\_name}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_name}{\_name}}
+{\footnotesize\ttfamily std\+::string W\+A\+L\+::\+Entity\+::\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An entity name (this is useful for debugging) 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_ae8085246c5606b2e63f07aafbfbd29fb}\label{classWAL_1_1Entity_ae8085246c5606b2e63f07aafbfbd29fb}} 
+\index{WAL::Entity@{WAL::Entity}!\_notifyScene@{\_notifyScene}}
+\index{\_notifyScene@{\_notifyScene}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_notifyScene}{\_notifyScene}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::\+\_\+notify\+Scene\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Should this entity notify the scene of component changes? 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a2688386364cd278b1b380b2df6e59a2f}\label{classWAL_1_1Entity_a2688386364cd278b1b380b2df6e59a2f}} 
+\index{WAL::Entity@{WAL::Entity}!\_scene@{\_scene}}
+\index{\_scene@{\_scene}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_scene}{\_scene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Scene}{Scene}}\& W\+A\+L\+::\+Entity\+::\+\_\+scene}
+
+
+
+A reference to the E\+CS. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_ad95c491e8f42133660e7f63547f23ba7}\label{classWAL_1_1Entity_ad95c491e8f42133660e7f63547f23ba7}} 
+\index{WAL::Entity@{WAL::Entity}!\_shouldDelete@{\_shouldDelete}}
+\index{\_shouldDelete@{\_shouldDelete}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_shouldDelete}{\_shouldDelete}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Entity\+::\+\_\+should\+Delete = false\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Has this entity been scheduled for deletion? 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a5d47ffe82cb2550dcaca8c687af52d5f}\label{classWAL_1_1Entity_a5d47ffe82cb2550dcaca8c687af52d5f}} 
+\index{WAL::Entity@{WAL::Entity}!\_uid@{\_uid}}
+\index{\_uid@{\_uid}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{\_uid}{\_uid}}
+{\footnotesize\ttfamily unsigned W\+A\+L\+::\+Entity\+::\+\_\+uid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The unique ID of the entity. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a97c8fc7c4e33dccc7257e3dc03da5991}\label{classWAL_1_1Entity_a97c8fc7c4e33dccc7257e3dc03da5991}} 
+\index{WAL::Entity@{WAL::Entity}!nextID@{nextID}}
+\index{nextID@{nextID}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{nextID}{nextID}}
+{\footnotesize\ttfamily unsigned W\+A\+L\+::\+Entity\+::next\+ID = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+This ID will be the one of the next entity created. 
+
+\mbox{\Hypertarget{classWAL_1_1Entity_a5fb43539ae16e6425867016c0c7c31fa}\label{classWAL_1_1Entity_a5fb43539ae16e6425867016c0c7c31fa}} 
+\index{WAL::Entity@{WAL::Entity}!Scene@{Scene}}
+\index{Scene@{Scene}!WAL::Entity@{WAL::Entity}}
+\doxysubsubsection{\texorpdfstring{Scene}{Scene}}
+{\footnotesize\ttfamily friend W\+A\+L\+::\+Entity\+::\+Scene\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+Entity/\mbox{\hyperlink{Entity_8hpp}{Entity.\+hpp}}\item 
+lib/wal/sources/\+Entity/\mbox{\hyperlink{Entity_8cpp}{Entity.\+cpp}}\end{DoxyCompactItemize}

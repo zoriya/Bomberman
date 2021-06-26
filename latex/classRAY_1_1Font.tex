@@ -1,0 +1,135 @@
+\hypertarget{classRAY_1_1Font}{}\doxysection{R\+AY\+::Font Class Reference}
+\label{classRAY_1_1Font}\index{RAY::Font@{RAY::Font}}
+
+
+A font manager.  
+
+
+
+
+{\ttfamily \#include $<$Font.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Font\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classRAY_1_1Font__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Font_a2bfdbad58b550c3acc68e75b9ad48bc1}{Font}} (const std\+::string \&filename, bool lonely=false)
+\begin{DoxyCompactList}\small\item\em Create an font, loading a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Font_a2f2be559a7af8d116027c757541cb220}{Font}} (const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Font_ab947cc39196b00f2a10d384444b2b018}{Font}} ()
+\begin{DoxyCompactList}\small\item\em A default constructor, no ressources loaded. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Font}{Font}} \& \mbox{\hyperlink{classRAY_1_1Font_a8ac52ed44f44ed4367b16201f43acaea}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&)=default
+\begin{DoxyCompactList}\small\item\em An font is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Font_ade6ee8bf296c238b14e960f8c8d02208}{$\sim$\+Font}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Font}{Font}} $>$ \mbox{\hyperlink{classRAY_1_1Font_a548de7234e8558f96980c616052e45d1}{\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Font}{Font}}, really, that\textquotesingle{}s just it... \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Font}{Font}} $>$ \mbox{\hyperlink{classRAY_1_1Font_a62078c5e63120df9ad561774821a2436}{\+\_\+fonts\+Cache}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A font manager. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Font_a2bfdbad58b550c3acc68e75b9ad48bc1}\label{classRAY_1_1Font_a2bfdbad58b550c3acc68e75b9ad48bc1}} 
+\index{RAY::Font@{RAY::Font}!Font@{Font}}
+\index{Font@{Font}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{Font()}{Font()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Font\+::\+Font (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Create an font, loading a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to file to load \\
+\hline
+{\em lonely} & should be set to true if the entity\textquotesingle{}s loaded data must be independant from others \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Font_a2f2be559a7af8d116027c757541cb220}\label{classRAY_1_1Font_a2f2be559a7af8d116027c757541cb220}} 
+\index{RAY::Font@{RAY::Font}!Font@{Font}}
+\index{Font@{Font}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{Font()}{Font()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Font\+::\+Font (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Font_ab947cc39196b00f2a10d384444b2b018}\label{classRAY_1_1Font_ab947cc39196b00f2a10d384444b2b018}} 
+\index{RAY::Font@{RAY::Font}!Font@{Font}}
+\index{Font@{Font}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{Font()}{Font()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Font\+::\+Font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+A default constructor, no ressources loaded. 
+
+\mbox{\Hypertarget{classRAY_1_1Font_ade6ee8bf296c238b14e960f8c8d02208}\label{classRAY_1_1Font_ade6ee8bf296c238b14e960f8c8d02208}} 
+\index{RAY::Font@{RAY::Font}!````~Font@{$\sim$Font}}
+\index{````~Font@{$\sim$Font}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{$\sim$Font()}{~Font()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Font\+::$\sim$\+Font (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Font_a8ac52ed44f44ed4367b16201f43acaea}\label{classRAY_1_1Font_a8ac52ed44f44ed4367b16201f43acaea}} 
+\index{RAY::Font@{RAY::Font}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Font}{Font}}\& R\+A\+Y\+::\+Font\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An font is assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Font_a548de7234e8558f96980c616052e45d1}\label{classRAY_1_1Font_a548de7234e8558f96980c616052e45d1}} 
+\index{RAY::Font@{RAY::Font}!\_font@{\_font}}
+\index{\_font@{\_font}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{\_font}{\_font}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Font}{Font}}$>$ R\+A\+Y\+::\+Font\+::\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Font}{Font}}, really, that\textquotesingle{}s just it... 
+
+\mbox{\Hypertarget{classRAY_1_1Font_a62078c5e63120df9ad561774821a2436}\label{classRAY_1_1Font_a62078c5e63120df9ad561774821a2436}} 
+\index{RAY::Font@{RAY::Font}!\_fontsCache@{\_fontsCache}}
+\index{\_fontsCache@{\_fontsCache}!RAY::Font@{RAY::Font}}
+\doxysubsubsection{\texorpdfstring{\_fontsCache}{\_fontsCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Font}{Font}} $>$ R\+A\+Y\+::\+Font\+::\+\_\+fonts\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Font_8hpp}{Font.\+hpp}}\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Font_8cpp}{Font.\+cpp}}\end{DoxyCompactItemize}

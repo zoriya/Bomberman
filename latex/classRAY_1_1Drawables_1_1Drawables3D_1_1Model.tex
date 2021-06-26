@@ -1,0 +1,428 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Model Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+
+
+Basic 3D \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} type.  
+
+
+
+
+{\ttfamily \#include $<$Model.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Model__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Model\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Model__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+::Material\+Map\+Index \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a988aa2c4ee8c513320285bd458112981}{Model}} (const std\+::string \&file\+Path, bool lonely=false, std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, std\+::string $>$$>$ texture=std\+::nullopt, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&scale=\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(1, 1, 1), float rotation\+Angle=0, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&position=\{0, 0, 0\}, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&rotation\+Axis=\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(0, 1, 0))
+\begin{DoxyCompactList}\small\item\em Create an model, loading a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a194a836fa79a459fd80ab93a1db53458}{Model}} (const Mesh\+::\+A\+Mesh \&mesh, std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, std\+::string $>$$>$ texture=std\+::nullopt, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&scale=\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(1, 1, 1), float rotation\+Angle=0, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&position=\{0, 0, 0\}, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&rotation\+Axis=\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(0, 1, 0))
+\begin{DoxyCompactList}\small\item\em Create an model, loading a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8082331539584ecfbf904389f5abdbee}{Model}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \&model)=default
+\begin{DoxyCompactList}\small\item\em A copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae86539dfb5338b900e1251a91d5c4e37}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \&model)=default
+\begin{DoxyCompactList}\small\item\em A model is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a180de23e4f2e366b77e8b4a28b554b7a}{$\sim$\+Model}} () override=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} destructor, model\textquotesingle{}s data will be deleted if it\textquotesingle{}s the last entity alive. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a6bfa24108eeda19a4383316f0b0a90ba}{unload\+Keep\+Meshes}} ()
+\begin{DoxyCompactList}\small\item\em Unload model (excluding meshes) from memory (R\+AM and/or V\+R\+AM) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a3e4530245a30cb09b2ec4f724b70451b}{set\+Animation}} (const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \&animation)
+\begin{DoxyCompactList}\small\item\em Update model animation pose. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a2b515d826eecffa17978aae69061a98d}{set\+Texture\+To\+Material}} (\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}} material\+Type, const std\+::string \&texture)
+\begin{DoxyCompactList}\small\item\em Sets a texture to the Nth material. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_adbf8f1e8f62c4b8bb5fc1d017c132055}{get\+Bone\+Count}} () const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a4f58b7d2c0a5709c2afa311966adbf04}{set\+Rotation\+Angle}} (float roation\+Angle)
+\begin{DoxyCompactList}\small\item\em Set rotation angle. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a7762be0d203263b2b9055ed67475cb14}{get\+Rotation\+Angle}} (void)
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a18c20c76ba3c2b31f0b7dcb2a5af55d2}{set\+Rotation\+Axis}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&rotation\+Axis)
+\begin{DoxyCompactList}\small\item\em Set Rotation Axis. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a10969980437e70743f96178d2be5e317}{get\+Rotation\+Axis}} (void)
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad73398f7ac2707bb118c164f889386c8}{set\+Scale}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&scale)
+\begin{DoxyCompactList}\small\item\em Set Scale. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_af450b0b34b8b04bc29535d94fd2bf4cf}{get\+Scale}} (void)
+\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aa93182e649ad1c331245cab3746e1c97}{set\+Shader}} (const \mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em Set a shader on the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a824c0f39f7ca698d8540c5348f143146}{reset\+Shader}} ()
+\begin{DoxyCompactList}\small\item\em Set the original shader (used to disable a shader) \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a27002147bc75fafa472ce3b9bf7f056b}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw drawble on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad93d4d64ac621fb0b8d05cf3247ae9d8}{draw\+Wires\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw model\textquotesingle{}s wires on window. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ac16804853b1e708bb77d651ebf9ef869}{get\+Texture\+By\+Material}} (\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}} material\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} $>$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a1769e90ef20601c2e122bebaed737528}{\+\_\+model}}
+\begin{DoxyCompactList}\small\item\em Raw data from raylib. \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} $>$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aacf431998d21b936a2edca86791d6a44}{\+\_\+texture\+List}}
+\begin{DoxyCompactList}\small\item\em The list of textures that can be applied to this model. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_acf39bcbd5c45dcccf8d3e4e9744cde5e}{\+\_\+rotation\+Axis}}
+\begin{DoxyCompactList}\small\item\em Rotation property. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ada107f11175448fbdb81e7019b109aa7}{\+\_\+rotation\+Angle}}
+\begin{DoxyCompactList}\small\item\em Rotation property. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a5cd188a40c88fb4a24292c24ec1d937e}{\+\_\+scale}}
+\begin{DoxyCompactList}\small\item\em Scale of the shape. \end{DoxyCompactList}\item 
+\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae36b36299eb2e6702e212d6df72df893}{\+\_\+original\+Shader}} = \{\}
+\begin{DoxyCompactList}\small\item\em The original shader\+Id used to disable a shader effect. \end{DoxyCompactList}\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8fb3299e8982fe9c371dc903153c5380}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}}() const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} $>$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a05caf3a7d2ebbb20d627ce391b4c8243}{\+\_\+models\+Cache}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Basic 3D \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} type. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!MaterialType@{MaterialType}}
+\index{MaterialType@{MaterialType}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{MaterialType}{MaterialType}}
+{\footnotesize\ttfamily typedef \+::Material\+Map\+Index \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+Material\+Type}}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a988aa2c4ee8c513320285bd458112981}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a988aa2c4ee8c513320285bd458112981}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!Model@{Model}}
+\index{Model@{Model}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+Model (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path,  }\item[{bool}]{lonely = {\ttfamily false},  }\item[{std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, std\+::string $>$$>$}]{texture = {\ttfamily std\+:\+:nullopt},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{scale = {\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(1,~1,~1)},  }\item[{float}]{rotation\+Angle = {\ttfamily 0},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{position = {\ttfamily \{0,~0,~0\}},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{rotation\+Axis = {\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(0,~1,~0)} }\end{DoxyParamCaption})}
+
+
+
+Create an model, loading a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & path to file to load \\
+\hline
+{\em lonely} & should be set to true if the entity\textquotesingle{}s loaded data must be independant from others \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a194a836fa79a459fd80ab93a1db53458}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a194a836fa79a459fd80ab93a1db53458}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!Model@{Model}}
+\index{Model@{Model}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+Model (\begin{DoxyParamCaption}\item[{const Mesh\+::\+A\+Mesh \&}]{mesh,  }\item[{std\+::optional$<$ std\+::pair$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, std\+::string $>$$>$}]{texture = {\ttfamily std\+:\+:nullopt},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{scale = {\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(1,~1,~1)},  }\item[{float}]{rotation\+Angle = {\ttfamily 0},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{position = {\ttfamily \{0,~0,~0\}},  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{rotation\+Axis = {\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}}(0,~1,~0)} }\end{DoxyParamCaption})}
+
+
+
+Create an model, loading a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mesh} & mesh to load \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8082331539584ecfbf904389f5abdbee}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8082331539584ecfbf904389f5abdbee}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!Model@{Model}}
+\index{Model@{Model}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{Model()}{Model()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+Model (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \&}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a180de23e4f2e366b77e8b4a28b554b7a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a180de23e4f2e366b77e8b4a28b554b7a}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!````~Model@{$\sim$Model}}
+\index{````~Model@{$\sim$Model}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{$\sim$Model()}{~Model()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::$\sim$\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} destructor, model\textquotesingle{}s data will be deleted if it\textquotesingle{}s the last entity alive. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a27002147bc75fafa472ce3b9bf7f056b}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a27002147bc75fafa472ce3b9bf7f056b}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw drawble on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad93d4d64ac621fb0b8d05cf3247ae9d8}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad93d4d64ac621fb0b8d05cf3247ae9d8}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!drawWiresOn@{drawWiresOn}}
+\index{drawWiresOn@{drawWiresOn}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{drawWiresOn()}{drawWiresOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::draw\+Wires\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw model\textquotesingle{}s wires on window. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_afe9251bb8645e310d629da6b8297d5b9}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_adbf8f1e8f62c4b8bb5fc1d017c132055}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_adbf8f1e8f62c4b8bb5fc1d017c132055}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!getBoneCount@{getBoneCount}}
+\index{getBoneCount@{getBoneCount}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{getBoneCount()}{getBoneCount()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::get\+Bone\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+The number of bones in the model 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a7762be0d203263b2b9055ed67475cb14}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a7762be0d203263b2b9055ed67475cb14}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!getRotationAngle@{getRotationAngle}}
+\index{getRotationAngle@{getRotationAngle}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{getRotationAngle()}{getRotationAngle()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::get\+Rotation\+Angle (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+rotation angle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a10969980437e70743f96178d2be5e317}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a10969980437e70743f96178d2be5e317}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!getRotationAxis@{getRotationAxis}}
+\index{getRotationAxis@{getRotationAxis}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{getRotationAxis()}{getRotationAxis()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::get\+Rotation\+Axis (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+rotation axis 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_af450b0b34b8b04bc29535d94fd2bf4cf}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_af450b0b34b8b04bc29535d94fd2bf4cf}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!getScale@{getScale}}
+\index{getScale@{getScale}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::get\+Scale (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Scale 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ac16804853b1e708bb77d651ebf9ef869}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ac16804853b1e708bb77d651ebf9ef869}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!getTextureByMaterial@{getTextureByMaterial}}
+\index{getTextureByMaterial@{getTextureByMaterial}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{getTextureByMaterial()}{getTextureByMaterial()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Texture}{Texture}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::get\+Texture\+By\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}}]{material\+Type }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em material\+Type} & type of material \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+texture 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae86539dfb5338b900e1251a91d5c4e37}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae86539dfb5338b900e1251a91d5c4e37}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \&}]{model }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A model is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a824c0f39f7ca698d8540c5348f143146}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a824c0f39f7ca698d8540c5348f143146}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!resetShader@{resetShader}}
+\index{resetShader@{resetShader}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{resetShader()}{resetShader()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::reset\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set the original shader (used to disable a shader) 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a3e4530245a30cb09b2ec4f724b70451b}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a3e4530245a30cb09b2ec4f724b70451b}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setAnimation@{setAnimation}}
+\index{setAnimation@{setAnimation}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setAnimation()}{setAnimation()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Animation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \&}]{animation }\end{DoxyParamCaption})}
+
+
+
+Update model animation pose. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a4f58b7d2c0a5709c2afa311966adbf04}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a4f58b7d2c0a5709c2afa311966adbf04}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setRotationAngle@{setRotationAngle}}
+\index{setRotationAngle@{setRotationAngle}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setRotationAngle()}{setRotationAngle()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Rotation\+Angle (\begin{DoxyParamCaption}\item[{float}]{roation\+Angle }\end{DoxyParamCaption})}
+
+
+
+Set rotation angle. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a18c20c76ba3c2b31f0b7dcb2a5af55d2}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a18c20c76ba3c2b31f0b7dcb2a5af55d2}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setRotationAxis@{setRotationAxis}}
+\index{setRotationAxis@{setRotationAxis}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setRotationAxis()}{setRotationAxis()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Rotation\+Axis (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{rotation\+Axis }\end{DoxyParamCaption})}
+
+
+
+Set Rotation Axis. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad73398f7ac2707bb118c164f889386c8}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ad73398f7ac2707bb118c164f889386c8}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setScale@{setScale}}
+\index{setScale@{setScale}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Scale (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{scale }\end{DoxyParamCaption})}
+
+
+
+Set Scale. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aa93182e649ad1c331245cab3746e1c97}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aa93182e649ad1c331245cab3746e1c97}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setShader@{setShader}}
+\index{setShader@{setShader}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setShader()}{setShader()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Shader (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \&}]{shader }\end{DoxyParamCaption})}
+
+
+
+Set a shader on the model. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a2b515d826eecffa17978aae69061a98d}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a2b515d826eecffa17978aae69061a98d}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!setTextureToMaterial@{setTextureToMaterial}}
+\index{setTextureToMaterial@{setTextureToMaterial}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{setTextureToMaterial()}{setTextureToMaterial()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::set\+Texture\+To\+Material (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Model\+::\+Material\+Type}}}]{material\+Type,  }\item[{const std\+::string \&}]{texture }\end{DoxyParamCaption})}
+
+
+
+Sets a texture to the Nth material. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em materiel\+Index} & The type of material to apply the texture to (serves as an index) \\
+\hline
+{\em texture} & the texture to apply \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a6bfa24108eeda19a4383316f0b0a90ba}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a6bfa24108eeda19a4383316f0b0a90ba}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!unloadKeepMeshes@{unloadKeepMeshes}}
+\index{unloadKeepMeshes@{unloadKeepMeshes}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{unloadKeepMeshes()}{unloadKeepMeshes()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::unload\+Keep\+Meshes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Unload model (excluding meshes) from memory (R\+AM and/or V\+R\+AM) 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8fb3299e8982fe9c371dc903153c5380}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a8fb3299e8982fe9c371dc903153c5380}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a1769e90ef20601c2e122bebaed737528}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a1769e90ef20601c2e122bebaed737528}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_model@{\_model}}
+\index{\_model@{\_model}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_model}{\_model}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}}$>$ R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+model\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Raw data from raylib. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a05caf3a7d2ebbb20d627ce391b4c8243}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a05caf3a7d2ebbb20d627ce391b4c8243}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_modelsCache@{\_modelsCache}}
+\index{\_modelsCache@{\_modelsCache}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_modelsCache}{\_modelsCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model}{Model}} $>$ R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+models\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae36b36299eb2e6702e212d6df72df893}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ae36b36299eb2e6702e212d6df72df893}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_originalShader@{\_originalShader}}
+\index{\_originalShader@{\_originalShader}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_originalShader}{\_originalShader}}
+{\footnotesize\ttfamily \+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+original\+Shader = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The original shader\+Id used to disable a shader effect. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ada107f11175448fbdb81e7019b109aa7}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_ada107f11175448fbdb81e7019b109aa7}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_rotationAngle@{\_rotationAngle}}
+\index{\_rotationAngle@{\_rotationAngle}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_rotationAngle}{\_rotationAngle}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+rotation\+Angle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rotation property. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_acf39bcbd5c45dcccf8d3e4e9744cde5e}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_acf39bcbd5c45dcccf8d3e4e9744cde5e}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_rotationAxis@{\_rotationAxis}}
+\index{\_rotationAxis@{\_rotationAxis}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_rotationAxis}{\_rotationAxis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+rotation\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Rotation property. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a5cd188a40c88fb4a24292c24ec1d937e}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a5cd188a40c88fb4a24292c24ec1d937e}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_scale@{\_scale}}
+\index{\_scale@{\_scale}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_scale}{\_scale}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+scale\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Scale of the shape. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aacf431998d21b936a2edca86791d6a44}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_aacf431998d21b936a2edca86791d6a44}} 
+\index{RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}!\_textureList@{\_textureList}}
+\index{\_textureList@{\_textureList}!RAY::Drawables::Drawables3D::Model@{RAY::Drawables::Drawables3D::Model}}
+\doxysubsubsection{\texorpdfstring{\_textureList}{\_textureList}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Model_a14bdaf02a8cfac173b24213bcfae3e53}{Material\+Type}}, \mbox{\hyperlink{classRAY_1_1Texture}{Texture}}$>$ R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Model\+::\+\_\+texture\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of textures that can be applied to this model. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{Model_8hpp}{Model.\+hpp}}\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{Model_8cpp}{Model.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,142 @@
+\hypertarget{classBBM_1_1CameraComponent}{}\doxysection{B\+BM\+::Camera\+Component Class Reference}
+\label{classBBM_1_1CameraComponent}\index{BBM::CameraComponent@{BBM::CameraComponent}}
+
+
+A class allowing one to place the camera in the scene.  
+
+
+
+
+{\ttfamily \#include $<$Camera\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Camera\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classBBM_1_1CameraComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Camera\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1CameraComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1CameraComponent_aecd25f380910341e6388d1f75b5816e3}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraComponent_a2a184a37a2a8553a2112f9f4a85dc5ce}{Camera\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} camera\+Target=\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}())
+\begin{DoxyCompactList}\small\item\em Ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraComponent_ae077e2178b822c8dfc2d44912851f1e9}{Camera\+Component}} (const \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A camera component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraComponent_a1fdd40c6b0c9ee944fe67ef8478e40a0}{$\sim$\+Camera\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} \& \mbox{\hyperlink{classBBM_1_1CameraComponent_a960a9137bf2cc2a7ccc686077fb8377a}{operator=}} (const \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A camera component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1CameraComponent_a5d8a235972bf81189d29d18c833740bb}{target}}
+\begin{DoxyCompactList}\small\item\em The camera\textquotesingle{}s target, the cam will look at this position. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A class allowing one to place the camera in the scene. 
+
+\begin{DoxyWarning}{Warning}
+Only one \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} is allowed on the scene. Using more than one result in undefined behaviors. 
+\end{DoxyWarning}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_a2a184a37a2a8553a2112f9f4a85dc5ce}\label{classBBM_1_1CameraComponent_a2a184a37a2a8553a2112f9f4a85dc5ce}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!CameraComponent@{CameraComponent}}
+\index{CameraComponent@{CameraComponent}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{CameraComponent()}{CameraComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+Component\+::\+Camera\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{camera\+Target = {\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_ae077e2178b822c8dfc2d44912851f1e9}\label{classBBM_1_1CameraComponent_ae077e2178b822c8dfc2d44912851f1e9}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!CameraComponent@{CameraComponent}}
+\index{CameraComponent@{CameraComponent}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{CameraComponent()}{CameraComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+Component\+::\+Camera\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A camera component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_a1fdd40c6b0c9ee944fe67ef8478e40a0}\label{classBBM_1_1CameraComponent_a1fdd40c6b0c9ee944fe67ef8478e40a0}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!````~CameraComponent@{$\sim$CameraComponent}}
+\index{````~CameraComponent@{$\sim$CameraComponent}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$CameraComponent()}{~CameraComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+Component\+::$\sim$\+Camera\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_aecd25f380910341e6388d1f75b5816e3}\label{classBBM_1_1CameraComponent_aecd25f380910341e6388d1f75b5816e3}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Camera\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_a960a9137bf2cc2a7ccc686077fb8377a}\label{classBBM_1_1CameraComponent_a960a9137bf2cc2a7ccc686077fb8377a}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}\& B\+B\+M\+::\+Camera\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A camera component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraComponent_a5d8a235972bf81189d29d18c833740bb}\label{classBBM_1_1CameraComponent_a5d8a235972bf81189d29d18c833740bb}} 
+\index{BBM::CameraComponent@{BBM::CameraComponent}!target@{target}}
+\index{target@{target}!BBM::CameraComponent@{BBM::CameraComponent}}
+\doxysubsubsection{\texorpdfstring{target}{target}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Camera\+Component\+::target}
+
+
+
+The camera\textquotesingle{}s target, the cam will look at this position. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Renderer/\mbox{\hyperlink{CameraComponent_8hpp}{Camera\+Component.\+hpp}}\item 
+sources/\+Component/\+Renderer/\mbox{\hyperlink{CameraComponent_8cpp}{Camera\+Component.\+cpp}}\end{DoxyCompactItemize}

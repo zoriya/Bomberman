@@ -1,0 +1,181 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Cube Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Cube.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Cube\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Cube\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a1c494832c943f3b1545ac630aa94f05b}{Cube}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&position, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&dimensions, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_acb1ffd472d2ea75ad1068645b34ffcbd}{Cube}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a112a42f46d7667ff39305768f4428c85}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \&)=default
+\begin{DoxyCompactList}\small\item\em A circle is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a88fe1285e7a0eb1aff66d8aea795d0fe}{$\sim$\+Cube}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a083f8528d7ef52c04eab3bcb56956502}{get\+Dimensions}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_ad33c1b2e07fbc505e667744e89d8804f}{set\+Dimensions}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&dimensions)
+\begin{DoxyCompactList}\small\item\em set the dimensions of the cube \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_af67b4d7e60cb126a8f631e45ddc06af6}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw circle on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a3a6a406900afb51a2110e2c82847548b}{draw\+Wires\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw cube\textquotesingle{}s wires on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a00d1d8ac0bd62d57ba948355f8aba0ee}{\+\_\+dimensions}}
+\begin{DoxyCompactList}\small\item\em Dimensions of the cube. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a1c494832c943f3b1545ac630aa94f05b}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a1c494832c943f3b1545ac630aa94f05b}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!Cube@{Cube}}
+\index{Cube@{Cube}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{Cube()}{Cube()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::\+Cube (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of the cube \\
+\hline
+{\em dimensions} & dimensions of the cube \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the cube ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_acb1ffd472d2ea75ad1068645b34ffcbd}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_acb1ffd472d2ea75ad1068645b34ffcbd}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!Cube@{Cube}}
+\index{Cube@{Cube}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{Cube()}{Cube()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::\+Cube (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a88fe1285e7a0eb1aff66d8aea795d0fe}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a88fe1285e7a0eb1aff66d8aea795d0fe}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!````~Cube@{$\sim$Cube}}
+\index{````~Cube@{$\sim$Cube}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cube()}{~Cube()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::$\sim$\+Cube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_af67b4d7e60cb126a8f631e45ddc06af6}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_af67b4d7e60cb126a8f631e45ddc06af6}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw circle on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a3a6a406900afb51a2110e2c82847548b}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a3a6a406900afb51a2110e2c82847548b}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!drawWiresOn@{drawWiresOn}}
+\index{drawWiresOn@{drawWiresOn}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{drawWiresOn()}{drawWiresOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::draw\+Wires\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw cube\textquotesingle{}s wires on window. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_afe9251bb8645e310d629da6b8297d5b9}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a083f8528d7ef52c04eab3bcb56956502}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a083f8528d7ef52c04eab3bcb56956502}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!getDimensions@{getDimensions}}
+\index{getDimensions@{getDimensions}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{getDimensions()}{getDimensions()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::get\+Dimensions (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the dimensions of the cube 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a112a42f46d7667ff39305768f4428c85}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a112a42f46d7667ff39305768f4428c85}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A circle is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_ad33c1b2e07fbc505e667744e89d8804f}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_ad33c1b2e07fbc505e667744e89d8804f}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!setDimensions@{setDimensions}}
+\index{setDimensions@{setDimensions}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{setDimensions()}{setDimensions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube}{Cube}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::set\+Dimensions (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+set the dimensions of the cube 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a00d1d8ac0bd62d57ba948355f8aba0ee}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Cube_a00d1d8ac0bd62d57ba948355f8aba0ee}} 
+\index{RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}!\_dimensions@{\_dimensions}}
+\index{\_dimensions@{\_dimensions}!RAY::Drawables::Drawables3D::Cube@{RAY::Drawables::Drawables3D::Cube}}
+\doxysubsubsection{\texorpdfstring{\_dimensions}{\_dimensions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Cube\+::\+\_\+dimensions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Dimensions of the cube. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Cube_8hpp}{Cube.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Cube_8cpp}{Cube.\+cpp}}\end{DoxyCompactItemize}

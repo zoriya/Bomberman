@@ -1,0 +1,5 @@
+<map id="BBM::GridCenteredSystem" name="BBM::GridCenteredSystem">
+<area shape="rect" id="node1" title="The system handling GridCenteredComponent." alt="" coords="28,476,223,612"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,175,245,428"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="63,5,188,127"/>
+</map>

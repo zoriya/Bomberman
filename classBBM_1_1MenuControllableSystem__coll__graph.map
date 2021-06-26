@@ -1,0 +1,9 @@
+<map id="BBM::MenuControllableSystem" name="BBM::MenuControllableSystem">
+<area shape="rect" id="node1" title="A system to handle Controllable entities in a menu." alt="" coords="216,813,440,979"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="76,461,220,685"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,108,131,229"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,27,301,310"/>
+<area shape="rect" id="node5" href="$classBBM_1_1Vector2.html" title=" " alt="" coords="244,453,412,692"/>
+<area shape="rect" id="node6" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="437,395,619,751"/>
+<area shape="rect" id="node7" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="437,5,619,332"/>
+</map>

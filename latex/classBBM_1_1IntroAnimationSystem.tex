@@ -1,0 +1,127 @@
+\hypertarget{classBBM_1_1IntroAnimationSystem}{}\doxysection{B\+BM\+::Intro\+Animation\+System Class Reference}
+\label{classBBM_1_1IntroAnimationSystem}\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+
+
+A system to handle Controllable entities in a menu.  
+
+
+
+
+{\ttfamily \#include $<$Intro\+Animation\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Intro\+Animation\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classBBM_1_1IntroAnimationSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Intro\+Animation\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1IntroAnimationSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a0cd2e20f43a05c971d551c40bf152d19}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a3ebb632d4f25ec6c408d8a4f8aa5b6d8}{on\+Fixed\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} $>$ \&entities) override
+\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a1b0146cbfddd274e4f5e5401f50f16c6}{Intro\+Animation\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a9b18df18f8b05d56bd54c9dacea294ae}{Intro\+Animation\+System}} (const \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Intro\+Animation system is not copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_ac55170e1436470340dbf52db103ce304}{$\sim$\+Intro\+Animation\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}} \& \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a98ff2634348c6c6474ce75db159bed88}{operator=}} (const \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Intro\+Animation system is assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle Controllable entities in a menu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_a1b0146cbfddd274e4f5e5401f50f16c6}\label{classBBM_1_1IntroAnimationSystem_a1b0146cbfddd274e4f5e5401f50f16c6}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!IntroAnimationSystem@{IntroAnimationSystem}}
+\index{IntroAnimationSystem@{IntroAnimationSystem}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{IntroAnimationSystem()}{IntroAnimationSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+System\+::\+Intro\+Animation\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_a9b18df18f8b05d56bd54c9dacea294ae}\label{classBBM_1_1IntroAnimationSystem_a9b18df18f8b05d56bd54c9dacea294ae}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!IntroAnimationSystem@{IntroAnimationSystem}}
+\index{IntroAnimationSystem@{IntroAnimationSystem}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{IntroAnimationSystem()}{IntroAnimationSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+System\+::\+Intro\+Animation\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Intro\+Animation system is not copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_ac55170e1436470340dbf52db103ce304}\label{classBBM_1_1IntroAnimationSystem_ac55170e1436470340dbf52db103ce304}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!````~IntroAnimationSystem@{$\sim$IntroAnimationSystem}}
+\index{````~IntroAnimationSystem@{$\sim$IntroAnimationSystem}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$IntroAnimationSystem()}{~IntroAnimationSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+System\+::$\sim$\+Intro\+Animation\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_a3ebb632d4f25ec6c408d8a4f8aa5b6d8}\label{classBBM_1_1IntroAnimationSystem_a3ebb632d4f25ec6c408d8a4f8aa5b6d8}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!onFixedUpdate@{onFixedUpdate}}
+\index{onFixedUpdate@{onFixedUpdate}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{onFixedUpdate()}{onFixedUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Intro\+Animation\+System\+::on\+Fixed\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} $>$ \&}]{entities }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_a0cd2e20f43a05c971d551c40bf152d19}\label{classBBM_1_1IntroAnimationSystem_a0cd2e20f43a05c971d551c40bf152d19}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Intro\+Animation\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$ Intro\+Animation\+Component $>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationSystem_a98ff2634348c6c6474ce75db159bed88}\label{classBBM_1_1IntroAnimationSystem_a98ff2634348c6c6474ce75db159bed88}} 
+\index{BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::IntroAnimationSystem@{BBM::IntroAnimationSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}}\& B\+B\+M\+::\+Intro\+Animation\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem}{Intro\+Animation\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Intro\+Animation system is assignable. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Intro\+Animation/\mbox{\hyperlink{IntroAnimationSystem_8hpp}{Intro\+Animation\+System.\+hpp}}\item 
+sources/\+System/\+Intro\+Animation/\mbox{\hyperlink{IntroAnimationSystem_8cpp}{Intro\+Animation\+System.\+cpp}}\end{DoxyCompactItemize}

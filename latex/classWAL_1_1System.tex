@@ -1,0 +1,267 @@
+\hypertarget{classWAL_1_1System}{}\doxysection{W\+AL\+::System$<$ Dependencies $>$ Class Template Reference}
+\label{classWAL_1_1System}\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+
+
+A base system of \mbox{\hyperlink{namespaceWAL}{W\+AL}}.  
+
+
+
+
+{\ttfamily \#include $<$System.\+hpp$>$}
+
+
+
+Inheritance diagram for W\+AL\+::System$<$ Dependencies $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{classWAL_1_1System__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+AL\+::System$<$ Dependencies $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=302pt]{classWAL_1_1System__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1System_a0d85848f1b0c0561d6f120b04d6b2149}{$\sim$\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A virtual, default, destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1System_a6df60c35efd50fe389245a92c8b8a682}{System}} (\mbox{\hyperlink{classWAL_1_1System}{System}} \&\&) noexcept=default
+\begin{DoxyCompactList}\small\item\em A system can be moved. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1View}{View}}$<$ Dependencies... $>$ \& \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{get\+View}} () override
+\begin{DoxyCompactList}\small\item\em Get a view of all entities containing every dependencies of this system. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1System_ac06ea339c14af184afb7fe59aa0c77dd}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Dependencies... $>$ \&entity, std\+::chrono\+::nanoseconds dtime)
+\begin{DoxyCompactList}\small\item\em Update the corresponding component of the given entity. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1System_aa0609c8ecdbde2100827dbf9e386b0cf}{on\+Fixed\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Dependencies... $>$ \&entity)
+\begin{DoxyCompactList}\small\item\em An alternative of on\+Update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime)
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{update}} (std\+::chrono\+::nanoseconds dtime) final
+\begin{DoxyCompactList}\small\item\em Update the whole system (every entities that this system is responsible can be updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{fixed\+Update}} () final
+\begin{DoxyCompactList}\small\item\em An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1System_a726f3ce440c29bf07bd82d9391baf64f}{System}} (\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A system can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1System_ac1a69b375a0d218803b576ae3991c996}{System}} (const \mbox{\hyperlink{classWAL_1_1System}{System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A system can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1System}{System}} \& \mbox{\hyperlink{classWAL_1_1System_a9a67e285bd1597de8dcab8889df4fa13}{operator=}} (const \mbox{\hyperlink{classWAL_1_1System}{System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A system can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \& \mbox{\hyperlink{classWAL_1_1System_a00b29f6adf3ae16541f68f36706bdac9}{\+\_\+wal}}
+\begin{DoxyCompactList}\small\item\em A reference to the E\+CS. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename ... Dependencies$>$\newline
+class W\+A\+L\+::\+System$<$ Dependencies $>$}
+
+A base system of \mbox{\hyperlink{namespaceWAL}{W\+AL}}. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Dependencies} & The list of dependencies this system has. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1System_a0d85848f1b0c0561d6f120b04d6b2149}\label{classWAL_1_1System_a0d85848f1b0c0561d6f120b04d6b2149}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!````~System@{$\sim$System}}
+\index{````~System@{$\sim$System}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$System()}{~System()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::$\sim$\mbox{\hyperlink{classWAL_1_1System}{System}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A virtual, default, destructor. 
+
+\mbox{\Hypertarget{classWAL_1_1System_a6df60c35efd50fe389245a92c8b8a682}\label{classWAL_1_1System_a6df60c35efd50fe389245a92c8b8a682}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!System@{System}}
+\index{System@{System}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::\mbox{\hyperlink{classWAL_1_1System}{System}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1System}{System}}$<$ Dependencies $>$ \&\&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}, {\ttfamily [noexcept]}}
+
+
+
+A system can be moved. 
+
+\mbox{\Hypertarget{classWAL_1_1System_a726f3ce440c29bf07bd82d9391baf64f}\label{classWAL_1_1System_a726f3ce440c29bf07bd82d9391baf64f}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!System@{System}}
+\index{System@{System}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::\mbox{\hyperlink{classWAL_1_1System}{System}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [protected]}}
+
+
+
+A system can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classWAL_1_1System_ac1a69b375a0d218803b576ae3991c996}\label{classWAL_1_1System_ac1a69b375a0d218803b576ae3991c996}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!System@{System}}
+\index{System@{System}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{System()}{System()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::\mbox{\hyperlink{classWAL_1_1System}{System}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1System}{System}}$<$ Dependencies $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+
+
+A system can\textquotesingle{}t be instantiated, it should be derived. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}\label{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!fixedUpdate@{fixedUpdate}}
+\index{fixedUpdate@{fixedUpdate}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{fixedUpdate()}{fixedUpdate()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+void \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::fixed\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. 
+
+\begin{DoxyRemark}{Remarks}
+This should be used for Physics, AI and everything that could be imprecise due to float rounding. 
+\end{DoxyRemark}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1ISystem_aa8676dd41f8f76d1c017e381a4f6d25a}{W\+A\+L\+::\+I\+System}}.
+
+\mbox{\Hypertarget{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}\label{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!getView@{getView}}
+\index{getView@{getView}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1View}{View}}$<$Dependencies...$>$\& \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Get a view of all entities containing every dependencies of this system. 
+
+
+
+Implements \mbox{\hyperlink{classWAL_1_1ISystem_afb7248ce89d12c0d0261c53d0ef805ae}{W\+A\+L\+::\+I\+System}}.
+
+\mbox{\Hypertarget{classWAL_1_1System_aa0609c8ecdbde2100827dbf9e386b0cf}\label{classWAL_1_1System_aa0609c8ecdbde2100827dbf9e386b0cf}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!onFixedUpdate@{onFixedUpdate}}
+\index{onFixedUpdate@{onFixedUpdate}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{onFixedUpdate()}{onFixedUpdate()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+virtual void \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::on\+Fixed\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Dependencies... $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+An alternative of on\+Update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. 
+
+\begin{DoxyRemark}{Remarks}
+This should be used for Physics, AI and everything that could be imprecise due to float rounding. 
+\end{DoxyRemark}
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to update. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}\label{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+virtual void \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classBBM_1_1RenderSystem_aad0df3e33bae4bc5364c9b7398c0eab6}{B\+B\+M\+::\+Render\+System}}, \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a437e22f0c7d2708d23252d0dc8fa5b88}{B\+B\+M\+::\+I\+A\+Controllable\+System}}, \mbox{\hyperlink{classBBM_1_1LobbySystem_a618c56a877b6d39ff499c8f6175b7daa}{B\+B\+M\+::\+Lobby\+System}}, \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_a94b1476bb3f130ed5054f81740d5984d}{B\+B\+M\+::\+Menu\+Controllable\+System}}, \mbox{\hyperlink{classBBM_1_1EventSystem_aa538b4d3ed1cc6b4865df3ad61295c49}{B\+B\+M\+::\+Event\+System}}, \mbox{\hyperlink{classBBM_1_1AnimationsSystem_a2e6208420634fff2f3b5e70865025317}{B\+B\+M\+::\+Animations\+System}}, \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_ad3b8dd70d7f539bccd116dd2f62c8e7e}{B\+B\+M\+::\+Resume\+Lobby\+System}}, \mbox{\hyperlink{classBBM_1_1EndConditionSystem_a0bcb5b5f4c30ec44d9fb591562cb5b64}{B\+B\+M\+::\+End\+Condition\+System}}, and \mbox{\hyperlink{classBBM_1_1IntroAnimationSystem_a0cd2e20f43a05c971d551c40bf152d19}{B\+B\+M\+::\+Intro\+Animation\+System}}.
+
+\mbox{\Hypertarget{classWAL_1_1System_ac06ea339c14af184afb7fe59aa0c77dd}\label{classWAL_1_1System_ac06ea339c14af184afb7fe59aa0c77dd}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+virtual void \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{View\+Entity}}$<$ Dependencies... $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Update the corresponding component of the given entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to update. \\
+\hline
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1System_a9a67e285bd1597de8dcab8889df4fa13}\label{classWAL_1_1System_a9a67e285bd1597de8dcab8889df4fa13}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1System}{System}}\& \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1System}{System}}$<$ Dependencies $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [default]}}
+
+
+
+A system can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}\label{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!update@{update}}
+\index{update@{update}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+void \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [final]}, {\ttfamily [virtual]}}
+
+
+
+Update the whole system (every entities that this system is responsible can be updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time since the last call to this method. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1ISystem_a7916b8ebc26262ea0f42c1befed4fd8b}{W\+A\+L\+::\+I\+System}}.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1System_a00b29f6adf3ae16541f68f36706bdac9}\label{classWAL_1_1System_a00b29f6adf3ae16541f68f36706bdac9}} 
+\index{WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}!\_wal@{\_wal}}
+\index{\_wal@{\_wal}!WAL::System$<$ Dependencies $>$@{WAL::System$<$ Dependencies $>$}}
+\doxysubsubsection{\texorpdfstring{\_wal}{\_wal}}
+{\footnotesize\ttfamily template$<$typename ... Dependencies$>$ \\
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\& \mbox{\hyperlink{classWAL_1_1System}{W\+A\+L\+::\+System}}$<$ Dependencies $>$\+::\+\_\+wal\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A reference to the E\+CS. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+System/\mbox{\hyperlink{System_8hpp}{System.\+hpp}}\end{DoxyCompactItemize}

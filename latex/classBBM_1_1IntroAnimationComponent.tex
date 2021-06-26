@@ -1,0 +1,204 @@
+\hypertarget{classBBM_1_1IntroAnimationComponent}{}\doxysection{B\+BM\+::Intro\+Animation\+Component Class Reference}
+\label{classBBM_1_1IntroAnimationComponent}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+
+
+A component to slowly center entities to the middle of their current block. This allow flexibility in their movement will preventing them from getting stuck at every corner.  
+
+
+
+
+{\ttfamily \#include $<$Intro\+Animation\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Intro\+Animation\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=254pt]{classBBM_1_1IntroAnimationComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Intro\+Animation\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1IntroAnimationComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}{animation\+Steps}} \{ \newline
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a1249882e00c38790974d68118fd7c9d7}{epitech\+Logo}}, 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122acf926c73377f1b30cf55c9580260d2d8}{box\+Blinking}}, 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9379a0101f9b32b31f45c6aa298153fa}{top\+Leftgrowing}}, 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9dd0ef22e004bdac44e6e016d92e663c}{bottom\+Right\+Growing}}, 
+\newline
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a20537be25886c94103814a9b08a245fa}{letters\+Typing}}, 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a8672d282f1c9c0760c75c35d4346dd4d}{fading}}, 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a5e2a65df56eab3f8c86709b9d151aea4}{prompt}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_ae8f930885531b3e9928e14662f045f80}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_ae8952970ca2b14a65858ba678a0a6aa9}{Intro\+Animation\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new, default \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a5c60686a3186dd7e5e1204332cbcc692}{Intro\+Animation\+Component}} (const \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} \&other)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a55f328137059bebbbf31cda5667648e4}{$\sim$\+Intro\+Animation\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} \& \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a1fe01a731ebd091f3527f1c2a54ff16d}{operator=}} (const \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+unsigned int \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_ae4688872a4f16282e588c22fcf512d0d}{frame\+Counter}} = 0
+\item 
+enum \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}{animation\+Steps}} \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a130ae4940569ffc141a4080f843a730a}{current\+Step}} = \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a1249882e00c38790974d68118fd7c9d7}{epitech\+Logo}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A component to slowly center entities to the middle of their current block. This allow flexibility in their movement will preventing them from getting stuck at every corner. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!animationSteps@{animationSteps}}
+\index{animationSteps@{animationSteps}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{animationSteps}{animationSteps}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}{B\+B\+M\+::\+Intro\+Animation\+Component\+::animation\+Steps}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{epitechLogo@{epitechLogo}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!epitechLogo@{epitechLogo}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a1249882e00c38790974d68118fd7c9d7}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a1249882e00c38790974d68118fd7c9d7}} 
+epitech\+Logo&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{boxBlinking@{boxBlinking}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!boxBlinking@{boxBlinking}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122acf926c73377f1b30cf55c9580260d2d8}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122acf926c73377f1b30cf55c9580260d2d8}} 
+box\+Blinking&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{topLeftgrowing@{topLeftgrowing}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!topLeftgrowing@{topLeftgrowing}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9379a0101f9b32b31f45c6aa298153fa}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9379a0101f9b32b31f45c6aa298153fa}} 
+top\+Leftgrowing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{bottomRightGrowing@{bottomRightGrowing}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!bottomRightGrowing@{bottomRightGrowing}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9dd0ef22e004bdac44e6e016d92e663c}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a9dd0ef22e004bdac44e6e016d92e663c}} 
+bottom\+Right\+Growing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{lettersTyping@{lettersTyping}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!lettersTyping@{lettersTyping}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a20537be25886c94103814a9b08a245fa}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a20537be25886c94103814a9b08a245fa}} 
+letters\+Typing&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{fading@{fading}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!fading@{fading}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a8672d282f1c9c0760c75c35d4346dd4d}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a8672d282f1c9c0760c75c35d4346dd4d}} 
+fading&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{prompt@{prompt}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!prompt@{prompt}}}\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a5e2a65df56eab3f8c86709b9d151aea4}\label{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a5e2a65df56eab3f8c86709b9d151aea4}} 
+prompt&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_ae8952970ca2b14a65858ba678a0a6aa9}\label{classBBM_1_1IntroAnimationComponent_ae8952970ca2b14a65858ba678a0a6aa9}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!IntroAnimationComponent@{IntroAnimationComponent}}
+\index{IntroAnimationComponent@{IntroAnimationComponent}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{IntroAnimationComponent()}{IntroAnimationComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+Component\+::\+Intro\+Animation\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new, default \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity attached to this component. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a5c60686a3186dd7e5e1204332cbcc692}\label{classBBM_1_1IntroAnimationComponent_a5c60686a3186dd7e5e1204332cbcc692}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!IntroAnimationComponent@{IntroAnimationComponent}}
+\index{IntroAnimationComponent@{IntroAnimationComponent}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{IntroAnimationComponent()}{IntroAnimationComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+Component\+::\+Intro\+Animation\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} is copy constructable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} to copy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a55f328137059bebbbf31cda5667648e4}\label{classBBM_1_1IntroAnimationComponent_a55f328137059bebbbf31cda5667648e4}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!````~IntroAnimationComponent@{$\sim$IntroAnimationComponent}}
+\index{````~IntroAnimationComponent@{$\sim$IntroAnimationComponent}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$IntroAnimationComponent()}{~IntroAnimationComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Intro\+Animation\+Component\+::$\sim$\+Intro\+Animation\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_ae8f930885531b3e9928e14662f045f80}\label{classBBM_1_1IntroAnimationComponent_ae8f930885531b3e9928e14662f045f80}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Intro\+Animation\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a1fe01a731ebd091f3527f1c2a54ff16d}\label{classBBM_1_1IntroAnimationComponent_a1fe01a731ebd091f3527f1c2a54ff16d}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}}\& B\+B\+M\+::\+Intro\+Animation\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent}{Intro\+Animation\+Component}} is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_a130ae4940569ffc141a4080f843a730a}\label{classBBM_1_1IntroAnimationComponent_a130ae4940569ffc141a4080f843a730a}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!currentStep@{currentStep}}
+\index{currentStep@{currentStep}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{currentStep}{currentStep}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122}{animation\+Steps}} B\+B\+M\+::\+Intro\+Animation\+Component\+::current\+Step = \mbox{\hyperlink{classBBM_1_1IntroAnimationComponent_a67e7c95f583c0b6926ff2e72595bd122a1249882e00c38790974d68118fd7c9d7}{epitech\+Logo}}}
+
+\mbox{\Hypertarget{classBBM_1_1IntroAnimationComponent_ae4688872a4f16282e588c22fcf512d0d}\label{classBBM_1_1IntroAnimationComponent_ae4688872a4f16282e588c22fcf512d0d}} 
+\index{BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}!frameCounter@{frameCounter}}
+\index{frameCounter@{frameCounter}!BBM::IntroAnimationComponent@{BBM::IntroAnimationComponent}}
+\doxysubsubsection{\texorpdfstring{frameCounter}{frameCounter}}
+{\footnotesize\ttfamily unsigned int B\+B\+M\+::\+Intro\+Animation\+Component\+::frame\+Counter = 0}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Intro\+Animation/\mbox{\hyperlink{IntroAnimationComponent_8hpp}{Intro\+Animation\+Component.\+hpp}}\item 
+sources/\+Component/\+Intro\+Animation/\mbox{\hyperlink{IntroAnimationComponent_8cpp}{Intro\+Animation\+Component.\+cpp}}\end{DoxyCompactItemize}

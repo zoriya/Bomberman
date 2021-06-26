@@ -1,0 +1,7 @@
+<map id="RAY::Drawables::Drawables2D::Rectangle" name="RAY::Drawables::Drawables2D::Rectangle">
+<area shape="rect" id="node1" title="Rectangle in a two&#45;dimensional space." alt="" coords="69,491,276,744"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Image.html" title="Object representation of a framebuffer." alt="" coords="5,792,161,1060"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Texture.html" title="Object representation of a texture." alt="" coords="185,799,341,1053"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable2D.html" title="Abstraction of any two&#45;dimensionnal drawable." alt="" coords="63,145,282,443"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="75,5,271,97"/>
+</map>

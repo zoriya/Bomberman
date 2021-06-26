@@ -1,0 +1,170 @@
+\hypertarget{classRAY_1_1ModelAnimation}{}\doxysection{R\+AY\+::Model\+Animation Class Reference}
+\label{classRAY_1_1ModelAnimation}\index{RAY::ModelAnimation@{RAY::ModelAnimation}}
+
+
+A Holder for Model Animations.  
+
+
+
+
+{\ttfamily \#include $<$Model\+Animation.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Model\+Animation\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{classRAY_1_1ModelAnimation__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation_ad5eddcb7ed4e7e238910fde745a4b338}{Model\+Animation}} (\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} animation)
+\begin{DoxyCompactList}\small\item\em A Model animation constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation_aa5d5d64332d780a2429e6618a24b31f8}{Model\+Animation}} (const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy-\/constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimation_ac53c54161396d06326826485e5108575}{operator=}} (const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \&)=default
+\begin{DoxyCompactList}\small\item\em A model animation is assignable. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classRAY_1_1ModelAnimation_a5e548ba387930541f0c86f5b612d84eb}{get\+Frame\+Counter}} () const
+\begin{DoxyCompactList}\small\item\em Returns the current frame the animation is at. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classRAY_1_1ModelAnimation_a5683de73335fb04d1bea8549daf363ef}{get\+Frame\+Count}} () const
+\begin{DoxyCompactList}\small\item\em Returns the number of frame in the animation. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimation_a318e345dd16cea46197dd54787b45e97}{set\+Frame\+Counter}} (size\+\_\+t frame\+Counter)
+\begin{DoxyCompactList}\small\item\em Set the frame the position is at. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimation_a84350b1ba37b6960104d9eaea45bd2a7}{increment\+Frame\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em Increment the frame counter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation_a14a4b379364f0c36fc875826e28ef18e}{$\sim$\+Model\+Animation}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \mbox{\hyperlink{classRAY_1_1ModelAnimation_a815c3c698edb40e0992df87282170c2f}{\+\_\+animation}}
+\item 
+size\+\_\+t \mbox{\hyperlink{classRAY_1_1ModelAnimation_acdc078d1b381e8ff8e022c698c77020a}{\+\_\+frame\+Counter}}
+\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1ModelAnimation_aeebdbe6f1e5064aa91493033cc80b3f7}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}() const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Holder for Model Animations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_ad5eddcb7ed4e7e238910fde745a4b338}\label{classRAY_1_1ModelAnimation_ad5eddcb7ed4e7e238910fde745a4b338}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!ModelAnimation@{ModelAnimation}}
+\index{ModelAnimation@{ModelAnimation}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{ModelAnimation()}{ModelAnimation()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animation\+::\+Model\+Animation (\begin{DoxyParamCaption}\item[{\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}}]{animation }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A Model animation constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em animation\+Ptr} & an animation pointer, returned by the nimation-\/loading function \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_aa5d5d64332d780a2429e6618a24b31f8}\label{classRAY_1_1ModelAnimation_aa5d5d64332d780a2429e6618a24b31f8}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!ModelAnimation@{ModelAnimation}}
+\index{ModelAnimation@{ModelAnimation}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{ModelAnimation()}{ModelAnimation()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animation\+::\+Model\+Animation (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy-\/constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a14a4b379364f0c36fc875826e28ef18e}\label{classRAY_1_1ModelAnimation_a14a4b379364f0c36fc875826e28ef18e}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!````~ModelAnimation@{$\sim$ModelAnimation}}
+\index{````~ModelAnimation@{$\sim$ModelAnimation}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{$\sim$ModelAnimation()}{~ModelAnimation()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animation\+::$\sim$\+Model\+Animation (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a5683de73335fb04d1bea8549daf363ef}\label{classRAY_1_1ModelAnimation_a5683de73335fb04d1bea8549daf363ef}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!getFrameCount@{getFrameCount}}
+\index{getFrameCount@{getFrameCount}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{getFrameCount()}{getFrameCount()}}
+{\footnotesize\ttfamily size\+\_\+t R\+A\+Y\+::\+Model\+Animation\+::get\+Frame\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the number of frame in the animation. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a5e548ba387930541f0c86f5b612d84eb}\label{classRAY_1_1ModelAnimation_a5e548ba387930541f0c86f5b612d84eb}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!getFrameCounter@{getFrameCounter}}
+\index{getFrameCounter@{getFrameCounter}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{getFrameCounter()}{getFrameCounter()}}
+{\footnotesize\ttfamily size\+\_\+t R\+A\+Y\+::\+Model\+Animation\+::get\+Frame\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the current frame the animation is at. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a84350b1ba37b6960104d9eaea45bd2a7}\label{classRAY_1_1ModelAnimation_a84350b1ba37b6960104d9eaea45bd2a7}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!incrementFrameCounter@{incrementFrameCounter}}
+\index{incrementFrameCounter@{incrementFrameCounter}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{incrementFrameCounter()}{incrementFrameCounter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animation\+::increment\+Frame\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increment the frame counter. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_ac53c54161396d06326826485e5108575}\label{classRAY_1_1ModelAnimation_ac53c54161396d06326826485e5108575}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}\& R\+A\+Y\+::\+Model\+Animation\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A model animation is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a318e345dd16cea46197dd54787b45e97}\label{classRAY_1_1ModelAnimation_a318e345dd16cea46197dd54787b45e97}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!setFrameCounter@{setFrameCounter}}
+\index{setFrameCounter@{setFrameCounter}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{setFrameCounter()}{setFrameCounter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animation\+::set\+Frame\+Counter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{frame\+Counter }\end{DoxyParamCaption})}
+
+
+
+Set the frame the position is at. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_aeebdbe6f1e5064aa91493033cc80b3f7}\label{classRAY_1_1ModelAnimation_aeebdbe6f1e5064aa91493033cc80b3f7}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Model\+Animation\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_a815c3c698edb40e0992df87282170c2f}\label{classRAY_1_1ModelAnimation_a815c3c698edb40e0992df87282170c2f}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!\_animation@{\_animation}}
+\index{\_animation@{\_animation}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{\_animation}{\_animation}}
+{\footnotesize\ttfamily \+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} R\+A\+Y\+::\+Model\+Animation\+::\+\_\+animation\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimation_acdc078d1b381e8ff8e022c698c77020a}\label{classRAY_1_1ModelAnimation_acdc078d1b381e8ff8e022c698c77020a}} 
+\index{RAY::ModelAnimation@{RAY::ModelAnimation}!\_frameCounter@{\_frameCounter}}
+\index{\_frameCounter@{\_frameCounter}!RAY::ModelAnimation@{RAY::ModelAnimation}}
+\doxysubsubsection{\texorpdfstring{\_frameCounter}{\_frameCounter}}
+{\footnotesize\ttfamily size\+\_\+t R\+A\+Y\+::\+Model\+Animation\+::\+\_\+frame\+Counter\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{ModelAnimation_8hpp}{Model\+Animation.\+hpp}}\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{ModelAnimation_8cpp}{Model\+Animation.\+cpp}}\end{DoxyCompactItemize}

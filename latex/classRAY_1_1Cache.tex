@@ -1,0 +1,153 @@
+\hypertarget{classRAY_1_1Cache}{}\doxysection{R\+AY\+::Cache$<$ T $>$ Class Template Reference}
+\label{classRAY_1_1Cache}\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+
+
+A templated class used to cache ressources, indexed with a string.  
+
+
+
+
+{\ttfamily \#include $<$Cache.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Cache$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classRAY_1_1Cache__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Cache_a1b91093efcb811a7ca931d207b3ef788}{Cache}} (std\+::function$<$ T(const char $\ast$)$>$ data\+Loader, std\+::function$<$ void(T)$>$ data\+Unloader)
+\item 
+\mbox{\hyperlink{classRAY_1_1Cache_afdba4de1c06194897811ce22dc218c97}{$\sim$\+Cache}} ()=default
+\begin{DoxyCompactList}\small\item\em Default destructor, will destroy ray\textquotesingle{}s data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Cache_abe40cfa3c2d595f17fb8284147125b64}{Cache}} (const \mbox{\hyperlink{classRAY_1_1Cache}{Cache}} \&)=default
+\begin{DoxyCompactList}\small\item\em default copy constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} \& \mbox{\hyperlink{classRAY_1_1Cache_aa22c25255afb11d16bc23ff0c29849d9}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Cache}{Cache}} \&)=default
+\begin{DoxyCompactList}\small\item\em a cache is assignable \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ T $>$ \mbox{\hyperlink{classRAY_1_1Cache_a4bd49e06084a988ff82d17ac9943f74e}{fetch}} (const std\+::string \&path, bool lonely=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$ T(const char $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache_a9fe59ca2952cf491baabe6689c7b6b67}{\+\_\+data\+Loader}}
+\begin{DoxyCompactList}\small\item\em function to call to load data \end{DoxyCompactList}\item 
+std\+::function$<$ void(T)$>$ \mbox{\hyperlink{classRAY_1_1Cache_a3de91e916723b427d98e0c9fc14d06c3}{\+\_\+data\+Unloader}}
+\begin{DoxyCompactList}\small\item\em function to call when the ray data will be unloaded \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, std\+::vector$<$ std\+::shared\+\_\+ptr$<$ T $>$ $>$ $>$ \mbox{\hyperlink{classRAY_1_1Cache_a7f1c91e732fd7328470974a1d146e8bd}{\+\_\+cache}}
+\begin{DoxyCompactList}\small\item\em map storing shared ptr of caches \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+class R\+A\+Y\+::\+Cache$<$ T $>$}
+
+A templated class used to cache ressources, indexed with a string. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_a1b91093efcb811a7ca931d207b3ef788}\label{classRAY_1_1Cache_a1b91093efcb811a7ca931d207b3ef788}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!Cache@{Cache}}
+\index{Cache@{Cache}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Cache()}{Cache()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} (\begin{DoxyParamCaption}\item[{std\+::function$<$ T(const char $\ast$)$>$}]{data\+Loader,  }\item[{std\+::function$<$ void(T)$>$}]{data\+Unloader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classRAY_1_1Cache_afdba4de1c06194897811ce22dc218c97}\label{classRAY_1_1Cache_afdba4de1c06194897811ce22dc218c97}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!````~Cache@{$\sim$Cache}}
+\index{````~Cache@{$\sim$Cache}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Cache()}{~Cache()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default destructor, will destroy ray\textquotesingle{}s data. 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_abe40cfa3c2d595f17fb8284147125b64}\label{classRAY_1_1Cache_abe40cfa3c2d595f17fb8284147125b64}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!Cache@{Cache}}
+\index{Cache@{Cache}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{Cache()}{Cache()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+default copy constructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_a4bd49e06084a988ff82d17ac9943f74e}\label{classRAY_1_1Cache_a4bd49e06084a988ff82d17ac9943f74e}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!fetch@{fetch}}
+\index{fetch@{fetch}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::shared\+\_\+ptr$<$T$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::fetch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & path of the file \\
+\hline
+{\em lonely} & should be set to true if the loaded data must be held by no other active entites \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a newly loaded ressource if it hasn\textquotesingle{}t be previously loaded, or one from cache 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Cache_aa22c25255afb11d16bc23ff0c29849d9}\label{classRAY_1_1Cache_aa22c25255afb11d16bc23ff0c29849d9}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classRAY_1_1Cache}{Cache}}\& \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+a cache is assignable 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_a7f1c91e732fd7328470974a1d146e8bd}\label{classRAY_1_1Cache_a7f1c91e732fd7328470974a1d146e8bd}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!\_cache@{\_cache}}
+\index{\_cache@{\_cache}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_cache}{\_cache}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::unordered\+\_\+map$<$std\+::string, std\+::vector$<$std\+::shared\+\_\+ptr$<$T$>$ $>$ $>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::\+\_\+cache\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+map storing shared ptr of caches 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_a9fe59ca2952cf491baabe6689c7b6b67}\label{classRAY_1_1Cache_a9fe59ca2952cf491baabe6689c7b6b67}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!\_dataLoader@{\_dataLoader}}
+\index{\_dataLoader@{\_dataLoader}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataLoader}{\_dataLoader}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::function$<$T(const char $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::\+\_\+data\+Loader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call to load data 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_a3de91e916723b427d98e0c9fc14d06c3}\label{classRAY_1_1Cache_a3de91e916723b427d98e0c9fc14d06c3}} 
+\index{RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}!\_dataUnloader@{\_dataUnloader}}
+\index{\_dataUnloader@{\_dataUnloader}!RAY::Cache$<$ T $>$@{RAY::Cache$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataUnloader}{\_dataUnloader}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+std\+::function$<$void(T)$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$ T $>$\+::\+\_\+data\+Unloader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call when the ray data will be unloaded 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Utils/\mbox{\hyperlink{Cache_8hpp}{Cache.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,204 @@
+\hypertarget{classBBM_1_1ShaderComponent}{}\doxysection{B\+BM\+::Shader\+Component Class Reference}
+\label{classBBM_1_1ShaderComponent}\index{BBM::ShaderComponent@{BBM::ShaderComponent}}
+
+
+{\ttfamily \#include $<$Shader\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBBM_1_1ShaderComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ShaderComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \& \mbox{\hyperlink{classBBM_1_1ShaderComponent_ab939f44c27f513fe272597f7af16b2ec}{get\+Shader}} ()
+\begin{DoxyCompactList}\small\item\em getter for \+\_\+shader \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1ShaderComponent_a36c2d21cae2834f505aad8801fcf01ae}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1ShaderComponent_a4ca4489675dddb242a1847961330a37e}{get\+Fragment\+File\+Path}} () const
+\begin{DoxyCompactList}\small\item\em get the fragment file path \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1ShaderComponent_a81eed4d152215e41b5a6f66fec2e2122}{get\+Vertex\+File\+Path}} () const
+\begin{DoxyCompactList}\small\item\em get the fragment file path \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ShaderComponent_ab6f0b36e5073c1bc6ab10cb79de7431c}{Shader\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const std\+::string \&\mbox{\hyperlink{classBBM_1_1ShaderComponent_a842312e55924028f54007029411e1613}{fragment\+File\+Path}}, const std\+::string \&\mbox{\hyperlink{classBBM_1_1ShaderComponent_ab765936c9fa28a50af096dcf680ebe20}{vertex\+File\+Path}}=\char`\"{}\char`\"{}, const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&, std\+::chrono\+::nanoseconds $>$ \&on\+Fixed\+Update=\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&, std\+::chrono\+::nanoseconds $>$(), bool lonely=false)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ShaderComponent_ac08a115b701011db3e9fbba02541e778}{Shader\+Component}} (const \mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ShaderComponent_a521692196752b271edbaad68c66b737a}{$\sim$\+Shader\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}} \& \mbox{\hyperlink{classBBM_1_1ShaderComponent_ababe490d5a8bef57cbc548d7707ec66c}{operator=}} (const \mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Default assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \mbox{\hyperlink{classBBM_1_1ShaderComponent_a3cdb1098bd37ca5e32c03ff3bf7badb1}{shader}}
+\begin{DoxyCompactList}\small\item\em The shader to be applied. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1ShaderComponent_a842312e55924028f54007029411e1613}{fragment\+File\+Path}}
+\begin{DoxyCompactList}\small\item\em The path to the fragment file. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1ShaderComponent_ab765936c9fa28a50af096dcf680ebe20}{vertex\+File\+Path}}
+\begin{DoxyCompactList}\small\item\em The path to the vertex file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&, std\+::chrono\+::nanoseconds $>$ \mbox{\hyperlink{classBBM_1_1ShaderComponent_a9fcca2506d57026e20e68d2d53ba06cb}{update}}
+\begin{DoxyCompactList}\small\item\em the function called to update shaders vars \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_ab6f0b36e5073c1bc6ab10cb79de7431c}\label{classBBM_1_1ShaderComponent_ab6f0b36e5073c1bc6ab10cb79de7431c}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!ShaderComponent@{ShaderComponent}}
+\index{ShaderComponent@{ShaderComponent}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{ShaderComponent()}{ShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Shader\+Component\+::\+Shader\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const std\+::string \&}]{fragment\+File\+Path,  }\item[{const std\+::string \&}]{vertex\+File\+Path = {\ttfamily \char`\"{}\char`\"{}},  }\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&, std\+::chrono\+::nanoseconds $>$ \&}]{on\+Fixed\+Update = {\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}~\&,~\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}}~\&,~std\+:\+:chrono\+:\+:nanoseconds$>$()},  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\begin{DoxyNote}{Note}
+use empty string to omit a file 
+\end{DoxyNote}
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_ac08a115b701011db3e9fbba02541e778}\label{classBBM_1_1ShaderComponent_ac08a115b701011db3e9fbba02541e778}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!ShaderComponent@{ShaderComponent}}
+\index{ShaderComponent@{ShaderComponent}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{ShaderComponent()}{ShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Shader\+Component\+::\+Shader\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a521692196752b271edbaad68c66b737a}\label{classBBM_1_1ShaderComponent_a521692196752b271edbaad68c66b737a}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!````~ShaderComponent@{$\sim$ShaderComponent}}
+\index{````~ShaderComponent@{$\sim$ShaderComponent}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$ShaderComponent()}{~ShaderComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Shader\+Component\+::$\sim$\+Shader\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a36c2d21cae2834f505aad8801fcf01ae}\label{classBBM_1_1ShaderComponent_a36c2d21cae2834f505aad8801fcf01ae}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Shader\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a4ca4489675dddb242a1847961330a37e}\label{classBBM_1_1ShaderComponent_a4ca4489675dddb242a1847961330a37e}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!getFragmentFilePath@{getFragmentFilePath}}
+\index{getFragmentFilePath@{getFragmentFilePath}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{getFragmentFilePath()}{getFragmentFilePath()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Shader\+Component\+::get\+Fragment\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the fragment file path 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_ab939f44c27f513fe272597f7af16b2ec}\label{classBBM_1_1ShaderComponent_ab939f44c27f513fe272597f7af16b2ec}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!getShader@{getShader}}
+\index{getShader@{getShader}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{getShader()}{getShader()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \& B\+B\+M\+::\+Shader\+Component\+::get\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+getter for \+\_\+shader 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a81eed4d152215e41b5a6f66fec2e2122}\label{classBBM_1_1ShaderComponent_a81eed4d152215e41b5a6f66fec2e2122}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!getVertexFilePath@{getVertexFilePath}}
+\index{getVertexFilePath@{getVertexFilePath}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{getVertexFilePath()}{getVertexFilePath()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Shader\+Component\+::get\+Vertex\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the fragment file path 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_ababe490d5a8bef57cbc548d7707ec66c}\label{classBBM_1_1ShaderComponent_ababe490d5a8bef57cbc548d7707ec66c}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}}\& B\+B\+M\+::\+Shader\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ShaderComponent}{Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Default assignment operator. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a842312e55924028f54007029411e1613}\label{classBBM_1_1ShaderComponent_a842312e55924028f54007029411e1613}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!fragmentFilePath@{fragmentFilePath}}
+\index{fragmentFilePath@{fragmentFilePath}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{fragmentFilePath}{fragmentFilePath}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Shader\+Component\+::fragment\+File\+Path}
+
+
+
+The path to the fragment file. 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a3cdb1098bd37ca5e32c03ff3bf7badb1}\label{classBBM_1_1ShaderComponent_a3cdb1098bd37ca5e32c03ff3bf7badb1}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!shader@{shader}}
+\index{shader@{shader}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{shader}{shader}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} B\+B\+M\+::\+Shader\+Component\+::shader}
+
+
+
+The shader to be applied. 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_a9fcca2506d57026e20e68d2d53ba06cb}\label{classBBM_1_1ShaderComponent_a9fcca2506d57026e20e68d2d53ba06cb}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!update@{update}}
+\index{update@{update}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{update}{update}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&, std\+::chrono\+::nanoseconds$>$ B\+B\+M\+::\+Shader\+Component\+::update}
+
+
+
+the function called to update shaders vars 
+
+\mbox{\Hypertarget{classBBM_1_1ShaderComponent_ab765936c9fa28a50af096dcf680ebe20}\label{classBBM_1_1ShaderComponent_ab765936c9fa28a50af096dcf680ebe20}} 
+\index{BBM::ShaderComponent@{BBM::ShaderComponent}!vertexFilePath@{vertexFilePath}}
+\index{vertexFilePath@{vertexFilePath}!BBM::ShaderComponent@{BBM::ShaderComponent}}
+\doxysubsubsection{\texorpdfstring{vertexFilePath}{vertexFilePath}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Shader\+Component\+::vertex\+File\+Path}
+
+
+
+The path to the vertex file. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Shaders/\mbox{\hyperlink{ShaderComponent_8hpp}{Shader\+Component.\+hpp}}\item 
+sources/\+Component/\+Shaders/\mbox{\hyperlink{ShaderComponent_8cpp}{Shader\+Component.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,173 @@
+\hypertarget{classBBM_1_1EventSystem}{}\doxysection{B\+BM\+::Event\+System Class Reference}
+\label{classBBM_1_1EventSystem}\index{BBM::EventSystem@{BBM::EventSystem}}
+
+
+{\ttfamily \#include $<$Event\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Event\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1EventSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Event\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1EventSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1EventSystem_ad1c707556366c47fe3619dcbb0d46dc5}{dispatch\+Event}} (const std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&)$>$ \&event)
+\begin{DoxyCompactList}\small\item\em Inform the system that a new event has occurred and it should run the given method on every entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1EventSystem_a5224cf315c301dee558a9d715ce71239}{dispatch\+Event}} (const std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&)$>$ \&event)
+\begin{DoxyCompactList}\small\item\em Inform the system that a new event has occurred and it should run the given method on every entities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1EventSystem_aa5e3d7591f5a7d3b42857b24c726bb82}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$$>$ \&entity, std\+::chrono\+::nanoseconds dtime) override
+\item 
+void \mbox{\hyperlink{classBBM_1_1EventSystem_aa538b4d3ed1cc6b4865df3ad61295c49}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1EventSystem_ae7fe6f2cfb1b2fdf5e58378c6e4f1af0}{Event\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1EventSystem_a566ca3fe42fdecc69c06ee2779569d4a}{Event\+System}} (const \mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em An event system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1EventSystem_a968c907153d98370e7184a4453b0967d}{$\sim$\+Event\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}} \& \mbox{\hyperlink{classBBM_1_1EventSystem_a93c4ef606fb52f9412c503dcce953ecd}{operator=}} (const \mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em An event system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::list$<$ std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&)$>$ $>$ \mbox{\hyperlink{classBBM_1_1EventSystem_a711a6c41488047e4b74cda672b3a9fe1}{\+\_\+events}}
+\begin{DoxyCompactList}\small\item\em The list of events that occurred in the last update. \end{DoxyCompactList}\item 
+std\+::list$<$ std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&)$>$ $>$ \mbox{\hyperlink{classBBM_1_1EventSystem_acabb2810dc9e40330874a5abc3c87a3c}{\+\_\+global\+Events}}
+\begin{DoxyCompactList}\small\item\em The list of events that occurred in the last update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1EventSystem_ae7fe6f2cfb1b2fdf5e58378c6e4f1af0}\label{classBBM_1_1EventSystem_ae7fe6f2cfb1b2fdf5e58378c6e4f1af0}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!EventSystem@{EventSystem}}
+\index{EventSystem@{EventSystem}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{EventSystem()}{EventSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Event\+System\+::\+Event\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_a566ca3fe42fdecc69c06ee2779569d4a}\label{classBBM_1_1EventSystem_a566ca3fe42fdecc69c06ee2779569d4a}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!EventSystem@{EventSystem}}
+\index{EventSystem@{EventSystem}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{EventSystem()}{EventSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Event\+System\+::\+Event\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An event system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_a968c907153d98370e7184a4453b0967d}\label{classBBM_1_1EventSystem_a968c907153d98370e7184a4453b0967d}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!````~EventSystem@{$\sim$EventSystem}}
+\index{````~EventSystem@{$\sim$EventSystem}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$EventSystem()}{~EventSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Event\+System\+::$\sim$\+Event\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1EventSystem_ad1c707556366c47fe3619dcbb0d46dc5}\label{classBBM_1_1EventSystem_ad1c707556366c47fe3619dcbb0d46dc5}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!dispatchEvent@{dispatchEvent}}
+\index{dispatchEvent@{dispatchEvent}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{dispatchEvent()}{dispatchEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Event\+System\+::dispatch\+Event (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&)$>$ \&}]{event }\end{DoxyParamCaption})}
+
+
+
+Inform the system that a new event has occurred and it should run the given method on every entities. 
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_a5224cf315c301dee558a9d715ce71239}\label{classBBM_1_1EventSystem_a5224cf315c301dee558a9d715ce71239}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!dispatchEvent@{dispatchEvent}}
+\index{dispatchEvent@{dispatchEvent}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{dispatchEvent()}{dispatchEvent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Event\+System\+::dispatch\+Event (\begin{DoxyParamCaption}\item[{const std\+::function$<$ void(\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&)$>$ \&}]{event }\end{DoxyParamCaption})}
+
+
+
+Inform the system that a new event has occurred and it should run the given method on every entities. 
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_aa538b4d3ed1cc6b4865df3ad61295c49}\label{classBBM_1_1EventSystem_aa538b4d3ed1cc6b4865df3ad61295c49}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Event\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$$>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_aa5e3d7591f5a7d3b42857b24c726bb82}\label{classBBM_1_1EventSystem_aa5e3d7591f5a7d3b42857b24c726bb82}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Event\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$$>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_a93c4ef606fb52f9412c503dcce953ecd}\label{classBBM_1_1EventSystem_a93c4ef606fb52f9412c503dcce953ecd}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}}\& B\+B\+M\+::\+Event\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1EventSystem}{Event\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+An event system is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1EventSystem_a711a6c41488047e4b74cda672b3a9fe1}\label{classBBM_1_1EventSystem_a711a6c41488047e4b74cda672b3a9fe1}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!\_events@{\_events}}
+\index{\_events@{\_events}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{\_events}{\_events}}
+{\footnotesize\ttfamily std\+::list$<$std\+::function$<$void (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&)$>$ $>$ B\+B\+M\+::\+Event\+System\+::\+\_\+events\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of events that occurred in the last update. 
+
+\mbox{\Hypertarget{classBBM_1_1EventSystem_acabb2810dc9e40330874a5abc3c87a3c}\label{classBBM_1_1EventSystem_acabb2810dc9e40330874a5abc3c87a3c}} 
+\index{BBM::EventSystem@{BBM::EventSystem}!\_globalEvents@{\_globalEvents}}
+\index{\_globalEvents@{\_globalEvents}!BBM::EventSystem@{BBM::EventSystem}}
+\doxysubsubsection{\texorpdfstring{\_globalEvents}{\_globalEvents}}
+{\footnotesize\ttfamily std\+::list$<$std\+::function$<$void (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&)$>$ $>$ B\+B\+M\+::\+Event\+System\+::\+\_\+global\+Events\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of events that occurred in the last update. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Event/\mbox{\hyperlink{EventSystem_8hpp}{Event\+System.\+hpp}}\item 
+sources/\+System/\+Event/\mbox{\hyperlink{EventSystem_8cpp}{Event\+System.\+cpp}}\end{DoxyCompactItemize}

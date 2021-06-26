@@ -1,0 +1,171 @@
+\hypertarget{classBBM_1_1ResumeLobbySystem}{}\doxysection{B\+BM\+::Resume\+Lobby\+System Class Reference}
+\label{classBBM_1_1ResumeLobbySystem}\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+
+
+A system to handle Health entities.  
+
+
+
+
+{\ttfamily \#include $<$Resume\+Lobby\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Resume\+Lobby\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ResumeLobbySystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Resume\+Lobby\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ResumeLobbySystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_a40aed790eb5cd004e42ef6b257543771}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1ResumeLobbyComponent}{Resume\+Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&entity, std\+::chrono\+::nanoseconds dtime) override
+\item 
+void \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_ad3b8dd70d7f539bccd116dd2f62c8e7e}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_a2a87318a1ca58e653b7adb276899f64a}{unload\+Lobby\+From\+Resume}} ()
+\begin{DoxyCompactList}\small\item\em Reset the resume lobby scene to it\textquotesingle{}s default state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_af7343d1840c93f69577109b7e3e9e823}{Resume\+Lobby\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_abd62b9e16c9f2594ce5af20da0c551ec}{Resume\+Lobby\+System}} (const \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Lobby system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_a335444ba44f59be417775c4218cf4984}{$\sim$\+Resume\+Lobby\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}} \& \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_abad43fc22b74635081864f6ba8bfeac6}{operator=}} (const \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_a41523749df56496367316e8865d11f48}{resume\+To\+Game}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em Add a controller for the player when we resume a game. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem_ae1b357f4d553c6534a37f6111de87677}{players\+Are\+Ready}} (\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Check if every player is ready. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle Health entities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_af7343d1840c93f69577109b7e3e9e823}\label{classBBM_1_1ResumeLobbySystem_af7343d1840c93f69577109b7e3e9e823}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!ResumeLobbySystem@{ResumeLobbySystem}}
+\index{ResumeLobbySystem@{ResumeLobbySystem}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{ResumeLobbySystem()}{ResumeLobbySystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Resume\+Lobby\+System\+::\+Resume\+Lobby\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_abd62b9e16c9f2594ce5af20da0c551ec}\label{classBBM_1_1ResumeLobbySystem_abd62b9e16c9f2594ce5af20da0c551ec}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!ResumeLobbySystem@{ResumeLobbySystem}}
+\index{ResumeLobbySystem@{ResumeLobbySystem}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{ResumeLobbySystem()}{ResumeLobbySystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Resume\+Lobby\+System\+::\+Resume\+Lobby\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Lobby system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_a335444ba44f59be417775c4218cf4984}\label{classBBM_1_1ResumeLobbySystem_a335444ba44f59be417775c4218cf4984}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!````~ResumeLobbySystem@{$\sim$ResumeLobbySystem}}
+\index{````~ResumeLobbySystem@{$\sim$ResumeLobbySystem}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$ResumeLobbySystem()}{~ResumeLobbySystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Resume\+Lobby\+System\+::$\sim$\+Resume\+Lobby\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_ad3b8dd70d7f539bccd116dd2f62c8e7e}\label{classBBM_1_1ResumeLobbySystem_ad3b8dd70d7f539bccd116dd2f62c8e7e}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Resume\+Lobby\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$ Resume\+Lobby\+Component, Drawable2\+D\+Component $>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_a40aed790eb5cd004e42ef6b257543771}\label{classBBM_1_1ResumeLobbySystem_a40aed790eb5cd004e42ef6b257543771}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Resume\+Lobby\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1ResumeLobbyComponent}{Resume\+Lobby\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_abad43fc22b74635081864f6ba8bfeac6}\label{classBBM_1_1ResumeLobbySystem_abad43fc22b74635081864f6ba8bfeac6}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}}\& B\+B\+M\+::\+Resume\+Lobby\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ResumeLobbySystem}{Resume\+Lobby\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A system is not assignable. 
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_ae1b357f4d553c6534a37f6111de87677}\label{classBBM_1_1ResumeLobbySystem_ae1b357f4d553c6534a37f6111de87677}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!playersAreReady@{playersAreReady}}
+\index{playersAreReady@{playersAreReady}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{playersAreReady()}{playersAreReady()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Resume\+Lobby\+System\+::players\+Are\+Ready (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if every player is ready. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The lobby scene containing lobby players. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_a41523749df56496367316e8865d11f48}\label{classBBM_1_1ResumeLobbySystem_a41523749df56496367316e8865d11f48}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!resumeToGame@{resumeToGame}}
+\index{resumeToGame@{resumeToGame}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{resumeToGame()}{resumeToGame()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Resume\+Lobby\+System\+::resume\+To\+Game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Add a controller for the player when we resume a game. 
+
+\mbox{\Hypertarget{classBBM_1_1ResumeLobbySystem_a2a87318a1ca58e653b7adb276899f64a}\label{classBBM_1_1ResumeLobbySystem_a2a87318a1ca58e653b7adb276899f64a}} 
+\index{BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}!unloadLobbyFromResume@{unloadLobbyFromResume}}
+\index{unloadLobbyFromResume@{unloadLobbyFromResume}!BBM::ResumeLobbySystem@{BBM::ResumeLobbySystem}}
+\doxysubsubsection{\texorpdfstring{unloadLobbyFromResume()}{unloadLobbyFromResume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Resume\+Lobby\+System\+::unload\+Lobby\+From\+Resume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reset the resume lobby scene to it\textquotesingle{}s default state. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Lobby/\mbox{\hyperlink{ResumeLobbySystem_8hpp}{Resume\+Lobby\+System.\+hpp}}\item 
+sources/\+System/\+Lobby/\mbox{\hyperlink{ResumeLobbySystem_8cpp}{Resume\+Lobby\+System.\+cpp}}\end{DoxyCompactItemize}

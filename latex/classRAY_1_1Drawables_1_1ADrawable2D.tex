@@ -1,0 +1,288 @@
+\hypertarget{classRAY_1_1Drawables_1_1ADrawable2D}{}\doxysection{R\+AY\+::Drawables\+::A\+Drawable2D Class Reference}
+\label{classRAY_1_1Drawables_1_1ADrawable2D}\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+
+
+Abstraction of any two-\/dimensionnal drawable.  
+
+
+
+
+{\ttfamily \#include $<$A\+Drawable2\+D.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::A\+Drawable2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1ADrawable2D__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::A\+Drawable2D\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1ADrawable2D__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a50fbd8a5b3b2acdc88a3693442bae73e}{A\+Drawable2D}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&position, const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \&color, float scale=1, float rotation=0)
+\begin{DoxyCompactList}\small\item\em A\+Drawable constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_acae3846168a56fa8b6d74097bb1ee92a}{A\+Drawable2D}} (int x, int y, const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \&color, float scale=1, float rotation=0)
+\begin{DoxyCompactList}\small\item\em A\+Drawable constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_af67088275cdfa7c5996196eece36325e}{A\+Drawable2D}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_ab424ed78cbcd1ad772e8ab1fd4f8b044}{$\sim$\+A\+Drawable2D}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_af9b177b3bb5e09dec9fddcfb000220ae}{get\+Position}} (void) const
+\item 
+const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_ada57ac1307a8b75f3cf44e824ded9d90}{get\+Color}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_adc24a9c309831af1109507c03b8c3ae0}{set\+Position}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&position)
+\begin{DoxyCompactList}\small\item\em set Top-\/left position \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_aafe6321550ac0e48b0c19869a4a999be}{set\+Position}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em set Top-\/left position \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a12f6b77e31c349ebce0b90a7452bcfbc}{set\+Color}} (const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em set color \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a4ff6db636c2778ff94bc391abc65bcc5}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override=0
+\begin{DoxyCompactList}\small\item\em Draw drawble on window. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a048a9878e8aa9245b2819cba014da664}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&image)=0
+\begin{DoxyCompactList}\small\item\em Draw drawble on image. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_ae4735e22489bbac3843270f9caeb69a1}{get\+Scale}} () const
+\begin{DoxyCompactList}\small\item\em scale getter \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a5cf52e9081d414002e0cfb43d9e8d19b}{set\+Scale}} (float scale)
+\begin{DoxyCompactList}\small\item\em scale setters \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_af80fd923001c289ca890d19c1c9fca25}{\+\_\+rotation}} = 0
+\begin{DoxyCompactList}\small\item\em rotation \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a3f8ec18e046b5dc71e5f9476dad84044}{\+\_\+scale}} = 1
+\begin{DoxyCompactList}\small\item\em scale \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a5b1ba69dcc4d0da1f437a9b87f9829d3}{\+\_\+position}}
+\begin{DoxyCompactList}\small\item\em Top-\/left position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_af7e314f9e7a22490ba24668aaa55d783}{\+\_\+color}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the A\+Drawable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstraction of any two-\/dimensionnal drawable. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a50fbd8a5b3b2acdc88a3693442bae73e}\label{classRAY_1_1Drawables_1_1ADrawable2D_a50fbd8a5b3b2acdc88a3693442bae73e}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!ADrawable2D@{ADrawable2D}}
+\index{ADrawable2D@{ADrawable2D}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{ADrawable2D()}{ADrawable2D()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+A\+Drawable2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \&}]{color,  }\item[{float}]{scale = {\ttfamily 1},  }\item[{float}]{rotation = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A\+Drawable constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em poition} & position of top-\/left point \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the color ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_acae3846168a56fa8b6d74097bb1ee92a}\label{classRAY_1_1Drawables_1_1ADrawable2D_acae3846168a56fa8b6d74097bb1ee92a}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!ADrawable2D@{ADrawable2D}}
+\index{ADrawable2D@{ADrawable2D}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{ADrawable2D()}{ADrawable2D()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+A\+Drawable2D (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \&}]{color,  }\item[{float}]{scale = {\ttfamily 1},  }\item[{float}]{rotation = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+A\+Drawable constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x-\/position of top-\/left point ~\newline
+ \\
+\hline
+{\em y} & y-\/position of top-\/left point \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the color ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_af67088275cdfa7c5996196eece36325e}\label{classRAY_1_1Drawables_1_1ADrawable2D_af67088275cdfa7c5996196eece36325e}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!ADrawable2D@{ADrawable2D}}
+\index{ADrawable2D@{ADrawable2D}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{ADrawable2D()}{ADrawable2D()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+A\+Drawable2D (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_ab424ed78cbcd1ad772e8ab1fd4f8b044}\label{classRAY_1_1Drawables_1_1ADrawable2D_ab424ed78cbcd1ad772e8ab1fd4f8b044}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!````~ADrawable2D@{$\sim$ADrawable2D}}
+\index{````~ADrawable2D@{$\sim$ADrawable2D}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{$\sim$ADrawable2D()}{~ADrawable2D()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::$\sim$\+A\+Drawable2D (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a048a9878e8aa9245b2819cba014da664}\label{classRAY_1_1Drawables_1_1ADrawable2D_a048a9878e8aa9245b2819cba014da664}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily virtual void R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Draw drawble on image. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle_a4003c5f12aa431cb40dddaae2f92b56f}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Rectangle}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a919b4317edcfe045799e72737cd5a5c3}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Triangle_a6d3926d5ddb03198e8e47352ef101244}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Triangle}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Line_a81d03088adb2b38a5577d367859e226a}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Line}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Circle_a4a8d9f054d74b3b089628b8f5340620d}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Circle}}, \mbox{\hyperlink{classRAY_1_1Image_a8e3c0e0087067bbf2f198e9ad186d8a8}{R\+A\+Y\+::\+Image}}, and \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Point_a1c484cb029c6a976296554e703d6a3d9}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Point}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a4ff6db636c2778ff94bc391abc65bcc5}\label{classRAY_1_1Drawables_1_1ADrawable2D_a4ff6db636c2778ff94bc391abc65bcc5}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [pure virtual]}}
+
+
+
+Draw drawble on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1IDrawable_a44fc0ad8d6f08038dafe0d142a154718}{R\+A\+Y\+::\+Drawables\+::\+I\+Drawable}}.
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle_aa6841ac2e4d0a52e40261f775dfaf156}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Rectangle}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a90ef53b8cfc7573b4d33c805c105766d}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Triangle_a0d22315e2e5beb0cf0213e2488e780ee}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Triangle}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Line_ad460128e28ac7113b0303ebb82060dab}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Line}}, \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Circle_a6bb9d27076bf1e5dc6fe8c90328d77d6}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Circle}}, \mbox{\hyperlink{classRAY_1_1Image_a2c3fc4c64707d0838bcb807f7f49b892}{R\+A\+Y\+::\+Image}}, \mbox{\hyperlink{classRAY_1_1Texture_a8af69711e03caac8fb3caeb84e09a7da}{R\+A\+Y\+::\+Texture}}, and \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Point_ab699082979515f0fef6bc8d545c79705}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Point}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_ada57ac1307a8b75f3cf44e824ded9d90}\label{classRAY_1_1Drawables_1_1ADrawable2D_ada57ac1307a8b75f3cf44e824ded9d90}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!getColor@{getColor}}
+\index{getColor@{getColor}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Color}{R\+A\+Y\+::\+Color}} \& R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::get\+Color (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the color of the A\+Drawable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_af9b177b3bb5e09dec9fddcfb000220ae}\label{classRAY_1_1Drawables_1_1ADrawable2D_af9b177b3bb5e09dec9fddcfb000220ae}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \& R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::get\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the top-\/left position of the A\+Drawable 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_ae4735e22489bbac3843270f9caeb69a1}\label{classRAY_1_1Drawables_1_1ADrawable2D_ae4735e22489bbac3843270f9caeb69a1}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!getScale@{getScale}}
+\index{getScale@{getScale}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{getScale()}{getScale()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::get\+Scale (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+scale getter 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a12f6b77e31c349ebce0b90a7452bcfbc}\label{classRAY_1_1Drawables_1_1ADrawable2D_a12f6b77e31c349ebce0b90a7452bcfbc}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!setColor@{setColor}}
+\index{setColor@{setColor}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{setColor()}{setColor()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::set\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+set color 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_adc24a9c309831af1109507c03b8c3ae0}\label{classRAY_1_1Drawables_1_1ADrawable2D_adc24a9c309831af1109507c03b8c3ae0}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{position }\end{DoxyParamCaption})}
+
+
+
+set Top-\/left position 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_aafe6321550ac0e48b0c19869a4a999be}\label{classRAY_1_1Drawables_1_1ADrawable2D_aafe6321550ac0e48b0c19869a4a999be}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{A\+Drawable2D}} \& R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::set\+Position (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+set Top-\/left position 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a5cf52e9081d414002e0cfb43d9e8d19b}\label{classRAY_1_1Drawables_1_1ADrawable2D_a5cf52e9081d414002e0cfb43d9e8d19b}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!setScale@{setScale}}
+\index{setScale@{setScale}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{setScale()}{setScale()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::set\+Scale (\begin{DoxyParamCaption}\item[{float}]{scale }\end{DoxyParamCaption})}
+
+
+
+scale setters 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_af7e314f9e7a22490ba24668aaa55d783}\label{classRAY_1_1Drawables_1_1ADrawable2D_af7e314f9e7a22490ba24668aaa55d783}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!\_color@{\_color}}
+\index{\_color@{\_color}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{\_color}{\_color}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}} R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+\_\+color\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} of the A\+Drawable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a5b1ba69dcc4d0da1f437a9b87f9829d3}\label{classRAY_1_1Drawables_1_1ADrawable2D_a5b1ba69dcc4d0da1f437a9b87f9829d3}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!\_position@{\_position}}
+\index{\_position@{\_position}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{\_position}{\_position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+\_\+position\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Top-\/left position. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_af80fd923001c289ca890d19c1c9fca25}\label{classRAY_1_1Drawables_1_1ADrawable2D_af80fd923001c289ca890d19c1c9fca25}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!\_rotation@{\_rotation}}
+\index{\_rotation@{\_rotation}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{\_rotation}{\_rotation}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+\_\+rotation = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+rotation 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1ADrawable2D_a3f8ec18e046b5dc71e5f9476dad84044}\label{classRAY_1_1Drawables_1_1ADrawable2D_a3f8ec18e046b5dc71e5f9476dad84044}} 
+\index{RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}!\_scale@{\_scale}}
+\index{\_scale@{\_scale}!RAY::Drawables::ADrawable2D@{RAY::Drawables::ADrawable2D}}
+\doxysubsubsection{\texorpdfstring{\_scale}{\_scale}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2\+D\+::\+\_\+scale = 1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+scale 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{ADrawable2D_8hpp}{A\+Drawable2\+D.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{ADrawable2D_8cpp}{A\+Drawable2\+D.\+cpp}}\end{DoxyCompactItemize}

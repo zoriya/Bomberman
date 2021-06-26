@@ -1,0 +1,161 @@
+\hypertarget{classBBM_1_1GameState}{}\doxysection{B\+BM\+::Game\+State Class Reference}
+\label{classBBM_1_1GameState}\index{BBM::GameState@{BBM::GameState}}
+
+
+A class representing the current game state. This allow one to retain information between update calls.  
+
+
+
+
+{\ttfamily \#include $<$Game\+State.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Game\+State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classBBM_1_1GameState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} \{ \newline
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a5f66b510d6f02fdda3619f1680e42fd0}{Main\+Menu\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28af7ae93606114da6460fe08f015b7b469}{Game\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a3b41e40fee40729830680210c41de19a}{Settings\+Scene}}, 
+\newline
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ac2aa7b52305fc6f8caf072011516841d}{Pause\+Menu\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a0b5df90907709f429c69de14d43a01dd}{Lobby\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a4b7319d9537455ecd196dcc8f66a42ee}{Resume\+Lobby\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28aa35a071454dd66638e69981bd94b7b1c}{Title\+Screen\+Scene}}, 
+\newline
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ad739846ff1d7422cdad4ea186c3a0720}{Credit\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a6c5e9d1f03cdd583e56fafc3c9c7f002}{How\+To\+Play\+Scene}}, 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a13dd26451a5eef9002b2b770030a3ac8}{Score\+Scene}}
+ \}
+\begin{DoxyCompactList}\small\item\em The list of scenes available. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} \mbox{\hyperlink{classBBM_1_1GameState_a8eebd79febb715bd7ff70ccb7aa41878}{previous\+Scene}} = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}
+\begin{DoxyCompactList}\small\item\em The scene before the actual one. Used for back buttons. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} \mbox{\hyperlink{classBBM_1_1GameState_a7025911c13d343ff05be6b1f7e65ba8a}{current\+Scene}} = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}
+\begin{DoxyCompactList}\small\item\em The currently loaded scene. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} \mbox{\hyperlink{classBBM_1_1GameState_a8769f856b80581ff13c325892035e809}{next\+Scene}} = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}
+\begin{DoxyCompactList}\small\item\em The next scene to load (if smae as current\+Scene, nothing to do) \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ $>$ \mbox{\hyperlink{classBBM_1_1GameState_a56853be347229f66fa2b7d80cbf8a2b1}{loaded\+Scenes}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of loaded scenes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A class representing the current game state. This allow one to retain information between update calls. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}} 
+\index{BBM::GameState@{BBM::GameState}!SceneID@{SceneID}}
+\index{SceneID@{SceneID}!BBM::GameState@{BBM::GameState}}
+\doxysubsubsection{\texorpdfstring{SceneID}{SceneID}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{B\+B\+M\+::\+Game\+State\+::\+Scene\+ID}}}
+
+
+
+The list of scenes available. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SplashScreen@{SplashScreen}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!SplashScreen@{SplashScreen}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}} 
+Splash\+Screen&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MainMenuScene@{MainMenuScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!MainMenuScene@{MainMenuScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a5f66b510d6f02fdda3619f1680e42fd0}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a5f66b510d6f02fdda3619f1680e42fd0}} 
+Main\+Menu\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GameScene@{GameScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!GameScene@{GameScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28af7ae93606114da6460fe08f015b7b469}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28af7ae93606114da6460fe08f015b7b469}} 
+Game\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SettingsScene@{SettingsScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!SettingsScene@{SettingsScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a3b41e40fee40729830680210c41de19a}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a3b41e40fee40729830680210c41de19a}} 
+Settings\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PauseMenuScene@{PauseMenuScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!PauseMenuScene@{PauseMenuScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ac2aa7b52305fc6f8caf072011516841d}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ac2aa7b52305fc6f8caf072011516841d}} 
+Pause\+Menu\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LobbyScene@{LobbyScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!LobbyScene@{LobbyScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a0b5df90907709f429c69de14d43a01dd}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a0b5df90907709f429c69de14d43a01dd}} 
+Lobby\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ResumeLobbyScene@{ResumeLobbyScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!ResumeLobbyScene@{ResumeLobbyScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a4b7319d9537455ecd196dcc8f66a42ee}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a4b7319d9537455ecd196dcc8f66a42ee}} 
+Resume\+Lobby\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TitleScreenScene@{TitleScreenScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!TitleScreenScene@{TitleScreenScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28aa35a071454dd66638e69981bd94b7b1c}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28aa35a071454dd66638e69981bd94b7b1c}} 
+Title\+Screen\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CreditScene@{CreditScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!CreditScene@{CreditScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ad739846ff1d7422cdad4ea186c3a0720}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ad739846ff1d7422cdad4ea186c3a0720}} 
+Credit\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HowToPlayScene@{HowToPlayScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!HowToPlayScene@{HowToPlayScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a6c5e9d1f03cdd583e56fafc3c9c7f002}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a6c5e9d1f03cdd583e56fafc3c9c7f002}} 
+How\+To\+Play\+Scene&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ScoreScene@{ScoreScene}!BBM::GameState@{BBM::GameState}}\index{BBM::GameState@{BBM::GameState}!ScoreScene@{ScoreScene}}}\mbox{\Hypertarget{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a13dd26451a5eef9002b2b770030a3ac8}\label{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28a13dd26451a5eef9002b2b770030a3ac8}} 
+Score\+Scene&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1GameState_a7025911c13d343ff05be6b1f7e65ba8a}\label{classBBM_1_1GameState_a7025911c13d343ff05be6b1f7e65ba8a}} 
+\index{BBM::GameState@{BBM::GameState}!currentScene@{currentScene}}
+\index{currentScene@{currentScene}!BBM::GameState@{BBM::GameState}}
+\doxysubsubsection{\texorpdfstring{currentScene}{currentScene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} B\+B\+M\+::\+Game\+State\+::current\+Scene = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}}
+
+
+
+The currently loaded scene. 
+
+\mbox{\Hypertarget{classBBM_1_1GameState_a56853be347229f66fa2b7d80cbf8a2b1}\label{classBBM_1_1GameState_a56853be347229f66fa2b7d80cbf8a2b1}} 
+\index{BBM::GameState@{BBM::GameState}!loadedScenes@{loadedScenes}}
+\index{loadedScenes@{loadedScenes}!BBM::GameState@{BBM::GameState}}
+\doxysubsubsection{\texorpdfstring{loadedScenes}{loadedScenes}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$\mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}}, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}}$>$ $>$ B\+B\+M\+::\+Game\+State\+::loaded\+Scenes = \{\}}
+
+
+
+The list of loaded scenes. 
+
+\mbox{\Hypertarget{classBBM_1_1GameState_a8769f856b80581ff13c325892035e809}\label{classBBM_1_1GameState_a8769f856b80581ff13c325892035e809}} 
+\index{BBM::GameState@{BBM::GameState}!nextScene@{nextScene}}
+\index{nextScene@{nextScene}!BBM::GameState@{BBM::GameState}}
+\doxysubsubsection{\texorpdfstring{nextScene}{nextScene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} B\+B\+M\+::\+Game\+State\+::next\+Scene = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}}
+
+
+
+The next scene to load (if smae as current\+Scene, nothing to do) 
+
+\mbox{\Hypertarget{classBBM_1_1GameState_a8eebd79febb715bd7ff70ccb7aa41878}\label{classBBM_1_1GameState_a8eebd79febb715bd7ff70ccb7aa41878}} 
+\index{BBM::GameState@{BBM::GameState}!previousScene@{previousScene}}
+\index{previousScene@{previousScene}!BBM::GameState@{BBM::GameState}}
+\doxysubsubsection{\texorpdfstring{previousScene}{previousScene}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28}{Scene\+ID}} B\+B\+M\+::\+Game\+State\+::previous\+Scene = \mbox{\hyperlink{classBBM_1_1GameState_a64335f0af42a70823a830e51bbdecb28ae84caa63e6386f111d98661ec2374341}{Splash\+Screen}}}
+
+
+
+The scene before the actual one. Used for back buttons. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Models/\mbox{\hyperlink{GameState_8hpp}{Game\+State.\+hpp}}\end{DoxyCompactItemize}

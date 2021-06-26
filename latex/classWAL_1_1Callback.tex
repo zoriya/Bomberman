@@ -1,0 +1,184 @@
+\hypertarget{classWAL_1_1Callback}{}\doxysection{W\+AL\+::Callback$<$ Types $>$ Class Template Reference}
+\label{classWAL_1_1Callback}\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+
+
+A callback where you can subscribe to and emit it.  
+
+
+
+
+{\ttfamily \#include $<$Callback.\+hpp$>$}
+
+
+
+Collaboration diagram for W\+AL\+::Callback$<$ Types $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classWAL_1_1Callback__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Func $>$ }\\int \mbox{\hyperlink{classWAL_1_1Callback_a3706378bf1ee6b6db1a9d900403d30e2}{add\+Callback}} (Func callback)
+\begin{DoxyCompactList}\small\item\em Add a method to be called when this callback is invoked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Callback_accc0ebb93411e0a12a131991afe45a50}{remove\+Callback}} (int id)
+\begin{DoxyCompactList}\small\item\em Remove a function from this callback. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Callback_a74837f6a75e085479bede9d631a9a14e}{operator()}} (Types ...args) const
+\item 
+\mbox{\hyperlink{classWAL_1_1Callback_a5d957e6ca965a021f812cdd5a884b4ad}{Callback}} ()=default
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback_ae0d07cd1ffe238a242e2e9cd8bf5d69f}{Callback}} (const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback_a8ec1ef40b5431f2c1759f9174bf21301}{$\sim$\+Callback}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} \& \mbox{\hyperlink{classWAL_1_1Callback_a5500cc251b0be65962511c704b4ab25c}{operator=}} (const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default assignment operator. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Func $>$ }\\\mbox{\hyperlink{classWAL_1_1Callback_abcfcd4cd75584751f240319ccb2acc67}{Callback}} (Func callback)
+\begin{DoxyCompactList}\small\item\em Implicitly transform a callable into a callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classWAL_1_1Callback_a57d3fff6c3d00027d635430c6e425020}{\+\_\+next\+ID}} = 0
+\item 
+std\+::unordered\+\_\+map$<$ int, std\+::function$<$ void(Types...)$>$ $>$ \mbox{\hyperlink{classWAL_1_1Callback_af4548751e47bbcb84ae52c78de15ef14}{\+\_\+functions}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of functions to call. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename ... Types$>$\newline
+class W\+A\+L\+::\+Callback$<$ Types $>$}
+
+A callback where you can subscribe to and emit it. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1Callback_a5d957e6ca965a021f812cdd5a884b4ad}\label{classWAL_1_1Callback_a5d957e6ca965a021f812cdd5a884b4ad}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!Callback@{Callback}}
+\index{Callback@{Callback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{Callback()}{Callback()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Callback_ae0d07cd1ffe238a242e2e9cd8bf5d69f}\label{classWAL_1_1Callback_ae0d07cd1ffe238a242e2e9cd8bf5d69f}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!Callback@{Callback}}
+\index{Callback@{Callback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{Callback()}{Callback()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ Types $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Callback_a8ec1ef40b5431f2c1759f9174bf21301}\label{classWAL_1_1Callback_a8ec1ef40b5431f2c1759f9174bf21301}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!````~Callback@{$\sim$Callback}}
+\index{````~Callback@{$\sim$Callback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$Callback()}{~Callback()}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::$\sim$\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Callback_abcfcd4cd75584751f240319ccb2acc67}\label{classWAL_1_1Callback_abcfcd4cd75584751f240319ccb2acc67}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!Callback@{Callback}}
+\index{Callback@{Callback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{Callback()}{Callback()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+template$<$typename Func $>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::\mbox{\hyperlink{classWAL_1_1Callback}{Callback}} (\begin{DoxyParamCaption}\item[{Func}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Implicitly transform a callable into a callback. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Callback_a3706378bf1ee6b6db1a9d900403d30e2}\label{classWAL_1_1Callback_a3706378bf1ee6b6db1a9d900403d30e2}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!addCallback@{addCallback}}
+\index{addCallback@{addCallback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{addCallback()}{addCallback()}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+template$<$typename Func $>$ \\
+int \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::add\+Callback (\begin{DoxyParamCaption}\item[{Func}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a method to be called when this callback is invoked. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & The list of arguments of the callback method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A unique ID for this callback. That can be used to remove the callback later. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Callback_a74837f6a75e085479bede9d631a9a14e}\label{classWAL_1_1Callback_a74837f6a75e085479bede9d631a9a14e}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!operator()@{operator()}}
+\index{operator()@{operator()}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+void \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::operator() (\begin{DoxyParamCaption}\item[{Types ...}]{args }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classWAL_1_1Callback_a5500cc251b0be65962511c704b4ab25c}\label{classWAL_1_1Callback_a5500cc251b0be65962511c704b4ab25c}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{Callback}}\& \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ Types $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default assignment operator. 
+
+\mbox{\Hypertarget{classWAL_1_1Callback_accc0ebb93411e0a12a131991afe45a50}\label{classWAL_1_1Callback_accc0ebb93411e0a12a131991afe45a50}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!removeCallback@{removeCallback}}
+\index{removeCallback@{removeCallback}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{removeCallback()}{removeCallback()}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+void \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::remove\+Callback (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a function from this callback. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & The ID of the function. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1Callback_af4548751e47bbcb84ae52c78de15ef14}\label{classWAL_1_1Callback_af4548751e47bbcb84ae52c78de15ef14}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!\_functions@{\_functions}}
+\index{\_functions@{\_functions}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{\_functions}{\_functions}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+std\+::unordered\+\_\+map$<$int, std\+::function$<$void (Types...)$>$ $>$ \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::\+\_\+functions = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of functions to call. 
+
+\mbox{\Hypertarget{classWAL_1_1Callback_a57d3fff6c3d00027d635430c6e425020}\label{classWAL_1_1Callback_a57d3fff6c3d00027d635430c6e425020}} 
+\index{WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}!\_nextID@{\_nextID}}
+\index{\_nextID@{\_nextID}!WAL::Callback$<$ Types $>$@{WAL::Callback$<$ Types $>$}}
+\doxysubsubsection{\texorpdfstring{\_nextID}{\_nextID}}
+{\footnotesize\ttfamily template$<$typename ... Types$>$ \\
+int \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ Types $>$\+::\+\_\+next\+ID = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+Models/\mbox{\hyperlink{Callback_8hpp}{Callback.\+hpp}}\end{DoxyCompactItemize}

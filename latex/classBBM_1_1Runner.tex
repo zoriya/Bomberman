@@ -1,0 +1,340 @@
+\hypertarget{classBBM_1_1Runner}{}\doxysection{B\+BM\+::Runner Class Reference}
+\label{classBBM_1_1Runner}\index{BBM::Runner@{BBM::Runner}}
+
+
+{\ttfamily \#include $<$Runner.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Runner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classBBM_1_1Runner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classBBM_1_1Runner_ab815bba535362fddfed7f7804edacb7d}{run}} ()
+\begin{DoxyCompactList}\small\item\em Start the game and run a Bomberman. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1Runner_aade728b30bf6b532382769d7d1a3e104}{update\+State}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&engine, \mbox{\hyperlink{classBBM_1_1GameState}{Game\+State}} \&state)
+\begin{DoxyCompactList}\small\item\em Update current scene (loading related data) according to state. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1Runner_a2a011274d41e1ada54d12e50e6383be0}{add\+Systems}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em Add required systems to wal. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1Runner_ae22b6a64aad6476901d9852cdcb7e6c1}{enable\+Raylib}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em init all raylib-\/related data \& context \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1Runner_a1720031d410f14fcaa22a50b9ad2a19f}{add\+Menu\+Control}} (\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&scene, const std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Component\+::\+Sound\+Index}}, std\+::string $>$ \&sounds=\{\})
+\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_a7db0b16694e94561616af24792567ec8}{load\+Title\+Screen\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to title screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_a0104a8d388d78179b159690c030c4e2f}{load\+Main\+Menu\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to main menu screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_aa2dbe170fa8a182a015c9feef46b45bc}{load\+Pause\+Menu\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to pause menu screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_aa0be61dfbb0fa6d8e062637a2ba387f6}{load\+Settings\+Menu\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to settings screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_adc0cbd076f5de68a819ddb740cb92cc0}{load\+Game\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to game screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_ae8a873e52d49d02cf6ef4e6468fbfc04}{load\+Credit\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to credit screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_a8db0e711352278f356eca7b55264f04f}{load\+Lobby\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to lobby screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_acb6e90b2b60739ff93154b4b96dbf836}{load\+Resume\+Lobby\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to resume lobby screen \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \& \mbox{\hyperlink{classBBM_1_1Runner_a5a76d9535ba21004d728d95d174dbb80}{create\+Player}} (\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&scene)
+\begin{DoxyCompactList}\small\item\em Create a player (without any controllable) and add it to the scene. \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_aba315afebb84dbe598c6971e1a20d711}{load\+Splash\+Screen\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load all data related to splash screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_a4128eceb1097e0e2c2bc1080bc9a5ea9}{load\+How\+To\+Play\+Scene}} ()
+\begin{DoxyCompactList}\small\item\em load how to play screen \end{DoxyCompactList}\item 
+static std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \mbox{\hyperlink{classBBM_1_1Runner_a5a2ecff6ed962bdd0ebfbb0f950a80fb}{load\+Score\+Scene}} (\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&game\+Scene)
+\begin{DoxyCompactList}\small\item\em load all data related to score scene screen \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1Runner_a9246bae0efe5eed05bca3d0afe410a12}{load\+Scenes}} ()
+\begin{DoxyCompactList}\small\item\em loads all scenes in the game state \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classBBM_1_1Runner_a1fc780b32e29befeeb7113fe58d18dd8}{has\+Heights}} = false
+\begin{DoxyCompactList}\small\item\em Has the map heights or is it disabled? \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1Runner_a05b320a17f744afd1f3db6ea63a4df07}{map\+Width}} = 16
+\begin{DoxyCompactList}\small\item\em the width of the map \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1Runner_a4a62aef63ef6c41a3be32decd9d9c757}{map\+Height}} = 16
+\begin{DoxyCompactList}\small\item\em the height of the map \end{DoxyCompactList}\item 
+static std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1Runner_a480095f15a98ba324bccf19349979223}{timer\+Delay}} = std\+::chrono\+::minutes(3)
+\begin{DoxyCompactList}\small\item\em timer duration \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1GameState}{Game\+State}} \mbox{\hyperlink{classBBM_1_1Runner_a0fd29bdf80a3cf9de5858b40c0dbfef8}{game\+State}}
+\begin{DoxyCompactList}\small\item\em store current scenes informations \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1Runner_a1720031d410f14fcaa22a50b9ad2a19f}\label{classBBM_1_1Runner_a1720031d410f14fcaa22a50b9ad2a19f}} 
+\index{BBM::Runner@{BBM::Runner}!addMenuControl@{addMenuControl}}
+\index{addMenuControl@{addMenuControl}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{addMenuControl()}{addMenuControl()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Runner\+::add\+Menu\+Control (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&}]{scene,  }\item[{const std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Component\+::\+Sound\+Index}}, std\+::string $>$ \&}]{sounds = {\ttfamily \{\}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a2a011274d41e1ada54d12e50e6383be0}\label{classBBM_1_1Runner_a2a011274d41e1ada54d12e50e6383be0}} 
+\index{BBM::Runner@{BBM::Runner}!addSystems@{addSystems}}
+\index{addSystems@{addSystems}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{addSystems()}{addSystems()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Runner\+::add\+Systems (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Add required systems to wal. 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a5a76d9535ba21004d728d95d174dbb80}\label{classBBM_1_1Runner_a5a76d9535ba21004d728d95d174dbb80}} 
+\index{BBM::Runner@{BBM::Runner}!createPlayer@{createPlayer}}
+\index{createPlayer@{createPlayer}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{createPlayer()}{createPlayer()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \& B\+B\+M\+::\+Runner\+::create\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create a player (without any controllable) and add it to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & The scene where to player should reside. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A reference to the created player. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBBM_1_1Runner_ae22b6a64aad6476901d9852cdcb7e6c1}\label{classBBM_1_1Runner_ae22b6a64aad6476901d9852cdcb7e6c1}} 
+\index{BBM::Runner@{BBM::Runner}!enableRaylib@{enableRaylib}}
+\index{enableRaylib@{enableRaylib}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{enableRaylib()}{enableRaylib()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Runner\+::enable\+Raylib (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+init all raylib-\/related data \& context 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_ae8a873e52d49d02cf6ef4e6468fbfc04}\label{classBBM_1_1Runner_ae8a873e52d49d02cf6ef4e6468fbfc04}} 
+\index{BBM::Runner@{BBM::Runner}!loadCreditScene@{loadCreditScene}}
+\index{loadCreditScene@{loadCreditScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadCreditScene()}{loadCreditScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Credit\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to credit screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_adc0cbd076f5de68a819ddb740cb92cc0}\label{classBBM_1_1Runner_adc0cbd076f5de68a819ddb740cb92cc0}} 
+\index{BBM::Runner@{BBM::Runner}!loadGameScene@{loadGameScene}}
+\index{loadGameScene@{loadGameScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadGameScene()}{loadGameScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Game\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to game screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a4128eceb1097e0e2c2bc1080bc9a5ea9}\label{classBBM_1_1Runner_a4128eceb1097e0e2c2bc1080bc9a5ea9}} 
+\index{BBM::Runner@{BBM::Runner}!loadHowToPlayScene@{loadHowToPlayScene}}
+\index{loadHowToPlayScene@{loadHowToPlayScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadHowToPlayScene()}{loadHowToPlayScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+How\+To\+Play\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load how to play screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a8db0e711352278f356eca7b55264f04f}\label{classBBM_1_1Runner_a8db0e711352278f356eca7b55264f04f}} 
+\index{BBM::Runner@{BBM::Runner}!loadLobbyScene@{loadLobbyScene}}
+\index{loadLobbyScene@{loadLobbyScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadLobbyScene()}{loadLobbyScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Lobby\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to lobby screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a0104a8d388d78179b159690c030c4e2f}\label{classBBM_1_1Runner_a0104a8d388d78179b159690c030c4e2f}} 
+\index{BBM::Runner@{BBM::Runner}!loadMainMenuScene@{loadMainMenuScene}}
+\index{loadMainMenuScene@{loadMainMenuScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadMainMenuScene()}{loadMainMenuScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Main\+Menu\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to main menu screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_aa2dbe170fa8a182a015c9feef46b45bc}\label{classBBM_1_1Runner_aa2dbe170fa8a182a015c9feef46b45bc}} 
+\index{BBM::Runner@{BBM::Runner}!loadPauseMenuScene@{loadPauseMenuScene}}
+\index{loadPauseMenuScene@{loadPauseMenuScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadPauseMenuScene()}{loadPauseMenuScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Pause\+Menu\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to pause menu screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_acb6e90b2b60739ff93154b4b96dbf836}\label{classBBM_1_1Runner_acb6e90b2b60739ff93154b4b96dbf836}} 
+\index{BBM::Runner@{BBM::Runner}!loadResumeLobbyScene@{loadResumeLobbyScene}}
+\index{loadResumeLobbyScene@{loadResumeLobbyScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadResumeLobbyScene()}{loadResumeLobbyScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Resume\+Lobby\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to resume lobby screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a9246bae0efe5eed05bca3d0afe410a12}\label{classBBM_1_1Runner_a9246bae0efe5eed05bca3d0afe410a12}} 
+\index{BBM::Runner@{BBM::Runner}!loadScenes@{loadScenes}}
+\index{loadScenes@{loadScenes}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadScenes()}{loadScenes()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Runner\+::load\+Scenes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+loads all scenes in the game state 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a5a2ecff6ed962bdd0ebfbb0f950a80fb}\label{classBBM_1_1Runner_a5a2ecff6ed962bdd0ebfbb0f950a80fb}} 
+\index{BBM::Runner@{BBM::Runner}!loadScoreScene@{loadScoreScene}}
+\index{loadScoreScene@{loadScoreScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadScoreScene()}{loadScoreScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Score\+Scene (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} \&}]{game\+Scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to score scene screen 
+
+
+\begin{DoxyParams}{Parameters}
+{\em game\+Scene} & scene containing players (to know the scores) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1Runner_aa0be61dfbb0fa6d8e062637a2ba387f6}\label{classBBM_1_1Runner_aa0be61dfbb0fa6d8e062637a2ba387f6}} 
+\index{BBM::Runner@{BBM::Runner}!loadSettingsMenuScene@{loadSettingsMenuScene}}
+\index{loadSettingsMenuScene@{loadSettingsMenuScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadSettingsMenuScene()}{loadSettingsMenuScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Settings\+Menu\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to settings screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_aba315afebb84dbe598c6971e1a20d711}\label{classBBM_1_1Runner_aba315afebb84dbe598c6971e1a20d711}} 
+\index{BBM::Runner@{BBM::Runner}!loadSplashScreenScene@{loadSplashScreenScene}}
+\index{loadSplashScreenScene@{loadSplashScreenScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadSplashScreenScene()}{loadSplashScreenScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Splash\+Screen\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to splash screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a7db0b16694e94561616af24792567ec8}\label{classBBM_1_1Runner_a7db0b16694e94561616af24792567ec8}} 
+\index{BBM::Runner@{BBM::Runner}!loadTitleScreenScene@{loadTitleScreenScene}}
+\index{loadTitleScreenScene@{loadTitleScreenScene}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{loadTitleScreenScene()}{loadTitleScreenScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ B\+B\+M\+::\+Runner\+::load\+Title\+Screen\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load all data related to title screen 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_ab815bba535362fddfed7f7804edacb7d}\label{classBBM_1_1Runner_ab815bba535362fddfed7f7804edacb7d}} 
+\index{BBM::Runner@{BBM::Runner}!run@{run}}
+\index{run@{run}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Runner\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Start the game and run a Bomberman. 
+
+\begin{DoxyReturn}{Returns}
+0 on success, another value on error. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBBM_1_1Runner_aade728b30bf6b532382769d7d1a3e104}\label{classBBM_1_1Runner_aade728b30bf6b532382769d7d1a3e104}} 
+\index{BBM::Runner@{BBM::Runner}!updateState@{updateState}}
+\index{updateState@{updateState}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{updateState()}{updateState()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Runner\+::update\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{engine,  }\item[{\mbox{\hyperlink{classBBM_1_1GameState}{Game\+State}} \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Update current scene (loading related data) according to state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine} & Wal E\+CS \\
+\hline
+{\em state} & current game state \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1Runner_a0fd29bdf80a3cf9de5858b40c0dbfef8}\label{classBBM_1_1Runner_a0fd29bdf80a3cf9de5858b40c0dbfef8}} 
+\index{BBM::Runner@{BBM::Runner}!gameState@{gameState}}
+\index{gameState@{gameState}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{gameState}{gameState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GameState}{Game\+State}} B\+B\+M\+::\+Runner\+::game\+State\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+store current scenes informations 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a1fc780b32e29befeeb7113fe58d18dd8}\label{classBBM_1_1Runner_a1fc780b32e29befeeb7113fe58d18dd8}} 
+\index{BBM::Runner@{BBM::Runner}!hasHeights@{hasHeights}}
+\index{hasHeights@{hasHeights}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{hasHeights}{hasHeights}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Runner\+::has\+Heights = false\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Has the map heights or is it disabled? 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a4a62aef63ef6c41a3be32decd9d9c757}\label{classBBM_1_1Runner_a4a62aef63ef6c41a3be32decd9d9c757}} 
+\index{BBM::Runner@{BBM::Runner}!mapHeight@{mapHeight}}
+\index{mapHeight@{mapHeight}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{mapHeight}{mapHeight}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Runner\+::map\+Height = 16\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+the height of the map 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a05b320a17f744afd1f3db6ea63a4df07}\label{classBBM_1_1Runner_a05b320a17f744afd1f3db6ea63a4df07}} 
+\index{BBM::Runner@{BBM::Runner}!mapWidth@{mapWidth}}
+\index{mapWidth@{mapWidth}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{mapWidth}{mapWidth}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Runner\+::map\+Width = 16\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+the width of the map 
+
+\mbox{\Hypertarget{classBBM_1_1Runner_a480095f15a98ba324bccf19349979223}\label{classBBM_1_1Runner_a480095f15a98ba324bccf19349979223}} 
+\index{BBM::Runner@{BBM::Runner}!timerDelay@{timerDelay}}
+\index{timerDelay@{timerDelay}!BBM::Runner@{BBM::Runner}}
+\doxysubsubsection{\texorpdfstring{timerDelay}{timerDelay}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Runner\+::timer\+Delay = std\+::chrono\+::minutes(3)\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+timer duration 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Runner/\mbox{\hyperlink{Runner_8hpp}{Runner.\+hpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{CreditScene_8cpp}{Credit\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{GameScene_8cpp}{Game\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{HowToPlayScene_8cpp}{How\+To\+Play\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{LobbyScene_8cpp}{Lobby\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{MainMenuScene_8cpp}{Main\+Menu\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{PauseMenuScene_8cpp}{Pause\+Menu\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{ResumeLobbyScene_8cpp}{Resume\+Lobby\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{Runner_8cpp}{Runner.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{ScoreScene_8cpp}{Score\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{SettingsMenuScene_8cpp}{Settings\+Menu\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{SplashScreenScene_8cpp}{Splash\+Screen\+Scene.\+cpp}}\item 
+sources/\+Runner/\mbox{\hyperlink{TitleScreenScene_8cpp}{Title\+Screen\+Scene.\+cpp}}\end{DoxyCompactItemize}

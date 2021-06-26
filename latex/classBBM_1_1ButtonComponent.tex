@@ -1,0 +1,224 @@
+\hypertarget{classBBM_1_1ButtonComponent}{}\doxysection{B\+BM\+::Button\+Component$<$ T $>$ Class Template Reference}
+\label{classBBM_1_1ButtonComponent}\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Button\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Button\+Component$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classBBM_1_1ButtonComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Button\+Component$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1ButtonComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_a48c2bfff77628639ebd6f8143261e875}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent_a51d32ad1abf173179c9fe302bf7239a1}{Button\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Initialize a new Button component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent_abc0b0d98dd7999702b50432415e2c4ce}{Button\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ callback)
+\begin{DoxyCompactList}\small\item\em Constructor with the 3 callback. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}} \& \mbox{\hyperlink{classBBM_1_1ButtonComponent_a7f315d03b16272028a30c5a4f71b1e44}{set\+Button\+Links}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$up=nullptr, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$down=nullptr, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$left=nullptr, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$right=nullptr)
+\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent_aae1df3502bac570673c2046f4da4d917}{Button\+Component}} (const \mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$ T $>$ \&)=default
+\begin{DoxyCompactList}\small\item\em A Controllable component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent_aa99e333bcb03cab8340b6771bcb97c5e}{$\sim$\+Button\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$ T $>$ \& \mbox{\hyperlink{classBBM_1_1ButtonComponent_aa6ea5b102345ef6163a55db843a8023d}{operator=}} (const \mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$ T $>$ \&)=default
+\begin{DoxyCompactList}\small\item\em A Button component default assign operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1ButtonComponent_a946ebbd082979aca444874ba8c69cd97}{empty\+Button\+Callback}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&)
+\begin{DoxyCompactList}\small\item\em Empty button callback. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_ac6041b3c2d495085bee5b8e15db55213}{on\+Event}}
+\begin{DoxyCompactList}\small\item\em on\+Event callback \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_ab93c55e6f264065103688a4d13fc4e96}{\+\_\+up}}
+\begin{DoxyCompactList}\small\item\em button which is at the top of this button \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_a430c231136b102cf59e6bb63deadce32}{\+\_\+down}}
+\begin{DoxyCompactList}\small\item\em button which is below of this button \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_a8099d8d9336d213bbe201b5b49386617}{\+\_\+right}}
+\begin{DoxyCompactList}\small\item\em button which is on the right of this button \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent_a41810e0ff8e7e14e7f28b3a8c92d085b}{\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em button which is on the left of this button \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a51d32ad1abf173179c9fe302bf7239a1}\label{classBBM_1_1ButtonComponent_a51d32ad1abf173179c9fe302bf7239a1}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!ButtonComponent@{ButtonComponent}}
+\index{ButtonComponent@{ButtonComponent}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ButtonComponent()}{ButtonComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Initialize a new Button component. 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_abc0b0d98dd7999702b50432415e2c4ce}\label{classBBM_1_1ButtonComponent_abc0b0d98dd7999702b50432415e2c4ce}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!ButtonComponent@{ButtonComponent}}
+\index{ButtonComponent@{ButtonComponent}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ButtonComponent()}{ButtonComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& $>$}]{callback }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor with the 3 callback. 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_aae1df3502bac570673c2046f4da4d917}\label{classBBM_1_1ButtonComponent_aae1df3502bac570673c2046f4da4d917}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!ButtonComponent@{ButtonComponent}}
+\index{ButtonComponent@{ButtonComponent}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{ButtonComponent()}{ButtonComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}} (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Controllable component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_aa99e333bcb03cab8340b6771bcb97c5e}\label{classBBM_1_1ButtonComponent_aa99e333bcb03cab8340b6771bcb97c5e}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!````~ButtonComponent@{$\sim$ButtonComponent}}
+\index{````~ButtonComponent@{$\sim$ButtonComponent}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$ButtonComponent()}{~ButtonComponent()}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a48c2bfff77628639ebd6f8143261e875}\label{classBBM_1_1ButtonComponent_a48c2bfff77628639ebd6f8143261e875}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!clone@{clone}}
+\index{clone@{clone}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}}$\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a946ebbd082979aca444874ba8c69cd97}\label{classBBM_1_1ButtonComponent_a946ebbd082979aca444874ba8c69cd97}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!emptyButtonCallback@{emptyButtonCallback}}
+\index{emptyButtonCallback@{emptyButtonCallback}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{emptyButtonCallback()}{emptyButtonCallback()}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+static void \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::empty\+Button\+Callback (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Empty button callback. 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_aa6ea5b102345ef6163a55db843a8023d}\label{classBBM_1_1ButtonComponent_aa6ea5b102345ef6163a55db843a8023d}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$T$>$\& \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}$<$ T $>$ \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Button component default assign operator. 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a7f315d03b16272028a30c5a4f71b1e44}\label{classBBM_1_1ButtonComponent_a7f315d03b16272028a30c5a4f71b1e44}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!setButtonLinks@{setButtonLinks}}
+\index{setButtonLinks@{setButtonLinks}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{setButtonLinks()}{setButtonLinks()}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classBBM_1_1ButtonComponent}{Button\+Component}}\& \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::set\+Button\+Links (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$}]{up = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$}]{down = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$}]{left = {\ttfamily nullptr},  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$}]{right = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a430c231136b102cf59e6bb63deadce32}\label{classBBM_1_1ButtonComponent_a430c231136b102cf59e6bb63deadce32}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!\_down@{\_down}}
+\index{\_down@{\_down}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_down}{\_down}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}$\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\+\_\+down}
+
+
+
+button which is below of this button 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a41810e0ff8e7e14e7f28b3a8c92d085b}\label{classBBM_1_1ButtonComponent_a41810e0ff8e7e14e7f28b3a8c92d085b}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!\_left@{\_left}}
+\index{\_left@{\_left}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_left}{\_left}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}$\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\+\_\+left}
+
+
+
+button which is on the left of this button 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_a8099d8d9336d213bbe201b5b49386617}\label{classBBM_1_1ButtonComponent_a8099d8d9336d213bbe201b5b49386617}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!\_right@{\_right}}
+\index{\_right@{\_right}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_right}{\_right}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}$\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\+\_\+right}
+
+
+
+button which is on the right of this button 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_ab93c55e6f264065103688a4d13fc4e96}\label{classBBM_1_1ButtonComponent_ab93c55e6f264065103688a4d13fc4e96}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!\_up@{\_up}}
+\index{\_up@{\_up}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_up}{\_up}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}$\ast$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::\+\_\+up}
+
+
+
+button which is at the top of this button 
+
+\mbox{\Hypertarget{classBBM_1_1ButtonComponent_ac6041b3c2d495085bee5b8e15db55213}\label{classBBM_1_1ButtonComponent_ac6041b3c2d495085bee5b8e15db55213}} 
+\index{BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}!onEvent@{onEvent}}
+\index{onEvent@{onEvent}!BBM::ButtonComponent$<$ T $>$@{BBM::ButtonComponent$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{onEvent}{onEvent}}
+{\footnotesize\ttfamily template$<$enum Button\+Component\+Type T$>$ \\
+\mbox{\hyperlink{classWAL_1_1Callback}{W\+A\+L\+::\+Callback}}$<$\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&$>$ \mbox{\hyperlink{classBBM_1_1ButtonComponent}{B\+B\+M\+::\+Button\+Component}}$<$ T $>$\+::on\+Event}
+
+
+
+on\+Event callback 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Button/\mbox{\hyperlink{ButtonComponent_8hpp}{Button\+Component.\+hpp}}\end{DoxyCompactItemize}

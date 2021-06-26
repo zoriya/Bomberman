@@ -1,0 +1,6 @@
+<map id="BBM::BombHolderComponent" name="BBM::BombHolderComponent">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1028,221,1252"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="47,813,180,979"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="22,395,205,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="22,5,205,332"/>
+</map>

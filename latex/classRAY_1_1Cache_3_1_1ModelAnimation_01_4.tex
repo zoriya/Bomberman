@@ -1,0 +1,93 @@
+\hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4}{}\doxysection{R\+AY\+::Cache$<$\+::Model\+Animation $>$ Class Reference}
+\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4}\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+
+
+{\ttfamily \#include $<$Cache.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Cache$<$\+::Model\+Animation $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=256pt]{classRAY_1_1Cache_3_1_1ModelAnimation_01_4__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structRAY_1_1Cache_3_1_1ModelAnimation_01_4_1_1AnimationsHolder}{Animations\+Holder}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_ae563c060fbbd0db84fc195acfa96d9fa}{Cache}} (std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$(const char $\ast$, int $\ast$)$>$ data\+Loader, std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$, unsigned int)$>$data\+Unloader)
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a3480e9b5c5c726e86472c028b5f657f4}{fetch}} (const std\+::string \&path, int $\ast$counter)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$(const char $\ast$, int $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a6b461b3953f63250edcdca57d031dffd}{\+\_\+data\+Loader}}
+\begin{DoxyCompactList}\small\item\em function to call to load data \end{DoxyCompactList}\item 
+std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$, unsigned int)$>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_acb32ef3469ea10e34584a19625b63d97}{\+\_\+data\+Unloader}}
+\begin{DoxyCompactList}\small\item\em function to call when the ray data will be unloaded \end{DoxyCompactList}\item 
+std\+::unordered\+\_\+map$<$ std\+::string, Animations\+Holder $>$ \mbox{\hyperlink{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a0bccb7953d695fe152f3cdaa328bb2ce}{\+\_\+cache}}
+\begin{DoxyCompactList}\small\item\em map storing shared ptr of caches \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_ae563c060fbbd0db84fc195acfa96d9fa}\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_ae563c060fbbd0db84fc195acfa96d9fa}} 
+\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}!Cache@{Cache}}
+\index{Cache@{Cache}!RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+\doxysubsubsection{\texorpdfstring{Cache()}{Cache()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$\+::\mbox{\hyperlink{classRAY_1_1Cache}{Cache}} (\begin{DoxyParamCaption}\item[{std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$(const char $\ast$, int $\ast$)$>$}]{data\+Loader,  }\item[{std\+::function$<$ void(\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$, unsigned int)$>$}]{data\+Unloader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a3480e9b5c5c726e86472c028b5f657f4}\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a3480e9b5c5c726e86472c028b5f657f4}} 
+\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}!fetch@{fetch}}
+\index{fetch@{fetch}!RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$\+::fetch (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path,  }\item[{int $\ast$}]{counter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a0bccb7953d695fe152f3cdaa328bb2ce}\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a0bccb7953d695fe152f3cdaa328bb2ce}} 
+\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}!\_cache@{\_cache}}
+\index{\_cache@{\_cache}!RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+\doxysubsubsection{\texorpdfstring{\_cache}{\_cache}}
+{\footnotesize\ttfamily std\+::unordered\+\_\+map$<$std\+::string, Animations\+Holder$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$\+::\+\_\+cache\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+map storing shared ptr of caches 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a6b461b3953f63250edcdca57d031dffd}\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_a6b461b3953f63250edcdca57d031dffd}} 
+\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}!\_dataLoader@{\_dataLoader}}
+\index{\_dataLoader@{\_dataLoader}!RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataLoader}{\_dataLoader}}
+{\footnotesize\ttfamily std\+::function$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$(const char $\ast$, int $\ast$)$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$\+::\+\_\+data\+Loader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call to load data 
+
+\mbox{\Hypertarget{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_acb32ef3469ea10e34584a19625b63d97}\label{classRAY_1_1Cache_3_1_1ModelAnimation_01_4_acb32ef3469ea10e34584a19625b63d97}} 
+\index{RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}!\_dataUnloader@{\_dataUnloader}}
+\index{\_dataUnloader@{\_dataUnloader}!RAY::Cache$<$::ModelAnimation $>$@{RAY::Cache$<$::ModelAnimation $>$}}
+\doxysubsubsection{\texorpdfstring{\_dataUnloader}{\_dataUnloader}}
+{\footnotesize\ttfamily std\+::function$<$void(\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $\ast$, unsigned int)$>$ \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$\+::\+\_\+data\+Unloader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+function to call when the ray data will be unloaded 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Utils/\mbox{\hyperlink{Cache_8hpp}{Cache.\+hpp}}\end{DoxyCompactItemize}

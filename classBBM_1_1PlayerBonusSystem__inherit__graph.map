@@ -1,0 +1,5 @@
+<map id="BBM::PlayerBonusSystem" name="BBM::PlayerBonusSystem">
+<area shape="rect" id="node1" title="The system that allow one to place bombs." alt="" coords="41,476,232,612"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,175,268,428"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="74,5,199,127"/>
+</map>

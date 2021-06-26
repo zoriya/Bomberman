@@ -1,0 +1,125 @@
+\hypertarget{classRAY_1_1Controller_1_1Mouse}{}\doxysection{R\+AY\+::Controller\+::Mouse Class Reference}
+\label{classRAY_1_1Controller_1_1Mouse}\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+
+
+\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse}{Mouse}} event manager.  
+
+
+
+
+{\ttfamily \#include $<$Mouse.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Controller\+::Mouse\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{classRAY_1_1Controller_1_1Mouse__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+::Mouse\+Button \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ac6cddf1adb641269158f9a14749614ee}{is\+Pressed}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab0d758d7410ef6277a588ddb55b9c397}{is\+Down}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ad6f414229432b440e45f372b9367820c}{is\+Released}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_a10a338b47042eb2a39dc28c75ffbae78}{is\+Up}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}})
+\item 
+static \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_afd1d5cdcc68ed759831ecf6645d1559d}{get\+Cursor\+Position}} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse}{Mouse}} event manager. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}\label{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!Button@{Button}}
+\index{Button@{Button}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{Button}{Button}}
+{\footnotesize\ttfamily typedef \+::Mouse\+Button \mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{R\+A\+Y\+::\+Controller\+::\+Mouse\+::\+Button}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_afd1d5cdcc68ed759831ecf6645d1559d}\label{classRAY_1_1Controller_1_1Mouse_afd1d5cdcc68ed759831ecf6645d1559d}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!getCursorPosition@{getCursorPosition}}
+\index{getCursorPosition@{getCursorPosition}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{getCursorPosition()}{getCursorPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} R\+A\+Y\+::\+Controller\+::\+Mouse\+::get\+Cursor\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+A 2D vector holding the current position of the cursor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_ab0d758d7410ef6277a588ddb55b9c397}\label{classRAY_1_1Controller_1_1Mouse_ab0d758d7410ef6277a588ddb55b9c397}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!isDown@{isDown}}
+\index{isDown@{isDown}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{isDown()}{isDown()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Mouse\+::is\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}}}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is down on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_ac6cddf1adb641269158f9a14749614ee}\label{classRAY_1_1Controller_1_1Mouse_ac6cddf1adb641269158f9a14749614ee}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!isPressed@{isPressed}}
+\index{isPressed@{isPressed}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{isPressed()}{isPressed()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Mouse\+::is\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}}}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is pressed on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_ad6f414229432b440e45f372b9367820c}\label{classRAY_1_1Controller_1_1Mouse_ad6f414229432b440e45f372b9367820c}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!isReleased@{isReleased}}
+\index{isReleased@{isReleased}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{isReleased()}{isReleased()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Mouse\+::is\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}}}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is released on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Mouse_a10a338b47042eb2a39dc28c75ffbae78}\label{classRAY_1_1Controller_1_1Mouse_a10a338b47042eb2a39dc28c75ffbae78}} 
+\index{RAY::Controller::Mouse@{RAY::Controller::Mouse}!isUp@{isUp}}
+\index{isUp@{isUp}!RAY::Controller::Mouse@{RAY::Controller::Mouse}}
+\doxysubsubsection{\texorpdfstring{isUp()}{isUp()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Mouse\+::is\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Mouse_ab48958256b79581774bb40d60d82a11f}{Button}}}]{button }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is up on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Mouse_8hpp}{Mouse.\+hpp}}\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Mouse_8cpp}{Mouse.\+cpp}}\end{DoxyCompactItemize}

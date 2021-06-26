@@ -1,0 +1,4 @@
+<map id="RAY::Audio::Sound" name="RAY::Audio::Sound">
+<area shape="rect" id="node1" title="A manager for sound stream." alt="" coords="5,233,144,472"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Audio_1_1IAudio.html" title="Interface for Audio ressources." alt="" coords="5,5,144,185"/>
+</map>

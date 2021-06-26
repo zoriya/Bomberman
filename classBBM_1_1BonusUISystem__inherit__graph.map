@@ -1,0 +1,5 @@
+<map id="BBM::BonusUISystem" name="BBM::BonusUISystem">
+<area shape="rect" id="node1" title="The system that allow the text of the ui to display current values." alt="" coords="37,461,200,597"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,175,232,413"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="56,5,181,127"/>
+</map>

@@ -1,0 +1,106 @@
+\hypertarget{classBBM_1_1MovableSystem}{}\doxysection{B\+BM\+::Movable\+System Class Reference}
+\label{classBBM_1_1MovableSystem}\index{BBM::MovableSystem@{BBM::MovableSystem}}
+
+
+A system to handle movable entities. This system update velocity based on accelerations and positions based on velocity.  
+
+
+
+
+{\ttfamily \#include $<$Movable\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Movable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=273pt]{classBBM_1_1MovableSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Movable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1MovableSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1MovableSystem_a6ca36d7ac633ed348368cb5b9b7ba98a}{on\+Fixed\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&entity) override
+\item 
+\mbox{\hyperlink{classBBM_1_1MovableSystem_afc41b0ba05659e4b7bbaf54c83131680}{Movable\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableSystem_aa5ff3c7e60449fd19eccc40803666ced}{Movable\+System}} (const \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A movable system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableSystem_a194df467ddcd192a7eca93adbdef140b}{$\sim$\+Movable\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}} \& \mbox{\hyperlink{classBBM_1_1MovableSystem_a807f73d1736d6d4522c8973a838c0919}{operator=}} (const \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle movable entities. This system update velocity based on accelerations and positions based on velocity. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableSystem_afc41b0ba05659e4b7bbaf54c83131680}\label{classBBM_1_1MovableSystem_afc41b0ba05659e4b7bbaf54c83131680}} 
+\index{BBM::MovableSystem@{BBM::MovableSystem}!MovableSystem@{MovableSystem}}
+\index{MovableSystem@{MovableSystem}!BBM::MovableSystem@{BBM::MovableSystem}}
+\doxysubsubsection{\texorpdfstring{MovableSystem()}{MovableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+System\+::\+Movable\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableSystem_aa5ff3c7e60449fd19eccc40803666ced}\label{classBBM_1_1MovableSystem_aa5ff3c7e60449fd19eccc40803666ced}} 
+\index{BBM::MovableSystem@{BBM::MovableSystem}!MovableSystem@{MovableSystem}}
+\index{MovableSystem@{MovableSystem}!BBM::MovableSystem@{BBM::MovableSystem}}
+\doxysubsubsection{\texorpdfstring{MovableSystem()}{MovableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+System\+::\+Movable\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A movable system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableSystem_a194df467ddcd192a7eca93adbdef140b}\label{classBBM_1_1MovableSystem_a194df467ddcd192a7eca93adbdef140b}} 
+\index{BBM::MovableSystem@{BBM::MovableSystem}!````~MovableSystem@{$\sim$MovableSystem}}
+\index{````~MovableSystem@{$\sim$MovableSystem}!BBM::MovableSystem@{BBM::MovableSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$MovableSystem()}{~MovableSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+System\+::$\sim$\+Movable\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableSystem_a6ca36d7ac633ed348368cb5b9b7ba98a}\label{classBBM_1_1MovableSystem_a6ca36d7ac633ed348368cb5b9b7ba98a}} 
+\index{BBM::MovableSystem@{BBM::MovableSystem}!onFixedUpdate@{onFixedUpdate}}
+\index{onFixedUpdate@{onFixedUpdate}!BBM::MovableSystem@{BBM::MovableSystem}}
+\doxysubsubsection{\texorpdfstring{onFixedUpdate()}{onFixedUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Movable\+System\+::on\+Fixed\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1MovableSystem_a807f73d1736d6d4522c8973a838c0919}\label{classBBM_1_1MovableSystem_a807f73d1736d6d4522c8973a838c0919}} 
+\index{BBM::MovableSystem@{BBM::MovableSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::MovableSystem@{BBM::MovableSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}}\& B\+B\+M\+::\+Movable\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A system is not assignable. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Movable/\mbox{\hyperlink{MovableSystem_8hpp}{Movable\+System.\+hpp}}\item 
+sources/\+System/\+Movable/\mbox{\hyperlink{MovableSystem_8cpp}{Movable\+System.\+cpp}}\end{DoxyCompactItemize}

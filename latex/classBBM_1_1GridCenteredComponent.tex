@@ -1,0 +1,147 @@
+\hypertarget{classBBM_1_1GridCenteredComponent}{}\doxysection{B\+BM\+::Grid\+Centered\+Component Class Reference}
+\label{classBBM_1_1GridCenteredComponent}\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+
+
+A component to slowly center entities to the middle of their current block. This allow flexibility in their movement will preventing them from getting stuck at every corner.  
+
+
+
+
+{\ttfamily \#include $<$Grid\+Centered\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Grid\+Centered\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classBBM_1_1GridCenteredComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Grid\+Centered\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1GridCenteredComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a8b4488a60c3c32f5cece4251acb46b35}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a1f3a4da8eecc80cbae6cbccced689a10}{Grid\+Centered\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new, default \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a25242aa3f4409351360be44f54cd4d6f}{Grid\+Centered\+Component}} (const \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} \&other)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a542e683ccf59a84a9888668f0f8f133e}{$\sim$\+Grid\+Centered\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} \& \mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a9e95064169ef8b6d2caa0ad395933ae7}{operator=}} (const \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classBBM_1_1GridCenteredComponent_a33deca710c7391b9aca51dd8a0b5c948}{force}} = 1
+\begin{DoxyCompactList}\small\item\em The force factor applied at each frame. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A component to slowly center entities to the middle of their current block. This allow flexibility in their movement will preventing them from getting stuck at every corner. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a1f3a4da8eecc80cbae6cbccced689a10}\label{classBBM_1_1GridCenteredComponent_a1f3a4da8eecc80cbae6cbccced689a10}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!GridCenteredComponent@{GridCenteredComponent}}
+\index{GridCenteredComponent@{GridCenteredComponent}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{GridCenteredComponent()}{GridCenteredComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Grid\+Centered\+Component\+::\+Grid\+Centered\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new, default \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity attached to this component. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a25242aa3f4409351360be44f54cd4d6f}\label{classBBM_1_1GridCenteredComponent_a25242aa3f4409351360be44f54cd4d6f}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!GridCenteredComponent@{GridCenteredComponent}}
+\index{GridCenteredComponent@{GridCenteredComponent}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{GridCenteredComponent()}{GridCenteredComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Grid\+Centered\+Component\+::\+Grid\+Centered\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} is copy constructable. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & The other \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} to copy. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a542e683ccf59a84a9888668f0f8f133e}\label{classBBM_1_1GridCenteredComponent_a542e683ccf59a84a9888668f0f8f133e}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!````~GridCenteredComponent@{$\sim$GridCenteredComponent}}
+\index{````~GridCenteredComponent@{$\sim$GridCenteredComponent}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$GridCenteredComponent()}{~GridCenteredComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Grid\+Centered\+Component\+::$\sim$\+Grid\+Centered\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a8b4488a60c3c32f5cece4251acb46b35}\label{classBBM_1_1GridCenteredComponent_a8b4488a60c3c32f5cece4251acb46b35}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Grid\+Centered\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a9e95064169ef8b6d2caa0ad395933ae7}\label{classBBM_1_1GridCenteredComponent_a9e95064169ef8b6d2caa0ad395933ae7}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}}\& B\+B\+M\+::\+Grid\+Centered\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1GridCenteredComponent}{Grid\+Centered\+Component}} is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1GridCenteredComponent_a33deca710c7391b9aca51dd8a0b5c948}\label{classBBM_1_1GridCenteredComponent_a33deca710c7391b9aca51dd8a0b5c948}} 
+\index{BBM::GridCenteredComponent@{BBM::GridCenteredComponent}!force@{force}}
+\index{force@{force}!BBM::GridCenteredComponent@{BBM::GridCenteredComponent}}
+\doxysubsubsection{\texorpdfstring{force}{force}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Grid\+Centered\+Component\+::force = 1}
+
+
+
+The force factor applied at each frame. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Grid\+Centered/\mbox{\hyperlink{GridCenteredComponent_8hpp}{Grid\+Centered\+Component.\+hpp}}\item 
+sources/\+Component/\+Grid\+Centered/\mbox{\hyperlink{GridCenteredComponent_8cpp}{Grid\+Centered\+Component.\+cpp}}\end{DoxyCompactItemize}

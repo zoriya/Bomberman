@@ -1,0 +1,200 @@
+\hypertarget{classBBM_1_1MovableComponent}{}\doxysection{B\+BM\+::Movable\+Component Class Reference}
+\label{classBBM_1_1MovableComponent}\index{BBM::MovableComponent@{BBM::MovableComponent}}
+
+
+A component to place on entities that can move or be moved.  
+
+
+
+
+{\ttfamily \#include $<$Movable\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Movable\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classBBM_1_1MovableComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Movable\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1MovableComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1MovableComponent_a5ac4bbc46415782c01ef451a4131dc20}{add\+Force}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} force)
+\begin{DoxyCompactList}\small\item\em Add an instant force to this entity. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \& \mbox{\hyperlink{classBBM_1_1MovableComponent_a738c03eb23a09c94e6b148ef037873ad}{get\+Velocity}} (void) const
+\begin{DoxyCompactList}\small\item\em Get velocity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1MovableComponent_a6582f9ee0da90d63f7f0256e7b4c1ac0}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableComponent_a46a5b8671a9887bfc0d4f7e0e1ab7d89}{Movable\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new movable component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableComponent_a69c976228bd4f6db3f2dee34719928bf}{Movable\+Component}} (const \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A movable component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableComponent_ac57fafc9cfa838644e009c4df0293c0e}{$\sim$\+Movable\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} \& \mbox{\hyperlink{classBBM_1_1MovableComponent_a7e4f03f8c22539964e24d09eaae0d828}{operator=}} (const \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A movable component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1MovableComponent_a32799b15b77c3d19dc39da41ab6276d5}{\+\_\+acceleration}}
+\begin{DoxyCompactList}\small\item\em The acceleration of this entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1MovableComponent_acbd15ddd5dd86b71c5f4708ef79ee293}{\+\_\+velocity}}
+\begin{DoxyCompactList}\small\item\em The velocity of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{classBBM_1_1MovableComponent_a58bebdfdf5ca232ee714e6a835ee5cb0}{Movable\+System}}
+\item 
+class \mbox{\hyperlink{classBBM_1_1MovableComponent_a6c6475d42cca68bc0301379c47eb5173}{Map\+Generator}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A component to place on entities that can move or be moved. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a46a5b8671a9887bfc0d4f7e0e1ab7d89}\label{classBBM_1_1MovableComponent_a46a5b8671a9887bfc0d4f7e0e1ab7d89}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!MovableComponent@{MovableComponent}}
+\index{MovableComponent@{MovableComponent}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{MovableComponent()}{MovableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+Component\+::\+Movable\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new movable component. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a69c976228bd4f6db3f2dee34719928bf}\label{classBBM_1_1MovableComponent_a69c976228bd4f6db3f2dee34719928bf}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!MovableComponent@{MovableComponent}}
+\index{MovableComponent@{MovableComponent}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{MovableComponent()}{MovableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+Component\+::\+Movable\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A movable component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_ac57fafc9cfa838644e009c4df0293c0e}\label{classBBM_1_1MovableComponent_ac57fafc9cfa838644e009c4df0293c0e}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!````~MovableComponent@{$\sim$MovableComponent}}
+\index{````~MovableComponent@{$\sim$MovableComponent}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$MovableComponent()}{~MovableComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Movable\+Component\+::$\sim$\+Movable\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a5ac4bbc46415782c01ef451a4131dc20}\label{classBBM_1_1MovableComponent_a5ac4bbc46415782c01ef451a4131dc20}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!addForce@{addForce}}
+\index{addForce@{addForce}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{addForce()}{addForce()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Movable\+Component\+::add\+Force (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{force }\end{DoxyParamCaption})}
+
+
+
+Add an instant force to this entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em force} & The force to add to this entity\textquotesingle{}s acceleration. The force is added instantly and in one go. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a6582f9ee0da90d63f7f0256e7b4c1ac0}\label{classBBM_1_1MovableComponent_a6582f9ee0da90d63f7f0256e7b4c1ac0}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Movable\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a738c03eb23a09c94e6b148ef037873ad}\label{classBBM_1_1MovableComponent_a738c03eb23a09c94e6b148ef037873ad}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!getVelocity@{getVelocity}}
+\index{getVelocity@{getVelocity}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{getVelocity()}{getVelocity()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \& B\+B\+M\+::\+Movable\+Component\+::get\+Velocity (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+
+
+Get velocity. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a7e4f03f8c22539964e24d09eaae0d828}\label{classBBM_1_1MovableComponent_a7e4f03f8c22539964e24d09eaae0d828}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}}\& B\+B\+M\+::\+Movable\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A movable component is not assignable. 
+
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a6c6475d42cca68bc0301379c47eb5173}\label{classBBM_1_1MovableComponent_a6c6475d42cca68bc0301379c47eb5173}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!MapGenerator@{MapGenerator}}
+\index{MapGenerator@{MapGenerator}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{MapGenerator}{MapGenerator}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classBBM_1_1MapGenerator}{Map\+Generator}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a58bebdfdf5ca232ee714e6a835ee5cb0}\label{classBBM_1_1MovableComponent_a58bebdfdf5ca232ee714e6a835ee5cb0}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!MovableSystem@{MovableSystem}}
+\index{MovableSystem@{MovableSystem}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{MovableSystem}{MovableSystem}}
+{\footnotesize\ttfamily friend class \mbox{\hyperlink{classBBM_1_1MovableSystem}{Movable\+System}}\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_a32799b15b77c3d19dc39da41ab6276d5}\label{classBBM_1_1MovableComponent_a32799b15b77c3d19dc39da41ab6276d5}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!\_acceleration@{\_acceleration}}
+\index{\_acceleration@{\_acceleration}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{\_acceleration}{\_acceleration}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Movable\+Component\+::\+\_\+acceleration\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The acceleration of this entity. 
+
+\mbox{\Hypertarget{classBBM_1_1MovableComponent_acbd15ddd5dd86b71c5f4708ef79ee293}\label{classBBM_1_1MovableComponent_acbd15ddd5dd86b71c5f4708ef79ee293}} 
+\index{BBM::MovableComponent@{BBM::MovableComponent}!\_velocity@{\_velocity}}
+\index{\_velocity@{\_velocity}!BBM::MovableComponent@{BBM::MovableComponent}}
+\doxysubsubsection{\texorpdfstring{\_velocity}{\_velocity}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Movable\+Component\+::\+\_\+velocity\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The velocity of the entity. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Movable/\mbox{\hyperlink{MovableComponent_8hpp}{Movable\+Component.\+hpp}}\item 
+sources/\+Component/\+Movable/\mbox{\hyperlink{MovableComponent_8cpp}{Movable\+Component.\+cpp}}\end{DoxyCompactItemize}

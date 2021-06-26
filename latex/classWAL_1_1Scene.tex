@@ -1,0 +1,306 @@
+\hypertarget{classWAL_1_1Scene}{}\doxysection{W\+AL\+::Scene Class Reference}
+\label{classWAL_1_1Scene}\index{WAL::Scene@{WAL::Scene}}
+
+
+Represent a single scene that contains entities.  
+
+
+
+
+{\ttfamily \#include $<$Scene.\+hpp$>$}
+
+
+
+Collaboration diagram for W\+AL\+::Scene\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{classWAL_1_1Scene__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classWAL_1_1Scene_a9917ebe67dd5efa915ba1af916ef8e81}{get\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the ID of this scene. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} $>$ \& \mbox{\hyperlink{classWAL_1_1Scene_a10ccc91ade50c2b66d0bf45b7fb2239d}{get\+Entities}} ()
+\begin{DoxyCompactList}\small\item\em Get the list of entities. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Scene_a48b10196457a30a06e84a391def30e57}{add\+Entity}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Add a new entity to the scene. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& \mbox{\hyperlink{classWAL_1_1Scene_a0b9c53d77c3af1e90fde27cacde817ec}{schedule\+New\+Entity}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Add a new entity to the scene, this entity will be added on the next call to apply\+Changes. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename ... Components$>$ }\\\mbox{\hyperlink{classWAL_1_1View}{View}}$<$ Components... $>$ \& \mbox{\hyperlink{classWAL_1_1Scene_a25acb13ef77651c7ce715e37c6452954}{view}} ()
+\item 
+void \mbox{\hyperlink{classWAL_1_1Scene_a4d3636a9349051a051ab4e089575d65c}{apply\+Changes}} ()
+\begin{DoxyCompactList}\small\item\em Delete entities marked as deleted and create scheduled entities. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Scene_a610bb0f15dab288df4cb69c0749c2f74}{Scene}} ()=default
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Scene_a732de2963790443cb0e009c3bfbbb963}{Scene}} (const \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A scene is not copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Scene_a60d4013f1852d264a7f00c872dc2a7d7}{$\sim$\+Scene}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \& \mbox{\hyperlink{classWAL_1_1Scene_aff61ee75d48cf67c26da2a1afe989840}{operator=}} (const \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&)
+\begin{DoxyCompactList}\small\item\em A scene is assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \mbox{\hyperlink{classWAL_1_1Scene_a957fa692507b9fd6eb18dd141524c5bc}{Entity}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classWAL_1_1Scene_ad50c7eb3d66cd8829969d6990a030d0c}{\+\_\+component\+Added}} (\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&entity, const std\+::type\+\_\+index \&type)
+\begin{DoxyCompactList}\small\item\em Notify this scene that a component has been added to the given entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Scene_a982c21aa1ca1b0b7b7938094089825c6}{\+\_\+component\+Removed}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&entity, const std\+::type\+\_\+index \&type)
+\begin{DoxyCompactList}\small\item\em Notify this scene that a component has been removed to the given entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Scene_a25d423b4f82ea0f090a371d11c53329c}{\+\_\+entity\+Removed}} (const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Remove an entity from every views. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classWAL_1_1Scene_a9b2c20b10c201454ee97b4e3da3ae719}{\+\_\+id}} = \mbox{\hyperlink{classWAL_1_1Scene_aab27f21d028e0d1cb4c92b90ab2aa3a5}{\+\_\+next\+ID}}++
+\begin{DoxyCompactList}\small\item\em An ID representing this scene. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} $>$ \mbox{\hyperlink{classWAL_1_1Scene_a53f98692e997fb577fcfb46fa677fa8a}{\+\_\+entities}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of registered entities. \end{DoxyCompactList}\item 
+std\+::list$<$ \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} $>$ \mbox{\hyperlink{classWAL_1_1Scene_aa93d894b40c828f67b70fbde21692e1b}{\+\_\+new\+Entities}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of entities to add on the next call to apply\+Changes. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1IView}{I\+View}} $>$ $>$ \mbox{\hyperlink{classWAL_1_1Scene_a32055ad5f6a257b51f2f49bae3cf0dc9}{\+\_\+views}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of cached views to update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classWAL_1_1Scene_aab27f21d028e0d1cb4c92b90ab2aa3a5}{\+\_\+next\+ID}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represent a single scene that contains entities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1Scene_a610bb0f15dab288df4cb69c0749c2f74}\label{classWAL_1_1Scene_a610bb0f15dab288df4cb69c0749c2f74}} 
+\index{WAL::Scene@{WAL::Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Scene\+::\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a732de2963790443cb0e009c3bfbbb963}\label{classWAL_1_1Scene_a732de2963790443cb0e009c3bfbbb963}} 
+\index{WAL::Scene@{WAL::Scene}!Scene@{Scene}}
+\index{Scene@{Scene}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{Scene()}{Scene()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Scene\+::\+Scene (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A scene is not copy constructable. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a60d4013f1852d264a7f00c872dc2a7d7}\label{classWAL_1_1Scene_a60d4013f1852d264a7f00c872dc2a7d7}} 
+\index{WAL::Scene@{WAL::Scene}!````~Scene@{$\sim$Scene}}
+\index{````~Scene@{$\sim$Scene}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{$\sim$Scene()}{~Scene()}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Scene\+::$\sim$\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Scene_ad50c7eb3d66cd8829969d6990a030d0c}\label{classWAL_1_1Scene_ad50c7eb3d66cd8829969d6990a030d0c}} 
+\index{WAL::Scene@{WAL::Scene}!\_componentAdded@{\_componentAdded}}
+\index{\_componentAdded@{\_componentAdded}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_componentAdded()}{\_componentAdded()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Scene\+::\+\_\+component\+Added (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{entity,  }\item[{const std\+::type\+\_\+index \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Notify this scene that a component has been added to the given entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity with the new component \\
+\hline
+{\em type} & The type of the component added. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Scene_a982c21aa1ca1b0b7b7938094089825c6}\label{classWAL_1_1Scene_a982c21aa1ca1b0b7b7938094089825c6}} 
+\index{WAL::Scene@{WAL::Scene}!\_componentRemoved@{\_componentRemoved}}
+\index{\_componentRemoved@{\_componentRemoved}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_componentRemoved()}{\_componentRemoved()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Scene\+::\+\_\+component\+Removed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{entity,  }\item[{const std\+::type\+\_\+index \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Notify this scene that a component has been removed to the given entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity with the removed component \\
+\hline
+{\em type} & The type of the component removed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Scene_a25d423b4f82ea0f090a371d11c53329c}\label{classWAL_1_1Scene_a25d423b4f82ea0f090a371d11c53329c}} 
+\index{WAL::Scene@{WAL::Scene}!\_entityRemoved@{\_entityRemoved}}
+\index{\_entityRemoved@{\_entityRemoved}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_entityRemoved()}{\_entityRemoved()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Scene\+::\+\_\+entity\+Removed (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Remove an entity from every views. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWAL_1_1Scene_a48b10196457a30a06e84a391def30e57}\label{classWAL_1_1Scene_a48b10196457a30a06e84a391def30e57}} 
+\index{WAL::Scene@{WAL::Scene}!addEntity@{addEntity}}
+\index{addEntity@{addEntity}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{addEntity()}{addEntity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& W\+A\+L\+::\+Scene\+::add\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Add a new entity to the scene. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the created entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created entity is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Scene_a4d3636a9349051a051ab4e089575d65c}\label{classWAL_1_1Scene_a4d3636a9349051a051ab4e089575d65c}} 
+\index{WAL::Scene@{WAL::Scene}!applyChanges@{applyChanges}}
+\index{applyChanges@{applyChanges}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{applyChanges()}{applyChanges()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Scene\+::apply\+Changes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Delete entities marked as deleted and create scheduled entities. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a10ccc91ade50c2b66d0bf45b7fb2239d}\label{classWAL_1_1Scene_a10ccc91ade50c2b66d0bf45b7fb2239d}} 
+\index{WAL::Scene@{WAL::Scene}!getEntities@{getEntities}}
+\index{getEntities@{getEntities}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{getEntities()}{getEntities()}}
+{\footnotesize\ttfamily std\+::list$<$ \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} $>$ \& W\+A\+L\+::\+Scene\+::get\+Entities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get the list of entities. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a9917ebe67dd5efa915ba1af916ef8e81}\label{classWAL_1_1Scene_a9917ebe67dd5efa915ba1af916ef8e81}} 
+\index{WAL::Scene@{WAL::Scene}!getID@{getID}}
+\index{getID@{getID}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{getID()}{getID()}}
+{\footnotesize\ttfamily int W\+A\+L\+::\+Scene\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the ID of this scene. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_aff61ee75d48cf67c26da2a1afe989840}\label{classWAL_1_1Scene_aff61ee75d48cf67c26da2a1afe989840}} 
+\index{WAL::Scene@{WAL::Scene}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \& W\+A\+L\+::\+Scene\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} \&}]{ }\end{DoxyParamCaption})}
+
+
+
+A scene is assignable. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a0b9c53d77c3af1e90fde27cacde817ec}\label{classWAL_1_1Scene_a0b9c53d77c3af1e90fde27cacde817ec}} 
+\index{WAL::Scene@{WAL::Scene}!scheduleNewEntity@{scheduleNewEntity}}
+\index{scheduleNewEntity@{scheduleNewEntity}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{scheduleNewEntity()}{scheduleNewEntity()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{Entity}} \& W\+A\+L\+::\+Scene\+::schedule\+New\+Entity (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Add a new entity to the scene, this entity will be added on the next call to apply\+Changes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the created entity. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The created entity is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Scene_a25acb13ef77651c7ce715e37c6452954}\label{classWAL_1_1Scene_a25acb13ef77651c7ce715e37c6452954}} 
+\index{WAL::Scene@{WAL::Scene}!view@{view}}
+\index{view@{view}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{view()}{view()}}
+{\footnotesize\ttfamily template$<$typename ... Components$>$ \\
+\mbox{\hyperlink{classWAL_1_1View}{View}}$<$Components...$>$\& W\+A\+L\+::\+Scene\+::view (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1Scene_a53f98692e997fb577fcfb46fa677fa8a}\label{classWAL_1_1Scene_a53f98692e997fb577fcfb46fa677fa8a}} 
+\index{WAL::Scene@{WAL::Scene}!\_entities@{\_entities}}
+\index{\_entities@{\_entities}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_entities}{\_entities}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{classWAL_1_1Entity}{Entity}}$>$ W\+A\+L\+::\+Scene\+::\+\_\+entities = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of registered entities. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a9b2c20b10c201454ee97b4e3da3ae719}\label{classWAL_1_1Scene_a9b2c20b10c201454ee97b4e3da3ae719}} 
+\index{WAL::Scene@{WAL::Scene}!\_id@{\_id}}
+\index{\_id@{\_id}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily int W\+A\+L\+::\+Scene\+::\+\_\+id = \mbox{\hyperlink{classWAL_1_1Scene_aab27f21d028e0d1cb4c92b90ab2aa3a5}{\+\_\+next\+ID}}++\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+An ID representing this scene. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_aa93d894b40c828f67b70fbde21692e1b}\label{classWAL_1_1Scene_aa93d894b40c828f67b70fbde21692e1b}} 
+\index{WAL::Scene@{WAL::Scene}!\_newEntities@{\_newEntities}}
+\index{\_newEntities@{\_newEntities}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_newEntities}{\_newEntities}}
+{\footnotesize\ttfamily std\+::list$<$\mbox{\hyperlink{classWAL_1_1Entity}{Entity}}$>$ W\+A\+L\+::\+Scene\+::\+\_\+new\+Entities = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of entities to add on the next call to apply\+Changes. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_aab27f21d028e0d1cb4c92b90ab2aa3a5}\label{classWAL_1_1Scene_aab27f21d028e0d1cb4c92b90ab2aa3a5}} 
+\index{WAL::Scene@{WAL::Scene}!\_nextID@{\_nextID}}
+\index{\_nextID@{\_nextID}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_nextID}{\_nextID}}
+{\footnotesize\ttfamily int W\+A\+L\+::\+Scene\+::\+\_\+next\+ID = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a32055ad5f6a257b51f2f49bae3cf0dc9}\label{classWAL_1_1Scene_a32055ad5f6a257b51f2f49bae3cf0dc9}} 
+\index{WAL::Scene@{WAL::Scene}!\_views@{\_views}}
+\index{\_views@{\_views}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{\_views}{\_views}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1IView}{I\+View}}$>$ $>$ W\+A\+L\+::\+Scene\+::\+\_\+views = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of cached views to update. 
+
+\mbox{\Hypertarget{classWAL_1_1Scene_a957fa692507b9fd6eb18dd141524c5bc}\label{classWAL_1_1Scene_a957fa692507b9fd6eb18dd141524c5bc}} 
+\index{WAL::Scene@{WAL::Scene}!Entity@{Entity}}
+\index{Entity@{Entity}!WAL::Scene@{WAL::Scene}}
+\doxysubsubsection{\texorpdfstring{Entity}{Entity}}
+{\footnotesize\ttfamily friend W\+A\+L\+::\+Scene\+::\+Entity}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+Scene/\mbox{\hyperlink{Scene_8hpp}{Scene.\+hpp}}\item 
+lib/wal/sources/\+Scene/\mbox{\hyperlink{Scene_8cpp}{Scene.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,237 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Grid Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+
+
+a grid (centered at (0, 0, 0))  
+
+
+
+
+{\ttfamily \#include $<$Grid.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Grid\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Grid\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7187ef80501a912a0f1420a0bde32fbf}{Grid}} (int slices, float spacing, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color=L\+I\+G\+H\+T\+G\+R\+AY)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4476affaf73b261266b352a05df59423}{Grid}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a464eeaccdac4d7aca44d08904108da78}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \&)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3f820c26fdc45eca0c1f39db76e8baab}{$\sim$\+Grid}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7ccb2db1c98a11159216d118a4d361de}{get\+Slices}} (void) const
+\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a801b5ad3e36624ff40d6356db0b0a7e7}{get\+Spacing}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a361fa7c93e20ceae648c5841e04df755}{set\+Slices}} (int slices)
+\begin{DoxyCompactList}\small\item\em Set slices. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3456e6a1d7a5dbc902ea1cbb241c4d7e}{set\+Spacing}} (float spacing)
+\begin{DoxyCompactList}\small\item\em Set spacing. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_aac022b68a9e7e0f1a17d2f4f6ed63334}{get\+Position}} (void) const override
+\item 
+virtual \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a9cb66148c9fe0ab070c6d97295b3b16a}{set\+Position}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&position) override
+\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a0ec8e66d028d1e873a04f0b6fc82415f}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4bbef1273c9a9efb3f22d44d3b467ff1}{\+\_\+slices}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} slices. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_ac502ee5608e06167e3e5dad5e3cb1fb7}{\+\_\+spacing}}
+\begin{DoxyCompactList}\small\item\em Slices spacing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+a grid (centered at (0, 0, 0)) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7187ef80501a912a0f1420a0bde32fbf}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7187ef80501a912a0f1420a0bde32fbf}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{Grid()}{Grid()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{int}]{slices,  }\item[{float}]{spacing,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color = {\ttfamily LIGHTGRAY} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em slices} & slices of the grid \\
+\hline
+{\em spacing} & spacing of slices \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4476affaf73b261266b352a05df59423}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4476affaf73b261266b352a05df59423}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!Grid@{Grid}}
+\index{Grid@{Grid}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{Grid()}{Grid()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::\+Grid (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3f820c26fdc45eca0c1f39db76e8baab}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3f820c26fdc45eca0c1f39db76e8baab}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!````~Grid@{$\sim$Grid}}
+\index{````~Grid@{$\sim$Grid}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{$\sim$Grid()}{~Grid()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::$\sim$\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a0ec8e66d028d1e873a04f0b6fc82415f}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a0ec8e66d028d1e873a04f0b6fc82415f}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_aac022b68a9e7e0f1a17d2f4f6ed63334}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_aac022b68a9e7e0f1a17d2f4f6ed63334}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::get\+Position (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Not\+Supported\+Error} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyRemark}{Remarks}
+The grid does not have a position 
+\end{DoxyRemark}
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_ac58e897fb94615f0994714ed74267d95}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7ccb2db1c98a11159216d118a4d361de}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a7ccb2db1c98a11159216d118a4d361de}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!getSlices@{getSlices}}
+\index{getSlices@{getSlices}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{getSlices()}{getSlices()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::get\+Slices (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the slices of the \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a801b5ad3e36624ff40d6356db0b0a7e7}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a801b5ad3e36624ff40d6356db0b0a7e7}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!getSpacing@{getSpacing}}
+\index{getSpacing@{getSpacing}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{getSpacing()}{getSpacing()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::get\+Spacing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the spacing of the \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a464eeaccdac4d7aca44d08904108da78}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a464eeaccdac4d7aca44d08904108da78}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a9cb66148c9fe0ab070c6d97295b3b16a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a9cb66148c9fe0ab070c6d97295b3b16a}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::set\+Position (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Not\+Supported\+Error} & \\
+\hline
+\end{DoxyExceptions}
+\begin{DoxyRemark}{Remarks}
+The grid does not have a position 
+\end{DoxyRemark}
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a2562a10daa36d400946a92085aaf6434}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a361fa7c93e20ceae648c5841e04df755}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a361fa7c93e20ceae648c5841e04df755}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!setSlices@{setSlices}}
+\index{setSlices@{setSlices}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{setSlices()}{setSlices()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::set\+Slices (\begin{DoxyParamCaption}\item[{int}]{slices }\end{DoxyParamCaption})}
+
+
+
+Set slices. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3456e6a1d7a5dbc902ea1cbb241c4d7e}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a3456e6a1d7a5dbc902ea1cbb241c4d7e}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!setSpacing@{setSpacing}}
+\index{setSpacing@{setSpacing}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{setSpacing()}{setSpacing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::set\+Spacing (\begin{DoxyParamCaption}\item[{float}]{spacing }\end{DoxyParamCaption})}
+
+
+
+Set spacing. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4bbef1273c9a9efb3f22d44d3b467ff1}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_a4bbef1273c9a9efb3f22d44d3b467ff1}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!\_slices@{\_slices}}
+\index{\_slices@{\_slices}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{\_slices}{\_slices}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::\+\_\+slices\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid}{Grid}} slices. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_ac502ee5608e06167e3e5dad5e3cb1fb7}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Grid_ac502ee5608e06167e3e5dad5e3cb1fb7}} 
+\index{RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}!\_spacing@{\_spacing}}
+\index{\_spacing@{\_spacing}!RAY::Drawables::Drawables3D::Grid@{RAY::Drawables::Drawables3D::Grid}}
+\doxysubsubsection{\texorpdfstring{\_spacing}{\_spacing}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Grid\+::\+\_\+spacing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Slices spacing. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Grid_8hpp}{Grid.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Grid_8cpp}{Grid.\+cpp}}\end{DoxyCompactItemize}

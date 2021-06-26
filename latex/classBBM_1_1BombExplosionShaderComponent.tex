@@ -1,0 +1,180 @@
+\hypertarget{classBBM_1_1BombExplosionShaderComponent}{}\doxysection{B\+BM\+::Bomb\+Explosion\+Shader\+Component Class Reference}
+\label{classBBM_1_1BombExplosionShaderComponent}\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+
+
+{\ttfamily \#include $<$Bomb\+Explosion\+Shader\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Bomb\+Explosion\+Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{classBBM_1_1BombExplosionShaderComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Bomb\+Explosion\+Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BombExplosionShaderComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a2e9d74facffa09c96a68c37f074acf75}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_aa638b277e83e54a6ab68ed3ae22df61c}{Bomb\+Explosion\+Shader\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a724c90c5b9f1fd3d6ca9722e511e0430}{Bomb\+Explosion\+Shader\+Component}} (const \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a359fedd06ce356da01b18c509805bad4}{$\sim$\+Bomb\+Explosion\+Shader\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}} \& \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a9c8d0c4b0f6d5fa5461f9b9df070d6e8}{operator=}} (const \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Default assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a70dc1f6872015d23d76d446aa0c11513}{explosion\+Radius}} = 4
+\begin{DoxyCompactList}\small\item\em Explosion radius. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a35e035cbd94b389dd334c4b6e46e4cd2}{frame\+Counter}} = 0
+\begin{DoxyCompactList}\small\item\em to have the shader move by the time \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_aee8f2d0ba0d28183e2a40865687b9bb7}{alpha}} = 1
+\begin{DoxyCompactList}\small\item\em Transparency. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a022ba2ce89244d6b9b717d7e664f7380}{clock}} = 0ns
+\begin{DoxyCompactList}\small\item\em The clock to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr float \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent_a7798ad79498c287f83bfa31e73290858}{max\+Radius}} = 1.\+2
+\begin{DoxyCompactList}\small\item\em max explosion radius \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_aa638b277e83e54a6ab68ed3ae22df61c}\label{classBBM_1_1BombExplosionShaderComponent_aa638b277e83e54a6ab68ed3ae22df61c}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!BombExplosionShaderComponent@{BombExplosionShaderComponent}}
+\index{BombExplosionShaderComponent@{BombExplosionShaderComponent}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{BombExplosionShaderComponent()}{BombExplosionShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::\+Bomb\+Explosion\+Shader\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a724c90c5b9f1fd3d6ca9722e511e0430}\label{classBBM_1_1BombExplosionShaderComponent_a724c90c5b9f1fd3d6ca9722e511e0430}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!BombExplosionShaderComponent@{BombExplosionShaderComponent}}
+\index{BombExplosionShaderComponent@{BombExplosionShaderComponent}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{BombExplosionShaderComponent()}{BombExplosionShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::\+Bomb\+Explosion\+Shader\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a359fedd06ce356da01b18c509805bad4}\label{classBBM_1_1BombExplosionShaderComponent_a359fedd06ce356da01b18c509805bad4}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!````~BombExplosionShaderComponent@{$\sim$BombExplosionShaderComponent}}
+\index{````~BombExplosionShaderComponent@{$\sim$BombExplosionShaderComponent}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$BombExplosionShaderComponent()}{~BombExplosionShaderComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::$\sim$\+Bomb\+Explosion\+Shader\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a2e9d74facffa09c96a68c37f074acf75}\label{classBBM_1_1BombExplosionShaderComponent_a2e9d74facffa09c96a68c37f074acf75}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a9c8d0c4b0f6d5fa5461f9b9df070d6e8}\label{classBBM_1_1BombExplosionShaderComponent_a9c8d0c4b0f6d5fa5461f9b9df070d6e8}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}}\& B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BombExplosionShaderComponent}{Bomb\+Explosion\+Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Default assignment operator. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_aee8f2d0ba0d28183e2a40865687b9bb7}\label{classBBM_1_1BombExplosionShaderComponent_aee8f2d0ba0d28183e2a40865687b9bb7}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!alpha@{alpha}}
+\index{alpha@{alpha}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::alpha = 1}
+
+
+
+Transparency. 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a022ba2ce89244d6b9b717d7e664f7380}\label{classBBM_1_1BombExplosionShaderComponent_a022ba2ce89244d6b9b717d7e664f7380}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!clock@{clock}}
+\index{clock@{clock}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{clock}{clock}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::clock = 0ns}
+
+
+
+The clock to use. 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a70dc1f6872015d23d76d446aa0c11513}\label{classBBM_1_1BombExplosionShaderComponent_a70dc1f6872015d23d76d446aa0c11513}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!explosionRadius@{explosionRadius}}
+\index{explosionRadius@{explosionRadius}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{explosionRadius}{explosionRadius}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::explosion\+Radius = 4}
+
+
+
+Explosion radius. 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a35e035cbd94b389dd334c4b6e46e4cd2}\label{classBBM_1_1BombExplosionShaderComponent_a35e035cbd94b389dd334c4b6e46e4cd2}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!frameCounter@{frameCounter}}
+\index{frameCounter@{frameCounter}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{frameCounter}{frameCounter}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::frame\+Counter = 0}
+
+
+
+to have the shader move by the time 
+
+\mbox{\Hypertarget{classBBM_1_1BombExplosionShaderComponent_a7798ad79498c287f83bfa31e73290858}\label{classBBM_1_1BombExplosionShaderComponent_a7798ad79498c287f83bfa31e73290858}} 
+\index{BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}!maxRadius@{maxRadius}}
+\index{maxRadius@{maxRadius}!BBM::BombExplosionShaderComponent@{BBM::BombExplosionShaderComponent}}
+\doxysubsubsection{\texorpdfstring{maxRadius}{maxRadius}}
+{\footnotesize\ttfamily constexpr float B\+B\+M\+::\+Bomb\+Explosion\+Shader\+Component\+::max\+Radius = 1.\+2\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+max explosion radius 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Shaders/\+Items/\mbox{\hyperlink{BombExplosionShaderComponent_8hpp}{Bomb\+Explosion\+Shader\+Component.\+hpp}}\item 
+sources/\+Component/\+Shaders/\+Items/\mbox{\hyperlink{BombExplosionShaderComponent_8cpp}{Bomb\+Explosion\+Shader\+Component.\+cpp}}\end{DoxyCompactItemize}

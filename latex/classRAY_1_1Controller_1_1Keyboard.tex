@@ -1,0 +1,144 @@
+\hypertarget{classRAY_1_1Controller_1_1Keyboard}{}\doxysection{R\+AY\+::Controller\+::Keyboard Class Reference}
+\label{classRAY_1_1Controller_1_1Keyboard}\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+
+
+\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard}{Keyboard}} event manager.  
+
+
+
+
+{\ttfamily \#include $<$Keyboard.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Controller\+::Keyboard\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classRAY_1_1Controller_1_1Keyboard__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+::Keyboard\+Key \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_af555a5d0685769d80e4d7db31bcc8d01}{is\+Pressed}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_a750660e859023dc570db465230ca907e}{is\+Down}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_a7a7c575a082c5861d01c500a57c1075a}{is\+Released}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}})
+\item 
+static bool \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_a095612156edb440eaa3a6b2d75d025f9}{is\+Up}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}})
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Keyboard\+::\+Key}} $>$ \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_a3a23d6af1960d7fa2fd361c26092a427}{get\+Pressed\+Keys}} (void)
+\begin{DoxyCompactList}\small\item\em Fetch currently pressed keys. \end{DoxyCompactList}\item 
+static std\+::vector$<$ char $>$ \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aea376baa948cff475f6eb024f5efa783}{get\+Pressed\+Chars}} (void)
+\begin{DoxyCompactList}\small\item\em Fetch currently pressed keys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard}{Keyboard}} event manager. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}\label{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!Key@{Key}}
+\index{Key@{Key}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{Key}{Key}}
+{\footnotesize\ttfamily typedef \+::Keyboard\+Key \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{R\+A\+Y\+::\+Controller\+::\+Keyboard\+::\+Key}}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_aea376baa948cff475f6eb024f5efa783}\label{classRAY_1_1Controller_1_1Keyboard_aea376baa948cff475f6eb024f5efa783}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!getPressedChars@{getPressedChars}}
+\index{getPressedChars@{getPressedChars}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{getPressedChars()}{getPressedChars()}}
+{\footnotesize\ttfamily std\+::vector$<$ char $>$ R\+A\+Y\+::\+Controller\+::\+Keyboard\+::get\+Pressed\+Chars (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Fetch currently pressed keys. 
+
+\begin{DoxyReturn}{Returns}
+a vector containing char of currently pressed keys 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_a3a23d6af1960d7fa2fd361c26092a427}\label{classRAY_1_1Controller_1_1Keyboard_a3a23d6af1960d7fa2fd361c26092a427}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!getPressedKeys@{getPressedKeys}}
+\index{getPressedKeys@{getPressedKeys}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{getPressedKeys()}{getPressedKeys()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{R\+A\+Y\+::\+Controller\+::\+Keyboard\+::\+Key}} $>$ R\+A\+Y\+::\+Controller\+::\+Keyboard\+::get\+Pressed\+Keys (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Fetch currently pressed keys. 
+
+\begin{DoxyReturn}{Returns}
+a vector containing keycode of currently pressed keys 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_a750660e859023dc570db465230ca907e}\label{classRAY_1_1Controller_1_1Keyboard_a750660e859023dc570db465230ca907e}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!isDown@{isDown}}
+\index{isDown@{isDown}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{isDown()}{isDown()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Keyboard\+::is\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is down on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_af555a5d0685769d80e4d7db31bcc8d01}\label{classRAY_1_1Controller_1_1Keyboard_af555a5d0685769d80e4d7db31bcc8d01}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!isPressed@{isPressed}}
+\index{isPressed@{isPressed}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{isPressed()}{isPressed()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Keyboard\+::is\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is pressed on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_a7a7c575a082c5861d01c500a57c1075a}\label{classRAY_1_1Controller_1_1Keyboard_a7a7c575a082c5861d01c500a57c1075a}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!isReleased@{isReleased}}
+\index{isReleased@{isReleased}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{isReleased()}{isReleased()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Keyboard\+::is\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is released on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1Keyboard_a095612156edb440eaa3a6b2d75d025f9}\label{classRAY_1_1Controller_1_1Keyboard_a095612156edb440eaa3a6b2d75d025f9}} 
+\index{RAY::Controller::Keyboard@{RAY::Controller::Keyboard}!isUp@{isUp}}
+\index{isUp@{isUp}!RAY::Controller::Keyboard@{RAY::Controller::Keyboard}}
+\doxysubsubsection{\texorpdfstring{isUp()}{isUp()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Keyboard\+::is\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1Keyboard_aef975c87fa48c582ae04569f8b6e4cce}{Key}}}]{key }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\begin{DoxyReturn}{Returns}
+true if Key is up on the keyboard 
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em Key} & The keycode of the key \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Keyboard_8hpp}{Keyboard.\+hpp}}\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Keyboard_8cpp}{Keyboard.\+cpp}}\end{DoxyCompactItemize}

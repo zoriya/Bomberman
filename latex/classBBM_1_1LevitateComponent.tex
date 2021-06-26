@@ -1,0 +1,153 @@
+\hypertarget{classBBM_1_1LevitateComponent}{}\doxysection{B\+BM\+::Levitate\+Component Class Reference}
+\label{classBBM_1_1LevitateComponent}\index{BBM::LevitateComponent@{BBM::LevitateComponent}}
+
+
+{\ttfamily \#include $<$Levitate\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Levitate\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=221pt]{classBBM_1_1LevitateComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Levitate\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1LevitateComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1LevitateComponent_aae1d48334f2bd23c45cb5744a7c900cb}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LevitateComponent_a2e02b7a63fd1cce7443a6928d1df5490}{Levitate\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new levitate component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LevitateComponent_aaa1415e0da75af129bef228946fc4535}{Levitate\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, float entityY)
+\begin{DoxyCompactList}\small\item\em Create a new levitate component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LevitateComponent_a1653442bb3f8faf96ad17e77cb596f7c}{Levitate\+Component}} (const \mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Levitate component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LevitateComponent_a3933cb683b4f5c2ee48cca0ad2716e71}{$\sim$\+Levitate\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}} \& \mbox{\hyperlink{classBBM_1_1LevitateComponent_ae3373888e3133217fb183e4223f426aa}{operator=}} (const \mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Levitate component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1LevitateComponent_a6b991d0306e237a9ecfa32d89f678523}{up}} = true
+\begin{DoxyCompactList}\small\item\em Go down or up. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1LevitateComponent_ad56a143b4cf49deea12ba78a38a248d7}{y}}
+\begin{DoxyCompactList}\small\item\em Original y of the entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_a2e02b7a63fd1cce7443a6928d1df5490}\label{classBBM_1_1LevitateComponent_a2e02b7a63fd1cce7443a6928d1df5490}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!LevitateComponent@{LevitateComponent}}
+\index{LevitateComponent@{LevitateComponent}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{LevitateComponent()}{LevitateComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Levitate\+Component\+::\+Levitate\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new levitate component. 
+
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_aaa1415e0da75af129bef228946fc4535}\label{classBBM_1_1LevitateComponent_aaa1415e0da75af129bef228946fc4535}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!LevitateComponent@{LevitateComponent}}
+\index{LevitateComponent@{LevitateComponent}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{LevitateComponent()}{LevitateComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Levitate\+Component\+::\+Levitate\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{float}]{entityY }\end{DoxyParamCaption})}
+
+
+
+Create a new levitate component. 
+
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_a1653442bb3f8faf96ad17e77cb596f7c}\label{classBBM_1_1LevitateComponent_a1653442bb3f8faf96ad17e77cb596f7c}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!LevitateComponent@{LevitateComponent}}
+\index{LevitateComponent@{LevitateComponent}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{LevitateComponent()}{LevitateComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Levitate\+Component\+::\+Levitate\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Levitate component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_a3933cb683b4f5c2ee48cca0ad2716e71}\label{classBBM_1_1LevitateComponent_a3933cb683b4f5c2ee48cca0ad2716e71}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!````~LevitateComponent@{$\sim$LevitateComponent}}
+\index{````~LevitateComponent@{$\sim$LevitateComponent}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$LevitateComponent()}{~LevitateComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Levitate\+Component\+::$\sim$\+Levitate\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_aae1d48334f2bd23c45cb5744a7c900cb}\label{classBBM_1_1LevitateComponent_aae1d48334f2bd23c45cb5744a7c900cb}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Levitate\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_ae3373888e3133217fb183e4223f426aa}\label{classBBM_1_1LevitateComponent_ae3373888e3133217fb183e4223f426aa}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}}\& B\+B\+M\+::\+Levitate\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LevitateComponent}{Levitate\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Levitate component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_a6b991d0306e237a9ecfa32d89f678523}\label{classBBM_1_1LevitateComponent_a6b991d0306e237a9ecfa32d89f678523}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!up@{up}}
+\index{up@{up}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{up}{up}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Levitate\+Component\+::up = true}
+
+
+
+Go down or up. 
+
+\mbox{\Hypertarget{classBBM_1_1LevitateComponent_ad56a143b4cf49deea12ba78a38a248d7}\label{classBBM_1_1LevitateComponent_ad56a143b4cf49deea12ba78a38a248d7}} 
+\index{BBM::LevitateComponent@{BBM::LevitateComponent}!y@{y}}
+\index{y@{y}!BBM::LevitateComponent@{BBM::LevitateComponent}}
+\doxysubsubsection{\texorpdfstring{y}{y}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Levitate\+Component\+::y}
+
+
+
+Original y of the entity. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Levitate/\mbox{\hyperlink{LevitateComponent_8hpp}{Levitate\+Component.\+hpp}}\item 
+sources/\+Component/\+Levitate/\mbox{\hyperlink{LevitateComponent_8cpp}{Levitate\+Component.\+cpp}}\end{DoxyCompactItemize}

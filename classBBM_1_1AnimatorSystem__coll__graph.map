@@ -1,0 +1,6 @@
+<map id="BBM::AnimatorSystem" name="BBM::AnimatorSystem">
+<area shape="rect" id="node1" title="A system to handle Animator entities." alt="" coords="100,639,269,775"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,351,364,589"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="42,86,167,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="191,5,338,288"/>
+</map>

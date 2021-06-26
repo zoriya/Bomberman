@@ -1,0 +1,5 @@
+<map id="BBM::MenuControllableSystem" name="BBM::MenuControllableSystem">
+<area shape="rect" id="node1" title="A system to handle Controllable entities in a menu." alt="" coords="5,447,229,641"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="45,175,189,399"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="55,5,180,127"/>
+</map>

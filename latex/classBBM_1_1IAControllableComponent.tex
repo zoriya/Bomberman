@@ -1,0 +1,156 @@
+\hypertarget{classBBM_1_1IAControllableComponent}{}\doxysection{B\+BM\+::I\+A\+Controllable\+Component Class Reference}
+\label{classBBM_1_1IAControllableComponent}\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+
+
+{\ttfamily \#include $<$I\+A\+Controllable\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::I\+A\+Controllable\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=250pt]{classBBM_1_1IAControllableComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::I\+A\+Controllable\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1IAControllableComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1IAControllableComponent_add7ac0d860ba9381f3d7909ffd7c88b7}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableComponent_ada00a5d82332b2dce05dba8cfe05b0d5}{I\+A\+Controllable\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, std\+::string scrip\+Path)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableComponent_a5d03f2048464ee113f0b779daf3792b4}{I\+A\+Controllable\+Component}} (const \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A IA component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableComponent_a9e9b61cffd928146300e5735faf58dbc}{$\sim$\+I\+A\+Controllable\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}} \& \mbox{\hyperlink{classBBM_1_1IAControllableComponent_afc052771f32a21e1d6ef2da11bb6cec4}{operator=}} (const \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A IA component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1IAControllableComponent_a9d81916ffd160cd7c75d65e86dc55968}{registered}}
+\begin{DoxyCompactList}\small\item\em Is the binding registered. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLuaG_1_1State}{Lua\+G\+::\+State}} \mbox{\hyperlink{classBBM_1_1IAControllableComponent_abd9f67d43e85a91e45f419960257e0d8}{\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Lua\+Gate state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::string \mbox{\hyperlink{classBBM_1_1IAControllableComponent_a6c08d46d793cfa0618f20a30a80935da}{\+\_\+script\+Path}}
+\begin{DoxyCompactList}\small\item\em path to the lua script \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_ada00a5d82332b2dce05dba8cfe05b0d5}\label{classBBM_1_1IAControllableComponent_ada00a5d82332b2dce05dba8cfe05b0d5}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!IAControllableComponent@{IAControllableComponent}}
+\index{IAControllableComponent@{IAControllableComponent}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{IAControllableComponent()}{IAControllableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+Component\+::\+I\+A\+Controllable\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{std\+::string}]{scrip\+Path }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_a5d03f2048464ee113f0b779daf3792b4}\label{classBBM_1_1IAControllableComponent_a5d03f2048464ee113f0b779daf3792b4}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!IAControllableComponent@{IAControllableComponent}}
+\index{IAControllableComponent@{IAControllableComponent}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{IAControllableComponent()}{IAControllableComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+Component\+::\+I\+A\+Controllable\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A IA component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_a9e9b61cffd928146300e5735faf58dbc}\label{classBBM_1_1IAControllableComponent_a9e9b61cffd928146300e5735faf58dbc}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!````~IAControllableComponent@{$\sim$IAControllableComponent}}
+\index{````~IAControllableComponent@{$\sim$IAControllableComponent}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$IAControllableComponent()}{~IAControllableComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+Component\+::$\sim$\+I\+A\+Controllable\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_add7ac0d860ba9381f3d7909ffd7c88b7}\label{classBBM_1_1IAControllableComponent_add7ac0d860ba9381f3d7909ffd7c88b7}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+I\+A\+Controllable\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_afc052771f32a21e1d6ef2da11bb6cec4}\label{classBBM_1_1IAControllableComponent_afc052771f32a21e1d6ef2da11bb6cec4}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}}\& B\+B\+M\+::\+I\+A\+Controllable\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A IA component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_a6c08d46d793cfa0618f20a30a80935da}\label{classBBM_1_1IAControllableComponent_a6c08d46d793cfa0618f20a30a80935da}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!\_scriptPath@{\_scriptPath}}
+\index{\_scriptPath@{\_scriptPath}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{\_scriptPath}{\_scriptPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+I\+A\+Controllable\+Component\+::\+\_\+script\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+path to the lua script 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_abd9f67d43e85a91e45f419960257e0d8}\label{classBBM_1_1IAControllableComponent_abd9f67d43e85a91e45f419960257e0d8}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!\_state@{\_state}}
+\index{\_state@{\_state}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLuaG_1_1State}{Lua\+G\+::\+State}} B\+B\+M\+::\+I\+A\+Controllable\+Component\+::\+\_\+state}
+
+
+
+Lua\+Gate state. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableComponent_a9d81916ffd160cd7c75d65e86dc55968}\label{classBBM_1_1IAControllableComponent_a9d81916ffd160cd7c75d65e86dc55968}} 
+\index{BBM::IAControllableComponent@{BBM::IAControllableComponent}!registered@{registered}}
+\index{registered@{registered}!BBM::IAControllableComponent@{BBM::IAControllableComponent}}
+\doxysubsubsection{\texorpdfstring{registered}{registered}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+I\+A\+Controllable\+Component\+::registered}
+
+
+
+Is the binding registered. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+I\+A\+Controllable/\mbox{\hyperlink{IAControllableComponent_8hpp}{I\+A\+Controllable\+Component.\+hpp}}\item 
+sources/\+Component/\+I\+A\+Controllable/\mbox{\hyperlink{IAControllableComponent_8cpp}{I\+A\+Controllable\+Component.\+cpp}}\end{DoxyCompactItemize}

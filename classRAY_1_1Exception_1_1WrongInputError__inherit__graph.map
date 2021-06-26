@@ -1,0 +1,5 @@
+<map id="RAY::Exception::WrongInputError" name="RAY::Exception::WrongInputError">
+<area shape="rect" id="node1" title="exception used when an non&#45;supported operation is done" alt="" coords="5,300,205,436"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Exception_1_1RayError.html" title="base exception class for RAY lib" alt="" coords="15,131,196,252"/>
+<area shape="rect" id="node3" title=" " alt="" coords="50,5,161,83"/>
+</map>

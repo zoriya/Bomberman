@@ -1,0 +1,195 @@
+\hypertarget{classBBM_1_1MenuControllableSystem}{}\doxysection{B\+BM\+::Menu\+Controllable\+System Class Reference}
+\label{classBBM_1_1MenuControllableSystem}\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+
+
+A system to handle Controllable entities in a menu.  
+
+
+
+
+{\ttfamily \#include $<$Menu\+Controllable\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Menu\+Controllable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1MenuControllableSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Menu\+Controllable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classBBM_1_1MenuControllableSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_a94b1476bb3f130ed5054f81740d5984d}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MenuControllableSystem_a2aa3b5c0edc465b809adb32a3fd612e4}{Menu\+Controllable\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MenuControllableSystem_aeed624ccc6e9190b97017ee21a21cf9d}{Menu\+Controllable\+System}} (const \mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Menu\+Controllable system is not copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MenuControllableSystem_afd690ff8362c249fbd3b5dcef0d03451}{$\sim$\+Menu\+Controllable\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}} \& \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_acfee46821b2925839f7d8fcb2d92c990}{operator=}} (const \mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Menu\+Controllable system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} $\ast$ \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_ac93a764310d69ba8f0166e1816f2d672}{current\+Button}}
+\begin{DoxyCompactList}\small\item\em index of the current button selected \end{DoxyCompactList}\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_afe735a5964a2f3d1d3f51212cb707471}{now}}
+\begin{DoxyCompactList}\small\item\em time (in millisecond) since last check \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_a40c1df2dc0823fc7f49dd20fcfd4a111}{\+\_\+update\+Current\+Button}} (bool selected, \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} move)
+\begin{DoxyCompactList}\small\item\em update current button reference \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_a5a718d3725e8caa67c8fbbeed6760d33}{\+\_\+mouse\+On\+Button}} (const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&mouse\+Pos, \mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{namespaceBBM_af62efbebb322717b623e1a0a8c67bcbc}{On\+Click\+Component}}, \mbox{\hyperlink{namespaceBBM_af6049eb6c6291d42e2d99edc2df38103}{On\+Hover\+Component}}, \mbox{\hyperlink{namespaceBBM_aecb4bb5625265e417e278093521b98d2}{On\+Idle\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&entity) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \mbox{\hyperlink{classBBM_1_1MenuControllableSystem_aeaf5cbd40df2a402c84f14f102e623be}{\+\_\+old\+Mouse\+Position}}
+\begin{DoxyCompactList}\small\item\em position of the mouse at the precedent scene (to know which controller event to watch) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle Controllable entities in a menu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_a2aa3b5c0edc465b809adb32a3fd612e4}\label{classBBM_1_1MenuControllableSystem_a2aa3b5c0edc465b809adb32a3fd612e4}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!MenuControllableSystem@{MenuControllableSystem}}
+\index{MenuControllableSystem@{MenuControllableSystem}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{MenuControllableSystem()}{MenuControllableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Menu\+Controllable\+System\+::\+Menu\+Controllable\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_aeed624ccc6e9190b97017ee21a21cf9d}\label{classBBM_1_1MenuControllableSystem_aeed624ccc6e9190b97017ee21a21cf9d}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!MenuControllableSystem@{MenuControllableSystem}}
+\index{MenuControllableSystem@{MenuControllableSystem}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{MenuControllableSystem()}{MenuControllableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Menu\+Controllable\+System\+::\+Menu\+Controllable\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Menu\+Controllable system is not copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_afd690ff8362c249fbd3b5dcef0d03451}\label{classBBM_1_1MenuControllableSystem_afd690ff8362c249fbd3b5dcef0d03451}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!````~MenuControllableSystem@{$\sim$MenuControllableSystem}}
+\index{````~MenuControllableSystem@{$\sim$MenuControllableSystem}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$MenuControllableSystem()}{~MenuControllableSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Menu\+Controllable\+System\+::$\sim$\+Menu\+Controllable\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_a5a718d3725e8caa67c8fbbeed6760d33}\label{classBBM_1_1MenuControllableSystem_a5a718d3725e8caa67c8fbbeed6760d33}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!\_mouseOnButton@{\_mouseOnButton}}
+\index{\_mouseOnButton@{\_mouseOnButton}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_mouseOnButton()}{\_mouseOnButton()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Menu\+Controllable\+System\+::\+\_\+mouse\+On\+Button (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \&}]{mouse\+Pos,  }\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{namespaceBBM_af62efbebb322717b623e1a0a8c67bcbc}{On\+Click\+Component}}, \mbox{\hyperlink{namespaceBBM_af6049eb6c6291d42e2d99edc2df38103}{On\+Hover\+Component}}, \mbox{\hyperlink{namespaceBBM_aecb4bb5625265e417e278093521b98d2}{On\+Idle\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyReturn}{Returns}
+true if mouse on entity 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_a40c1df2dc0823fc7f49dd20fcfd4a111}\label{classBBM_1_1MenuControllableSystem_a40c1df2dc0823fc7f49dd20fcfd4a111}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!\_updateCurrentButton@{\_updateCurrentButton}}
+\index{\_updateCurrentButton@{\_updateCurrentButton}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_updateCurrentButton()}{\_updateCurrentButton()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Menu\+Controllable\+System\+::\+\_\+update\+Current\+Button (\begin{DoxyParamCaption}\item[{bool}]{selected,  }\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}}]{move }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+update current button reference 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected} & lets know if te new selected button is \textquotesingle{}pressed\textquotesingle{} \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_a94b1476bb3f130ed5054f81740d5984d}\label{classBBM_1_1MenuControllableSystem_a94b1476bb3f130ed5054f81740d5984d}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Menu\+Controllable\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$$>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_acfee46821b2925839f7d8fcb2d92c990}\label{classBBM_1_1MenuControllableSystem_acfee46821b2925839f7d8fcb2d92c990}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}}\& B\+B\+M\+::\+Menu\+Controllable\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MenuControllableSystem}{Menu\+Controllable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Menu\+Controllable system is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_aeaf5cbd40df2a402c84f14f102e623be}\label{classBBM_1_1MenuControllableSystem_aeaf5cbd40df2a402c84f14f102e623be}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!\_oldMousePosition@{\_oldMousePosition}}
+\index{\_oldMousePosition@{\_oldMousePosition}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_oldMousePosition}{\_oldMousePosition}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} B\+B\+M\+::\+Menu\+Controllable\+System\+::\+\_\+old\+Mouse\+Position\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+position of the mouse at the precedent scene (to know which controller event to watch) 
+
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_ac93a764310d69ba8f0166e1816f2d672}\label{classBBM_1_1MenuControllableSystem_ac93a764310d69ba8f0166e1816f2d672}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!currentButton@{currentButton}}
+\index{currentButton@{currentButton}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{currentButton}{currentButton}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}$\ast$ B\+B\+M\+::\+Menu\+Controllable\+System\+::current\+Button}
+
+
+
+index of the current button selected 
+
+\mbox{\Hypertarget{classBBM_1_1MenuControllableSystem_afe735a5964a2f3d1d3f51212cb707471}\label{classBBM_1_1MenuControllableSystem_afe735a5964a2f3d1d3f51212cb707471}} 
+\index{BBM::MenuControllableSystem@{BBM::MenuControllableSystem}!now@{now}}
+\index{now@{now}!BBM::MenuControllableSystem@{BBM::MenuControllableSystem}}
+\doxysubsubsection{\texorpdfstring{now}{now}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ B\+B\+M\+::\+Menu\+Controllable\+System\+::now}
+
+
+
+time (in millisecond) since last check 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Menu\+Controllable/\mbox{\hyperlink{MenuControllableSystem_8hpp}{Menu\+Controllable\+System.\+hpp}}\item 
+sources/\+System/\+Menu\+Controllable/\mbox{\hyperlink{MenuControllableSystem_8cpp}{Menu\+Controllable\+System.\+cpp}}\end{DoxyCompactItemize}

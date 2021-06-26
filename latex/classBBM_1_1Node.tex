@@ -1,0 +1,185 @@
+\hypertarget{classBBM_1_1Node}{}\doxysection{B\+BM\+::Node Class Reference}
+\label{classBBM_1_1Node}\index{BBM::Node@{BBM::Node}}
+
+
+{\ttfamily \#include $<$Node.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classBBM_1_1Node__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1Node_a443cf2b083dd7de860d20eb19d709aac}{get\+Name}} () const
+\item 
+void \mbox{\hyperlink{classBBM_1_1Node_a8a82d72b38c907eec8d8ec2e9c03a646}{set\+Name}} (const std\+::string \&name)
+\item 
+void \mbox{\hyperlink{classBBM_1_1Node_a28d02886d8823f4855d97078a2ca9839}{add\+Child\+Node}} (const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&child\+Node)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1Node}{Node}} $>$ \mbox{\hyperlink{classBBM_1_1Node_a416b0742a79381d6782f456e54ace2d6}{get\+Child\+Nodes}} (const std\+::string \&child\+Node\+Name)
+\item 
+std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1Node}{Node}} $>$ \mbox{\hyperlink{classBBM_1_1Node_a74772f18b6f8683ac62ea7f992afff0d}{get\+Child\+Nodes}} (void)
+\item 
+void \mbox{\hyperlink{classBBM_1_1Node_a0d9ec7a3297b08e60ca1fcc8718930ca}{set\+Property}} (const std\+::string \&property\+Name, const std\+::string \&property\+Value)
+\item 
+void \mbox{\hyperlink{classBBM_1_1Node_aafebf7d38a5f078ad75520a95feec49f}{set\+Property}} (const std\+::pair$<$ std\+::string, std\+::string $>$ \&property\+Name\+Value)
+\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1Node_a3d858568daacec78ba046db0fb789c2a}{get\+Property}} (const std\+::string \&property\+Name) const
+\item 
+\mbox{\hyperlink{classBBM_1_1Node_a963e69fe8af27dbbca7e9e768642d423}{Node}} (std\+::string name)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Node_ad124b66cf550953a7e25c6beaba33f61}{Node}} (const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&)=default
+\begin{DoxyCompactList}\small\item\em copy ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Node_a7323e55d04f06e99719d0b4741ebc643}{$\sim$\+Node}} ()=default
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Node}{Node}} \& \mbox{\hyperlink{classBBM_1_1Node_a4f993db7f927f35b3e4fcc70cc36921f}{operator=}} (const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&)=default
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classBBM_1_1Node_af00444212c8708488c278bb8f7487ff1}{\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classBBM_1_1Node}{Node}} name. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1Node}{Node}} $>$ \mbox{\hyperlink{classBBM_1_1Node_a8fcdcbf05a87ee941d6aa0bc3af26585}{\+\_\+child\+Nodes}}
+\begin{DoxyCompactList}\small\item\em child nodes \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classBBM_1_1Node_a00790bdb6b4d871a659ffa877a0849f4}{\+\_\+properties}}
+\begin{DoxyCompactList}\small\item\em node\textquotesingle{}s properties \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1Node_a963e69fe8af27dbbca7e9e768642d423}\label{classBBM_1_1Node_a963e69fe8af27dbbca7e9e768642d423}} 
+\index{BBM::Node@{BBM::Node}!Node@{Node}}
+\index{Node@{Node}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{std\+::string}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1Node_ad124b66cf550953a7e25c6beaba33f61}\label{classBBM_1_1Node_ad124b66cf550953a7e25c6beaba33f61}} 
+\index{BBM::Node@{BBM::Node}!Node@{Node}}
+\index{Node@{Node}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{Node()}{Node()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Node\+::\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+copy ctor 
+
+\mbox{\Hypertarget{classBBM_1_1Node_a7323e55d04f06e99719d0b4741ebc643}\label{classBBM_1_1Node_a7323e55d04f06e99719d0b4741ebc643}} 
+\index{BBM::Node@{BBM::Node}!````~Node@{$\sim$Node}}
+\index{````~Node@{$\sim$Node}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{$\sim$Node()}{~Node()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Node\+::$\sim$\+Node (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+dtor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1Node_a28d02886d8823f4855d97078a2ca9839}\label{classBBM_1_1Node_a28d02886d8823f4855d97078a2ca9839}} 
+\index{BBM::Node@{BBM::Node}!addChildNode@{addChildNode}}
+\index{addChildNode@{addChildNode}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{addChildNode()}{addChildNode()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Node\+::add\+Child\+Node (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{child\+Node }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a416b0742a79381d6782f456e54ace2d6}\label{classBBM_1_1Node_a416b0742a79381d6782f456e54ace2d6}} 
+\index{BBM::Node@{BBM::Node}!getChildNodes@{getChildNodes}}
+\index{getChildNodes@{getChildNodes}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{getChildNodes()}{getChildNodes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1Node}{Node}} $>$ B\+B\+M\+::\+Node\+::get\+Child\+Nodes (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{child\+Node\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a74772f18b6f8683ac62ea7f992afff0d}\label{classBBM_1_1Node_a74772f18b6f8683ac62ea7f992afff0d}} 
+\index{BBM::Node@{BBM::Node}!getChildNodes@{getChildNodes}}
+\index{getChildNodes@{getChildNodes}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{getChildNodes()}{getChildNodes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1Node}{Node}} $>$ B\+B\+M\+::\+Node\+::get\+Child\+Nodes (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a443cf2b083dd7de860d20eb19d709aac}\label{classBBM_1_1Node_a443cf2b083dd7de860d20eb19d709aac}} 
+\index{BBM::Node@{BBM::Node}!getName@{getName}}
+\index{getName@{getName}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Node\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a3d858568daacec78ba046db0fb789c2a}\label{classBBM_1_1Node_a3d858568daacec78ba046db0fb789c2a}} 
+\index{BBM::Node@{BBM::Node}!getProperty@{getProperty}}
+\index{getProperty@{getProperty}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{getProperty()}{getProperty()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Node\+::get\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a4f993db7f927f35b3e4fcc70cc36921f}\label{classBBM_1_1Node_a4f993db7f927f35b3e4fcc70cc36921f}} 
+\index{BBM::Node@{BBM::Node}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1Node}{Node}}\& B\+B\+M\+::\+Node\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+assignment operator 
+
+\mbox{\Hypertarget{classBBM_1_1Node_a8a82d72b38c907eec8d8ec2e9c03a646}\label{classBBM_1_1Node_a8a82d72b38c907eec8d8ec2e9c03a646}} 
+\index{BBM::Node@{BBM::Node}!setName@{setName}}
+\index{setName@{setName}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{setName()}{setName()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Node\+::set\+Name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBBM_1_1Node_aafebf7d38a5f078ad75520a95feec49f}\label{classBBM_1_1Node_aafebf7d38a5f078ad75520a95feec49f}} 
+\index{BBM::Node@{BBM::Node}!setProperty@{setProperty}}
+\index{setProperty@{setProperty}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{setProperty()}{setProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Node\+::set\+Property (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ std\+::string, std\+::string $>$ \&}]{property\+Name\+Value }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classBBM_1_1Node_a0d9ec7a3297b08e60ca1fcc8718930ca}\label{classBBM_1_1Node_a0d9ec7a3297b08e60ca1fcc8718930ca}} 
+\index{BBM::Node@{BBM::Node}!setProperty@{setProperty}}
+\index{setProperty@{setProperty}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{setProperty()}{setProperty()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Node\+::set\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{property\+Name,  }\item[{const std\+::string \&}]{property\+Value }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1Node_a8fcdcbf05a87ee941d6aa0bc3af26585}\label{classBBM_1_1Node_a8fcdcbf05a87ee941d6aa0bc3af26585}} 
+\index{BBM::Node@{BBM::Node}!\_childNodes@{\_childNodes}}
+\index{\_childNodes@{\_childNodes}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{\_childNodes}{\_childNodes}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classBBM_1_1Node}{Node}}$>$ B\+B\+M\+::\+Node\+::\+\_\+child\+Nodes\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+child nodes 
+
+\mbox{\Hypertarget{classBBM_1_1Node_af00444212c8708488c278bb8f7487ff1}\label{classBBM_1_1Node_af00444212c8708488c278bb8f7487ff1}} 
+\index{BBM::Node@{BBM::Node}!\_name@{\_name}}
+\index{\_name@{\_name}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{\_name}{\_name}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Node\+::\+\_\+name\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classBBM_1_1Node}{Node}} name. 
+
+\mbox{\Hypertarget{classBBM_1_1Node_a00790bdb6b4d871a659ffa877a0849f4}\label{classBBM_1_1Node_a00790bdb6b4d871a659ffa877a0849f4}} 
+\index{BBM::Node@{BBM::Node}!\_properties@{\_properties}}
+\index{\_properties@{\_properties}!BBM::Node@{BBM::Node}}
+\doxysubsubsection{\texorpdfstring{\_properties}{\_properties}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, std\+::string$>$ B\+B\+M\+::\+Node\+::\+\_\+properties\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+node\textquotesingle{}s properties 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Parser/\mbox{\hyperlink{Node_8hpp}{Node.\+hpp}}\item 
+sources/\+Parser/\mbox{\hyperlink{Node_8cpp}{Node.\+cpp}}\end{DoxyCompactItemize}

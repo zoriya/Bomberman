@@ -1,0 +1,4 @@
+<map id="BBM::MusicComponent" name="BBM::MusicComponent">
+<area shape="rect" id="node1" title="A basic Music component." alt="" coords="5,219,183,516"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="27,5,161,171"/>
+</map>

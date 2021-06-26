@@ -1,0 +1,8 @@
+<map id="RAY::Exception::RayError" name="RAY::Exception::RayError">
+<area shape="rect" id="node1" title="base exception class for RAY lib" alt="" coords="381,131,562,252"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Exception_1_1NotCompatibleError.html" title="exception used when an incompatibility occurs" alt="" coords="5,300,228,436"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Exception_1_1NotSupportedError.html" title="exception used when an non&#45;supported operation is done" alt="" coords="252,300,467,436"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Exception_1_1ResourceNotFound.html" title="exception used when a resource is not found" alt="" coords="491,300,676,436"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Exception_1_1WrongInputError.html" title="exception used when an non&#45;supported operation is done" alt="" coords="701,300,901,436"/>
+<area shape="rect" id="node2" title=" " alt="" coords="416,5,527,83"/>
+</map>

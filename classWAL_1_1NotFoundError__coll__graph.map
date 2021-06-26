@@ -1,0 +1,5 @@
+<map id="WAL::NotFoundError" name="WAL::NotFoundError">
+<area shape="rect" id="node1" title="An exception informing the user that something could not be found." alt="" coords="5,300,156,421"/>
+<area shape="rect" id="node2" href="$classWAL_1_1WalError.html" title="The base class for WAL&#39;s exceptions." alt="" coords="24,131,137,252"/>
+<area shape="rect" id="node3" title=" " alt="" coords="11,5,150,83"/>
+</map>

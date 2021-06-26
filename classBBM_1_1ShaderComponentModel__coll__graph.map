@@ -1,0 +1,16 @@
+<map id="BBM::ShaderComponentModel" name="BBM::ShaderComponentModel">
+<area shape="rect" id="node1" title=" " alt="" coords="506,1504,726,1640"/>
+<area shape="rect" id="node2" href="$classBBM_1_1ShaderComponent.html" title=" " alt="" coords="820,1203,1001,1397"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="1108,879,1241,1045"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="1083,395,1266,751"/>
+<area shape="rect" id="node5" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="1083,5,1266,332"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Shader.html" title=" " alt="" coords="620,828,836,1096"/>
+<area shape="rect" id="node9" href="$classRAY_1_1Drawables_1_1Drawables3D_1_1Model.html" title="Basic 3D Model type." alt="" coords="401,1159,607,1441"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Cache.html" title=" " alt="" coords="629,490,827,655"/>
+<area shape="rect" id="node8" href="$classWAL_1_1Callback.html" title=" " alt="" coords="860,850,1084,1074"/>
+<area shape="rect" id="node10" href="$classRAY_1_1Drawables_1_1ADrawable3D.html" title="Abstraction of any three&#45;dimensionnal drawable." alt="" coords="237,850,456,1074"/>
+<area shape="rect" id="node11" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="9,527,205,619"/>
+<area shape="rect" id="node12" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="229,461,342,685"/>
+<area shape="rect" id="node13" href="$classRAY_1_1Vector3.html" title="A Three&#45;dimensionnal Vector data type." alt="" coords="445,475,558,670"/>
+<area shape="rect" id="node14" href="$classRAY_1_1Cache.html" title=" " alt="" coords="5,872,213,1052"/>
+</map>

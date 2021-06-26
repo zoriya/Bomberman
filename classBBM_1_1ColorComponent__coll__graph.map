@@ -1,0 +1,7 @@
+<map id="BBM::ColorComponent" name="BBM::ColorComponent">
+<area shape="rect" id="node1" title="A basic color component." alt="" coords="85,1100,255,1251"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="30,843,163,1008"/>
+<area shape="rect" id="node3" href="$classWAL_1_1Entity.html" title="An entity of the WAL&#39;s ECS." alt="" coords="5,395,188,751"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Scene.html" title="Represent a single scene that contains entities." alt="" coords="5,5,188,332"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="188,813,301,1037"/>
+</map>

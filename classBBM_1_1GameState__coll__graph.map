@@ -1,0 +1,3 @@
+<map id="BBM::GameState" name="BBM::GameState">
+<area shape="rect" id="node1" title="A class representing the current game state. This allow one to retain information between update call..." alt="" coords="5,5,139,127"/>
+</map>

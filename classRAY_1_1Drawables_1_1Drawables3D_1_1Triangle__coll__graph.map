@@ -1,0 +1,7 @@
+<map id="RAY::Drawables::Drawables3D::Triangle" name="RAY::Drawables::Drawables3D::Triangle">
+<area shape="rect" id="node1" title="Triangle in a three&#45;dimensionnal space." alt="" coords="303,580,509,819"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable3D.html" title="Abstraction of any three&#45;dimensionnal drawable." alt="" coords="202,307,421,531"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="5,71,201,163"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="225,5,339,229"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Vector3.html" title="A Three&#45;dimensionnal Vector data type." alt="" coords="441,20,555,215"/>
+</map>

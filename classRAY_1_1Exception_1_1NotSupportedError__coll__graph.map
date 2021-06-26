@@ -1,0 +1,5 @@
+<map id="RAY::Exception::NotSupportedError" name="RAY::Exception::NotSupportedError">
+<area shape="rect" id="node1" title="exception used when an non&#45;supported operation is done" alt="" coords="5,300,220,436"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Exception_1_1RayError.html" title="base exception class for RAY lib" alt="" coords="22,131,203,252"/>
+<area shape="rect" id="node3" title=" " alt="" coords="57,5,168,83"/>
+</map>

@@ -1,0 +1,300 @@
+\hypertarget{classBBM_1_1GamepadComponent}{}\doxysection{B\+BM\+::Gamepad\+Component Class Reference}
+\label{classBBM_1_1GamepadComponent}\index{BBM::GamepadComponent@{BBM::GamepadComponent}}
+
+
+{\ttfamily \#include $<$Gamepad\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Gamepad\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{classBBM_1_1GamepadComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Gamepad\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1GamepadComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1GamepadComponent_a9236f1517e38c0941e87b174831e4600}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1GamepadComponent_a552c5d4b1601c8892817321434fa99cd}{on\+Start}} () override
+\begin{DoxyCompactList}\small\item\em The entity or this component has just been enabled. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent_aab77bf2146805d861cdb54034289a74e}{Gamepad\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new gampad component using default keys. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent_ab3436173d94b2863b10952d20c2ae9b1}{Gamepad\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, int id)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent_af86164a320957c87112e4b56bcb95f7d}{Gamepad\+Component}} (const \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Gamepad component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent_aa343e7d46cb52673055e0345e477a154}{$\sim$\+Gamepad\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \& \mbox{\hyperlink{classBBM_1_1GamepadComponent_a9126519fa90c96dafb63622379b1d09f}{operator=}} (const \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Gamepad component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \& \mbox{\hyperlink{classBBM_1_1GamepadComponent_a0449760f81aecb7f5f9324d2ac7ca1ab}{set\+ID}} (int ID)
+\begin{DoxyCompactList}\small\item\em Set the ID of the Gamepad the events must be fetch from;. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1GamepadComponent_a300f876b1d57ebef4e2512a152d2dd12}{get\+ID}} () const
+\begin{DoxyCompactList}\small\item\em Get the ID of the Gamepad the events must be fetch from;. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a0a9bb666a256aa02a4936299e252e8d8}{key\+Secondary}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+R\+I\+G\+H\+T\+\_\+\+F\+A\+C\+E\+\_\+\+R\+I\+G\+HT
+\begin{DoxyCompactList}\small\item\em jump key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a6cb2b48b20ddc9f57ef63216ef2936cd}{key\+Bomb}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+R\+I\+G\+H\+T\+\_\+\+F\+A\+C\+E\+\_\+\+D\+O\+WN
+\begin{DoxyCompactList}\small\item\em bomb key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a4c8f692aada7d6977d85b26ea34e8c17}{key\+Pause}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+M\+I\+D\+D\+LE
+\begin{DoxyCompactList}\small\item\em pause key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a1b76e2625bb6507ebcc77c63a6371c1a}{key\+Right}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+R\+I\+G\+HT
+\begin{DoxyCompactList}\small\item\em move right key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a906bc6ed4566a9739d44623e21b0c92c}{key\+Left}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+L\+E\+FT
+\begin{DoxyCompactList}\small\item\em move left key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_ae9523e5a2b4a6ed71bf9897521b81a63}{key\+Up}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+UP
+\begin{DoxyCompactList}\small\item\em move up key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a96468d04fc32bf7d0620afe7fb1054db}{key\+Down}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+D\+O\+WN
+\begin{DoxyCompactList}\small\item\em move down key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_aa4a1a2fe0ba826cd2fd11e865ff4619b}{Left\+StickX}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+L\+E\+F\+T\+\_\+X
+\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a6beb1530e0e2e404ea7d53e6bcc229ee}{Left\+StickY}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+L\+E\+F\+T\+\_\+Y
+\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a84fff8e54ee8293fb0dee8c1103f6abb}{Right\+StickX}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+R\+I\+G\+H\+T\+\_\+X
+\item 
+\mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} \mbox{\hyperlink{classBBM_1_1GamepadComponent_a91d99f416e47d4ad86c2277446eaa1e2}{Right\+StickY}} = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+R\+I\+G\+H\+T\+\_\+Y
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classBBM_1_1GamepadComponent_a38d2ff7195da78dfcbd28ad0d704cf07}{\+\_\+\+ID}}
+\begin{DoxyCompactList}\small\item\em Identifier of the gamepad, used to fetch events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_aab77bf2146805d861cdb54034289a74e}\label{classBBM_1_1GamepadComponent_aab77bf2146805d861cdb54034289a74e}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!GamepadComponent@{GamepadComponent}}
+\index{GamepadComponent@{GamepadComponent}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{GamepadComponent()}{GamepadComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Gamepad\+Component\+::\+Gamepad\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new gampad component using default keys. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_ab3436173d94b2863b10952d20c2ae9b1}\label{classBBM_1_1GamepadComponent_ab3436173d94b2863b10952d20c2ae9b1}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!GamepadComponent@{GamepadComponent}}
+\index{GamepadComponent@{GamepadComponent}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{GamepadComponent()}{GamepadComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Gamepad\+Component\+::\+Gamepad\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_af86164a320957c87112e4b56bcb95f7d}\label{classBBM_1_1GamepadComponent_af86164a320957c87112e4b56bcb95f7d}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!GamepadComponent@{GamepadComponent}}
+\index{GamepadComponent@{GamepadComponent}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{GamepadComponent()}{GamepadComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Gamepad\+Component\+::\+Gamepad\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Gamepad component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_aa343e7d46cb52673055e0345e477a154}\label{classBBM_1_1GamepadComponent_aa343e7d46cb52673055e0345e477a154}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!````~GamepadComponent@{$\sim$GamepadComponent}}
+\index{````~GamepadComponent@{$\sim$GamepadComponent}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$GamepadComponent()}{~GamepadComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Gamepad\+Component\+::$\sim$\+Gamepad\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a9236f1517e38c0941e87b174831e4600}\label{classBBM_1_1GamepadComponent_a9236f1517e38c0941e87b174831e4600}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Gamepad\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a300f876b1d57ebef4e2512a152d2dd12}\label{classBBM_1_1GamepadComponent_a300f876b1d57ebef4e2512a152d2dd12}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!getID@{getID}}
+\index{getID@{getID}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{getID()}{getID()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Gamepad\+Component\+::get\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the ID of the Gamepad the events must be fetch from;. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a552c5d4b1601c8892817321434fa99cd}\label{classBBM_1_1GamepadComponent_a552c5d4b1601c8892817321434fa99cd}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!onStart@{onStart}}
+\index{onStart@{onStart}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{onStart()}{onStart()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Gamepad\+Component\+::on\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The entity or this component has just been enabled. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1Component_a4acae0960f4232caf8395b2465dde8cc}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a9126519fa90c96dafb63622379b1d09f}\label{classBBM_1_1GamepadComponent_a9126519fa90c96dafb63622379b1d09f}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}}\& B\+B\+M\+::\+Gamepad\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Gamepad component can\textquotesingle{}t be assigned. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a0449760f81aecb7f5f9324d2ac7ca1ab}\label{classBBM_1_1GamepadComponent_a0449760f81aecb7f5f9324d2ac7ca1ab}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!setID@{setID}}
+\index{setID@{setID}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{setID()}{setID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1GamepadComponent}{Gamepad\+Component}} \& B\+B\+M\+::\+Gamepad\+Component\+::set\+ID (\begin{DoxyParamCaption}\item[{int}]{ID }\end{DoxyParamCaption})}
+
+
+
+Set the ID of the Gamepad the events must be fetch from;. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a38d2ff7195da78dfcbd28ad0d704cf07}\label{classBBM_1_1GamepadComponent_a38d2ff7195da78dfcbd28ad0d704cf07}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!\_ID@{\_ID}}
+\index{\_ID@{\_ID}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{\_ID}{\_ID}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Gamepad\+Component\+::\+\_\+\+ID\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Identifier of the gamepad, used to fetch events. 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a6cb2b48b20ddc9f57ef63216ef2936cd}\label{classBBM_1_1GamepadComponent_a6cb2b48b20ddc9f57ef63216ef2936cd}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyBomb@{keyBomb}}
+\index{keyBomb@{keyBomb}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyBomb}{keyBomb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Bomb = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+R\+I\+G\+H\+T\+\_\+\+F\+A\+C\+E\+\_\+\+D\+O\+WN}
+
+
+
+bomb key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a96468d04fc32bf7d0620afe7fb1054db}\label{classBBM_1_1GamepadComponent_a96468d04fc32bf7d0620afe7fb1054db}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyDown@{keyDown}}
+\index{keyDown@{keyDown}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyDown}{keyDown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Down = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+D\+O\+WN}
+
+
+
+move down key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a906bc6ed4566a9739d44623e21b0c92c}\label{classBBM_1_1GamepadComponent_a906bc6ed4566a9739d44623e21b0c92c}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyLeft@{keyLeft}}
+\index{keyLeft@{keyLeft}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyLeft}{keyLeft}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Left = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+L\+E\+FT}
+
+
+
+move left key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a4c8f692aada7d6977d85b26ea34e8c17}\label{classBBM_1_1GamepadComponent_a4c8f692aada7d6977d85b26ea34e8c17}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyPause@{keyPause}}
+\index{keyPause@{keyPause}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyPause}{keyPause}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Pause = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+M\+I\+D\+D\+LE}
+
+
+
+pause key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a1b76e2625bb6507ebcc77c63a6371c1a}\label{classBBM_1_1GamepadComponent_a1b76e2625bb6507ebcc77c63a6371c1a}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyRight@{keyRight}}
+\index{keyRight@{keyRight}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyRight}{keyRight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Right = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+R\+I\+G\+HT}
+
+
+
+move right key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a0a9bb666a256aa02a4936299e252e8d8}\label{classBBM_1_1GamepadComponent_a0a9bb666a256aa02a4936299e252e8d8}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keySecondary@{keySecondary}}
+\index{keySecondary@{keySecondary}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keySecondary}{keySecondary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Secondary = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+R\+I\+G\+H\+T\+\_\+\+F\+A\+C\+E\+\_\+\+R\+I\+G\+HT}
+
+
+
+jump key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_ae9523e5a2b4a6ed71bf9897521b81a63}\label{classBBM_1_1GamepadComponent_ae9523e5a2b4a6ed71bf9897521b81a63}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!keyUp@{keyUp}}
+\index{keyUp@{keyUp}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{keyUp}{keyUp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_a3b27142d34f419ba0a21a2eea23f6e3c}{Button}} B\+B\+M\+::\+Gamepad\+Component\+::key\+Up = G\+A\+M\+E\+P\+A\+D\+\_\+\+B\+U\+T\+T\+O\+N\+\_\+\+L\+E\+F\+T\+\_\+\+F\+A\+C\+E\+\_\+\+UP}
+
+
+
+move up key 
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_aa4a1a2fe0ba826cd2fd11e865ff4619b}\label{classBBM_1_1GamepadComponent_aa4a1a2fe0ba826cd2fd11e865ff4619b}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!LeftStickX@{LeftStickX}}
+\index{LeftStickX@{LeftStickX}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{LeftStickX}{LeftStickX}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} B\+B\+M\+::\+Gamepad\+Component\+::\+Left\+StickX = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+L\+E\+F\+T\+\_\+X}
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a6beb1530e0e2e404ea7d53e6bcc229ee}\label{classBBM_1_1GamepadComponent_a6beb1530e0e2e404ea7d53e6bcc229ee}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!LeftStickY@{LeftStickY}}
+\index{LeftStickY@{LeftStickY}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{LeftStickY}{LeftStickY}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} B\+B\+M\+::\+Gamepad\+Component\+::\+Left\+StickY = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+L\+E\+F\+T\+\_\+Y}
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a84fff8e54ee8293fb0dee8c1103f6abb}\label{classBBM_1_1GamepadComponent_a84fff8e54ee8293fb0dee8c1103f6abb}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!RightStickX@{RightStickX}}
+\index{RightStickX@{RightStickX}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{RightStickX}{RightStickX}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} B\+B\+M\+::\+Gamepad\+Component\+::\+Right\+StickX = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+R\+I\+G\+H\+T\+\_\+X}
+
+\mbox{\Hypertarget{classBBM_1_1GamepadComponent_a91d99f416e47d4ad86c2277446eaa1e2}\label{classBBM_1_1GamepadComponent_a91d99f416e47d4ad86c2277446eaa1e2}} 
+\index{BBM::GamepadComponent@{BBM::GamepadComponent}!RightStickY@{RightStickY}}
+\index{RightStickY@{RightStickY}!BBM::GamepadComponent@{BBM::GamepadComponent}}
+\doxysubsubsection{\texorpdfstring{RightStickY}{RightStickY}}
+{\footnotesize\ttfamily \mbox{\hyperlink{GamepadComponent_8hpp_af04ae4488c7e08b4bc9cb15a6ffb682a}{Axis}} B\+B\+M\+::\+Gamepad\+Component\+::\+Right\+StickY = G\+A\+M\+E\+P\+A\+D\+\_\+\+A\+X\+I\+S\+\_\+\+R\+I\+G\+H\+T\+\_\+Y}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Gamepad/\mbox{\hyperlink{GamepadComponent_8hpp}{Gamepad\+Component.\+hpp}}\item 
+sources/\+Component/\+Gamepad/\mbox{\hyperlink{GamepadComponent_8cpp}{Gamepad\+Component.\+cpp}}\end{DoxyCompactItemize}

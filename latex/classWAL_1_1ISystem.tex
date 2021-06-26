@@ -1,0 +1,116 @@
+\hypertarget{classWAL_1_1ISystem}{}\doxysection{W\+AL\+::I\+System Class Reference}
+\label{classWAL_1_1ISystem}\index{WAL::ISystem@{WAL::ISystem}}
+
+
+A base class that represent a system.  
+
+
+
+
+{\ttfamily \#include $<$I\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for W\+AL\+::I\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWAL_1_1ISystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+AL\+::I\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{classWAL_1_1ISystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classWAL_1_1ISystem_a7916b8ebc26262ea0f42c1befed4fd8b}{update}} (std\+::chrono\+::nanoseconds dtime)=0
+\begin{DoxyCompactList}\small\item\em Update the whole system (every entities that this system is responsible can be updated. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classWAL_1_1ISystem_aa8676dd41f8f76d1c017e381a4f6d25a}{fixed\+Update}} ()=0
+\begin{DoxyCompactList}\small\item\em An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classWAL_1_1IView}{I\+View}} \& \mbox{\hyperlink{classWAL_1_1ISystem_afb7248ce89d12c0d0261c53d0ef805ae}{get\+View}} ()=0
+\begin{DoxyCompactList}\small\item\em Get a view containing every entity this system should update. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classWAL_1_1ISystem_a0b6e35f2112486fbfc871bcc63acb740}{$\sim$\+I\+System}} ()=default
+\begin{DoxyCompactList}\small\item\em A virtual default destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A base class that represent a system. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1ISystem_a0b6e35f2112486fbfc871bcc63acb740}\label{classWAL_1_1ISystem_a0b6e35f2112486fbfc871bcc63acb740}} 
+\index{WAL::ISystem@{WAL::ISystem}!````~ISystem@{$\sim$ISystem}}
+\index{````~ISystem@{$\sim$ISystem}!WAL::ISystem@{WAL::ISystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$ISystem()}{~ISystem()}}
+{\footnotesize\ttfamily virtual W\+A\+L\+::\+I\+System\+::$\sim$\+I\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+A virtual default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1ISystem_aa8676dd41f8f76d1c017e381a4f6d25a}\label{classWAL_1_1ISystem_aa8676dd41f8f76d1c017e381a4f6d25a}} 
+\index{WAL::ISystem@{WAL::ISystem}!fixedUpdate@{fixedUpdate}}
+\index{fixedUpdate@{fixedUpdate}!WAL::ISystem@{WAL::ISystem}}
+\doxysubsubsection{\texorpdfstring{fixedUpdate()}{fixedUpdate()}}
+{\footnotesize\ttfamily virtual void W\+A\+L\+::\+I\+System\+::fixed\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+An alternative of update that is called every 8ms (120 times per seconds). If the system slow down, it will try to catch up. 
+
+\begin{DoxyRemark}{Remarks}
+This should be used for Physics, AI and everything that could be imprecise due to float rounding. 
+\end{DoxyRemark}
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Dependencies $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Basic\+Bomb\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Controllable\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Drawable3\+D\+Component, Animations\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Intro\+Animation\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Animations\+Component, Controllable\+Component, Drawable3\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Position\+Component, Collision\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$$>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Score\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Timer\+Component, Drawable2\+D\+Component, Tag\+Component$<$ Timer $>$ $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Music\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Stat\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Player\+Bonus\+Component, Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Gamepad\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Levitate\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Shader\+Component\+Model $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Grid\+Centered\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Lobby\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Shader\+Component\+Drawable2\+D $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Keyboard\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Bumper\+Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Gravity\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Position\+Component, Controllable\+Component, I\+A\+Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Position\+Component, Bomb\+Holder\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Camera\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Resume\+Lobby\+Component, Drawable2\+D\+Component $>$}}, and \mbox{\hyperlink{classWAL_1_1System_af23891a01001a6fb56eb9acecc0ff9b0}{W\+A\+L\+::\+System$<$ Shader\+Component $>$}}.
+
+\mbox{\Hypertarget{classWAL_1_1ISystem_afb7248ce89d12c0d0261c53d0ef805ae}\label{classWAL_1_1ISystem_afb7248ce89d12c0d0261c53d0ef805ae}} 
+\index{WAL::ISystem@{WAL::ISystem}!getView@{getView}}
+\index{getView@{getView}!WAL::ISystem@{WAL::ISystem}}
+\doxysubsubsection{\texorpdfstring{getView()}{getView()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classWAL_1_1IView}{I\+View}}\& W\+A\+L\+::\+I\+System\+::get\+View (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Get a view containing every entity this system should update. 
+
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Dependencies $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Basic\+Bomb\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Controllable\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Drawable3\+D\+Component, Animations\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Intro\+Animation\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Animations\+Component, Controllable\+Component, Drawable3\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Position\+Component, Collision\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$$>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Score\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Timer\+Component, Drawable2\+D\+Component, Tag\+Component$<$ Timer $>$ $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Music\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Stat\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Player\+Bonus\+Component, Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Gamepad\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Levitate\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Shader\+Component\+Model $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Grid\+Centered\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Lobby\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Shader\+Component\+Drawable2\+D $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Keyboard\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Bumper\+Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Gravity\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Position\+Component, Controllable\+Component, I\+A\+Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Position\+Component, Bomb\+Holder\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Camera\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Resume\+Lobby\+Component, Drawable2\+D\+Component $>$}}, and \mbox{\hyperlink{classWAL_1_1System_ad9a9809572eaad4e575753797d5ebc83}{W\+A\+L\+::\+System$<$ Shader\+Component $>$}}.
+
+\mbox{\Hypertarget{classWAL_1_1ISystem_a7916b8ebc26262ea0f42c1befed4fd8b}\label{classWAL_1_1ISystem_a7916b8ebc26262ea0f42c1befed4fd8b}} 
+\index{WAL::ISystem@{WAL::ISystem}!update@{update}}
+\index{update@{update}!WAL::ISystem@{WAL::ISystem}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual void W\+A\+L\+::\+I\+System\+::update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Update the whole system (every entities that this system is responsible can be updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time since the last call to this method. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Dependencies $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Basic\+Bomb\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Controllable\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Drawable3\+D\+Component, Animations\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Intro\+Animation\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Animations\+Component, Controllable\+Component, Drawable3\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Position\+Component, Collision\+Component, Movable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$$>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Score\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Timer\+Component, Drawable2\+D\+Component, Tag\+Component$<$ Timer $>$ $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Music\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Stat\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Player\+Bonus\+Component, Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Gamepad\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component, Health\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Levitate\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Shader\+Component\+Model $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Grid\+Centered\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Lobby\+Component, Drawable2\+D\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Shader\+Component\+Drawable2\+D $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Keyboard\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Bumper\+Timer\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Gravity\+Component, Movable\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Position\+Component, Controllable\+Component, I\+A\+Controllable\+Component, Bomb\+Holder\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Position\+Component, Bomb\+Holder\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Camera\+Component, Position\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Sound\+Component, Controllable\+Component $>$}}, \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Resume\+Lobby\+Component, Drawable2\+D\+Component $>$}}, and \mbox{\hyperlink{classWAL_1_1System_a160c40e1e9ae6b5f7a509a061f9596ff}{W\+A\+L\+::\+System$<$ Shader\+Component $>$}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\+System/\mbox{\hyperlink{ISystem_8hpp}{I\+System.\+hpp}}\end{DoxyCompactItemize}

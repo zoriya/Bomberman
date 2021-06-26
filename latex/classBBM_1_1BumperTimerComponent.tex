@@ -1,0 +1,149 @@
+\hypertarget{classBBM_1_1BumperTimerComponent}{}\doxysection{B\+BM\+::Bumper\+Timer\+Component Class Reference}
+\label{classBBM_1_1BumperTimerComponent}\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+
+
+{\ttfamily \#include $<$Bumper\+Timer\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Bumper\+Timer\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=248pt]{classBBM_1_1BumperTimerComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Bumper\+Timer\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1BumperTimerComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a0db813914cd6b24de32d4d73140186bc}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BumperTimerComponent_aa36583a34a6c582cee2aa0284d4f61fb}{Bumper\+Timer\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BumperTimerComponent_ac1e5c77c86ca6235490774210bdf9175}{Bumper\+Timer\+Component}} (const \mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Bumper\+Timer component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a2a1280e6de13fdb49118b19aa617f0f1}{$\sim$\+Bumper\+Timer\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}} \& \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_aa8e49bb2f93b559225f85a6ecaaf141e}{operator=}} (const \mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Bumper\+Timer component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a5763653149a2709b0d172633a3592f48}{\+\_\+is\+Reseting}} = false
+\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a7d4f77a0cbda039037c5c287ac1f1d71}{reset\+Rate}} = 1500ms
+\begin{DoxyCompactList}\small\item\em The number of seconds of each rest. This variable is used to reset the next\+Reset value. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a32f3ca82074de89bc30f6c38548a0587}{next\+Reset}} = \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a7d4f77a0cbda039037c5c287ac1f1d71}{reset\+Rate}}
+\begin{DoxyCompactList}\small\item\em The number of nanosecond before the next bumper reset for the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_aa36583a34a6c582cee2aa0284d4f61fb}\label{classBBM_1_1BumperTimerComponent_aa36583a34a6c582cee2aa0284d4f61fb}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!BumperTimerComponent@{BumperTimerComponent}}
+\index{BumperTimerComponent@{BumperTimerComponent}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{BumperTimerComponent()}{BumperTimerComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bumper\+Timer\+Component\+::\+Bumper\+Timer\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_ac1e5c77c86ca6235490774210bdf9175}\label{classBBM_1_1BumperTimerComponent_ac1e5c77c86ca6235490774210bdf9175}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!BumperTimerComponent@{BumperTimerComponent}}
+\index{BumperTimerComponent@{BumperTimerComponent}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{BumperTimerComponent()}{BumperTimerComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bumper\+Timer\+Component\+::\+Bumper\+Timer\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Bumper\+Timer component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_a2a1280e6de13fdb49118b19aa617f0f1}\label{classBBM_1_1BumperTimerComponent_a2a1280e6de13fdb49118b19aa617f0f1}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!````~BumperTimerComponent@{$\sim$BumperTimerComponent}}
+\index{````~BumperTimerComponent@{$\sim$BumperTimerComponent}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$BumperTimerComponent()}{~BumperTimerComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Bumper\+Timer\+Component\+::$\sim$\+Bumper\+Timer\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_a0db813914cd6b24de32d4d73140186bc}\label{classBBM_1_1BumperTimerComponent_a0db813914cd6b24de32d4d73140186bc}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Bumper\+Timer\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_aa8e49bb2f93b559225f85a6ecaaf141e}\label{classBBM_1_1BumperTimerComponent_aa8e49bb2f93b559225f85a6ecaaf141e}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}}\& B\+B\+M\+::\+Bumper\+Timer\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1BumperTimerComponent}{Bumper\+Timer\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Bumper\+Timer component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_a5763653149a2709b0d172633a3592f48}\label{classBBM_1_1BumperTimerComponent_a5763653149a2709b0d172633a3592f48}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!\_isReseting@{\_isReseting}}
+\index{\_isReseting@{\_isReseting}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{\_isReseting}{\_isReseting}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Bumper\+Timer\+Component\+::\+\_\+is\+Reseting = false}
+
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_a32f3ca82074de89bc30f6c38548a0587}\label{classBBM_1_1BumperTimerComponent_a32f3ca82074de89bc30f6c38548a0587}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!nextReset@{nextReset}}
+\index{nextReset@{nextReset}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{nextReset}{nextReset}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bumper\+Timer\+Component\+::next\+Reset = \mbox{\hyperlink{classBBM_1_1BumperTimerComponent_a7d4f77a0cbda039037c5c287ac1f1d71}{reset\+Rate}}}
+
+
+
+The number of nanosecond before the next bumper reset for the player. 
+
+\mbox{\Hypertarget{classBBM_1_1BumperTimerComponent_a7d4f77a0cbda039037c5c287ac1f1d71}\label{classBBM_1_1BumperTimerComponent_a7d4f77a0cbda039037c5c287ac1f1d71}} 
+\index{BBM::BumperTimerComponent@{BBM::BumperTimerComponent}!resetRate@{resetRate}}
+\index{resetRate@{resetRate}!BBM::BumperTimerComponent@{BBM::BumperTimerComponent}}
+\doxysubsubsection{\texorpdfstring{resetRate}{resetRate}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Bumper\+Timer\+Component\+::reset\+Rate = 1500ms}
+
+
+
+The number of seconds of each rest. This variable is used to reset the next\+Reset value. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Bumper\+Timer/\mbox{\hyperlink{BumperTimerComponent_8hpp}{Bumper\+Timer\+Component.\+hpp}}\item 
+sources/\+Component/\+Bumper\+Timer/\mbox{\hyperlink{BumperTimerComponent_8cpp}{Bumper\+Timer\+Component.\+cpp}}\end{DoxyCompactItemize}

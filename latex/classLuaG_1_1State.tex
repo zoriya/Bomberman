@@ -1,0 +1,321 @@
+\hypertarget{classLuaG_1_1State}{}\doxysection{LuaG\+::State Class Reference}
+\label{classLuaG_1_1State}\index{LuaG::State@{LuaG::State}}
+
+
+{\ttfamily \#include $<$Lua\+Gate.\+hpp$>$}
+
+
+
+Collaboration diagram for LuaG\+::State\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classLuaG_1_1State__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLuaG_1_1State_a5b3d4025f9d755e337b2a291e6bbd8e3}{State}} ()
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLuaG_1_1State_a4102b284b47b7c1ccb0f19c7db644f06}{State}} (lua\+\_\+\+State $\ast$L, bool should\+Close=false)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLuaG_1_1State_af92768fe7d3c2ebb530a08683e67acb8}{$\sim$\+State}} ()
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLuaG_1_1State_a448bceea391530a2aea9073b3a752390}{State}} (const \mbox{\hyperlink{classLuaG_1_1State}{State}} \&)=delete
+\begin{DoxyCompactList}\small\item\em No copy constrructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLuaG_1_1State}{State}} \& \mbox{\hyperlink{classLuaG_1_1State_a1b5f7a5c5219654b768ad231dd9e01aa}{operator=}} (const \mbox{\hyperlink{classLuaG_1_1State}{State}} \&)=delete
+\begin{DoxyCompactList}\small\item\em No assign operator. \end{DoxyCompactList}\item 
+lua\+\_\+\+State $\ast$ \mbox{\hyperlink{classLuaG_1_1State_ad7aabc1a16f763343583bb387fc859b1}{get\+State}} (void)
+\begin{DoxyCompactList}\small\item\em Get Lua state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a02fcc65ef8b828f68a545e38b7cf294d}{get\+Global}} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em Get global value on top of the stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a605e4e2d1b76e34117ee62185c945872}{dofile}} (std\+::string filepath)
+\begin{DoxyCompactList}\small\item\em Execute a file in this state. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a626f382a01ec0517e1f6fc66aa3345ea}{dostring}} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em Execute a string in this state. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classLuaG_1_1State_a1a8b9c528d1e031806be732bf77068d3}{get\+Return\+Number}} (void)
+\begin{DoxyCompactList}\small\item\em Get return Number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLuaG_1_1State_a7a47695157c5fe8ef3c756b03649b0ef}{get\+Return\+Bool}} (void)
+\begin{DoxyCompactList}\small\item\em Get return Number. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLuaG_1_1State_aa6051dd6db885d6722de06c9d9c2368c}{get\+Bool}} (int index)
+\begin{DoxyCompactList}\small\item\em Get bool at index in the stack. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classLuaG_1_1State_aa3511964d416fe5fd1b949e6f4f7c4ee}{get\+Number}} (int index)
+\begin{DoxyCompactList}\small\item\em Get Number at index in the stack. \end{DoxyCompactList}\item 
+const void $\ast$ \mbox{\hyperlink{classLuaG_1_1State_af035b23afe7b5438f265c37a4f740bd0}{get\+Pointer}} (int index)
+\begin{DoxyCompactList}\small\item\em Get Number at index in the stack. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLuaG_1_1State_abe75e6dcd8729c6946866cf141c64cf0}{get\+First\+Up\+Value\+Idx}} (void)
+\begin{DoxyCompactList}\small\item\em Get first upvalue index. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLuaG_1_1State_a736a87668a62b41630e54ad12537be6f}{call\+Function}} (int nb\+Params, int nb\+Returns)
+\begin{DoxyCompactList}\small\item\em call a lua function \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_ab9b7d415fead885799cca46a75bedd03}{set\+Table}} (void)
+\begin{DoxyCompactList}\small\item\em set\+Table \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a7c5f7b740b9b7d41cc373f54594d1487}{push}} (float val)
+\begin{DoxyCompactList}\small\item\em push a number onto the lua stack \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a81ba4e3653ec961a2b31c534acafd3f0}{push}} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em push a string onto the lua stack \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a6d23da9d97740fc6e400af6da5026e94}{new\+Table}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a new table at the top of the stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a286803b8da10cabd49fa6ea0c69ad222}{pop\+Last}} (void)
+\begin{DoxyCompactList}\small\item\em Pop last value on the stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLuaG_1_1State_a233b487c15eb48ae0449805eac263062}{register\+Closure}} (void $\ast$ptr, std\+::string func\+Name, lua\+\_\+\+C\+Function fn)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+lua\+\_\+\+State $\ast$ \mbox{\hyperlink{classLuaG_1_1State_a8df9d38bc37bb1f67364661d19bc85b7}{\+\_\+state}}
+\begin{DoxyCompactList}\small\item\em Lua state. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classLuaG_1_1State_aff1b19d5480383397dc5ced499eb5195}{\+\_\+should\+Close}}
+\begin{DoxyCompactList}\small\item\em Should close the state at destruction. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLuaG_1_1State_a5b3d4025f9d755e337b2a291e6bbd8e3}\label{classLuaG_1_1State_a5b3d4025f9d755e337b2a291e6bbd8e3}} 
+\index{LuaG::State@{LuaG::State}!State@{State}}
+\index{State@{State}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Lua\+G\+::\+State\+::\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a4102b284b47b7c1ccb0f19c7db644f06}\label{classLuaG_1_1State_a4102b284b47b7c1ccb0f19c7db644f06}} 
+\index{LuaG::State@{LuaG::State}!State@{State}}
+\index{State@{State}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Lua\+G\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L,  }\item[{bool}]{should\+Close = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classLuaG_1_1State_af92768fe7d3c2ebb530a08683e67acb8}\label{classLuaG_1_1State_af92768fe7d3c2ebb530a08683e67acb8}} 
+\index{LuaG::State@{LuaG::State}!````~State@{$\sim$State}}
+\index{````~State@{$\sim$State}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{$\sim$State()}{~State()}}
+{\footnotesize\ttfamily Lua\+G\+::\+State\+::$\sim$\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+dtor 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a448bceea391530a2aea9073b3a752390}\label{classLuaG_1_1State_a448bceea391530a2aea9073b3a752390}} 
+\index{LuaG::State@{LuaG::State}!State@{State}}
+\index{State@{State}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{State()}{State()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Lua\+G\+::\+State\+::\+State (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLuaG_1_1State}{State}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+No copy constrructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLuaG_1_1State_a736a87668a62b41630e54ad12537be6f}\label{classLuaG_1_1State_a736a87668a62b41630e54ad12537be6f}} 
+\index{LuaG::State@{LuaG::State}!callFunction@{callFunction}}
+\index{callFunction@{callFunction}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{callFunction()}{callFunction()}}
+{\footnotesize\ttfamily bool Lua\+G\+::\+State\+::call\+Function (\begin{DoxyParamCaption}\item[{int}]{nb\+Params,  }\item[{int}]{nb\+Returns }\end{DoxyParamCaption})}
+
+
+
+call a lua function 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a605e4e2d1b76e34117ee62185c945872}\label{classLuaG_1_1State_a605e4e2d1b76e34117ee62185c945872}} 
+\index{LuaG::State@{LuaG::State}!dofile@{dofile}}
+\index{dofile@{dofile}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{dofile()}{dofile()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::dofile (\begin{DoxyParamCaption}\item[{std\+::string}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Execute a file in this state. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a626f382a01ec0517e1f6fc66aa3345ea}\label{classLuaG_1_1State_a626f382a01ec0517e1f6fc66aa3345ea}} 
+\index{LuaG::State@{LuaG::State}!dostring@{dostring}}
+\index{dostring@{dostring}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{dostring()}{dostring()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::dostring (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+Execute a string in this state. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_aa6051dd6db885d6722de06c9d9c2368c}\label{classLuaG_1_1State_aa6051dd6db885d6722de06c9d9c2368c}} 
+\index{LuaG::State@{LuaG::State}!getBool@{getBool}}
+\index{getBool@{getBool}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getBool()}{getBool()}}
+{\footnotesize\ttfamily bool Lua\+G\+::\+State\+::get\+Bool (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get bool at index in the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_abe75e6dcd8729c6946866cf141c64cf0}\label{classLuaG_1_1State_abe75e6dcd8729c6946866cf141c64cf0}} 
+\index{LuaG::State@{LuaG::State}!getFirstUpValueIdx@{getFirstUpValueIdx}}
+\index{getFirstUpValueIdx@{getFirstUpValueIdx}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getFirstUpValueIdx()}{getFirstUpValueIdx()}}
+{\footnotesize\ttfamily int Lua\+G\+::\+State\+::get\+First\+Up\+Value\+Idx (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get first upvalue index. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a02fcc65ef8b828f68a545e38b7cf294d}\label{classLuaG_1_1State_a02fcc65ef8b828f68a545e38b7cf294d}} 
+\index{LuaG::State@{LuaG::State}!getGlobal@{getGlobal}}
+\index{getGlobal@{getGlobal}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getGlobal()}{getGlobal()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::get\+Global (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+Get global value on top of the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_aa3511964d416fe5fd1b949e6f4f7c4ee}\label{classLuaG_1_1State_aa3511964d416fe5fd1b949e6f4f7c4ee}} 
+\index{LuaG::State@{LuaG::State}!getNumber@{getNumber}}
+\index{getNumber@{getNumber}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getNumber()}{getNumber()}}
+{\footnotesize\ttfamily float Lua\+G\+::\+State\+::get\+Number (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get Number at index in the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_af035b23afe7b5438f265c37a4f740bd0}\label{classLuaG_1_1State_af035b23afe7b5438f265c37a4f740bd0}} 
+\index{LuaG::State@{LuaG::State}!getPointer@{getPointer}}
+\index{getPointer@{getPointer}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getPointer()}{getPointer()}}
+{\footnotesize\ttfamily const void $\ast$ Lua\+G\+::\+State\+::get\+Pointer (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get Number at index in the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a7a47695157c5fe8ef3c756b03649b0ef}\label{classLuaG_1_1State_a7a47695157c5fe8ef3c756b03649b0ef}} 
+\index{LuaG::State@{LuaG::State}!getReturnBool@{getReturnBool}}
+\index{getReturnBool@{getReturnBool}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getReturnBool()}{getReturnBool()}}
+{\footnotesize\ttfamily bool Lua\+G\+::\+State\+::get\+Return\+Bool (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get return Number. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a1a8b9c528d1e031806be732bf77068d3}\label{classLuaG_1_1State_a1a8b9c528d1e031806be732bf77068d3}} 
+\index{LuaG::State@{LuaG::State}!getReturnNumber@{getReturnNumber}}
+\index{getReturnNumber@{getReturnNumber}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getReturnNumber()}{getReturnNumber()}}
+{\footnotesize\ttfamily float Lua\+G\+::\+State\+::get\+Return\+Number (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get return Number. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_ad7aabc1a16f763343583bb387fc859b1}\label{classLuaG_1_1State_ad7aabc1a16f763343583bb387fc859b1}} 
+\index{LuaG::State@{LuaG::State}!getState@{getState}}
+\index{getState@{getState}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{getState()}{getState()}}
+{\footnotesize\ttfamily lua\+\_\+\+State $\ast$ Lua\+G\+::\+State\+::get\+State (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Get Lua state. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a6d23da9d97740fc6e400af6da5026e94}\label{classLuaG_1_1State_a6d23da9d97740fc6e400af6da5026e94}} 
+\index{LuaG::State@{LuaG::State}!newTable@{newTable}}
+\index{newTable@{newTable}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{newTable()}{newTable()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::new\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new table at the top of the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a1b5f7a5c5219654b768ad231dd9e01aa}\label{classLuaG_1_1State_a1b5f7a5c5219654b768ad231dd9e01aa}} 
+\index{LuaG::State@{LuaG::State}!operator=@{operator=}}
+\index{operator=@{operator=}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classLuaG_1_1State}{State}}\& Lua\+G\+::\+State\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classLuaG_1_1State}{State}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+No assign operator. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a286803b8da10cabd49fa6ea0c69ad222}\label{classLuaG_1_1State_a286803b8da10cabd49fa6ea0c69ad222}} 
+\index{LuaG::State@{LuaG::State}!popLast@{popLast}}
+\index{popLast@{popLast}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{popLast()}{popLast()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::pop\+Last (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Pop last value on the stack. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a7c5f7b740b9b7d41cc373f54594d1487}\label{classLuaG_1_1State_a7c5f7b740b9b7d41cc373f54594d1487}} 
+\index{LuaG::State@{LuaG::State}!push@{push}}
+\index{push@{push}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::push (\begin{DoxyParamCaption}\item[{float}]{val }\end{DoxyParamCaption})}
+
+
+
+push a number onto the lua stack 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a81ba4e3653ec961a2b31c534acafd3f0}\label{classLuaG_1_1State_a81ba4e3653ec961a2b31c534acafd3f0}} 
+\index{LuaG::State@{LuaG::State}!push@{push}}
+\index{push@{push}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{push()}{push()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::push (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+push a string onto the lua stack 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a233b487c15eb48ae0449805eac263062}\label{classLuaG_1_1State_a233b487c15eb48ae0449805eac263062}} 
+\index{LuaG::State@{LuaG::State}!registerClosure@{registerClosure}}
+\index{registerClosure@{registerClosure}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{registerClosure()}{registerClosure()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::register\+Closure (\begin{DoxyParamCaption}\item[{void $\ast$}]{ptr,  }\item[{std\+::string}]{func\+Name,  }\item[{lua\+\_\+\+C\+Function}]{fn }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classLuaG_1_1State_ab9b7d415fead885799cca46a75bedd03}\label{classLuaG_1_1State_ab9b7d415fead885799cca46a75bedd03}} 
+\index{LuaG::State@{LuaG::State}!setTable@{setTable}}
+\index{setTable@{setTable}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{setTable()}{setTable()}}
+{\footnotesize\ttfamily void Lua\+G\+::\+State\+::set\+Table (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+set\+Table 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLuaG_1_1State_aff1b19d5480383397dc5ced499eb5195}\label{classLuaG_1_1State_aff1b19d5480383397dc5ced499eb5195}} 
+\index{LuaG::State@{LuaG::State}!\_shouldClose@{\_shouldClose}}
+\index{\_shouldClose@{\_shouldClose}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{\_shouldClose}{\_shouldClose}}
+{\footnotesize\ttfamily bool Lua\+G\+::\+State\+::\+\_\+should\+Close\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Should close the state at destruction. 
+
+\mbox{\Hypertarget{classLuaG_1_1State_a8df9d38bc37bb1f67364661d19bc85b7}\label{classLuaG_1_1State_a8df9d38bc37bb1f67364661d19bc85b7}} 
+\index{LuaG::State@{LuaG::State}!\_state@{\_state}}
+\index{\_state@{\_state}!LuaG::State@{LuaG::State}}
+\doxysubsubsection{\texorpdfstring{\_state}{\_state}}
+{\footnotesize\ttfamily lua\+\_\+\+State$\ast$ Lua\+G\+::\+State\+::\+\_\+state\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Lua state. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Lua\+Gate/sources/\mbox{\hyperlink{LuaGate_8hpp}{Lua\+Gate.\+hpp}}\item 
+lib/\+Lua\+Gate/sources/\mbox{\hyperlink{LuaGate_8cpp}{Lua\+Gate.\+cpp}}\end{DoxyCompactItemize}

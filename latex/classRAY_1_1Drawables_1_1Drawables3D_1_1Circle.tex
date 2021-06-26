@@ -1,0 +1,200 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Circle Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Circle.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Circle\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Circle\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4065a41561bd70af264b697c746514e4}{Circle}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&center\+Position, int radius, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&rotation\+Axis, float rotation\+Angle=0)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab6a35375995530c56385060574064459}{Circle}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a88d203d75fdbf010a2ee9119ad97110d}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \&)=default
+\begin{DoxyCompactList}\small\item\em A circle is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a5adfb941945e197a9bbcf600a689414b}{$\sim$\+Circle}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ace50d83374e6fd04fa0722525102a573}{get\+Radius}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a0ea3d6135c890ce339f275739cd08c3c}{set\+Radius}} (int radius)
+\begin{DoxyCompactList}\small\item\em set radius \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab3b0509f2c13ae8f9cf773468bf6f4d6}{get\+Center\+Pos}} (void) const
+\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a77803f8e94c468840e967e952e8c4598}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw circle on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a24e5f38e25b724806b8d504b3ee1691a}{\+\_\+radius}}
+\begin{DoxyCompactList}\small\item\em Radius of the circle. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4d700fd55f2d8feaf3f6f9f7ec426321}{\+\_\+rotation\+Axis}}
+\begin{DoxyCompactList}\small\item\em rotation axis \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_afde3b1af29d97af9865fd2d13eff8316}{\+\_\+rotation\+Angle}}
+\begin{DoxyCompactList}\small\item\em rotation angle \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4065a41561bd70af264b697c746514e4}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4065a41561bd70af264b697c746514e4}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{center\+Position,  }\item[{int}]{radius,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{rotation\+Axis,  }\item[{float}]{rotation\+Angle = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em center\+Position} & position of the center \\
+\hline
+{\em radius} & radius of the circle \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the circle ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab6a35375995530c56385060574064459}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab6a35375995530c56385060574064459}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a5adfb941945e197a9bbcf600a689414b}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a5adfb941945e197a9bbcf600a689414b}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!````~Circle@{$\sim$Circle}}
+\index{````~Circle@{$\sim$Circle}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{$\sim$Circle()}{~Circle()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::$\sim$\+Circle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a77803f8e94c468840e967e952e8c4598}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a77803f8e94c468840e967e952e8c4598}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw circle on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab3b0509f2c13ae8f9cf773468bf6f4d6}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ab3b0509f2c13ae8f9cf773468bf6f4d6}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!getCenterPos@{getCenterPos}}
+\index{getCenterPos@{getCenterPos}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{getCenterPos()}{getCenterPos()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::get\+Center\+Pos (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the position of the center 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ace50d83374e6fd04fa0722525102a573}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_ace50d83374e6fd04fa0722525102a573}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::get\+Radius (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the radius of the circle 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a88d203d75fdbf010a2ee9119ad97110d}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a88d203d75fdbf010a2ee9119ad97110d}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A circle is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a0ea3d6135c890ce339f275739cd08c3c}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a0ea3d6135c890ce339f275739cd08c3c}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!setRadius@{setRadius}}
+\index{setRadius@{setRadius}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{setRadius()}{setRadius()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle}{Circle}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::set\+Radius (\begin{DoxyParamCaption}\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+set radius 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a24e5f38e25b724806b8d504b3ee1691a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a24e5f38e25b724806b8d504b3ee1691a}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!\_radius@{\_radius}}
+\index{\_radius@{\_radius}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{\_radius}{\_radius}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::\+\_\+radius\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Radius of the circle. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_afde3b1af29d97af9865fd2d13eff8316}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_afde3b1af29d97af9865fd2d13eff8316}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!\_rotationAngle@{\_rotationAngle}}
+\index{\_rotationAngle@{\_rotationAngle}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{\_rotationAngle}{\_rotationAngle}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::\+\_\+rotation\+Angle\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+rotation angle 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4d700fd55f2d8feaf3f6f9f7ec426321}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Circle_a4d700fd55f2d8feaf3f6f9f7ec426321}} 
+\index{RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}!\_rotationAxis@{\_rotationAxis}}
+\index{\_rotationAxis@{\_rotationAxis}!RAY::Drawables::Drawables3D::Circle@{RAY::Drawables::Drawables3D::Circle}}
+\doxysubsubsection{\texorpdfstring{\_rotationAxis}{\_rotationAxis}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Circle\+::\+\_\+rotation\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+rotation axis 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{3D_2Circle_8hpp}{Circle.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{3D_2Circle_8cpp}{Circle.\+cpp}}\end{DoxyCompactItemize}

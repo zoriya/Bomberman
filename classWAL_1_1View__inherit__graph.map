@@ -1,0 +1,4 @@
+<map id="WAL::View&lt; Components &gt;" name="WAL::View&lt; Components &gt;">
+<area shape="rect" id="node1" title="A view allowing one to easily access entities containing a set list of component. A view is always up..." alt="" coords="5,175,208,428"/>
+<area shape="rect" id="node2" href="$classWAL_1_1IView.html" title="A basic view used to manipulate view without knowing their type at compile time." alt="" coords="36,5,177,127"/>
+</map>

@@ -1,0 +1,137 @@
+\hypertarget{structBBM_1_1Utils}{}\doxysection{B\+BM\+::Utils Struct Reference}
+\label{structBBM_1_1Utils}\index{BBM::Utils@{BBM::Utils}}
+
+
+{\ttfamily \#include $<$Utils.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Utils\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{structBBM_1_1Utils__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{structBBM_1_1Utils_a650251dd83c1aa1dd86e6cce927a810e}{l\+Trim}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim left end \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{structBBM_1_1Utils_a2bb1e0d55666b6a832845d24a13eca18}{r\+Trim}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim right end \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{structBBM_1_1Utils_ad5ef4933ed4eda025174adcb7c73123c}{trim}} (std\+::string \&s)
+\begin{DoxyCompactList}\small\item\em trim from both ends \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{structBBM_1_1Utils_a10c296de38179f2ec9c996430df5a877}{l\+Trim\+Copy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim left end (copying) \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{structBBM_1_1Utils_adcf3c126756d3c00811c3788596ef01b}{r\+Trim\+Copy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim right end (copying) \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{structBBM_1_1Utils_a7af83fb90eece749a85401446a9d7bd1}{trim\+Copy}} (std\+::string s)
+\begin{DoxyCompactList}\small\item\em trim from both ends (copying) \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{structBBM_1_1Utils_a0eb20455dd2e0848d333e2f2dca14575}{find\+Frequency}} (const std\+::string \&s, const std\+::string \&pattern)
+\begin{DoxyCompactList}\small\item\em find the frequency of a substring in a string \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\static bool \mbox{\hyperlink{structBBM_1_1Utils_afd6e5fde19323486ccd23000b4b336e5}{try\+Parse}} (const std\+::string \&s, T \&f)
+\begin{DoxyCompactList}\small\item\em return true if parsing has been successful result ill be in i \end{DoxyCompactList}\item 
+static std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{structBBM_1_1Utils_a159453a2b58a377e3ae63f9750595e7e}{split\+Str}} (const std\+::string \&str, char delim)
+\begin{DoxyCompactList}\small\item\em split a string with a delim char \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structBBM_1_1Utils_a0eb20455dd2e0848d333e2f2dca14575}\label{structBBM_1_1Utils_a0eb20455dd2e0848d333e2f2dca14575}} 
+\index{BBM::Utils@{BBM::Utils}!findFrequency@{findFrequency}}
+\index{findFrequency@{findFrequency}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{findFrequency()}{findFrequency()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Utils\+::find\+Frequency (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{const std\+::string \&}]{pattern }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+find the frequency of a substring in a string 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_a650251dd83c1aa1dd86e6cce927a810e}\label{structBBM_1_1Utils_a650251dd83c1aa1dd86e6cce927a810e}} 
+\index{BBM::Utils@{BBM::Utils}!lTrim@{lTrim}}
+\index{lTrim@{lTrim}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{lTrim()}{lTrim()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Utils\+::l\+Trim (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim left end 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_a10c296de38179f2ec9c996430df5a877}\label{structBBM_1_1Utils_a10c296de38179f2ec9c996430df5a877}} 
+\index{BBM::Utils@{BBM::Utils}!lTrimCopy@{lTrimCopy}}
+\index{lTrimCopy@{lTrimCopy}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{lTrimCopy()}{lTrimCopy()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Utils\+::l\+Trim\+Copy (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim left end (copying) 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_a2bb1e0d55666b6a832845d24a13eca18}\label{structBBM_1_1Utils_a2bb1e0d55666b6a832845d24a13eca18}} 
+\index{BBM::Utils@{BBM::Utils}!rTrim@{rTrim}}
+\index{rTrim@{rTrim}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{rTrim()}{rTrim()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Utils\+::r\+Trim (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim right end 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_adcf3c126756d3c00811c3788596ef01b}\label{structBBM_1_1Utils_adcf3c126756d3c00811c3788596ef01b}} 
+\index{BBM::Utils@{BBM::Utils}!rTrimCopy@{rTrimCopy}}
+\index{rTrimCopy@{rTrimCopy}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{rTrimCopy()}{rTrimCopy()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Utils\+::r\+Trim\+Copy (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim right end (copying) 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_a159453a2b58a377e3ae63f9750595e7e}\label{structBBM_1_1Utils_a159453a2b58a377e3ae63f9750595e7e}} 
+\index{BBM::Utils@{BBM::Utils}!splitStr@{splitStr}}
+\index{splitStr@{splitStr}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{splitStr()}{splitStr()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::string $>$ B\+B\+M\+::\+Utils\+::split\+Str (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str,  }\item[{char}]{delim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+split a string with a delim char 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_ad5ef4933ed4eda025174adcb7c73123c}\label{structBBM_1_1Utils_ad5ef4933ed4eda025174adcb7c73123c}} 
+\index{BBM::Utils@{BBM::Utils}!trim@{trim}}
+\index{trim@{trim}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{trim()}{trim()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Utils\+::trim (\begin{DoxyParamCaption}\item[{std\+::string \&}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim from both ends 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_a7af83fb90eece749a85401446a9d7bd1}\label{structBBM_1_1Utils_a7af83fb90eece749a85401446a9d7bd1}} 
+\index{BBM::Utils@{BBM::Utils}!trimCopy@{trimCopy}}
+\index{trimCopy@{trimCopy}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{trimCopy()}{trimCopy()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Utils\+::trim\+Copy (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+trim from both ends (copying) 
+
+\mbox{\Hypertarget{structBBM_1_1Utils_afd6e5fde19323486ccd23000b4b336e5}\label{structBBM_1_1Utils_afd6e5fde19323486ccd23000b4b336e5}} 
+\index{BBM::Utils@{BBM::Utils}!tryParse@{tryParse}}
+\index{tryParse@{tryParse}!BBM::Utils@{BBM::Utils}}
+\doxysubsubsection{\texorpdfstring{tryParse()}{tryParse()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+static bool B\+B\+M\+::\+Utils\+::try\+Parse (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{s,  }\item[{T \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+return true if parsing has been successful result ill be in i 
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Utils/\mbox{\hyperlink{Utils_8hpp}{Utils.\+hpp}}\item 
+sources/\+Utils/\mbox{\hyperlink{Utils_8cpp}{Utils.\+cpp}}\end{DoxyCompactItemize}

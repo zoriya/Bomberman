@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['ray_2240',['Ray',['../classRAY_1_1Drawables_1_1Drawables3D_1_1Ray.html#ae954a187d65183b9333d64cca24d8e76',1,'RAY::Drawables::Drawables3D::Ray::Ray(const Vector3 &amp;startPosition, const Vector3 &amp;direction, const Color &amp;color)'],['../classRAY_1_1Drawables_1_1Drawables3D_1_1Ray.html#a84eb68aafaf52ca582299389eabdddee',1,'RAY::Drawables::Drawables3D::Ray::Ray(const Ray &amp;)=default']]],
+  ['rayerror_2241',['RayError',['../classRAY_1_1Exception_1_1RayError.html#a6576e1d55cbb9b383cf95ce75edf0a57',1,'RAY::Exception::RayError::RayError(const std::string &amp;what)'],['../classRAY_1_1Exception_1_1RayError.html#a23ddd0f92b1b4e5bac88c0f67376167b',1,'RAY::Exception::RayError::RayError(const RayError &amp;)=default']]],
+  ['rectangle_2242',['Rectangle',['../classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle.html#a955d58864c5e9491ac7d0ca1f7784c49',1,'RAY::Drawables::Drawables2D::Rectangle::Rectangle(const Vector2 &amp;position, const Vector2 &amp;dimensions, const Color &amp;color=WHITE, float scale=1, float rotation=0)'],['../classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle.html#ac5698de38ac81cc4e47c6ee35a88eae5',1,'RAY::Drawables::Drawables2D::Rectangle::Rectangle(int x, int y, int width, int height, const Color &amp;color=WHITE)'],['../classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle.html#aa20a64b315556fccf00876728f5ad016',1,'RAY::Drawables::Drawables2D::Rectangle::Rectangle(const Rectangle &amp;)=default']]],
+  ['registerclosure_2243',['registerClosure',['../classLuaG_1_1State.html#a233b487c15eb48ae0449805eac263062',1,'LuaG::State']]],
+  ['registerfunc_2244',['registerFunc',['../classBBM_1_1IAControllableSystem.html#aad3d6a6b84846331a3d1f8805652286f',1,'BBM::IAControllableSystem']]],
+  ['removeai_2245',['removeAI',['../classBBM_1_1LobbySystem.html#aa43a1c11b07bb5a635121d9f227927a1',1,'BBM::LobbySystem']]],
+  ['removecallback_2246',['removeCallback',['../classWAL_1_1Callback.html#accc0ebb93411e0a12a131991afe45a50',1,'WAL::Callback']]],
+  ['removecomponent_2247',['removeComponent',['../classWAL_1_1Entity.html#acd3e9423730cfa1e6a10c3fc8ce6d0b5',1,'WAL::Entity']]],
+  ['removesystem_2248',['removeSystem',['../classWAL_1_1Wal.html#a8ba20195595548cefcd928e58e20dddc',1,'WAL::Wal']]],
+  ['rendersystem_2249',['RenderSystem',['../classBBM_1_1RenderSystem.html#af0a993a3cc0dc631f62fd7e8c58efd2e',1,'BBM::RenderSystem::RenderSystem(WAL::Wal &amp;wal, RAY::Window &amp;window, bool debugMode=false)'],['../classBBM_1_1RenderSystem.html#a60d1cd310f0d571d50ffcf06e81ec6d5',1,'BBM::RenderSystem::RenderSystem(const RenderSystem &amp;)=default']]],
+  ['resetcurrentanimframecounter_2250',['resetCurrentAnimFrameCounter',['../classBBM_1_1AnimationsComponent.html#a6a619cb3651d566aac825a83de81c9fe',1,'BBM::AnimationsComponent']]],
+  ['resetshader_2251',['resetShader',['../classRAY_1_1Drawables_1_1Drawables3D_1_1Model.html#a824c0f39f7ca698d8540c5348f143146',1,'RAY::Drawables::Drawables3D::Model']]],
+  ['resize_2252',['resize',['../classRAY_1_1Image.html#acb10e3f289140c2f5db05cef5da53f76',1,'RAY::Image']]],
+  ['resizewindow_2253',['resizeWindow',['../classBBM_1_1RenderSystem.html#ab0c65f44f91514ab522bbf2895be8223',1,'BBM::RenderSystem']]],
+  ['resourcenotfound_2254',['ResourceNotFound',['../classRAY_1_1Exception_1_1ResourceNotFound.html#a573f9f8119c63280a2be0c3f5f616902',1,'RAY::Exception::ResourceNotFound::ResourceNotFound(const std::string &amp;path)'],['../classRAY_1_1Exception_1_1ResourceNotFound.html#aa547fce02be0e4df9886f651ca63e9c9',1,'RAY::Exception::ResourceNotFound::ResourceNotFound(const ResourceNotFound &amp;)=default']]],
+  ['restore_2255',['restore',['../classRAY_1_1Window.html#a7fc52644b335b838bf4ec984e5c0c235',1,'RAY::Window']]],
+  ['resume_2256',['resume',['../classRAY_1_1Audio_1_1IAudio.html#a763eaabbbc35b534e5cdabc0d52f21d8',1,'RAY::Audio::IAudio::resume()'],['../classRAY_1_1Audio_1_1Music.html#a9ea16dbecab774d6923d4383f7aa3549',1,'RAY::Audio::Music::resume()'],['../classRAY_1_1Audio_1_1Sound.html#a47aa97009ae131b51e2226be71478714',1,'RAY::Audio::Sound::resume()']]],
+  ['resumelobbycomponent_2257',['ResumeLobbyComponent',['../classBBM_1_1ResumeLobbyComponent.html#af05c62fa3fb0719598c1edb691977cf6',1,'BBM::ResumeLobbyComponent::ResumeLobbyComponent(WAL::Entity &amp;entity, int playerNumber, WAL::Entity &amp;button, WAL::Entity &amp;tile, int pColor)'],['../classBBM_1_1ResumeLobbyComponent.html#a872f5a6e8a3cc671465df1db0d5bb79f',1,'BBM::ResumeLobbyComponent::ResumeLobbyComponent(const ResumeLobbyComponent &amp;)=default']]],
+  ['resumelobbysystem_2258',['ResumeLobbySystem',['../classBBM_1_1ResumeLobbySystem.html#af7343d1840c93f69577109b7e3e9e823',1,'BBM::ResumeLobbySystem::ResumeLobbySystem(WAL::Wal &amp;wal)'],['../classBBM_1_1ResumeLobbySystem.html#abd62b9e16c9f2594ce5af20da0c551ec',1,'BBM::ResumeLobbySystem::ResumeLobbySystem(const ResumeLobbySystem &amp;)=default']]],
+  ['resumetogame_2259',['resumeToGame',['../classBBM_1_1ResumeLobbySystem.html#a41523749df56496367316e8865d11f48',1,'BBM::ResumeLobbySystem']]],
+  ['round_2260',['round',['../classBBM_1_1Vector3.html#a9180b41eb7d5254e41c23dce9ef91f03',1,'BBM::Vector3']]],
+  ['rtrim_2261',['rTrim',['../structBBM_1_1Utils.html#a2bb1e0d55666b6a832845d24a13eca18',1,'BBM::Utils']]],
+  ['rtrimcopy_2262',['rTrimCopy',['../structBBM_1_1Utils.html#adcf3c126756d3c00811c3788596ef01b',1,'BBM::Utils']]],
+  ['run_2263',['run',['../classWAL_1_1Wal.html#a353969c3c8f5d630ec3944bfa9d36c6d',1,'WAL::Wal::run()'],['../classBBM_1_1Runner.html#ab815bba535362fddfed7f7804edacb7d',1,'BBM::Runner::run()']]]
+];

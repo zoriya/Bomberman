@@ -1,0 +1,10 @@
+<map id="RAY::Drawables::Drawables3D::Model" name="RAY::Drawables::Drawables3D::Model">
+<area shape="rect" id="node1" title="Basic 3D Model type." alt="" coords="464,637,671,920"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1ADrawable3D.html" title="Abstraction of any three&#45;dimensionnal drawable." alt="" coords="202,329,421,553"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="5,71,201,163"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="225,5,339,229"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Vector3.html" title="A Three&#45;dimensionnal Vector data type." alt="" coords="441,20,555,215"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Shader.html" title=" " alt="" coords="617,307,833,575"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Cache.html" title=" " alt="" coords="625,35,824,200"/>
+<area shape="rect" id="node8" href="$classRAY_1_1Cache.html" title=" " alt="" coords="857,351,1065,531"/>
+</map>

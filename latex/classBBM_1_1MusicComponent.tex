@@ -1,0 +1,272 @@
+\hypertarget{classBBM_1_1MusicComponent}{}\doxysection{B\+BM\+::Music\+Component Class Reference}
+\label{classBBM_1_1MusicComponent}\index{BBM::MusicComponent@{BBM::MusicComponent}}
+
+
+A basic Music component.  
+
+
+
+
+{\ttfamily \#include $<$Music\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Music\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classBBM_1_1MusicComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Music\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1MusicComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_a19a6be0e1df5470b7ddb1b342b2d40cb}{play\+Music}} ()
+\begin{DoxyCompactList}\small\item\em start music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_aa67408ffd6176d010f213f996fce5bba}{stop\+Music}} ()
+\begin{DoxyCompactList}\small\item\em stop music \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_ada272cc4bf8602317cd9916f1c20e005}{pause\+Music}} ()
+\begin{DoxyCompactList}\small\item\em put music on hold \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_a4b5c0010e15ec51a672d3aec2f6eb025}{set\+Volume}} (float)
+\begin{DoxyCompactList}\small\item\em set music volume \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_ab13e4f8cfcc504b0ad110da7bf27b606}{turn\+Down\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em volume -\/= 0.\+1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_adadebeafceb80d1ccf27317d592b40cf}{turn\+Up\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em volume += 0.\+1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_ae7917a9e515f44d857152dc304cdba6c}{set\+Pitch}} (float)
+\begin{DoxyCompactList}\small\item\em set pitch volume \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1MusicComponent_a1750cf1cec1ac97879352aab28c3e44b}{is\+Playing}} (void)
+\begin{DoxyCompactList}\small\item\em is music playing \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1MusicComponent_a4a45bd292f7a4a24eca25fe847478ccd}{update\+Music\+Stream}} (void)
+\begin{DoxyCompactList}\small\item\em update music stream \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1MusicComponent_a33d95a88477b5c537e7822be5f0a5602}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MusicComponent_a1be8965ed0e213babd30400584382c4b}{Music\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const std\+::string \&music\+Path)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} at a certain Music. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MusicComponent_a53695898b51f1db3a93cd7bc6c42f047}{Music\+Component}} (const \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Music component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MusicComponent_a1fa1e353935dd87b4975b9209168af09}{$\sim$\+Music\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} \& \mbox{\hyperlink{classBBM_1_1MusicComponent_af132b55f14dec079a66d2589ccbdb222}{operator=}} (const \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Music component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{classBBM_1_1MusicComponent_af6dec26d07ed21a379fcd615daf3dbb9}{volume}} = 0.\+75
+\begin{DoxyCompactList}\small\item\em Volume of the muisc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} \mbox{\hyperlink{classBBM_1_1MusicComponent_af7de05efbd8a45b3e49ece4bbb793103}{\+\_\+music}}
+\begin{DoxyCompactList}\small\item\em music of this entity \end{DoxyCompactList}\item 
+const std\+::string \mbox{\hyperlink{classBBM_1_1MusicComponent_ad75f261e5146c728f83383c68afab661}{\+\_\+music\+Path}}
+\begin{DoxyCompactList}\small\item\em patht to the music assets \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A basic Music component. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a1be8965ed0e213babd30400584382c4b}\label{classBBM_1_1MusicComponent_a1be8965ed0e213babd30400584382c4b}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!MusicComponent@{MusicComponent}}
+\index{MusicComponent@{MusicComponent}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{MusicComponent()}{MusicComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Music\+Component\+::\+Music\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const std\+::string \&}]{music\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} at a certain Music. 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a53695898b51f1db3a93cd7bc6c42f047}\label{classBBM_1_1MusicComponent_a53695898b51f1db3a93cd7bc6c42f047}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!MusicComponent@{MusicComponent}}
+\index{MusicComponent@{MusicComponent}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{MusicComponent()}{MusicComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Music\+Component\+::\+Music\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Music component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a1fa1e353935dd87b4975b9209168af09}\label{classBBM_1_1MusicComponent_a1fa1e353935dd87b4975b9209168af09}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!````~MusicComponent@{$\sim$MusicComponent}}
+\index{````~MusicComponent@{$\sim$MusicComponent}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$MusicComponent()}{~MusicComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Music\+Component\+::$\sim$\+Music\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a33d95a88477b5c537e7822be5f0a5602}\label{classBBM_1_1MusicComponent_a33d95a88477b5c537e7822be5f0a5602}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Music\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a1750cf1cec1ac97879352aab28c3e44b}\label{classBBM_1_1MusicComponent_a1750cf1cec1ac97879352aab28c3e44b}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Music\+Component\+::is\+Playing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+is music playing 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_af132b55f14dec079a66d2589ccbdb222}\label{classBBM_1_1MusicComponent_af132b55f14dec079a66d2589ccbdb222}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}}\& B\+B\+M\+::\+Music\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1MusicComponent}{Music\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Music component is not assignable. 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_ada272cc4bf8602317cd9916f1c20e005}\label{classBBM_1_1MusicComponent_ada272cc4bf8602317cd9916f1c20e005}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!pauseMusic@{pauseMusic}}
+\index{pauseMusic@{pauseMusic}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{pauseMusic()}{pauseMusic()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::pause\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+put music on hold 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a19a6be0e1df5470b7ddb1b342b2d40cb}\label{classBBM_1_1MusicComponent_a19a6be0e1df5470b7ddb1b342b2d40cb}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!playMusic@{playMusic}}
+\index{playMusic@{playMusic}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{playMusic()}{playMusic()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::play\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+start music 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_ae7917a9e515f44d857152dc304cdba6c}\label{classBBM_1_1MusicComponent_ae7917a9e515f44d857152dc304cdba6c}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!setPitch@{setPitch}}
+\index{setPitch@{setPitch}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{setPitch()}{setPitch()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{pitch }\end{DoxyParamCaption})}
+
+
+
+set pitch volume 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a4b5c0010e15ec51a672d3aec2f6eb025}\label{classBBM_1_1MusicComponent_a4b5c0010e15ec51a672d3aec2f6eb025}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume\+Update }\end{DoxyParamCaption})}
+
+
+
+set music volume 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_aa67408ffd6176d010f213f996fce5bba}\label{classBBM_1_1MusicComponent_aa67408ffd6176d010f213f996fce5bba}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!stopMusic@{stopMusic}}
+\index{stopMusic@{stopMusic}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{stopMusic()}{stopMusic()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::stop\+Music (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stop music 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_ab13e4f8cfcc504b0ad110da7bf27b606}\label{classBBM_1_1MusicComponent_ab13e4f8cfcc504b0ad110da7bf27b606}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!turnDownVolume@{turnDownVolume}}
+\index{turnDownVolume@{turnDownVolume}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{turnDownVolume()}{turnDownVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::turn\+Down\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+volume -\/= 0.\+1 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_adadebeafceb80d1ccf27317d592b40cf}\label{classBBM_1_1MusicComponent_adadebeafceb80d1ccf27317d592b40cf}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!turnUpVolume@{turnUpVolume}}
+\index{turnUpVolume@{turnUpVolume}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{turnUpVolume()}{turnUpVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::turn\+Up\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+volume += 0.\+1 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_a4a45bd292f7a4a24eca25fe847478ccd}\label{classBBM_1_1MusicComponent_a4a45bd292f7a4a24eca25fe847478ccd}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!updateMusicStream@{updateMusicStream}}
+\index{updateMusicStream@{updateMusicStream}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{updateMusicStream()}{updateMusicStream()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Music\+Component\+::update\+Music\+Stream (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+update music stream 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_af7de05efbd8a45b3e49ece4bbb793103}\label{classBBM_1_1MusicComponent_af7de05efbd8a45b3e49ece4bbb793103}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!\_music@{\_music}}
+\index{\_music@{\_music}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{\_music}{\_music}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Audio_1_1Music}{R\+A\+Y\+::\+Audio\+::\+Music}} B\+B\+M\+::\+Music\+Component\+::\+\_\+music\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+music of this entity 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_ad75f261e5146c728f83383c68afab661}\label{classBBM_1_1MusicComponent_ad75f261e5146c728f83383c68afab661}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!\_musicPath@{\_musicPath}}
+\index{\_musicPath@{\_musicPath}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{\_musicPath}{\_musicPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Music\+Component\+::\+\_\+music\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+patht to the music assets 
+
+\mbox{\Hypertarget{classBBM_1_1MusicComponent_af6dec26d07ed21a379fcd615daf3dbb9}\label{classBBM_1_1MusicComponent_af6dec26d07ed21a379fcd615daf3dbb9}} 
+\index{BBM::MusicComponent@{BBM::MusicComponent}!volume@{volume}}
+\index{volume@{volume}!BBM::MusicComponent@{BBM::MusicComponent}}
+\doxysubsubsection{\texorpdfstring{volume}{volume}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Music\+Component\+::volume = 0.\+75\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Volume of the muisc. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Music/\mbox{\hyperlink{MusicComponent_8hpp}{Music\+Component.\+hpp}}\item 
+sources/\+Component/\+Music/\mbox{\hyperlink{MusicComponent_8cpp}{Music\+Component.\+cpp}}\end{DoxyCompactItemize}

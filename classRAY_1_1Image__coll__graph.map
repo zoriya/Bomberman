@@ -1,0 +1,9 @@
+<map id="RAY::Image" name="RAY::Image">
+<area shape="rect" id="node1" title="Object representation of a framebuffer." alt="" coords="432,911,588,1164"/>
+<area shape="rect" id="node2" href="$classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle.html" title="Rectangle in a two&#45;dimensional space." alt="" coords="295,609,501,848"/>
+<area shape="rect" id="node3" href="$classRAY_1_1Drawables_1_1ADrawable2D.html" title="Abstraction of any two&#45;dimensionnal drawable." alt="" coords="199,292,418,560"/>
+<area shape="rect" id="node4" href="$classRAY_1_1Drawables_1_1IDrawable.html" title="Interface for any drawable." alt="" coords="5,71,201,163"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Vector2.html" title="A Two&#45;dimensionnal Vector data type." alt="" coords="436,27,549,207"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Color.html" title="Object representation of color." alt="" coords="225,5,339,229"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Cache.html" title=" " alt="" coords="526,646,721,811"/>
+</map>

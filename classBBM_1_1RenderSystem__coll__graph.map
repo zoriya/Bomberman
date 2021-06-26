@@ -1,0 +1,10 @@
+<map id="BBM::RenderSystem" name="BBM::RenderSystem">
+<area shape="rect" id="node1" title=" " alt="" coords="341,740,536,979"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="71,395,323,633"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="5,86,131,207"/>
+<area shape="rect" id="node4" href="$classWAL_1_1Wal.html" title="The main WAL class, it is used to setup and run the ECS." alt="" coords="155,5,301,288"/>
+<area shape="rect" id="node5" href="$classRAY_1_1Camera_1_1Camera3D.html" title="Entity representing a Camera in 3D space." alt="" coords="348,395,529,633"/>
+<area shape="rect" id="node6" href="$classRAY_1_1Camera_1_1ICamera.html" title="Interface for Cameras." alt="" coords="355,101,522,193"/>
+<area shape="rect" id="node7" href="$classRAY_1_1Window.html" title=" " alt="" coords="643,351,789,677"/>
+<area shape="rect" id="node8" href="$classRAY_1_1Vector2.html" title="A Two&#45;dimensionnal Vector data type." alt="" coords="659,57,773,237"/>
+</map>

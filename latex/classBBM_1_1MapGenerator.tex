@@ -1,0 +1,649 @@
+\hypertarget{classBBM_1_1MapGenerator}{}\doxysection{B\+BM\+::Map\+Generator Class Reference}
+\label{classBBM_1_1MapGenerator}\index{BBM::MapGenerator@{BBM::MapGenerator}}
+
+
+{\ttfamily \#include $<$Map.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Map\+Generator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{classBBM_1_1MapGenerator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} \{ \newline
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada9c6a29ef9b32612a30debe51f5168a8f}{N\+O\+T\+H\+I\+NG}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadaab23341a0f9fa2a25f80273435271919}{B\+R\+E\+A\+K\+A\+B\+LE}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadabfda1a6d6c11eb9533ff650027ed4327}{H\+O\+LE}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadab3b9bccbda88dc73e6c14552d72ec465}{U\+P\+P\+E\+R\+F\+L\+O\+OR}}, 
+\newline
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada0b0ab51e971ed153e29e6b4c9662efbe}{B\+U\+M\+P\+ER}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada76099fbdff14b57753088fabb03b3c9b}{S\+P\+A\+W\+N\+ER}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada4e5922cf2cdb7c43d3494b2e9c7a15e5}{U\+N\+B\+R\+E\+A\+K\+A\+B\+LE}}, 
+\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada60e6870f50f5a4e8be9ac8484b28f181}{I\+N\+V\+I\+S\+I\+B\+LE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enum of the block available. \end{DoxyCompactList}\item 
+using \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} = std\+::map$<$ std\+::tuple$<$ int, int, int $>$, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_ac6a6c801e4ee69506ca4cf31ebbb2a2e}{create\+Bonus}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} position, \mbox{\hyperlink{classBBM_1_1Bonus_a14b9ff8ca78acaef52414914081d1d03}{Bonus\+::\+Bonus\+Type}} bonus\+Type)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_aca0e850848cd301c684c5d5635ef7c9e}{wall\+Collision}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&wall, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}} collided\+Axis)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a403c23546cc5dab213760fb3f460b206}{wall\+Collided}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&wall, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}} collided\+Axis)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_af660b4f8f7e49cd8dfd870ff4c3a13b6}{wall\+Destroyed}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_ac8eb80dc057fe107a725a0e2e22f825e}{hole\+Collide}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&wall, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}} collided\+Axis)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a5839ec5d076e7e0d266f852750a50bd4}{bumper\+Collide}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&wall, \mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}} collided\+Axis)
+\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_ad196f2cbfb1b013dd945b2ec08f64e8b}{create\+Map}} (int width, int height, bool is\+Height=false, bool is\+Not\+Classic=false)
+\begin{DoxyCompactList}\small\item\em Generate map of block to be loaded. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a2c8b586ba0b717bbbe9e6f177bcfbc33}{load\+Map}} (int width, int height, \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \&scene)
+\begin{DoxyCompactList}\small\item\em Generate the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a33abd82c847067d2f0ee649baa56b562}{create\+Element}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} block\+Type)
+\begin{DoxyCompactList}\small\item\em Create element of the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{classBBM_1_1MapGenerator_af2b4c6fde2f96c646c5cd378668a5b05}{Map\+Elem}} = std\+::function$<$ void(\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)$>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a601bcafa2ede1a60046c989dde606dd1}{get\+Random\+Block\+Type}} (bool=false)
+\begin{DoxyCompactList}\small\item\em Generate random block type. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classBBM_1_1MapGenerator_a0e187d94cd588684c0304bb1df20bb9e}{is\+Close\+To\+Block\+Type}} (std\+::map$<$ std\+::tuple$<$ int, int, int $>$, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} $>$ map, int x, int y, int z, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} block\+Type)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a9105af44e77965ca6b623d265fb8e431}{generate\+Unbreakable\+Block}} (int width, int height, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Generate the unbreakable block of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_ac4244020b98962c73b1ad94fcc416892}{generate\+Wall}} (int width, int height, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Generate the wall of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a7e87a052b3bc11ebd55f7707bbea0302}{generate\+Floor}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Generate the floor of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_abbda4740d1d302ebb3652d5099534a38}{create\+Breakable}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Create breakable of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a484ed860e6325d99d384ae3c85facf10}{create\+Unbreakable}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Create unbreakable of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_a3e02f8d6ee2a4380d3cbbb46f9cc8ac6}{create\+Hole}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Create hole of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_ae9b849e92a30f461e5ba65e82bc7f951}{create\+Bumper}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Create bumper of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_ab7898d4a68532fbfa8d81aeb2b871732}{create\+Upper\+Floor}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Create upper floor of the map. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1MapGenerator_aed8e9964481861c914ae120b252bea0d}{generate\+Height\+Collision}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em Generate the height hitbox of the map. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a8d302c089319a861430e3131d6387fc0}{create\+Classic\+Unbreakable}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height)
+\begin{DoxyCompactList}\small\item\em Generate unbreakable block on the map. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a93485fe270850c03d31c0153ef8efbde}{create\+Long\+Classic\+Unbreakable}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height)
+\begin{DoxyCompactList}\small\item\em Generate unbreakable block on map. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a5bd520da6c5c467c2b7b23787273bbac}{create\+Spawner}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height)
+\begin{DoxyCompactList}\small\item\em Generate map of block to be loaded. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a9d79c6a3425f97ea34eda9f7f97c7af7}{create\+Height}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height)
+\begin{DoxyCompactList}\small\item\em Generate height for the map. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} \mbox{\hyperlink{classBBM_1_1MapGenerator_a1d3bf7355bf7296a257f6858a5f75681}{clean\+Breakable}} (\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}} map, int width, int height)
+\begin{DoxyCompactList}\small\item\em Clean breakable on stairs, bumpers, etc.. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a006c34a64f8dff428df73eff6b5bfa8f}{assets\+Path}} = \char`\"{}./assets/\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{wall\+Assets\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a006c34a64f8dff428df73eff6b5bfa8f}{Map\+Generator\+::assets\+Path}} + \char`\"{}map/\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a867332ed52744b6b41c58ffd4d8628e6}{image\+Extension}} = \char`\"{}.png\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_ad6f5a7566df5b3d657d3aac0635678ec}{obj\+Extension}} = \char`\"{}.obj\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_ab45218f5295cad7a9ab77a396ad67b59}{unbreakable\+Wall\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}unbreakable\+\_\+wall\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a884e9726d605ffaaa12f0d2b90c7e254}{outer\+Wall\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}outer\+\_\+wall\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_ad7ca4293910e4503b4e7f30821cd4356}{breakable\+Wall\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}breakable\+\_\+wall\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a21a923240468a512fadd3e22b5aa15e7}{floor\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}floor\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_af3ee2b122fe0ca6a2800bd0ba7f6803c}{stairs\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}stairs\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a240567ee6d8832e46f649e3a1963ac10}{bumper\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}bumper\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_ad4b31b382df1ef6d497347896bc9a970}{second\+Floor\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}upper\+\_\+floor\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_ac87a43594bb7603ea7ea31e259292bd1}{hole\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}hole\char`\"{}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1MapGenerator_a5abe12da2fb1e785b5ec4ca5a6008172}{second\+Floor\+Hole\+Path}} = \mbox{\hyperlink{classBBM_1_1MapGenerator_ad4b31b382df1ef6d497347896bc9a970}{Map\+Generator\+::second\+Floor\+Path}} + \char`\"{}\+\_\+hole\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}\label{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!MapBlock@{MapBlock}}
+\index{MapBlock@{MapBlock}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{MapBlock}{MapBlock}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{B\+B\+M\+::\+Map\+Generator\+::\+Map\+Block}} =  std\+::map$<$std\+::tuple$<$int, int, int$>$, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}}$>$}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_af2b4c6fde2f96c646c5cd378668a5b05}\label{classBBM_1_1MapGenerator_af2b4c6fde2f96c646c5cd378668a5b05}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!MapElem@{MapElem}}
+\index{MapElem@{MapElem}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{MapElem}{MapElem}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{classBBM_1_1MapGenerator_af2b4c6fde2f96c646c5cd378668a5b05}{B\+B\+M\+::\+Map\+Generator\+::\+Map\+Elem}} =  std\+::function$<$void(\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} coords, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}}$>$ scene)$>$\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!BlockType@{BlockType}}
+\index{BlockType@{BlockType}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{BlockType}{BlockType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{B\+B\+M\+::\+Map\+Generator\+::\+Block\+Type}}}
+
+
+
+Enum of the block available. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NOTHING@{NOTHING}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!NOTHING@{NOTHING}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada9c6a29ef9b32612a30debe51f5168a8f}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada9c6a29ef9b32612a30debe51f5168a8f}} 
+N\+O\+T\+H\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BREAKABLE@{BREAKABLE}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!BREAKABLE@{BREAKABLE}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadaab23341a0f9fa2a25f80273435271919}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadaab23341a0f9fa2a25f80273435271919}} 
+B\+R\+E\+A\+K\+A\+B\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HOLE@{HOLE}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!HOLE@{HOLE}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadabfda1a6d6c11eb9533ff650027ed4327}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadabfda1a6d6c11eb9533ff650027ed4327}} 
+H\+O\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UPPERFLOOR@{UPPERFLOOR}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!UPPERFLOOR@{UPPERFLOOR}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadab3b9bccbda88dc73e6c14552d72ec465}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cadab3b9bccbda88dc73e6c14552d72ec465}} 
+U\+P\+P\+E\+R\+F\+L\+O\+OR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BUMPER@{BUMPER}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!BUMPER@{BUMPER}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada0b0ab51e971ed153e29e6b4c9662efbe}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada0b0ab51e971ed153e29e6b4c9662efbe}} 
+B\+U\+M\+P\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SPAWNER@{SPAWNER}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!SPAWNER@{SPAWNER}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada76099fbdff14b57753088fabb03b3c9b}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada76099fbdff14b57753088fabb03b3c9b}} 
+S\+P\+A\+W\+N\+ER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UNBREAKABLE@{UNBREAKABLE}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!UNBREAKABLE@{UNBREAKABLE}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada4e5922cf2cdb7c43d3494b2e9c7a15e5}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada4e5922cf2cdb7c43d3494b2e9c7a15e5}} 
+U\+N\+B\+R\+E\+A\+K\+A\+B\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INVISIBLE@{INVISIBLE}!BBM::MapGenerator@{BBM::MapGenerator}}\index{BBM::MapGenerator@{BBM::MapGenerator}!INVISIBLE@{INVISIBLE}}}\mbox{\Hypertarget{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada60e6870f50f5a4e8be9ac8484b28f181}\label{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cada60e6870f50f5a4e8be9ac8484b28f181}} 
+I\+N\+V\+I\+S\+I\+B\+LE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a5839ec5d076e7e0d266f852750a50bd4}\label{classBBM_1_1MapGenerator_a5839ec5d076e7e0d266f852750a50bd4}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!bumperCollide@{bumperCollide}}
+\index{bumperCollide@{bumperCollide}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{bumperCollide()}{bumperCollide()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::bumper\+Collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{wall,  }\item[{\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}}}]{collided\+Axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a1d3bf7355bf7296a257f6858a5f75681}\label{classBBM_1_1MapGenerator_a1d3bf7355bf7296a257f6858a5f75681}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!cleanBreakable@{cleanBreakable}}
+\index{cleanBreakable@{cleanBreakable}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{cleanBreakable()}{cleanBreakable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::clean\+Breakable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Clean breakable on stairs, bumpers, etc.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ac6a6c801e4ee69506ca4cf31ebbb2a2e}\label{classBBM_1_1MapGenerator_ac6a6c801e4ee69506ca4cf31ebbb2a2e}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createBonus@{createBonus}}
+\index{createBonus@{createBonus}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createBonus()}{createBonus()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Bonus (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{position,  }\item[{\mbox{\hyperlink{classBBM_1_1Bonus_a14b9ff8ca78acaef52414914081d1d03}{Bonus\+::\+Bonus\+Type}}}]{bonus\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_abbda4740d1d302ebb3652d5099534a38}\label{classBBM_1_1MapGenerator_abbda4740d1d302ebb3652d5099534a38}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createBreakable@{createBreakable}}
+\index{createBreakable@{createBreakable}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createBreakable()}{createBreakable()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Breakable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Create breakable of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ae9b849e92a30f461e5ba65e82bc7f951}\label{classBBM_1_1MapGenerator_ae9b849e92a30f461e5ba65e82bc7f951}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createBumper@{createBumper}}
+\index{createBumper@{createBumper}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createBumper()}{createBumper()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Bumper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Create bumper of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a8d302c089319a861430e3131d6387fc0}\label{classBBM_1_1MapGenerator_a8d302c089319a861430e3131d6387fc0}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createClassicUnbreakable@{createClassicUnbreakable}}
+\index{createClassicUnbreakable@{createClassicUnbreakable}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createClassicUnbreakable()}{createClassicUnbreakable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::create\+Classic\+Unbreakable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate unbreakable block on the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a33abd82c847067d2f0ee649baa56b562}\label{classBBM_1_1MapGenerator_a33abd82c847067d2f0ee649baa56b562}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createElement@{createElement}}
+\index{createElement@{createElement}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createElement()}{createElement()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Element (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}}}]{block\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Create element of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a9d79c6a3425f97ea34eda9f7f97c7af7}\label{classBBM_1_1MapGenerator_a9d79c6a3425f97ea34eda9f7f97c7af7}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createHeight@{createHeight}}
+\index{createHeight@{createHeight}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createHeight()}{createHeight()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::create\+Height (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate height for the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a3e02f8d6ee2a4380d3cbbb46f9cc8ac6}\label{classBBM_1_1MapGenerator_a3e02f8d6ee2a4380d3cbbb46f9cc8ac6}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createHole@{createHole}}
+\index{createHole@{createHole}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createHole()}{createHole()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Hole (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Create hole of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a93485fe270850c03d31c0153ef8efbde}\label{classBBM_1_1MapGenerator_a93485fe270850c03d31c0153ef8efbde}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createLongClassicUnbreakable@{createLongClassicUnbreakable}}
+\index{createLongClassicUnbreakable@{createLongClassicUnbreakable}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createLongClassicUnbreakable()}{createLongClassicUnbreakable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::create\+Long\+Classic\+Unbreakable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate unbreakable block on map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ad196f2cbfb1b013dd945b2ec08f64e8b}\label{classBBM_1_1MapGenerator_ad196f2cbfb1b013dd945b2ec08f64e8b}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createMap@{createMap}}
+\index{createMap@{createMap}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createMap()}{createMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::create\+Map (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{bool}]{is\+Height = {\ttfamily false},  }\item[{bool}]{is\+Not\+Classic = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate map of block to be loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a5bd520da6c5c467c2b7b23787273bbac}\label{classBBM_1_1MapGenerator_a5bd520da6c5c467c2b7b23787273bbac}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createSpawner@{createSpawner}}
+\index{createSpawner@{createSpawner}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createSpawner()}{createSpawner()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} B\+B\+M\+::\+Map\+Generator\+::create\+Spawner (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate map of block to be loaded. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a484ed860e6325d99d384ae3c85facf10}\label{classBBM_1_1MapGenerator_a484ed860e6325d99d384ae3c85facf10}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createUnbreakable@{createUnbreakable}}
+\index{createUnbreakable@{createUnbreakable}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createUnbreakable()}{createUnbreakable()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Unbreakable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Create unbreakable of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ab7898d4a68532fbfa8d81aeb2b871732}\label{classBBM_1_1MapGenerator_ab7898d4a68532fbfa8d81aeb2b871732}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!createUpperFloor@{createUpperFloor}}
+\index{createUpperFloor@{createUpperFloor}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{createUpperFloor()}{createUpperFloor()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::create\+Upper\+Floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{coords,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Create upper floor of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em coords} & coords of the element \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a7e87a052b3bc11ebd55f7707bbea0302}\label{classBBM_1_1MapGenerator_a7e87a052b3bc11ebd55f7707bbea0302}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!generateFloor@{generateFloor}}
+\index{generateFloor@{generateFloor}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{generateFloor()}{generateFloor()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::generate\+Floor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate the floor of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_aed8e9964481861c914ae120b252bea0d}\label{classBBM_1_1MapGenerator_aed8e9964481861c914ae120b252bea0d}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!generateHeightCollision@{generateHeightCollision}}
+\index{generateHeightCollision@{generateHeightCollision}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{generateHeightCollision()}{generateHeightCollision()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::generate\+Height\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate the height hitbox of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a9105af44e77965ca6b623d265fb8e431}\label{classBBM_1_1MapGenerator_a9105af44e77965ca6b623d265fb8e431}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!generateUnbreakableBlock@{generateUnbreakableBlock}}
+\index{generateUnbreakableBlock@{generateUnbreakableBlock}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{generateUnbreakableBlock()}{generateUnbreakableBlock()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::generate\+Unbreakable\+Block (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate the unbreakable block of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ac4244020b98962c73b1ad94fcc416892}\label{classBBM_1_1MapGenerator_ac4244020b98962c73b1ad94fcc416892}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!generateWall@{generateWall}}
+\index{generateWall@{generateWall}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{generateWall()}{generateWall()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::generate\+Wall (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate the wall of the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a601bcafa2ede1a60046c989dde606dd1}\label{classBBM_1_1MapGenerator_a601bcafa2ede1a60046c989dde606dd1}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!getRandomBlockType@{getRandomBlockType}}
+\index{getRandomBlockType@{getRandomBlockType}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{getRandomBlockType()}{getRandomBlockType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Map\+Generator\+::\+Block\+Type}} B\+B\+M\+::\+Map\+Generator\+::get\+Random\+Block\+Type (\begin{DoxyParamCaption}\item[{bool}]{has\+Height = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Generate random block type. 
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ac8eb80dc057fe107a725a0e2e22f825e}\label{classBBM_1_1MapGenerator_ac8eb80dc057fe107a725a0e2e22f825e}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!holeCollide@{holeCollide}}
+\index{holeCollide@{holeCollide}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{holeCollide()}{holeCollide()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::hole\+Collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{wall,  }\item[{\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}}}]{collided\+Axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a0e187d94cd588684c0304bb1df20bb9e}\label{classBBM_1_1MapGenerator_a0e187d94cd588684c0304bb1df20bb9e}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!isCloseToBlockType@{isCloseToBlockType}}
+\index{isCloseToBlockType@{isCloseToBlockType}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{isCloseToBlockType()}{isCloseToBlockType()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Map\+Generator\+::is\+Close\+To\+Block\+Type (\begin{DoxyParamCaption}\item[{std\+::map$<$ std\+::tuple$<$ int, int, int $>$, \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}} $>$}]{map,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{z,  }\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Block\+Type}}}]{block\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & A\+S\+C\+II map \\
+\hline
+{\em x} & x index on the block \\
+\hline
+{\em z} & z index on the block \\
+\hline
+{\em block\+Type} & block\+Type to compare with position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a2c8b586ba0b717bbbe9e6f177bcfbc33}\label{classBBM_1_1MapGenerator_a2c8b586ba0b717bbbe9e6f177bcfbc33}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!loadMap@{loadMap}}
+\index{loadMap@{loadMap}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{loadMap()}{loadMap()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::load\+Map (\begin{DoxyParamCaption}\item[{int}]{width,  }\item[{int}]{height,  }\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Block}}}]{map,  }\item[{const std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ \&}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Generate the map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em width} & Width of the map \\
+\hline
+{\em height} & Height of the map \\
+\hline
+{\em map} & Map to load with block declared inside \\
+\hline
+{\em scene} & Scene where the map is instanced \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a403c23546cc5dab213760fb3f460b206}\label{classBBM_1_1MapGenerator_a403c23546cc5dab213760fb3f460b206}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!wallCollided@{wallCollided}}
+\index{wallCollided@{wallCollided}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{wallCollided()}{wallCollided()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::wall\+Collided (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{wall,  }\item[{\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}}}]{collided\+Axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_aca0e850848cd301c684c5d5635ef7c9e}\label{classBBM_1_1MapGenerator_aca0e850848cd301c684c5d5635ef7c9e}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!wallCollision@{wallCollision}}
+\index{wallCollision@{wallCollision}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{wallCollision()}{wallCollision()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::wall\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{wall,  }\item[{\mbox{\hyperlink{classBBM_1_1CollisionComponent_a77065b4812146636d66c20154c8bb431}{Collision\+Component\+::\+Collided\+Axis}}}]{collided\+Axis }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_af660b4f8f7e49cd8dfd870ff4c3a13b6}\label{classBBM_1_1MapGenerator_af660b4f8f7e49cd8dfd870ff4c3a13b6}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!wallDestroyed@{wallDestroyed}}
+\index{wallDestroyed@{wallDestroyed}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{wallDestroyed()}{wallDestroyed()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Map\+Generator\+::wall\+Destroyed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a006c34a64f8dff428df73eff6b5bfa8f}\label{classBBM_1_1MapGenerator_a006c34a64f8dff428df73eff6b5bfa8f}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!assetsPath@{assetsPath}}
+\index{assetsPath@{assetsPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{assetsPath}{assetsPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::assets\+Path = \char`\"{}./assets/\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ad7ca4293910e4503b4e7f30821cd4356}\label{classBBM_1_1MapGenerator_ad7ca4293910e4503b4e7f30821cd4356}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!breakableWallPath@{breakableWallPath}}
+\index{breakableWallPath@{breakableWallPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{breakableWallPath}{breakableWallPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::breakable\+Wall\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}breakable\+\_\+wall\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a240567ee6d8832e46f649e3a1963ac10}\label{classBBM_1_1MapGenerator_a240567ee6d8832e46f649e3a1963ac10}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!bumperPath@{bumperPath}}
+\index{bumperPath@{bumperPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{bumperPath}{bumperPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::bumper\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}bumper\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a21a923240468a512fadd3e22b5aa15e7}\label{classBBM_1_1MapGenerator_a21a923240468a512fadd3e22b5aa15e7}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!floorPath@{floorPath}}
+\index{floorPath@{floorPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{floorPath}{floorPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::floor\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}floor\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ac87a43594bb7603ea7ea31e259292bd1}\label{classBBM_1_1MapGenerator_ac87a43594bb7603ea7ea31e259292bd1}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!holePath@{holePath}}
+\index{holePath@{holePath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{holePath}{holePath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::hole\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}hole\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a867332ed52744b6b41c58ffd4d8628e6}\label{classBBM_1_1MapGenerator_a867332ed52744b6b41c58ffd4d8628e6}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!imageExtension@{imageExtension}}
+\index{imageExtension@{imageExtension}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{imageExtension}{imageExtension}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::image\+Extension = \char`\"{}.png\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ad6f5a7566df5b3d657d3aac0635678ec}\label{classBBM_1_1MapGenerator_ad6f5a7566df5b3d657d3aac0635678ec}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!objExtension@{objExtension}}
+\index{objExtension@{objExtension}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{objExtension}{objExtension}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::obj\+Extension = \char`\"{}.obj\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a884e9726d605ffaaa12f0d2b90c7e254}\label{classBBM_1_1MapGenerator_a884e9726d605ffaaa12f0d2b90c7e254}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!outerWallPath@{outerWallPath}}
+\index{outerWallPath@{outerWallPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{outerWallPath}{outerWallPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::outer\+Wall\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}outer\+\_\+wall\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a5abe12da2fb1e785b5ec4ca5a6008172}\label{classBBM_1_1MapGenerator_a5abe12da2fb1e785b5ec4ca5a6008172}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!secondFloorHolePath@{secondFloorHolePath}}
+\index{secondFloorHolePath@{secondFloorHolePath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{secondFloorHolePath}{secondFloorHolePath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::second\+Floor\+Hole\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_ad4b31b382df1ef6d497347896bc9a970}{Map\+Generator\+::second\+Floor\+Path}} + \char`\"{}\+\_\+hole\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ad4b31b382df1ef6d497347896bc9a970}\label{classBBM_1_1MapGenerator_ad4b31b382df1ef6d497347896bc9a970}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!secondFloorPath@{secondFloorPath}}
+\index{secondFloorPath@{secondFloorPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{secondFloorPath}{secondFloorPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::second\+Floor\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}upper\+\_\+floor\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_af3ee2b122fe0ca6a2800bd0ba7f6803c}\label{classBBM_1_1MapGenerator_af3ee2b122fe0ca6a2800bd0ba7f6803c}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!stairsPath@{stairsPath}}
+\index{stairsPath@{stairsPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{stairsPath}{stairsPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::stairs\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}stairs\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_ab45218f5295cad7a9ab77a396ad67b59}\label{classBBM_1_1MapGenerator_ab45218f5295cad7a9ab77a396ad67b59}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!unbreakableWallPath@{unbreakableWallPath}}
+\index{unbreakableWallPath@{unbreakableWallPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{unbreakableWallPath}{unbreakableWallPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::unbreakable\+Wall\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}{Map\+Generator\+::wall\+Assets\+Path}} + \char`\"{}unbreakable\+\_\+wall\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}\label{classBBM_1_1MapGenerator_a55b96d4803eb8780205dcf3711aea116}} 
+\index{BBM::MapGenerator@{BBM::MapGenerator}!wallAssetsPath@{wallAssetsPath}}
+\index{wallAssetsPath@{wallAssetsPath}!BBM::MapGenerator@{BBM::MapGenerator}}
+\doxysubsubsection{\texorpdfstring{wallAssetsPath}{wallAssetsPath}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Map\+Generator\+::wall\+Assets\+Path = \mbox{\hyperlink{classBBM_1_1MapGenerator_a006c34a64f8dff428df73eff6b5bfa8f}{Map\+Generator\+::assets\+Path}} + \char`\"{}map/\char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Map/\mbox{\hyperlink{Map_8hpp}{Map.\+hpp}}\item 
+sources/\+Map/\mbox{\hyperlink{Map_8cpp}{Map.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,494 @@
+\hypertarget{classBBM_1_1ParserYAML}{}\doxysection{B\+BM\+::Parser\+Y\+A\+ML Class Reference}
+\label{classBBM_1_1ParserYAML}\index{BBM::ParserYAML@{BBM::ParserYAML}}
+
+
+{\ttfamily \#include $<$Parser\+Yaml.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Parser\+Y\+A\+ML\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=223pt]{classBBM_1_1ParserYAML__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structBBM_1_1ParserYAML_1_1PlayerInfos}{Player\+Infos}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classBBM_1_1Node}{Node}} \mbox{\hyperlink{classBBM_1_1ParserYAML_a1de84f3fb20c400fee05ec7f32a2de1c}{parse\+File}} (const std\+::string \&path)
+\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_abd0a7f5d18b2dcd65245b8605ab42fd5}{save}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em save yaml \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_aa97c0e283c5fec2129513c679948937a}{load}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene)
+\begin{DoxyCompactList}\small\item\em load yaml \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::vector$<$ \mbox{\hyperlink{structBBM_1_1ParserYAML_1_1PlayerInfos}{Player\+Infos}} $>$ \mbox{\hyperlink{classBBM_1_1ParserYAML_a69bf64746b86316f70628bc6c4ff2066}{players\+Infos}} = \{\}
+\item 
+static const std\+::string \mbox{\hyperlink{classBBM_1_1ParserYAML_adbfd5a608edee4790cfb3c0a28ba3edd}{file\+Name}} = \char`\"{}save\char`\"{}
+\begin{DoxyCompactList}\small\item\em save file name \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_ad6626cf5d8273cf810e92c8caa0c9a3c}{\+\_\+save\+Block}} (const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em save block in \+\_\+block \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a5af57894ab0f9ecf8e8a4a2f6e456479}{\+\_\+save\+Bonus}} (const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em save bonus in \+\_\+bonus \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a1a2c29787c9b3de2f8b0bf18170db018}{\+\_\+save\+Player}} (const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em save player in \+\_\+player \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classBBM_1_1ParserYAML_ad361acb4f06845e1f3c59f5bcfb035d9}{\+\_\+get\+Block\+Type}} (const std\+::string \&block\+Name)
+\begin{DoxyCompactList}\small\item\em transform block name \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classBBM_1_1ParserYAML_aa1d64bf02facb30a4bcfab11800409f1}{\+\_\+get\+Bonus\+Type}} (const std\+::string \&bonus\+Name)
+\begin{DoxyCompactList}\small\item\em transform bonus name \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1ParserYAML_ae8766122f9803951c17164802a614886}{\+\_\+parse\+Max\+Bomb}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em return max bomb parsed \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1ParserYAML_a3e494b2eb65b11f47682cebe0f0c74c0}{\+\_\+parse\+Explosion\+Radius}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em return explosion radius parsed \end{DoxyCompactList}\item 
+static float \mbox{\hyperlink{classBBM_1_1ParserYAML_a50dd7131a23769b6052fb3792e50830f}{\+\_\+parse\+Speed}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em return speed parsed \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1ParserYAML_a006cc9a441cc2f03a92269d2fd1f51b4}{\+\_\+parse\+Position}} (const std\+::string \&line)
+\begin{DoxyCompactList}\small\item\em return vector3f of position parsed \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Map\+Generator\+::\+Block\+Type}} \mbox{\hyperlink{classBBM_1_1ParserYAML_a3512eca1223a60cf38f504f68cf995a8}{\+\_\+parse\+Block\+Type}} (const std\+::string \&block\+Type)
+\begin{DoxyCompactList}\small\item\em return Block\+Type of type parsed \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classBBM_1_1Bonus_a14b9ff8ca78acaef52414914081d1d03}{Bonus\+::\+Bonus\+Type}} \mbox{\hyperlink{classBBM_1_1ParserYAML_a04e7e81e5ae4e31b3f5be6434fb732c7}{\+\_\+parse\+Bonus\+Type}} (const std\+::string \&bonus\+Type)
+\begin{DoxyCompactList}\small\item\em return bonus\+Type of type parsed \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a3925505868b636e80391b0784b2b45a2}{\+\_\+load\+Player}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&node, int count\+Player)
+\begin{DoxyCompactList}\small\item\em add player into scene \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a42ac19d00b36f935202fce51b622c76f}{\+\_\+load\+Block}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} child, \mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} \&map)
+\begin{DoxyCompactList}\small\item\em add block into scene \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_aba27b355be00f008f18d9e0b326c715b}{\+\_\+load\+Bonus}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em add bonus into scene \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_ab3d9da54ba6034f28c99787654aa87a0}{\+\_\+load\+Players}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em load all players into scene \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a87d9ba0ab335ca0ec8909fa0b8615b45}{\+\_\+load\+Blocks}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em load all blocks into scene \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classBBM_1_1ParserYAML_a788b0c793dfaf924d7ae25ef7850f90a}{\+\_\+load\+Bonuses}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$ scene, \mbox{\hyperlink{classBBM_1_1Node}{Node}} \&node)
+\begin{DoxyCompactList}\small\item\em load all blocks into scene \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classBBM_1_1ParserYAML_a1909aa58c7c282569f057b564d2e0c62}{parse\+Header}} (const std\+::string \&line)
+\item 
+static std\+::pair$<$ std\+::string,std\+::string $>$ \mbox{\hyperlink{classBBM_1_1ParserYAML_a4e6d4a51dc2117f917ee12291f78a824}{parse\+Property}} (const std\+::string \&line)
+\item 
+static bool \mbox{\hyperlink{classBBM_1_1ParserYAML_ab9417a993d63756ccfc414cc03a2285a}{is\+Header}} (const std\+::string \&line)
+\item 
+static \mbox{\hyperlink{classBBM_1_1Node}{Node}} \mbox{\hyperlink{classBBM_1_1ParserYAML_a581e2b5da73be1bf75390bf6e810e306}{parse\+Node}} (std\+::ifstream \&file, const std\+::string \&node\+Name, int indent\+Level=0)
+\item 
+static float \mbox{\hyperlink{classBBM_1_1ParserYAML_aee39f0f7cf38303ced268581cdfb6f7e}{get\+Indent}} (const std\+::string \&line)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::stringstream \mbox{\hyperlink{classBBM_1_1ParserYAML_a89e3c6c21dfabae9d415528763be5bd1}{\+\_\+block}}
+\begin{DoxyCompactList}\small\item\em The number of chars for endl. \end{DoxyCompactList}\item 
+static std\+::stringstream \mbox{\hyperlink{classBBM_1_1ParserYAML_affe95ee0970245b848354ec746bf3d7f}{\+\_\+bonus}}
+\begin{DoxyCompactList}\small\item\em file bonus of the parser \end{DoxyCompactList}\item 
+static std\+::stringstream \mbox{\hyperlink{classBBM_1_1ParserYAML_a1c803310bcbecd472943b4f15b0d3355}{\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em file player of the parser \end{DoxyCompactList}\item 
+static constexpr const char $\ast$ \mbox{\hyperlink{classBBM_1_1ParserYAML_a274935b2ad4b5b067495025e419d1286}{indent}} = \char`\"{} \char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_ad361acb4f06845e1f3c59f5bcfb035d9}\label{classBBM_1_1ParserYAML_ad361acb4f06845e1f3c59f5bcfb035d9}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_getBlockType@{\_getBlockType}}
+\index{\_getBlockType@{\_getBlockType}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_getBlockType()}{\_getBlockType()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+get\+Block\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{block\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+transform block name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block\+Name} & block name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_aa1d64bf02facb30a4bcfab11800409f1}\label{classBBM_1_1ParserYAML_aa1d64bf02facb30a4bcfab11800409f1}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_getBonusType@{\_getBonusType}}
+\index{\_getBonusType@{\_getBonusType}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_getBonusType()}{\_getBonusType()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+get\+Bonus\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{bonus\+Name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+transform bonus name 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block\+Name} & bonus name \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a42ac19d00b36f935202fce51b622c76f}\label{classBBM_1_1ParserYAML_a42ac19d00b36f935202fce51b622c76f}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadBlock@{\_loadBlock}}
+\index{\_loadBlock@{\_loadBlock}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadBlock()}{\_loadBlock()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Block (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}}}]{child,  }\item[{\mbox{\hyperlink{classBBM_1_1MapGenerator_ae07e2a6c3f07afc63addd6c0faa48810}{Map\+Generator\+::\+Map\+Block}} \&}]{map }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+add block into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+{\em lines} & Lines of the file \\
+\hline
+{\em index} & index of the vector \\
+\hline
+{\em map} & map of all the block \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a87d9ba0ab335ca0ec8909fa0b8615b45}\label{classBBM_1_1ParserYAML_a87d9ba0ab335ca0ec8909fa0b8615b45}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadBlocks@{\_loadBlocks}}
+\index{\_loadBlocks@{\_loadBlocks}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadBlocks()}{\_loadBlocks()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Blocks (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+load all blocks into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_aba27b355be00f008f18d9e0b326c715b}\label{classBBM_1_1ParserYAML_aba27b355be00f008f18d9e0b326c715b}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadBonus@{\_loadBonus}}
+\index{\_loadBonus@{\_loadBonus}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadBonus()}{\_loadBonus()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Bonus (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+add bonus into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+{\em lines} & Lines of the file \\
+\hline
+{\em index} & index of the vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a788b0c793dfaf924d7ae25ef7850f90a}\label{classBBM_1_1ParserYAML_a788b0c793dfaf924d7ae25ef7850f90a}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadBonuses@{\_loadBonuses}}
+\index{\_loadBonuses@{\_loadBonuses}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadBonuses()}{\_loadBonuses()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Bonuses (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+load all blocks into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a3925505868b636e80391b0784b2b45a2}\label{classBBM_1_1ParserYAML_a3925505868b636e80391b0784b2b45a2}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadPlayer@{\_loadPlayer}}
+\index{\_loadPlayer@{\_loadPlayer}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadPlayer()}{\_loadPlayer()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Player (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{node,  }\item[{int}]{count\+Player }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+add player into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+{\em lines} & Lines of the file \\
+\hline
+{\em index} & index of the vector \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_ab3d9da54ba6034f28c99787654aa87a0}\label{classBBM_1_1ParserYAML_ab3d9da54ba6034f28c99787654aa87a0}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_loadPlayers@{\_loadPlayers}}
+\index{\_loadPlayers@{\_loadPlayers}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_loadPlayers()}{\_loadPlayers()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+load\+Players (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene,  }\item[{\mbox{\hyperlink{classBBM_1_1Node}{Node}} \&}]{node }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+load all players into scene 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a3512eca1223a60cf38f504f68cf995a8}\label{classBBM_1_1ParserYAML_a3512eca1223a60cf38f504f68cf995a8}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parseBlockType@{\_parseBlockType}}
+\index{\_parseBlockType@{\_parseBlockType}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parseBlockType()}{\_parseBlockType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1MapGenerator_a40ba5cd044b64fd75b798230074d9cad}{Map\+Generator\+::\+Block\+Type}} B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Block\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{block\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return Block\+Type of type parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em block\+Type} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a04e7e81e5ae4e31b3f5be6434fb732c7}\label{classBBM_1_1ParserYAML_a04e7e81e5ae4e31b3f5be6434fb732c7}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parseBonusType@{\_parseBonusType}}
+\index{\_parseBonusType@{\_parseBonusType}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parseBonusType()}{\_parseBonusType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1Bonus_a14b9ff8ca78acaef52414914081d1d03}{Bonus\+::\+Bonus\+Type}} B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Bonus\+Type (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{bonus\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return bonus\+Type of type parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bonus\+Type} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a3e494b2eb65b11f47682cebe0f0c74c0}\label{classBBM_1_1ParserYAML_a3e494b2eb65b11f47682cebe0f0c74c0}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parseExplosionRadius@{\_parseExplosionRadius}}
+\index{\_parseExplosionRadius@{\_parseExplosionRadius}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parseExplosionRadius()}{\_parseExplosionRadius()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Explosion\+Radius (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return explosion radius parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_ae8766122f9803951c17164802a614886}\label{classBBM_1_1ParserYAML_ae8766122f9803951c17164802a614886}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parseMaxBomb@{\_parseMaxBomb}}
+\index{\_parseMaxBomb@{\_parseMaxBomb}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parseMaxBomb()}{\_parseMaxBomb()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Max\+Bomb (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return max bomb parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a006cc9a441cc2f03a92269d2fd1f51b4}\label{classBBM_1_1ParserYAML_a006cc9a441cc2f03a92269d2fd1f51b4}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parsePosition@{\_parsePosition}}
+\index{\_parsePosition@{\_parsePosition}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parsePosition()}{\_parsePosition()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Position (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return vector3f of position parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a50dd7131a23769b6052fb3792e50830f}\label{classBBM_1_1ParserYAML_a50dd7131a23769b6052fb3792e50830f}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_parseSpeed@{\_parseSpeed}}
+\index{\_parseSpeed@{\_parseSpeed}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_parseSpeed()}{\_parseSpeed()}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+parse\+Speed (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+return speed parsed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & to parse \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_ad6626cf5d8273cf810e92c8caa0c9a3c}\label{classBBM_1_1ParserYAML_ad6626cf5d8273cf810e92c8caa0c9a3c}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_saveBlock@{\_saveBlock}}
+\index{\_saveBlock@{\_saveBlock}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_saveBlock()}{\_saveBlock()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+save\+Block (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+save block in \+\_\+block 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to save \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a5af57894ab0f9ecf8e8a4a2f6e456479}\label{classBBM_1_1ParserYAML_a5af57894ab0f9ecf8e8a4a2f6e456479}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_saveBonus@{\_saveBonus}}
+\index{\_saveBonus@{\_saveBonus}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_saveBonus()}{\_saveBonus()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+save\+Bonus (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+save bonus in \+\_\+bonus 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to save \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a1a2c29787c9b3de2f8b0bf18170db018}\label{classBBM_1_1ParserYAML_a1a2c29787c9b3de2f8b0bf18170db018}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_savePlayer@{\_savePlayer}}
+\index{\_savePlayer@{\_savePlayer}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_savePlayer()}{\_savePlayer()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+save\+Player (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+save player in \+\_\+player 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to save \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_aee39f0f7cf38303ced268581cdfb6f7e}\label{classBBM_1_1ParserYAML_aee39f0f7cf38303ced268581cdfb6f7e}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!getIndent@{getIndent}}
+\index{getIndent@{getIndent}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{getIndent()}{getIndent()}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::get\+Indent (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_ab9417a993d63756ccfc414cc03a2285a}\label{classBBM_1_1ParserYAML_ab9417a993d63756ccfc414cc03a2285a}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!isHeader@{isHeader}}
+\index{isHeader@{isHeader}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{isHeader()}{isHeader()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::is\+Header (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_aa97c0e283c5fec2129513c679948937a}\label{classBBM_1_1ParserYAML_aa97c0e283c5fec2129513c679948937a}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!load@{load}}
+\index{load@{load}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::load (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+load yaml 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a1de84f3fb20c400fee05ec7f32a2de1c}\label{classBBM_1_1ParserYAML_a1de84f3fb20c400fee05ec7f32a2de1c}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!parseFile@{parseFile}}
+\index{parseFile@{parseFile}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{parseFile()}{parseFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1Node}{Node}} B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::parse\+File (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a1909aa58c7c282569f057b564d2e0c62}\label{classBBM_1_1ParserYAML_a1909aa58c7c282569f057b564d2e0c62}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!parseHeader@{parseHeader}}
+\index{parseHeader@{parseHeader}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{parseHeader()}{parseHeader()}}
+{\footnotesize\ttfamily std\+::string B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::parse\+Header (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a581e2b5da73be1bf75390bf6e810e306}\label{classBBM_1_1ParserYAML_a581e2b5da73be1bf75390bf6e810e306}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!parseNode@{parseNode}}
+\index{parseNode@{parseNode}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{parseNode()}{parseNode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1Node}{Node}} B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::parse\+Node (\begin{DoxyParamCaption}\item[{std\+::ifstream \&}]{file,  }\item[{const std\+::string \&}]{node\+Name,  }\item[{int}]{indent\+Level = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a4e6d4a51dc2117f917ee12291f78a824}\label{classBBM_1_1ParserYAML_a4e6d4a51dc2117f917ee12291f78a824}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!parseProperty@{parseProperty}}
+\index{parseProperty@{parseProperty}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{parseProperty()}{parseProperty()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::string, std\+::string $>$ B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::parse\+Property (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_abd0a7f5d18b2dcd65245b8605ab42fd5}\label{classBBM_1_1ParserYAML_abd0a7f5d18b2dcd65245b8605ab42fd5}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!save@{save}}
+\index{save@{save}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::save (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{W\+A\+L\+::\+Scene}} $>$}]{scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+save yaml 
+
+
+\begin{DoxyParams}{Parameters}
+{\em scene} & Scene to update \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a89e3c6c21dfabae9d415528763be5bd1}\label{classBBM_1_1ParserYAML_a89e3c6c21dfabae9d415528763be5bd1}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_block@{\_block}}
+\index{\_block@{\_block}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_block}{\_block}}
+{\footnotesize\ttfamily std\+::stringstream B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+block\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+The number of chars for endl. 
+
+file block of the parser \mbox{\Hypertarget{classBBM_1_1ParserYAML_affe95ee0970245b848354ec746bf3d7f}\label{classBBM_1_1ParserYAML_affe95ee0970245b848354ec746bf3d7f}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_bonus@{\_bonus}}
+\index{\_bonus@{\_bonus}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_bonus}{\_bonus}}
+{\footnotesize\ttfamily std\+::stringstream B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+bonus\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+file bonus of the parser 
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a1c803310bcbecd472943b4f15b0d3355}\label{classBBM_1_1ParserYAML_a1c803310bcbecd472943b4f15b0d3355}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!\_player@{\_player}}
+\index{\_player@{\_player}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{\_player}{\_player}}
+{\footnotesize\ttfamily std\+::stringstream B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::\+\_\+player\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+file player of the parser 
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_adbfd5a608edee4790cfb3c0a28ba3edd}\label{classBBM_1_1ParserYAML_adbfd5a608edee4790cfb3c0a28ba3edd}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!fileName@{fileName}}
+\index{fileName@{fileName}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{fileName}{fileName}}
+{\footnotesize\ttfamily const std\+::string B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::file\+Name = \char`\"{}save\char`\"{}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+save file name 
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a274935b2ad4b5b067495025e419d1286}\label{classBBM_1_1ParserYAML_a274935b2ad4b5b067495025e419d1286}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!indent@{indent}}
+\index{indent@{indent}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{indent}{indent}}
+{\footnotesize\ttfamily constexpr const char$\ast$ B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::indent = \char`\"{} \char`\"{}\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classBBM_1_1ParserYAML_a69bf64746b86316f70628bc6c4ff2066}\label{classBBM_1_1ParserYAML_a69bf64746b86316f70628bc6c4ff2066}} 
+\index{BBM::ParserYAML@{BBM::ParserYAML}!playersInfos@{playersInfos}}
+\index{playersInfos@{playersInfos}!BBM::ParserYAML@{BBM::ParserYAML}}
+\doxysubsubsection{\texorpdfstring{playersInfos}{playersInfos}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{structBBM_1_1ParserYAML_1_1PlayerInfos}{Parser\+Y\+A\+M\+L\+::\+Player\+Infos}} $>$ B\+B\+M\+::\+Parser\+Y\+A\+M\+L\+::players\+Infos = \{\}\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Parser/\mbox{\hyperlink{ParserYaml_8hpp}{Parser\+Yaml.\+hpp}}\item 
+sources/\+Parser/\mbox{\hyperlink{ParserYaml_8cpp}{Parser\+Yaml.\+cpp}}\end{DoxyCompactItemize}

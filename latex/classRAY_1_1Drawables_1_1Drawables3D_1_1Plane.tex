@@ -1,0 +1,164 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Plane Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Plane.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Plane\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Plane\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a2f34239fc6495eaa0d2feb368ce13a34}{Plane}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&position, const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&dimensions, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a735fc1a62ca59ef27e9e29964a8e7d87}{Plane}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_adbe81ead968675d007696cf0010d45d3}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \&)=default
+\begin{DoxyCompactList}\small\item\em A plane is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a05b984acd3a7ebbb2b9e0799cc6d6e90}{$\sim$\+Plane}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a983bf6487862ee416268e79467c4a2a6}{get\+Dimensions}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_afdcbf386afc035e65ae537cc1b6384bb}{set\+Dimensions}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&dimensions)
+\begin{DoxyCompactList}\small\item\em Set dimensions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a0e4c3309cd4fb7a3953acf2e67669cfb}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_ac12bce17798065773527734e3a5bd617}{\+\_\+dimensions}}
+\begin{DoxyCompactList}\small\item\em plane dimensions \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a2f34239fc6495eaa0d2feb368ce13a34}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a2f34239fc6495eaa0d2feb368ce13a34}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{dimensions,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em position} & position of plane \\
+\hline
+{\em dimensions} & dimensions of plane \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the plane \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a735fc1a62ca59ef27e9e29964a8e7d87}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a735fc1a62ca59ef27e9e29964a8e7d87}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!Plane@{Plane}}
+\index{Plane@{Plane}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{Plane()}{Plane()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::\+Plane (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a05b984acd3a7ebbb2b9e0799cc6d6e90}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a05b984acd3a7ebbb2b9e0799cc6d6e90}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!````~Plane@{$\sim$Plane}}
+\index{````~Plane@{$\sim$Plane}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{$\sim$Plane()}{~Plane()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::$\sim$\+Plane (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a0e4c3309cd4fb7a3953acf2e67669cfb}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a0e4c3309cd4fb7a3953acf2e67669cfb}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a983bf6487862ee416268e79467c4a2a6}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_a983bf6487862ee416268e79467c4a2a6}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!getDimensions@{getDimensions}}
+\index{getDimensions@{getDimensions}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{getDimensions()}{getDimensions()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::get\+Dimensions (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the dimensions of the plane 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_adbe81ead968675d007696cf0010d45d3}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_adbe81ead968675d007696cf0010d45d3}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A plane is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_afdcbf386afc035e65ae537cc1b6384bb}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_afdcbf386afc035e65ae537cc1b6384bb}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!setDimensions@{setDimensions}}
+\index{setDimensions@{setDimensions}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{setDimensions()}{setDimensions()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane}{Plane}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::set\+Dimensions (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+Set dimensions. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_ac12bce17798065773527734e3a5bd617}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Plane_ac12bce17798065773527734e3a5bd617}} 
+\index{RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}!\_dimensions@{\_dimensions}}
+\index{\_dimensions@{\_dimensions}!RAY::Drawables::Drawables3D::Plane@{RAY::Drawables::Drawables3D::Plane}}
+\doxysubsubsection{\texorpdfstring{\_dimensions}{\_dimensions}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Plane\+::\+\_\+dimensions\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+plane dimensions 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Plane_8hpp}{Plane.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Plane_8cpp}{Plane.\+cpp}}\end{DoxyCompactItemize}

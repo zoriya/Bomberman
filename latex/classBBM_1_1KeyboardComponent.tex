@@ -1,0 +1,229 @@
+\hypertarget{classBBM_1_1KeyboardComponent}{}\doxysection{B\+BM\+::Keyboard\+Component Class Reference}
+\label{classBBM_1_1KeyboardComponent}\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+
+
+{\ttfamily \#include $<$Keyboard\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Keyboard\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classBBM_1_1KeyboardComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Keyboard\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1KeyboardComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a981130e4ff1e3e3c732447a498482233}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a7f308a1f89b4d2141400f313b64b231d}{on\+Start}} () override
+\begin{DoxyCompactList}\small\item\em The entity or this component has just been enabled. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1KeyboardComponent_ae0bc71c538c0e308797fff3071c0d2f6}{Keyboard\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} controller\+Layout=Controllable\+Component\+::\+Layout\+::\+K\+E\+Y\+B\+O\+A\+R\+D\+\_\+0)
+\begin{DoxyCompactList}\small\item\em Create a new keyboard component using custom keys. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1KeyboardComponent_a0a88eb74a82191eecdefb7c89ba1e270}{Keyboard\+Component}} (const \mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Keyboard component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1KeyboardComponent_a9aa142689b2d499cbe16d065574c0517}{$\sim$\+Keyboard\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}} \& \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a40c79d55886f61bfc2dcccd6c3e8e63e}{operator=}} (const \mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Keyboard component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a10fdd5ddda2a3b2f7451ccc497a535e7}{key\+Secondary}} = K\+E\+Y\+\_\+\+S\+P\+A\+CE
+\begin{DoxyCompactList}\small\item\em jump key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a008e0783cb59a6722f454f91b4089f62}{key\+Bomb}} = K\+E\+Y\+\_\+E
+\begin{DoxyCompactList}\small\item\em bomb key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_ab85e1d70537cf87d990e5f3ea2abefaa}{key\+Pause}} = K\+E\+Y\+\_\+\+E\+S\+C\+A\+PE
+\begin{DoxyCompactList}\small\item\em pause key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_aff0b9dbd71fc62c033460291dfe9f774}{key\+Right}} = K\+E\+Y\+\_\+D
+\begin{DoxyCompactList}\small\item\em move right key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_abd755995cc528ec86cdb7d398ef10f63}{key\+Left}} = K\+E\+Y\+\_\+A
+\begin{DoxyCompactList}\small\item\em move left key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a448be1878f87dbb5de75ea43463a2e70}{key\+Up}} = K\+E\+Y\+\_\+W
+\begin{DoxyCompactList}\small\item\em move up key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_ac73742bf94717cae745217e603a22829}{key\+Down}} = K\+E\+Y\+\_\+S
+\begin{DoxyCompactList}\small\item\em move down key \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} \mbox{\hyperlink{classBBM_1_1KeyboardComponent_a5eda704d4910d8a72664878e6b5e454e}{layout}}
+\begin{DoxyCompactList}\small\item\em Layout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_ae0bc71c538c0e308797fff3071c0d2f6}\label{classBBM_1_1KeyboardComponent_ae0bc71c538c0e308797fff3071c0d2f6}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!KeyboardComponent@{KeyboardComponent}}
+\index{KeyboardComponent@{KeyboardComponent}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{KeyboardComponent()}{KeyboardComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Keyboard\+Component\+::\+Keyboard\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}}}]{controller\+Layout = {\ttfamily ControllableComponent\+:\+:Layout\+:\+:KEYBOARD\+\_\+0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new keyboard component using custom keys. 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a0a88eb74a82191eecdefb7c89ba1e270}\label{classBBM_1_1KeyboardComponent_a0a88eb74a82191eecdefb7c89ba1e270}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!KeyboardComponent@{KeyboardComponent}}
+\index{KeyboardComponent@{KeyboardComponent}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{KeyboardComponent()}{KeyboardComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Keyboard\+Component\+::\+Keyboard\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Keyboard component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a9aa142689b2d499cbe16d065574c0517}\label{classBBM_1_1KeyboardComponent_a9aa142689b2d499cbe16d065574c0517}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!````~KeyboardComponent@{$\sim$KeyboardComponent}}
+\index{````~KeyboardComponent@{$\sim$KeyboardComponent}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$KeyboardComponent()}{~KeyboardComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Keyboard\+Component\+::$\sim$\+Keyboard\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a981130e4ff1e3e3c732447a498482233}\label{classBBM_1_1KeyboardComponent_a981130e4ff1e3e3c732447a498482233}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Keyboard\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a7f308a1f89b4d2141400f313b64b231d}\label{classBBM_1_1KeyboardComponent_a7f308a1f89b4d2141400f313b64b231d}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!onStart@{onStart}}
+\index{onStart@{onStart}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{onStart()}{onStart()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Keyboard\+Component\+::on\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+The entity or this component has just been enabled. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1Component_a4acae0960f4232caf8395b2465dde8cc}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a40c79d55886f61bfc2dcccd6c3e8e63e}\label{classBBM_1_1KeyboardComponent_a40c79d55886f61bfc2dcccd6c3e8e63e}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}}\& B\+B\+M\+::\+Keyboard\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1KeyboardComponent}{Keyboard\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Keyboard component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a008e0783cb59a6722f454f91b4089f62}\label{classBBM_1_1KeyboardComponent_a008e0783cb59a6722f454f91b4089f62}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyBomb@{keyBomb}}
+\index{keyBomb@{keyBomb}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyBomb}{keyBomb}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Bomb = K\+E\+Y\+\_\+E}
+
+
+
+bomb key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_ac73742bf94717cae745217e603a22829}\label{classBBM_1_1KeyboardComponent_ac73742bf94717cae745217e603a22829}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyDown@{keyDown}}
+\index{keyDown@{keyDown}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyDown}{keyDown}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Down = K\+E\+Y\+\_\+S}
+
+
+
+move down key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_abd755995cc528ec86cdb7d398ef10f63}\label{classBBM_1_1KeyboardComponent_abd755995cc528ec86cdb7d398ef10f63}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyLeft@{keyLeft}}
+\index{keyLeft@{keyLeft}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyLeft}{keyLeft}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Left = K\+E\+Y\+\_\+A}
+
+
+
+move left key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_ab85e1d70537cf87d990e5f3ea2abefaa}\label{classBBM_1_1KeyboardComponent_ab85e1d70537cf87d990e5f3ea2abefaa}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyPause@{keyPause}}
+\index{keyPause@{keyPause}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyPause}{keyPause}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Pause = K\+E\+Y\+\_\+\+E\+S\+C\+A\+PE}
+
+
+
+pause key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_aff0b9dbd71fc62c033460291dfe9f774}\label{classBBM_1_1KeyboardComponent_aff0b9dbd71fc62c033460291dfe9f774}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyRight@{keyRight}}
+\index{keyRight@{keyRight}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyRight}{keyRight}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Right = K\+E\+Y\+\_\+D}
+
+
+
+move right key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a10fdd5ddda2a3b2f7451ccc497a535e7}\label{classBBM_1_1KeyboardComponent_a10fdd5ddda2a3b2f7451ccc497a535e7}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keySecondary@{keySecondary}}
+\index{keySecondary@{keySecondary}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keySecondary}{keySecondary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Secondary = K\+E\+Y\+\_\+\+S\+P\+A\+CE}
+
+
+
+jump key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a448be1878f87dbb5de75ea43463a2e70}\label{classBBM_1_1KeyboardComponent_a448be1878f87dbb5de75ea43463a2e70}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!keyUp@{keyUp}}
+\index{keyUp@{keyUp}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{keyUp}{keyUp}}
+{\footnotesize\ttfamily \mbox{\hyperlink{KeyboardComponent_8hpp_af73ff1c01950d4e675b41d17f818e4d0}{Key}} B\+B\+M\+::\+Keyboard\+Component\+::key\+Up = K\+E\+Y\+\_\+W}
+
+
+
+move up key 
+
+\mbox{\Hypertarget{classBBM_1_1KeyboardComponent_a5eda704d4910d8a72664878e6b5e454e}\label{classBBM_1_1KeyboardComponent_a5eda704d4910d8a72664878e6b5e454e}} 
+\index{BBM::KeyboardComponent@{BBM::KeyboardComponent}!layout@{layout}}
+\index{layout@{layout}!BBM::KeyboardComponent@{BBM::KeyboardComponent}}
+\doxysubsubsection{\texorpdfstring{layout}{layout}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} B\+B\+M\+::\+Keyboard\+Component\+::layout}
+
+
+
+Layout. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Keyboard/\mbox{\hyperlink{KeyboardComponent_8hpp}{Keyboard\+Component.\+hpp}}\item 
+sources/\+Component/\+Keyboard/\mbox{\hyperlink{KeyboardComponent_8cpp}{Keyboard\+Component.\+cpp}}\end{DoxyCompactItemize}

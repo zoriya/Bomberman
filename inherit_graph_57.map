@@ -1,0 +1,4 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classWAL_1_1IView.html" title="A basic view used to manipulate view without knowing their type at compile time." alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$classWAL_1_1View.html" title="A view allowing one to easily access entities containing a set list of component. A view is always up..." alt="" coords="148,5,351,32"/>
+</map>

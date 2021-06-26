@@ -1,0 +1,286 @@
+\hypertarget{classWAL_1_1Wal}{}\doxysection{W\+AL\+::Wal Class Reference}
+\label{classWAL_1_1Wal}\index{WAL::Wal@{WAL::Wal}}
+
+
+The main \mbox{\hyperlink{namespaceWAL}{W\+AL}} class, it is used to setup and run the E\+CS.  
+
+
+
+
+{\ttfamily \#include $<$Wal.\+hpp$>$}
+
+
+
+Collaboration diagram for W\+AL\+::Wal\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classWAL_1_1Wal__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} $>$ \mbox{\hyperlink{classWAL_1_1Wal_afcee9d67a8530cc86d40b2de999f91bf}{get\+Scene}} () const
+\begin{DoxyCompactList}\small\item\em Retrieve the current scene. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWAL_1_1Wal_ad4d0cfe9ad33241cb9eb4c9e5c8112fa}{change\+Scene}} (std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} $>$ new\+Scene)
+\begin{DoxyCompactList}\small\item\em Change the current scene. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , class ... Types$>$ }\\\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \& \mbox{\hyperlink{classWAL_1_1Wal_aea455d51b82283da1885e67c2aeea861}{add\+System}} (Types \&\&...params)
+\begin{DoxyCompactList}\small\item\em Create a new system in place. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \& \mbox{\hyperlink{classWAL_1_1Wal_a0c111817ce73593786509e1c30e5461a}{add\+System}} (const T \&system)
+\begin{DoxyCompactList}\small\item\em Add a system by copy. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\T \& \mbox{\hyperlink{classWAL_1_1Wal_a6ec9044ef7e8a200bd1e0334d1c192ec}{get\+System}} ()
+\begin{DoxyCompactList}\small\item\em Get a system of a specific type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \& \mbox{\hyperlink{classWAL_1_1Wal_a8ba20195595548cefcd928e58e20dddc}{remove\+System}} ()
+\begin{DoxyCompactList}\small\item\em Remove a system using it\textquotesingle{}s type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classWAL_1_1Wal_a353969c3c8f5d630ec3944bfa9d36c6d}{run}} (const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&, T \& $>$ \&callback, T state=T())
+\begin{DoxyCompactList}\small\item\em Start the game loop. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Wal_adf404c6d2ff9bc7432a056af949355cd}{Wal}} ()=default
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Wal_a9a87d5cdd918258d0294e2ba0f244f3a}{Wal}} (const \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{namespaceWAL}{W\+AL}} can\textquotesingle{}t be copy constructed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Wal_a3ab87bee9d53b34a9156c832af10e377}{$\sim$\+Wal}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \& \mbox{\hyperlink{classWAL_1_1Wal_ae636444e8f9051232e17e1456c9c4a7d}{operator=}} (const \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{namespaceWAL}{W\+AL}} can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classWAL_1_1Wal_a45a63cfffeb01e0bc978be48b8054478}{should\+Close}} = false
+\begin{DoxyCompactList}\small\item\em True if the engine should close after the end of the current tick. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr std\+::chrono\+::nanoseconds \mbox{\hyperlink{classWAL_1_1Wal_a8e77e2c54f418a597f63620b9020d729}{timestep}} = std\+::chrono\+::milliseconds(32)
+\begin{DoxyCompactList}\small\item\em The time between each fixed update. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\void \mbox{\hyperlink{classWAL_1_1Wal_a505b43e4b974a9e3a82898307362ebe4}{\+\_\+run}} (const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&, T \& $>$ \&callback, T state=T())
+\begin{DoxyCompactList}\small\item\em Start the game loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1ISystem}{I\+System}} $>$ $>$ \mbox{\hyperlink{classWAL_1_1Wal_aacca786a5a42626d1648d890acc0dc46}{\+\_\+systems}} = \{\}
+\begin{DoxyCompactList}\small\item\em The list of registered systems. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} $>$ \mbox{\hyperlink{classWAL_1_1Wal_acc8802299052ca2a9158c4a284382fea}{\+\_\+scene}}
+\begin{DoxyCompactList}\small\item\em The scene that contains entities. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main \mbox{\hyperlink{namespaceWAL}{W\+AL}} class, it is used to setup and run the E\+CS. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWAL_1_1Wal_adf404c6d2ff9bc7432a056af949355cd}\label{classWAL_1_1Wal_adf404c6d2ff9bc7432a056af949355cd}} 
+\index{WAL::Wal@{WAL::Wal}!Wal@{Wal}}
+\index{Wal@{Wal}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{Wal()}{Wal()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Wal\+::\+Wal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a9a87d5cdd918258d0294e2ba0f244f3a}\label{classWAL_1_1Wal_a9a87d5cdd918258d0294e2ba0f244f3a}} 
+\index{WAL::Wal@{WAL::Wal}!Wal@{Wal}}
+\index{Wal@{Wal}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{Wal()}{Wal()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Wal\+::\+Wal (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A \mbox{\hyperlink{namespaceWAL}{W\+AL}} can\textquotesingle{}t be copy constructed. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a3ab87bee9d53b34a9156c832af10e377}\label{classWAL_1_1Wal_a3ab87bee9d53b34a9156c832af10e377}} 
+\index{WAL::Wal@{WAL::Wal}!````~Wal@{$\sim$Wal}}
+\index{````~Wal@{$\sim$Wal}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{$\sim$Wal()}{~Wal()}}
+{\footnotesize\ttfamily W\+A\+L\+::\+Wal\+::$\sim$\+Wal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWAL_1_1Wal_a505b43e4b974a9e3a82898307362ebe4}\label{classWAL_1_1Wal_a505b43e4b974a9e3a82898307362ebe4}} 
+\index{WAL::Wal@{WAL::Wal}!\_run@{\_run}}
+\index{\_run@{\_run}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{\_run()}{\_run()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void W\+A\+L\+::\+Wal\+::\+\_\+run (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&, T \& $>$ \&}]{callback,  }\item[{T}]{state = {\ttfamily T()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Start the game loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here) \\
+\hline
+{\em state} & An initial game state. If not specified, it will be defaulted. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & A type used to track your game state. It must be default constructable. \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classWAL_1_1Wal_a0c111817ce73593786509e1c30e5461a}\label{classWAL_1_1Wal_a0c111817ce73593786509e1c30e5461a}} 
+\index{WAL::Wal@{WAL::Wal}!addSystem@{addSystem}}
+\index{addSystem@{addSystem}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{addSystem()}{addSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\& W\+A\+L\+::\+Wal\+::add\+System (\begin{DoxyParamCaption}\item[{const T \&}]{system }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a system by copy. 
+
+\begin{DoxyReturn}{Returns}
+The wal instance used to call this function is returned. This allow method chaining. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Wal_aea455d51b82283da1885e67c2aeea861}\label{classWAL_1_1Wal_aea455d51b82283da1885e67c2aeea861}} 
+\index{WAL::Wal@{WAL::Wal}!addSystem@{addSystem}}
+\index{addSystem@{addSystem}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{addSystem()}{addSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily template$<$typename T , class ... Types$>$ \\
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\& W\+A\+L\+::\+Wal\+::add\+System (\begin{DoxyParamCaption}\item[{Types \&\&...}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Create a new system in place. 
+
+\begin{DoxyReturn}{Returns}
+The wal instance used to call this function is returned. This allow method chaining. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWAL_1_1Wal_ad4d0cfe9ad33241cb9eb4c9e5c8112fa}\label{classWAL_1_1Wal_ad4d0cfe9ad33241cb9eb4c9e5c8112fa}} 
+\index{WAL::Wal@{WAL::Wal}!changeScene@{changeScene}}
+\index{changeScene@{changeScene}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{changeScene()}{changeScene()}}
+{\footnotesize\ttfamily void W\+A\+L\+::\+Wal\+::change\+Scene (\begin{DoxyParamCaption}\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classWAL_1_1Scene}{Scene}} $>$}]{new\+Scene }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Change the current scene. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_afcee9d67a8530cc86d40b2de999f91bf}\label{classWAL_1_1Wal_afcee9d67a8530cc86d40b2de999f91bf}} 
+\index{WAL::Wal@{WAL::Wal}!getScene@{getScene}}
+\index{getScene@{getScene}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{getScene()}{getScene()}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1Scene}{Scene}}$>$ W\+A\+L\+::\+Wal\+::get\+Scene (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retrieve the current scene. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a6ec9044ef7e8a200bd1e0334d1c192ec}\label{classWAL_1_1Wal_a6ec9044ef7e8a200bd1e0334d1c192ec}} 
+\index{WAL::Wal@{WAL::Wal}!getSystem@{getSystem}}
+\index{getSystem@{getSystem}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{getSystem()}{getSystem()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+T\& W\+A\+L\+::\+Wal\+::get\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a system of a specific type. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & the type of the system. \\
+\hline
+\end{DoxyTemplParams}
+\mbox{\Hypertarget{classWAL_1_1Wal_ae636444e8f9051232e17e1456c9c4a7d}\label{classWAL_1_1Wal_ae636444e8f9051232e17e1456c9c4a7d}} 
+\index{WAL::Wal@{WAL::Wal}!operator=@{operator=}}
+\index{operator=@{operator=}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\& W\+A\+L\+::\+Wal\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A \mbox{\hyperlink{namespaceWAL}{W\+AL}} can\textquotesingle{}t be assigned. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a8ba20195595548cefcd928e58e20dddc}\label{classWAL_1_1Wal_a8ba20195595548cefcd928e58e20dddc}} 
+\index{WAL::Wal@{WAL::Wal}!removeSystem@{removeSystem}}
+\index{removeSystem@{removeSystem}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{removeSystem()}{removeSystem()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+\mbox{\hyperlink{classWAL_1_1Wal}{Wal}}\& W\+A\+L\+::\+Wal\+::remove\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a system using it\textquotesingle{}s type. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a353969c3c8f5d630ec3944bfa9d36c6d}\label{classWAL_1_1Wal_a353969c3c8f5d630ec3944bfa9d36c6d}} 
+\index{WAL::Wal@{WAL::Wal}!run@{run}}
+\index{run@{run}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily template$<$typename T $>$ \\
+void W\+A\+L\+::\+Wal\+::run (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classWAL_1_1Callback}{Callback}}$<$ \mbox{\hyperlink{classWAL_1_1Wal}{Wal}} \&, T \& $>$ \&}]{callback,  }\item[{T}]{state = {\ttfamily T()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Start the game loop. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em callback} & A callback called after each update of the game. It allow you to update the engine based on a specific game state. (you can also update the game state here) \\
+\hline
+{\em state} & An initial game state. If not specified, it will be defaulted. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & A type used to track your game state. It must be default constructable. \\
+\hline
+\end{DoxyTemplParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWAL_1_1Wal_acc8802299052ca2a9158c4a284382fea}\label{classWAL_1_1Wal_acc8802299052ca2a9158c4a284382fea}} 
+\index{WAL::Wal@{WAL::Wal}!\_scene@{\_scene}}
+\index{\_scene@{\_scene}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{\_scene}{\_scene}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1Scene}{Scene}}$>$ W\+A\+L\+::\+Wal\+::\+\_\+scene\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The scene that contains entities. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_aacca786a5a42626d1648d890acc0dc46}\label{classWAL_1_1Wal_aacca786a5a42626d1648d890acc0dc46}} 
+\index{WAL::Wal@{WAL::Wal}!\_systems@{\_systems}}
+\index{\_systems@{\_systems}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{\_systems}{\_systems}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::unique\+\_\+ptr$<$\mbox{\hyperlink{classWAL_1_1ISystem}{I\+System}}$>$ $>$ W\+A\+L\+::\+Wal\+::\+\_\+systems = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The list of registered systems. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a45a63cfffeb01e0bc978be48b8054478}\label{classWAL_1_1Wal_a45a63cfffeb01e0bc978be48b8054478}} 
+\index{WAL::Wal@{WAL::Wal}!shouldClose@{shouldClose}}
+\index{shouldClose@{shouldClose}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{shouldClose}{shouldClose}}
+{\footnotesize\ttfamily bool W\+A\+L\+::\+Wal\+::should\+Close = false}
+
+
+
+True if the engine should close after the end of the current tick. 
+
+\mbox{\Hypertarget{classWAL_1_1Wal_a8e77e2c54f418a597f63620b9020d729}\label{classWAL_1_1Wal_a8e77e2c54f418a597f63620b9020d729}} 
+\index{WAL::Wal@{WAL::Wal}!timestep@{timestep}}
+\index{timestep@{timestep}!WAL::Wal@{WAL::Wal}}
+\doxysubsubsection{\texorpdfstring{timestep}{timestep}}
+{\footnotesize\ttfamily constexpr std\+::chrono\+::nanoseconds W\+A\+L\+::\+Wal\+::timestep = std\+::chrono\+::milliseconds(32)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The time between each fixed update. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/wal/sources/\mbox{\hyperlink{Wal_8hpp}{Wal.\+hpp}}\end{DoxyCompactItemize}

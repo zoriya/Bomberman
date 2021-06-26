@@ -1,0 +1,4 @@
+<map id="BBM::Runner" name="BBM::Runner">
+<area shape="rect" id="node1" title=" " alt="" coords="5,189,208,457"/>
+<area shape="rect" id="node2" href="$classBBM_1_1GameState.html" title="A class representing the current game state. This allow one to retain information between update call..." alt="" coords="40,5,173,127"/>
+</map>

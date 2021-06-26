@@ -1,0 +1,201 @@
+\hypertarget{classBBM_1_1LobbyComponent}{}\doxysection{B\+BM\+::Lobby\+Component Class Reference}
+\label{classBBM_1_1LobbyComponent}\index{BBM::LobbyComponent@{BBM::LobbyComponent}}
+
+
+{\ttfamily \#include $<$Lobby\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Lobby\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classBBM_1_1LobbyComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Lobby\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1LobbyComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component_ad27cb4b0bdc95b6245f6b5a8c56cc78a}{Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1LobbyComponent_a5f2bdd2ceadd856a92222390af7909dd}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbyComponent_afa0a964565bc77c74c6ff117e80a085d}{Lobby\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, int player\+Number, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&button, \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&tile)
+\begin{DoxyCompactList}\small\item\em Create a new lobby component. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbyComponent_a397a7c67bcaec8a4876f221d12676eab}{Lobby\+Component}} (const \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A lobby component is copyable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbyComponent_a2f1984d195117bbc1a5b64f85c73049f}{$\sim$\+Lobby\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}} \& \mbox{\hyperlink{classBBM_1_1LobbyComponent_adeda82edd38b76befc9c94de363ab3a8}{operator=}} (const \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A lobby component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} \mbox{\hyperlink{classBBM_1_1LobbyComponent_a17f0bce1b453a2823928126f86fe26f8}{layout}} = \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0a72e98a6e6a29ffb8f0bff508c9bbb2f5}{Controllable\+Component\+::\+N\+O\+NE}}
+\begin{DoxyCompactList}\small\item\em The layout used for this player. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1LobbyComponent_abf13d11f5583ef5777d7e1d8096e6535}{player\+ID}}
+\begin{DoxyCompactList}\small\item\em The ID of the lobby player (from 0 to 3) \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1LobbyComponent_a4d10d26dd2de38c286b761604855d6b9}{color}}
+\begin{DoxyCompactList}\small\item\em The color of the player (as an index) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1LobbyComponent_a7b7b24a3373d0f5375c5f8be24d453ba}{ready}} = false
+\begin{DoxyCompactList}\small\item\em Is this player ready. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \& \mbox{\hyperlink{classBBM_1_1LobbyComponent_a1afb665c96905a6e440db3b8f5c10920}{ready\+Button}}
+\begin{DoxyCompactList}\small\item\em The entity containing the ready display. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \& \mbox{\hyperlink{classBBM_1_1LobbyComponent_a44cbeb4ff46fd5feabdf8587b7cd739e}{colored\+Tile}}
+\begin{DoxyCompactList}\small\item\em The colored rectangle behind the player. \end{DoxyCompactList}\item 
+std\+::chrono\+::time\+\_\+point$<$ std\+::chrono\+::steady\+\_\+clock $>$ \mbox{\hyperlink{classBBM_1_1LobbyComponent_ae29a8fb4d64a70540d56f850cb2452e3}{last\+Input}}
+\begin{DoxyCompactList}\small\item\em The time of last input that this lobby player has made. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_afa0a964565bc77c74c6ff117e80a085d}\label{classBBM_1_1LobbyComponent_afa0a964565bc77c74c6ff117e80a085d}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!LobbyComponent@{LobbyComponent}}
+\index{LobbyComponent@{LobbyComponent}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{LobbyComponent()}{LobbyComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+Component\+::\+Lobby\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{int}]{player\+Number,  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{button,  }\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{tile }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new lobby component. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a397a7c67bcaec8a4876f221d12676eab}\label{classBBM_1_1LobbyComponent_a397a7c67bcaec8a4876f221d12676eab}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!LobbyComponent@{LobbyComponent}}
+\index{LobbyComponent@{LobbyComponent}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{LobbyComponent()}{LobbyComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+Component\+::\+Lobby\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A lobby component is copyable. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a2f1984d195117bbc1a5b64f85c73049f}\label{classBBM_1_1LobbyComponent_a2f1984d195117bbc1a5b64f85c73049f}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!````~LobbyComponent@{$\sim$LobbyComponent}}
+\index{````~LobbyComponent@{$\sim$LobbyComponent}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$LobbyComponent()}{~LobbyComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lobby\+Component\+::$\sim$\+Lobby\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a5f2bdd2ceadd856a92222390af7909dd}\label{classBBM_1_1LobbyComponent_a5f2bdd2ceadd856a92222390af7909dd}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Lobby\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_adeda82edd38b76befc9c94de363ab3a8}\label{classBBM_1_1LobbyComponent_adeda82edd38b76befc9c94de363ab3a8}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}}\& B\+B\+M\+::\+Lobby\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1LobbyComponent}{Lobby\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A lobby component is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a4d10d26dd2de38c286b761604855d6b9}\label{classBBM_1_1LobbyComponent_a4d10d26dd2de38c286b761604855d6b9}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!color@{color}}
+\index{color@{color}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{color}{color}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lobby\+Component\+::color}
+
+
+
+The color of the player (as an index) 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a44cbeb4ff46fd5feabdf8587b7cd739e}\label{classBBM_1_1LobbyComponent_a44cbeb4ff46fd5feabdf8587b7cd739e}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!coloredTile@{coloredTile}}
+\index{coloredTile@{coloredTile}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{coloredTile}{coloredTile}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}\& B\+B\+M\+::\+Lobby\+Component\+::colored\+Tile}
+
+
+
+The colored rectangle behind the player. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_ae29a8fb4d64a70540d56f850cb2452e3}\label{classBBM_1_1LobbyComponent_ae29a8fb4d64a70540d56f850cb2452e3}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!lastInput@{lastInput}}
+\index{lastInput@{lastInput}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{lastInput}{lastInput}}
+{\footnotesize\ttfamily std\+::chrono\+::time\+\_\+point$<$std\+::chrono\+::steady\+\_\+clock$>$ B\+B\+M\+::\+Lobby\+Component\+::last\+Input}
+
+
+
+The time of last input that this lobby player has made. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a17f0bce1b453a2823928126f86fe26f8}\label{classBBM_1_1LobbyComponent_a17f0bce1b453a2823928126f86fe26f8}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!layout@{layout}}
+\index{layout@{layout}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{layout}{layout}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0}{Controllable\+Component\+::\+Layout}} B\+B\+M\+::\+Lobby\+Component\+::layout = \mbox{\hyperlink{classBBM_1_1ControllableComponent_a050e4c8ed1f2ad177ee73b92ea7662e0a72e98a6e6a29ffb8f0bff508c9bbb2f5}{Controllable\+Component\+::\+N\+O\+NE}}}
+
+
+
+The layout used for this player. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_abf13d11f5583ef5777d7e1d8096e6535}\label{classBBM_1_1LobbyComponent_abf13d11f5583ef5777d7e1d8096e6535}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!playerID@{playerID}}
+\index{playerID@{playerID}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{playerID}{playerID}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lobby\+Component\+::player\+ID}
+
+
+
+The ID of the lobby player (from 0 to 3) 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a7b7b24a3373d0f5375c5f8be24d453ba}\label{classBBM_1_1LobbyComponent_a7b7b24a3373d0f5375c5f8be24d453ba}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!ready@{ready}}
+\index{ready@{ready}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{ready}{ready}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Lobby\+Component\+::ready = false}
+
+
+
+Is this player ready. 
+
+\mbox{\Hypertarget{classBBM_1_1LobbyComponent_a1afb665c96905a6e440db3b8f5c10920}\label{classBBM_1_1LobbyComponent_a1afb665c96905a6e440db3b8f5c10920}} 
+\index{BBM::LobbyComponent@{BBM::LobbyComponent}!readyButton@{readyButton}}
+\index{readyButton@{readyButton}!BBM::LobbyComponent@{BBM::LobbyComponent}}
+\doxysubsubsection{\texorpdfstring{readyButton}{readyButton}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}}\& B\+B\+M\+::\+Lobby\+Component\+::ready\+Button}
+
+
+
+The entity containing the ready display. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Lobby/\mbox{\hyperlink{LobbyComponent_8hpp}{Lobby\+Component.\+hpp}}\item 
+sources/\+Component/\+Lobby/\mbox{\hyperlink{LobbyComponent_8cpp}{Lobby\+Component.\+cpp}}\end{DoxyCompactItemize}

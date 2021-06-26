@@ -1,0 +1,228 @@
+\hypertarget{classRAY_1_1ModelAnimations}{}\doxysection{R\+AY\+::Model\+Animations Class Reference}
+\label{classRAY_1_1ModelAnimations}\index{RAY::ModelAnimations@{RAY::ModelAnimations}}
+
+
+A Holder for Model Animations.  
+
+
+
+
+{\ttfamily \#include $<$Model\+Animations.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Model\+Animations\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=276pt]{classRAY_1_1ModelAnimations__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimations_adf9bb72a9f726d0a892a1ab0cec50ae5}{Model\+Animations}} (const std\+::string \&file\+Path)
+\begin{DoxyCompactList}\small\item\em A Model animation constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimations_abea9778201505703e6a3c50a3941e613}{Model\+Animations}} (const \mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}} \&)=default
+\begin{DoxyCompactList}\small\item\em default copy ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimations_adc6ac6bfd0465e5f7269e753b27d4588}{$\sim$\+Model\+Animations}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimations_a52d83fe6a9136f9d9b8d83a0d5173445}{operator=}} (const \mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default assignment operator. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimations_a8ba8448b39ae9c6e8198ccd73a0755d4}{operator\mbox{[}$\,$\mbox{]}}} (int index)
+\begin{DoxyCompactList}\small\item\em Castin Object to raw model animation pointer. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimations_ae007b5be9a90a31ab1480c643d2dd727}{operator\mbox{[}$\,$\mbox{]}}} (int index) const
+\begin{DoxyCompactList}\small\item\em std \mbox{[}\mbox{]} const \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimations_a9c7cab28c414011893beb07c82f9cf1e}{at}} (int index) const
+\begin{DoxyCompactList}\small\item\em std at const \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} \& \mbox{\hyperlink{classRAY_1_1ModelAnimations_a8ac1329af60a90d77c9278efbe248640}{at}} (int index)
+\begin{DoxyCompactList}\small\item\em std at \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classRAY_1_1ModelAnimations_a13a2590157632886cf086346b3909b97}{get\+Animations\+Count}} () const
+\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1ModelAnimations_a2674d2846eb7c088d84b911b38427788}{get\+File\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Get the creation file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$ \mbox{\hyperlink{classRAY_1_1ModelAnimations_a5f5bbd9e5eb2b2295c12fefbecdecf22}{\+\_\+animations\+Ptr}}
+\begin{DoxyCompactList}\small\item\em Holds the pointer returned by the loading function. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$ \mbox{\hyperlink{classRAY_1_1ModelAnimations_a32df7913b2435c0fb15aa0d7b38bc394}{\+\_\+animations}}
+\begin{DoxyCompactList}\small\item\em A holder for animations. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1ModelAnimations_af42a70825f0c4382e9c16fcfd4550255}{\+\_\+animation\+Count}}
+\begin{DoxyCompactList}\small\item\em the number of loaded animations \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1ModelAnimations_a83298babbbe21473b44762919c5dcd0a}{\+\_\+file\+Path}}
+\begin{DoxyCompactList}\small\item\em The file where the animations were loaded (used to create a copy of this class) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$ \mbox{\hyperlink{classRAY_1_1ModelAnimations_a11f187f98a736033cc670254020b331e}{\+\_\+animations\+Cache}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A Holder for Model Animations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_adf9bb72a9f726d0a892a1ab0cec50ae5}\label{classRAY_1_1ModelAnimations_adf9bb72a9f726d0a892a1ab0cec50ae5}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!ModelAnimations@{ModelAnimations}}
+\index{ModelAnimations@{ModelAnimations}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{ModelAnimations()}{ModelAnimations()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animations\+::\+Model\+Animations (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{file\+Path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A Model animation constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Path} & Path to the file containing animations \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_abea9778201505703e6a3c50a3941e613}\label{classRAY_1_1ModelAnimations_abea9778201505703e6a3c50a3941e613}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!ModelAnimations@{ModelAnimations}}
+\index{ModelAnimations@{ModelAnimations}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{ModelAnimations()}{ModelAnimations()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animations\+::\+Model\+Animations (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+default copy ctor 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_adc6ac6bfd0465e5f7269e753b27d4588}\label{classRAY_1_1ModelAnimations_adc6ac6bfd0465e5f7269e753b27d4588}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!````~ModelAnimations@{$\sim$ModelAnimations}}
+\index{````~ModelAnimations@{$\sim$ModelAnimations}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{$\sim$ModelAnimations()}{~ModelAnimations()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Model\+Animations\+::$\sim$\+Model\+Animations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a8ac1329af60a90d77c9278efbe248640}\label{classRAY_1_1ModelAnimations_a8ac1329af60a90d77c9278efbe248640}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!at@{at}}
+\index{at@{at}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animations\+::at (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+std at 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a9c7cab28c414011893beb07c82f9cf1e}\label{classRAY_1_1ModelAnimations_a9c7cab28c414011893beb07c82f9cf1e}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!at@{at}}
+\index{at@{at}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{at()}{at()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animations\+::at (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+std at const 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a13a2590157632886cf086346b3909b97}\label{classRAY_1_1ModelAnimations_a13a2590157632886cf086346b3909b97}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!getAnimationsCount@{getAnimationsCount}}
+\index{getAnimationsCount@{getAnimationsCount}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{getAnimationsCount()}{getAnimationsCount()}}
+{\footnotesize\ttfamily size\+\_\+t R\+A\+Y\+::\+Model\+Animations\+::get\+Animations\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the number of loaded animations 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a2674d2846eb7c088d84b911b38427788}\label{classRAY_1_1ModelAnimations_a2674d2846eb7c088d84b911b38427788}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!getFilePath@{getFilePath}}
+\index{getFilePath@{getFilePath}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{getFilePath()}{getFilePath()}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Model\+Animations\+::get\+File\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the creation file. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a52d83fe6a9136f9d9b8d83a0d5173445}\label{classRAY_1_1ModelAnimations_a52d83fe6a9136f9d9b8d83a0d5173445}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}}\& R\+A\+Y\+::\+Model\+Animations\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1ModelAnimations}{Model\+Animations}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default assignment operator. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a8ba8448b39ae9c6e8198ccd73a0755d4}\label{classRAY_1_1ModelAnimations_a8ba8448b39ae9c6e8198ccd73a0755d4}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animations\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Castin Object to raw model animation pointer. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_ae007b5be9a90a31ab1480c643d2dd727}\label{classRAY_1_1ModelAnimations_ae007b5be9a90a31ab1480c643d2dd727}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& R\+A\+Y\+::\+Model\+Animations\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption}) const}
+
+
+
+std \mbox{[}\mbox{]} const 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_af42a70825f0c4382e9c16fcfd4550255}\label{classRAY_1_1ModelAnimations_af42a70825f0c4382e9c16fcfd4550255}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!\_animationCount@{\_animationCount}}
+\index{\_animationCount@{\_animationCount}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{\_animationCount}{\_animationCount}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Model\+Animations\+::\+\_\+animation\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+the number of loaded animations 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a32df7913b2435c0fb15aa0d7b38bc394}\label{classRAY_1_1ModelAnimations_a32df7913b2435c0fb15aa0d7b38bc394}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!\_animations@{\_animations}}
+\index{\_animations@{\_animations}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{\_animations}{\_animations}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}$>$ R\+A\+Y\+::\+Model\+Animations\+::\+\_\+animations\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A holder for animations. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a11f187f98a736033cc670254020b331e}\label{classRAY_1_1ModelAnimations_a11f187f98a736033cc670254020b331e}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!\_animationsCache@{\_animationsCache}}
+\index{\_animationsCache@{\_animationsCache}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{\_animationsCache}{\_animationsCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{R\+A\+Y\+::\+Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}} $>$ R\+A\+Y\+::\+Model\+Animations\+::\+\_\+animations\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a5f5bbd9e5eb2b2295c12fefbecdecf22}\label{classRAY_1_1ModelAnimations_a5f5bbd9e5eb2b2295c12fefbecdecf22}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!\_animationsPtr@{\_animationsPtr}}
+\index{\_animationsPtr@{\_animationsPtr}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{\_animationsPtr}{\_animationsPtr}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1ModelAnimation}{Model\+Animation}}$>$ R\+A\+Y\+::\+Model\+Animations\+::\+\_\+animations\+Ptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Holds the pointer returned by the loading function. 
+
+\mbox{\Hypertarget{classRAY_1_1ModelAnimations_a83298babbbe21473b44762919c5dcd0a}\label{classRAY_1_1ModelAnimations_a83298babbbe21473b44762919c5dcd0a}} 
+\index{RAY::ModelAnimations@{RAY::ModelAnimations}!\_filePath@{\_filePath}}
+\index{\_filePath@{\_filePath}!RAY::ModelAnimations@{RAY::ModelAnimations}}
+\doxysubsubsection{\texorpdfstring{\_filePath}{\_filePath}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Model\+Animations\+::\+\_\+file\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The file where the animations were loaded (used to create a copy of this class) 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{ModelAnimations_8hpp}{Model\+Animations.\+hpp}}\item 
+lib/\+Ray/sources/\+Model/\mbox{\hyperlink{ModelAnimations_8cpp}{Model\+Animations.\+cpp}}\end{DoxyCompactItemize}

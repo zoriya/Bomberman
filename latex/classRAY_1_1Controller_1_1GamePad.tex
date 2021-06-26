@@ -1,0 +1,240 @@
+\hypertarget{classRAY_1_1Controller_1_1GamePad}{}\doxysection{R\+AY\+::Controller\+::Game\+Pad Class Reference}
+\label{classRAY_1_1Controller_1_1GamePad}\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+
+
+Entity representing a gamepad controller.  
+
+
+
+
+{\ttfamily \#include $<$Gamepad.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Controller\+::Game\+Pad\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classRAY_1_1Controller_1_1GamePad__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef \+::Gamepad\+Button \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}}
+\item 
+typedef \+::Gamepad\+Axis \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a7f2463af8a1db98fd0cf67d08e7dfda1}{Axis}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a643a550f46a63fbf5abcb4cbff56251c}{Game\+Pad}} (int id)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_afb035fede932f5f9ac832c36accd95f5}{$\sim$\+Game\+Pad}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a96181811a9185b4e8def5382a132cecc}{Game\+Pad}} (const \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}} \& \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a5d871443392b39ee5632ada66212a3e5}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}} \&)=default
+\begin{DoxyCompactList}\small\item\em An entity is assignable. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a4ef9ea6cd539663ce572aa42c09f8eb0}{is\+Pressed}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}})
+\begin{DoxyCompactList}\small\item\em Returns true if Button is pressed on the gamepad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_abb5e2082b9eb71556125da61e6751dea}{is\+Down}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}})
+\begin{DoxyCompactList}\small\item\em Returns true if Button is down on the gamepad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a4db4c0a103d25d580dc297d3d1c32094}{is\+Released}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}})
+\begin{DoxyCompactList}\small\item\em Returns true if Button is released on the gamepad. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab93777b7d3ff930238c7f8fe6f517c59}{get\+Axis\+Value}} (int index)
+\begin{DoxyCompactList}\small\item\em Get the value of an axis. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ae61588c54ea57d87fa4a1817f0a15974}{is\+Up}} (\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}})
+\begin{DoxyCompactList}\small\item\em Returns true if Button is up on the gamepad. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a12413184e39e487c7b2538135b987fc5}{is\+Available}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if controller is available. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_aa4f5f60437daed15414d45898b99ea9f}{set\+ID}} (int id)
+\begin{DoxyCompactList}\small\item\em Sets gamepad\textquotesingle{}s id. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a156a3ba4e0a32bffd430e36b8686fd3b}{\+\_\+id}}
+\begin{DoxyCompactList}\small\item\em The id of the controller, used to fetch buttons\textquotesingle{} states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Entity representing a gamepad controller. 
+
+\doxysubsection{Member Typedef Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a7f2463af8a1db98fd0cf67d08e7dfda1}\label{classRAY_1_1Controller_1_1GamePad_a7f2463af8a1db98fd0cf67d08e7dfda1}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!Axis@{Axis}}
+\index{Axis@{Axis}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{Axis}{Axis}}
+{\footnotesize\ttfamily typedef \+::Gamepad\+Axis \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_a7f2463af8a1db98fd0cf67d08e7dfda1}{R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::\+Axis}}}
+
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}\label{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!Button@{Button}}
+\index{Button@{Button}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{Button}{Button}}
+{\footnotesize\ttfamily typedef \+::Gamepad\+Button \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::\+Button}}}
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a643a550f46a63fbf5abcb4cbff56251c}\label{classRAY_1_1Controller_1_1GamePad_a643a550f46a63fbf5abcb4cbff56251c}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!GamePad@{GamePad}}
+\index{GamePad@{GamePad}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{GamePad()}{GamePad()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::\+Game\+Pad (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+A default constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em The} & id of the controller ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_afb035fede932f5f9ac832c36accd95f5}\label{classRAY_1_1Controller_1_1GamePad_afb035fede932f5f9ac832c36accd95f5}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!````~GamePad@{$\sim$GamePad}}
+\index{````~GamePad@{$\sim$GamePad}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{$\sim$GamePad()}{~GamePad()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::$\sim$\+Game\+Pad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a96181811a9185b4e8def5382a132cecc}\label{classRAY_1_1Controller_1_1GamePad_a96181811a9185b4e8def5382a132cecc}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!GamePad@{GamePad}}
+\index{GamePad@{GamePad}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{GamePad()}{GamePad()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::\+Game\+Pad (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_ab93777b7d3ff930238c7f8fe6f517c59}\label{classRAY_1_1Controller_1_1GamePad_ab93777b7d3ff930238c7f8fe6f517c59}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!getAxisValue@{getAxisValue}}
+\index{getAxisValue@{getAxisValue}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{getAxisValue()}{getAxisValue()}}
+{\footnotesize\ttfamily float R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::get\+Axis\+Value (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Get the value of an axis. 
+
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a12413184e39e487c7b2538135b987fc5}\label{classRAY_1_1Controller_1_1GamePad_a12413184e39e487c7b2538135b987fc5}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!isAvailable@{isAvailable}}
+\index{isAvailable@{isAvailable}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{isAvailable()}{isAvailable()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::is\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if controller is available. 
+
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_abb5e2082b9eb71556125da61e6751dea}\label{classRAY_1_1Controller_1_1GamePad_abb5e2082b9eb71556125da61e6751dea}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!isDown@{isDown}}
+\index{isDown@{isDown}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{isDown()}{isDown()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::is\+Down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Returns true if Button is down on the gamepad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & The keycode of the button \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a4ef9ea6cd539663ce572aa42c09f8eb0}\label{classRAY_1_1Controller_1_1GamePad_a4ef9ea6cd539663ce572aa42c09f8eb0}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!isPressed@{isPressed}}
+\index{isPressed@{isPressed}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{isPressed()}{isPressed()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::is\+Pressed (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Returns true if Button is pressed on the gamepad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & The keycode of the button \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a4db4c0a103d25d580dc297d3d1c32094}\label{classRAY_1_1Controller_1_1GamePad_a4db4c0a103d25d580dc297d3d1c32094}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!isReleased@{isReleased}}
+\index{isReleased@{isReleased}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{isReleased()}{isReleased()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::is\+Released (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Returns true if Button is released on the gamepad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & The keycode of the button \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_ae61588c54ea57d87fa4a1817f0a15974}\label{classRAY_1_1Controller_1_1GamePad_ae61588c54ea57d87fa4a1817f0a15974}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!isUp@{isUp}}
+\index{isUp@{isUp}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{isUp()}{isUp()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::is\+Up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad_ab10397a3913aef7a94fee1b75983e414}{Button}}}]{button }\end{DoxyParamCaption})}
+
+
+
+Returns true if Button is up on the gamepad. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Button} & The keycode of the button \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a5d871443392b39ee5632ada66212a3e5}\label{classRAY_1_1Controller_1_1GamePad_a5d871443392b39ee5632ada66212a3e5}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}}\& R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Controller_1_1GamePad}{Game\+Pad}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An entity is assignable. 
+
+\begin{DoxyReturn}{Returns}
+A reference to the assigned object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_aa4f5f60437daed15414d45898b99ea9f}\label{classRAY_1_1Controller_1_1GamePad_aa4f5f60437daed15414d45898b99ea9f}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!setID@{setID}}
+\index{setID@{setID}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{setID()}{setID()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::set\+ID (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Sets gamepad\textquotesingle{}s id. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Controller_1_1GamePad_a156a3ba4e0a32bffd430e36b8686fd3b}\label{classRAY_1_1Controller_1_1GamePad_a156a3ba4e0a32bffd430e36b8686fd3b}} 
+\index{RAY::Controller::GamePad@{RAY::Controller::GamePad}!\_id@{\_id}}
+\index{\_id@{\_id}!RAY::Controller::GamePad@{RAY::Controller::GamePad}}
+\doxysubsubsection{\texorpdfstring{\_id}{\_id}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Controller\+::\+Game\+Pad\+::\+\_\+id\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The id of the controller, used to fetch buttons\textquotesingle{} states. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Gamepad_8hpp}{Gamepad.\+hpp}}\item 
+lib/\+Ray/sources/\+Controllers/\mbox{\hyperlink{Gamepad_8cpp}{Gamepad.\+cpp}}\end{DoxyCompactItemize}

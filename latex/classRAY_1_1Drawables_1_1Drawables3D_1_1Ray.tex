@@ -1,0 +1,162 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{}\doxysection{R\+AY\+::Drawables\+::Drawables3D\+::Ray Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} in a three-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Ray.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables3D\+::Ray\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=244pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables3D\+::Ray\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_ae954a187d65183b9333d64cca24d8e76}{Ray}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&start\+Position, const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&direction, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a84eb68aafaf52ca582299389eabdddee}{Ray}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_acf623dcb17c216e845cc6a4e3b8f482d}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \&)=default
+\begin{DoxyCompactList}\small\item\em A line is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a1c1132049a4e5a23971a69170f7e1c0a}{$\sim$\+Ray}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a93f3242e2fad6c2f9c8530afbe4d5f35}{get\+Direction}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_af1b5f903c7d7956624aa435556a3af8a}{set\+Direction}} (const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&direction)
+\begin{DoxyCompactList}\small\item\em Set end position. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a2a199506720ef5dc147de49537275c79}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a972ae7f994086a0ba68f8c8fe10dbdc9}{\+\_\+direction}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} in a three-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_ae954a187d65183b9333d64cca24d8e76}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_ae954a187d65183b9333d64cca24d8e76}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!Ray@{Ray}}
+\index{Ray@{Ray}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{Ray()}{Ray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::\+Ray (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{start\+Position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{direction,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+Position} & position of top-\/left point ~\newline
+ \\
+\hline
+{\em direction} & direction of the ray \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the line ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a84eb68aafaf52ca582299389eabdddee}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a84eb68aafaf52ca582299389eabdddee}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!Ray@{Ray}}
+\index{Ray@{Ray}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{Ray()}{Ray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::\+Ray (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a1c1132049a4e5a23971a69170f7e1c0a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a1c1132049a4e5a23971a69170f7e1c0a}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!````~Ray@{$\sim$Ray}}
+\index{````~Ray@{$\sim$Ray}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{$\sim$Ray()}{~Ray()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::$\sim$\+Ray (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a2a199506720ef5dc147de49537275c79}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a2a199506720ef5dc147de49537275c79}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable3D_a001dd849c601e9dff299dfe58233c2c4}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable3D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a93f3242e2fad6c2f9c8530afbe4d5f35}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a93f3242e2fad6c2f9c8530afbe4d5f35}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::get\+Direction (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the end position of the line 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_acf623dcb17c216e845cc6a4e3b8f482d}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_acf623dcb17c216e845cc6a4e3b8f482d}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A line is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_af1b5f903c7d7956624aa435556a3af8a}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_af1b5f903c7d7956624aa435556a3af8a}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray}{Ray}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::set\+Direction (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} \&}]{direction }\end{DoxyParamCaption})}
+
+
+
+Set end position. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a972ae7f994086a0ba68f8c8fe10dbdc9}\label{classRAY_1_1Drawables_1_1Drawables3D_1_1Ray_a972ae7f994086a0ba68f8c8fe10dbdc9}} 
+\index{RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}!\_direction@{\_direction}}
+\index{\_direction@{\_direction}!RAY::Drawables::Drawables3D::Ray@{RAY::Drawables::Drawables3D::Ray}}
+\doxysubsubsection{\texorpdfstring{\_direction}{\_direction}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Vector3}{Vector3}} R\+A\+Y\+::\+Drawables\+::\+Drawables3\+D\+::\+Ray\+::\+\_\+direction\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Ray_8hpp}{Ray.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/3\+D/\mbox{\hyperlink{Ray_8cpp}{Ray.\+cpp}}\end{DoxyCompactItemize}

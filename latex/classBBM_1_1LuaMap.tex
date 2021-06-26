@@ -1,0 +1,397 @@
+\hypertarget{classBBM_1_1LuaMap}{}\doxysection{B\+BM\+::Lua\+Map Class Reference}
+\label{classBBM_1_1LuaMap}\index{BBM::LuaMap@{BBM::LuaMap}}
+
+
+{\ttfamily \#include $<$Lua\+Map.\+hpp$>$}
+
+
+
+Collaboration diagram for B\+BM\+::Lua\+Map\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1LuaMap__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBBM_1_1LuaMap_ade8465bb6704b2ded6a0401ab1d35c90}{Lua\+Map}} ()
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LuaMap_a674ec187c0771d74210e75185044785e}{$\sim$\+Lua\+Map}} ()
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1LuaMap_ae2336d685ea8d6220aeef1bd0ce74a8b}{clear\+Danger}} (void)
+\begin{DoxyCompactList}\small\item\em Clear danger map. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1LuaMap_a0bcf3c454943948970ee96eac299080c}{set\+Danger}} (int xpos, int ypos, int danger\+Level)
+\begin{DoxyCompactList}\small\item\em set dangerlevel at xpos ypos \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1LuaMap_a08b35d129d2d985b69bcb8cdddccb6f1}{set\+Player}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} pos)
+\begin{DoxyCompactList}\small\item\em set player position \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_ab60f7d1865c1e91274375770c904fad7}{pathfind}} (\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} root, \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} target, bool through\+Breakable) const
+\begin{DoxyCompactList}\small\item\em A star pathfinding between two points. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \mbox{\hyperlink{classBBM_1_1LuaMap_ae56f040c6f6fca667016db45798a1f7e}{find\+Safe\+Space}} (const std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&danger\+Map) const
+\begin{DoxyCompactList}\small\item\em find a safe space for current player \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a8306be56eb1672913b232fcf4dcd62da}{get\+Map}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em push table of table of the map \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_abb34908f40e849b264eb46e1e66366a6}{get\+Danger}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em push table of table of the danger map \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a1b221f0ccc091bf9054b5e28b7616018}{get\+Path}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get array of nodes, path from a to b \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a70d15a20d16c00e75195888c9ecbc647}{get\+Player}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get player pos \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a83c510a554359314a720c62000b4bcdc}{get\+Player\+Round}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get rounded player pos \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a981a12e268db68d511e2df039116b3ec}{get\+Closest\+Safe\+Space}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get closest safe space of player \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_ab359a1f74f4cf6830b90c1254dc3b38a}{get\+Danger\+Level\+Player}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get danger level of player \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a5dd7a2084db45f508d5f2e89abb1c577}{get\+Danger\+Level}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em is xpos ypos in danger \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a9f2a76a76b3f04e936555a5b40b9d759}{get\+Block\+Type}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em get block type at x y \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a749ad05926b7579c0f36db1680619734}{can\+Put\+Bomb}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em Check if current player can put a bomb with an escape. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a1b65e87b7c79695b168a5fc31c2f51a8}{get\+Radius}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em Get current explosion radius of the player. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_a54fee7c21ee87de9e1c5caac355506e5}{get\+Enemies}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em Get enemies position. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classBBM_1_1LuaMap_ad54bf72f42d7753467ba286c71cfcee8}{get\+Enemies\+Round}} (lua\+\_\+\+State $\ast$L)
+\begin{DoxyCompactList}\small\item\em Get enemies position rounded. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_a94d2a6c7a0cefe20df042e05e80ce802}{\+\_\+map}}
+\begin{DoxyCompactList}\small\item\em map blocks in 2D grid \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_adc69d7da9c592a97b35efae1f1b39cf2}{\+\_\+danger}}
+\begin{DoxyCompactList}\small\item\em dangers in 2D grid \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \mbox{\hyperlink{classBBM_1_1LuaMap_ab3f5cf77644cc9badece185f1242174e}{\+\_\+player}}
+\begin{DoxyCompactList}\small\item\em player position \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_a8deddcc71bfcf5b76423957c6b82807d}{\+\_\+enemies}}
+\begin{DoxyCompactList}\small\item\em other players position \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} \mbox{\hyperlink{classBBM_1_1LuaMap_a34085645e0ec2eacf768b638cadb8bbc}{\+\_\+rounded\+Player}}
+\begin{DoxyCompactList}\small\item\em rounded player position \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1LuaMap_ad92a46db1fd2d0a732f64f719182f48c}{curr\+Radius}}
+\begin{DoxyCompactList}\small\item\em Explosion radius of current player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_ace3eb260b1bf17d4a0a85e4670365d62}{fill\+Path}} (std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \&path, std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}, \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \&came\+From, \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} node) const
+\begin{DoxyCompactList}\small\item\em unwind path for a\+\_\+star \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_a50f58d571919ee1233c57d1d71f10767}{get\+Neighbors}} (\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} node, bool through\+Breakable) const
+\begin{DoxyCompactList}\small\item\em get neighbors of node for a\+\_\+star \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \mbox{\hyperlink{classBBM_1_1LuaMap_ad840278a27291b9b4672f40ff7e8ae18}{\+\_\+dirs}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ade8465bb6704b2ded6a0401ab1d35c90}\label{classBBM_1_1LuaMap_ade8465bb6704b2ded6a0401ab1d35c90}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!LuaMap@{LuaMap}}
+\index{LuaMap@{LuaMap}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{LuaMap()}{LuaMap()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lua\+Map\+::\+Lua\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a674ec187c0771d74210e75185044785e}\label{classBBM_1_1LuaMap_a674ec187c0771d74210e75185044785e}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!````~LuaMap@{$\sim$LuaMap}}
+\index{````~LuaMap@{$\sim$LuaMap}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{$\sim$LuaMap()}{~LuaMap()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Lua\+Map\+::$\sim$\+Lua\+Map (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+dtor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a749ad05926b7579c0f36db1680619734}\label{classBBM_1_1LuaMap_a749ad05926b7579c0f36db1680619734}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!canPutBomb@{canPutBomb}}
+\index{canPutBomb@{canPutBomb}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{canPutBomb()}{canPutBomb()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::can\+Put\+Bomb (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Check if current player can put a bomb with an escape. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ae2336d685ea8d6220aeef1bd0ce74a8b}\label{classBBM_1_1LuaMap_ae2336d685ea8d6220aeef1bd0ce74a8b}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!clearDanger@{clearDanger}}
+\index{clearDanger@{clearDanger}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{clearDanger()}{clearDanger()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lua\+Map\+::clear\+Danger (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Clear danger map. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ace3eb260b1bf17d4a0a85e4670365d62}\label{classBBM_1_1LuaMap_ace3eb260b1bf17d4a0a85e4670365d62}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!fillPath@{fillPath}}
+\index{fillPath@{fillPath}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{fillPath()}{fillPath()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ B\+B\+M\+::\+Lua\+Map\+::fill\+Path (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \&}]{path,  }\item[{std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}, \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ \&}]{came\+From,  }\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}}]{node }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+unwind path for a\+\_\+star 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ae56f040c6f6fca667016db45798a1f7e}\label{classBBM_1_1LuaMap_ae56f040c6f6fca667016db45798a1f7e}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!findSafeSpace@{findSafeSpace}}
+\index{findSafeSpace@{findSafeSpace}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{findSafeSpace()}{findSafeSpace()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} B\+B\+M\+::\+Lua\+Map\+::find\+Safe\+Space (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::vector$<$ int $>$$>$ \&}]{danger\+Map }\end{DoxyParamCaption}) const}
+
+
+
+find a safe space for current player 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a9f2a76a76b3f04e936555a5b40b9d759}\label{classBBM_1_1LuaMap_a9f2a76a76b3f04e936555a5b40b9d759}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getBlockType@{getBlockType}}
+\index{getBlockType@{getBlockType}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getBlockType()}{getBlockType()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Block\+Type (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get block type at x y 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a981a12e268db68d511e2df039116b3ec}\label{classBBM_1_1LuaMap_a981a12e268db68d511e2df039116b3ec}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getClosestSafeSpace@{getClosestSafeSpace}}
+\index{getClosestSafeSpace@{getClosestSafeSpace}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getClosestSafeSpace()}{getClosestSafeSpace()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Closest\+Safe\+Space (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get closest safe space of player 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_abb34908f40e849b264eb46e1e66366a6}\label{classBBM_1_1LuaMap_abb34908f40e849b264eb46e1e66366a6}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getDanger@{getDanger}}
+\index{getDanger@{getDanger}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getDanger()}{getDanger()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Danger (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+push table of table of the danger map 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a5dd7a2084db45f508d5f2e89abb1c577}\label{classBBM_1_1LuaMap_a5dd7a2084db45f508d5f2e89abb1c577}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getDangerLevel@{getDangerLevel}}
+\index{getDangerLevel@{getDangerLevel}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getDangerLevel()}{getDangerLevel()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Danger\+Level (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+is xpos ypos in danger 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ab359a1f74f4cf6830b90c1254dc3b38a}\label{classBBM_1_1LuaMap_ab359a1f74f4cf6830b90c1254dc3b38a}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getDangerLevelPlayer@{getDangerLevelPlayer}}
+\index{getDangerLevelPlayer@{getDangerLevelPlayer}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getDangerLevelPlayer()}{getDangerLevelPlayer()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Danger\+Level\+Player (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get danger level of player 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a54fee7c21ee87de9e1c5caac355506e5}\label{classBBM_1_1LuaMap_a54fee7c21ee87de9e1c5caac355506e5}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getEnemies@{getEnemies}}
+\index{getEnemies@{getEnemies}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getEnemies()}{getEnemies()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Enemies (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get enemies position. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ad54bf72f42d7753467ba286c71cfcee8}\label{classBBM_1_1LuaMap_ad54bf72f42d7753467ba286c71cfcee8}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getEnemiesRound@{getEnemiesRound}}
+\index{getEnemiesRound@{getEnemiesRound}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getEnemiesRound()}{getEnemiesRound()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Enemies\+Round (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get enemies position rounded. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a8306be56eb1672913b232fcf4dcd62da}\label{classBBM_1_1LuaMap_a8306be56eb1672913b232fcf4dcd62da}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getMap@{getMap}}
+\index{getMap@{getMap}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getMap()}{getMap()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Map (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+push table of table of the map 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a50f58d571919ee1233c57d1d71f10767}\label{classBBM_1_1LuaMap_a50f58d571919ee1233c57d1d71f10767}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getNeighbors@{getNeighbors}}
+\index{getNeighbors@{getNeighbors}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getNeighbors()}{getNeighbors()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ B\+B\+M\+::\+Lua\+Map\+::get\+Neighbors (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}}]{node,  }\item[{bool}]{through\+Breakable }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+get neighbors of node for a\+\_\+star 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a1b221f0ccc091bf9054b5e28b7616018}\label{classBBM_1_1LuaMap_a1b221f0ccc091bf9054b5e28b7616018}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getPath@{getPath}}
+\index{getPath@{getPath}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Path (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get array of nodes, path from a to b 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a70d15a20d16c00e75195888c9ecbc647}\label{classBBM_1_1LuaMap_a70d15a20d16c00e75195888c9ecbc647}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getPlayer@{getPlayer}}
+\index{getPlayer@{getPlayer}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getPlayer()}{getPlayer()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Player (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get player pos 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a83c510a554359314a720c62000b4bcdc}\label{classBBM_1_1LuaMap_a83c510a554359314a720c62000b4bcdc}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getPlayerRound@{getPlayerRound}}
+\index{getPlayerRound@{getPlayerRound}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getPlayerRound()}{getPlayerRound()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Player\+Round (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+get rounded player pos 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a1b65e87b7c79695b168a5fc31c2f51a8}\label{classBBM_1_1LuaMap_a1b65e87b7c79695b168a5fc31c2f51a8}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!getRadius@{getRadius}}
+\index{getRadius@{getRadius}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{getRadius()}{getRadius()}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::get\+Radius (\begin{DoxyParamCaption}\item[{lua\+\_\+\+State $\ast$}]{L }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Get current explosion radius of the player. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ab60f7d1865c1e91274375770c904fad7}\label{classBBM_1_1LuaMap_ab60f7d1865c1e91274375770c904fad7}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!pathfind@{pathfind}}
+\index{pathfind@{pathfind}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{pathfind()}{pathfind()}}
+{\footnotesize\ttfamily std\+::vector$<$ \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} $>$ B\+B\+M\+::\+Lua\+Map\+::pathfind (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}}]{root,  }\item[{\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}}]{target,  }\item[{bool}]{through\+Breakable }\end{DoxyParamCaption}) const}
+
+
+
+A star pathfinding between two points. 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a0bcf3c454943948970ee96eac299080c}\label{classBBM_1_1LuaMap_a0bcf3c454943948970ee96eac299080c}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!setDanger@{setDanger}}
+\index{setDanger@{setDanger}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{setDanger()}{setDanger()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Lua\+Map\+::set\+Danger (\begin{DoxyParamCaption}\item[{int}]{xpos,  }\item[{int}]{ypos,  }\item[{int}]{danger\+Level }\end{DoxyParamCaption})}
+
+
+
+set dangerlevel at xpos ypos 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a08b35d129d2d985b69bcb8cdddccb6f1}\label{classBBM_1_1LuaMap_a08b35d129d2d985b69bcb8cdddccb6f1}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!setPlayer@{setPlayer}}
+\index{setPlayer@{setPlayer}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{setPlayer()}{setPlayer()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Lua\+Map\+::set\+Player (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{pos }\end{DoxyParamCaption})}
+
+
+
+set player position 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1LuaMap_adc69d7da9c592a97b35efae1f1b39cf2}\label{classBBM_1_1LuaMap_adc69d7da9c592a97b35efae1f1b39cf2}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_danger@{\_danger}}
+\index{\_danger@{\_danger}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_danger}{\_danger}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$int$>$ $>$ B\+B\+M\+::\+Lua\+Map\+::\+\_\+danger}
+
+
+
+dangers in 2D grid 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ad840278a27291b9b4672f40ff7e8ae18}\label{classBBM_1_1LuaMap_ad840278a27291b9b4672f40ff7e8ae18}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_dirs@{\_dirs}}
+\index{\_dirs@{\_dirs}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_dirs}{\_dirs}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}$>$ B\+B\+M\+::\+Lua\+Map\+::\+\_\+dirs\hspace{0.3cm}{\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{                \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}(1, 0), \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}(-\/1, 0), \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}(0, 1), \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}(0, -\/1)}
+\DoxyCodeLine{            \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a8deddcc71bfcf5b76423957c6b82807d}\label{classBBM_1_1LuaMap_a8deddcc71bfcf5b76423957c6b82807d}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_enemies@{\_enemies}}
+\index{\_enemies@{\_enemies}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_enemies}{\_enemies}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}}$>$ B\+B\+M\+::\+Lua\+Map\+::\+\_\+enemies}
+
+
+
+other players position 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a94d2a6c7a0cefe20df042e05e80ce802}\label{classBBM_1_1LuaMap_a94d2a6c7a0cefe20df042e05e80ce802}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_map@{\_map}}
+\index{\_map@{\_map}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_map}{\_map}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$int$>$ $>$ B\+B\+M\+::\+Lua\+Map\+::\+\_\+map}
+
+
+
+map blocks in 2D grid 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ab3f5cf77644cc9badece185f1242174e}\label{classBBM_1_1LuaMap_ab3f5cf77644cc9badece185f1242174e}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_player@{\_player}}
+\index{\_player@{\_player}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_player}{\_player}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} B\+B\+M\+::\+Lua\+Map\+::\+\_\+player}
+
+
+
+player position 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_a34085645e0ec2eacf768b638cadb8bbc}\label{classBBM_1_1LuaMap_a34085645e0ec2eacf768b638cadb8bbc}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!\_roundedPlayer@{\_roundedPlayer}}
+\index{\_roundedPlayer@{\_roundedPlayer}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{\_roundedPlayer}{\_roundedPlayer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_a79007a31ef669b678afe50846367d7e8}{Vector2f}} B\+B\+M\+::\+Lua\+Map\+::\+\_\+rounded\+Player}
+
+
+
+rounded player position 
+
+\mbox{\Hypertarget{classBBM_1_1LuaMap_ad92a46db1fd2d0a732f64f719182f48c}\label{classBBM_1_1LuaMap_ad92a46db1fd2d0a732f64f719182f48c}} 
+\index{BBM::LuaMap@{BBM::LuaMap}!currRadius@{currRadius}}
+\index{currRadius@{currRadius}!BBM::LuaMap@{BBM::LuaMap}}
+\doxysubsubsection{\texorpdfstring{currRadius}{currRadius}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Lua\+Map\+::curr\+Radius}
+
+
+
+Explosion radius of current player. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Map/\mbox{\hyperlink{LuaMap_8hpp}{Lua\+Map.\+hpp}}\item 
+sources/\+Map/\mbox{\hyperlink{LuaMap_8cpp}{Lua\+Map.\+cpp}}\end{DoxyCompactItemize}

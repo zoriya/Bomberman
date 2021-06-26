@@ -1,0 +1,246 @@
+\hypertarget{classRAY_1_1Image}{}\doxysection{R\+AY\+::Image Class Reference}
+\label{classRAY_1_1Image}\index{RAY::Image@{RAY::Image}}
+
+
+Object representation of a framebuffer.  
+
+
+
+
+{\ttfamily \#include $<$Image.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Image\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Image__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Image\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Image__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Image_ad59f6b1f8b1781a41189c1919dd164b4}{Image}} (const std\+::string \&filename, bool lonely=false)
+\begin{DoxyCompactList}\small\item\em Create an image, loading a file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Image_ae8ee24923db211ff47a7351370954ce3}{Image}} (const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&image)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Image}{Image}} \& \mbox{\hyperlink{classRAY_1_1Image_a77d57fe869292359e3b038bdb4afb898}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&image)=default
+\begin{DoxyCompactList}\small\item\em An image is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Image_afd88acf49b6d2db2fc1c0a881522b521}{$\sim$\+Image}} () override=default
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Image}{Image}} destructor, will unload ressources. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classRAY_1_1Image_a6aaba215fd5c5b95efc2d5580cdf8193}{export\+To}} (const std\+::string \&output\+Path)
+\begin{DoxyCompactList}\small\item\em export to file \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Image_adff1c580f00296c4ee2968cac853e9d9}{draw}} (\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{Drawables\+::\+A\+Drawable2D}} \&)
+\begin{DoxyCompactList}\small\item\em draw drawable on image \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Image_a2c3fc4c64707d0838bcb807f7f49b892}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw image on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Image_a8e3c0e0087067bbf2f198e9ad186d8a8}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&image) override
+\begin{DoxyCompactList}\small\item\em Draw image on another image. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Image_acb10e3f289140c2f5db05cef5da53f76}{resize}} (const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \&dimensions)
+\begin{DoxyCompactList}\small\item\em Resize image;. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Image}{Image}} \& \mbox{\hyperlink{classRAY_1_1Image_ae52c1201e3444ac7ee424903c1d23ec7}{use}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Load image from file, lets one use one entity for multiple files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Image_ae54f9acbb06c4bb00dd81a8e95419ded}{operator\+::\+Image $\ast$}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Image}{Image}} $>$ \mbox{\hyperlink{classRAY_1_1Image_a4d1a52afc0713d13f9726923e93c2ba0}{\+\_\+image}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Image}{Image}}, really, that\textquotesingle{}s just it... \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Image_a40716565fbcd8bd1bc6404f367bf32fe}{\+\_\+ressource\+Path}}
+\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Image_aeebe23d99dfeacbd13766eb8f27d63e0}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Image}{Image}}() const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Image}{Image}} $>$ \mbox{\hyperlink{classRAY_1_1Image_a0ebbf24ba043af2574b68a9c8632ad68}{\+\_\+images\+Cache}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Object representation of a framebuffer. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Image_ad59f6b1f8b1781a41189c1919dd164b4}\label{classRAY_1_1Image_ad59f6b1f8b1781a41189c1919dd164b4}} 
+\index{RAY::Image@{RAY::Image}!Image@{Image}}
+\index{Image@{Image}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{Image()}{Image()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Image\+::\+Image (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Create an image, loading a file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & path to file to load \\
+\hline
+{\em lonely} & should be set to true if the entity\textquotesingle{}s loaded data must be independent from others \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Image_ae8ee24923db211ff47a7351370954ce3}\label{classRAY_1_1Image_ae8ee24923db211ff47a7351370954ce3}} 
+\index{RAY::Image@{RAY::Image}!Image@{Image}}
+\index{Image@{Image}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{Image()}{Image()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Image\+::\+Image (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Image_afd88acf49b6d2db2fc1c0a881522b521}\label{classRAY_1_1Image_afd88acf49b6d2db2fc1c0a881522b521}} 
+\index{RAY::Image@{RAY::Image}!````~Image@{$\sim$Image}}
+\index{````~Image@{$\sim$Image}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{$\sim$Image()}{~Image()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Image\+::$\sim$\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Image}{Image}} destructor, will unload ressources. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Image_adff1c580f00296c4ee2968cac853e9d9}\label{classRAY_1_1Image_adff1c580f00296c4ee2968cac853e9d9}} 
+\index{RAY::Image@{RAY::Image}!draw@{draw}}
+\index{draw@{draw}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Image\+::draw (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{Drawables\+::\+A\+Drawable2D}} \&}]{drawable }\end{DoxyParamCaption})}
+
+
+
+draw drawable on image 
+
+\mbox{\Hypertarget{classRAY_1_1Image_a8e3c0e0087067bbf2f198e9ad186d8a8}\label{classRAY_1_1Image_a8e3c0e0087067bbf2f198e9ad186d8a8}} 
+\index{RAY::Image@{RAY::Image}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Image\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw image on another image. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle_a4003c5f12aa431cb40dddaae2f92b56f}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Rectangle}}.
+
+\mbox{\Hypertarget{classRAY_1_1Image_a2c3fc4c64707d0838bcb807f7f49b892}\label{classRAY_1_1Image_a2c3fc4c64707d0838bcb807f7f49b892}} 
+\index{RAY::Image@{RAY::Image}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Image\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw image on window. 
+
+
+
+Reimplemented from \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Rectangle_aa6841ac2e4d0a52e40261f775dfaf156}{R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Rectangle}}.
+
+\mbox{\Hypertarget{classRAY_1_1Image_a6aaba215fd5c5b95efc2d5580cdf8193}\label{classRAY_1_1Image_a6aaba215fd5c5b95efc2d5580cdf8193}} 
+\index{RAY::Image@{RAY::Image}!exportTo@{exportTo}}
+\index{exportTo@{exportTo}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{exportTo()}{exportTo()}}
+{\footnotesize\ttfamily bool R\+A\+Y\+::\+Image\+::export\+To (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{output\+Path }\end{DoxyParamCaption})}
+
+
+
+export to file 
+
+
+\begin{DoxyParams}{Parameters}
+{\em output\+Path} & path of output \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Image_ae54f9acbb06c4bb00dd81a8e95419ded}\label{classRAY_1_1Image_ae54f9acbb06c4bb00dd81a8e95419ded}} 
+\index{RAY::Image@{RAY::Image}!operator::Image $\ast$@{operator::Image $\ast$}}
+\index{operator::Image $\ast$@{operator::Image $\ast$}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{operator::Image $\ast$()}{operator::Image *()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Image\+::operator\+::\+Image $\ast$ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Image_a77d57fe869292359e3b038bdb4afb898}\label{classRAY_1_1Image_a77d57fe869292359e3b038bdb4afb898}} 
+\index{RAY::Image@{RAY::Image}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Image}{Image}}\& R\+A\+Y\+::\+Image\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Image}{Image}} \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An image is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Image_acb10e3f289140c2f5db05cef5da53f76}\label{classRAY_1_1Image_acb10e3f289140c2f5db05cef5da53f76}} 
+\index{RAY::Image@{RAY::Image}!resize@{resize}}
+\index{resize@{resize}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Image\+::resize (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{R\+A\+Y\+::\+Vector2}} \&}]{dimensions }\end{DoxyParamCaption})}
+
+
+
+Resize image;. 
+
+\mbox{\Hypertarget{classRAY_1_1Image_ae52c1201e3444ac7ee424903c1d23ec7}\label{classRAY_1_1Image_ae52c1201e3444ac7ee424903c1d23ec7}} 
+\index{RAY::Image@{RAY::Image}!use@{use}}
+\index{use@{use}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{use()}{use()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Image}{Image}} \& R\+A\+Y\+::\+Image\+::use (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})}
+
+
+
+Load image from file, lets one use one entity for multiple files. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Image_aeebe23d99dfeacbd13766eb8f27d63e0}\label{classRAY_1_1Image_aeebe23d99dfeacbd13766eb8f27d63e0}} 
+\index{RAY::Image@{RAY::Image}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Image\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Image_a4d1a52afc0713d13f9726923e93c2ba0}\label{classRAY_1_1Image_a4d1a52afc0713d13f9726923e93c2ba0}} 
+\index{RAY::Image@{RAY::Image}!\_image@{\_image}}
+\index{\_image@{\_image}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{\_image}{\_image}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Image}{Image}}$>$ R\+A\+Y\+::\+Image\+::\+\_\+image\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Image}{Image}}, really, that\textquotesingle{}s just it... 
+
+\mbox{\Hypertarget{classRAY_1_1Image_a0ebbf24ba043af2574b68a9c8632ad68}\label{classRAY_1_1Image_a0ebbf24ba043af2574b68a9c8632ad68}} 
+\index{RAY::Image@{RAY::Image}!\_imagesCache@{\_imagesCache}}
+\index{\_imagesCache@{\_imagesCache}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{\_imagesCache}{\_imagesCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Image}{Image}} $>$ R\+A\+Y\+::\+Image\+::\+\_\+images\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Image_a40716565fbcd8bd1bc6404f367bf32fe}\label{classRAY_1_1Image_a40716565fbcd8bd1bc6404f367bf32fe}} 
+\index{RAY::Image@{RAY::Image}!\_ressourcePath@{\_ressourcePath}}
+\index{\_ressourcePath@{\_ressourcePath}!RAY::Image@{RAY::Image}}
+\doxysubsubsection{\texorpdfstring{\_ressourcePath}{\_ressourcePath}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Image\+::\+\_\+ressource\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{Image_8hpp}{Image.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/\mbox{\hyperlink{Image_8cpp}{Image.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,261 @@
+\hypertarget{classBBM_1_1AnimationsComponent}{}\doxysection{B\+BM\+::Animations\+Component Class Reference}
+\label{classBBM_1_1AnimationsComponent}\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+
+
+{\ttfamily \#include $<$Animations\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Animations\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{classBBM_1_1AnimationsComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Animations\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1AnimationsComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1AnimationsComponent_ab11abcdf13c666cffab59ef36ad303a4}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a5c756faf75bed0628c6a65b3b61026ff}{get\+Current\+Anim\+Index}} () const
+\begin{DoxyCompactList}\small\item\em get the current animation index \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1AnimationsComponent_aa3e39c1ba0e3dfbcd2b00fbd05bd6be1}{set\+Anim\+Index}} (int anim\+Index)
+\begin{DoxyCompactList}\small\item\em Set the animation index to use. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a1020f013fbd8136ec23513fc822f8b9c}{get\+Current\+Anim\+Frame\+Counter}} () const
+\begin{DoxyCompactList}\small\item\em get animation frame counter \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a7d3558300048cbd1242e1789913180e6}{get\+Current\+Model\+Anim}} ()
+\begin{DoxyCompactList}\small\item\em get the current \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a7b63a50a3966cfe21eeb68eb7bab8a4b}{set\+Current\+Anim\+Frame\+Counter}} (size\+\_\+t anim\+Frame\+Counter)
+\begin{DoxyCompactList}\small\item\em set the anim frame counter \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a6a619cb3651d566aac825a83de81c9fe}{reset\+Current\+Anim\+Frame\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em Set the internal anim counter to 0. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a1b830f97048016908efd456f6ac82570}{inc\+Current\+Anim\+Frame\+Counter}} ()
+\begin{DoxyCompactList}\small\item\em Increment the internal anim counter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a84309d66583fbf29a346a2cc64b5b228}{set\+Anim\+Disabled}} (bool disable)
+\begin{DoxyCompactList}\small\item\em Allow to play pause animations. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a25fd0cc4b28d3633104ba6815d55988f}{is\+Anim\+Disabled}} () const
+\begin{DoxyCompactList}\small\item\em To know if the animation will be updated or not. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AnimationsComponent_a8ea40cb4e9247ff61ee6c6c69785eb20}{Animations\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const std\+::string \&path, int anim\+Index, bool play=true)
+\begin{DoxyCompactList}\small\item\em ctor entity and the path of the animation file \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AnimationsComponent_a10e022abaf8293837056f20720034801}{Animations\+Component}} (const \mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em copy ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AnimationsComponent_ac6d66c38a4f58d3d6be0980d2982d976}{$\sim$\+Animations\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}} \& \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a73a5af2dd0578598aa4bf62d2f0be062}{operator=}} (const \mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em assignment operator \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1ModelAnimations}{R\+A\+Y\+::\+Model\+Animations}} \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a78b8d643fe336a32989cd3cd46505e1c}{\+\_\+model\+Animation}}
+\begin{DoxyCompactList}\small\item\em To get the animation data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a3d104c36a297af2da59789cf787cb7cf}{\+\_\+current\+Anim\+Index}}
+\begin{DoxyCompactList}\small\item\em The index of the. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1AnimationsComponent_a733298ab9653d04c76ba1b22813860cf}{\+\_\+anim\+Disabled}}
+\begin{DoxyCompactList}\small\item\em Bool allowing to play pause an animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a8ea40cb4e9247ff61ee6c6c69785eb20}\label{classBBM_1_1AnimationsComponent_a8ea40cb4e9247ff61ee6c6c69785eb20}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!AnimationsComponent@{AnimationsComponent}}
+\index{AnimationsComponent@{AnimationsComponent}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{AnimationsComponent()}{AnimationsComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Animations\+Component\+::\+Animations\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const std\+::string \&}]{path,  }\item[{int}]{anim\+Index,  }\item[{bool}]{play = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+ctor entity and the path of the animation file 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a10e022abaf8293837056f20720034801}\label{classBBM_1_1AnimationsComponent_a10e022abaf8293837056f20720034801}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!AnimationsComponent@{AnimationsComponent}}
+\index{AnimationsComponent@{AnimationsComponent}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{AnimationsComponent()}{AnimationsComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Animations\+Component\+::\+Animations\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+copy ctor 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_ac6d66c38a4f58d3d6be0980d2982d976}\label{classBBM_1_1AnimationsComponent_ac6d66c38a4f58d3d6be0980d2982d976}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!````~AnimationsComponent@{$\sim$AnimationsComponent}}
+\index{````~AnimationsComponent@{$\sim$AnimationsComponent}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$AnimationsComponent()}{~AnimationsComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Animations\+Component\+::$\sim$\+Animations\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+dtor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_ab11abcdf13c666cffab59ef36ad303a4}\label{classBBM_1_1AnimationsComponent_ab11abcdf13c666cffab59ef36ad303a4}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Animations\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a1020f013fbd8136ec23513fc822f8b9c}\label{classBBM_1_1AnimationsComponent_a1020f013fbd8136ec23513fc822f8b9c}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!getCurrentAnimFrameCounter@{getCurrentAnimFrameCounter}}
+\index{getCurrentAnimFrameCounter@{getCurrentAnimFrameCounter}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{getCurrentAnimFrameCounter()}{getCurrentAnimFrameCounter()}}
+{\footnotesize\ttfamily size\+\_\+t B\+B\+M\+::\+Animations\+Component\+::get\+Current\+Anim\+Frame\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get animation frame counter 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a5c756faf75bed0628c6a65b3b61026ff}\label{classBBM_1_1AnimationsComponent_a5c756faf75bed0628c6a65b3b61026ff}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!getCurrentAnimIndex@{getCurrentAnimIndex}}
+\index{getCurrentAnimIndex@{getCurrentAnimIndex}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{getCurrentAnimIndex()}{getCurrentAnimIndex()}}
+{\footnotesize\ttfamily size\+\_\+t B\+B\+M\+::\+Animations\+Component\+::get\+Current\+Anim\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+get the current animation index 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a7d3558300048cbd1242e1789913180e6}\label{classBBM_1_1AnimationsComponent_a7d3558300048cbd1242e1789913180e6}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!getCurrentModelAnim@{getCurrentModelAnim}}
+\index{getCurrentModelAnim@{getCurrentModelAnim}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{getCurrentModelAnim()}{getCurrentModelAnim()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimation}{R\+A\+Y\+::\+Model\+Animation}} \& B\+B\+M\+::\+Animations\+Component\+::get\+Current\+Model\+Anim (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+get the current 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a1b830f97048016908efd456f6ac82570}\label{classBBM_1_1AnimationsComponent_a1b830f97048016908efd456f6ac82570}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!incCurrentAnimFrameCounter@{incCurrentAnimFrameCounter}}
+\index{incCurrentAnimFrameCounter@{incCurrentAnimFrameCounter}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{incCurrentAnimFrameCounter()}{incCurrentAnimFrameCounter()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Animations\+Component\+::inc\+Current\+Anim\+Frame\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Increment the internal anim counter. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a25fd0cc4b28d3633104ba6815d55988f}\label{classBBM_1_1AnimationsComponent_a25fd0cc4b28d3633104ba6815d55988f}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!isAnimDisabled@{isAnimDisabled}}
+\index{isAnimDisabled@{isAnimDisabled}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{isAnimDisabled()}{isAnimDisabled()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Animations\+Component\+::is\+Anim\+Disabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+To know if the animation will be updated or not. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a73a5af2dd0578598aa4bf62d2f0be062}\label{classBBM_1_1AnimationsComponent_a73a5af2dd0578598aa4bf62d2f0be062}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}}\& B\+B\+M\+::\+Animations\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1AnimationsComponent}{Animations\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+assignment operator 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a6a619cb3651d566aac825a83de81c9fe}\label{classBBM_1_1AnimationsComponent_a6a619cb3651d566aac825a83de81c9fe}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!resetCurrentAnimFrameCounter@{resetCurrentAnimFrameCounter}}
+\index{resetCurrentAnimFrameCounter@{resetCurrentAnimFrameCounter}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{resetCurrentAnimFrameCounter()}{resetCurrentAnimFrameCounter()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Animations\+Component\+::reset\+Current\+Anim\+Frame\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set the internal anim counter to 0. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a84309d66583fbf29a346a2cc64b5b228}\label{classBBM_1_1AnimationsComponent_a84309d66583fbf29a346a2cc64b5b228}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!setAnimDisabled@{setAnimDisabled}}
+\index{setAnimDisabled@{setAnimDisabled}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{setAnimDisabled()}{setAnimDisabled()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Animations\+Component\+::set\+Anim\+Disabled (\begin{DoxyParamCaption}\item[{bool}]{disable }\end{DoxyParamCaption})}
+
+
+
+Allow to play pause animations. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_aa3e39c1ba0e3dfbcd2b00fbd05bd6be1}\label{classBBM_1_1AnimationsComponent_aa3e39c1ba0e3dfbcd2b00fbd05bd6be1}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!setAnimIndex@{setAnimIndex}}
+\index{setAnimIndex@{setAnimIndex}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{setAnimIndex()}{setAnimIndex()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Animations\+Component\+::set\+Anim\+Index (\begin{DoxyParamCaption}\item[{int}]{anim\+Index }\end{DoxyParamCaption})}
+
+
+
+Set the animation index to use. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a7b63a50a3966cfe21eeb68eb7bab8a4b}\label{classBBM_1_1AnimationsComponent_a7b63a50a3966cfe21eeb68eb7bab8a4b}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!setCurrentAnimFrameCounter@{setCurrentAnimFrameCounter}}
+\index{setCurrentAnimFrameCounter@{setCurrentAnimFrameCounter}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{setCurrentAnimFrameCounter()}{setCurrentAnimFrameCounter()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Animations\+Component\+::set\+Current\+Anim\+Frame\+Counter (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{anim\+Frame\+Counter }\end{DoxyParamCaption})}
+
+
+
+set the anim frame counter 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a733298ab9653d04c76ba1b22813860cf}\label{classBBM_1_1AnimationsComponent_a733298ab9653d04c76ba1b22813860cf}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!\_animDisabled@{\_animDisabled}}
+\index{\_animDisabled@{\_animDisabled}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{\_animDisabled}{\_animDisabled}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Animations\+Component\+::\+\_\+anim\+Disabled\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Bool allowing to play pause an animation. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a3d104c36a297af2da59789cf787cb7cf}\label{classBBM_1_1AnimationsComponent_a3d104c36a297af2da59789cf787cb7cf}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!\_currentAnimIndex@{\_currentAnimIndex}}
+\index{\_currentAnimIndex@{\_currentAnimIndex}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{\_currentAnimIndex}{\_currentAnimIndex}}
+{\footnotesize\ttfamily int B\+B\+M\+::\+Animations\+Component\+::\+\_\+current\+Anim\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The index of the. 
+
+\mbox{\Hypertarget{classBBM_1_1AnimationsComponent_a78b8d643fe336a32989cd3cd46505e1c}\label{classBBM_1_1AnimationsComponent_a78b8d643fe336a32989cd3cd46505e1c}} 
+\index{BBM::AnimationsComponent@{BBM::AnimationsComponent}!\_modelAnimation@{\_modelAnimation}}
+\index{\_modelAnimation@{\_modelAnimation}!BBM::AnimationsComponent@{BBM::AnimationsComponent}}
+\doxysubsubsection{\texorpdfstring{\_modelAnimation}{\_modelAnimation}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1ModelAnimations}{R\+A\+Y\+::\+Model\+Animations}} B\+B\+M\+::\+Animations\+Component\+::\+\_\+model\+Animation\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+To get the animation data. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Animation/\mbox{\hyperlink{AnimationsComponent_8hpp}{Animations\+Component.\+hpp}}\item 
+sources/\+Component/\+Animation/\mbox{\hyperlink{AnimationsComponent_8cpp}{Animations\+Component.\+cpp}}\end{DoxyCompactItemize}

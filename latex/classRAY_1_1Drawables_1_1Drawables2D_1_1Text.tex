@@ -1,0 +1,318 @@
+\hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{}\doxysection{R\+AY\+::Drawables\+::Drawables2D\+::Text Class Reference}
+\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} in a two-\/dimensionnal space.  
+
+
+
+
+{\ttfamily \#include $<$Text.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Drawables\+::Drawables2D\+::Text\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classRAY_1_1Drawables_1_1Drawables2D_1_1Text__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Drawables\+::Drawables2D\+::Text\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classRAY_1_1Drawables_1_1Drawables2D_1_1Text__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a40263386d2953562636484bd8cc74250}{Text}} (std\+::string content, int font\+Size, const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&position, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a59468397823acad436cdfced3114e06b}{Text}} (std\+::string content, int font\+Size, int x, int y, const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&color)
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a33b97a6ea523e720ce1749aaa978c981}{Text}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a1ccb0362c103e69ae1527c8088d22462}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \&)=default
+\begin{DoxyCompactList}\small\item\em A text is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a0eb408692cd779be13e4f3d604f88fcc}{$\sim$\+Text}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+const std\+::string \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_aaf6b4658ceb287422faa3977272f6a0f}{get\+String}} (void)
+\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ae1a22fa4f65bee9f6b7d87bbd918824d}{get\+Font\+Size}} (void) const
+\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a82f052b5e48ad42119689cfbae657d87}{get\+Letter\+Spacing}} (void) const
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a5f1918013dea030ea5fd63285ef5d1c0}{set\+Font}} (const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&font)
+\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a8af44dbc35262d7fff8b245a551d756f}{set\+Text}} (const std\+::string \&text)
+\begin{DoxyCompactList}\small\item\em set text content \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a9e53b46fcb428af12dd676025f2671ce}{set\+Letter\+Spacing}} (int spacing)
+\begin{DoxyCompactList}\small\item\em set text spacing \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a7a4182e81855495589ddf4d2ea3ff4d1}{set\+Font\+Size}} (int size)
+\begin{DoxyCompactList}\small\item\em set font size \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a90ef53b8cfc7573b4d33c805c105766d}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&) override
+\begin{DoxyCompactList}\small\item\em Draw point on window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a919b4317edcfe045799e72737cd5a5c3}{draw\+On}} (\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&image) override
+\begin{DoxyCompactList}\small\item\em Draw point on image. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a629745b18037d81b2832b0c0a699bf81}{Default\+Letter\+Spacing}} = 1
+\begin{DoxyCompactList}\small\item\em The Letter spacing used when creating a \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ac655ee12fcc4f9bb07941b11ad764d29}{\+\_\+text}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}}, just text. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Font}{Font}} \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a200f8959c78b4449bf0a29f9d2db4e68}{\+\_\+font}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Font}{Font}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a34b79b10a2f2da239a8cc5b43f08b139}{\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em font size of the text \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ab0790cc76043178afa2b04d7bff545bb}{\+\_\+spacing}}
+\begin{DoxyCompactList}\small\item\em spacing of chars \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} in a two-\/dimensionnal space. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a40263386d2953562636484bd8cc74250}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a40263386d2953562636484bd8cc74250}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!Text@{Text}}
+\index{Text@{Text}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{Text()}{Text()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{content,  }\item[{int}]{font\+Size,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector2}{Vector2}} \&}]{position,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content} & text \\
+\hline
+{\em font\+Size} & size of the text \\
+\hline
+{\em position} & position of top-\/left point \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the text ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a59468397823acad436cdfced3114e06b}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a59468397823acad436cdfced3114e06b}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!Text@{Text}}
+\index{Text@{Text}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{Text()}{Text()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+Text (\begin{DoxyParamCaption}\item[{std\+::string}]{content,  }\item[{int}]{font\+Size,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content} & text \\
+\hline
+{\em font\+Size} & size of the text \\
+\hline
+{\em x} & x-\/position of top-\/left point ~\newline
+ \\
+\hline
+{\em y} & y-\/position of top-\/left point \\
+\hline
+{\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}} & \mbox{\hyperlink{classRAY_1_1Color}{Color}} of the text ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a33b97a6ea523e720ce1749aaa978c981}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a33b97a6ea523e720ce1749aaa978c981}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!Text@{Text}}
+\index{Text@{Text}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{Text()}{Text()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+Text (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a0eb408692cd779be13e4f3d604f88fcc}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a0eb408692cd779be13e4f3d604f88fcc}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!````~Text@{$\sim$Text}}
+\index{````~Text@{$\sim$Text}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{$\sim$Text()}{~Text()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::$\sim$\+Text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a919b4317edcfe045799e72737cd5a5c3}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a919b4317edcfe045799e72737cd5a5c3}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Image}{R\+A\+Y\+::\+Image}} \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on image. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a048a9878e8aa9245b2819cba014da664}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a90ef53b8cfc7573b4d33c805c105766d}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a90ef53b8cfc7573b4d33c805c105766d}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!drawOn@{drawOn}}
+\index{drawOn@{drawOn}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{drawOn()}{drawOn()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::draw\+On (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Window}{R\+A\+Y\+::\+Window}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Draw point on window. 
+
+
+
+Implements \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D_a4ff6db636c2778ff94bc391abc65bcc5}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}}.
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ae1a22fa4f65bee9f6b7d87bbd918824d}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ae1a22fa4f65bee9f6b7d87bbd918824d}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!getFontSize@{getFontSize}}
+\index{getFontSize@{getFontSize}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{getFontSize()}{getFontSize()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::get\+Font\+Size (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the font size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a82f052b5e48ad42119689cfbae657d87}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a82f052b5e48ad42119689cfbae657d87}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!getLetterSpacing@{getLetterSpacing}}
+\index{getLetterSpacing@{getLetterSpacing}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{getLetterSpacing()}{getLetterSpacing()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::get\+Letter\+Spacing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+the letter spacing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_aaf6b4658ceb287422faa3977272f6a0f}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_aaf6b4658ceb287422faa3977272f6a0f}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!getString@{getString}}
+\index{getString@{getString}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{getString()}{getString()}}
+{\footnotesize\ttfamily const std\+::string \& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::get\+String (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+the text\textquotesingle{}s content 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a1ccb0362c103e69ae1527c8088d22462}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a1ccb0362c103e69ae1527c8088d22462}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}}\& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A text is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a5f1918013dea030ea5fd63285ef5d1c0}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a5f1918013dea030ea5fd63285ef5d1c0}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!setFont@{setFont}}
+\index{setFont@{setFont}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{setFont()}{setFont()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::set\+Font (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Font}{Font}} \&}]{font }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+set font 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a7a4182e81855495589ddf4d2ea3ff4d1}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a7a4182e81855495589ddf4d2ea3ff4d1}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!setFontSize@{setFontSize}}
+\index{setFontSize@{setFontSize}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{setFontSize()}{setFontSize()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::set\+Font\+Size (\begin{DoxyParamCaption}\item[{int}]{size }\end{DoxyParamCaption})}
+
+
+
+set font size 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a9e53b46fcb428af12dd676025f2671ce}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a9e53b46fcb428af12dd676025f2671ce}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!setLetterSpacing@{setLetterSpacing}}
+\index{setLetterSpacing@{setLetterSpacing}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{setLetterSpacing()}{setLetterSpacing()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::set\+Letter\+Spacing (\begin{DoxyParamCaption}\item[{int}]{spacing }\end{DoxyParamCaption})}
+
+
+
+set text spacing 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a8af44dbc35262d7fff8b245a551d756f}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a8af44dbc35262d7fff8b245a551d756f}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!setText@{setText}}
+\index{setText@{setText}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{setText()}{setText()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} \& R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::set\+Text (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{text }\end{DoxyParamCaption})}
+
+
+
+set text content 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a200f8959c78b4449bf0a29f9d2db4e68}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a200f8959c78b4449bf0a29f9d2db4e68}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!\_font@{\_font}}
+\index{\_font@{\_font}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{\_font}{\_font}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Font}{Font}} R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+\_\+font\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Font}{Font}}. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a34b79b10a2f2da239a8cc5b43f08b139}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a34b79b10a2f2da239a8cc5b43f08b139}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!\_size@{\_size}}
+\index{\_size@{\_size}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{\_size}{\_size}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+font size of the text 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ab0790cc76043178afa2b04d7bff545bb}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ab0790cc76043178afa2b04d7bff545bb}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!\_spacing@{\_spacing}}
+\index{\_spacing@{\_spacing}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{\_spacing}{\_spacing}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+\_\+spacing\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+spacing of chars 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ac655ee12fcc4f9bb07941b11ad764d29}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_ac655ee12fcc4f9bb07941b11ad764d29}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!\_text@{\_text}}
+\index{\_text@{\_text}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{\_text}{\_text}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+\_\+text\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}}, just text. 
+
+\mbox{\Hypertarget{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a629745b18037d81b2832b0c0a699bf81}\label{classRAY_1_1Drawables_1_1Drawables2D_1_1Text_a629745b18037d81b2832b0c0a699bf81}} 
+\index{RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}!DefaultLetterSpacing@{DefaultLetterSpacing}}
+\index{DefaultLetterSpacing@{DefaultLetterSpacing}!RAY::Drawables::Drawables2D::Text@{RAY::Drawables::Drawables2D::Text}}
+\doxysubsubsection{\texorpdfstring{DefaultLetterSpacing}{DefaultLetterSpacing}}
+{\footnotesize\ttfamily constexpr int R\+A\+Y\+::\+Drawables\+::\+Drawables2\+D\+::\+Text\+::\+Default\+Letter\+Spacing = 1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+The Letter spacing used when creating a \mbox{\hyperlink{classRAY_1_1Drawables_1_1Drawables2D_1_1Text}{Text}} instance. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Drawables/2\+D/\mbox{\hyperlink{Text_8hpp}{Text.\+hpp}}\item 
+lib/\+Ray/sources/\+Drawables/2\+D/\mbox{\hyperlink{Text_8cpp}{Text.\+cpp}}\end{DoxyCompactItemize}

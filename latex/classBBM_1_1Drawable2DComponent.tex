@@ -1,0 +1,166 @@
+\hypertarget{classBBM_1_1Drawable2DComponent}{}\doxysection{B\+BM\+::Drawable2\+D\+Component Class Reference}
+\label{classBBM_1_1Drawable2DComponent}\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+
+
+{\ttfamily \#include $<$Drawable2\+D\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Drawable2\+D\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classBBM_1_1Drawable2DComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Drawable2\+D\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1Drawable2DComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBBM_1_1Drawable2DComponent_abc04fe96351a513d79e4bf9c2685cf73}{Drawable2\+D\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}} $>$ drawable2D, bool draw\+Behind3D=false)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename ... Params$>$ }\\\mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a11a5bc704ecad6d04c9a4bb15c21b981}{Drawable2\+D\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classWAL_1_1TypeHolder}{W\+A\+L\+::\+Type\+Holder}}$<$ T $>$, Params \&\&...params)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T , typename ... Params$>$ }\\\mbox{\hyperlink{classBBM_1_1Drawable2DComponent_accfbd003d470b8dcc7f7aaa267670c1a}{Drawable2\+D\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{classWAL_1_1TypeHolder}{W\+A\+L\+::\+Type\+Holder}}$<$ T $>$, bool draw\+Behind3D, Params \&\&...params)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a0a2d90e754f54f2355cd7232c8518328}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a6463a37425973f5e3fec09a014820155}{Drawable2\+D\+Component}} (const \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a21ef0b3322687f382107bf41a8954fd2}{$\sim$\+Drawable2\+D\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} \& \mbox{\hyperlink{classBBM_1_1Drawable2DComponent_ad3fc654cf030372c503d7608724b2bdc}{operator=}} (const \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Default assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1Drawable2DComponent_a7a8f15177eb5679ea38d6c791720e08c}{draw\+Before3D}} = false
+\begin{DoxyCompactList}\small\item\em Tells the renderer to draw in a particular order. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}} $>$ \mbox{\hyperlink{classBBM_1_1Drawable2DComponent_ab237218d38376037256a8943750747e5}{drawable}}
+\begin{DoxyCompactList}\small\item\em The type of the component. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_abc04fe96351a513d79e4bf9c2685cf73}\label{classBBM_1_1Drawable2DComponent_abc04fe96351a513d79e4bf9c2685cf73}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!Drawable2DComponent@{Drawable2DComponent}}
+\index{Drawable2DComponent@{Drawable2DComponent}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{Drawable2DComponent()}{Drawable2DComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Drawable2\+D\+Component\+::\+Drawable2\+D\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}} $>$}]{drawable2D,  }\item[{bool}]{draw\+Behind3D = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_a11a5bc704ecad6d04c9a4bb15c21b981}\label{classBBM_1_1Drawable2DComponent_a11a5bc704ecad6d04c9a4bb15c21b981}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!Drawable2DComponent@{Drawable2DComponent}}
+\index{Drawable2DComponent@{Drawable2DComponent}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{Drawable2DComponent()}{Drawable2DComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Params$>$ \\
+B\+B\+M\+::\+Drawable2\+D\+Component\+::\+Drawable2\+D\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classWAL_1_1TypeHolder}{W\+A\+L\+::\+Type\+Holder}}$<$ T $>$}]{,  }\item[{Params \&\&...}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_accfbd003d470b8dcc7f7aaa267670c1a}\label{classBBM_1_1Drawable2DComponent_accfbd003d470b8dcc7f7aaa267670c1a}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!Drawable2DComponent@{Drawable2DComponent}}
+\index{Drawable2DComponent@{Drawable2DComponent}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{Drawable2DComponent()}{Drawable2DComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$typename T , typename ... Params$>$ \\
+B\+B\+M\+::\+Drawable2\+D\+Component\+::\+Drawable2\+D\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{classWAL_1_1TypeHolder}{W\+A\+L\+::\+Type\+Holder}}$<$ T $>$}]{,  }\item[{bool}]{draw\+Behind3D,  }\item[{Params \&\&...}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_a6463a37425973f5e3fec09a014820155}\label{classBBM_1_1Drawable2DComponent_a6463a37425973f5e3fec09a014820155}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!Drawable2DComponent@{Drawable2DComponent}}
+\index{Drawable2DComponent@{Drawable2DComponent}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{Drawable2DComponent()}{Drawable2DComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Drawable2\+D\+Component\+::\+Drawable2\+D\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_a21ef0b3322687f382107bf41a8954fd2}\label{classBBM_1_1Drawable2DComponent_a21ef0b3322687f382107bf41a8954fd2}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!````~Drawable2DComponent@{$\sim$Drawable2DComponent}}
+\index{````~Drawable2DComponent@{$\sim$Drawable2DComponent}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$Drawable2DComponent()}{~Drawable2DComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Drawable2\+D\+Component\+::$\sim$\+Drawable2\+D\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_a0a2d90e754f54f2355cd7232c8518328}\label{classBBM_1_1Drawable2DComponent_a0a2d90e754f54f2355cd7232c8518328}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}}$\ast$ B\+B\+M\+::\+Drawable2\+D\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_ad3fc654cf030372c503d7608724b2bdc}\label{classBBM_1_1Drawable2DComponent_ad3fc654cf030372c503d7608724b2bdc}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}}\& B\+B\+M\+::\+Drawable2\+D\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1Drawable2DComponent}{Drawable2\+D\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Default assignment operator. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_ab237218d38376037256a8943750747e5}\label{classBBM_1_1Drawable2DComponent_ab237218d38376037256a8943750747e5}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!drawable@{drawable}}
+\index{drawable@{drawable}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{drawable}{drawable}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classRAY_1_1Drawables_1_1ADrawable2D}{R\+A\+Y\+::\+Drawables\+::\+A\+Drawable2D}}$>$ B\+B\+M\+::\+Drawable2\+D\+Component\+::drawable}
+
+
+
+The type of the component. 
+
+\mbox{\Hypertarget{classBBM_1_1Drawable2DComponent_a7a8f15177eb5679ea38d6c791720e08c}\label{classBBM_1_1Drawable2DComponent_a7a8f15177eb5679ea38d6c791720e08c}} 
+\index{BBM::Drawable2DComponent@{BBM::Drawable2DComponent}!drawBefore3D@{drawBefore3D}}
+\index{drawBefore3D@{drawBefore3D}!BBM::Drawable2DComponent@{BBM::Drawable2DComponent}}
+\doxysubsubsection{\texorpdfstring{drawBefore3D}{drawBefore3D}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Drawable2\+D\+Component\+::draw\+Before3D = false}
+
+
+
+Tells the renderer to draw in a particular order. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Renderer/\mbox{\hyperlink{Drawable2DComponent_8hpp}{Drawable2\+D\+Component.\+hpp}}\end{DoxyCompactItemize}

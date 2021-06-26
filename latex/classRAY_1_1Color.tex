@@ -1,0 +1,272 @@
+\hypertarget{classRAY_1_1Color}{}\doxysection{R\+AY\+::Color Class Reference}
+\label{classRAY_1_1Color}\index{RAY::Color@{RAY::Color}}
+
+
+Object representation of color.  
+
+
+
+
+{\ttfamily \#include $<$Color.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Color\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classRAY_1_1Color__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classRAY_1_1Color_ad63501cf2021f5ac57d6ac9c46428656}{Color}} (unsigned char r, unsigned char g, unsigned char b, unsigned char a)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classRAY_1_1Color}{Color}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color_ad864afae8bae155e7335c06e8f7e2e8e}{Color}} (float h, float s, float v)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classRAY_1_1Color}{Color}} constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color_a04b46200d106950d09292890d6302f69}{Color}} (const \+::\mbox{\hyperlink{classRAY_1_1Color}{Color}} \&)
+\begin{DoxyCompactList}\small\item\em A constructor using ray\textquotesingle{}s own color struct @info Useful when want to use pre-\/defined color. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color_a6682d1629dc7db8ec9debf62fbf46675}{Color}} (const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&)=default
+\begin{DoxyCompactList}\small\item\em A default copy constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color_a0fa0779403918e7d269870f35f1817de}{Color}} (unsigned int hex\+Value)
+\begin{DoxyCompactList}\small\item\em Create a color from an hexadecimal value. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color_a3a1d7d8b79c33938ab7af19e94bba855}{$\sim$\+Color}} ()=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \& \mbox{\hyperlink{classRAY_1_1Color_a828172529532b7f391e9b65d82868936}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&)=default
+\begin{DoxyCompactList}\small\item\em An color is assignable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \& \mbox{\hyperlink{classRAY_1_1Color_a0601b43c85b68746d5481261bf6f76fc}{setR}} (unsigned char r)
+\begin{DoxyCompactList}\small\item\em set R-\/component of color \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \& \mbox{\hyperlink{classRAY_1_1Color_ad96491594782bd4acc9a5edddf57b85c}{setG}} (unsigned char g)
+\begin{DoxyCompactList}\small\item\em set G-\/component of color \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \& \mbox{\hyperlink{classRAY_1_1Color_adbfe14499dd72807690a4faf410f5df6}{setB}} (unsigned char b)
+\begin{DoxyCompactList}\small\item\em set B-\/component of color \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Color}{Color}} \& \mbox{\hyperlink{classRAY_1_1Color_aa27bceb6062318f929ce9e2b675530b0}{setA}} (unsigned char a)
+\begin{DoxyCompactList}\small\item\em set A-\/component of color \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{classRAY_1_1Color_af07b1f2d749156ef29980c8240610156}{getR}} (void) const
+\item 
+unsigned char \mbox{\hyperlink{classRAY_1_1Color_ae8dd517189b45ce3e4745aac7245ad23}{getG}} (void) const
+\item 
+unsigned char \mbox{\hyperlink{classRAY_1_1Color_ae8786310ea1d5e4405725c5cab780901}{getB}} (void) const
+\item 
+unsigned char \mbox{\hyperlink{classRAY_1_1Color_af1d7585168306ee6f6ea9bd96ca19123}{getA}} (void) const
+\item 
+int \mbox{\hyperlink{classRAY_1_1Color_aa235df8c63ac4b57403a96ebfe24de6b}{to\+Hex}} (void) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\+::\mbox{\hyperlink{classRAY_1_1Color}{Color}} \mbox{\hyperlink{classRAY_1_1Color_ac276c3afb266ec9d0269c9278ac92be3}{\+\_\+color}}
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{classRAY_1_1Color}{Color}}, really, that\textquotesingle{}s just it... \end{DoxyCompactList}\item 
+I\+N\+T\+E\+R\+N\+AL \mbox{\hyperlink{classRAY_1_1Color_a3be89920c83fcd6487f473e71907ce39}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}\+: operator \+::\mbox{\hyperlink{classRAY_1_1Color}{Color}}() const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Object representation of color. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Color_ad63501cf2021f5ac57d6ac9c46428656}\label{classRAY_1_1Color_ad63501cf2021f5ac57d6ac9c46428656}} 
+\index{RAY::Color@{RAY::Color}!Color@{Color}}
+\index{Color@{Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::\+Color (\begin{DoxyParamCaption}\item[{unsigned char}]{r,  }\item[{unsigned char}]{g,  }\item[{unsigned char}]{b,  }\item[{unsigned char}]{a }\end{DoxyParamCaption})}
+
+
+
+A \mbox{\hyperlink{classRAY_1_1Color}{Color}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & R-\/component of color \\
+\hline
+{\em g} & B-\/component of color \\
+\hline
+{\em g} & G-\/component of color \\
+\hline
+{\em a} & A-\/component of color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Color_ad864afae8bae155e7335c06e8f7e2e8e}\label{classRAY_1_1Color_ad864afae8bae155e7335c06e8f7e2e8e}} 
+\index{RAY::Color@{RAY::Color}!Color@{Color}}
+\index{Color@{Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::\+Color (\begin{DoxyParamCaption}\item[{float}]{h,  }\item[{float}]{s,  }\item[{float}]{v }\end{DoxyParamCaption})}
+
+
+
+A \mbox{\hyperlink{classRAY_1_1Color}{Color}} constructor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h} & H-\/component of color \\
+\hline
+{\em s} & S-\/component of color \\
+\hline
+{\em v} & V-\/component of color \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classRAY_1_1Color_a04b46200d106950d09292890d6302f69}\label{classRAY_1_1Color_a04b46200d106950d09292890d6302f69}} 
+\index{RAY::Color@{RAY::Color}!Color@{Color}}
+\index{Color@{Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::\+Color (\begin{DoxyParamCaption}\item[{const \+::\mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{color }\end{DoxyParamCaption})}
+
+
+
+A constructor using ray\textquotesingle{}s own color struct @info Useful when want to use pre-\/defined color. 
+
+\mbox{\Hypertarget{classRAY_1_1Color_a6682d1629dc7db8ec9debf62fbf46675}\label{classRAY_1_1Color_a6682d1629dc7db8ec9debf62fbf46675}} 
+\index{RAY::Color@{RAY::Color}!Color@{Color}}
+\index{Color@{Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::\+Color (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default copy constructor. 
+
+\mbox{\Hypertarget{classRAY_1_1Color_a0fa0779403918e7d269870f35f1817de}\label{classRAY_1_1Color_a0fa0779403918e7d269870f35f1817de}} 
+\index{RAY::Color@{RAY::Color}!Color@{Color}}
+\index{Color@{Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{Color()}{Color()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::\+Color (\begin{DoxyParamCaption}\item[{unsigned int}]{hex\+Value }\end{DoxyParamCaption})}
+
+
+
+Create a color from an hexadecimal value. 
+
+\mbox{\Hypertarget{classRAY_1_1Color_a3a1d7d8b79c33938ab7af19e94bba855}\label{classRAY_1_1Color_a3a1d7d8b79c33938ab7af19e94bba855}} 
+\index{RAY::Color@{RAY::Color}!````~Color@{$\sim$Color}}
+\index{````~Color@{$\sim$Color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{$\sim$Color()}{~Color()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Color\+::$\sim$\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Color_af1d7585168306ee6f6ea9bd96ca19123}\label{classRAY_1_1Color_af1d7585168306ee6f6ea9bd96ca19123}} 
+\index{RAY::Color@{RAY::Color}!getA@{getA}}
+\index{getA@{getA}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{getA()}{getA()}}
+{\footnotesize\ttfamily unsigned char R\+A\+Y\+::\+Color\+::getA (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+A-\/component of color 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Color_ae8786310ea1d5e4405725c5cab780901}\label{classRAY_1_1Color_ae8786310ea1d5e4405725c5cab780901}} 
+\index{RAY::Color@{RAY::Color}!getB@{getB}}
+\index{getB@{getB}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{getB()}{getB()}}
+{\footnotesize\ttfamily unsigned char R\+A\+Y\+::\+Color\+::getB (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+B-\/component of color 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Color_ae8dd517189b45ce3e4745aac7245ad23}\label{classRAY_1_1Color_ae8dd517189b45ce3e4745aac7245ad23}} 
+\index{RAY::Color@{RAY::Color}!getG@{getG}}
+\index{getG@{getG}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{getG()}{getG()}}
+{\footnotesize\ttfamily unsigned char R\+A\+Y\+::\+Color\+::getG (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+G-\/component of color 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Color_af07b1f2d749156ef29980c8240610156}\label{classRAY_1_1Color_af07b1f2d749156ef29980c8240610156}} 
+\index{RAY::Color@{RAY::Color}!getR@{getR}}
+\index{getR@{getR}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{getR()}{getR()}}
+{\footnotesize\ttfamily unsigned char R\+A\+Y\+::\+Color\+::getR (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+R-\/component of color 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classRAY_1_1Color_a828172529532b7f391e9b65d82868936}\label{classRAY_1_1Color_a828172529532b7f391e9b65d82868936}} 
+\index{RAY::Color@{RAY::Color}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}}\& R\+A\+Y\+::\+Color\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Color}{Color}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+An color is assignable. 
+
+\mbox{\Hypertarget{classRAY_1_1Color_aa27bceb6062318f929ce9e2b675530b0}\label{classRAY_1_1Color_aa27bceb6062318f929ce9e2b675530b0}} 
+\index{RAY::Color@{RAY::Color}!setA@{setA}}
+\index{setA@{setA}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{setA()}{setA()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}} \& R\+A\+Y\+::\+Color\+::setA (\begin{DoxyParamCaption}\item[{unsigned char}]{a }\end{DoxyParamCaption})}
+
+
+
+set A-\/component of color 
+
+\mbox{\Hypertarget{classRAY_1_1Color_adbfe14499dd72807690a4faf410f5df6}\label{classRAY_1_1Color_adbfe14499dd72807690a4faf410f5df6}} 
+\index{RAY::Color@{RAY::Color}!setB@{setB}}
+\index{setB@{setB}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{setB()}{setB()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}} \& R\+A\+Y\+::\+Color\+::setB (\begin{DoxyParamCaption}\item[{unsigned char}]{b }\end{DoxyParamCaption})}
+
+
+
+set B-\/component of color 
+
+\mbox{\Hypertarget{classRAY_1_1Color_ad96491594782bd4acc9a5edddf57b85c}\label{classRAY_1_1Color_ad96491594782bd4acc9a5edddf57b85c}} 
+\index{RAY::Color@{RAY::Color}!setG@{setG}}
+\index{setG@{setG}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{setG()}{setG()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}} \& R\+A\+Y\+::\+Color\+::setG (\begin{DoxyParamCaption}\item[{unsigned char}]{g }\end{DoxyParamCaption})}
+
+
+
+set G-\/component of color 
+
+\mbox{\Hypertarget{classRAY_1_1Color_a0601b43c85b68746d5481261bf6f76fc}\label{classRAY_1_1Color_a0601b43c85b68746d5481261bf6f76fc}} 
+\index{RAY::Color@{RAY::Color}!setR@{setR}}
+\index{setR@{setR}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{setR()}{setR()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Color}{Color}} \& R\+A\+Y\+::\+Color\+::setR (\begin{DoxyParamCaption}\item[{unsigned char}]{r }\end{DoxyParamCaption})}
+
+
+
+set R-\/component of color 
+
+\mbox{\Hypertarget{classRAY_1_1Color_aa235df8c63ac4b57403a96ebfe24de6b}\label{classRAY_1_1Color_aa235df8c63ac4b57403a96ebfe24de6b}} 
+\index{RAY::Color@{RAY::Color}!toHex@{toHex}}
+\index{toHex@{toHex}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{toHex()}{toHex()}}
+{\footnotesize\ttfamily int R\+A\+Y\+::\+Color\+::to\+Hex (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+hexadecimal value of color 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Color_a3be89920c83fcd6487f473e71907ce39}\label{classRAY_1_1Color_a3be89920c83fcd6487f473e71907ce39}} 
+\index{RAY::Color@{RAY::Color}!\_\_pad0\_\_@{\_\_pad0\_\_}}
+\index{\_\_pad0\_\_@{\_\_pad0\_\_}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{\_\_pad0\_\_}{\_\_pad0\_\_}}
+{\footnotesize\ttfamily I\+N\+T\+E\+R\+N\+AL R\+A\+Y\+::\+Color\+::\+\_\+\+\_\+pad0\+\_\+\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Color_ac276c3afb266ec9d0269c9278ac92be3}\label{classRAY_1_1Color_ac276c3afb266ec9d0269c9278ac92be3}} 
+\index{RAY::Color@{RAY::Color}!\_color@{\_color}}
+\index{\_color@{\_color}!RAY::Color@{RAY::Color}}
+\doxysubsubsection{\texorpdfstring{\_color}{\_color}}
+{\footnotesize\ttfamily \+::\mbox{\hyperlink{classRAY_1_1Color}{Color}} R\+A\+Y\+::\+Color\+::\+\_\+color\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\mbox{\hyperlink{classRAY_1_1Color}{Color}}, really, that\textquotesingle{}s just it... 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Color_8hpp}{Color.\+hpp}}\item 
+lib/\+Ray/sources/\mbox{\hyperlink{Color_8cpp}{Color.\+cpp}}\end{DoxyCompactItemize}

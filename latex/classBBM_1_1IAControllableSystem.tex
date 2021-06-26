@@ -1,0 +1,220 @@
+\hypertarget{classBBM_1_1IAControllableSystem}{}\doxysection{B\+BM\+::I\+A\+Controllable\+System Class Reference}
+\label{classBBM_1_1IAControllableSystem}\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+
+
+A system to handle keyboard entities.  
+
+
+
+
+{\ttfamily \#include $<$I\+A\+Controllable\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::I\+A\+Controllable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1IAControllableSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::I\+A\+Controllable\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1IAControllableSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1IAControllableSystem_ad347cdd813cd07a535eb98c9c21fe6d4}{on\+Fixed\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} $>$ \&entity) override
+\item 
+void \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a437e22f0c7d2708d23252d0dc8fa5b88}{on\+Self\+Update}} (std\+::chrono\+::nanoseconds dtime) override
+\begin{DoxyCompactList}\small\item\em A method called after all entities that this system manage has been updated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableSystem_abc894fc3c95ca46f6607c7fc67c2c8a2}{I\+A\+Controllable\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableSystem_aa6d7a81125d2848a28cd0eb7c0ae29ad}{I\+A\+Controllable\+System}} (const \mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A keyboard system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableSystem_a0c0434e6583a72a0fb93d9d8d79ec525}{$\sim$\+I\+A\+Controllable\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}} \& \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a026f28fb796637fecfbdc66eddd962ee}{operator=}} (const \mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A keyboard system is assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a0766640af71f1c555b92c7c85fadda23}{update\+Danger\+Bomb}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} pos, int radius, std\+::chrono\+::nanoseconds ring\+In)
+\begin{DoxyCompactList}\small\item\em update danger map with a bomb \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1IAControllableSystem_aad3d6a6b84846331a3d1f8805652286f}{register\+Func}} (\mbox{\hyperlink{classLuaG_1_1State}{Lua\+G\+::\+State}} \&state)
+\begin{DoxyCompactList}\small\item\em Register the functions to the lua. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1IAControllableSystem_abfbb2ce2d263b4f49441ee79664c7bcd}{Update\+Map\+Infos}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} $>$ \&entity)
+\begin{DoxyCompactList}\small\item\em update the raw info of the map \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \& \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a859c522fd8e6ce1b0c8bcaf3de9be54c}{\+\_\+wal}}
+\begin{DoxyCompactList}\small\item\em Reference to wal to get Views. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1IAControllableSystem_ac46c366d9e7351e0aefede24ca7ddff3}{\+\_\+cached}}
+\begin{DoxyCompactList}\small\item\em Are the infos cached for current update. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1LuaMap}{Lua\+Map}} \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a68e561b4724afae0519edf61de5d7186}{\+\_\+luamap}}
+\begin{DoxyCompactList}\small\item\em Map to handle the informations. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classBBM_1_1MapInfo}{Map\+Info}} $>$ \mbox{\hyperlink{classBBM_1_1IAControllableSystem_a1bb19ec8cfdbacadd7fc0bd776824d8d}{\+\_\+players}}
+\begin{DoxyCompactList}\small\item\em All players in the map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle keyboard entities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_abc894fc3c95ca46f6607c7fc67c2c8a2}\label{classBBM_1_1IAControllableSystem_abc894fc3c95ca46f6607c7fc67c2c8a2}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!IAControllableSystem@{IAControllableSystem}}
+\index{IAControllableSystem@{IAControllableSystem}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{IAControllableSystem()}{IAControllableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+I\+A\+Controllable\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_aa6d7a81125d2848a28cd0eb7c0ae29ad}\label{classBBM_1_1IAControllableSystem_aa6d7a81125d2848a28cd0eb7c0ae29ad}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!IAControllableSystem@{IAControllableSystem}}
+\index{IAControllableSystem@{IAControllableSystem}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{IAControllableSystem()}{IAControllableSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+I\+A\+Controllable\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A keyboard system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a0c0434e6583a72a0fb93d9d8d79ec525}\label{classBBM_1_1IAControllableSystem_a0c0434e6583a72a0fb93d9d8d79ec525}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!````~IAControllableSystem@{$\sim$IAControllableSystem}}
+\index{````~IAControllableSystem@{$\sim$IAControllableSystem}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$IAControllableSystem()}{~IAControllableSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+I\+A\+Controllable\+System\+::$\sim$\+I\+A\+Controllable\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_ad347cdd813cd07a535eb98c9c21fe6d4}\label{classBBM_1_1IAControllableSystem_ad347cdd813cd07a535eb98c9c21fe6d4}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!onFixedUpdate@{onFixedUpdate}}
+\index{onFixedUpdate@{onFixedUpdate}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{onFixedUpdate()}{onFixedUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+I\+A\+Controllable\+System\+::on\+Fixed\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a437e22f0c7d2708d23252d0dc8fa5b88}\label{classBBM_1_1IAControllableSystem_a437e22f0c7d2708d23252d0dc8fa5b88}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!onSelfUpdate@{onSelfUpdate}}
+\index{onSelfUpdate@{onSelfUpdate}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{onSelfUpdate()}{onSelfUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+I\+A\+Controllable\+System\+::on\+Self\+Update (\begin{DoxyParamCaption}\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+A method called after all entities that this system manage has been updated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dtime} & The delta time. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classWAL_1_1System_a83c3c86e8ad1e35e94db423d512e11e5}{W\+A\+L\+::\+System$<$ Position\+Component, Controllable\+Component, I\+A\+Controllable\+Component, Bomb\+Holder\+Component $>$}}.
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a026f28fb796637fecfbdc66eddd962ee}\label{classBBM_1_1IAControllableSystem_a026f28fb796637fecfbdc66eddd962ee}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}}\& B\+B\+M\+::\+I\+A\+Controllable\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1IAControllableSystem}{I\+A\+Controllable\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A keyboard system is assignable. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_aad3d6a6b84846331a3d1f8805652286f}\label{classBBM_1_1IAControllableSystem_aad3d6a6b84846331a3d1f8805652286f}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!registerFunc@{registerFunc}}
+\index{registerFunc@{registerFunc}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{registerFunc()}{registerFunc()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+I\+A\+Controllable\+System\+::register\+Func (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classLuaG_1_1State}{Lua\+G\+::\+State}} \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Register the functions to the lua. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a0766640af71f1c555b92c7c85fadda23}\label{classBBM_1_1IAControllableSystem_a0766640af71f1c555b92c7c85fadda23}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!updateDangerBomb@{updateDangerBomb}}
+\index{updateDangerBomb@{updateDangerBomb}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{updateDangerBomb()}{updateDangerBomb()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+I\+A\+Controllable\+System\+::update\+Danger\+Bomb (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{pos,  }\item[{int}]{radius,  }\item[{std\+::chrono\+::nanoseconds}]{ring\+In }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+update danger map with a bomb 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_abfbb2ce2d263b4f49441ee79664c7bcd}\label{classBBM_1_1IAControllableSystem_abfbb2ce2d263b4f49441ee79664c7bcd}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!UpdateMapInfos@{UpdateMapInfos}}
+\index{UpdateMapInfos@{UpdateMapInfos}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{UpdateMapInfos()}{UpdateMapInfos()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+Update\+Map\+Infos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1ControllableComponent}{Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1IAControllableComponent}{I\+A\+Controllable\+Component}}, \mbox{\hyperlink{classBBM_1_1BombHolderComponent}{Bomb\+Holder\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+update the raw info of the map 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_ac46c366d9e7351e0aefede24ca7ddff3}\label{classBBM_1_1IAControllableSystem_ac46c366d9e7351e0aefede24ca7ddff3}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!\_cached@{\_cached}}
+\index{\_cached@{\_cached}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_cached}{\_cached}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+\_\+cached\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Are the infos cached for current update. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a68e561b4724afae0519edf61de5d7186}\label{classBBM_1_1IAControllableSystem_a68e561b4724afae0519edf61de5d7186}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!\_luamap@{\_luamap}}
+\index{\_luamap@{\_luamap}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_luamap}{\_luamap}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1LuaMap}{Lua\+Map}} B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+\_\+luamap\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Map to handle the informations. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a1bb19ec8cfdbacadd7fc0bd776824d8d}\label{classBBM_1_1IAControllableSystem_a1bb19ec8cfdbacadd7fc0bd776824d8d}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!\_players@{\_players}}
+\index{\_players@{\_players}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_players}{\_players}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classBBM_1_1MapInfo}{Map\+Info}}$>$ B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+\_\+players\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+All players in the map. 
+
+\mbox{\Hypertarget{classBBM_1_1IAControllableSystem_a859c522fd8e6ce1b0c8bcaf3de9be54c}\label{classBBM_1_1IAControllableSystem_a859c522fd8e6ce1b0c8bcaf3de9be54c}} 
+\index{BBM::IAControllableSystem@{BBM::IAControllableSystem}!\_wal@{\_wal}}
+\index{\_wal@{\_wal}!BBM::IAControllableSystem@{BBM::IAControllableSystem}}
+\doxysubsubsection{\texorpdfstring{\_wal}{\_wal}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}}\& B\+B\+M\+::\+I\+A\+Controllable\+System\+::\+\_\+wal\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Reference to wal to get Views. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+I\+A\+Controllable/\mbox{\hyperlink{IAControllableSystem_8hpp}{I\+A\+Controllable\+System.\+hpp}}\item 
+sources/\+System/\+I\+A\+Controllable/\mbox{\hyperlink{IAControllableSystem_8cpp}{I\+A\+Controllable\+System.\+cpp}}\end{DoxyCompactItemize}

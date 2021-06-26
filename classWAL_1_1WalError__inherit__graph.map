@@ -1,0 +1,6 @@
+<map id="WAL::WalError" name="WAL::WalError">
+<area shape="rect" id="node1" title="The base class for WAL&#39;s exceptions." alt="" coords="111,131,224,252"/>
+<area shape="rect" id="node3" href="$classWAL_1_1DuplicateError.html" title="An exception informing the user that something already exists." alt="" coords="5,300,156,421"/>
+<area shape="rect" id="node4" href="$classWAL_1_1NotFoundError.html" title="An exception informing the user that something could not be found." alt="" coords="180,300,331,421"/>
+<area shape="rect" id="node2" title=" " alt="" coords="98,5,237,83"/>
+</map>

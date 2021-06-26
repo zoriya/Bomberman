@@ -1,0 +1,164 @@
+\hypertarget{classRAY_1_1Audio_1_1IAudio}{}\doxysection{R\+AY\+::Audio\+::I\+Audio Class Reference}
+\label{classRAY_1_1Audio_1_1IAudio}\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+
+
+Interface for \mbox{\hyperlink{namespaceRAY_1_1Audio}{Audio}} ressources.  
+
+
+
+
+{\ttfamily \#include $<$I\+Audio.\+hpp$>$}
+
+
+
+Inheritance diagram for R\+AY\+::Audio\+::I\+Audio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=336pt]{classRAY_1_1Audio_1_1IAudio__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for R\+AY\+::Audio\+::I\+Audio\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=184pt]{classRAY_1_1Audio_1_1IAudio__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a938bd87a19a3ab8ef0a5e1f02106f4d1}{$\sim$\+I\+Audio}} ()=default
+\item 
+virtual bool \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a646994b4477ca83939dbc2240ab9d2fe}{is\+Playing}} (void)=0
+\begin{DoxyCompactList}\small\item\em Check if audio is playing. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_aa613d07f901d91944a626dfb3bfafdbd}{play}} (void)=0
+\begin{DoxyCompactList}\small\item\em Start audio. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_ad3a22a8539e33e68a241470b78cc3d96}{stop}} (void)=0
+\begin{DoxyCompactList}\small\item\em Stop audio playing. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a64eead3083d58c84f32d9f44030c5449}{pause}} (void)=0
+\begin{DoxyCompactList}\small\item\em Pause audio playing. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a763eaabbbc35b534e5cdabc0d52f21d8}{resume}} (void)=0
+\begin{DoxyCompactList}\small\item\em Resume playing paused audio. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a621c3e5a5fac70734350a605cba8922c}{set\+Volume}} (float volume)=0
+\begin{DoxyCompactList}\small\item\em Set volume for audio (1.\+0 is max level) \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}} \& \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio_a39d97be467eb0a7ae8f9ec7561674bd5}{set\+Pitch}} (float pitch)=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface for \mbox{\hyperlink{namespaceRAY_1_1Audio}{Audio}} ressources. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a938bd87a19a3ab8ef0a5e1f02106f4d1}\label{classRAY_1_1Audio_1_1IAudio_a938bd87a19a3ab8ef0a5e1f02106f4d1}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!````~IAudio@{$\sim$IAudio}}
+\index{````~IAudio@{$\sim$IAudio}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{$\sim$IAudio()}{~IAudio()}}
+{\footnotesize\ttfamily virtual R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::$\sim$\+I\+Audio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a646994b4477ca83939dbc2240ab9d2fe}\label{classRAY_1_1Audio_1_1IAudio_a646994b4477ca83939dbc2240ab9d2fe}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily virtual bool R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::is\+Playing (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Check if audio is playing. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a06098cd167e6721d9912435c59491fa7}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a5ccc3974eea22af6b63d153cefe13bf1}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a64eead3083d58c84f32d9f44030c5449}\label{classRAY_1_1Audio_1_1IAudio_a64eead3083d58c84f32d9f44030c5449}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!pause@{pause}}
+\index{pause@{pause}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{pause()}{pause()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::pause (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pause audio playing. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a59449efa660275cb2dcfb15b2343676f}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a3c55da91f34e76b13e0b9a4328b3b710}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_aa613d07f901d91944a626dfb3bfafdbd}\label{classRAY_1_1Audio_1_1IAudio_aa613d07f901d91944a626dfb3bfafdbd}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!play@{play}}
+\index{play@{play}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{play()}{play()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::play (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Start audio. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a6eb2d3e411e86796e3a17ab1a1b94392}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a5d764101a1d2671b4f23f4e94053efcf}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a763eaabbbc35b534e5cdabc0d52f21d8}\label{classRAY_1_1Audio_1_1IAudio_a763eaabbbc35b534e5cdabc0d52f21d8}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!resume@{resume}}
+\index{resume@{resume}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{resume()}{resume()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::resume (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Resume playing paused audio. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a47aa97009ae131b51e2226be71478714}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a9ea16dbecab774d6923d4383f7aa3549}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a39d97be467eb0a7ae8f9ec7561674bd5}\label{classRAY_1_1Audio_1_1IAudio_a39d97be467eb0a7ae8f9ec7561674bd5}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!setPitch@{setPitch}}
+\index{setPitch@{setPitch}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{setPitch()}{setPitch()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{pitch }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a6c707e5bd05936315eea10dccf8c1707}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a46a855c4b1c384094751f0703ba29b58}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_a621c3e5a5fac70734350a605cba8922c}\label{classRAY_1_1Audio_1_1IAudio_a621c3e5a5fac70734350a605cba8922c}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Set volume for audio (1.\+0 is max level) 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a5d432db0e3d9cefda0ba3b6f3b465f5c}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_aeb62dadcee0f9b180f612330ce6ce666}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+\mbox{\Hypertarget{classRAY_1_1Audio_1_1IAudio_ad3a22a8539e33e68a241470b78cc3d96}\label{classRAY_1_1Audio_1_1IAudio_ad3a22a8539e33e68a241470b78cc3d96}} 
+\index{RAY::Audio::IAudio@{RAY::Audio::IAudio}!stop@{stop}}
+\index{stop@{stop}!RAY::Audio::IAudio@{RAY::Audio::IAudio}}
+\doxysubsubsection{\texorpdfstring{stop()}{stop()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classRAY_1_1Audio_1_1IAudio}{I\+Audio}}\& R\+A\+Y\+::\+Audio\+::\+I\+Audio\+::stop (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Stop audio playing. 
+
+
+
+Implemented in \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound_a72120f19cb114573a15e85adb4b7aa16}{R\+A\+Y\+::\+Audio\+::\+Sound}}, and \mbox{\hyperlink{classRAY_1_1Audio_1_1Music_a0347213bdcfd6d276a8b89aefc36b64b}{R\+A\+Y\+::\+Audio\+::\+Music}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Audio/\mbox{\hyperlink{IAudio_8hpp}{I\+Audio.\+hpp}}\end{DoxyCompactItemize}

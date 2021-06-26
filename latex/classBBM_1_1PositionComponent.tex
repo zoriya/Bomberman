@@ -1,0 +1,197 @@
+\hypertarget{classBBM_1_1PositionComponent}{}\doxysection{B\+BM\+::Position\+Component Class Reference}
+\label{classBBM_1_1PositionComponent}\index{BBM::PositionComponent@{BBM::PositionComponent}}
+
+
+A basic position component.  
+
+
+
+
+{\ttfamily \#include $<$Position\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Position\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classBBM_1_1PositionComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Position\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1PositionComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classBBM_1_1PositionComponent_a19b915f21d5f0e1da40153b4c4161075}{getX}} () const
+\begin{DoxyCompactList}\small\item\em Get the X position of this entity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1PositionComponent_aaa287e95c9378c119530be12ed40c27f}{getY}} () const
+\begin{DoxyCompactList}\small\item\em Get the Y position of this entity. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1PositionComponent_a2a8da5f34a8a48b850426587c9bdcd0e}{getZ}} () const
+\begin{DoxyCompactList}\small\item\em Get the Z position of this entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1PositionComponent_ad2cd452275fa92914a38e36f597b50d9}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent_ab3491bda5cc5fcf816bc754ee3abd8d9}{Position\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} linked to a specific entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent_a2a1f7864fac0dccde2f9b2ac9850efdb}{Position\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} pos)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent_ac2824f4ecddbb3a533564279d679be68}{Position\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, float x, float y, float z)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent_a7c5c6e8f53014e5f6c178904655ae36f}{Position\+Component}} (const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A position component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent_aecb861e4c1e93affef6bd9eaff086fb7}{$\sim$\+Position\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \& \mbox{\hyperlink{classBBM_1_1PositionComponent_a3ebf0cdf0f6cabc5c1fb65123a11fe85}{operator=}} (const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A position component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} \mbox{\hyperlink{classBBM_1_1PositionComponent_ad7d96ea0d42c2c7b2a640ca60dedc151}{position}}
+\begin{DoxyCompactList}\small\item\em Get the editable position of this entity. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A basic position component. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_ab3491bda5cc5fcf816bc754ee3abd8d9}\label{classBBM_1_1PositionComponent_ab3491bda5cc5fcf816bc754ee3abd8d9}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!PositionComponent@{PositionComponent}}
+\index{PositionComponent@{PositionComponent}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{PositionComponent()}{PositionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Position\+Component\+::\+Position\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} linked to a specific entity. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_a2a1f7864fac0dccde2f9b2ac9850efdb}\label{classBBM_1_1PositionComponent_a2a1f7864fac0dccde2f9b2ac9850efdb}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!PositionComponent@{PositionComponent}}
+\index{PositionComponent@{PositionComponent}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{PositionComponent()}{PositionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Position\+Component\+::\+Position\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{pos }\end{DoxyParamCaption})}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_ac2824f4ecddbb3a533564279d679be68}\label{classBBM_1_1PositionComponent_ac2824f4ecddbb3a533564279d679be68}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!PositionComponent@{PositionComponent}}
+\index{PositionComponent@{PositionComponent}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{PositionComponent()}{PositionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Position\+Component\+::\+Position\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{float}]{x,  }\item[{float}]{y,  }\item[{float}]{z }\end{DoxyParamCaption})}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} at a certain position. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_a7c5c6e8f53014e5f6c178904655ae36f}\label{classBBM_1_1PositionComponent_a7c5c6e8f53014e5f6c178904655ae36f}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!PositionComponent@{PositionComponent}}
+\index{PositionComponent@{PositionComponent}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{PositionComponent()}{PositionComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Position\+Component\+::\+Position\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A position component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_aecb861e4c1e93affef6bd9eaff086fb7}\label{classBBM_1_1PositionComponent_aecb861e4c1e93affef6bd9eaff086fb7}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!````~PositionComponent@{$\sim$PositionComponent}}
+\index{````~PositionComponent@{$\sim$PositionComponent}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$PositionComponent()}{~PositionComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Position\+Component\+::$\sim$\+Position\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_ad2cd452275fa92914a38e36f597b50d9}\label{classBBM_1_1PositionComponent_ad2cd452275fa92914a38e36f597b50d9}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Position\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_a19b915f21d5f0e1da40153b4c4161075}\label{classBBM_1_1PositionComponent_a19b915f21d5f0e1da40153b4c4161075}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!getX@{getX}}
+\index{getX@{getX}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{getX()}{getX()}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Position\+Component\+::getX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the X position of this entity. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_aaa287e95c9378c119530be12ed40c27f}\label{classBBM_1_1PositionComponent_aaa287e95c9378c119530be12ed40c27f}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!getY@{getY}}
+\index{getY@{getY}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{getY()}{getY()}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Position\+Component\+::getY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Y position of this entity. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_a2a8da5f34a8a48b850426587c9bdcd0e}\label{classBBM_1_1PositionComponent_a2a8da5f34a8a48b850426587c9bdcd0e}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!getZ@{getZ}}
+\index{getZ@{getZ}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{getZ()}{getZ()}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Position\+Component\+::getZ (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the Z position of this entity. 
+
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_a3ebf0cdf0f6cabc5c1fb65123a11fe85}\label{classBBM_1_1PositionComponent_a3ebf0cdf0f6cabc5c1fb65123a11fe85}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}\& B\+B\+M\+::\+Position\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A position component is not assignable. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1PositionComponent_ad7d96ea0d42c2c7b2a640ca60dedc151}\label{classBBM_1_1PositionComponent_ad7d96ea0d42c2c7b2a640ca60dedc151}} 
+\index{BBM::PositionComponent@{BBM::PositionComponent}!position@{position}}
+\index{position@{position}!BBM::PositionComponent@{BBM::PositionComponent}}
+\doxysubsubsection{\texorpdfstring{position}{position}}
+{\footnotesize\ttfamily \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} B\+B\+M\+::\+Position\+Component\+::position}
+
+
+
+Get the editable position of this entity. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Position/\mbox{\hyperlink{PositionComponent_8hpp}{Position\+Component.\+hpp}}\item 
+sources/\+Component/\+Position/\mbox{\hyperlink{PositionComponent_8cpp}{Position\+Component.\+cpp}}\end{DoxyCompactItemize}

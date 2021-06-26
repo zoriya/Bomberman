@@ -1,0 +1,128 @@
+\hypertarget{classBBM_1_1CameraSystem}{}\doxysection{B\+BM\+::Camera\+System Class Reference}
+\label{classBBM_1_1CameraSystem}\index{BBM::CameraSystem@{BBM::CameraSystem}}
+
+
+{\ttfamily \#include $<$Camera\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Camera\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=269pt]{classBBM_1_1CameraSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Camera\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1CameraSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1CameraSystem_aedfe19078b1ef3e5ff7c1cfa95218518}{on\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&entity, std\+::chrono\+::nanoseconds) override
+\item 
+bool \mbox{\hyperlink{classBBM_1_1CameraSystem_a06db93a5bfe6231fea09fb297a7a17bd}{intro\+Animation}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&entity)
+\begin{DoxyCompactList}\small\item\em introduciton animation when entering game\+Scene \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraSystem_a50c87f9c3309b3a52affc4c398141535}{Camera\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraSystem_abf0752a13e003e671abab28a540a90aa}{Camera\+System}} (const \mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraSystem_acbdfdaad642cf620ba9eb7485eb18f88}{$\sim$\+Camera\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}} \& \mbox{\hyperlink{classBBM_1_1CameraSystem_a39780ad418d358759c93ed0f5d9455f4}{operator=}} (const \mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Camera\+Manager screen system can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classBBM_1_1CameraSystem_a10ad0d49781c0277e0ccdcee2c227a56}{has\+Ended}} = false
+\begin{DoxyCompactList}\small\item\em A boolean indicating if the intro\textquotesingle{}s animation has ended. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_a50c87f9c3309b3a52affc4c398141535}\label{classBBM_1_1CameraSystem_a50c87f9c3309b3a52affc4c398141535}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!CameraSystem@{CameraSystem}}
+\index{CameraSystem@{CameraSystem}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{CameraSystem()}{CameraSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+System\+::\+Camera\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_abf0752a13e003e671abab28a540a90aa}\label{classBBM_1_1CameraSystem_abf0752a13e003e671abab28a540a90aa}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!CameraSystem@{CameraSystem}}
+\index{CameraSystem@{CameraSystem}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{CameraSystem()}{CameraSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+System\+::\+Camera\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_acbdfdaad642cf620ba9eb7485eb18f88}\label{classBBM_1_1CameraSystem_acbdfdaad642cf620ba9eb7485eb18f88}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!````~CameraSystem@{$\sim$CameraSystem}}
+\index{````~CameraSystem@{$\sim$CameraSystem}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$CameraSystem()}{~CameraSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Camera\+System\+::$\sim$\+Camera\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_a06db93a5bfe6231fea09fb297a7a17bd}\label{classBBM_1_1CameraSystem_a06db93a5bfe6231fea09fb297a7a17bd}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!introAnimation@{introAnimation}}
+\index{introAnimation@{introAnimation}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{introAnimation()}{introAnimation()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Camera\+System\+::intro\+Animation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})}
+
+
+
+introduciton animation when entering game\+Scene 
+
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_aedfe19078b1ef3e5ff7c1cfa95218518}\label{classBBM_1_1CameraSystem_aedfe19078b1ef3e5ff7c1cfa95218518}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!onUpdate@{onUpdate}}
+\index{onUpdate@{onUpdate}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{onUpdate()}{onUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Camera\+System\+::on\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1CameraComponent}{Camera\+Component}}, \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}} $>$ \&}]{entity,  }\item[{std\+::chrono\+::nanoseconds}]{dtime }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_a39780ad418d358759c93ed0f5d9455f4}\label{classBBM_1_1CameraSystem_a39780ad418d358759c93ed0f5d9455f4}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}}\& B\+B\+M\+::\+Camera\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CameraSystem}{Camera\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Camera\+Manager screen system can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1CameraSystem_a10ad0d49781c0277e0ccdcee2c227a56}\label{classBBM_1_1CameraSystem_a10ad0d49781c0277e0ccdcee2c227a56}} 
+\index{BBM::CameraSystem@{BBM::CameraSystem}!hasEnded@{hasEnded}}
+\index{hasEnded@{hasEnded}!BBM::CameraSystem@{BBM::CameraSystem}}
+\doxysubsubsection{\texorpdfstring{hasEnded}{hasEnded}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Camera\+System\+::has\+Ended = false}
+
+
+
+A boolean indicating if the intro\textquotesingle{}s animation has ended. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Renderer/\mbox{\hyperlink{CameraSystem_8hpp}{Camera\+System.\+hpp}}\item 
+sources/\+System/\+Renderer/\mbox{\hyperlink{CameraSystem_8cpp}{Camera\+System.\+cpp}}\end{DoxyCompactItemize}

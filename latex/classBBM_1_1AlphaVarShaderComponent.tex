@@ -1,0 +1,201 @@
+\hypertarget{classBBM_1_1AlphaVarShaderComponent}{}\doxysection{B\+BM\+::Alpha\+Var\+Shader\+Component Class Reference}
+\label{classBBM_1_1AlphaVarShaderComponent}\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+
+
+{\ttfamily \#include $<$Alpha\+Ctx\+Shader\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Alpha\+Var\+Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=259pt]{classBBM_1_1AlphaVarShaderComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Alpha\+Var\+Shader\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1AlphaVarShaderComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a3ad8de6942cae3d91ac0f598cf170495}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a40f3863c25c8fc5e596283feb6ebfcd8}{Alpha\+Var\+Shader\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em ctor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a59f7d193acebebfb3282430bb4dba7ac}{Alpha\+Var\+Shader\+Component}} (const \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a94d2cd711c126d1c622de86bb4a423f4}{$\sim$\+Alpha\+Var\+Shader\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em Default dtor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}} \& \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a769d713b8189a74621bc73718945ecc4}{operator=}} (const \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em Default assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a6abb850244ab3b80cd65320f7f35763a}{alpha}} = 1
+\begin{DoxyCompactList}\small\item\em Transparency. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_af7964a2b8302b098052a0fdcec3b59dd}{min\+Alpha}} = 0.\+2
+\begin{DoxyCompactList}\small\item\em minimum transparency \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a219088134e57ce88d6de8c989ad7e808}{max\+Alpha}} = 1
+\begin{DoxyCompactList}\small\item\em maximum transparency \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a7ab3d32459b28a098a27ed45640ff1b8}{inital\+Step\+Value}} = 0.\+04
+\begin{DoxyCompactList}\small\item\em inital step value \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a9b7e46fb8a76fafc1702353a5c4cebb7}{step}} = 0.\+04
+\begin{DoxyCompactList}\small\item\em how fast the alpha will vary \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_a4a726d97de6acc6376afca371a9f56e2}{balance}} = -\/1
+\begin{DoxyCompactList}\small\item\em if the alpha should increase or decrease \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent_ab2c55fd3967b19fbdbd325c385131cec}{clock}} = 0ns
+\begin{DoxyCompactList}\small\item\em The clock to use. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a40f3863c25c8fc5e596283feb6ebfcd8}\label{classBBM_1_1AlphaVarShaderComponent_a40f3863c25c8fc5e596283feb6ebfcd8}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!AlphaVarShaderComponent@{AlphaVarShaderComponent}}
+\index{AlphaVarShaderComponent@{AlphaVarShaderComponent}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{AlphaVarShaderComponent()}{AlphaVarShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::\+Alpha\+Var\+Shader\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+ctor 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a59f7d193acebebfb3282430bb4dba7ac}\label{classBBM_1_1AlphaVarShaderComponent_a59f7d193acebebfb3282430bb4dba7ac}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!AlphaVarShaderComponent@{AlphaVarShaderComponent}}
+\index{AlphaVarShaderComponent@{AlphaVarShaderComponent}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{AlphaVarShaderComponent()}{AlphaVarShaderComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::\+Alpha\+Var\+Shader\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a94d2cd711c126d1c622de86bb4a423f4}\label{classBBM_1_1AlphaVarShaderComponent_a94d2cd711c126d1c622de86bb4a423f4}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!````~AlphaVarShaderComponent@{$\sim$AlphaVarShaderComponent}}
+\index{````~AlphaVarShaderComponent@{$\sim$AlphaVarShaderComponent}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$AlphaVarShaderComponent()}{~AlphaVarShaderComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::$\sim$\+Alpha\+Var\+Shader\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+Default dtor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a3ad8de6942cae3d91ac0f598cf170495}\label{classBBM_1_1AlphaVarShaderComponent_a3ad8de6942cae3d91ac0f598cf170495}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a769d713b8189a74621bc73718945ecc4}\label{classBBM_1_1AlphaVarShaderComponent_a769d713b8189a74621bc73718945ecc4}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}}\& B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1AlphaVarShaderComponent}{Alpha\+Var\+Shader\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+Default assignment operator. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a6abb850244ab3b80cd65320f7f35763a}\label{classBBM_1_1AlphaVarShaderComponent_a6abb850244ab3b80cd65320f7f35763a}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!alpha@{alpha}}
+\index{alpha@{alpha}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{alpha}{alpha}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::alpha = 1}
+
+
+
+Transparency. 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a4a726d97de6acc6376afca371a9f56e2}\label{classBBM_1_1AlphaVarShaderComponent_a4a726d97de6acc6376afca371a9f56e2}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!balance@{balance}}
+\index{balance@{balance}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{balance}{balance}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::balance = -\/1}
+
+
+
+if the alpha should increase or decrease 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_ab2c55fd3967b19fbdbd325c385131cec}\label{classBBM_1_1AlphaVarShaderComponent_ab2c55fd3967b19fbdbd325c385131cec}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!clock@{clock}}
+\index{clock@{clock}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{clock}{clock}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::clock = 0ns}
+
+
+
+The clock to use. 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a7ab3d32459b28a098a27ed45640ff1b8}\label{classBBM_1_1AlphaVarShaderComponent_a7ab3d32459b28a098a27ed45640ff1b8}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!initalStepValue@{initalStepValue}}
+\index{initalStepValue@{initalStepValue}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{initalStepValue}{initalStepValue}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::inital\+Step\+Value = 0.\+04}
+
+
+
+inital step value 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a219088134e57ce88d6de8c989ad7e808}\label{classBBM_1_1AlphaVarShaderComponent_a219088134e57ce88d6de8c989ad7e808}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!maxAlpha@{maxAlpha}}
+\index{maxAlpha@{maxAlpha}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{maxAlpha}{maxAlpha}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::max\+Alpha = 1}
+
+
+
+maximum transparency 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_af7964a2b8302b098052a0fdcec3b59dd}\label{classBBM_1_1AlphaVarShaderComponent_af7964a2b8302b098052a0fdcec3b59dd}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!minAlpha@{minAlpha}}
+\index{minAlpha@{minAlpha}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{minAlpha}{minAlpha}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::min\+Alpha = 0.\+2}
+
+
+
+minimum transparency 
+
+\mbox{\Hypertarget{classBBM_1_1AlphaVarShaderComponent_a9b7e46fb8a76fafc1702353a5c4cebb7}\label{classBBM_1_1AlphaVarShaderComponent_a9b7e46fb8a76fafc1702353a5c4cebb7}} 
+\index{BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}!step@{step}}
+\index{step@{step}!BBM::AlphaVarShaderComponent@{BBM::AlphaVarShaderComponent}}
+\doxysubsubsection{\texorpdfstring{step}{step}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Alpha\+Var\+Shader\+Component\+::step = 0.\+04}
+
+
+
+how fast the alpha will vary 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Shaders/\+Items/\mbox{\hyperlink{AlphaCtxShaderComponent_8hpp}{Alpha\+Ctx\+Shader\+Component.\+hpp}}\item 
+sources/\+Component/\+Shaders/\+Items/\mbox{\hyperlink{AlphaCtxShaderComponent_8cpp}{Alpha\+Ctx\+Shader\+Component.\+cpp}}\end{DoxyCompactItemize}

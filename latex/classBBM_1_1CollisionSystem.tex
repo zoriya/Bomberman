@@ -1,0 +1,121 @@
+\hypertarget{classBBM_1_1CollisionSystem}{}\doxysection{B\+BM\+::Collision\+System Class Reference}
+\label{classBBM_1_1CollisionSystem}\index{BBM::CollisionSystem@{BBM::CollisionSystem}}
+
+
+A system to handle collisions.  
+
+
+
+
+{\ttfamily \#include $<$Collision\+System.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Collision\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=313pt]{classBBM_1_1CollisionSystem__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Collision\+System\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1CollisionSystem__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1CollisionSystem_a78fbb6a147041f74ab7fb52c0e142d7c}{on\+Fixed\+Update}} (\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}}, \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} $>$ \&entity) override
+\item 
+\mbox{\hyperlink{classBBM_1_1CollisionSystem_a80bf2ef84057720021a352be0111eb5c}{Collision\+System}} (\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&wal)
+\begin{DoxyCompactList}\small\item\em A default constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionSystem_aa9d9f4e4083541f18c45f4df94850b17}{Collision\+System}} (const \mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Collision system is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionSystem_af7478533068f35434ee656042659c24d}{$\sim$\+Collision\+System}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}} \& \mbox{\hyperlink{classBBM_1_1CollisionSystem_a68130b0d3930582485acafd648076a4a}{operator=}} (const \mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A system is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classBBM_1_1CollisionSystem_acb8bb58558fe6e9c1f31eec36cf24790}{boxes\+Collide}} (\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} minA, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} maxA, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} minB, \mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}} maxB)
+\begin{DoxyCompactList}\small\item\em check A\+A\+BB collision \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A system to handle collisions. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_a80bf2ef84057720021a352be0111eb5c}\label{classBBM_1_1CollisionSystem_a80bf2ef84057720021a352be0111eb5c}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!CollisionSystem@{CollisionSystem}}
+\index{CollisionSystem@{CollisionSystem}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{CollisionSystem()}{CollisionSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+System\+::\+Collision\+System (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Wal}{W\+A\+L\+::\+Wal}} \&}]{wal }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A default constructor. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_aa9d9f4e4083541f18c45f4df94850b17}\label{classBBM_1_1CollisionSystem_aa9d9f4e4083541f18c45f4df94850b17}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!CollisionSystem@{CollisionSystem}}
+\index{CollisionSystem@{CollisionSystem}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{CollisionSystem()}{CollisionSystem()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+System\+::\+Collision\+System (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Collision system is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_af7478533068f35434ee656042659c24d}\label{classBBM_1_1CollisionSystem_af7478533068f35434ee656042659c24d}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!````~CollisionSystem@{$\sim$CollisionSystem}}
+\index{````~CollisionSystem@{$\sim$CollisionSystem}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{$\sim$CollisionSystem()}{~CollisionSystem()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Collision\+System\+::$\sim$\+Collision\+System (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_acb8bb58558fe6e9c1f31eec36cf24790}\label{classBBM_1_1CollisionSystem_acb8bb58558fe6e9c1f31eec36cf24790}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!boxesCollide@{boxesCollide}}
+\index{boxesCollide@{boxesCollide}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{boxesCollide()}{boxesCollide()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Collision\+System\+::boxes\+Collide (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{minA,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{maxA,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{minB,  }\item[{\mbox{\hyperlink{namespaceBBM_ad0b7cbe1d35a6c8ac75e31df6e1357a5}{Vector3f}}}]{maxB }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+check A\+A\+BB collision 
+
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_a78fbb6a147041f74ab7fb52c0e142d7c}\label{classBBM_1_1CollisionSystem_a78fbb6a147041f74ab7fb52c0e142d7c}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!onFixedUpdate@{onFixedUpdate}}
+\index{onFixedUpdate@{onFixedUpdate}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{onFixedUpdate()}{onFixedUpdate()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Collision\+System\+::on\+Fixed\+Update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1ViewEntity}{W\+A\+L\+::\+View\+Entity}}$<$ \mbox{\hyperlink{classBBM_1_1PositionComponent}{Position\+Component}}, \mbox{\hyperlink{classBBM_1_1CollisionComponent}{Collision\+Component}}, \mbox{\hyperlink{classBBM_1_1MovableComponent}{Movable\+Component}} $>$ \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+\mbox{\Hypertarget{classBBM_1_1CollisionSystem_a68130b0d3930582485acafd648076a4a}\label{classBBM_1_1CollisionSystem_a68130b0d3930582485acafd648076a4a}} 
+\index{BBM::CollisionSystem@{BBM::CollisionSystem}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::CollisionSystem@{BBM::CollisionSystem}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}}\& B\+B\+M\+::\+Collision\+System\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1CollisionSystem}{Collision\+System}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A system is not assignable. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+System/\+Collision/\mbox{\hyperlink{CollisionSystem_8hpp}{Collision\+System.\+hpp}}\item 
+sources/\+System/\+Collision/\mbox{\hyperlink{CollisionSystem_8cpp}{Collision\+System.\+cpp}}\end{DoxyCompactItemize}

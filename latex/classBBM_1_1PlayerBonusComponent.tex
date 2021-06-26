@@ -1,0 +1,153 @@
+\hypertarget{classBBM_1_1PlayerBonusComponent}{}\doxysection{B\+BM\+::Player\+Bonus\+Component Class Reference}
+\label{classBBM_1_1PlayerBonusComponent}\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+
+
+{\ttfamily \#include $<$Player\+Bonus\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Player\+Bonus\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classBBM_1_1PlayerBonusComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Player\+Bonus\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1PlayerBonusComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a19d88987a7c79900611250e0fd8a439f}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_ae10198a581a5be9be1f7c22407182da1}{Player\+Bonus\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity)
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_aca2acd2712c916ab01038f68dc36bd45}{Player\+Bonus\+Component}} (const \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be instantiated, it should be derived. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a6fe5317bc08e978059e59d8c1d640436}{$\sim$\+Player\+Bonus\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em default destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}} \& \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a721e05b00253cb531f4a634dfaa43d96}{operator=}} (const \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be assigned. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_ad70f6519b5c88c053a9aa17705d40bf5}{no\+Clip\+Bonus\+Rate}} = 5s
+\begin{DoxyCompactList}\small\item\em The number of seconds before a range bonus expire. This variable is used to reset the next\+No\+Clip\+Bonus\+Rate value. \end{DoxyCompactList}\item 
+std\+::chrono\+::nanoseconds \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a4a866c1419bdcd095d7397ee419af3f3}{next\+No\+Clip\+Rate}} = \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_ad70f6519b5c88c053a9aa17705d40bf5}{no\+Clip\+Bonus\+Rate}}
+\begin{DoxyCompactList}\small\item\em The number of nanosecond before the expiration of a no clip bonus. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_a2e6295a728a7227e0eeb8273c19b192e}{is\+No\+Clip\+On}} = false
+\begin{DoxyCompactList}\small\item\em To know if the player can clip through block. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_ae10198a581a5be9be1f7c22407182da1}\label{classBBM_1_1PlayerBonusComponent_ae10198a581a5be9be1f7c22407182da1}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!PlayerBonusComponent@{PlayerBonusComponent}}
+\index{PlayerBonusComponent@{PlayerBonusComponent}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{PlayerBonusComponent()}{PlayerBonusComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Player\+Bonus\+Component\+::\+Player\+Bonus\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_aca2acd2712c916ab01038f68dc36bd45}\label{classBBM_1_1PlayerBonusComponent_aca2acd2712c916ab01038f68dc36bd45}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!PlayerBonusComponent@{PlayerBonusComponent}}
+\index{PlayerBonusComponent@{PlayerBonusComponent}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{PlayerBonusComponent()}{PlayerBonusComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Player\+Bonus\+Component\+::\+Player\+Bonus\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be instantiated, it should be derived. 
+
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_a6fe5317bc08e978059e59d8c1d640436}\label{classBBM_1_1PlayerBonusComponent_a6fe5317bc08e978059e59d8c1d640436}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!````~PlayerBonusComponent@{$\sim$PlayerBonusComponent}}
+\index{````~PlayerBonusComponent@{$\sim$PlayerBonusComponent}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$PlayerBonusComponent()}{~PlayerBonusComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Player\+Bonus\+Component\+::$\sim$\+Player\+Bonus\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+default destructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_a19d88987a7c79900611250e0fd8a439f}\label{classBBM_1_1PlayerBonusComponent_a19d88987a7c79900611250e0fd8a439f}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Player\+Bonus\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_a721e05b00253cb531f4a634dfaa43d96}\label{classBBM_1_1PlayerBonusComponent_a721e05b00253cb531f4a634dfaa43d96}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}}\& B\+B\+M\+::\+Player\+Bonus\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent}{Player\+Bonus\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A \mbox{\hyperlink{classBBM_1_1Bonus}{Bonus}} component can\textquotesingle{}t be assigned. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_a2e6295a728a7227e0eeb8273c19b192e}\label{classBBM_1_1PlayerBonusComponent_a2e6295a728a7227e0eeb8273c19b192e}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!isNoClipOn@{isNoClipOn}}
+\index{isNoClipOn@{isNoClipOn}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{isNoClipOn}{isNoClipOn}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Player\+Bonus\+Component\+::is\+No\+Clip\+On = false}
+
+
+
+To know if the player can clip through block. 
+
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_a4a866c1419bdcd095d7397ee419af3f3}\label{classBBM_1_1PlayerBonusComponent_a4a866c1419bdcd095d7397ee419af3f3}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!nextNoClipRate@{nextNoClipRate}}
+\index{nextNoClipRate@{nextNoClipRate}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{nextNoClipRate}{nextNoClipRate}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Player\+Bonus\+Component\+::next\+No\+Clip\+Rate = \mbox{\hyperlink{classBBM_1_1PlayerBonusComponent_ad70f6519b5c88c053a9aa17705d40bf5}{no\+Clip\+Bonus\+Rate}}}
+
+
+
+The number of nanosecond before the expiration of a no clip bonus. 
+
+\mbox{\Hypertarget{classBBM_1_1PlayerBonusComponent_ad70f6519b5c88c053a9aa17705d40bf5}\label{classBBM_1_1PlayerBonusComponent_ad70f6519b5c88c053a9aa17705d40bf5}} 
+\index{BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}!noClipBonusRate@{noClipBonusRate}}
+\index{noClipBonusRate@{noClipBonusRate}!BBM::PlayerBonusComponent@{BBM::PlayerBonusComponent}}
+\doxysubsubsection{\texorpdfstring{noClipBonusRate}{noClipBonusRate}}
+{\footnotesize\ttfamily std\+::chrono\+::nanoseconds B\+B\+M\+::\+Player\+Bonus\+Component\+::no\+Clip\+Bonus\+Rate = 5s}
+
+
+
+The number of seconds before a range bonus expire. This variable is used to reset the next\+No\+Clip\+Bonus\+Rate value. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Bonus/\mbox{\hyperlink{PlayerBonusComponent_8hpp}{Player\+Bonus\+Component.\+hpp}}\item 
+sources/\+Component/\+Bonus/\mbox{\hyperlink{PlayerBonusComponent_8cpp}{Player\+Bonus\+Component.\+cpp}}\end{DoxyCompactItemize}

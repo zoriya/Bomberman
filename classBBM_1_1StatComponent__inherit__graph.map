@@ -1,0 +1,4 @@
+<map id="BBM::StatComponent" name="BBM::StatComponent">
+<area shape="rect" id="node1" title="A Stat component which contains a text and a callback." alt="" coords="5,219,167,355"/>
+<area shape="rect" id="node2" href="$classWAL_1_1Component.html" title="Represent a single component of WAL." alt="" coords="19,5,153,171"/>
+</map>

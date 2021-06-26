@@ -1,0 +1,5 @@
+<map id="BBM::BombHolderSystem" name="BBM::BombHolderSystem">
+<area shape="rect" id="node1" title="The system that allow one to place bombs." alt="" coords="45,476,235,671"/>
+<area shape="rect" id="node2" href="$classWAL_1_1System.html" title=" " alt="" coords="5,175,275,428"/>
+<area shape="rect" id="node3" href="$classWAL_1_1ISystem.html" title="A base class that represent a system." alt="" coords="77,5,203,127"/>
+</map>

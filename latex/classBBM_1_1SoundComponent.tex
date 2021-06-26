@@ -1,0 +1,377 @@
+\hypertarget{classBBM_1_1SoundComponent}{}\doxysection{B\+BM\+::Sound\+Component Class Reference}
+\label{classBBM_1_1SoundComponent}\index{BBM::SoundComponent@{BBM::SoundComponent}}
+
+
+A basic Sound component.  
+
+
+
+
+{\ttfamily \#include $<$Sound\+Component.\+hpp$>$}
+
+
+
+Inheritance diagram for B\+BM\+::Sound\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=211pt]{classBBM_1_1SoundComponent__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+BM\+::Sound\+Component\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBBM_1_1SoundComponent__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}} \{ \newline
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a2d7daa78d790e1392346d0691555bc55}{I\+D\+LE}}, 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a19ca857bf66807003b580f800a29dd93}{J\+U\+MP}}, 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a07bb5ec1312b40654f5ae23a0a3c4143}{B\+O\+MB}}, 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a06627225de71467eba743d1ea816a9c3}{M\+O\+VE}}, 
+\newline
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a3b12a5b814934deb1d58691782428ef8}{H\+U\+RT}}, 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50afd9c59fe2d91004a6e077ee83afc5ab8}{T\+H\+R\+OW}}, 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a9d3140269e47e99b3a47ebd63aded690}{D\+E\+A\+TH}}
+ \}
+\begin{DoxyCompactList}\small\item\em All sounds of the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a8a5e700a82f2b306d469d9b319de81d0}{set\+Index}} (\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}} index)
+\begin{DoxyCompactList}\small\item\em to set what sound should be played \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}} \mbox{\hyperlink{classBBM_1_1SoundComponent_a6e375db58e05e6b63aafaf10bcf06527}{get\+Index}} ()
+\begin{DoxyCompactList}\small\item\em to know which sound is selected \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a22010a97819623e9e2ed24eb76bc20a5}{play\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em start sound \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_ab7ed10a26d8ff5e967877b81ac49644a}{stop\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em stop sound \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a37c463496c8c408668ebaaa6f1ce7427}{pause\+Sound}} ()
+\begin{DoxyCompactList}\small\item\em put Sound on hold \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a2f29e953609ab5edfeb89106d09128d4}{set\+Volume}} (float)
+\begin{DoxyCompactList}\small\item\em set Sound volume \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a0e4da39bb04775a1de177e18fa124209}{turn\+Down\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em volume -\/= 0.\+1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a2a5fa9f3d85d7b7d6a0191221096e8e9}{turn\+Up\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em volume += 0.\+1 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classBBM_1_1SoundComponent_a1bfc07b0b9fdd24a6c54bee8881ce9ba}{set\+Pitch}} (float)
+\begin{DoxyCompactList}\small\item\em set pitch volume \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1SoundComponent_a56d758adb4e98a3fe1697a5fd56f2c6e}{is\+Playing}} ()
+\begin{DoxyCompactList}\small\item\em is Sound playing \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ \mbox{\hyperlink{classBBM_1_1SoundComponent_a04a856c645ec50bb91841abbf13fdf92}{clone}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity) const override
+\begin{DoxyCompactList}\small\item\em Clone a component for another or the same entity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_a2d143c483bfdb89679f430c105ed6947}{Sound\+Component}} (\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&entity, const std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::string $>$ \&, bool is\+Lonely=false)
+\begin{DoxyCompactList}\small\item\em Create a new \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} at a certain Sound. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_a85b7b8cae2d7690cad465eec00804966}{Sound\+Component}} (const \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} \&)=default
+\begin{DoxyCompactList}\small\item\em A Sound component is copy constructable. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_a605bb26f754816b7c6faddf939fa6841}{$\sim$\+Sound\+Component}} () override=default
+\begin{DoxyCompactList}\small\item\em A default destructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} \& \mbox{\hyperlink{classBBM_1_1SoundComponent_a801d724a24f65c8cb4df1fb7bb8277ea}{operator=}} (const \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} \&)=delete
+\begin{DoxyCompactList}\small\item\em A Sound component is not assignable. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static float \mbox{\hyperlink{classBBM_1_1SoundComponent_a684b357467bfcf7ddaa01aea71f47b25}{volume}} = 0.\+75
+\begin{DoxyCompactList}\small\item\em Volume of the sounds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{classRAY_1_1Audio_1_1Sound}{R\+A\+Y\+::\+Audio\+::\+Sound}} $>$ $>$ \mbox{\hyperlink{classBBM_1_1SoundComponent_a29013d1e4d03c27e9524220b1af005b0}{\+\_\+sound\+List}}
+\begin{DoxyCompactList}\small\item\em Sounds of this entity. \end{DoxyCompactList}\item 
+std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, bool $>$ \mbox{\hyperlink{classBBM_1_1SoundComponent_adaef638b23f9400703599e08a597eb62}{\+\_\+is\+Sound\+Load}}
+\begin{DoxyCompactList}\small\item\em map to know if sound is loaded \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classBBM_1_1SoundComponent_aab5fc199afaea0fe8a843f1feb1fc110}{\+\_\+is\+Lonely}}
+\begin{DoxyCompactList}\small\item\em to know if cache is needed \end{DoxyCompactList}\item 
+const std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::string $>$ \mbox{\hyperlink{classBBM_1_1SoundComponent_aba055873cf0b2b895b8fafe51d21a7a5}{\+\_\+sound\+Path}}
+\begin{DoxyCompactList}\small\item\em All sounds path. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}} \mbox{\hyperlink{classBBM_1_1SoundComponent_aff3d06fd1ba3fbf214ece94d35170ca9}{\+\_\+sound\+Index}}
+\begin{DoxyCompactList}\small\item\em Sound\+Index. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+A basic Sound component. 
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!SoundIndex@{SoundIndex}}
+\index{SoundIndex@{SoundIndex}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{SoundIndex}{SoundIndex}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{B\+B\+M\+::\+Sound\+Component\+::\+Sound\+Index}}}
+
+
+
+All sounds of the player. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!IDLE@{IDLE}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a2d7daa78d790e1392346d0691555bc55}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a2d7daa78d790e1392346d0691555bc55}} 
+I\+D\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{JUMP@{JUMP}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!JUMP@{JUMP}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a19ca857bf66807003b580f800a29dd93}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a19ca857bf66807003b580f800a29dd93}} 
+J\+U\+MP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOMB@{BOMB}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!BOMB@{BOMB}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a07bb5ec1312b40654f5ae23a0a3c4143}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a07bb5ec1312b40654f5ae23a0a3c4143}} 
+B\+O\+MB&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVE@{MOVE}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!MOVE@{MOVE}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a06627225de71467eba743d1ea816a9c3}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a06627225de71467eba743d1ea816a9c3}} 
+M\+O\+VE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{HURT@{HURT}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!HURT@{HURT}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a3b12a5b814934deb1d58691782428ef8}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a3b12a5b814934deb1d58691782428ef8}} 
+H\+U\+RT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{THROW@{THROW}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!THROW@{THROW}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50afd9c59fe2d91004a6e077ee83afc5ab8}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50afd9c59fe2d91004a6e077ee83afc5ab8}} 
+T\+H\+R\+OW&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEATH@{DEATH}!BBM::SoundComponent@{BBM::SoundComponent}}\index{BBM::SoundComponent@{BBM::SoundComponent}!DEATH@{DEATH}}}\mbox{\Hypertarget{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a9d3140269e47e99b3a47ebd63aded690}\label{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50a9d3140269e47e99b3a47ebd63aded690}} 
+D\+E\+A\+TH&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a2d143c483bfdb89679f430c105ed6947}\label{classBBM_1_1SoundComponent_a2d143c483bfdb89679f430c105ed6947}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!SoundComponent@{SoundComponent}}
+\index{SoundComponent@{SoundComponent}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{SoundComponent()}{SoundComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Sound\+Component\+::\+Sound\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity,  }\item[{const std\+::map$<$ \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::string $>$ \&}]{,  }\item[{bool}]{is\+Lonely = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Create a new \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} at a certain Sound. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a85b7b8cae2d7690cad465eec00804966}\label{classBBM_1_1SoundComponent_a85b7b8cae2d7690cad465eec00804966}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!SoundComponent@{SoundComponent}}
+\index{SoundComponent@{SoundComponent}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{SoundComponent()}{SoundComponent()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Sound\+Component\+::\+Sound\+Component (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+A Sound component is copy constructable. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a605bb26f754816b7c6faddf939fa6841}\label{classBBM_1_1SoundComponent_a605bb26f754816b7c6faddf939fa6841}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!````~SoundComponent@{$\sim$SoundComponent}}
+\index{````~SoundComponent@{$\sim$SoundComponent}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{$\sim$SoundComponent()}{~SoundComponent()}}
+{\footnotesize\ttfamily B\+B\+M\+::\+Sound\+Component\+::$\sim$\+Sound\+Component (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [default]}}
+
+
+
+A default destructor. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a04a856c645ec50bb91841abbf13fdf92}\label{classBBM_1_1SoundComponent_a04a856c645ec50bb91841abbf13fdf92}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!clone@{clone}}
+\index{clone@{clone}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{clone()}{clone()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classWAL_1_1Component}{W\+A\+L\+::\+Component}} $\ast$ B\+B\+M\+::\+Sound\+Component\+::clone (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classWAL_1_1Entity}{W\+A\+L\+::\+Entity}} \&}]{entity }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Clone a component for another or the same entity. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em entity} & The entity that owns the ne component. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classWAL_1_1Component_a0bbee4f657e10fd190a28d15afe63e93}{W\+A\+L\+::\+Component}}.
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a6e375db58e05e6b63aafaf10bcf06527}\label{classBBM_1_1SoundComponent_a6e375db58e05e6b63aafaf10bcf06527}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!getIndex@{getIndex}}
+\index{getIndex@{getIndex}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{getIndex()}{getIndex()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Component\+::\+Sound\+Index}} B\+B\+M\+::\+Sound\+Component\+::get\+Index (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+to know which sound is selected 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a56d758adb4e98a3fe1697a5fd56f2c6e}\label{classBBM_1_1SoundComponent_a56d758adb4e98a3fe1697a5fd56f2c6e}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!isPlaying@{isPlaying}}
+\index{isPlaying@{isPlaying}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{isPlaying()}{isPlaying()}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Sound\+Component\+::is\+Playing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+is Sound playing 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a801d724a24f65c8cb4df1fb7bb8277ea}\label{classBBM_1_1SoundComponent_a801d724a24f65c8cb4df1fb7bb8277ea}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!operator=@{operator=}}
+\index{operator=@{operator=}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}}\& B\+B\+M\+::\+Sound\+Component\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classBBM_1_1SoundComponent}{Sound\+Component}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+
+
+A Sound component is not assignable. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a37c463496c8c408668ebaaa6f1ce7427}\label{classBBM_1_1SoundComponent_a37c463496c8c408668ebaaa6f1ce7427}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!pauseSound@{pauseSound}}
+\index{pauseSound@{pauseSound}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{pauseSound()}{pauseSound()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::pause\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+put Sound on hold 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a22010a97819623e9e2ed24eb76bc20a5}\label{classBBM_1_1SoundComponent_a22010a97819623e9e2ed24eb76bc20a5}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!playSound@{playSound}}
+\index{playSound@{playSound}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{playSound()}{playSound()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::play\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+start sound 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a8a5e700a82f2b306d469d9b319de81d0}\label{classBBM_1_1SoundComponent_a8a5e700a82f2b306d469d9b319de81d0}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!setIndex@{setIndex}}
+\index{setIndex@{setIndex}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{setIndex()}{setIndex()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::set\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}}]{index }\end{DoxyParamCaption})}
+
+
+
+to set what sound should be played 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a1bfc07b0b9fdd24a6c54bee8881ce9ba}\label{classBBM_1_1SoundComponent_a1bfc07b0b9fdd24a6c54bee8881ce9ba}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!setPitch@{setPitch}}
+\index{setPitch@{setPitch}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{setPitch()}{setPitch()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::set\+Pitch (\begin{DoxyParamCaption}\item[{float}]{pitch }\end{DoxyParamCaption})}
+
+
+
+set pitch volume 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a2f29e953609ab5edfeb89106d09128d4}\label{classBBM_1_1SoundComponent_a2f29e953609ab5edfeb89106d09128d4}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!setVolume@{setVolume}}
+\index{setVolume@{setVolume}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{setVolume()}{setVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::set\+Volume (\begin{DoxyParamCaption}\item[{float}]{volume\+Update }\end{DoxyParamCaption})}
+
+
+
+set Sound volume 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_ab7ed10a26d8ff5e967877b81ac49644a}\label{classBBM_1_1SoundComponent_ab7ed10a26d8ff5e967877b81ac49644a}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!stopSound@{stopSound}}
+\index{stopSound@{stopSound}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{stopSound()}{stopSound()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::stop\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+stop sound 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a0e4da39bb04775a1de177e18fa124209}\label{classBBM_1_1SoundComponent_a0e4da39bb04775a1de177e18fa124209}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!turnDownVolume@{turnDownVolume}}
+\index{turnDownVolume@{turnDownVolume}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{turnDownVolume()}{turnDownVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::turn\+Down\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+volume -\/= 0.\+1 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a2a5fa9f3d85d7b7d6a0191221096e8e9}\label{classBBM_1_1SoundComponent_a2a5fa9f3d85d7b7d6a0191221096e8e9}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!turnUpVolume@{turnUpVolume}}
+\index{turnUpVolume@{turnUpVolume}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{turnUpVolume()}{turnUpVolume()}}
+{\footnotesize\ttfamily void B\+B\+M\+::\+Sound\+Component\+::turn\+Up\+Volume (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+volume += 0.\+1 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_aab5fc199afaea0fe8a843f1feb1fc110}\label{classBBM_1_1SoundComponent_aab5fc199afaea0fe8a843f1feb1fc110}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!\_isLonely@{\_isLonely}}
+\index{\_isLonely@{\_isLonely}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{\_isLonely}{\_isLonely}}
+{\footnotesize\ttfamily bool B\+B\+M\+::\+Sound\+Component\+::\+\_\+is\+Lonely\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+to know if cache is needed 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_adaef638b23f9400703599e08a597eb62}\label{classBBM_1_1SoundComponent_adaef638b23f9400703599e08a597eb62}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!\_isSoundLoad@{\_isSoundLoad}}
+\index{\_isSoundLoad@{\_isSoundLoad}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{\_isSoundLoad}{\_isSoundLoad}}
+{\footnotesize\ttfamily std\+::map$<$\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, bool$>$ B\+B\+M\+::\+Sound\+Component\+::\+\_\+is\+Sound\+Load\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+map to know if sound is loaded 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_aff3d06fd1ba3fbf214ece94d35170ca9}\label{classBBM_1_1SoundComponent_aff3d06fd1ba3fbf214ece94d35170ca9}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!\_soundIndex@{\_soundIndex}}
+\index{\_soundIndex@{\_soundIndex}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{\_soundIndex}{\_soundIndex}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}} B\+B\+M\+::\+Sound\+Component\+::\+\_\+sound\+Index\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sound\+Index. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a29013d1e4d03c27e9524220b1af005b0}\label{classBBM_1_1SoundComponent_a29013d1e4d03c27e9524220b1af005b0}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!\_soundList@{\_soundList}}
+\index{\_soundList@{\_soundList}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{\_soundList}{\_soundList}}
+{\footnotesize\ttfamily std\+::map$<$\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{classRAY_1_1Audio_1_1Sound}{R\+A\+Y\+::\+Audio\+::\+Sound}}$>$ $>$ B\+B\+M\+::\+Sound\+Component\+::\+\_\+sound\+List\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Sounds of this entity. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_aba055873cf0b2b895b8fafe51d21a7a5}\label{classBBM_1_1SoundComponent_aba055873cf0b2b895b8fafe51d21a7a5}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!\_soundPath@{\_soundPath}}
+\index{\_soundPath@{\_soundPath}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{\_soundPath}{\_soundPath}}
+{\footnotesize\ttfamily const std\+::map$<$\mbox{\hyperlink{classBBM_1_1SoundComponent_af9163b5a962dea754d5fc5b10b359c50}{Sound\+Index}}, std\+::string$>$ B\+B\+M\+::\+Sound\+Component\+::\+\_\+sound\+Path\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+All sounds path. 
+
+\mbox{\Hypertarget{classBBM_1_1SoundComponent_a684b357467bfcf7ddaa01aea71f47b25}\label{classBBM_1_1SoundComponent_a684b357467bfcf7ddaa01aea71f47b25}} 
+\index{BBM::SoundComponent@{BBM::SoundComponent}!volume@{volume}}
+\index{volume@{volume}!BBM::SoundComponent@{BBM::SoundComponent}}
+\doxysubsubsection{\texorpdfstring{volume}{volume}}
+{\footnotesize\ttfamily float B\+B\+M\+::\+Sound\+Component\+::volume = 0.\+75\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Volume of the sounds. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sources/\+Component/\+Sound/\mbox{\hyperlink{SoundComponent_8hpp}{Sound\+Component.\+hpp}}\item 
+sources/\+Component/\+Sound/\mbox{\hyperlink{SoundComponent_8cpp}{Sound\+Component.\+cpp}}\end{DoxyCompactItemize}

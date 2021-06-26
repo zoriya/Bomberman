@@ -1,0 +1,225 @@
+\hypertarget{classRAY_1_1Shader}{}\doxysection{R\+AY\+::Shader Class Reference}
+\label{classRAY_1_1Shader}\index{RAY::Shader@{RAY::Shader}}
+
+
+{\ttfamily \#include $<$Shaders.\+hpp$>$}
+
+
+
+Collaboration diagram for R\+AY\+::Shader\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classRAY_1_1Shader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+const std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ \& \mbox{\hyperlink{classRAY_1_1Shader_a8a1fb66cc733ffd0dc1595fd948d90b4}{get\+Shader\+Ptr}} () const
+\item 
+void \mbox{\hyperlink{classRAY_1_1Shader_a6a29c6930f9239e8faa6c53c8656f258}{set\+Shader\+Uniform\+Var}} (const std\+::string \&var\+Name, float value)
+\begin{DoxyCompactList}\small\item\em The set var for float values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Shader_a15489a03cfd17fb4c0779d95c9309af2}{set\+Shader\+Uniform\+Var}} (const std\+::string \&var\+Name, int value)
+\begin{DoxyCompactList}\small\item\em The set var for float values. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classRAY_1_1Shader_a61bad10f5eac0c683a437589570dfdf7}{set\+Shader\+Uniform\+Var}} (const std\+::string \&var\+Name, const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&vector)
+\item 
+void \mbox{\hyperlink{classRAY_1_1Shader_ac7d5f742cb3f4f52a22018fdc0120f9d}{set\+Location}} (\+::Shader\+Location\+Index, const std\+::string \&name)
+\item 
+\mbox{\hyperlink{classRAY_1_1Shader_a8fb919a4b2de6fc4cfc0acd7117e9283}{Shader}} (const std\+::string \&vertex\+File, const std\+::string \&fragment\+File, bool lonely=false)
+\begin{DoxyCompactList}\small\item\em ctor if no vertexfile in needed set it to nullptr \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Shader_a6a8c9ea1d884f29b7c0122ec3bb2afe6}{Shader}} (const \mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \&)=default
+\begin{DoxyCompactList}\small\item\em Default copy ctor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Shader_a23bca233b3ce2bfacfb5efe6fb8527a7}{$\sim$\+Shader}} ()=default
+\begin{DoxyCompactList}\small\item\em dtor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \& \mbox{\hyperlink{classRAY_1_1Shader_aaafaeb70d7a14103b160f5a7cb2faab8}{operator=}} (const \mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \&)=default
+\begin{DoxyCompactList}\small\item\em Assignment operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classRAY_1_1Shader_a24133f6b01081b2174a21a829d351bce}{Begin\+Using\+Custom\+Shader}} (\mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \&shader)
+\begin{DoxyCompactList}\small\item\em start using a custom shader when drawing \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classRAY_1_1Shader_a5242aa720eee1373d298aa9cf821b399}{End\+Using\+Custom\+Shader}} ()
+\begin{DoxyCompactList}\small\item\em stop using the custom shader \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Shader_afed28b9754ffcc85579834b9f0502104}{\+\_\+vertex\+File}}
+\begin{DoxyCompactList}\small\item\em The vertex file of the shader. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classRAY_1_1Shader_af2ceed26e6fcdc96759cec48cf304e14}{\+\_\+fragment\+File}}
+\begin{DoxyCompactList}\small\item\em The fragment file of the shader. \end{DoxyCompactList}\item 
+std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ \mbox{\hyperlink{classRAY_1_1Shader_a9b01e8d8837312703b38869c3396c833}{\+\_\+ray\+Lib\+Shader}}
+\begin{DoxyCompactList}\small\item\em Raylib shader struct. \end{DoxyCompactList}\item 
+std\+::map$<$ std\+::string, int $>$ \mbox{\hyperlink{classRAY_1_1Shader_a023b4c1d25cea70d80f1153207eb2d2a}{\+\_\+shader\+Index\+Vars}} = \{\}
+\begin{DoxyCompactList}\small\item\em Fetch and cache the index of the shader variable on the first set of the var. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ \mbox{\hyperlink{classRAY_1_1Shader_abd1ac7a925cee5e1b8a3d5b25d6d3200}{\+\_\+shaders\+Cache}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classRAY_1_1Shader_a8fb919a4b2de6fc4cfc0acd7117e9283}\label{classRAY_1_1Shader_a8fb919a4b2de6fc4cfc0acd7117e9283}} 
+\index{RAY::Shader@{RAY::Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{vertex\+File,  }\item[{const std\+::string \&}]{fragment\+File,  }\item[{bool}]{lonely = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+ctor if no vertexfile in needed set it to nullptr 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a6a8c9ea1d884f29b7c0122ec3bb2afe6}\label{classRAY_1_1Shader_a6a8c9ea1d884f29b7c0122ec3bb2afe6}} 
+\index{RAY::Shader@{RAY::Shader}!Shader@{Shader}}
+\index{Shader@{Shader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{Shader()}{Shader()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Shader\+::\+Shader (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default copy ctor. 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a23bca233b3ce2bfacfb5efe6fb8527a7}\label{classRAY_1_1Shader_a23bca233b3ce2bfacfb5efe6fb8527a7}} 
+\index{RAY::Shader@{RAY::Shader}!````~Shader@{$\sim$Shader}}
+\index{````~Shader@{$\sim$Shader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{$\sim$Shader()}{~Shader()}}
+{\footnotesize\ttfamily R\+A\+Y\+::\+Shader\+::$\sim$\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+dtor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRAY_1_1Shader_a24133f6b01081b2174a21a829d351bce}\label{classRAY_1_1Shader_a24133f6b01081b2174a21a829d351bce}} 
+\index{RAY::Shader@{RAY::Shader}!BeginUsingCustomShader@{BeginUsingCustomShader}}
+\index{BeginUsingCustomShader@{BeginUsingCustomShader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{BeginUsingCustomShader()}{BeginUsingCustomShader()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::\+Begin\+Using\+Custom\+Shader (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRAY_1_1Shader}{R\+A\+Y\+::\+Shader}} \&}]{shader }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+start using a custom shader when drawing 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a5242aa720eee1373d298aa9cf821b399}\label{classRAY_1_1Shader_a5242aa720eee1373d298aa9cf821b399}} 
+\index{RAY::Shader@{RAY::Shader}!EndUsingCustomShader@{EndUsingCustomShader}}
+\index{EndUsingCustomShader@{EndUsingCustomShader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{EndUsingCustomShader()}{EndUsingCustomShader()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::\+End\+Using\+Custom\+Shader (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+stop using the custom shader 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a8a1fb66cc733ffd0dc1595fd948d90b4}\label{classRAY_1_1Shader_a8a1fb66cc733ffd0dc1595fd948d90b4}} 
+\index{RAY::Shader@{RAY::Shader}!getShaderPtr@{getShaderPtr}}
+\index{getShaderPtr@{getShaderPtr}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{getShaderPtr()}{getShaderPtr()}}
+{\footnotesize\ttfamily const std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ \& R\+A\+Y\+::\+Shader\+::get\+Shader\+Ptr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\mbox{\Hypertarget{classRAY_1_1Shader_aaafaeb70d7a14103b160f5a7cb2faab8}\label{classRAY_1_1Shader_aaafaeb70d7a14103b160f5a7cb2faab8}} 
+\index{RAY::Shader@{RAY::Shader}!operator=@{operator=}}
+\index{operator=@{operator=}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Shader}{Shader}}\& R\+A\+Y\+::\+Shader\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRAY_1_1Shader}{Shader}} \&}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Assignment operator. 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_ac7d5f742cb3f4f52a22018fdc0120f9d}\label{classRAY_1_1Shader_ac7d5f742cb3f4f52a22018fdc0120f9d}} 
+\index{RAY::Shader@{RAY::Shader}!setLocation@{setLocation}}
+\index{setLocation@{setLocation}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{setLocation()}{setLocation()}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::set\+Location (\begin{DoxyParamCaption}\item[{\+::Shader\+Location\+Index}]{,  }\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a61bad10f5eac0c683a437589570dfdf7}\label{classRAY_1_1Shader_a61bad10f5eac0c683a437589570dfdf7}} 
+\index{RAY::Shader@{RAY::Shader}!setShaderUniformVar@{setShaderUniformVar}}
+\index{setShaderUniformVar@{setShaderUniformVar}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{setShaderUniformVar()}{setShaderUniformVar()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::set\+Shader\+Uniform\+Var (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var\+Name,  }\item[{const \mbox{\hyperlink{classRAY_1_1Vector3}{R\+A\+Y\+::\+Vector3}} \&}]{vector }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a6a29c6930f9239e8faa6c53c8656f258}\label{classRAY_1_1Shader_a6a29c6930f9239e8faa6c53c8656f258}} 
+\index{RAY::Shader@{RAY::Shader}!setShaderUniformVar@{setShaderUniformVar}}
+\index{setShaderUniformVar@{setShaderUniformVar}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{setShaderUniformVar()}{setShaderUniformVar()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::set\+Shader\+Uniform\+Var (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var\+Name,  }\item[{float}]{value }\end{DoxyParamCaption})}
+
+
+
+The set var for float values. 
+
+\begin{DoxyNote}{Note}
+Throw if the var is not found 
+\end{DoxyNote}
+\mbox{\Hypertarget{classRAY_1_1Shader_a15489a03cfd17fb4c0779d95c9309af2}\label{classRAY_1_1Shader_a15489a03cfd17fb4c0779d95c9309af2}} 
+\index{RAY::Shader@{RAY::Shader}!setShaderUniformVar@{setShaderUniformVar}}
+\index{setShaderUniformVar@{setShaderUniformVar}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{setShaderUniformVar()}{setShaderUniformVar()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily void R\+A\+Y\+::\+Shader\+::set\+Shader\+Uniform\+Var (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{var\+Name,  }\item[{int}]{value }\end{DoxyParamCaption})}
+
+
+
+The set var for float values. 
+
+\begin{DoxyNote}{Note}
+Throw if the var is not found 
+\end{DoxyNote}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRAY_1_1Shader_af2ceed26e6fcdc96759cec48cf304e14}\label{classRAY_1_1Shader_af2ceed26e6fcdc96759cec48cf304e14}} 
+\index{RAY::Shader@{RAY::Shader}!\_fragmentFile@{\_fragmentFile}}
+\index{\_fragmentFile@{\_fragmentFile}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{\_fragmentFile}{\_fragmentFile}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Shader\+::\+\_\+fragment\+File\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The fragment file of the shader. 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a9b01e8d8837312703b38869c3396c833}\label{classRAY_1_1Shader_a9b01e8d8837312703b38869c3396c833}} 
+\index{RAY::Shader@{RAY::Shader}!\_rayLibShader@{\_rayLibShader}}
+\index{\_rayLibShader@{\_rayLibShader}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{\_rayLibShader}{\_rayLibShader}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}}$>$ R\+A\+Y\+::\+Shader\+::\+\_\+ray\+Lib\+Shader\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Raylib shader struct. 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_a023b4c1d25cea70d80f1153207eb2d2a}\label{classRAY_1_1Shader_a023b4c1d25cea70d80f1153207eb2d2a}} 
+\index{RAY::Shader@{RAY::Shader}!\_shaderIndexVars@{\_shaderIndexVars}}
+\index{\_shaderIndexVars@{\_shaderIndexVars}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{\_shaderIndexVars}{\_shaderIndexVars}}
+{\footnotesize\ttfamily std\+::map$<$std\+::string, int$>$ R\+A\+Y\+::\+Shader\+::\+\_\+shader\+Index\+Vars = \{\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Fetch and cache the index of the shader variable on the first set of the var. 
+
+\mbox{\Hypertarget{classRAY_1_1Shader_abd1ac7a925cee5e1b8a3d5b25d6d3200}\label{classRAY_1_1Shader_abd1ac7a925cee5e1b8a3d5b25d6d3200}} 
+\index{RAY::Shader@{RAY::Shader}!\_shadersCache@{\_shadersCache}}
+\index{\_shadersCache@{\_shadersCache}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{\_shadersCache}{\_shadersCache}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRAY_1_1Cache}{Cache}}$<$\+::\mbox{\hyperlink{classRAY_1_1Shader}{Shader}} $>$ R\+A\+Y\+::\+Shader\+::\+\_\+shaders\+Cache\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\mbox{\Hypertarget{classRAY_1_1Shader_afed28b9754ffcc85579834b9f0502104}\label{classRAY_1_1Shader_afed28b9754ffcc85579834b9f0502104}} 
+\index{RAY::Shader@{RAY::Shader}!\_vertexFile@{\_vertexFile}}
+\index{\_vertexFile@{\_vertexFile}!RAY::Shader@{RAY::Shader}}
+\doxysubsubsection{\texorpdfstring{\_vertexFile}{\_vertexFile}}
+{\footnotesize\ttfamily std\+::string R\+A\+Y\+::\+Shader\+::\+\_\+vertex\+File\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The vertex file of the shader. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+lib/\+Ray/sources/\+Shaders/\mbox{\hyperlink{Shaders_8hpp}{Shaders.\+hpp}}\item 
+lib/\+Ray/sources/\+Shaders/\mbox{\hyperlink{Shaders_8cpp}{Shaders.\+cpp}}\end{DoxyCompactItemize}
